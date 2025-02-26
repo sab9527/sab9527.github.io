@@ -152,7 +152,7 @@
       box-sizing: border-box;
       z-index: 10;
       overflow: hidden;
-      transition: transform 0.2s, box-shadow 0.3s;
+      transition: transform 0.2s, box-shadow 0.3s, left 0.1s ease, top 0.1s ease; /* 增加移動動畫 */
     }
     .block:hover, .placed-block:hover {
       transform: scale(1.05);
@@ -196,7 +196,7 @@
     }
     #stats h3 {
       margin-top: 0;
-      text-align: center; /* 將「統計」標題置中 */
+      text-align: center;
     }
     #stats table {
       width: 100%;
@@ -211,33 +211,45 @@
 
     /* 彈出框樣式 */
     .modal {
-      display: none; /* 預設隱藏 */
+      display: none;
       position: fixed;
-      z-index: 100; /* 確保顯示在最上層 */
+      z-index: 100;
       left: 0;
       top: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0.5); /* 半透明背景 */
+      background-color: rgba(0, 0, 0, 0.5);
       justify-content: center;
       align-items: center;
     }
-
     .modal-content {
-      background-color: #fff; /* 白色背景 */
+      background-color: #fff;
       padding: 20px;
       border-radius: 8px;
-      width: 80%; /* 寬度適應螢幕 */
-      max-width: 600px; /* 最大寬度限制 */
+      width: 80%;
+      max-width: 600px;
       position: relative;
     }
-
     .close-button {
       position: absolute;
       top: 10px;
       right: 10px;
       font-size: 24px;
-      cursor: pointer; /* 滑鼠變成手型 */
+      cursor: pointer;
+    }
+
+    /* 提示框樣式 */
+    #toast {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      z-index: 1000;
+      display: none;
     }
   </style>
 </head>
@@ -248,6 +260,7 @@
       <button id="reset-btn">重置放置區</button>
       <button id="show-data-btn">顯示神像資料</button>
       <button id="compact-btn">自動排列積木</button>
+      <button id="mode-115-btn">115模式</button>
     </div>
     <div id="play-area">
       <div id="grid"></div>
@@ -279,16 +292,25 @@
     </div>
   </div>
 
+  <!-- 提示框 -->
+  <div id="toast"></div>
+
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      // 基本參數
       const cellSize = 50;
       const cols = 6;
       const rows = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
       const disabledCells = ["1A", "2C", "5C", "2D", "3D", "4D", "5D", "2E", "5E", "6G"];
       const grid = document.getElementById("grid");
 
-      // 建立放置區網格
+      // 初始化網格狀態
+      const gridStatus = Array.from({ length: rows.length }, () => Array(cols).fill('empty'));
+      disabledCells.forEach(cell => {
+        const [col, row] = cell.split('');
+        gridStatus[rows.indexOf(row)][parseInt(col) - 1] = 'disabled';
+      });
+
+      // 生成網格單元
       rows.forEach((r, rowIndex) => {
         for (let col = 1; col <= cols; col++) {
           const cell = document.createElement("div");
@@ -297,7 +319,7 @@
           cell.style.top = (rowIndex * cellSize) + "px";
           cell.setAttribute("data-col", col);
           cell.setAttribute("data-row", r);
-          if (disabledCells.includes(col + r)) {
+          if (gridStatus[rowIndex][col - 1] === 'disabled') {
             cell.classList.add("disabled");
             cell.innerText = "🚫";
           } else {
@@ -309,10 +331,9 @@
         }
       });
 
-      const occupied = {};
       const stats = {};
 
-      // 共享資料
+      // 神像數據
       const suffixOptions = {
       "1x1": ["你的地圖 +(15–25)% 機率含有 1 個深淵", "你的地圖增加 (80–100)% 機率含有 1 個深淵", "你的地圖 +(15–25)% 機率含有艾瓦", "你的地圖增加 (80–100)% 機率含有艾瓦", "你的地圖有 (15–25)% 機率含有 1 個額外盜賊流亡者", "你的地圖 +(7–10)% 含有 1 個盜賊流亡者", "地圖頭目有 (6–10)% 機率伴隨 2 名盜賊流亡者保鑣", "地圖頭目有 (2–3)% 機率伴隨 2 名盜賊流亡者", "你的地圖 +(15–25)% 機率含有埃哈", "你的地圖增加 (80–100)% 機率含有埃哈", "你的地圖有 (15–25)% 機率吸引超越惡魔", "你的地圖 +(15–25)% 機率含有 1 個凋落事件", "你的地圖增加 (80–100)% 機率含有 1 個凋落事件", "你的地圖 +(15–25)% 機率含有裂痕", "你的地圖增加 (80–100)% 機率含有 1 個裂痕", "你含有裂痕的地圖有 (15–25)% 機率含有 1 個額外裂痕", "地圖頭目增加 (40–60)% 機率掉落 1 張征服者地圖", "你的地圖 +(15–25)% 機率含有 1 個譫妄之鏡", "你的地圖增加 (80–100)% 機率含有 1 個譫妄之鏡", "你的地圖 +(15–25)% 機率含有尼科", "你的地圖增加 (80–100)% 機率含有尼科", "你完成白色階級的地圖時，獲得 (100–150) 額外魔暴硫酸", "你完成黃色階級的地圖時，獲得 (150–200) 額外魔暴硫酸", "你完成紅色階級的地圖時，獲得 (200–250) 額外魔暴硫酸", "你的地圖 +(7–10)% 機率含有 1 個神殿", "你的地圖有 (35–50)% 機率含有 1 個額外神殿", "你的地圖有 +(7–10)% 機率含有 1 個禁錮怪物", "你的地圖有 (35–50)% 機率含有 1 個額外禁錮怪物", "你的地圖 +(15–25)% 機率含有 1 個探險事件", "你的地圖增加 (80–100)% 機率含有 1 個探險事件", "你的地圖有 (35–50)% 機率含有 1 個額外神諭", "你的地圖 +(15–25)% 機率含有聖殿密園", "你的地圖增加 (80–100)% 機率含有聖殿密園", "你的地圖 +(15–25)% 機率含有 1 個走私者的祕寶", "你的地圖增加 (80–100)% 機率含有 1 個走私者的祕寶", "增加 (10–15)% 你地圖中掉落的劫盜契約書", "你的地圖 +(15–25)% 機率含有瓊恩", "你的地圖增加 (80–100)% 機率含有瓊恩", "你的地圖 +(15–25)% 機率含有 1 個戰亂事件", "你的地圖增加 (80–100)% 機率含有 1 個戰亂事件", "掉落的 1 到 15 階地圖有 (5–10)% 機率高 1 階", "你的地圖增加 (80–100)% 機率含有 1 個最後通牒事件", "你的地圖 +(15–25)% 機率含有 1 個最後通牒事件", "你的地圖 +(15–25)% 機率含有祭祀神壇", "你的地圖增加 (80–100)% 機率含有祭祀神壇", "增加 (5–10)% 你地圖中掉落的聖甲蟲", "你的地圖 +(35–50)% 機率含有 1 個保險箱", "你的地圖有 (35–50)% 機率被 1 個額外罪魂糾纏", "你的地圖 +(7–10)% 機率被罪魂糾纏", "增加 (10–15)% 你地圖中掉落的輿圖偵查報告", "增加 (2–3)% 區域中掉落的地圖", "你的地圖所包含的困難和會賦予獎勵的怪物群增加 (3–5)%"],
       "1x2": ["你的地圖 +(30–45)% 機率含有 1 個深淵", "你的地圖增加 (144–180)% 機率含有 1 個深淵", "你的地圖 +(30–45)% 機率含有艾瓦", "你的地圖增加 (144–180)% 機率含有艾瓦", "你的地圖有 (30–45)% 機率含有 1 個額外盜賊流亡者", "你的地圖 +(12–18)% 含有 1 個盜賊流亡者", "你的地圖 +(30–45)% 機率含有埃哈", "你的地圖增加 (144–180)% 機率含有埃哈", "你地圖有 (30–45)% 機率吸引超越惡魔", "你的地圖 +(30–45)% 機率含有 1 個凋落事件", "你的地圖增加 (144–180)% 機率含有 1 個凋落事件", "你的地圖 +(30–45)% 機率含有裂痕", "你的地圖增加 (144–180)% 機率含有 1 個裂痕", "你含有裂痕的地圖有 (5–10)% 機率含有 2 個額外裂痕", "你的地圖 +(30–45)% 機率含有 1 個譫妄之鏡", "你的地圖增加 (144–180)% 機率含有 1 個譫妄之鏡", "你的地圖 +(30–45)% 機率含有尼科", "你的地圖增加 (144–180)% 機率含有尼科", "你的地圖 +(12–18)% 機率含有 1 個神殿", "你的地圖有 (60–80)% 機率含有 1 個額外神殿", "每張地圖的最終地圖頭目有 +(2–2)% 機率掉落 1 張塑界者守護者地圖 (階級 14+)", "每張地圖的最終地圖頭目有 +(2–2)% 機率掉落 1 張尊師守護者地圖 (階級 14+)", "你的地圖有 +(12–18)% 機率含有 1 個禁錮怪物", "你的地圖有 (60–80)% 機率含有 1 個額外禁錮怪物", "你的地圖 +(30–45)% 機率含有 1 個探險事件", "你的地圖增加 (144–180)% 機率含有 1 個探險事件", "你的地圖有 (60–80)% 機率含有 1 個額外神諭", "你的地圖 +(30–45)% 機率含有聖殿密園", "你的地圖增加 (144–180)% 機率含有聖殿密園", "你的地圖 +(30–45)% 機率含有 1 個走私者的祕寶", "你的地圖增加 (144–180)% 機率含有 1 個走私者的祕寶", "增加 (20–25)% 你地圖中掉落的藍圖", "你的地圖 +(30–45)% 機率含有瓊恩", "你的地圖增加 (144–180)% 機率含有瓊恩", "你的地圖 +(30–45)% 機率含有 1 個戰亂事件", "你的地圖增加 (144–180)% 機率含有 1 個戰亂事件", "你的地圖增加 (144–180)% 機率含有 1 個最後通牒事件", "你的地圖 +(30–45)% 機率含有 1 個最後通牒事件", "你的地圖 +(30–45)% 機率含有祭祀神壇", "你的地圖增加 (144–180)% 機率含有祭祀神壇", "你的地圖 +(60–80)% 機率含有 1 個保險箱", "每張地圖 (階級 14+) 的最終地圖頭目有 +(1.2–1.8)% 機率掉落 1 張追憶地圖", "你的地圖有 (60–80)% 機率被 1 個額外罪魂糾纏", "你的地圖 +(12–18)% 機率被罪魂糾纏", "地圖頭目有 (6–8)% 機率被罪魂圍繞", "你的地圖 +(5–8)% 機率含有 1 個瓦爾區域", "(5–8)% 機率使你每張地圖中的 1 隻怪物掉落 1 張額外相連的地圖"],
@@ -331,18 +352,11 @@
         "1x3": ["傳奇效果C", "傳奇效果D"],
         "2x2": ["傳奇效果E", "傳奇效果F"]
       };
-      const legendPrefixOptions = {
-        "1x1": ["前傳奇效果1-額外掉落 1 個傳奇物品", "前傳奇效果2-增加經驗 10%"],
-        "1x2": ["前傳奇效果A", "前傳奇效果B"],
-        "1x3": ["前傳奇效果C", "前傳奇效果D"],
-        "2x2": ["前傳奇效果E", "前傳奇效果F"]
-      };
 
-      // 神像資料
       const blocks = [
-        { w: 1, h: 1, label: "次要", type: "minor" },        // 次要神像，使用共享 1x1 資料
-        { w: 1, h: 1, label: "傳奇", type: "legend" },       // 傳奇神像
-        { w: 2, h: 1, label: "高貴", type: "normal" },       // 一般神像
+        { w: 1, h: 1, label: "次要", type: "minor" },
+        { w: 1, h: 1, label: "傳奇", type: "legend" },
+        { w: 2, h: 1, label: "高貴", type: "normal" },
         { w: 1, h: 2, label: "卡瑪薩", type: "normal" },
         { w: 3, h: 1, label: "埋葬", type: "normal" },
         { w: 1, h: 3, label: "圖騰", type: "normal" },
@@ -350,12 +364,16 @@
       ];
 
       const supplyGroup = document.getElementById("supply-group");
-      if (!supplyGroup) {
-        console.error("找不到 #supply-group 元素！");
-        return;
+
+      function showToast(message) {
+        const toast = document.getElementById("toast");
+        toast.textContent = message;
+        toast.style.display = "block";
+        setTimeout(() => {
+          toast.style.display = "none";
+        }, 2000);
       }
 
-      // 取得對應資料群組鍵值
       function getGroupKey(w, h) {
         if ((w === 2 && h === 1) || (w === 1 && h === 2)) return "1x2";
         if ((w === 3 && h === 1) || (w === 1 && h === 3)) return "1x3";
@@ -363,53 +381,38 @@
         return "1x1";
       }
 
-      // 搜尋輸入事件
       function attachSearchListener(searchInput, contentDiv) {
-  searchInput.addEventListener("input", function () {
-    const term = this.value.trim().toLowerCase();
-    contentDiv.querySelectorAll("select").forEach((select, idx) => {
-      const originalOpts = JSON.parse(select.dataset.originalOptions);
-      const currentValue = select.value; // 儲存當前選中的值
-      select.options.length = 0; // 清空現有選項
-
-      // 添加預設選項
-      const defaultOption = document.createElement("option");
-      defaultOption.value = "";
-      defaultOption.text = "效果" + (idx + 1);
-      select.appendChild(defaultOption);
-
-      // 根據搜尋詞重建選項，並確保當前選中的值始終保留
-      originalOpts.forEach(text => {
-        // 如果搜尋詞為空，或文字匹配搜尋詞，或文字是當前選中的值，則加入選項
-        if (term === "" || text.toLowerCase().includes(term) || text === currentValue) {
-          const opt = document.createElement("option");
-          opt.value = text;
-          opt.text = text;
-          select.appendChild(opt);
-        }
-      });
-
-      // 恢復之前選中的值
-      if (currentValue) {
-        select.value = currentValue;
+        searchInput.addEventListener("input", function () {
+          const term = this.value.trim().toLowerCase();
+          contentDiv.querySelectorAll("select").forEach((select, idx) => {
+            const originalOpts = JSON.parse(select.dataset.originalOptions);
+            const currentValue = select.value;
+            select.options.length = 0;
+            const defaultOption = document.createElement("option");
+            defaultOption.value = "";
+            defaultOption.text = "效果" + (idx + 1);
+            select.appendChild(defaultOption);
+            originalOpts.forEach(text => {
+              if (term === "" || text.toLowerCase().includes(term) || text === currentValue) {
+                const opt = document.createElement("option");
+                opt.value = text;
+                opt.text = text;
+                select.appendChild(opt);
+              }
+            });
+            if (currentValue) select.value = currentValue;
+          });
+        });
       }
-    });
-  });
-}
 
-      // 建立神像卡片
       blocks.forEach(block => {
-        console.log("正在生成神像卡片:", block.label, "類型:", block.type);
         const rowDiv = document.createElement("div");
         rowDiv.classList.add("supply-row");
-
         const label = document.createElement("div");
         label.classList.add("supply-label");
         label.textContent = block.label;
-
         const content = document.createElement("div");
         content.classList.add("supply-content");
-
         const blk = document.createElement("div");
         blk.classList.add("block");
         blk.setAttribute("draggable", "true");
@@ -423,16 +426,12 @@
         const searchInput = document.createElement("input");
         searchInput.type = "text";
         searchInput.placeholder = "搜尋...";
-        searchInput.classList.add("select-search");
 
         if (block.type === "minor") {
-          // 次要神像：四個下拉選單，前兩個用 suffixOptions["1x1"]，後兩個用 prefixOptions["1x1"]
           const suffixOpts = suffixOptions["1x1"];
           const prefixOpts = prefixOptions["1x1"];
-          console.log("次要神像後綴選項 (共享 1x1):", suffixOpts);
-          console.log("次要神像前綴選項 (共享 1x1):", prefixOpts);
-
           const select1 = document.createElement("select");
+          select1.dataset.originalOptions = JSON.stringify(suffixOpts);
           const defaultOption1 = document.createElement("option");
           defaultOption1.value = "";
           defaultOption1.text = "效果1";
@@ -443,9 +442,9 @@
             option.text = text;
             select1.appendChild(option);
           });
-          select1.dataset.originalOptions = JSON.stringify(suffixOpts);
 
           const select2 = document.createElement("select");
+          select2.dataset.originalOptions = JSON.stringify(suffixOpts);
           const defaultOption2 = document.createElement("option");
           defaultOption2.value = "";
           defaultOption2.text = "效果2";
@@ -456,9 +455,9 @@
             option.text = text;
             select2.appendChild(option);
           });
-          select2.dataset.originalOptions = JSON.stringify(suffixOpts);
 
           const select3 = document.createElement("select");
+          select3.dataset.originalOptions = JSON.stringify(prefixOpts);
           const defaultOption3 = document.createElement("option");
           defaultOption3.value = "";
           defaultOption3.text = "效果3";
@@ -469,9 +468,9 @@
             option.text = text;
             select3.appendChild(option);
           });
-          select3.dataset.originalOptions = JSON.stringify(prefixOpts);
 
           const select4 = document.createElement("select");
+          select4.dataset.originalOptions = JSON.stringify(prefixOpts);
           const defaultOption4 = document.createElement("option");
           defaultOption4.value = "";
           defaultOption4.text = "效果4";
@@ -482,7 +481,6 @@
             option.text = text;
             select4.appendChild(option);
           });
-          select4.dataset.originalOptions = JSON.stringify(prefixOpts);
 
           blk.addEventListener("dragstart", function (e) {
             const data = {
@@ -498,7 +496,6 @@
           });
 
           attachSearchListener(searchInput, content);
-
           content.appendChild(blk);
           content.appendChild(searchInput);
           content.appendChild(select1);
@@ -506,46 +503,39 @@
           content.appendChild(select3);
           content.appendChild(select4);
         } else if (block.type === "legend") {
-          // 傳奇神像：兩個下拉選單，使用 legendSuffixOptions
           const legendOpts = legendSuffixOptions[groupKey];
-    console.log("傳奇神像選項:", legendOpts);
+          const select1 = document.createElement("select");
+          select1.dataset.originalOptions = JSON.stringify(legendOpts);
+          const defaultOption1 = document.createElement("option");
+          defaultOption1.value = "";
+          defaultOption1.text = "效果1";
+          select1.appendChild(defaultOption1);
+          legendOpts.forEach(text => {
+            const option = document.createElement("option");
+            option.value = text;
+            option.text = text;
+            select1.appendChild(option);
+          });
 
-    const select1 = document.createElement("select");
-    const defaultOption1 = document.createElement("option");
-    defaultOption1.value = "";
-    defaultOption1.text = "效果1";
-    select1.appendChild(defaultOption1);
-    legendOpts.forEach(text => {
-        const option = document.createElement("option");
-        option.value = text;
-        option.text = text;
-        select1.appendChild(option);
-    });
-    select1.dataset.originalOptions = JSON.stringify(legendOpts);
+          blk.addEventListener("dragstart", function (e) {
+            const data = {
+              w: parseInt(blk.dataset.w),
+              h: parseInt(blk.dataset.h),
+              info1: select1.value,
+              type: blk.dataset.type
+            };
+            e.dataTransfer.setData("text/plain", JSON.stringify(data));
+          });
 
-    blk.addEventListener("dragstart", function (e) {
-        const data = {
-            w: parseInt(blk.dataset.w),
-            h: parseInt(blk.dataset.h),
-            info1: select1.value,
-            type: blk.dataset.type
-        };
-        e.dataTransfer.setData("text/plain", JSON.stringify(data));
-    });
-
-    attachSearchListener(searchInput, content);
-
-    content.appendChild(blk);
-    content.appendChild(searchInput);
-    content.appendChild(select1);
+          attachSearchListener(searchInput, content);
+          content.appendChild(blk);
+          content.appendChild(searchInput);
+          content.appendChild(select1);
         } else {
-          // 一般神像：四個下拉選單，使用 suffixOptions 和 prefixOptions
           const suffixOpts = suffixOptions[groupKey].slice(0, 99);
           const prefixOpts = prefixOptions[groupKey].slice(0, 99);
-          console.log("一般神像後綴選項:", suffixOpts);
-          console.log("一般神像前綴選項:", prefixOpts);
-
           const select1 = document.createElement("select");
+          select1.dataset.originalOptions = JSON.stringify(suffixOpts);
           const defaultOption1 = document.createElement("option");
           defaultOption1.value = "";
           defaultOption1.text = "效果1";
@@ -556,9 +546,9 @@
             option.text = text;
             select1.appendChild(option);
           });
-          select1.dataset.originalOptions = JSON.stringify(suffixOpts);
 
           const select2 = document.createElement("select");
+          select2.dataset.originalOptions = JSON.stringify(suffixOpts);
           const defaultOption2 = document.createElement("option");
           defaultOption2.value = "";
           defaultOption2.text = "效果2";
@@ -569,9 +559,9 @@
             option.text = text;
             select2.appendChild(option);
           });
-          select2.dataset.originalOptions = JSON.stringify(suffixOpts);
 
           const select3 = document.createElement("select");
+          select3.dataset.originalOptions = JSON.stringify(prefixOpts);
           const defaultOption3 = document.createElement("option");
           defaultOption3.value = "";
           defaultOption3.text = "效果3";
@@ -582,9 +572,9 @@
             option.text = text;
             select3.appendChild(option);
           });
-          select3.dataset.originalOptions = JSON.stringify(prefixOpts);
 
           const select4 = document.createElement("select");
+          select4.dataset.originalOptions = JSON.stringify(prefixOpts);
           const defaultOption4 = document.createElement("option");
           defaultOption4.value = "";
           defaultOption4.text = "效果4";
@@ -595,7 +585,6 @@
             option.text = text;
             select4.appendChild(option);
           });
-          select4.dataset.originalOptions = JSON.stringify(prefixOpts);
 
           blk.addEventListener("dragstart", function (e) {
             const data = {
@@ -611,7 +600,6 @@
           });
 
           attachSearchListener(searchInput, content);
-
           content.appendChild(blk);
           content.appendChild(searchInput);
           content.appendChild(select1);
@@ -623,10 +611,8 @@
         rowDiv.appendChild(label);
         rowDiv.appendChild(content);
         supplyGroup.appendChild(rowDiv);
-        console.log("已將神像卡片加入 supply-group:", block.label);
       });
 
-      // 統計更新函式
       function updateStats() {
         const statsTableBody = document.querySelector("#statsTable tbody");
         statsTableBody.innerHTML = "";
@@ -642,55 +628,71 @@
         }
       }
 
-      function updateGridDimensions() {
-        grid.style.width = "300px";
-        grid.style.height = "350px";
-      }
-      updateGridDimensions();
-      window.addEventListener('resize', updateGridDimensions);
-
       function handleDrop(e) {
         e.preventDefault();
         const dataText = e.dataTransfer.getData("text/plain");
         if (!dataText) return;
         const blockData = JSON.parse(dataText);
-        const startCol = parseInt(this.getAttribute("data-col"));
-        const startRow = rows.indexOf(this.getAttribute("data-row"));
-        if (startCol + blockData.w - 1 > cols || startRow + blockData.h > rows.length) {
-          alert("積木放置超出範圍！");
-          return;
-        }
-        for (let r = startRow; r < startRow + blockData.h; r++) {
-          for (let c = startCol; c < startCol + blockData.w; c++) {
-            const coord = c + rows[r];
-            const cell = document.querySelector(`.grid-cell[data-col="${c}"][data-row="${rows[r]}"]`);
-            if (!cell || cell.classList.contains("disabled") || occupied[coord]) {
-              alert("此處無法放置積木！");
-              return;
-            }
+        const targetCell = e.target.closest('.grid-cell');
+        if (!targetCell) return;
+        const startCol = parseInt(targetCell.getAttribute("data-col"));
+        const startRow = rows.indexOf(targetCell.getAttribute("data-row"));
+        const w = blockData.w;
+        const h = blockData.h;
+
+        if (canPlace(startRow, startCol, w, h)) {
+          placeBlock(startRow, startCol, blockData);
+        } else {
+          const position = findNearestPosition(startRow, startCol, w, h);
+          if (position) {
+            placeBlock(position.row, position.col, blockData);
+          } else {
+            showToast("無法放置積木！");
           }
         }
-        for (let r = startRow; r < startRow + blockData.h; r++) {
-          for (let c = startCol; c < startCol + blockData.w; c++) {
-            const coord = c + rows[r];
-            occupied[coord] = true;
+      }
+
+      function canPlace(row, col, w, h) {
+        if (row < 0 || row + h > rows.length || col < 1 || col + w - 1 > cols) return false;
+        for (let r = row; r < row + h; r++) {
+          for (let c = col - 1; c < col + w - 1; c++) {
+            if (gridStatus[r][c] !== 'empty') return false;
           }
         }
+        return true;
+      }
+
+      function findNearestPosition(startRow, startCol, w, h) {
+        for (let r = 0; r <= rows.length - h; r++) {
+          for (let c = 0; c <= cols - w; c++) {
+            if (canPlace(r, c + 1, w, h)) return { row: r, col: c + 1 };
+          }
+        }
+        return null;
+      }
+
+      function placeBlock(row, col, blockData) {
         const placed = document.createElement("div");
         placed.classList.add("placed-block");
         placed.style.width = (blockData.w * cellSize - 4) + "px";
         placed.style.height = (blockData.h * cellSize - 4) + "px";
-        placed.style.left = ((startCol - 1) * cellSize) + "px";
-        placed.style.top = (startRow * cellSize) + "px";
-        placed.dataset.col = startCol;
-        placed.dataset.row = startRow;
+        placed.style.left = ((col - 1) * cellSize) + "px";
+        placed.style.top = (row * cellSize) + "px";
+        placed.dataset.col = col;
+        placed.dataset.row = row;
         placed.dataset.w = blockData.w;
         placed.dataset.h = blockData.h;
-        placed.dataset.info1 = blockData.info1;
-        placed.dataset.info2 = blockData.info2;
+        placed.dataset.info1 = blockData.info1 || "";
+        placed.dataset.info2 = blockData.info2 || "";
         placed.dataset.info3 = blockData.info3 || "";
         placed.dataset.info4 = blockData.info4 || "";
         placed.style.backgroundColor = blockData.type === "legend" ? "orange" : blockData.type === "minor" ? "lightgreen" : "lavender";
+        
+        for (let r = row; r < row + blockData.h; r++) {
+          for (let c = col - 1; c < col + blockData.w - 1; c++) {
+            gridStatus[r][c] = 'occupied';
+          }
+        }
         if (blockData.info1) stats[blockData.info1] = (stats[blockData.info1] || 0) + 1;
         if (blockData.info2) stats[blockData.info2] = (stats[blockData.info2] || 0) + 1;
         if (blockData.info3) stats[blockData.info3] = (stats[blockData.info3] || 0) + 1;
@@ -711,15 +713,15 @@
           origLeft = parseInt(el.style.left, 10);
           origTop = parseInt(el.style.top, 10);
           e.preventDefault();
+
           function onMouseMove(e) {
             let dx = e.clientX - startX;
             let dy = e.clientY - startY;
-            if (Math.abs(dx) > 5 || Math.abs(dy) > 5) {
-              isDragging = true;
-            }
+            if (Math.abs(dx) > 5 || Math.abs(dy) > 5) isDragging = true;
             el.style.left = (origLeft + dx) + "px";
             el.style.top = (origTop + dy) + "px";
           }
+
           function onMouseUp(e) {
             document.removeEventListener("mousemove", onMouseMove);
             document.removeEventListener("mouseup", onMouseUp);
@@ -730,99 +732,115 @@
               let newRow = Math.round(newTop / cellSize);
               let w = parseInt(el.dataset.w);
               let h = parseInt(el.dataset.h);
-              if (newCol < 1 || newCol + w - 1 > cols || newRow < 0 || newRow + h > rows.length) {
-                alert("無法放置積木於此處！");
-                el.style.left = origLeft + "px";
-                el.style.top = origTop + "px";
-                return;
-              }
-              let canPlace = true;
-              for (let r = newRow; r < newRow + h; r++) {
-                for (let c = newCol; c < newCol + w; c++) {
-                  let coord = c + rows[r];
-                  const cell = document.querySelector(`.grid-cell[data-col="${c}"][data-row="${rows[r]}"]`);
-                  if (!cell || cell.classList.contains("disabled") || occupied[coord]) {
-                    canPlace = false;
-                    break;
+
+              if (canPlace(newRow, newCol, w, h)) {
+                for (let r = parseInt(el.dataset.row); r < parseInt(el.dataset.row) + h; r++) {
+                  for (let c = parseInt(el.dataset.col) - 1; c < parseInt(el.dataset.col) + w - 1; c++) {
+                    gridStatus[r][c] = 'empty';
                   }
                 }
-                if (!canPlace) break;
-              }
-              if (!canPlace) {
-                alert("此處無法放置積木！");
+                el.dataset.col = newCol;
+                el.dataset.row = newRow;
+                for (let r = newRow; r < newRow + h; r++) {
+                  for (let c = newCol - 1; c < newCol + w - 1; c++) {
+                    gridStatus[r][c] = 'occupied';
+                  }
+                }
+                el.style.left = ((newCol - 1) * cellSize) + "px";
+                el.style.top = (newRow * cellSize) + "px";
+              } else {
                 el.style.left = origLeft + "px";
                 el.style.top = origTop + "px";
-                return;
+                showToast("無法移動至此位置！");
               }
-              for (let r = parseInt(el.dataset.row); r < parseInt(el.dataset.row) + h; r++) {
-                for (let c = parseInt(el.dataset.col); c < parseInt(el.dataset.col) + w; c++) {
-                  let coord = c + rows[r];
-                  delete occupied[coord];
-                }
-              }
-              el.dataset.col = newCol;
-              el.dataset.row = newRow;
-              for (let r = newRow; r < newRow + h; r++) {
-                for (let c = newCol; c < newCol + w; c++) {
-                  let coord = c + rows[r];
-                  occupied[coord] = true;
-                }
-              }
-              el.style.left = ((newCol - 1) * cellSize) + "px";
-              el.style.top = (newRow * cellSize) + "px";
             }
           }
           document.addEventListener("mousemove", onMouseMove);
           document.addEventListener("mouseup", onMouseUp);
         });
+
         el.addEventListener("click", function (e) {
-          if (isDragging) {
-            isDragging = false;
-            return;
-          }
+          if (isDragging) return;
           let col = parseInt(el.dataset.col);
           let row = parseInt(el.dataset.row);
           let w = parseInt(el.dataset.w);
           let h = parseInt(el.dataset.h);
           for (let r = row; r < row + h; r++) {
-            for (let c = col; c < col + w; c++) {
-              let coord = c + rows[r];
-              delete occupied[coord];
+            for (let c = col - 1; c < col + w - 1; c++) {
+              gridStatus[r][c] = 'empty';
             }
           }
-          if (el.dataset.info1) {
-            stats[el.dataset.info1] = (stats[el.dataset.info1] || 0) - 1;
-            if (stats[el.dataset.info1] <= 0) delete stats[el.dataset.info1];
-          }
-          if (el.dataset.info2) {
-            stats[el.dataset.info2] = (stats[el.dataset.info2] || 0) - 1;
-            if (stats[el.dataset.info2] <= 0) delete stats[el.dataset.info2];
-          }
-          if (el.dataset.info3) {
-            stats[el.dataset.info3] = (stats[el.dataset.info3] || 0) - 1;
-            if (stats[el.dataset.info3] <= 0) delete stats[el.dataset.info3];
-          }
-          if (el.dataset.info4) {
-            stats[el.dataset.info4] = (stats[el.dataset.info4] || 0) - 1;
-            if (stats[el.dataset.info4] <= 0) delete stats[el.dataset.info4];
-          }
+          if (el.dataset.info1) stats[el.dataset.info1] = (stats[el.dataset.info1] || 0) - 1;
+          if (el.dataset.info2) stats[el.dataset.info2] = (stats[el.dataset.info2] || 0) - 1;
+          if (el.dataset.info3) stats[el.dataset.info3] = (stats[el.dataset.info3] || 0) - 1;
+          if (el.dataset.info4) stats[el.dataset.info4] = (stats[el.dataset.info4] || 0) - 1;
+          for (let key in stats) if (stats[key] <= 0) delete stats[key];
           updateStats();
           el.remove();
         });
       }
 
+      // 115模式切換
+      let is115Mode = false;
+      document.getElementById("mode-115-btn").addEventListener("click", function () {
+        is115Mode = !is115Mode;
+        const cell6A = document.querySelector('.grid-cell[data-col="6"][data-row="A"]');
+        if (is115Mode) {
+          cell6A.classList.add("disabled");
+          cell6A.innerText = "🚫";
+          gridStatus[0][5] = 'disabled';
+          const blockOn6A = Array.from(document.querySelectorAll('.placed-block')).find(block => {
+            const col = parseInt(block.dataset.col);
+            const row = parseInt(block.dataset.row);
+            const w = parseInt(block.dataset.w);
+            const h = parseInt(block.dataset.h);
+            return row <= 0 && row + h - 1 >= 0 && col <= 6 && col + w - 1 >= 6;
+          });
+          if (blockOn6A) {
+            const w = parseInt(blockOn6A.dataset.w);
+            const h = parseInt(blockOn6A.dataset.h);
+            const position = findNearestPosition(0, 1, w, h);
+            if (position) {
+              for (let r = parseInt(blockOn6A.dataset.row); r < parseInt(blockOn6A.dataset.row) + h; r++) {
+                for (let c = parseInt(blockOn6A.dataset.col) - 1; c < parseInt(blockOn6A.dataset.col) + w - 1; c++) {
+                  gridStatus[r][c] = 'empty';
+                }
+              }
+              blockOn6A.dataset.col = position.col;
+              blockOn6A.dataset.row = position.row;
+              blockOn6A.style.left = ((position.col - 1) * cellSize) + "px";
+              blockOn6A.style.top = (position.row * cellSize) + "px";
+              for (let r = position.row; r < position.row + h; r++) {
+                for (let c = position.col - 1; c < position.col + w - 1; c++) {
+                  gridStatus[r][c] = 'occupied';
+                }
+              }
+            } else {
+              showToast("無法移動積木，請手動調整！");
+            }
+          }
+        } else {
+          cell6A.classList.remove("disabled");
+          cell6A.innerText = "";
+          gridStatus[0][5] = 'empty';
+        }
+      });
+
       function resetGrid() {
         document.querySelectorAll(".placed-block").forEach(block => block.remove());
-        for (const key in occupied) { delete occupied[key]; }
-        for (const key in stats) { delete stats[key]; }
+        for (let r = 0; r < rows.length; r++) {
+          for (let c = 0; c < cols; c++) {
+            if (gridStatus[r][c] !== 'disabled') gridStatus[r][c] = 'empty';
+          }
+        }
+        for (const key in stats) delete stats[key];
         updateStats();
       }
 
-      // 顯示神像資料
       function showData() {
         const blocks = document.querySelectorAll(".placed-block");
         if (blocks.length === 0) {
-          alert("放置區內沒有神像！");
+          showToast("放置區內沒有神像！");
           return;
         }
         const modal = document.getElementById("modal");
@@ -841,15 +859,13 @@
         });
         htmlContent += "</ul>";
         modalBody.innerHTML = htmlContent;
-        modal.style.display = "flex"; // 顯示彈出框
+        modal.style.display = "flex";
       }
 
-      // 關閉彈出框（點擊「X」）
       document.querySelector(".close-button").addEventListener("click", function() {
         document.getElementById("modal").style.display = "none";
       });
 
-      // 點擊彈出框外部關閉
       window.addEventListener("click", function(event) {
         const modal = document.getElementById("modal");
         if (event.target === modal) {
@@ -857,55 +873,37 @@
         }
       });
 
-      // 改進後的自動排列函數
       function autoArrange() {
         const blocks = Array.from(document.querySelectorAll(".placed-block"));
         if (blocks.length === 0) return;
 
-        // 清除所有 occupied 標記
-        for (const key in occupied) {
-          delete occupied[key];
+        for (let r = 0; r < rows.length; r++) {
+          for (let c = 0; c < cols; c++) {
+            if (gridStatus[r][c] !== 'disabled') gridStatus[r][c] = 'empty';
+          }
         }
 
-        // 按面積降序排序神像（較大的神像優先放置）
         blocks.sort((a, b) => {
           const areaA = parseInt(a.dataset.w) * parseInt(a.dataset.h);
           const areaB = parseInt(b.dataset.w) * parseInt(b.dataset.h);
           return areaB - areaA;
         });
 
-        // 嘗試放置每個神像
         blocks.forEach(block => {
           const w = parseInt(block.dataset.w);
           const h = parseInt(block.dataset.h);
           let placed = false;
 
-          // 從上到下、從左到右尋找可以放置的位置
-          for (let row = 0; row < rows.length && !placed; row++) {
-            for (let col = 1; col <= cols && !placed; col++) {
-              if (col + w - 1 > cols || row + h > rows.length) continue;
-              let canPlace = true;
-              for (let r = row; r < row + h; r++) {
-                for (let c = col; c < col + w; c++) {
-                  const coord = c + rows[r];
-                  const cell = document.querySelector(`.grid-cell[data-col="${c}"][data-row="${rows[r]}"]`);
-                  if (!cell || cell.classList.contains("disabled") || occupied[coord]) {
-                    canPlace = false;
-                    break;
-                  }
-                }
-                if (!canPlace) break;
-              }
-              if (canPlace) {
-                // 放置神像
-                block.dataset.col = col;
-                block.dataset.row = row;
-                block.style.left = ((col - 1) * cellSize) + "px";
-                block.style.top = (row * cellSize) + "px";
-                for (let r = row; r < row + h; r++) {
-                  for (let c = col; c < col + w; c++) {
-                    const coord = c + rows[r];
-                    occupied[coord] = true;
+          for (let r = 0; r <= rows.length - h && !placed; r++) {
+            for (let c = 0; c <= cols - w && !placed; c++) {
+              if (canPlace(r, c + 1, w, h)) {
+                block.dataset.col = c + 1;
+                block.dataset.row = r;
+                block.style.left = (c * cellSize) + "px";
+                block.style.top = (r * cellSize) + "px";
+                for (let i = r; i < r + h; i++) {
+                  for (let j = c; j < c + w; j++) {
+                    gridStatus[i][j] = 'occupied';
                   }
                 }
                 placed = true;
@@ -914,12 +912,11 @@
           }
 
           if (!placed) {
-            alert("無法自動排列所有神像，請手動調整！");
+            showToast("無法自動排列所有神像，請手動調整！");
           }
         });
       }
 
-      // 事件綁定
       document.getElementById("reset-btn").addEventListener("click", resetGrid);
       document.getElementById("show-data-btn").addEventListener("click", showData);
       document.getElementById("compact-btn").addEventListener("click", autoArrange);
