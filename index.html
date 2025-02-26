@@ -1,331 +1,350 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-  <meta charset="UTF-8">
-  <title>費西亞遺產神像模擬器（sab版）</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Cinzel', serif;
-      background: url('https://web.poecdn.com/protected/image/layout/settlersofkalguur-bg.jpg?v=1739989996052&key=iTGamUssLclxKShOx2gEuw') no-repeat center center fixed;
-      background-size: cover;
-      color: #d4af37;
-      margin: 0;
-      padding: 20px;
-      box-sizing: border-box;
-    }
-    header {
-      text-align: center;
-      font-size: 28px;
-      font-weight: bold;
-      margin-bottom: 30px;
-      color: #d4af37;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    }
-    #controls {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-    #controls button {
-      margin: 0 8px;
-      padding: 8px 16px;
-      font-size: 16px;
-      border: none;
-      border-radius: 4px;
-      background: linear-gradient(to bottom, #d4af37, #a67c00);
-      color: #fff;
-      cursor: pointer;
-      transition: background-color 0.3s, transform 0.2s;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    }
-    #controls button:hover {
-      background: linear-gradient(to bottom, #a67c00, #d4af37);
-      transform: translateY(-2px);
-    }
-    #container {
-      max-width: 1200px;
-      margin: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
-    }
-    #play-area {
-      display: flex;
-      align-items: flex-start;
-      gap: 95px;
-      flex-wrap: nowrap;
-      width: 100%;
-      box-sizing: border-box;
-    }
-    #grid {
-      width: 300px;
-      height: 350px;
-      position: relative;
-      border-radius: 8px;
-      background-color: #333;
-      border: 3px solid #a67c00;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-      overflow: hidden;
-    }
-    #supply {
-      max-width: 800px;
-      min-height: 300px;
-      border-radius: 8px;
-      background-color: #333;
-      border: 3px solid #a67c00;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-      overflow-y: auto;
-      padding: 10px;
-      box-sizing: border-box;
-    }
-    #supply h3 {
-      margin-top: 0;
-      text-align: center;
-      color: #d4af37;
-    }
-    .supply-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-      justify-content: center;
-    }
-    .supply-row {
-      flex: 1 1 calc(25% - 15px);
-      box-sizing: border-box;
-      min-width: 160px;
-      max-width: 250px;
-      border: 1px dashed #a67c00;
-      padding: 10px;
-      border-radius: 6px;
-      background-color: #444;
-      margin-bottom: 10px;
-      transition: background-color 0.3s;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: flex-start;
-    }
-    .supply-row:hover {
-      background-color: #555;
-    }
-    .supply-label {
-      font-size: 16px;
-      margin-bottom: 6px;
-      text-align: left;
-      color: #d4af37;
-    }
-    .supply-content {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 8px;
-      width: 100%;
-      box-sizing: border-box;
-    }
-    .supply-content select {
-      width: 100%;
-      max-width: 100%;
-      box-sizing: border-box;
-      background: #555;
-      color: #d4af37;
-      border: 1px solid #a67c00;
-      padding: 4px;
-    }
-    .supply-content input[type="text"] {
-      width: 100%;
-      padding: 4px;
-      background: #555;
-      color: #d4af37;
-      border: 1px solid #a67c00;
-    }
-    .block, .placed-block {
-      position: absolute;
-      background: linear-gradient(to bottom, #d4af37, #a67c00);
-      border: 5px solid #216e58;
-      border-radius: 6px;
-      cursor: move;
-      box-sizing: border-box;
-      z-index: 10;
-      overflow: hidden;
-      transition: transform 0.2s, box-shadow 0.3s, left 0.1s ease, top 0.1s ease;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    }
-    .block:hover, .placed-block:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7);
-    }
-    .supply-row .block {
-      position: static;
-    }
-    .grid-cell {
-      position: absolute;
-      width: 50px;
-      height: 50px;
-      border: 1px solid #a67c00;
-      background-color: #333;
-      box-sizing: border-box;
-      text-align: center;
-      user-select: none;
-      transition: background-color 0.3s;
-    }
-    .grid-cell:hover {
-      background-color: #444;
-    }
-    .grid-cell.disabled {
-      background-color: #222;
-      color: #d4af37;
-      font-size: 24px;
-      text-align: center;
-      line-height: 50px;
-    }
-    #stats {
-      background-color: #333;
-      border: 3px solid #a67c00;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-      padding: 10px;
-      margin-top: 20px;
-    }
-    #stats h3 {
-      margin-top: 0;
-      text-align: center;
-      color: #d4af37;
-    }
-    #stats table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-    #stats th, #stats td {
-      border: 1px solid #a67c00;
-      padding: 8px;
-      text-align: center;
-      vertical-align: middle;
-      color: #d4af37;
-    }
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 100;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.7);
-      justify-content: center;
-      align-items: center;
-    }
-    .modal-content {
-      background-color: #333;
-      padding: 20px;
-      border-radius: 8px;
-      width: 80%;
-      max-width: 600px;
-      position: relative;
-      color: #d4af37;
-      border: 2px solid #a67c00;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    }
-    .close-button {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      font-size: 24px;
-      cursor: pointer;
-      color: #d4af37;
-    }
-    #toast {
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: rgba(0, 0, 0, 0.8);
-      color: #d4af37;
-      padding: 10px 20px;
-      border-radius: 5px;
-      z-index: 1000;
-      display: none;
-    }
-    #grid-note {
-      text-align: center;
-      margin-top: 10px;
-      font-size: 14px;
-      color: #d4af37;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>費西亞遺產神像模擬器（sab版）</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Cinzel', serif;
+            background: url('https://web.poecdn.com/protected/image/layout/settlersofkalguur-bg.jpg?v=1739989996052&key=iTGamUssLclxKShOx2gEuw') no-repeat center center fixed;
+            background-size: cover;
+            color: #d4af37;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        header {
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            color: #d4af37;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        #controls {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        #controls button {
+            margin: 0 8px;
+            padding: 8px 16px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            background: linear-gradient(to bottom, #d4af37, #a67c00);
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        #controls button:hover {
+            background: linear-gradient(to bottom, #a67c00, #d4af37);
+            transform: translateY(-2px);
+        }
+        #container {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        #play-area {
+            display: flex;
+            align-items: flex-start;
+            gap: 95px;
+            flex-wrap: nowrap;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        #grid {
+            width: 300px;
+            height: 350px;
+            position: relative;
+            border-radius: 8px;
+            background-color: #333;
+            border: 3px solid #a67c00;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+        }
+        #supply {
+            max-width: 800px;
+            min-height: 300px;
+            border-radius: 8px;
+            background-color: #333;
+            border: 3px solid #a67c00;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            overflow-y: auto;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        #supply h3 {
+            margin-top: 0;
+            text-align: center;
+            color: #d4af37;
+        }
+        .supply-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+        .supply-row {
+            flex: 1 1 calc(25% - 15px);
+            box-sizing: border-box;
+            min-width: 160px;
+            max-width: 250px;
+            border: 1px dashed #a67c00;
+            padding: 10px;
+            border-radius: 6px;
+            background-color: #444;
+            margin-bottom: 10px;
+            transition: background-color 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+        }
+        .supply-row:hover {
+            background-color: #555;
+        }
+        .supply-label {
+            font-size: 16px;
+            margin-bottom: 6px;
+            text-align: left;
+            color: #d4af37;
+        }
+        .supply-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .supply-content select {
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+            background: #555;
+            color: #d4af37;
+            border: 1px solid #a67c00;
+            padding: 4px;
+        }
+        .supply-content input[type="text"] {
+            width: 100%;
+            padding: 4px;
+            background: #555;
+            color: #d4af37;
+            border: 1px solid #a67c00;
+        }
+        .block, .placed-block {
+            position: absolute;
+            background: linear-gradient(to bottom, #d4af37, #a67c00);
+            border: 5px solid #216e58;
+            border-radius: 6px;
+            cursor: move;
+            box-sizing: border-box;
+            z-index: 10;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.3s, left 0.1s ease, top 0.1s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+        .block:hover, .placed-block:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7);
+        }
+        .supply-row .block {
+            position: static;
+        }
+        .grid-cell {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border: 1px solid #a67c00;
+            background-color: #333;
+            box-sizing: border-box;
+            text-align: center;
+            user-select: none;
+            transition: background-color 0.3s;
+        }
+        .grid-cell:hover {
+            background-color: #444;
+        }
+        .grid-cell.disabled {
+            background-color: #222;
+            color: #d4af37;
+            font-size: 24px;
+            text-align: center;
+            line-height: 50px;
+        }
+        #stats {
+            background-color: #333;
+            border: 3px solid #a67c00;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            margin-top: 20px;
+        }
+        #stats h3 {
+            margin-top: 0;
+            text-align: center;
+            color: #d4af37;
+        }
+        #stats table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        #stats th, #stats td {
+            border: 1px solid #a67c00;
+            padding: 8px;
+            text-align: center;
+            vertical-align: middle;
+            color: #d4af37;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 600px;
+            position: relative;
+            color: #d4af37;
+            border: 2px solid #a67c00;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #d4af37;
+        }
+        #toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #d4af37;
+            padding: 10px 20px;
+            border-radius: 5px;
+            z-index: 1000;
+            display: none;
+        }
+        #grid-note {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 14px;
+            color: #d4af37;
+        }
+        .block-number {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            font-size: 12px;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+    </style>
 </head>
 <body>
-  <header>費西亞的遺產 神像模擬器（sab）</header>
-  <div id="container">
-    <div id="controls">
-      <button id="reset-btn">重置放置區</button>
-      <button id="show-data-btn">顯示神像資料</button>
-      <button id="compact-btn">自動排列積木</button>
-      <button id="mode-115-btn">115模式</button>
+    <header>費西亞的遺產 神像模擬器（sab）</header>
+    <div id="container">
+        <div id="controls">
+            <button id="reset-btn">重置放置區</button>
+            <button id="show-data-btn">顯示神像資料</button>
+            <button id="mode-115-btn">115模式</button>
+        </div>
+        <div id="play-area">
+            <div id="grid"></div>
+            <div id="supply">
+                <h3>神像選擇區</h3>
+                <div id="supply-group" class="supply-group"></div>
+            </div>
+        </div>
+        <div id="grid-note">盡量拖曳方塊的中間，如果多次無法拖曳到指定位置建議重做一個神像</div>
+        <div id="stats">
+            <h3>統計</h3>
+            <table id="statsTable">
+                <thead>
+                    <tr>
+                        <th>神像效果</th>
+                        <th>數量</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
     </div>
-    <div id="play-area">
-      <div id="grid"></div>
-      <div id="supply">
-        <h3>神像選擇區</h3>
-        <div id="supply-group" class="supply-group"></div>
-      </div>
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">×</span>
+            <h2>神像資料</h2>
+            <div id="modal-body"></div>
+        </div>
     </div>
-    <div id="grid-note">盡量拖曳方塊的中間，如果多次無法拖曳到指定位置建議重做一個神像。可以點名稱連結到編年史頁面</div>
-    <div id="stats">
-      <h3>統計</h3>
-      <table id="statsTable">
-        <thead>
-          <tr>
-            <th>神像效果</th>
-            <th>數量</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-    </div>
-  </div>
-  <div id="modal" class="modal">
-    <div class="modal-content">
-      <span class="close-button">×</span>
-      <h2>神像資料</h2>
-      <div id="modal-body"></div>
-    </div>
-  </div>
-  <div id="toast"></div>
+    <div id="toast"></div>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const cellSize = 50;
-      const cols = 6;
-      const rows = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
-      const disabledCells = ["1A", "2C", "5C", "2D", "3D", "4D", "5D", "2E", "5E", "6G"];
-      const grid = document.getElementById("grid");
-      const gridStatus = Array.from({ length: rows.length }, () => Array(cols).fill('empty'));
-      disabledCells.forEach(cell => {
-        const [col, row] = cell.split('');
-        gridStatus[rows.indexOf(row)][parseInt(col) - 1] = 'disabled';
-      });
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const cellSize = 50;
+            const cols = 6;
+            const rows = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
+            const disabledCells = ["1A", "2C", "5C", "2D", "3D", "4D", "5D", "2E", "5E", "6G"];
+            const grid = document.getElementById("grid");
+            const gridStatus = Array.from({ length: rows.length }, () => Array(cols).fill('empty'));
+            disabledCells.forEach(cell => {
+                const [col, row] = cell.split('');
+                gridStatus[rows.indexOf(row)][parseInt(col) - 1] = 'disabled';
+            });
 
-      rows.forEach((r, rowIndex) => {
-        for (let col = 1; col <= cols; col++) {
-          const cell = document.createElement("div");
-          cell.classList.add("grid-cell");
-          cell.style.left = ((col - 1) * cellSize) + "px";
-          cell.style.top = (rowIndex * cellSize) + "px";
-          cell.setAttribute("data-col", col);
-          cell.setAttribute("data-row", r);
-          if (gridStatus[rowIndex][col - 1] === 'disabled') {
-            cell.classList.add("disabled");
-            cell.innerText = "🚫";
-          }
-          cell.addEventListener("dragover", e => e.preventDefault());
-          cell.addEventListener("drop", handleDrop);
-          grid.appendChild(cell);
-        }
-      });
+            rows.forEach((r, rowIndex) => {
+                for (let col = 1; col <= cols; col++) {
+                    const cell = document.createElement("div");
+                    cell.classList.add("grid-cell");
+                    cell.style.left = ((col - 1) * cellSize) + "px";
+                    cell.style.top = (rowIndex * cellSize) + "px";
+                    cell.setAttribute("data-col", col);
+                    cell.setAttribute("data-row", r);
+                    if (gridStatus[rowIndex][col - 1] === 'disabled') {
+                        cell.classList.add("disabled");
+                        cell.innerText = "🚫";
+                    }
+                    cell.addEventListener("dragover", e => e.preventDefault());
+                    cell.addEventListener("drop", handleDrop);
+                    grid.appendChild(cell);
+                }
+            });
 
-      const stats = {};
+            const stats = {};
+            const statueLinks = {
+                "次要": "https://poedb.tw/tw/Minor_Idol",
+                "傳奇": "https://poedb.tw/tw/Minor_Idol#%E5%82%B3%E5%A5%87",
+                "高貴": "https://poedb.tw/tw/Noble_Idol",
+                "卡瑪薩": "https://poedb.tw/tw/Kamasan_Idol",
+                "埋葬": "https://poedb.tw/tw/Burial_Idol",
+                "圖騰": "https://poedb.tw/tw/Totemic_Idol",
+                "征服者": "https://poedb.tw/tw/Conqueror_Idol"
+            };
 
-      const suffixOptions = {
+            const suffixOptions = {
       "1x1": ["你的地圖 +(15–25)% 機率含有 1 個深淵", "你的地圖增加 (80–100)% 機率含有 1 個深淵", "你的地圖 +(15–25)% 機率含有艾瓦", "你的地圖增加 (80–100)% 機率含有艾瓦", "你的地圖有 (15–25)% 機率含有 1 個額外盜賊流亡者", "你的地圖 +(7–10)% 含有 1 個盜賊流亡者", "地圖頭目有 (6–10)% 機率伴隨 2 名盜賊流亡者保鑣", "地圖頭目有 (2–3)% 機率伴隨 2 名盜賊流亡者", "你的地圖 +(15–25)% 機率含有埃哈", "你的地圖增加 (80–100)% 機率含有埃哈", "你的地圖有 (15–25)% 機率吸引超越惡魔", "你的地圖 +(15–25)% 機率含有 1 個凋落事件", "你的地圖增加 (80–100)% 機率含有 1 個凋落事件", "你的地圖 +(15–25)% 機率含有裂痕", "你的地圖增加 (80–100)% 機率含有 1 個裂痕", "你含有裂痕的地圖有 (15–25)% 機率含有 1 個額外裂痕", "地圖頭目增加 (40–60)% 機率掉落 1 張征服者地圖", "你的地圖 +(15–25)% 機率含有 1 個譫妄之鏡", "你的地圖增加 (80–100)% 機率含有 1 個譫妄之鏡", "你的地圖 +(15–25)% 機率含有尼科", "你的地圖增加 (80–100)% 機率含有尼科", "你完成白色階級的地圖時，獲得 (100–150) 額外魔暴硫酸", "你完成黃色階級的地圖時，獲得 (150–200) 額外魔暴硫酸", "你完成紅色階級的地圖時，獲得 (200–250) 額外魔暴硫酸", "你的地圖 +(7–10)% 機率含有 1 個神殿", "你的地圖有 (35–50)% 機率含有 1 個額外神殿", "你的地圖有 +(7–10)% 機率含有 1 個禁錮怪物", "你的地圖有 (35–50)% 機率含有 1 個額外禁錮怪物", "你的地圖 +(15–25)% 機率含有 1 個探險事件", "你的地圖增加 (80–100)% 機率含有 1 個探險事件", "你的地圖有 (35–50)% 機率含有 1 個額外神諭", "你的地圖 +(15–25)% 機率含有聖殿密園", "你的地圖增加 (80–100)% 機率含有聖殿密園", "你的地圖 +(15–25)% 機率含有 1 個走私者的祕寶", "你的地圖增加 (80–100)% 機率含有 1 個走私者的祕寶", "增加 (10–15)% 你地圖中掉落的劫盜契約書", "你的地圖 +(15–25)% 機率含有瓊恩", "你的地圖增加 (80–100)% 機率含有瓊恩", "你的地圖 +(15–25)% 機率含有 1 個戰亂事件", "你的地圖增加 (80–100)% 機率含有 1 個戰亂事件", "掉落的 1 到 15 階地圖有 (5–10)% 機率高 1 階", "你的地圖增加 (80–100)% 機率含有 1 個最後通牒事件", "你的地圖 +(15–25)% 機率含有 1 個最後通牒事件", "你的地圖 +(15–25)% 機率含有祭祀神壇", "你的地圖增加 (80–100)% 機率含有祭祀神壇", "增加 (5–10)% 你地圖中掉落的聖甲蟲", "你的地圖 +(35–50)% 機率含有 1 個保險箱", "你的地圖有 (35–50)% 機率被 1 個額外罪魂糾纏", "你的地圖 +(7–10)% 機率被罪魂糾纏", "增加 (10–15)% 你地圖中掉落的輿圖偵查報告", "增加 (2–3)% 區域中掉落的地圖", "你的地圖所包含的困難和會賦予獎勵的怪物群增加 (3–5)%"],
       "1x2": ["你的地圖 +(30–45)% 機率含有 1 個深淵", "你的地圖增加 (144–180)% 機率含有 1 個深淵", "你的地圖 +(30–45)% 機率含有艾瓦", "你的地圖增加 (144–180)% 機率含有艾瓦", "你的地圖有 (30–45)% 機率含有 1 個額外盜賊流亡者", "你的地圖 +(12–18)% 含有 1 個盜賊流亡者", "你的地圖 +(30–45)% 機率含有埃哈", "你的地圖增加 (144–180)% 機率含有埃哈", "你地圖有 (30–45)% 機率吸引超越惡魔", "你的地圖 +(30–45)% 機率含有 1 個凋落事件", "你的地圖增加 (144–180)% 機率含有 1 個凋落事件", "你的地圖 +(30–45)% 機率含有裂痕", "你的地圖增加 (144–180)% 機率含有 1 個裂痕", "你含有裂痕的地圖有 (5–10)% 機率含有 2 個額外裂痕", "你的地圖 +(30–45)% 機率含有 1 個譫妄之鏡", "你的地圖增加 (144–180)% 機率含有 1 個譫妄之鏡", "你的地圖 +(30–45)% 機率含有尼科", "你的地圖增加 (144–180)% 機率含有尼科", "你的地圖 +(12–18)% 機率含有 1 個神殿", "你的地圖有 (60–80)% 機率含有 1 個額外神殿", "每張地圖的最終地圖頭目有 +(2–2)% 機率掉落 1 張塑界者守護者地圖 (階級 14+)", "每張地圖的最終地圖頭目有 +(2–2)% 機率掉落 1 張尊師守護者地圖 (階級 14+)", "你的地圖有 +(12–18)% 機率含有 1 個禁錮怪物", "你的地圖有 (60–80)% 機率含有 1 個額外禁錮怪物", "你的地圖 +(30–45)% 機率含有 1 個探險事件", "你的地圖增加 (144–180)% 機率含有 1 個探險事件", "你的地圖有 (60–80)% 機率含有 1 個額外神諭", "你的地圖 +(30–45)% 機率含有聖殿密園", "你的地圖增加 (144–180)% 機率含有聖殿密園", "你的地圖 +(30–45)% 機率含有 1 個走私者的祕寶", "你的地圖增加 (144–180)% 機率含有 1 個走私者的祕寶", "增加 (20–25)% 你地圖中掉落的藍圖", "你的地圖 +(30–45)% 機率含有瓊恩", "你的地圖增加 (144–180)% 機率含有瓊恩", "你的地圖 +(30–45)% 機率含有 1 個戰亂事件", "你的地圖增加 (144–180)% 機率含有 1 個戰亂事件", "你的地圖增加 (144–180)% 機率含有 1 個最後通牒事件", "你的地圖 +(30–45)% 機率含有 1 個最後通牒事件", "你的地圖 +(30–45)% 機率含有祭祀神壇", "你的地圖增加 (144–180)% 機率含有祭祀神壇", "你的地圖 +(60–80)% 機率含有 1 個保險箱", "每張地圖 (階級 14+) 的最終地圖頭目有 +(1.2–1.8)% 機率掉落 1 張追憶地圖", "你的地圖有 (60–80)% 機率被 1 個額外罪魂糾纏", "你的地圖 +(12–18)% 機率被罪魂糾纏", "地圖頭目有 (6–8)% 機率被罪魂圍繞", "你的地圖 +(5–8)% 機率含有 1 個瓦爾區域", "(5–8)% 機率使你每張地圖中的 1 隻怪物掉落 1 張額外相連的地圖"],
       "1x3": ["你的地圖 +(40–60)% 機率含有 1 個深淵", "你的地圖增加 (192–240)% 機率含有 1 個深淵", "你的地圖 +(40–60)% 機率含有艾瓦", "你的地圖增加 (192–240)% 機率含有艾瓦", "你的地圖有 (40–60)% 機率含有 1 個額外盜賊流亡者", "你的地圖 +(15–25)% 含有 1 個盜賊流亡者", "你的地圖 +(40–60)% 機率含有埃哈", "你的地圖增加 (192–240)% 機率含有埃哈", "你的地圖有 (40–60)% 機率吸引超越惡魔", "你的地圖 +(40–60)% 機率含有 1 個凋落事件", "你的地圖增加 (192–240)% 機率含有 1 個凋落事件", "你的地圖 +(40–60)% 機率含有裂痕", "你的地圖增加 (192–240)% 機率含有 1 個裂痕", "你含有裂痕的地圖有 (5–10)% 機率含有 3 個額外裂痕", "你的地圖 +(40–60)% 機率含有 1 個譫妄之鏡", "你的地圖增加 (192–240)% 機率含有 1 個譫妄之鏡", "你的地圖 +(40–60)% 機率含有尼科", "你的地圖增加 (192–240)% 機率含有尼科", "你的地圖含有 1 個額外神殿", "你的地圖 +(15–25)% 機率含有 1 個神殿", "你的地圖含有 1 個額外禁錮怪物", "你的地圖有 +(15–25)% 機率含有 1 個禁錮怪物", "你的地圖 +(40–60)% 機率含有 1 個探險事件", "你的地圖增加 (192–240)% 機率含有 1 個探險事件", "你的地圖含有 1 個額外神諭", "你的地圖有 (15–25)% 機率含有 1 個額外神諭", "你的地圖 +(40–60)% 機率含有聖殿密園", "你的地圖增加 (192–240)% 機率含有聖殿密園", "你的地圖 +(40–60)% 機率含有 1 個走私者的祕寶", "你的地圖增加 (192–240)% 機率含有 1 個走私者的祕寶", "你的地圖 +(40–60)% 機率含有瓊恩", "你的地圖增加 (192–240)% 機率含有瓊恩", "你的地圖 +(8–12)% 機率含有 1 個昇華試煉", "你的地圖 +(40–60)% 機率含有 1 個戰亂事件", "你的地圖增加 (192–240)% 機率含有 1 個戰亂事件", "每張地圖的最終地圖頭目有 (4–6)% 機率掉落 1 張額外相連的地圖", "你的地圖增加 (192–240)% 機率含有 1 個最後通牒事件", "你的地圖 +(40–60)% 機率含有 1 個最後通牒事件", "你的地圖 +(40–60)% 機率含有祭祀神壇", "你的地圖增加 (192–240)% 機率含有祭祀神壇", "增加 (8–12)% 你地圖上變動詞綴的效果", "你的地圖含有額外一個保險箱", "1000681你的地圖 +(15–25)% 機率含有 1 個保險箱", "你的地圖 +(15–25)% 機率被罪魂糾纏", "你每張地圖最多 5 個稀有怪物被附身且他們的召喚物被觸碰", "你的地圖被 1 個額外罪魂糾纏", "完成你的地圖時，有 (5–8)% 機率獲得 1 個額外基拉克任務", "完成你的地圖時，有 (2–2.5)% 機率獲得 1 個額外基拉克任務", "增加 (12–16)% 你地圖中掉落物品的稀有度"],
@@ -339,613 +358,617 @@
       };
       const legendSuffixOptions = {
         "1x1": ["巨靈之眼 次要魔偶-你的地圖上的聖甲蟲效果會根據每個空地圖裝置欄位增加 50%", "孤獨冒險者 次要魔偶-增加 10% 怪物群大小、你的每張地圖只會開啟 1 個傳送門", "命運的轉折 次要魔偶、你的已汙染稀有地圖和任何套用的地圖工藝選項、在打開時會隨機調整、因此受影響的地圖會有 1 到 3 個隨機地圖詞綴", "創造之泉 次要魔偶-你地圖中的怪物造成 (25–30)% 更少傷害、你地圖中的怪物有 (40–50)% 更多生命", "毀滅之舞 次要魔偶-你地圖中的怪物造成 (20–25)% 更多傷害、你地圖中的怪物有 (25–30)% 更少生命", "單一焦點 次要魔偶-掉落的地圖有 (200–220)% 更多機率為幸運地圖、你地圖中掉落的非幸運地圖改為掉落基礎通貨", "異能凝視 次要魔偶-被吞噬天地影響的異能祭壇有 1 個額外劣勢、被吞噬天地影響的異能祭壇增加 (50–60)% 優勢效果", "宇宙之怒 次要魔偶-被灼烙總督影響的異能祭壇有 (50–60)% 機率有 1 個額外優勢、被灼烙總督影響且有 1 個額外優勢的異能祭壇，增加 (80–100)% 劣勢的效果", "陰影塑造 次要魔偶-掉落的地圖不是你的幸運地圖、你的每個不同幸運地圖，使你地圖中掉落的地圖 +1% 機率有 1 個特殊固定詞綴", "極限考古學 次要魔偶-增加 (200–250)% 你的地圖內的爆炸範圍、增加 (100–150)% 你地圖中爆裂物的放置距離、你地圖中的探險怪物以額外 (10–15)% 失去的生命產生、爆裂物數量為 1", "作物輪作 次要魔偶-你地圖中的豐收作物只會含有階級 1 的作物、豐收你地圖中的作物，有機率升級不同顏色的作物階級", "永恆鬥爭 次要魔偶-你地圖中的戰亂事件沒有計時器、打破處於靜止狀態的怪物和保險箱會導致碎裂、你地圖中的戰亂事件開始於碎裂發生", "無盡惡夢 次要魔偶-你地圖中的譫妄迷霧永不消散、你地圖中的譫妄難度為雙倍，且隨著與鏡子的距離增加、你的地圖不會掉落幻像斷片、你的地圖不會掉落譫妄玉", "不變教義 次要魔偶-不能重骰你地圖中祭祀神壇的恩賜之物、你地圖中被獻祭至祭祀神壇的怪物，獲得 (100–150)% 更多貢禮", "武斷原則 次要魔偶-你地圖中祭祀神壇的恩賜之物花費，隨機 90% 更少至 80% 更多", "無盡潮汐 次要魔偶-你地圖中的超越傳送門不能產生傳奇頭目、你地圖中的超越傳送門，有 (40–50)% 更小合併範圍", "死者之言 次要魔偶-你地圖中的罪魂可以附身玩家 20 秒、你地圖中的罪魂不能附身怪物", "卡西亞的驕傲 次要魔偶-你地圖中的凋落怪物，承受 (65–75)% 更少來自玩家和他們召喚物的傷害、你地圖中的凋落防守塔和它們的召喚物造成 (300–400)% 更多傷害", "細膩鑑定師 次要魔偶-你地圖的物品掉落數量詞綴，以 300% 它們的值套用至物品掉落稀有度", "清醒夢境 次要魔偶-你地區的瓦爾區域不再被汙染", "毀滅遊戲 次要魔偶-當見證地圖頭目時，釋界施放災害上升，召喚 1 至 3 個額外輿圖頭目、地圖中剩餘的怪物較少時、召喚的額外頭目數量較多、每張地圖最終地圖頭目的詞綴，同時套用至這些召喚的頭目", "大膽行動 次要魔偶-天佑勇者套用 1 個額外隨機工藝、天佑勇者工藝選項 100% 更多消耗", "困苦關卡 次要魔偶-玩家不能選擇每回合套用的通牒詞綴、你地圖中的通諜事件最多持續 13 回合、最終回合不會有頭目", "毀滅賭注 次要魔偶-你地圖中的通牒怪物使用它們特殊能力套用毀滅、到達 7 層毀滅時失敗、你地圖中的通牒怪物和詞綴，造成 (50–60)% 更少傷害", "整體勘探 次要魔偶-你地圖中剩餘的怪物少於 50 時，最終地圖頭目受荒林妖精強化", "黑指 次要魔偶-你的地圖不會含有聖殿密園、你的地圖不會掉落豐收聖甲蟲、你的地圖有 +5% 機率含有可以透過、輿圖天賦關閉的其他額外內容", "太陽寵愛 次要魔偶-你的地圖不會含有深淵、你的地圖不會掉落深淵聖甲蟲、你的地圖有 +5% 機率含有可以透過輿圖天賦關閉的其他額外內容", "次元壁壘 次要魔偶-你的地圖不會含有裂痕、你的地圖不會掉落裂痕聖甲蟲、你的地圖有 +5% 機率含有可以透過輿圖天賦關閉的其他額外內容", "貿易禁令 次要魔偶-你的地圖不會含有探險事件、你的地圖不會掉落探險聖甲蟲、你的地圖有 +5% 機率含有可以透過輿圖天賦關閉的其他額外內容", "領域封鎖 次要魔偶-你的地圖不會含有戰亂事件、你的地圖不會掉落戰亂聖甲蟲、你的地圖有 +5% 機率含有可以透過輿圖天賦關閉的其他額外內容", "道德審查 次要魔偶-你的地圖不會含有最後通牒、你的地圖不會掉落通牒聖甲蟲、你的地圖有 +5% 機率含有可以透過輿圖天賦關閉的其他額外內容", "細菌解方 次要魔偶-你的地圖不會含有凋落事件、你的地圖不會掉落凋落聖甲蟲、你的地圖有 +5% 機率含有可以透過輿圖天賦關閉的其他額外內容", "世俗目光 次要魔偶-你的地圖不會含有祭祀神壇、你的地圖不會掉落祭祀聖甲蟲、你的地圖有 +5% 機率含有可以透過輿圖天賦關閉的其他額外內容", "筆直窄道 次要魔偶-你的地圖不會掉落盜賊之印、契約書和藍圖、你的地圖不會含有走私者的祕寶、你的地圖有 +5% 機率含有可以透過輿圖天賦關閉的其他額外內容", "不祥的寂靜 次要魔偶-你的地圖不會含有譫妄之鏡、你的地圖不會掉落譫妄聖甲蟲、你的地圖有 +5% 機率含有可以透過輿圖天賦關閉的其他額外內容", "打砸搶 次要魔偶-你地圖中的每個戰亂含有 1 個額外征戰儲物箱、你地圖中的戰亂保險箱含有 1 個額外隨機獎勳、你地圖中的戰亂事件增加 (-80–-60)% 持續時間", "晶化之力 次要魔偶-根據你地圖中殺死的任何被禁錮的怪物，給予地圖頭目 1 種隨機精髓詞綴", "補給充足 次要魔偶-密教成員出現在你的地圖中時會獲得一個額外裝備、增加 (30–50)% 你地圖中永生密教目標事件獲取的情報、你地圖中密教首領掉落 1 個額外隱匿物品", "感知的偉大 次要魔偶-你地圖中的譫妄獎勳類型，在地圖完成時獲得 +1 數量、你地圖中擊殺的譫妄怪物。增加 (-30–-20)% 獎勳進度", "扭曲之願 次要魔偶-你地圖中的通牒詞綴，如果可能以高 1 階級開始、你地圖中的最後通牒事件，每回合減少 3% 範圍"],
-        "1x2": ["傳奇效果A", "傳奇效果B"],
-        "1x3": ["傳奇效果C", "傳奇效果D"],
-        "2x2": ["傳奇效果E", "傳奇效果F"]
-      };
-      const blocks = [
-        { w: 1, h: 1, label: "次要", type: "minor" },
-        { w: 1, h: 1, label: "傳奇", type: "legend" },
-        { w: 2, h: 1, label: "高貴", type: "normal" },
-        { w: 1, h: 2, label: "卡瑪薩", type: "normal" },
-        { w: 3, h: 1, label: "埋葬", type: "normal" },
-        { w: 1, h: 3, label: "圖騰", type: "normal" },
-        { w: 2, h: 2, label: "征服者", type: "normal" }
-      ];
-
-      const statueLinks = {
-        "次要": "https://poedb.tw/tw/Minor_Idol",
-        "傳奇": "https://poedb.tw/tw/Minor_Idol#%E5%82%B3%E5%A5%87",
-        "高貴": "https://poedb.tw/tw/Noble_Idol",
-        "卡瑪薩": "https://poedb.tw/tw/Kamasan_Idol",
-        "埋葬": "https://poedb.tw/tw/Burial_Idol",
-        "圖騰": "https://poedb.tw/tw/Totemic_Idol",
-        "征服者": "https://poedb.tw/tw/Conqueror_Idol"
-      };
-
-      const supplyGroup = document.getElementById("supply-group");
-
-      blocks.forEach(block => {
-        const rowDiv = document.createElement("div");
-        rowDiv.classList.add("supply-row");
-        const label = document.createElement("div");
-        label.classList.add("supply-label");
-        label.textContent = block.label;
-
-        // 在這裡添加超連結
-        if (statueLinks[block.label]) {
-          label.innerHTML = `<a href="${statueLinks[block.label]}" target="_blank" style="color: inherit; text-decoration: none;">${block.label}</a>`;
-        }
-
-        const content = document.createElement("div");
-        content.classList.add("supply-content");
-        const blk = document.createElement("div");
-        blk.classList.add("block");
-        blk.setAttribute("draggable", "true");
-        blk.dataset.w = block.w;
-        blk.dataset.h = block.h;
-        blk.dataset.type = block.type;
-        blk.style.width = (block.w * cellSize - 4) + "px";
-        blk.style.height = (block.h * cellSize - 4) + "px";
-
-        const groupKey = (block.w === 2 && block.h === 1 && block.label === "高貴") ? "1x1" : getGroupKey(block.w, block.h);
-        const searchInput = document.createElement("input");
-        searchInput.type = "text";
-        searchInput.placeholder = "搜尋...";
-
-        if (block.type === "minor") {
-          const suffixOpts = suffixOptions["1x1"];
-          const prefixOpts = prefixOptions["1x1"];
-          const select1 = document.createElement("select");
-          select1.dataset.originalOptions = JSON.stringify(suffixOpts);
-          const defaultOption1 = document.createElement("option");
-          defaultOption1.value = "";
-          defaultOption1.text = "效果1";
-          select1.appendChild(defaultOption1);
-          suffixOpts.forEach(text => {
-            const option = document.createElement("option");
-            option.value = text;
-            option.text = text;
-            select1.appendChild(option);
-          });
-
-          const select2 = document.createElement("select");
-          select2.dataset.originalOptions = JSON.stringify(suffixOpts);
-          const defaultOption2 = document.createElement("option");
-          defaultOption2.value = "";
-          defaultOption2.text = "效果2";
-          select2.appendChild(defaultOption2);
-          suffixOpts.forEach(text => {
-            const option = document.createElement("option");
-            option.value = text;
-            option.text = text;
-            select2.appendChild(option);
-          });
-
-          const select3 = document.createElement("select");
-          select3.dataset.originalOptions = JSON.stringify(prefixOpts);
-          const defaultOption3 = document.createElement("option");
-          defaultOption3.value = "";
-          defaultOption3.text = "效果3";
-          select3.appendChild(defaultOption3);
-          prefixOpts.forEach(text => {
-            const option = document.createElement("option");
-            option.value = text;
-            option.text = text;
-            select3.appendChild(option);
-          });
-
-          const select4 = document.createElement("select");
-          select4.dataset.originalOptions = JSON.stringify(prefixOpts);
-          const defaultOption4 = document.createElement("option");
-          defaultOption4.value = "";
-          defaultOption4.text = "效果4";
-          select4.appendChild(defaultOption4);
-          prefixOpts.forEach(text => {
-            const option = document.createElement("option");
-            option.value = text;
-            option.text = text;
-            select4.appendChild(option);
-          });
-
-          blk.addEventListener("dragstart", function (e) {
-            const data = {
-              w: parseInt(blk.dataset.w),
-              h: parseInt(blk.dataset.h),
-              info1: select1.value,
-              info2: select2.value,
-              info3: select3.value,
-              info4: select4.value,
-              type: blk.dataset.type
+                "1x2": ["傳奇效果A", "傳奇效果B"],
+                "1x3": ["傳奇效果C", "傳奇效果D"],
+                "2x2": ["傳奇效果E", "傳奇效果F"]
             };
-            e.dataTransfer.setData("text/plain", JSON.stringify(data));
-          });
+            const blocks = [
+                { w: 1, h: 1, label: "次要", type: "minor" },
+                { w: 1, h: 1, label: "傳奇", type: "legend" },
+                { w: 2, h: 1, label: "高貴", type: "normal" },
+                { w: 1, h: 2, label: "卡瑪薩", type: "normal" },
+                { w: 3, h: 1, label: "埋葬", type: "normal" },
+                { w: 1, h: 3, label: "圖騰", type: "normal" },
+                { w: 2, h: 2, label: "征服者", type: "normal" }
+            ];
 
-          attachSearchListener(searchInput, content);
-          content.appendChild(blk);
-          content.appendChild(searchInput);
-          content.appendChild(select1);
-          content.appendChild(select2);
-          content.appendChild(select3);
-          content.appendChild(select4);
-        } else if (block.type === "legend") {
-          const legendOpts = legendSuffixOptions[groupKey];
-          const select1 = document.createElement("select");
-          select1.dataset.originalOptions = JSON.stringify(legendOpts);
-          const defaultOption1 = document.createElement("option");
-          defaultOption1.value = "";
-          defaultOption1.text = "效果1";
-          select1.appendChild(defaultOption1);
-          legendOpts.forEach(text => {
-            const option = document.createElement("option");
-            option.value = text;
-            option.text = text;
-            select1.appendChild(option);
-          });
+            const supplyGroup = document.getElementById("supply-group");
+            let placedBlocks = [];
 
-          blk.addEventListener("dragstart", function (e) {
-            const data = {
-              w: parseInt(blk.dataset.w),
-              h: parseInt(blk.dataset.h),
-              info1: select1.value,
-              type: blk.dataset.type
-            };
-            e.dataTransfer.setData("text/plain", JSON.stringify(data));
-          });
+            blocks.forEach(block => {
+                const rowDiv = document.createElement("div");
+                rowDiv.classList.add("supply-row");
+                const label = document.createElement("div");
+                label.classList.add("supply-label");
+                if (statueLinks[block.label]) {
+                    label.innerHTML = `<a href="${statueLinks[block.label]}" target="_blank" style="color: inherit; text-decoration: none;">${block.label}</a>`;
+                } else {
+                    label.textContent = block.label;
+                }
+                const content = document.createElement("div");
+                content.classList.add("supply-content");
+                const blk = document.createElement("div");
+                blk.classList.add("block");
+                blk.setAttribute("draggable", "true");
+                blk.dataset.w = block.w;
+                blk.dataset.h = block.h;
+                blk.dataset.type = block.type;
+                blk.style.width = (block.w * cellSize - 4) + "px";
+                blk.style.height = (block.h * cellSize - 4) + "px";
 
-          attachSearchListener(searchInput, content);
-          content.appendChild(blk);
-          content.appendChild(searchInput);
-          content.appendChild(select1);
-        } else {
-          const suffixOpts = suffixOptions[groupKey].slice(0, 99);
-          const prefixOpts = prefixOptions[groupKey].slice(0, 99);
-          const select1 = document.createElement("select");
-          select1.dataset.originalOptions = JSON.stringify(suffixOpts);
-          const defaultOption1 = document.createElement("option");
-          defaultOption1.value = "";
-          defaultOption1.text = "效果1";
-          select1.appendChild(defaultOption1);
-          suffixOpts.forEach(text => {
-            const option = document.createElement("option");
-            option.value = text;
-            option.text = text;
-            select1.appendChild(option);
-          });
+                const groupKey = (block.w === 2 && block.h === 1 && block.label === "高貴") ? "1x1" : getGroupKey(block.w, block.h);
+                const searchInput = document.createElement("input");
+                searchInput.type = "text";
+                searchInput.placeholder = "搜尋...";
 
-          const select2 = document.createElement("select");
-          select2.dataset.originalOptions = JSON.stringify(suffixOpts);
-          const defaultOption2 = document.createElement("option");
-          defaultOption2.value = "";
-          defaultOption2.text = "效果2";
-          select2.appendChild(defaultOption2);
-          suffixOpts.forEach(text => {
-            const option = document.createElement("option");
-            option.value = text;
-            option.text = text;
-            select2.appendChild(option);
-          });
+                if (block.type === "minor") {
+                    const suffixOpts = suffixOptions["1x1"];
+                    const prefixOpts = prefixOptions["1x1"];
+                    const select1 = document.createElement("select");
+                    select1.dataset.originalOptions = JSON.stringify(suffixOpts);
+                    const defaultOption1 = document.createElement("option");
+                    defaultOption1.value = "";
+                    defaultOption1.text = "效果1";
+                    select1.appendChild(defaultOption1);
+                    suffixOpts.forEach(text => {
+                        const option = document.createElement("option");
+                        option.value = text;
+                        option.text = text;
+                        select1.appendChild(option);
+                    });
 
-          const select3 = document.createElement("select");
-          select3.dataset.originalOptions = JSON.stringify(prefixOpts);
-          const defaultOption3 = document.createElement("option");
-          defaultOption3.value = "";
-          defaultOption3.text = "效果3";
-          select3.appendChild(defaultOption3);
-          prefixOpts.forEach(text => {
-            const option = document.createElement("option");
-            option.value = text;
-            option.text = text;
-            select3.appendChild(option);
-          });
+                    const select2 = document.createElement("select");
+                    select2.dataset.originalOptions = JSON.stringify(suffixOpts);
+                    const defaultOption2 = document.createElement("option");
+                    defaultOption2.value = "";
+                    defaultOption2.text = "效果2";
+                    select2.appendChild(defaultOption2);
+                    suffixOpts.forEach(text => {
+                        const option = document.createElement("option");
+                        option.value = text;
+                        option.text = text;
+                        select2.appendChild(option);
+                    });
 
-          const select4 = document.createElement("select");
-          select4.dataset.originalOptions = JSON.stringify(prefixOpts);
-          const defaultOption4 = document.createElement("option");
-          defaultOption4.value = "";
-          defaultOption4.text = "效果4";
-          select4.appendChild(defaultOption4);
-          prefixOpts.forEach(text => {
-            const option = document.createElement("option");
-            option.value = text;
-            option.text = text;
-            select4.appendChild(option);
-          });
+                    const select3 = document.createElement("select");
+                    select3.dataset.originalOptions = JSON.stringify(prefixOpts);
+                    const defaultOption3 = document.createElement("option");
+                    defaultOption3.value = "";
+                    defaultOption3.text = "效果3";
+                    select3.appendChild(defaultOption3);
+                    prefixOpts.forEach(text => {
+                        const option = document.createElement("option");
+                        option.value = text;
+                        option.text = text;
+                        select3.appendChild(option);
+                    });
 
-          blk.addEventListener("dragstart", function (e) {
-            const data = {
-              w: parseInt(blk.dataset.w),
-              h: parseInt(blk.dataset.h),
-              info1: select1.value,
-              info2: select2.value,
-              info3: select3.value,
-              info4: select4.value,
-              type: blk.dataset.type
-            };
-            e.dataTransfer.setData("text/plain", JSON.stringify(data));
-          });
+                    const select4 = document.createElement("select");
+                    select4.dataset.originalOptions = JSON.stringify(prefixOpts);
+                    const defaultOption4 = document.createElement("option");
+                    defaultOption4.value = "";
+                    defaultOption4.text = "效果4";
+                    select4.appendChild(defaultOption4);
+                    prefixOpts.forEach(text => {
+                        const option = document.createElement("option");
+                        option.value = text;
+                        option.text = text;
+                        select4.appendChild(option);
+                    });
 
-          attachSearchListener(searchInput, content);
-          content.appendChild(blk);
-          content.appendChild(searchInput);
-          content.appendChild(select1);
-          content.appendChild(select2);
-          content.appendChild(select3);
-          content.appendChild(select4);
-        }
+                    blk.addEventListener("dragstart", function (e) {
+                        const data = {
+                            w: parseInt(blk.dataset.w),
+                            h: parseInt(blk.dataset.h),
+                            info1: select1.value,
+                            info2: select2.value,
+                            info3: select3.value,
+                            info4: select4.value,
+                            type: blk.dataset.type,
+                            blockId: placedBlocks.length + 1
+                        };
+                        e.dataTransfer.setData("text/plain", JSON.stringify(data));
+                    });
 
-        rowDiv.appendChild(label);
-        rowDiv.appendChild(content);
-        supplyGroup.appendChild(rowDiv);
-      });
+                    attachSearchListener(searchInput, content);
+                    content.appendChild(blk);
+                    content.appendChild(searchInput);
+                    content.appendChild(select1);
+                    content.appendChild(select2);
+                    content.appendChild(select3);
+                    content.appendChild(select4);
+                } else if (block.type === "legend") {
+                    const legendOpts = legendSuffixOptions[groupKey];
+                    const select1 = document.createElement("select");
+                    select1.dataset.originalOptions = JSON.stringify(legendOpts);
+                    const defaultOption1 = document.createElement("option");
+                    defaultOption1.value = "";
+                    defaultOption1.text = "效果1";
+                    select1.appendChild(defaultOption1);
+                    legendOpts.forEach(text => {
+                        const option = document.createElement("option");
+                        option.value = text;
+                        option.text = text;
+                        select1.appendChild(option);
+                    });
 
-      function getGroupKey(w, h) {
-        if ((w === 2 && h === 1) || (w === 1 && h === 2)) return "1x2";
-        if ((w === 3 && h === 1) || (w === 1 && h === 3)) return "1x3";
-        if (w === 2 && h === 2) return "2x2";
-        return "1x1";
-      }
+                    blk.addEventListener("dragstart", function (e) {
+                        const data = {
+                            w: parseInt(blk.dataset.w),
+                            h: parseInt(blk.dataset.h),
+                            info1: select1.value,
+                            type: blk.dataset.type,
+                            blockId: placedBlocks.length + 1
+                        };
+                        e.dataTransfer.setData("text/plain", JSON.stringify(data));
+                    });
 
-      function attachSearchListener(searchInput, contentDiv) {
-        searchInput.addEventListener("input", function () {
-          const term = this.value.trim().toLowerCase();
-          contentDiv.querySelectorAll("select").forEach((select, idx) => {
-            const originalOpts = JSON.parse(select.dataset.originalOptions);
-            const currentValue = select.value;
-            select.options.length = 0;
-            const defaultOption = document.createElement("option");
-            defaultOption.value = "";
-            defaultOption.text = "效果" + (idx + 1);
-            select.appendChild(defaultOption);
-            originalOpts.forEach(text => {
-              if (term === "" || text.toLowerCase().includes(term) || text === currentValue) {
-                const opt = document.createElement("option");
-                opt.value = text;
-                opt.text = text;
-                select.appendChild(opt);
-              }
+                    attachSearchListener(searchInput, content);
+                    content.appendChild(blk);
+                    content.appendChild(searchInput);
+                    content.appendChild(select1);
+                } else {
+                    const suffixOpts = suffixOptions[groupKey].slice(0, 99);
+                    const prefixOpts = prefixOptions[groupKey].slice(0, 99);
+                    const select1 = document.createElement("select");
+                    select1.dataset.originalOptions = JSON.stringify(suffixOpts);
+                    const defaultOption1 = document.createElement("option");
+                    defaultOption1.value = "";
+                    defaultOption1.text = "效果1";
+                    select1.appendChild(defaultOption1);
+                    suffixOpts.forEach(text => {
+                        const option = document.createElement("option");
+                        option.value = text;
+                        option.text = text;
+                        select1.appendChild(option);
+                    });
+
+                    const select2 = document.createElement("select");
+                    select2.dataset.originalOptions = JSON.stringify(suffixOpts);
+                    const defaultOption2 = document.createElement("option");
+                    defaultOption2.value = "";
+                    defaultOption2.text = "效果2";
+                    select2.appendChild(defaultOption2);
+                    suffixOpts.forEach(text => {
+                        const option = document.createElement("option");
+                        option.value = text;
+                        option.text = text;
+                        select2.appendChild(option);
+                    });
+
+                    const select3 = document.createElement("select");
+                    select3.dataset.originalOptions = JSON.stringify(prefixOpts);
+                    const defaultOption3 = document.createElement("option");
+                    defaultOption3.value = "";
+                    defaultOption3.text = "效果3";
+                    select3.appendChild(defaultOption3);
+                    prefixOpts.forEach(text => {
+                        const option = document.createElement("option");
+                        option.value = text;
+                        option.text = text;
+                        select3.appendChild(option);
+                    });
+
+                    const select4 = document.createElement("select");
+                    select4.dataset.originalOptions = JSON.stringify(prefixOpts);
+                    const defaultOption4 = document.createElement("option");
+                    defaultOption4.value = "";
+                    defaultOption4.text = "效果4";
+                    select4.appendChild(defaultOption4);
+                    prefixOpts.forEach(text => {
+                        const option = document.createElement("option");
+                        option.value = text;
+                        option.text = text;
+                        select4.appendChild(option);
+                    });
+
+                    blk.addEventListener("dragstart", function (e) {
+                        const data = {
+                            w: parseInt(blk.dataset.w),
+                            h: parseInt(blk.dataset.h),
+                            info1: select1.value,
+                            info2: select2.value,
+                            info3: select3.value,
+                            info4: select4.value,
+                            type: blk.dataset.type,
+                            blockId: placedBlocks.length + 1
+                        };
+                        e.dataTransfer.setData("text/plain", JSON.stringify(data));
+                    });
+
+                    attachSearchListener(searchInput, content);
+                    content.appendChild(blk);
+                    content.appendChild(searchInput);
+                    content.appendChild(select1);
+                    content.appendChild(select2);
+                    content.appendChild(select3);
+                    content.appendChild(select4);
+                }
+
+                rowDiv.appendChild(label);
+                rowDiv.appendChild(content);
+                supplyGroup.appendChild(rowDiv);
             });
-            if (currentValue) select.value = currentValue;
-          });
-        });
-      }
 
-      function updateStats() {
-        const statsTableBody = document.querySelector("#statsTable tbody");
-        statsTableBody.innerHTML = "";
-        for (let info in stats) {
-          const tr = document.createElement("tr");
-          const tdInfo = document.createElement("td");
-          tdInfo.textContent = info;
-          const tdCount = document.createElement("td");
-          tdCount.textContent = stats[info] + " 個";
-          tr.appendChild(tdInfo);
-          tr.appendChild(tdCount);
-          statsTableBody.appendChild(tr);
-        }
-      }
+            function getGroupKey(w, h) {
+                if ((w === 2 && h === 1) || (w === 1 && h === 2)) return "1x2";
+                if ((w === 3 && h === 1) || (w === 1 && h === 3)) return "1x3";
+                if (w === 2 && h === 2) return "2x2";
+                return "1x1";
+            }
 
-      function handleDrop(e) {
-        e.preventDefault();
-        const dataText = e.dataTransfer.getData("text/plain");
-        if (!dataText) return;
-        const blockData = JSON.parse(dataText);
-        const targetCell = e.target.closest('.grid-cell');
-        if (!targetCell) return;
-        const startCol = parseInt(targetCell.getAttribute("data-col"));
-        const startRow = rows.indexOf(targetCell.getAttribute("data-row"));
-        const w = blockData.w;
-        const h = blockData.h;
+            function attachSearchListener(searchInput, contentDiv) {
+                searchInput.addEventListener("input", function () {
+                    const term = this.value.trim().toLowerCase();
+                    contentDiv.querySelectorAll("select").forEach((select, idx) => {
+                        const originalOpts = JSON.parse(select.dataset.originalOptions);
+                        const currentValue = select.value;
+                        select.options.length = 0;
+                        const defaultOption = document.createElement("option");
+                        defaultOption.value = "";
+                        defaultOption.text = "效果" + (idx + 1);
+                        select.appendChild(defaultOption);
+                        originalOpts.forEach(text => {
+                            if (term === "" || text.toLowerCase().includes(term) || text === currentValue) {
+                                const opt = document.createElement("option");
+                                opt.value = text;
+                                opt.text = text;
+                                select.appendChild(opt);
+                            }
+                        });
+                        if (currentValue) select.value = currentValue;
+                    });
+                });
+            }
 
-        if (canPlace(startRow, startCol, w, h)) {
-          placeBlock(startRow, startCol, blockData);
-        } else {
-          const position = findNearestPosition(startRow, startCol, w, h);
-          if (position) placeBlock(position.row, position.col, blockData);
-          else showToast("無法放置積木！");
-        }
-      }
-
-      function canPlace(row, col, w, h) {
-        if (row < 0 || row + h > rows.length || col < 1 || col + w - 1 > cols) return false;
-        for (let r = row; r < row + h; r++) {
-          for (let c = col - 1; c < col + w - 1; c++) {
-            if (gridStatus[r][c] !== 'empty') return false;
-          }
-        }
-        return true;
-      }
-
-      function findNearestPosition(startRow, startCol, w, h) {
-        for (let r = 0; r <= rows.length - h; r++) {
-          for (let c = 0; c <= cols - w; c++) {
-            if (canPlace(r, c + 1, w, h)) return { row: r, col: c + 1 };
-          }
-        }
-        return null;
-      }
-
-      function placeBlock(row, col, blockData) {
-        const placed = document.createElement("div");
-        placed.classList.add("placed-block");
-        placed.style.width = (blockData.w * cellSize - 4) + "px";
-        placed.style.height = (blockData.h * cellSize - 4) + "px";
-        placed.style.left = ((col - 1) * cellSize) + "px";
-        placed.style.top = (row * cellSize) + "px";
-        placed.dataset.col = col;
-        placed.dataset.row = row;
-        placed.dataset.w = blockData.w;
-        placed.dataset.h = blockData.h;
-        placed.dataset.info1 = blockData.info1 || "";
-        placed.dataset.info2 = blockData.info2 || "";
-        placed.dataset.info3 = blockData.info3 || "";
-        placed.dataset.info4 = blockData.info4 || "";
-        placed.style.backgroundColor = blockData.type === "legend" ? "orange" : blockData.type === "minor" ? "lightgreen" : "lavender";
-
-        for (let r = row; r < row + blockData.h; r++) {
-          for (let c = col - 1; c < col + blockData.w - 1; c++) {
-            gridStatus[r][c] = 'occupied';
-          }
-        }
-        if (blockData.info1) stats[blockData.info1] = (stats[blockData.info1] || 0) + 1;
-        if (blockData.info2) stats[blockData.info2] = (stats[blockData.info2] || 0) + 1;
-        if (blockData.info3) stats[blockData.info3] = (stats[blockData.info3] || 0) + 1;
-        if (blockData.info4) stats[blockData.info4] = (stats[blockData.info4] || 0) + 1;
-        updateStats();
-        addDraggable(placed);
-        grid.appendChild(placed);
-        saveState();
-      }
-
-      function addDraggable(el) {
-        let isDragging = false;
-        let startX, startY, origLeft, origTop;
-        el.addEventListener("mousedown", function (e) {
-          if (e.button !== 0) return;
-          isDragging = false;
-          startX = e.clientX;
-          startY = e.clientY;
-          origLeft = parseInt(el.style.left, 10);
-          origTop = parseInt(el.style.top, 10);
-          e.preventDefault();
-
-          function onMouseMove(e) {
-            let dx = e.clientX - startX;
-            let dy = e.clientY - startY;
-            if (Math.abs(dx) > 5 || Math.abs(dy) > 5) isDragging = true;
-            el.style.left = (origLeft + dx) + "px";
-            el.style.top = (origTop + dy) + "px";
-          }
-
-          function onMouseUp(e) {
-            document.removeEventListener("mousemove", onMouseMove);
-            document.removeEventListener("mouseup", onMouseUp);
-            if (isDragging) {
-              let newLeft = parseInt(el.style.left, 10);
-              let newTop = parseInt(el.style.top, 10);
-              let newCol = Math.round(newLeft / cellSize) + 1;
-              let newRow = Math.round(newTop / cellSize);
-              let w = parseInt(el.dataset.w);
-              let h = parseInt(el.dataset.h);
-
-              if (canPlace(newRow, newCol, w, h)) {
-                for (let r = parseInt(el.dataset.row); r < parseInt(el.dataset.row) + h; r++) {
-                  for (let c = parseInt(el.dataset.col) - 1; c < parseInt(el.dataset.col) + w - 1; c++) {
-                    gridStatus[r][c] = 'empty';
-                  }
+            function updateStats() {
+                const statsTableBody = document.querySelector("#statsTable tbody");
+                statsTableBody.innerHTML = "";
+                for (let info in stats) {
+                    const tr = document.createElement("tr");
+                    const tdInfo = document.createElement("td");
+                    tdInfo.textContent = info;
+                    const tdCount = document.createElement("td");
+                    tdCount.textContent = stats[info] + " 個";
+                    tr.appendChild(tdInfo);
+                    tr.appendChild(tdCount);
+                    statsTableBody.appendChild(tr);
                 }
-                el.dataset.col = newCol;
-                el.dataset.row = newRow;
-                for (let r = newRow; r < newRow + h; r++) {
-                  for (let c = newCol - 1; c < newCol + w - 1; c++) {
-                    gridStatus[r][c] = 'occupied';
-                  }
+            }
+
+            function handleDrop(e) {
+                e.preventDefault();
+                const dataText = e.dataTransfer.getData("text/plain");
+                if (!dataText) return;
+                const blockData = JSON.parse(dataText);
+                const targetCell = e.target.closest('.grid-cell');
+                if (!targetCell) return;
+                const startCol = parseInt(targetCell.getAttribute("data-col"));
+                const startRow = rows.indexOf(targetCell.getAttribute("data-row"));
+                const w = blockData.w;
+                const h = blockData.h;
+
+                if (canPlace(startRow, startCol, w, h)) {
+                    placeBlock(startRow, startCol, blockData);
+                } else {
+                    const position = findNearestAvailablePosition(startRow, startCol, w, h);
+                    if (position) placeBlock(position.row, position.col, blockData);
+                    else showToast("無法放置積木！");
                 }
-                el.style.left = ((newCol - 1) * cellSize) + "px";
-                el.style.top = (newRow * cellSize) + "px";
+            }
+
+            function canPlace(row, col, w, h) {
+                if (row < 0 || row + h > rows.length || col < 1 || col + w - 1 > cols) return false;
+                for (let r = row; r < row + h; r++) {
+                    for (let c = col - 1; c < col + w - 1; c++) {
+                        if (gridStatus[r][c] !== 'empty') return false;
+                    }
+                }
+                return true;
+            }
+
+            function findNearestAvailablePosition(startRow, startCol, w, h) {
+                let minDistance = Infinity;
+                let bestPosition = null;
+                for (let r = 0; r <= rows.length - h; r++) {
+                    for (let c = 1; c <= cols - w + 1; c++) {
+                        if (canPlace(r, c, w, h)) {
+                            const distance = Math.abs(r - startRow) + Math.abs(c - startCol);
+                            if (distance < minDistance) {
+                                minDistance = distance;
+                                bestPosition = { row: r, col: c };
+                            }
+                        }
+                    }
+                }
+                return bestPosition;
+            }
+
+            function placeBlock(row, col, blockData) {
+                const placed = document.createElement("div");
+                placed.classList.add("placed-block");
+                placed.style.width = (blockData.w * cellSize - 4) + "px";
+                placed.style.height = (blockData.h * cellSize - 4) + "px";
+                placed.style.left = ((col - 1) * cellSize) + "px";
+                placed.style.top = (row * cellSize) + "px";
+                placed.dataset.col = col;
+                placed.dataset.row = row;
+                placed.dataset.w = blockData.w;
+                placed.dataset.h = blockData.h;
+                placed.dataset.info1 = blockData.info1 || "";
+                placed.dataset.info2 = blockData.info2 || "";
+                placed.dataset.info3 = blockData.info3 || "";
+                placed.dataset.info4 = blockData.info4 || "";
+                placed.style.backgroundColor = blockData.type === "legend" ? "orange" : blockData.type === "minor" ? "lightgreen" : "lavender";
+
+                const numberLabel = document.createElement("div");
+                numberLabel.classList.add("block-number");
+                numberLabel.textContent = blockData.blockId;
+                placed.appendChild(numberLabel);
+
+                for (let r = row; r < row + blockData.h; r++) {
+                    for (let c = col - 1; c < col + blockData.w - 1; c++) {
+                        gridStatus[r][c] = 'occupied';
+                    }
+                }
+                if (blockData.info1) stats[blockData.info1] = (stats[blockData.info1] || 0) + 1;
+                if (blockData.info2) stats[blockData.info2] = (stats[blockData.info2] || 0) + 1;
+                if (blockData.info3) stats[blockData.info3] = (stats[blockData.info3] || 0) + 1;
+                if (blockData.info4) stats[blockData.info4] = (stats[blockData.info4] || 0) + 1;
+                updateStats();
+                addDraggable(placed);
+                grid.appendChild(placed);
+                placedBlocks.push(placed);
+                renumberBlocks();
                 saveState();
-              } else {
-                el.style.left = origLeft + "px";
-                el.style.top = origTop + "px";
-                showToast("無法移動至此位置！");
-              }
             }
-          }
-          document.addEventListener("mousemove", onMouseMove);
-          document.addEventListener("mouseup", onMouseUp);
-        });
 
-        el.addEventListener("click", function (e) {
-          if (isDragging) return;
-          let col = parseInt(el.dataset.col);
-          let row = parseInt(el.dataset.row);
-          let w = parseInt(el.dataset.w);
-          let h = parseInt(el.dataset.h);
-          for (let r = row; r < row + h; r++) {
-            for (let c = col - 1; c < col + w - 1; c++) {
-              gridStatus[r][c] = 'empty';
+            function addDraggable(el) {
+                let isDragging = false;
+                let startX, startY, origLeft, origTop;
+                el.addEventListener("pointerdown", function (e) {
+                    if (e.button !== 0) return;
+                    isDragging = false;
+                    startX = e.clientX;
+                    startY = e.clientY;
+                    origLeft = parseInt(el.style.left, 10);
+                    origTop = parseInt(el.style.top, 10);
+                    e.preventDefault();
+
+                    function onPointerMove(e) {
+                        let dx = e.clientX - startX;
+                        let dy = e.clientY - startY;
+                        if (Math.abs(dx) > 5 || Math.abs(dy) > 5) isDragging = true;
+                        el.style.left = (origLeft + dx) + "px";
+                        el.style.top = (origTop + dy) + "px";
+                    }
+
+                    function onPointerUp(e) {
+                        document.removeEventListener("pointermove", onPointerMove);
+                        document.removeEventListener("pointerup", onPointerUp);
+                        if (isDragging) {
+                            let newLeft = parseInt(el.style.left, 10);
+                            let newTop = parseInt(el.style.top, 10);
+                            let newCol = Math.round(newLeft / cellSize) + 1;
+                            let newRow = Math.round(newTop / cellSize);
+                            let w = parseInt(el.dataset.w);
+                            let h = parseInt(el.dataset.h);
+
+                            if (canPlace(newRow, newCol, w, h)) {
+                                for (let r = parseInt(el.dataset.row); r < parseInt(el.dataset.row) + h; r++) {
+                                    for (let c = parseInt(el.dataset.col) - 1; c < parseInt(el.dataset.col) + w - 1; c++) {
+                                        gridStatus[r][c] = 'empty';
+                                    }
+                                }
+                                el.dataset.col = newCol;
+                                el.dataset.row = newRow;
+                                for (let r = newRow; r < newRow + h; r++) {
+                                    for (let c = newCol - 1; c < newCol + w - 1; c++) {
+                                        gridStatus[r][c] = 'occupied';
+                                    }
+                                }
+                                el.style.left = ((newCol - 1) * cellSize) + "px";
+                                el.style.top = (newRow * cellSize) + "px";
+                                saveState();
+                            } else {
+                                el.style.left = origLeft + "px";
+                                el.style.top = origTop + "px";
+                                showToast("無法移動至此位置！");
+                            }
+                        }
+                    }
+                    document.addEventListener("pointermove", onPointerMove);
+                    document.addEventListener("pointerup", onPointerUp);
+                });
+
+                el.addEventListener("click", function (e) {
+                    if (isDragging) return;
+                    let col = parseInt(el.dataset.col);
+                    let row = parseInt(el.dataset.row);
+                    let w = parseInt(el.dataset.w);
+                    let h = parseInt(el.dataset.h);
+                    for (let r = row; r < row + h; r++) {
+                        for (let c = col - 1; c < col + w - 1; c++) {
+                            gridStatus[r][c] = 'empty';
+                        }
+                    }
+                    if (el.dataset.info1) stats[el.dataset.info1] = (stats[el.dataset.info1] || 0) - 1;
+                    if (el.dataset.info2) stats[el.dataset.info2] = (stats[el.dataset.info2] || 0) - 1;
+                    if (el.dataset.info3) stats[el.dataset.info3] = (stats[el.dataset.info3] || 0) - 1;
+                    if (el.dataset.info4) stats[el.dataset.info4] = (stats[el.dataset.info4] || 0) - 1;
+                    for (let key in stats) if (stats[key] <= 0) delete stats[key];
+                    updateStats();
+                    el.remove();
+                    placedBlocks = placedBlocks.filter(block => block !== el);
+                    renumberBlocks();
+                    saveState();
+                });
             }
-          }
-          if (el.dataset.info1) stats[el.dataset.info1] = (stats[el.dataset.info1] || 0) - 1;
-          if (el.dataset.info2) stats[el.dataset.info2] = (stats[el.dataset.info2] || 0) - 1;
-          if (el.dataset.info3) stats[el.dataset.info3] = (stats[el.dataset.info3] || 0) - 1;
-          if (el.dataset.info4) stats[el.dataset.info4] = (stats[el.dataset.info4] || 0) - 1;
-          for (let key in stats) if (stats[key] <= 0) delete stats[key];
-          updateStats();
-          el.remove();
-          saveState();
-        });
-      }
 
-      let is115Mode = false;
-      document.getElementById("mode-115-btn").addEventListener("click", function () {
-        is115Mode = !is115Mode;
-        const cell6A = document.querySelector('.grid-cell[data-col="6"][data-row="A"]');
-        if (is115Mode) {
-          cell6A.classList.add("disabled");
-          cell6A.innerText = "🚫";
-          gridStatus[0][5] = 'disabled';
-          const blockOn6A = Array.from(document.querySelectorAll('.placed-block')).find(block => {
-            const col = parseInt(block.dataset.col);
-            const row = parseInt(block.dataset.row);
-            const w = parseInt(block.dataset.w);
-            const h = parseInt(block.dataset.h);
-            return row <= 0 && row + h - 1 >= 0 && col <= 6 && col + w - 1 >= 6;
-          });
-          if (blockOn6A) {
-            const w = parseInt(blockOn6A.dataset.w);
-            const h = parseInt(blockOn6A.dataset.h);
-            const position = findNearestPosition(0, 1, w, h);
-            if (position) {
-              for (let r = parseInt(blockOn6A.dataset.row); r < parseInt(blockOn6A.dataset.row) + h; r++) {
-                for (let c = parseInt(blockOn6A.dataset.col) - 1; c < parseInt(blockOn6A.dataset.col) + w - 1; c++) {
-                  gridStatus[r][c] = 'empty';
+            function renumberBlocks() {
+                placedBlocks.forEach((block, index) => {
+                    const numberLabel = block.querySelector(".block-number");
+                    numberLabel.textContent = index + 1;
+                });
+            }
+
+            let is115Mode = false;
+            document.getElementById("mode-115-btn").addEventListener("click", function () {
+                is115Mode = !is115Mode;
+                const cell6A = document.querySelector('.grid-cell[data-col="6"][data-row="A"]');
+                if (is115Mode) {
+                    cell6A.classList.add("disabled");
+                    cell6A.innerText = "🚫";
+                    gridStatus[0][5] = 'disabled';
+                    const blockOn6A = placedBlocks.find(block => {
+                        const col = parseInt(block.dataset.col);
+                        const row = parseInt(block.dataset.row);
+                        const w = parseInt(block.dataset.w);
+                        const h = parseInt(block.dataset.h);
+                        return row <= 0 && row + h - 1 >= 0 && col <= 6 && col + w - 1 >= 6;
+                    });
+                    if (blockOn6A) {
+                        const w = parseInt(blockOn6A.dataset.w);
+                        const h = parseInt(blockOn6A.dataset.h);
+                        const position = findNearestAvailablePosition(0, 1, w, h);
+                        if (position) {
+                            for (let r = parseInt(blockOn6A.dataset.row); r < parseInt(blockOn6A.dataset.row) + h; r++) {
+                                for (let c = parseInt(blockOn6A.dataset.col) - 1; c < parseInt(blockOn6A.dataset.col) + w - 1; c++) {
+                                    gridStatus[r][c] = 'empty';
+                                }
+                            }
+                            blockOn6A.dataset.col = position.col;
+                            blockOn6A.dataset.row = position.row;
+                            blockOn6A.style.left = ((position.col - 1) * cellSize) + "px";
+                            blockOn6A.style.top = (position.row * cellSize) + "px";
+                            for (let r = position.row; r < position.row + h; r++) {
+                                for (let c = position.col - 1; c < position.col + w - 1; c++) {
+                                    gridStatus[r][c] = 'occupied';
+                                }
+                            }
+                            saveState();
+                        } else {
+                            showToast("無法移動積木，請手動調整！");
+                        }
+                    }
+                } else {
+                    cell6A.classList.remove("disabled");
+                    cell6A.innerText = "";
+                    gridStatus[0][5] = 'empty';
                 }
-              }
-              blockOn6A.dataset.col = position.col;
-              blockOn6A.dataset.row = position.row;
-              blockOn6A.style.left = ((position.col - 1) * cellSize) + "px";
-              blockOn6A.style.top = (position.row * cellSize) + "px";
-              for (let r = position.row; r < position.row + h; r++) {
-                for (let c = position.col - 1; c < position.col + w - 1; c++) {
-                  gridStatus[r][c] = 'occupied';
+            });
+
+            function resetGrid() {
+                document.querySelectorAll(".placed-block").forEach(block => block.remove());
+                for (let r = 0; r < rows.length; r++) {
+                    for (let c = 0; c < cols; c++) {
+                        if (gridStatus[r][c] !== 'disabled') gridStatus[r][c] = 'empty';
+                    }
                 }
-              }
-              saveState();
-            } else {
-              showToast("無法移動積木，請手動調整！");
+                for (const key in stats) delete stats[key];
+                updateStats();
+                placedBlocks = [];
+                saveState();
             }
-          }
-        } else {
-          cell6A.classList.remove("disabled");
-          cell6A.innerText = "";
-          gridStatus[0][5] = 'empty';
-        }
-      });
 
-      function resetGrid() {
-        document.querySelectorAll(".placed-block").forEach(block => block.remove());
-        for (let r = 0; r < rows.length; r++) {
-          for (let c = 0; c < cols; c++) {
-            if (gridStatus[r][c] !== 'disabled') gridStatus[r][c] = 'empty';
-          }
-        }
-        for (const key in stats) delete stats[key];
-        updateStats();
-        saveState();
-      }
-
-      function showData() {
-        const blocks = document.querySelectorAll(".placed-block");
-        if (blocks.length === 0) {
-          showToast("放置區內沒有神像！");
-          return;
-        }
-        const modal = document.getElementById("modal");
-        const modalBody = document.getElementById("modal-body");
-        let htmlContent = "<ul>";
-        let index = 1;
-        blocks.forEach(block => {
-          htmlContent += `<li><strong>神像 ${index}:</strong> `;
-          let effects = [];
-          if (block.dataset.info1) effects.push(block.dataset.info1);
-          if (block.dataset.info2) effects.push(block.dataset.info2);
-          if (block.dataset.info3) effects.push(block.dataset.info3);
-          if (block.dataset.info4) effects.push(block.dataset.info4);
-          htmlContent += effects.join(", ") + "</li>";
-          index++;
-        });
-        htmlContent += "</ul>";
-        modalBody.innerHTML = htmlContent;
-        modal.style.display = "flex";
-      }
-
-      function autoArrange() {
-        const blocks = Array.from(document.querySelectorAll(".placed-block"));
-        if (blocks.length === 0) return;
-
-        for (let r = 0; r < rows.length; r++) {
-          for (let c = 0; c < cols; c++) {
-            if (gridStatus[r][c] !== 'disabled') gridStatus[r][c] = 'empty';
-          }
-        }
-
-        blocks.sort((a, b) => {
-          const areaA = parseInt(a.dataset.w) * parseInt(a.dataset.h);
-          const areaB = parseInt(b.dataset.w) * parseInt(b.dataset.h);
-          return areaB - areaA;
-        });
-
-        blocks.forEach(block => {
-          const w = parseInt(block.dataset.w);
-          const h = parseInt(block.dataset.h);
-          let placed = false;
-
-          for (let r = 0; r <= rows.length - h && !placed; r++) {
-            for (let c = 0; c <= cols - w && !placed; c++) {
-              if (canPlace(r, c + 1, w, h)) {
-                block.dataset.col = c + 1;
-                block.dataset.row = r;
-                block.style.left = (c * cellSize) + "px";
-                block.style.top = (r * cellSize) + "px";
-                for (let i = r; i < r + h; i++) {
-                  for (let j = c; j < c + w; j++) {
-                    gridStatus[i][j] = 'occupied';
-                  }
+            function showData() {
+                if (placedBlocks.length === 0) {
+                    showToast("放置區內沒有神像！");
+                    return;
                 }
-                placed = true;
-              }
+                const modal = document.getElementById("modal");
+                const modalBody = document.getElementById("modal-body");
+                let htmlContent = "<ul>";
+                placedBlocks.forEach(block => {
+                    const numberLabel = block.querySelector(".block-number");
+                    htmlContent += `<li><strong>神像 ${numberLabel.textContent}:</strong> `;
+                    let effects = [];
+                    if (block.dataset.info1) effects.push(block.dataset.info1);
+                    if (block.dataset.info2) effects.push(block.dataset.info2);
+                    if (block.dataset.info3) effects.push(block.dataset.info3);
+                    if (block.dataset.info4) effects.push(block.dataset.info4);
+                    htmlContent += effects.join(", ") + "</li>";
+                });
+                htmlContent += "</ul>";
+                modalBody.innerHTML = htmlContent;
+                modal.style.display = "flex";
             }
-          }
 
-          if (!placed) showToast("無法自動排列所有神像，請手動調整！");
+            function saveState() {
+                const blocks = placedBlocks.map(block => ({
+                    col: block.dataset.col,
+                    row: block.dataset.row,
+                    w: block.dataset.w,
+                    h: block.dataset.h,
+                    info1: block.dataset.info1,
+                    info2: block.dataset.info2,
+                    info3: block.dataset.info3,
+                    info4: block.dataset.info4,
+                    type: block.style.backgroundColor === "orange" ? "legend" : block.style.backgroundColor === "lightgreen" ? "minor" : "normal",
+                    blockId: block.querySelector('.block-number').textContent
+                }));
+                localStorage.setItem("placedBlocks", JSON.stringify(blocks));
+            }
+
+            function loadState() {
+                const blocks = JSON.parse(localStorage.getItem("placedBlocks") || "[]");
+                blocks.forEach(blockData => {
+                    const placed = document.createElement("div");
+                    placed.classList.add("placed-block");
+                    placed.style.width = (blockData.w * cellSize - 4) + "px";
+                    placed.style.height = (blockData.h * cellSize - 4) + "px";
+                    placed.style.left = ((blockData.col - 1) * cellSize) + "px";
+                    placed.style.top = (blockData.row * cellSize) + "px";
+                    placed.dataset.col = blockData.col;
+                    placed.dataset.row = blockData.row;
+                    placed.dataset.w = blockData.w;
+                    placed.dataset.h = blockData.h;
+                    placed.dataset.info1 = blockData.info1 || "";
+                    placed.dataset.info2 = blockData.info2 || "";
+                    placed.dataset.info3 = blockData.info3 || "";
+                    placed.dataset.info4 = blockData.info4 || "";
+                    placed.style.backgroundColor = blockData.type === "legend" ? "orange" : blockData.type === "minor" ? "lightgreen" : "lavender";
+
+                    const numberLabel = document.createElement("div");
+                    numberLabel.classList.add("block-number");
+                    numberLabel.textContent = placedBlocks.length + 1;
+                    placed.appendChild(numberLabel);
+
+                    for (let r = blockData.row; r < blockData.row + blockData.h; r++) {
+                        for (let c = blockData.col - 1; c < blockData.col + blockData.w - 1; c++) {
+                            gridStatus[r][c] = 'occupied';
+                        }
+                    }
+                    grid.appendChild(placed);
+                    addDraggable(placed);
+                    placedBlocks.push(placed);
+                });
+                updateStats();
+                renumberBlocks();
+            }
+
+            function showToast(message) {
+                const toast = document.getElementById("toast");
+                toast.textContent = message;
+                toast.style.display = "block";
+                setTimeout(() => toast.style.display = "none", 2000);
+            }
+
+            document.getElementById("reset-btn").addEventListener("click", resetGrid);
+            document.getElementById("show-data-btn").addEventListener("click", showData);
+            document.addEventListener("keydown", function(e) {
+                if (e.key === "r" || e.key === "R") resetGrid();
+                else if (e.key === "d" || e.key === "D") showData();
+            });
+            document.querySelector(".close-button").addEventListener("click", function() {
+                document.getElementById("modal").style.display = "none";
+            });
+            window.addEventListener("click", function(event) {
+                const modal = document.getElementById("modal");
+                if (event.target === modal) modal.style.display = "none";
+            });
+            window.addEventListener("load", loadState);
         });
-        saveState();
-      }
-
-      function saveState() {
-        const blocks = Array.from(document.querySelectorAll(".placed-block")).map(block => ({
-          col: block.dataset.col,
-          row: block.dataset.row,
-          w: block.dataset.w,
-          h: block.dataset.h,
-          info1: block.dataset.info1,
-          info2: block.dataset.info2,
-          info3: block.dataset.info3,
-          info4: block.dataset.info4,
-          type: block.style.backgroundColor === "orange" ? "legend" : block.style.backgroundColor === "lightgreen" ? "minor" : "normal"
-        }));
-        localStorage.setItem("placedBlocks", JSON.stringify(blocks));
-      }
-
-      function loadState() {
-        const blocks = JSON.parse(localStorage.getItem("placedBlocks") || "[]");
-        blocks.forEach(blockData => placeBlock(parseInt(blockData.row), parseInt(blockData.col), blockData));
-      }
-
-      function showToast(message) {
-        const toast = document.getElementById("toast");
-        toast.textContent = message;
-        toast.style.display = "block";
-        setTimeout(() => toast.style.display = "none", 2000);
-      }
-
-      document.getElementById("reset-btn").addEventListener("click", resetGrid);
-      document.getElementById("show-data-btn").addEventListener("click", showData);
-      document.getElementById("compact-btn").addEventListener("click", autoArrange);
-      document.addEventListener("keydown", function(e) {
-        if (e.key === "r" || e.key === "R") resetGrid();
-        else if (e.key === "d" || e.key === "D") showData();
-      });
-      document.querySelector(".close-button").addEventListener("click", function() {
-        document.getElementById("modal").style.display = "none";
-      });
-      window.addEventListener("click", function(event) {
-        const modal = document.getElementById("modal");
-        if (event.target === modal) modal.style.display = "none";
-      });
-      window.addEventListener("load", loadState);
-    });
-  </script>
+    </script>
 </body>
 </html>
