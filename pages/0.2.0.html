@@ -290,21 +290,1140 @@
         <ul>
             <li>隨著新增【Huntress 】及其他新遊戲機制，我們在被動技能樹中加入了相關的支援技能。獵手/遊俠區域新增了許多新的技能群組，部分現有的被動技能也進行了調整。如果你在被動樹上點選的節點位於變更區域，可能會被強制重置點數。</li>
             <li>新增的被動技能群組：致盲相關技能群組、Volatility相關技能群組、遠程與近戰相關技能群組、Hazards相關技能群組、Companion相關技能群組、存在範圍（Presence Radius）與光環（Aura）相關技能群組、招架（Parry）相關技能群組、戰旗（Banner）相關技能群組、流血（Bleeding）相關技能群組、荊棘（Thorns）相關技能群組、箭袋（Quiver）相關技能群組。</li>
-            <li>新增的主要天賦：【血色突襲】（Crimson Assault）位於遊俠與女獵手的起始位置東南方。使你造成的流血效果變為加劇（Aggravated），並將基礎流血持續時間設為1秒。【信賴親密】（Trusted Kinship）位於遊俠與女獵手的起始位置東南方。你可以擁有兩個不同類型的夥伴。你的夥伴獲得+1點防禦，每當你擁有該類型的2點防禦時。你自身的全域防禦降低30%。</li>
-            <li>移除的顯著天賦：以下天賦已被移除，無法再獲取，但已獲得的仍然有效：Break Focus、Hold Focus、Lasting Concoctions、No Escape、Pinned Down、Potent Concoctions</li>
-            <li>其他改動：移除12個珠寶插槽，已插入的珠寶可透過**/reclaimjewels** 指令取回。【雜技】（Acrobatics）天賦現在降低75%閃避值（原為70%）。【異能護盾】（Eldritch Battery）現在額外增加法力消耗加倍的效果。【巨人之血】（Giant's Blood）天賦現在將所有武術武器的屬性需求變為三倍（原本只影響斧、鎚與劍）。【貓之敏捷】（Catlike Agility）閃避值加成提高至40%（原為25%），當你最近使用過翻滾（Dodge Roll）時生效。【隼之技】（Falcon Technique）攻擊速度增幅改為每25敏捷+1%（原為每15敏捷+1%）。【自由行動】（Freedom of Movement）現在提供10%減少技能使用移動速度懲罰（原為30%閃避值提升）。【重甲緩衝】（Heavy Buffer）現在改為5%所受傷害無視能量護盾（原為10%最大生命值降低）。【破冰者】（Icebreaker）凍結門檻現在等於最大能量護盾的50%（原為100%）。【法力祝福】（Mana Blessing）不再增加5%最大法力，而是提供20%法力回復速度提升。【大師製箭】（Master Fletching）裝備箭袋的加成效果提高20%（原為30%），前置的小天賦加成降低。【全力突襲】（Pile On）現在改為30%護甲破壞減益效果提升。【博學多才】（Polymathy）屬性加成減少至7%（原為10%）。【純粹法力】（Raw Mana）最大法力加成減少至8%（原為12%）。【意識扭曲】（Spaghettification）現在提供+13所有屬性（原為7%屬性加成），並且混沌抗性-7%（原為-13%）。【撕裂大地】（Split the Earth）現在對於使用自己使用的鎚類技能，10%機率觸發餘震（Aftershocks），範圍1.8公尺。【無拘無束】（Unhindered）現在提供12%減少移動時技能使用懲罰（原為3%增加移動速度）。此群中的一個對你產生減速效果的小天賦也已更新，可減少 8% 的移動速度懲罰。【堅定意志】（Unwavering Stance）不再提供暈眩閾值翻倍，改為無法被輕度擊暈。【殺手本能】（Killer Instinct）群組內的小天賦，改為10%攻擊傷害提升。</li>
-            <li>光環效果相關小天賦調整：原提供8%光環效果提升的改為5%。原提供20%光環效果提升的天賦改為12%。</li>
+            <li>新增的主要天賦：
+    <ul>
+        <li>【血色突襲】（Crimson Assault）位於遊俠與女獵手的起始位置東南方。使你造成的流血效果變為加劇（Aggravated），並將基礎流血持續時間設為1秒。</li>
+        <li>【信賴親密】（Trusted Kinship）位於遊俠與女獵手的起始位置東南方。你可以擁有兩個不同類型的夥伴。你的夥伴獲得+1點防禦，每當你擁有該類型的2點防禦時。你自身的全域防禦降低30%。</li>
+    </ul>
+</li>
+<li>移除的顯著天賦：
+    <ul>
+        <li>以下天賦已被移除，無法再獲取，但已獲得的仍然有效：Break Focus、Hold Focus、Lasting Concoctions、No Escape、Pinned Down、Potent Concoctions</li>
+    </ul>
+</li>
+<li>其他改動：
+    <ul>
+        <li>移除12個珠寶插槽，已插入的珠寶可透過<strong>/reclaimjewels</strong> 指令取回。</li>
+        <li>【雜技】（Acrobatics）天賦現在降低75%閃避值（原為70%）。</li>
+        <li>【異能護盾】（Eldritch Battery）現在額外增加法力消耗加倍的效果。</li>
+        <li>【巨人之血】（Giant's Blood）天賦現在將所有武術武器的屬性需求變為三倍（原本只影響斧、鎚與劍）。</li>
+        <li>【貓之敏捷】（Catlike Agility）閃避值加成提高至40%（原為25%），當你最近使用過翻滾（Dodge Roll）時生效。</li>
+        <li>【隼之技】（Falcon Technique）攻擊速度增幅改為每25敏捷+1%（原為每15敏捷+1%）。</li>
+        <li>【自由行動】（Freedom of Movement）現在提供10%減少技能使用移動速度懲罰（原為30%閃避值提升）。</li>
+        <li>【重甲緩衝】（Heavy Buffer）現在改為5%所受傷害無視能量護盾（原為10%最大生命值降低）。</li>
+        <li>【破冰者】（Icebreaker）凍結門檻現在等於最大能量護盾的50%（原為100%）。</li>
+        <li>【法力祝福】（Mana Blessing）不再增加5%最大法力，而是提供20%法力回復速度提升。</li>
+        <li>【大師製箭】（Master Fletching）裝備箭袋的加成效果提高20%（原為30%），前置的小天賦加成降低。</li>
+        <li>【全力突襲】（Pile On）現在改為30%護甲破壞減益效果提升。</li>
+        <li>【博學多才】（Polymathy）屬性加成減少至7%（原為10%）。</li>
+        <li>【純粹法力】（Raw Mana）最大法力加成減少至8%（原為12%）。</li>
+        <li>【意識扭曲】（Spaghettification）現在提供+13所有屬性（原為7%屬性加成），並且混沌抗性-7%（原為-13%）。</li>
+        <li>【撕裂大地】（Split the Earth）現在對於使用自己使用的鎚類技能，10%機率觸發餘震（Aftershocks），範圍1.8公尺。</li>
+        <li>【無拘無束】（Unhindered）現在提供12%減少移動時技能使用懲罰（原為3%增加移動速度）。此群中的一個對你產生減速效果的小天賦也已更新，可減少 8% 的移動速度懲罰。</li>
+        <li>【堅定意志】（Unwavering Stance）不再提供暈眩閾值翻倍，改為無法被輕度擊暈。</li>
+        <li>【殺手本能】（Killer Instinct）群組內的小天賦，改為10%攻擊傷害提升。</li>
+    </ul>
+</li>
+<li>光環效果相關小天賦調整：
+    <ul>
+        <li>原提供8%光環效果提升的改為5%。</li>
+        <li>原提供20%光環效果提升的天賦改為12%。</li>
             <li>修正【鋼鐵之握】（Iron Grip）與【鋼鐵之意】（Iron Will） 的天賦描述，使其更加清晰。</li>
         </ul>
 
         <h2>技能改動</h2>
+<ul>
+    <li>許多技能的基礎傷害和/或每級成長傷害已重新平衡。這些變更範圍廣泛，因此不會在下方逐一列出。</li>
+    <li>所有攻擊、印記（Marks）和戰吼（Warcries）的魔力消耗降低，特別是在較高的寶石等級時變化較明顯。</li>
+    <li>召喚物的傷害與生命值成長進行調整。前期與之前相同，但高等級（特別是超過 20 級後）將比以前更低。</li>
+    <li>骷髏縱火者（Skeletal Arsonist）的 Explosive Demise 技能的生命值門檻已根據生命值成長調整。</li>
+    <li>骷髏牧師（Skeletal Cleric）的治療技能生命恢復量已相應調整。</li>
+
+    <li><strong>電弧（Arc）</strong>
         <ul>
-            <li>許多技能的基礎傷害和/或每級成長傷害已重新平衡。這些變更範圍廣泛，因此不會在下方逐一列出。</li>
-            <li>所有攻擊、印記（Marks）和戰吼（Warcries）的魔力消耗降低，特別是在較高的寶石等級時變化較明顯。</li>
-            <li>召喚物的傷害與生命值成長進行調整。前期與之前相同，但高等級（特別是超過 20 級後）將比以前更低。</li>
-            <li>骷髏縱火者（Skeletal Arsonist）的 Explosive Demise 技能的生命值門檻已根據生命值成長調整。</li>
-            <li>骷髏牧師（Skeletal Cleric）的治療技能生命恢復量已相應調整。</li>
+            <li>不再因剩餘的連鎖數量而造成額外傷害。</li>
+            <li>在寶石等級 5-20 時，連鎖次數改為 6-8 次（之前為 2-5 次）。</li>
+            <li>品質加成現在提供每個剩餘連鎖 0-2% 更多傷害（之前為 0-5%）。</li>
         </ul>
+    </li>
+
+    <li><strong>大法師（Archmage）</strong>
+        <ul>
+            <li>現在所有等級都會讓非引導（Non-Channelling）法術獲得額外 3% 閃電傷害，每 100 最大魔力提供（之前 14-20 級為 5-6%）。</li>
+            <li>非引導法術現在會額外消耗 6.7-6.1% 最大魔力（之前為 5.35-5.05%）。</li>
+            <li>品質加成現在提供 0-10% 保留減少，不再提供非引導法術的額外閃電傷害。</li>
+        </ul>
+    </li>
+
+    <li><strong>破甲者（Armour Breaker）</strong>
+        <ul>
+            <li>所有等級的破甲量降低約 20%。</li>
+        </ul>
+    </li>
+
+    <li><strong>火炮弩砲（Artillery Ballista）</strong>
+        <ul>
+            <li>物理傷害成長現在與震波圖騰（Shockwave Totem）和裂索弩砲（Ripwire Ballista）相匹配。</li>
+            <li>火炮爆炸現在轉換 100% 物理傷害為火焰傷害（之前為 90%）。</li>
+            <li>品質加成現在提供 0 到 -0.4 秒的圖騰基礎攻擊時間（之前是提升攻擊速度）。</li>
+        </ul>
+    </li>
+
+    <li><strong>先祖戰士圖騰（Ancestral Warrior Totem）</strong>
+        <ul>
+            <li>現在明確說明它使用雙手錘，以澄清其受益於你的錘類屬性。</li>
+            <li>品質加成改為 +0-2 秒圖騰持續時間（之前為 +0-0.4 秒）。</li>
+        </ul>
+    </li>
+
+    <li><strong>旗幟技能（Banner Skills）</strong>
+        <ul>
+            <li>現在擁有 4.5 米的光環半徑（之前為 4 米）。</li>
+            <li>現在正確地視為光環（Aura）技能。</li>
+        </ul>
+    </li>
+
+    <li><strong>彈幕（Barrage）</strong>
+        <ul>
+            <li>重複攻擊現在造成 50% 較少傷害（之前在寶石等級 5-20 為 23-15% 減少）。</li>
+            <li>重複攻擊的技能攻擊時間現在增加 560-410%，最多 30 秒冷卻時間（之前為 1440-1215%）。</li>
+            <li>品質加成現在使重複攻擊造成 0-5% 額外傷害（之前為 0-15%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>護障召喚（Barrier Invocation）</strong>
+        <ul>
+            <li>現在僅從敵人擊中護盾時獲取能量，而非所有擊中護盾的傷害。</li>
+            <li>現在當護盾因傷害損失時，每 10 點護盾獲得 1 點能量（之前為每 5 點獲得 1 點）。</li>
+        </ul>
+    </li>
+
+    <li><strong>流血藥劑（Bleeding Concoction）</strong>
+        <ul>
+            <li>流血傷害倍率提高 200%（之前為 100%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>閃現（Blink）</strong>
+        <ul>
+            <li>現在被歸類為旅行技能（Travel Skill）。</li>
+        </ul>
+    </li>
+
+    <li><strong>骨爆（Bone Blast）</strong>
+        <ul>
+            <li>現在擊中時有 40% 機率施加流血（之前為 20%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>骸骨風暴（Bonestorm）</strong>
+        <ul>
+            <li>碎片機制改為一般機制「穿刺」（Impale），類似《流亡黯道1》的穿刺機制。</li>
+            <li>當擊中敵人時觸發穿刺，下一次攻擊擊中該敵人時，將獲得等於 30% 的額外物理傷害（基於最初穿刺的物理傷害）。</li>
+            <li>骸骨風暴現在擊中時施加穿刺，而不是應用特殊的減益效果，並且穿刺傷害提高 200%。</li>
+        </ul>
+    </li>
+
+    <li><strong>召喚物死亡時施法（Cast on Minion Death）</strong>
+        <ul>
+            <li>現在只有永久型召喚物死亡時才能獲取能量。</li>
+            <li>如果召喚物技能等級遠低於區域等級，則該召喚物死亡時提供的能量減少。</li>
+            <li>20 級及以上的召喚物技能在終局內容中不會受到懲罰。</li>
+        </ul>
+    </li>
+
+    <li><strong>感電施法（Cast on Shock）</strong>
+        <ul>
+            <li>當技能擊中敵人並造成感電時，現在每點敵人的「能量強度」獲得 1 點能量（之前為 2 點）。</li>
+        </ul>
+    </li>
+
+    <li><strong>集束手榴彈（Cluster Grenade）</strong>
+        <ul>
+            <li>小型手榴彈爆炸半徑現在為 1.4 米（之前為 1.2 米）。</li>
+        </ul>
+    </li>
+
+    <li><strong>戰鬥狂熱（Combat Frenzy）</strong>
+        <ul>
+            <li>當你凍結、感電或定住（Pin）敵人時獲得狂怒球，最多每 5.3-4.1 秒獲得一次（寶石等級 8-20）（之前為 2.48-1.58 秒）。</li>
+        </ul>
+    </li>
+
+    <li><strong>藥劑技能（Concoction Skills）</strong>
+        <ul>
+            <li>現在需要空手武器組。</li>
+            <li>不再使用你的基礎空手傷害，而是只造成技能指定的攻擊傷害（類似於標記技能）。</li>
+            <li>每次施放現在消耗 5 層魔力藥劑充能（之前為 3 層）。</li>
+        </ul>
+    </li>
+
+    <li><strong>導電（Conductivity）</strong>
+        <ul>
+            <li>詛咒敵人時，降低敵人閃電抗性數值減少：7 級時降低 -25%（之前為 -32%），20 級時降低 -29%（之前為 -36%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>冷凝爆（Cold Snap）</strong>
+        <ul>
+            <li>爆炸範圍現在為 1.6 米（之前為 0.7 米）。</li>
+        </ul>
+    </li>
+
+    <li><strong>詛咒技能（Curse Skills）</strong>
+        <ul>
+            <li>現在施加詛咒的延遲為 1.5 秒（之前為 1 秒）。</li>
+        </ul>
+    </li>
+
+    <li><strong>黑暗塑像（Dark Effigy）</strong>
+        <ul>
+            <li>投射物暴擊率現在為 7%（之前為 11%）。</li>
+            <li>衝擊半徑增加至 1.2 米（之前為 0.8 米）。</li>
+            <li>品質加成現在提供 0-20% 機率，擊中時施加 2 秒的枯萎（Withered）效果（之前為 0-50%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>腐蝕（Decompose）（由屍行者（Corpsewade）獨特鞋子賦予）</strong>
+        <ul>
+            <li>毒雲現在基於屍體最大生命值的 10-19.5% 造成混沌傷害（之前為 30-39.5%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>絕望（Despair）</strong>
+        <ul>
+            <li>詛咒敵人時，降低敵人混沌抗性數值減少：9 級時降低 -20%（之前為 -32%），20 級時降低 -24%（之前為 -36%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>屍爆（Detonate Dead）</strong>
+        <ul>
+            <li>現在造成屍體最大生命值的 8.8-10.7% 物理傷害（寶石等級 7-20），並在 20 級後繼續成長（之前所有等級均為 20%）。</li>
+            <li>現在在 7 級時造成 41 到 61 點火焰傷害（之前為 28 到 43），20 級時造成 139 到 208 點火焰傷害（之前為 169 到 254）。</li>
+        </ul>
+    </li>
+
+    <li><strong>爆裂箭（Detonating Arrow）</strong>
+        <ul>
+            <li>爆炸半徑增加至 2.4 米（之前為 1.8 米）。</li>
+        </ul>
+    </li>
+
+    <li><strong>指揮召喚物（Direct Minions）</strong>
+        <ul>
+            <li>現在有 0.5 秒冷卻時間。</li>
+        </ul>
+    </li>
+
+    <li><strong>元素祈禱（Elemental Invocation）</strong>
+        <ul>
+            <li>當技能擊中敵人造成冰凍時，現在每點「能量強度」獲得 10 點能量（與之前相同）。</li>
+            <li>當技能擊中敵人造成點燃時，每點「能量強度」獲得 2 點能量（之前為 3），受敵人異常狀態門檻影響。</li>
+            <li>當技能擊中敵人造成感電時，每點「能量強度」獲得 1 點能量（之前為 3）。</li>
+        </ul>
+    </li>
+
+    <li><strong>逃脫射擊（Escape Shot）</strong>
+        <ul>
+            <li>冰凍累積（Freeze Buildup）現在隨寶石等級提升，在 20 級時最多提高 585%（之前所有等級固定 300%）。</li>
+            <li>品質現在提供 0-120% 更多冰凍累積（之前為 0-80%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>爆炸調製（Explosive Concoction）</strong>
+        <ul>
+            <li>現在造成的點燃強度提高 200%（之前為 100%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>爆炸手榴彈（Explosive Grenade）</strong>
+        <ul>
+            <li>冷卻時間增加至 7 秒（之前為 3 秒）。</li>
+            <li>爆炸半徑現在在 1-20 級時為 2-2.4 米（之前為 1.8-2.4 米）。</li>
+            <li>引爆時間增加至 3 秒（之前為 2.5 秒）。</li>
+        </ul>
+    </li>
+
+    <li><strong>冬眼（Eye of Winter）</strong>
+        <ul>
+            <li>當投射物經過元素地面效果時，現在獲得 75% 額外傷害（之前為 50%）。</li>
+            <li>技能描述修正，不再錯誤顯示投射物會將經過的地面效果應用到附近敵人身上。</li>
+        </ul>
+    </li>
+
+    <li><strong>落雷（Falling Thunder）</strong>
+        <ul>
+            <li>現在每消耗一個能量球（Power Charge），投射物傷害提高 50%（之前為 25%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>火球（Fireball）</strong>
+        <ul>
+            <li>現在不再無視「烈焰幽魂（Raging Spirit）」的數量上限。</li>
+            <li>次級火球投射物現在不再受額外投射物數量影響，主要是為了防止與「狂野裂片輔助（Wildshards Support）」搭配時影響遊戲效能。</li>
+        </ul>
+    </li>
+
+    <li><strong>火矢（Firebolt）</strong>
+        <ul>
+            <li>現在對於近距離目標，最大下傾角度受到限制，使得更難透過多次爆炸擊中敵人。</li>
+        </ul>
+    </li>
+
+    <li><strong>火焰風暴（Firestorm）</strong>
+        <ul>
+            <li>改良版火焰彈（Improved Bolts）現在的暴擊率為 7%（之前為 14%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>烈焰爆破（Flameblast）</strong>
+        <ul>
+            <li>現在有 15 秒冷卻時間（之前無冷卻）。</li>
+            <li>每個蓄力階段的額外傷害現在為 75%（之前為 200%）。</li>
+            <li>爆炸半徑現在每個階段增加 0.6 米（之前為 0.4 米）。</li>
+            <li>品質現在提供 0-20% 更多施法速度（之前為 0-10%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>火焰之牆（Flame Wall）</strong>
+        <ul>
+            <li>投射物穿過火焰牆時，在 20 級時額外提供 33 至 48 點火焰傷害（之前為 64 至 91）。</li>
+            <li>1 級時傷害未變動，但 20 級以上的傷害進一步降低。</li>
+        </ul>
+    </li>
+
+    <li><strong>易燃（Flammability）</strong>
+        <ul>
+            <li>詛咒敵人時，降低敵人火焰抗性的數值減少：7 級時降低 -25%（之前為 -32%），20 級時降低 -29%（之前為 -36%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>閃光手榴彈（Flash Grenade）</strong>
+        <ul>
+            <li>暈眩累積（Stun Buildup）提高 500%（之前為 400%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>破片彈（Fragmentation Rounds）</strong>
+        <ul>
+            <li>基礎爆炸半徑現在固定為 1.8 米（之前在 1-20 級為 1.4-1.6 米）。</li>
+        </ul>
+    </li>
+
+    <li><strong>冰凍裂片（Freezing Shards）</strong>
+        <ul>
+            <li>現在發射 5 個投射物（之前為 7 個）。</li>
+            <li>冰凍累積提高 100%（之前為 50%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>冰凍齊射（Freezing Salvo）</strong>
+        <ul>
+            <li>冰凍累積現在隨寶石等級提升，在 20 級時最多提高 107%（之前所有等級固定 50%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>冰霜炸彈（Frost Bomb）</strong>
+        <ul>
+            <li>脈衝與爆炸半徑現在在 1-20 級時為 2-2.7 米（之前為 1.7-2.4 米）。</li>
+        </ul>
+    </li>
+
+    <li><strong>冰霜之牆（Frost Wall）</strong>
+        <ul>
+            <li>現在冷卻時間為 5 秒（之前為 3 秒）。</li>
+        </ul>
+    </li>
+
+    <li><strong>冰封之地（Frozen Locus）</strong>
+        <ul>
+            <li>爆炸現在在 1 級時造成 6 到 9 點基礎長杖冰霜傷害（未變動），20 級時造成 141 到 212 點（之前為 89 到 134）。</li>
+            <li>20 級以上的傷害進一步調整。</li>
+            <li>爆炸半徑增加至 2.4 米（之前為 2 米）。</li>
+        </ul>
+    </li>
+
+    <li><strong>爆裂調製（Fulminating Concoction）</strong>
+        <ul>
+            <li>現在增加 200% 感電機率（之前為 100%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>電磁裂片（Galvanic Shards）</strong>
+        <ul>
+            <li>現在將 60% 物理傷害轉換為閃電傷害（之前為 40%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>毒氣箭、毒氣手榴彈與腐化（Gas Arrow, Gas Grenades, Decompose）</strong>
+        <ul>
+            <li>現在最多可存在 6 個毒雲。</li>
+        </ul>
+    </li>
+
+    <li><strong>冰霜閃電壁（Glacial Bolt Walls）</strong>
+        <ul>
+            <li>現在持續 8 秒（之前為 6 秒）。</li>
+        </ul>
+    </li>
+
+    <li><strong>冰川瀑布（Glacial Cascade）</strong>
+        <ul>
+            <li>品質現在提供 0-10% 物理傷害轉換為冰霜傷害（之前為 0-10% 增加攻擊速度）。</li>
+        </ul>
+    </li>
+
+    <li><strong>恐怖盛宴（Grim Feast）</strong>
+        <ul>
+            <li>現在無法在寶石切割選單中刻印。</li>
+            <li>現有的恐怖盛宴寶石已被停用，官方計畫在未來重新設計該技能。</li>
+        </ul>
+    </li>
+
+    <li><strong>眾神之錘（Hammer of the Gods）</strong>
+        <ul>
+            <li>現在不再有冷卻時間，但施放該技能需要 20 點「榮耀（Glory）」。</li>
+            <li>榮耀是一種通過重度暈眩敵人來累積的資源，獲得的榮耀量取決於被暈眩怪物的強度。</li>
+            <li>品質現在提供 +0-0.4 米衝擊半徑（之前為 1% 冷卻恢復速率）。</li>
+        </ul>
+    </li>
+
+    <li><strong>卓拉之手（Hand of Chayula）</strong>
+        <ul>
+            <li>現在明確說明它會觸發插槽內的標記技能（Marks），僅為描述更改，無實際影響。</li>
+        </ul>
+    </li>
+
+    <li><strong>異能光環（Herald Skills）</strong>
+        <ul>
+            <li>帶有攻擊命中的異能光環現在正確說明它們的攻擊無法被閃避，僅為描述更改，無實際影響。</li>
+        </ul>
+    </li>
+
+    <li><strong>灰燼異能光環（Herald of Ash）</strong>
+        <ul>
+            <li>爆炸半徑現在為 1.2 米（之前為 1 米）。</li>
+            <li>品質現在提供「額外 0-5% 的過量傷害計入點燃基礎傷害」，取代舊效果：「若過量傷害至少為敵人最大生命的 0-2%，則點燃周圍敵人」（該舊效果會導致負面影響）。</li>
+        </ul>
+    </li>
+
+    <li><strong>冰霜異能光環（Herald of Ice）</strong>
+        <ul>
+            <li>爆炸半徑現在為 1.6 米（之前為 1.8 米）。</li>
+        </ul>
+    </li>
+
+    <li><strong>瘟疫異能光環（Herald of Plague）</strong>
+        <ul>
+            <li>現在需要使用「武技武器（Martial Weapon）」，與其他異能光環技能的武器限制保持一致。</li>
+        </ul>
+    </li>
+
+    <li><strong>雷霆異能光環（Herald of Thunder）</strong>
+        <ul>
+            <li>閃電衝擊半徑現在為 1.4 米（之前為 1.6 米）。</li>
+        </ul>
+    </li>
+
+    <li><strong>咒爆（Hexblast）</strong>
+        <ul>
+            <li>現在只能引爆持續時間已過 50% 的詛咒，這意味著無限持續時間的詛咒無法被引爆。</li>
+            <li>當詛咒的持續時間達到 50% 時，詛咒球體將會有不同的視覺效果（若裝備了咒爆）。</li>
+            <li>爆炸半徑增加至 2 米（之前為 1.6 米）。</li>
+            <li>現在每次施放最多觸發 3 次爆炸（之前為 9 次）。</li>
+            <li>所有等級的傷害降低約 17%。</li>
+            <li>爆炸半徑進一步減少至 1.2 米（之前為 1.6 米）。</li>
+        </ul>
+    </li>
+
+    <li><strong>寒冷穿透（Hypothermia）</strong>
+        <ul>
+            <li>詛咒敵人時，降低敵人冰霜抗性的數值減少：7 級時降低 -25%（之前為 -32%），20 級時降低 -29%（之前為 -36%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>冰霜結晶（Ice Crystals）（來自冰霜閃電（Glacial Bolt）和冰霜之牆（Frost Wall））</strong>
+        <ul>
+            <li>20 級以上時生命成長下降，但 20 級以下時不變。</li>
+        </ul>
+    </li>
+
+    <li><strong>冰碎彈（Ice Shards）</strong>
+        <ul>
+            <li>爆炸半徑現在為 1.4 米（之前為 1.2 米）。</li>
+            <li>最大可存在 16 個碎片（之前為 12 個）。</li>
+            <li>每次裝填現在提供 16 發彈丸（之前為 12 發）。</li>
+            <li>存在至少 0.5 秒的碎片現在造成 700% 額外傷害（之前為 900%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>移動技能冷卻機制調整</strong>
+        <ul>
+            <li>如果玩家擁有多個具有冷卻時間的移動技能，現在它們的冷卻時間將共享。</li>
+        </ul>
+    </li>
+
+    <li><strong>改進雷球（Ball Lightning）</strong>
+        <ul>
+            <li>描述現在更清楚地說明雷球本體不會直接擊中敵人。</li>
+        </ul>
+    </li>
+
+    <li><strong>改進骷髏牧師（Skeletal Cleric）行為</strong>
+        <ul>
+            <li>減少它們衝向敵人並嘗試近戰攻擊的情況。</li>
+        </ul>
+    </li>
+
+    <li><strong>烈焰燃燒（Incinerate）</strong>
+        <ul>
+            <li>現在點燃持續時間減少 25%（之前為 50%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>跳躍攻擊（Leap Slam）</strong>
+        <ul>
+            <li>在寶石等級 7-20 時，暈眩累積效果提升 62-88%（之前為 26%-39%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>閃電導體（Lightning Conduit）</strong>
+        <ul>
+            <li>當消耗敵人的感電狀態時，現在會施放額外的閃電鏈。</li>
+            <li>這些閃電鏈將分配到範圍內的敵人，但如果範圍內目標較少，則可能多次擊中同一個敵人。</li>
+            <li>每 5% 感電效果，對敵人造成的擊中傷害現在為 20%（之前為 100%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>閃電箭（Lightning Bolt）</strong>
+        <ul>
+            <li>現在有 200% 額外感電機率（之前為 100%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>閃電引導箭（Lightning Rod Arrow）</strong>
+        <ul>
+            <li>現在在所有等級最多可被鏈接 6 次後消失（之前在等級 1-20 時為 8-14 次）。</li>
+            <li>箭矢現在需要 1 秒充能後才會釋放閃電爆發。</li>
+            <li>如果閃電箭鏈接到閃電引導箭，則閃電脈衝會立即觸發，而無需充能。</li>
+        </ul>
+    </li>
+
+    <li><strong>閃電傳送（Lightning Warp）</strong>
+        <ul>
+            <li>如果目標是雷球（Ball Lightning）投射物，則不再生成感電地面。</li>
+        </ul>
+    </li>
+
+    <li><strong>熔岩噴射（Magma Spray，來自熔岩屏障技能）</strong>
+        <ul>
+            <li>基礎火焰傷害現在為 6-10 至 151-226（之前為 4-7 至 234-351）。</li>
+            <li>現在每 15 點護甲提供 6-8 額外火焰傷害（之前在等級 1 為 2-4，在等級 20 為 3-6）。</li>
+            <li>傷害效果現在為 130-405%（之前為 120-490%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>磁能齊射（Magnetic Salvo）</strong>
+        <ul>
+            <li>等級 13-20 時，衝擊傷害變為 100-140%（之前為 89-125%）。</li>
+            <li>等級 13-20 時，爆炸傷害變為 155-218%（之前為 177-250%）。</li>
+            <li>現在在所有等級最多發射 8 枚飛彈（之前在等級 13-20 為 14-17 枚）。</li>
+            <li>品質現在提供 0-4 額外飛彈，而不是 0-20% 額外投射物傷害。</li>
+        </ul>
+    </li>
+
+    <li><strong>法力風暴（Mana Tempest）</strong>
+        <ul>
+            <li>品質現在提供額外的閃電傷害，而不是使技能效果在玩家離開風暴後仍持續生效（該舊效果實際上無效）。</li>
+        </ul>
+    </li>
+
+    <li><strong>毀滅咒言（Mantra of Destruction）</strong>
+        <ul>
+            <li>卓拉的紫焰（Purple Flames of Chayula）現在持續 8 秒（之前為 6 秒）。</li>
+        </ul>
+    </li>
+
+    <li><strong>惡意（Malice）</strong>
+        <ul>
+            <li>現在在 19 級時每 0.52 秒施加一次致命弱點（之前為 0.64 秒）。</li>
+        </ul>
+    </li>
+
+    <li><strong>熔岩爆裂（Molten Blast）</strong>
+        <ul>
+            <li>現在「雙持時，發射雙倍投射物，但攻擊速度減少 15%（之前為 30%）」。</li>
+        </ul>
+    </li>
+
+    <li><strong>痛苦獻祭（Pain Offering）</strong>
+        <ul>
+            <li>靈氣現在使召喚物獲得 28-58% 增加傷害（等級 5-20），不再是 29-44% 額外傷害。</li>
+            <li>靈氣現在使召喚物獲得 22-58% 增加攻擊與施法速度（等級 5-20，之前在所有等級均為 30%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>完美一擊（Perfect Strike）</strong>
+        <ul>
+            <li>現在不再總是觸發點燃。</li>
+            <li>現在的攻擊速度為基礎的 35%（之前為 45%）。</li>
+            <li>品質現在提供 0-20% 額外點燃機率（之前為 0-20% 點燃強度）。</li>
+            <li>現在攻擊時範圍更廣，使其更容易擊中站在玩家身邊的敵人。</li>
+        </ul>
+    </li>
+
+    <li><strong>永凍彈（Permafrost Bolts）</strong>
+        <ul>
+            <li>現在隨寶石等級提升凍結累積效果，在 20 級時最高可獲得 186% 額外凍結累積（之前為 80% 在所有等級）。</li>
+        </ul>
+    </li>
+
+    <li><strong>瘟疫承載者（Plague Bearer）</strong>
+        <ul>
+            <li>現在在寶石等級 4-20 時最多儲存 197-15257 毒素傷害（之前為 158-14989）。</li>
+            <li>20 級以上的傷害儲存量也有所降低。</li>
+        </ul>
+    </li>
+
+    <li><strong>劇毒調製（Poisonous Concoction）</strong>
+        <ul>
+            <li>現在造成 200% 中毒幅度（之前為 100%）。</li>
+            <li>現在基礎傷害為物理傷害，而不是混沌傷害。</li>
+        </ul>
+    </li>
+
+    <li><strong>褻瀆儀式（Profane Ritual）</strong>
+        <ul>
+            <li>現在的儀式半徑為 2.2 公尺（先前為 1.8 公尺）。</li>
+        </ul>
+    </li>
+
+    <li><strong>狂怒之靈（Raging Spirits）</strong>
+        <ul>
+            <li>靈體持續時間增加至 5 秒（先前為 4 秒），每次施放法術最多召喚 2 個靈體（先前為 5 個）。</li>
+            <li>技能描述已更新，以更清楚地說明觸發類法術無法召喚靈體。</li>
+            <li>優化：大量生成狂怒之靈的效能得到改善。如果同時召喚大量靈體，生成過程現在會在短時間內分散進行。</li>
+        </ul>
+    </li>
+
+    <li><strong>箭雨（Rain of Arrows）</strong>
+        <ul>
+            <li>箭矢落下的頻率現在受到投射物速度修正的影響。例如，提高投射物速度將使相同數量的箭矢在更短時間內落地。</li>
+        </ul>
+    </li>
+
+    <li><strong>死神的啟示（Reaper's Invocation）</strong>
+        <ul>
+            <li>現在擊殺敵人時，每點力量獲得 15 點能量（先前為 10 點）。</li>
+        </ul>
+    </li>
+
+    <li><strong>裂線弩砲（Ripwire Ballista）</strong>
+        <ul>
+            <li>現在固定敵人時，視作造成 400% 更多傷害（先前為 250%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>翻滾猛擊（Rolling Slam）</strong>
+        <ul>
+            <li>現在總攻擊時間增加 1 秒（先前為 1.5 秒），並相應調整魔力消耗。</li>
+        </ul>
+    </li>
+
+    <li><strong>獻祭（Sacrifice）</strong>
+        <ul>
+            <li>現在 14 級時的復活速度降低 66%（先前為 37%），20 級時降低 60%（先前為 31%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>震波戰吼（Seismic Cry）</strong>
+        <ul>
+            <li>不再擁有增加戰吼速度的效果。</li>
+        </ul>
+    </li>
+
+    <li><strong>碎片拾荒者（Shard Scavenger）</strong>
+        <ul>
+            <li>現在當消耗凍結、感電、燃燒或完全破甲時，會立即重新裝填弩箭，但每 7.3-6.1 秒（8-20 級）最多觸發一次（先前為 9.3-8.2 秒）。</li>
+        </ul>
+    </li>
+
+    <li><strong>破碎調劑（Shattering Concoction）</strong>
+        <ul>
+            <li>現在有 200% 更多的凍結累積效果（先前為 100%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>破碎掌（Shattering Palm）</strong>
+        <ul>
+            <li>爆炸現在會有額外的隨機延遲。</li>
+            <li>當破碎掌的傷害性打擊擊碎現有的冰碎片時，不會再對目標施加新的冰碎片。</li>
+        </ul>
+    </li>
+
+    <li><strong>盾牆（Shield Wall）</strong>
+        <ul>
+            <li>寶石等級 20 以上的護盾生命現在與寒冰水晶（例如霜牆）一致，此變更降低了總生命值。</li>
+            <li>爆炸半徑現在為 4 公尺（先前為 3 公尺）。</li>
+        </ul>
+    </li>
+
+    <li><strong>電鏈箭（Shockchain Arrows）</strong>
+        <ul>
+            <li>現在可鏈接最遠 8 公尺（先前為 4 公尺）。</li>
+        </ul>
+    </li>
+
+    <li><strong>汲取打擊（Siphoning Strike）</strong>
+        <ul>
+            <li>衝擊波半徑現在為 2 公尺（先前為 1.8 公尺）。</li>
+        </ul>
+    </li>
+
+    <li><strong>骸骨縱火者的爆炸終結（Skeletal Arsonist's Explosive Demise）</strong>
+        <ul>
+            <li>額外造成相當於僕從最大生命值 12% 的火焰傷害（先前為 15%）。</li>
+            <li>爆炸範圍增加至 2.4 公尺（先前為 2 公尺）。</li>
+        </ul>
+    </li>
+
+    <li><strong>骸骨蠻橫者（Skeletal Brute）</strong>
+        <ul>
+            <li>品質效果現在改為增加暈眩累積效果，不再提高最大生命值。</li>
+        </ul>
+    </li>
+
+    <li><strong>骸骨冰霜法師的冰爆（Skeletal Frost Mage's Ice Bomb）</strong>
+        <ul>
+            <li>冷卻時間為 8 秒（先前為 6 秒）。</li>
+        </ul>
+    </li>
+
+    <li><strong>骸骨劊子手（Skeletal Reavers）</strong>
+        <ul>
+            <li>當「命令：狂怒（Command: Enrage）」技能啟動時，能夠正確地擊中時獲得怒火。</li>
+        </ul>
+    </li>
+
+    <li><strong>骸骨風暴法師（Skeletal Storm Mage）</strong>
+        <ul>
+            <li>連鎖次數會隨僕從寶石等級提高，在等級 20 時最多可額外連鎖 4 次（先前所有等級皆為 +2 次）。</li>
+        </ul>
+    </li>
+
+    <li><strong>骸骨戰士（Skeletal Warrior）</strong>
+        <ul>
+            <li>現在無法在寶石切割選單中進行雕刻，因為該技能僅作為臨時替代方案。</li>
+            <li>現存的骸骨戰士技能寶石會轉換為骸骨狙擊手（Skeletal Sniper）寶石。</li>
+            <li>部分權杖提供的骸骨戰士技能現在除了能免費召喚兩個骸骨戰士，還可通過預留靈魂來額外召喚骸骨。</li>
+        </ul>
+    </li>
+
+    <li><strong>狙擊（Snipe）</strong>
+        <ul>
+            <li>攻擊速度倍率與魔力消耗已調整，使攻擊時間與完美擊發的時間一致。</li>
+            <li>僅改善技能描述，功能保持不變。</li>
+        </ul>
+    </li>
+
+    <li><strong>風暴波動（Storm Wave）</strong>
+        <ul>
+            <li>現在擁有 100% 額外感電機率。</li>
+        </ul>
+    </li>
+
+    <li><strong>靈魂獻祭（Soul Offering）</strong>
+        <ul>
+            <li>在寶石等級 13-20 時，現在提供 56-77% 增加法術傷害（先前為 32-39% 更多法術傷害）。</li>
+        </ul>
+    </li>
+
+    <li><strong>電光火花（Spark）</strong>
+        <ul>
+            <li>在寶石等級 1-20 時發射 4-9 顆投射物（先前為 6-14 顆）。</li>
+            <li>不再擁有 0-19% 增加投射物速度。</li>
+            <li>品質效果現在提供 0-30% 增加投射物速度（先前為 +0-4 顆額外投射物）。</li>
+        </ul>
+    </li>
+
+    <li><strong>旋風箭雨（Spiral Volley）</strong>
+        <ul>
+            <li>現在每消耗一個狂怒球（Frenzy Charge）會使傷害提高 30%（先前為 20%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>震波斬（Sunder）</strong>
+        <ul>
+            <li>總攻擊時間增加 +1 秒（先前為 +1.4 秒）。</li>
+            <li>魔力消耗已相應調整。</li>
+        </ul>
+    </li>
+
+    <li><strong>暴衝（Stampede）</strong>
+        <ul>
+            <li>品質效果現在提供 0-20% 機率造成餘震（Aftershock）（先前為 0-30%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>風暴爆裂箭（Stormblast Bolts）</strong>
+        <ul>
+            <li>現在不再有 30% 較慢的裝填速度。</li>
+        </ul>
+    </li>
+
+    <li><strong>風暴召喚箭（Stormcaller Arrow）</strong>
+        <ul>
+            <li>其閃電箭現在擁有 500% 額外感電機率（先前為 800%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>天災鐘（Tempest Bell）</strong>
+        <ul>
+            <li>衝擊傷害在寶石等級 3-20 時為 146-490% 攻擊傷害（先前為 145-316%）。</li>
+            <li>現在需要 10 層連擊才能使用（先前為 4 層），且鐘在所有寶石等級下受到 10 次擊中後會被摧毀（先前為寶石等級 3-20 時 10-19 次）。</li>
+            <li>品質效果現在使鐘在額外承受 0-2 次擊中後摧毀（先前為 0-6 次）。</li>
+        </ul>
+    </li>
+
+    <li><strong>天災鐘的衝擊波（Tempest Bell Shockwave）</strong>
+        <ul>
+            <li>不再擁有「每種影響鐘的元素異常效果可使傷害提高 30%」或「60% 物理傷害轉換為對應的元素異常屬性傷害」。</li>
+            <li>現在改為「獲得等同於 30% 物理傷害的額外元素傷害，類型與鐘上的元素異常匹配」。</li>
+            <li>傷害現在為寶石等級 3-20 時的 60-132% 攻擊傷害（先前為 96-211%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>天災鐘（Tempest Bell）（其他調整）</strong>
+        <ul>
+            <li>現在每 250 毫秒最多觸發一次衝擊波，此數值為嚴格限制，不受冷卻回復影響。</li>
+            <li>現在所有不同的天災鐘技能共享擺放上限。</li>
+        </ul>
+    </li>
+
+    <li><strong>異能先鋒技能（Herald Skills）</strong>
+        <ul>
+            <li>擊殺效果不再能夠觸發自身的擊殺效果。</li>
+        </ul>
+    </li>
+
+    <li><strong>龍捲射擊（Tornado Shot）</strong>
+        <ul>
+            <li>現在分裂效果也適用於投擲的長矛。</li>
+        </ul>
+    </li>
+
+    <li><strong>劇毒滋生（Toxic Growth）</strong>
+        <ul>
+            <li>需要更多儲存的中毒才能達到最大爆炸範圍與傷害，且需要更多儲存的中毒才能加速消耗。</li>
+            <li>膿皰持續時間現在為 15 秒（先前為 6 秒）。</li>
+            <li>儲存的中毒現在最多可額外增加 1.5 公尺爆炸範圍（先前為 1 公尺）。</li>
+            <li>現在發射 6 支箭矢（先前為 8 支）。</li>
+            <li>品質效果現在提供「+0-2 發射箭矢與 +0-2 顆膿皰」（先前為「+0-3 顆投射物」）。</li>
+            <li>現在最多只能存在 6 顆膿皰。</li>
+        </ul>
+    </li>
+
+    <li><strong>掘墓（Unearth）</strong>
+        <ul>
+            <li>骸骨構造體（Bone Construct）的持續時間現在為 15 秒（先前為 12 秒）。</li>
+            <li>品質效果現在提供「+0-5 秒骸骨構造體持續時間」（先前為 +0-4 秒）。</li>
+        </ul>
+    </li>
+
+    <li><strong>躍擊衝鋒（Vaulting Impact）</strong>
+        <ul>
+            <li>在寶石等級 3-20 時，現在提供 54-88% 額外暈眩累積效果（先前所有等級皆為 30%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>藤箭（Vine Arrow）</strong>
+        <ul>
+            <li>現在最多只能存在 1 顆植物（可透過豐收支援（Overabundance Support）提升至 2 顆）。</li>
+            <li>植物的持續時間現在為 8 秒（先前為 6 秒）。</li>
+        </ul>
+    </li>
+
+    <li><strong>火山裂隙（Volcanic Fissure）</strong>
+        <ul>
+            <li>現在最多只能同時存在 8 個裂隙，且餘震不再引發其他裂隙。</li>
+        </ul>
+    </li>
+
+    <li><strong>伏特手雷（Voltaic Grenade）</strong>
+        <ul>
+            <li>冷卻時間現在為 6 秒（先前為 3 秒）。</li>
+            <li>爆炸範圍在寶石等級 1-20 時為 2-2.4 公尺（先前為 1.8-2.4 公尺）。</li>
+            <li>引爆時間現在為 2.5 秒（先前為 1.2 秒）。</li>
+        </ul>
+    </li>
+
+    <li><strong>霜浪（Wave of Frost）</strong>
+        <ul>
+            <li>在寶石等級 7-20 時，現在提供 390-585% 額外冰凍累積效果（先前所有等級皆為 275%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>風舞者（Wind Dancer）</strong>
+        <ul>
+            <li>現在所有寶石等級下，每層提供 10% 額外閃避值（先前為寶石等級 4-20 時 15-19%）。</li>
+            <li>現在在寶石等級 4-20 時，每 1.44 到 1.12 秒獲得 1 層風舞者層數（先前為 1.5 到 1.3 秒）。</li>
+            <li>疾風勁力（Gale Force）現在在寶石等級 4-20 時，造成 53-163% 攻擊傷害（先前為 40-125%）。</li>
+            <li>疾風勁力現在使用主手武器的暴擊率，不再具有 5% 固定暴擊率。</li>
+            <li>風舞者層數現在會在受到敵人擊中時消耗，而非受到近戰攻擊時消耗。</li>
+            <li>當受到攻擊時，風舞者的層數累積計時器不會被打斷。</li>
+            <li>品質效果現在提供 +0 至 0.4 公尺的爆炸範圍（先前為 +0-1 最大層數）。</li>
+        </ul>
+    </li>
+
+    <li><strong>凋零之觸（Withering Presence）</strong>
+        <ul>
+            <li>凋零持續時間現在為 6 秒（先前為 4 秒）。</li>
+            <li>現在在寶石等級 4-20 時，每 1.74-1.42 秒對範圍內敵人施加一次凋零（先前為 2.78-1.58 秒）。</li>
+        </ul>
+    </li>
+
+    <li><strong>擴展地面效果技能（Expanding Ground Effect Skills）</strong>
+        <ul>
+            <li>這類技能先前錯誤地隨時間擴展半徑，而非影響範圍。現在仍會擴展半徑，但數值已調整：</li>
+            <li>毒雲（Poison Cloud）（瓦斯箭、瓦斯手雷、腐化術）現在每秒獲得 20% 額外半徑，最多提升至 80%（先前為 50%，最多 200%）。</li>
+            <li>骸骨狙擊手（Skeletal Sniper）的毒雲現在每秒獲得 20% 額外半徑，最多提升至 80%（先前為 40%，最多 200%）。</li>
+            <li>凍結領域（Frozen Locus）的冰冷地面現在每秒獲得 30% 額外半徑，最多提升至 150%（先前為 40%，最多 240%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>紀律與純淨光環（Discipline and Purity Auras）</strong>
+        <ul>
+            <li>現在同時影響持有權杖的玩家及其盟友。</li>
+        </ul>
+    </li>
+
+    <li><strong>手雷技能（Grenade Skills）</strong>
+        <ul>
+            <li>除集束手雷（Cluster Grenade）外，擁有多顆投射物的手雷技能散射範圍降低 40%。</li>
+        </ul>
+    </li>
+
+    <li><strong>舉盾衝擊（Raise Shield Bash）</strong>
+        <ul>
+            <li>現在在格擋後立即施放舉盾技能會對前方敵人造成傷害與暈眩，如果使用塔盾（Tower Shield），還會使敵人眩暈。</li>
+            <li>現在在成功格擋技能後立即釋放舉盾技能，會對前方敵人造成傷害並使其暈眩。</li>
+            <li>若使用塔盾（Tower Shield），還會使敵人陷入遲鈍狀態。</li>
+        </ul>
+    </li>
+
+    <li><strong>新增寶石標籤 - 條件式（Conditional）</strong>
+        <ul>
+            <li>此標籤代表必須滿足特定條件才能施放的技能，例如連擊（Combo）技能。</li>
+        </ul>
+    </li>
+
+    <li><strong>技能消耗調整（Skill Cost Adjustments）</strong>
+        <ul>
+            <li>影響技能消耗的數值加減修飾詞現在會在支援寶石的消耗倍率計算之前套用。</li>
+            <li>影響技能總消耗的數值加減修飾詞則保持不變，仍會在所有其他修正後生效。</li>
+        </ul>
+    </li>
+</ul>
+
+<h2>輔助寶石改動</h2>
+<ul>
+    <li><strong>星界投影 (Astral Projection)</strong>
+        <ul>
+            <li>現在使被支援的技能範圍效果減少 25%（先前為 35%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>殘暴 (Brutality)</strong>
+        <ul>
+            <li>現在使被支援的技能造成 25% 更多物理傷害（先前為 35%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>燃燒銘文 (Burning Inscription)</strong>
+        <ul>
+            <li>現在有 110% 的消耗倍率（先前為 100%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>食人 (Cannibalism)</strong>
+        <ul>
+            <li>現在當被支援的技能啟動時，擊殺敵人會恢復 2% 生命（先前為 4%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>電容器 (Capacitor)</strong>
+        <ul>
+            <li>現在有 130% 的消耗倍率（先前為 100%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>近身戰 (Close Combat)</strong>
+        <ul>
+            <li>現在有 120% 的消耗倍率（先前為 140%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>深思施法 (Considered Casting)</strong>
+        <ul>
+            <li>現在有 115% 的消耗倍率（先前為 100%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>受控破壞與擷取支援 (Controlled Destruction and Extraction Supports)</strong>
+        <ul>
+            <li>現在無法插入具有次要傷害擊中但沒有法術傷害擊中的技能。</li>
+            <li>這些支援寶石原本無法影響這類技能的傷害，先前只是錯誤地可插入。</li>
+        </ul>
+    </li>
+
+    <li><strong>漸強 (Crescendo)</strong>
+        <ul>
+            <li>現在有 120% 的消耗倍率（先前為 100%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>終結 (Culmination)</strong>
+        <ul>
+            <li>現在使被支援的技能每層連擊造成 3% 更多傷害（先前為 2%）。</li>
+            <li>若 4 秒內沒有獲得連擊，則失去所有連擊（先前為 3 秒）。</li>
+        </ul>
+    </li>
+
+    <li><strong>弱點剋制 (Exploit Weakness)</strong>
+        <ul>
+            <li>現在使被支援的技能消耗完全破碎的敵人護甲，來造成 40% 更多傷害（先前為 50%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>餵食狂熱與肉盾 (Feeding Frenzy and Meat Shield)</strong>
+        <ul>
+            <li>現在無法支援無法被傷害的召喚物。</li>
+        </ul>
+    </li>
+
+    <li><strong>戰拳 (Fist of War)</strong>
+        <ul>
+            <li>現在有 150% 的消耗倍率（先前為 140%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>沙漏 (Hourglass)</strong>
+        <ul>
+            <li>現在使被支援的技能造成 30% 更多傷害（先前為 40%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>衝擊震波 (Impact Shockwave)</strong>
+        <ul>
+            <li>現在使被支援的技能在對敵人造成重度暈眩時觸發餘震，對 1.8 公尺內的敵人造成相同傷害（先前為 2.0 公尺）。</li>
+        </ul>
+    </li>
+
+    <li><strong>推動力 (Impetus)</strong>
+        <ul>
+            <li>現在有 115% 的消耗倍率（先前為 100%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>封鎖 (Lockdown)</strong>
+        <ul>
+            <li>現在有 100% 的消耗倍率（先前為 120%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>放大效果 (Magnified Effect)</strong>
+        <ul>
+            <li>現在有 130% 的消耗倍率（先前為 120%），並且使被支援的技能範圍效果增加 30%（先前為 40%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>法力耀焰 (Mana Flare)</strong>
+        <ul>
+            <li>現在耀焰半徑為 2 公尺（先前為 1.6 公尺），並且消耗當前法力的 25% 來造成等量的火焰傷害（先前為 20%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>肉盾 (Meat Shield Support)</strong>
+        <ul>
+            <li>現在改為使被支援的技能召喚的僕從承受 35% 較少傷害，不再提供 50% 更多最大生命。</li>
+        </ul>
+    </li>
+
+    <li><strong>機動支援 (Mobility Support)</strong>
+        <ul>
+            <li>現在使用被支援的技能時，移動速度的懲罰減少 25%（先前為 30%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>神經超載 (Neural Overload)</strong>
+        <ul>
+            <li>現在有 100% 的消耗倍率（先前為 120%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>超載 (Overcharge Support)</strong>
+        <ul>
+            <li>不再使被支援的技能造成較少感電持續時間，現在改為「被支援技能造成的感電會反射回自身」。</li>
+        </ul>
+    </li>
+
+    <li><strong>潛能 (Potential)</strong>
+        <ul>
+            <li>現在當消耗暴擊球時，使被支援的技能額外獲得 40% 的暴擊機率（先前為 30%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>散射射擊支援 (Scattershot Support)</strong>
+        <ul>
+            <li>現在使被支援的技能造成 35% 較少傷害（先前為 20%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>感電汲取 (Shock Siphon)</strong>
+        <ul>
+            <li>現在無法在寶石切割選單中進行刻印，但現有版本仍可正常運作。</li>
+        </ul>
+    </li>
+
+    <li><strong>法術回響支援 (Spell Echo Support)</strong>
+        <ul>
+            <li>現在無法支援觸發類技能。</li>
+        </ul>
+    </li>
+
+    <li><strong>螺旋箭雨 (Spiral Volley)</strong>
+        <ul>
+            <li>現在第一支箭會直接向前射出，而不是最後一支箭。</li>
+        </ul>
+    </li>
+
+    <li><strong>剝除 (Strip Away)</strong>
+        <ul>
+            <li>現在使被支援的技能施加的曝露效果提升 20%（先前為 30%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>不屈 (Unbreakable)</strong>
+        <ul>
+            <li>現在對輕度暈眩與重度暈眩有不同的暈眩門檻倍率。</li>
+        </ul>
+    </li>
+
+    <li><strong>機會之窗 (Window of Opportunity)</strong>
+        <ul>
+            <li>現在當完美時機釋放時，使被支援的技能造成 35% 更多傷害（先前為 50%）。</li>
+            <li>完美時機的觸發窗口縮短 35%（先前為 25%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>枯萎之觸 (Withering Touch)</strong>
+        <ul>
+            <li>現在根據擊中所造成的混沌傷害來決定施加枯萎的機率，而不是固定施加 1 層枯萎。</li>
+            <li>如果枯萎機率超過 100%，則有機會在單次擊中時施加多層枯萎。</li>
+        </ul>
+    </li>
+</ul>
+
 
         <h2>傳奇</h2>
         <ul>
