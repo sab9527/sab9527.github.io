@@ -567,12 +567,12 @@
 
         <div class="section-container">
     <div class="section-title" id="skill-changes">技能改動</div>
-    <ul>
-    <li>許多技能的基礎傷害和/或每級成長傷害已重新平衡。這些變更範圍廣泛，因此不會在下方逐一列出。</li>
-    <li>所有攻擊、印記（Marks）和戰吼（Warcries）的魔力消耗降低，特別是在較高的寶石等級時變化較明顯。</li>
-    <li>召喚物的傷害與生命值成長進行調整。前期與之前相同，但高等級（特別是超過 20 級後）將比以前更低。</li>
-    <li>骷髏縱火者（Skeletal Arsonist）的 Explosive Demise 技能的生命值門檻已根據生命值成長調整。</li>
-    <li>骷髏牧師（Skeletal Cleric）的治療技能生命恢復量已相應調整。</li>
+    
+    <li>許多技能的基礎傷害和/或每級成長傷害已重新平衡。這些變更範圍廣泛，因此不會在下方逐一列出。
+    所有攻擊、印記（Marks）和戰吼（Warcries）的魔力消耗降低，特別是在較高的寶石等級時變化較明顯
+    召喚物的傷害與生命值成長進行調整。前期與之前相同，但高等級（特別是超過 20 級後）將比以前更低。
+    骷髏縱火者（Skeletal Arsonist）的 Explosive Demise 技能的生命值門檻已根據生命值成長調整。
+    骷髏牧師（Skeletal Cleric）的治療技能生命恢復量已相應調整。</li>
 
     <li><strong>電弧（Arc）</strong>
         <ul>
@@ -1004,7 +1004,7 @@
         </ul>
     </li>
 
-    <li><strong>骷髏牧師（Skeletal Cleric）行為</strong>
+    <li><strong>骷髏牧師（Skeletal Cleric）</strong>
         <ul>
             <li>減少它們衝向敵人並嘗試近戰攻擊的情況。</li>
         </ul>
@@ -1446,7 +1446,7 @@
         </ul>
     </li>
 
-    <li><strong>新增寶石標籤 - 條件式（Conditional）</strong>
+    <li><strong>新增寶石標籤 - 條件式（Conditional）.</strong>
         <ul>
             <li>此標籤代表必須滿足特定條件才能施放的技能，例如連擊（Combo）技能。</li>
         </ul>
@@ -1464,7 +1464,7 @@
 <div class="section-container">
     <div class="section-title" id="support-changes">輔助寶石改動</div>
     <ul>
-    <li><strong>星界投影 (Astral Projection)</strong>
+    <li><strong>星空投影 (Astral Projection)</strong>
         <ul>
             <li>現在使被支援的技能範圍效果減少 25%（先前為 35%）。</li>
         </ul>
@@ -1510,6 +1510,7 @@
         <ul>
             <li>現在無法插入具有次要傷害擊中但沒有法術傷害擊中的技能。</li>
             <li>這些支援寶石原本無法影響這類技能的傷害，先前只是錯誤地可插入。</li>
+            <li>兩個寶石在一起所以無法按名字連結</li>
         </ul>
     </li>
 
@@ -1535,6 +1536,7 @@
     <li><strong>豢養狂熱與肉盾 (Feeding Frenzy and Meat Shield)</strong>
         <ul>
             <li>現在無法支援無法被傷害的召喚物。</li>
+            <li>兩個寶石在一起所以無法按名字連結</li>
         </ul>
     </li>
 
@@ -2013,6 +2015,55 @@
             <li>控制器技能自動瞄準: 使用控制器時，Detonating Arrow 和 Freezing Salvo 會自動瞄準敵人，無需手動瞄準。</li>
             <li>造型界面重新設計: 現在可以在 Cosmetics 面板中打開聊天，讓你可以在全球頻道中展示你的 Pilfering Ring。</li>
         </ul>
+        <script>
+            // 添加CSS樣式
+            const style = document.createElement('style');
+            style.textContent = `
+                .legendary-name, .support-name, .skill-name {
+                    color: #FFA500;
+                    text-decoration: none;
+                }
+                .legendary-name:hover, .support-name:hover, .skill-name:hover {
+                    text-decoration: underline;
+                }
+            `;
+            document.head.appendChild(style);
+        
+            // 獲取所有相關區塊
+            const legendarySection = document.querySelector('#legendary-changes').parentElement;
+            const supportSection = document.querySelector('#support-changes').parentElement;
+            const skillSection = document.querySelector('#skill-changes').parentElement;
+            
+            // 處理所有名稱
+            [legendarySection, supportSection, skillSection].forEach(section => {
+                if (!section) return;
+                
+                section.querySelectorAll('strong').forEach(strong => {
+                    const text = strong.textContent;
+                    // 提取中文名稱和英文名稱
+                    const match = text.match(/^([^（]+)(?:（(.+)）)?$/);
+                    if (match) {
+                        const chineseName = match[1].trim();
+                        const englishName = match[2] ? match[2].trim() : '';
+                        
+                        // 排除不需要連結的標題
+                        if (!chineseName.includes('改動') && !chineseName.includes('調整')) {
+                            // 創建新的連結元素
+                            const link = document.createElement('a');
+                            link.href = `https://poe2db.tw/tw/search?q=${encodeURIComponent(chineseName)}`;
+                            link.className = section === legendarySection ? 'legendary-name' : 
+                                           section === supportSection ? 'support-name' : 'skill-name';
+                            link.target = '_blank';
+                            link.textContent = text;
+                            
+                            // 替換原有內容
+                            strong.textContent = '';
+                            strong.appendChild(link);
+                        }
+                    }
+                });
+            });
+        </script> 
     </div>
 </body>
 </html>
