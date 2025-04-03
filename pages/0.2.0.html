@@ -266,7 +266,44 @@
                 opacity: 1;
             }
 
+            .poe2-countdown {
+            --countdown-image: url('https://web.poecdn.com/protected/image/poe2/home/countdown.webp');
+            min-width: 320px;
+            position: relative;
+            max-width: 1040px;
+            aspect-ratio: 7.027027027;
+            margin: 0 auto;
+            font-family: "Optimus", Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.8);
+            border: 1px solid #837053;
+        }
+
+        .countdown-container {
+            display: flex;
+            gap: 40px;
+        }
+
+        .time-block {
+            text-align: center;
+        }
+
+        .time-number {
+            font-size: 52px;
+            color: #dfcf99;
+            text-shadow: 0 0 10px rgba(223, 207, 153, 0.5);
+        }
+
+        .time-label {
+            font-size: 24px;
+            color: #837053;
+            margin-top: 8px;
+        }
+
                       /* ... 其他樣式 ... */
+
          </style>
     </head>    
 <body style="background-color: #CCE8CF; color: #3A3A3A;">
@@ -277,6 +314,26 @@
         <div class="header-image">
             <img src="https://web.poecdn.com/protected/image/poe2/announcements/dawn-of-the-hunt/logo.webp?key=I-bauHZodR6kzQX9UZbfOQ" alt="Path of Exile 2" style="width: 100%; max-width: 1200px; height: auto; border-radius: 8px; margin: 20px auto; display: block; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
         </div>
+        <div class="poe2-countdown">
+            <div class="countdown-container">
+                <div class="time-block">
+                    <div class="time-number" id="days">00</div>
+                    <div class="time-label">天</div>
+                </div>
+                <div class="time-block">
+                    <div class="time-number" id="hours">00</div>
+                    <div class="time-label">小時</div>
+                </div>
+                <div class="time-block">
+                    <div class="time-number" id="minutes">00</div>
+                    <div class="time-label">分鐘</div>
+                </div>
+                <div class="time-block">
+                    <div class="time-number" id="seconds">00</div>
+                    <div class="time-label">秒</div>
+                </div>
+            </div>
+        </div>       
 
       <div class="container">
                <div class="toc">
@@ -2153,6 +2210,25 @@
                 });
             });
 
+            function updateCountdown() {
+            // 設置目標日期（修改這裡的日期來設定你的目標時間）
+            const targetDate = new Date('2025-04-05T03:00:00');
+            const now = new Date();
+            const diff = targetDate - now;
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
         </script> 
     </div>
 </body>
