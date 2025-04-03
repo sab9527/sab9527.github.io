@@ -8,24 +8,27 @@
         <style>
             body {
                 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                background-color: #f9f9f9;
+                background-color: hsl(144, 6%, 83%);
                 color: #333;
                 line-height: 1.8;
                 margin: 0;
                 padding: 0;
             }
-    
+            li {
+               margin-bottom: 10px;
+               color: #e6e6e6; /* 新增這行修改列表文字顏色 */
+            }
             .container {
                 max-width: 1200px;
                 margin: 20px auto;
-                background-color: #ffffff;
+                background-color: #2c4644;
                 padding: 30px;
                 border-radius: 8px;
                 box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             }
     
             h2 {
-                color: #2c3e50;
+                color: #becbd8;
                 border-bottom: 3px solid #3498db;
                 padding-bottom: 10px;
                 margin-top: 40px;
@@ -256,15 +259,15 @@
         <h2>一般改進</h2>
         <ul>
             <li>為了解決 NVIDIA 顯卡 在最新驅動程式上的常見遊戲崩潰問題，現在遊戲可以從 「設備移除（Device Removed）」事件中恢復。</li>
-            <li>城鎮與儲藏箱調整: 重鑄台（Reforging Benches） 位置已重新調整，使其更加方便使用。個人儲藏箱與公會儲藏箱 之間的距離稍微加大，以減少誤點的情況。</li>
-            <li>戰利品與箱子: Strongboxes現在可以出現在 第一章的某些區域。在 混沌試煉（Trials of Chaos） 的 寶藏房 中新增了倉庫。</li>
-            <li>技能與圖像改進: 許多 火焰技能 現在會在地圖上 燒焦草地。召喚與復活僕從（Minions） 的效能進一步優化，使其更加流暢。</li>
+            <li>城鎮與儲藏箱調整: 重鑄台位置已重新調整，使其更加方便使用。個人倉庫與公會倉庫 之間的距離稍微加大，以減少誤點的情況。</li>
+            <li>戰利品與箱子: Strongboxes現在可以出現在 第一章的某些區域。在 混沌試煉的 寶藏房 中新增了倉庫。</li>
+            <li>技能與圖像改進: 許多 火焰技能 現在會在地圖上 燒焦草地。召喚與復活召喚物（Minions） 的效能進一步優化，使其更加流暢。</li>
             <li>「腐朽咒術（Decaying Hex Support）」的衰退減益（Decay debuff） 現在使用更合適的視覺效果，並會顯示在敵人的生命條下方。</li>
             <li>投擲手榴彈技能（Grenade Skills） 現在在同時發射多顆手榴彈時，會有少量隨機的飛行距離變化。</li>
             <li>「Firebolt」 現在使用與 「Freezing Shards」 相同的動畫，而非通用的投射物動畫。</li>
-            <li>混沌試煉與運動技能: 進一步增強了安全檢查機制，以防止 使用移動技能跳過混沌試煉（Trials of Chaos）的電梯機制，導致試煉無法正常進行。</li>
+            <li>混沌試煉與運動技能: 進一步增強了安全檢查機制，以防止 使用移動技能跳過混沌試煉的電梯機制，導致試煉無法正常進行。</li>
             <li>「Escape Shot」與「Toxic Growth」 的跳躍能力現在可以 跳過敵人與小型地形，未來 「Vaulting Impact」 也將獲得相同的變更。</li>
-            <li>美術與介面: 更新了個人儲藏箱與公會儲藏箱的 3D 模型，使其視覺效果更加清晰。</li>
+            <li>美術與介面: 更新了個人倉庫與公會倉庫的 3D 模型，使其視覺效果更加清晰。</li>
         </ul>
 
         <h2>玩家變更</h2>
@@ -272,7 +275,7 @@
             <li>等級限制: 殘酷難度現在 至少需要 25 級 才能進入。終局地區（Endgame ） 現在 至少需要 50 級 才能進入。</li>
             <li>基礎屬性與攻擊速度: 空手（Unarmed） 的 基礎攻擊速度 提升至 1.4 次/秒（先前為 1.2）。</li>
             <li>技能影響: Killing Palm、Shattering Palm、Staggering Palm、Hand of Chayula 現在 攻擊速度降低 25%（先前為 10%），以平衡空手的提升。</li>
-            <li>異常狀態（Ailments）: 冰凍（Freeze） 在敵人身上 累積速度減慢約 48%。玩家的異常門檻（Ailment Threshold） 現在為 最大生命的一半（先前為 最大生命）。光環（Presence） 的 基礎影響範圍縮小為 4 公尺（先前為 6 公尺）。</li>
+            <li>異常狀態（Ailments）: 冰凍（Freeze） 在敵人身上 累積速度減慢約 48%。玩家的異常門檻（Ailment Threshold） 現在為 最大生命的一半（先前為 最大生命）。光環（存在範圍） 的 基礎影響範圍縮小為 4 公尺（先前為 6 公尺）。</li>
             <li>怪物詞綴（Monster Modifiers）: 從稀有怪物竊取的詞綴（如 Behead Support），其對玩家提供的效果已重新調整，使其更為平衡。</li>
             <li>裝備與詞綴調整: 燭光精髓 (章節 Boss +血量任務道具) 現在提供 5% 增加生命（先前為 8%）。Worn Sandals（賽克瑪試煉詛咒） 現在 如果最近被敵人擊中，移動速度降低 30%（先前為 25% 減少移動速度）。</li>
             <li>格擋與暈眩（Stun & Blocking）: Blocking 或 Parrying 時 現在有機率避免累積沉重暈眩（Heavy Stun），該機率與原本閃避該攻擊的機率相等。</li>
@@ -380,7 +383,7 @@
         <h2>被動技能樹變更</h2>
         <ul>
             <li>隨著新增【Huntress】及其他新遊戲機制，我們在被動技能樹中加入了相關的支援技能。獵手/遊俠區域新增了許多新的技能群組，部分現有的被動技能也進行了調整。如果你在被動樹上點選的節點位於變更區域，可能會被強制重置點數。</li>
-            <li>新增的被動技能群組：致盲相關技能群組、Volatility相關技能群組、遠程與近戰相關技能群組、Hazards相關技能群組、Companion相關技能群組、存在範圍（Presence Radius）與光環（Aura）相關技能群組、招架（Parry）相關技能群組、戰旗（Banner）相關技能群組、流血（Bleeding）相關技能群組、荊棘（Thorns）相關技能群組、箭袋（Quiver）相關技能群組。</li>
+            <li>新增的被動技能群組：致盲相關技能群組、Volatility相關技能群組、遠程與近戰相關技能群組、Hazards相關技能群組、Companion相關技能群組、存在範圍（存在範圍 Radius）與光環（Aura）相關技能群組、招架（Parry）相關技能群組、戰旗（Banner）相關技能群組、流血（Bleeding）相關技能群組、荊棘（Thorns）相關技能群組、箭袋（Quiver）相關技能群組。</li>
             <li>新增的主要天賦：
     <ul>
         <li>【血色突襲】（Crimson Assault）位於遊俠與女獵手的起始位置東南方。使你造成的流血效果變為加劇（Aggravated），並將基礎流血持續時間設為1秒。</li>
@@ -394,7 +397,7 @@
 </li>
 <li>其他改動：
     <ul>
-        <li>移除12個珠寶插槽，已插入的珠寶可透過<strong>/reclaimjewels</strong> 指令取回。</li>
+        <li>移除12個珠寶插槽，已插入的珠寶可透過<strong>/reclaim珠寶s</strong> 指令取回。</li>
         <li>【移形換影 】（Acrobatics）天賦現在降低75%閃避值（原為70%）。</li>
         <li>【異能魔力】（Eldritch Battery）現在額外增加法力消耗加倍的效果。</li>
         <li>【巨人之血】（Giant's Blood）天賦現在將所有武術武器的屬性需求變為三倍（原本只影響斧、鎚與劍）。</li>
@@ -1266,7 +1269,7 @@
         </ul>
     </li>
 
-    <li><strong>凋零光環（Withering Presence）</strong>
+    <li><strong>凋零光環（Withering 存在範圍）</strong>
         <ul>
             <li>凋零持續時間現在為 6 秒（先前為 4 秒）。</li>
             <li>現在在寶石等級 4-20 時，每 1.74-1.42 秒對範圍內敵人施加一次凋零（先前為 2.78-1.58 秒）。</li>
@@ -1543,28 +1546,28 @@
             <li>賭神芬多(Ventor's Gamble): 現在 提供 -25 至 25% 增加物品稀有度（先前為 -40 至 40%）。</li>
             <li>幽墓束縛(Gravebind): 更新了描述，正確指出敵人必須在你的範圍內，而不是在盟友範圍內。</li>
             <li>唯我論和 鑲嵌的寶石昇華: 更新了文本，顯示它們相互疊加。這並非功能性變更。</li>
-            <li>英雄悲劇 (Heroic Tragedy) 時光寶石 (Timeless Jewel): 現在 賦予顯著被動技能的傷害災害幅度增加 5-10%（先前為 10-20%）。現在 賦予顯著被動技能的災害傷害速度提高 2-3%（先前為 3-7%）。現在 賦予顯著被動技能的能量生成增加 4-12%（先前為 5-15%）。不再能夠獲得 賦予顯著被動技能的戰吼增益效果。</li>
+            <li>英雄悲劇 (Heroic Tragedy) 時光寶石 (Timeless 珠寶): 現在 賦予顯著被動技能的傷害災害幅度增加 5-10%（先前為 10-20%）。現在 賦予顯著被動技能的災害傷害速度提高 2-3%（先前為 3-7%）。現在 賦予顯著被動技能的能量生成增加 4-12%（先前為 5-15%）。不再能夠獲得 賦予顯著被動技能的戰吼增益效果。</li>
             <li>英雄悲劇 (Heroic Tragedy) 時光寶石的命名和文本: 現在 正確匹配相關的探險領袖。Olroth 征服的鑰石 現在稱為 「騎士信條」、Medved 征服的鑰石 現在稱為 「圓形教義」、Vorana 征服的鑰石 現在稱為 「黑色鐮刀訓練」。此變更不影響現有物品。</li>
         </ul>
 
         <h2>道具</h2>
         <ul>
-            <li>工匠石: 現在會 設置 技能寶石的支持寶石插槽數量為指定值，而不是在已有的支持寶石插槽數量上增加插槽。例如，使用 Perfect Jeweller's Orb (完美珠寶匠寶珠) 在一個有兩個支持寶石插槽的技能寶石上，將設置它為五個支持寶石插槽，而不是新增三個。</li>
-            <li>Advanced and Expert item base types (高級和專家物品基礎類型): 現在有 不同的名稱，以便更好地區分它們。</li>
+            <li>工匠石: 現在會 設置 技能寶石的支持寶石插槽數量為指定值，而不是在已有的支持寶石插槽數量上增加插槽。例如，使用 Perfect 珠寶ler's Orb (完美珠寶匠寶珠) 在一個有兩個支持寶石插槽的技能寶石上，將設置它為五個支持寶石插槽，而不是新增三個。</li>
+            <li>高級和專家物品基底: 現在有 不同的名稱，以便更好地區分它們。</li>
             <li>Runes (符文): 符文現在分為 3個等級：較低、常規和較高等級。例如，Storm Rune (風暴符文) 現在分為：Lesser Storm Rune (較低風暴符文)、Storm Rune (風暴符文) 和 Greater Storm Rune (高級風暴符文)。現在可以 將3個較低符文 重鑄為1個常規符文，並且 3個常規符文 可以重鑄為1個高級符文。符文掉落率 被提高了一倍。現在 無法將3個符文 重鑄成隨機符文。</li>
-            <li>Vaal Orb on items (使用瓦爾寶珠在物品上): 使用瓦爾寶珠 在物品上不再會 將1的修飾符數值減少為0。</li>
-            <li>Crossbows (十字弓): 所有 十字弓 的 基礎傷害 被增加。十字弓現在擁有 雙手版的傷害附加修飾符，替代了之前的單手版本。</li>
-            <li>Physical Thorns Damage (物理荊棘傷害): 稀有物品修飾符上的 物理荊棘傷害 被 增強最多3.5倍，最高等級修飾符，對最低等級的修飾符則不變。</li>
-            <li>Increased Rarity of Items found Modifiers (提高物品掉落稀有度的修飾符): 物品上的 提高物品掉落稀有度 修飾符在頂端進行了調整：後綴修飾符 現在最高為 25%（以前為 30%）。前綴修飾符 現在最高為 25%（以前為 32%）。</li>
+            <li>瓦爾寶珠: 使用瓦爾寶珠 在物品上不再會 將1的詞綴數值減少為0。</li>
+            <li>Crossbows (十字弓): 所有 十字弓 的 基礎傷害 被增加。十字弓現在擁有 雙手版的傷害附加詞綴，替代了之前的單手版本。</li>
+            <li>Physical Thorns Damage (物理荊棘傷害): 稀有物品詞綴上的 物理荊棘傷害 被 增強最多3.5倍，最高等級詞綴，對最低等級的詞綴則不變。</li>
+            <li>提高物品掉落稀有度的詞綴: 物品上的 提高物品掉落稀有度 詞綴在頂端進行了調整：後綴詞綴 現在最高為 25%（以前為 30%）。前綴詞綴 現在最高為 25%（以前為 32%）。</li>
             <li>Golden Charm (金色符咒): 現在提供 15% 提高物品掉落稀有度（以前為 20%）。</li>
             <li>Breach Rings (裂痕戒指): 現在有 最高品質為40%（以前為 50%）。現有物品可以使用神聖寶珠更新。</li>
             <li>Breach Rings (裂痕戒指): 裂痕戒指掉落的機率大幅降低。</li>
-            <li>Notable Passive Skills: 在每個職業的起始區域中，顯著被動技能 不再能夠被嵌入（或像 Megalomaniac 這樣的獨特物品上找到了）。這不會修復已有物品的顯示問題，其中 Sorceress/Witch 起始區域的嵌入顯著被動技能會顯示不正確，因為 Witch 和 Sorceress 以及其他職業的顯著被動技能不同。</li>
-            <li>新珠寶修飾符 (New Jewel Modifiers): 添加了提供與 被動技能樹 中新增加的被動技能類似效益的 珠寶修飾符，例如 召喚物最大生命增加。</li>
-            <li>Jewel 和 Time-lost Jewel 修飾符 (Jewel and Time-lost Jewel Modifiers): 這些修飾符曾提供在被動技能樹中稀有的屬性（如 盲效果增加 或 承受的傷害回收到生命）現在已調整。一般來說，最小值保持不變，但提供的 最大值較之前低。</li>
-            <li>來自光環技能的光環效果增加: 不再能在珠寶或 Time-lost Jewel 上滾動。</li>
-            <li>Fletching Jewel 和 Time-lost Jewel 修飾符 (Fletching Jewel and Time-lost Jewel Modifiers): 現在提供 從裝備弓箭筒中獲得的增加獎勳 的修飾符值為 4-6% 和 2-3%（以前分別為 5-15% 和 3-7%）。</li>
-            <li>Jewel 修飾符增加能量生成Increased Energy Generation: 現在提供的修飾符為 2-6%（以前為 3-7%）。現有物品可以使用 神聖寶珠 重新滾動。</li>
+            <li>在每個職業的起始區域中，顯著被動技能 不再能夠被嵌入（或像 Megalomaniac 這樣的獨特物品上找到了）。這不會修復已有物品的顯示問題，其中 Sorceress/Witch 起始區域的嵌入顯著被動技能會顯示不正確，因為 Witch 和 Sorceress 以及其他職業的顯著被動技能不同。</li>
+            <li>新珠寶詞綴: 添加了提供與 被動技能樹 中新增加的被動技能類似效益的 珠寶詞綴，例如 召喚物最大生命增加。</li>
+            <li>珠寶 和 Time-lost 珠寶 詞綴 (珠寶 and Time-lost 珠寶 Modifiers): 這些詞綴曾提供在被動技能樹中稀有的屬性（如 盲效果增加 或 承受的傷害回收到生命）現在已調整。一般來說，最小值保持不變，但提供的 最大值較之前低。</li>
+            <li>來自光環技能的光環效果增加: 不再能在珠寶或 Time-lost 珠寶 上滾動。</li>
+            <li>Fletching 珠寶 和 Time-lost 珠寶 詞綴 (Fletching 珠寶 and Time-lost 珠寶 Modifiers): 現在提供 從裝備弓箭筒中獲得的增加獎勳 的詞綴值為 4-6% 和 2-3%（以前分別為 5-15% 和 3-7%）。</li>
+            <li>珠寶 詞綴增加能量生成Increased Energy Generation: 現在提供的詞綴為 2-6%（以前為 3-7%）。現有物品可以使用 神聖寶珠 重新滾動。</li>
             <li>艾斯卡巴靈魂核心: 現在提供 增加5%金幣掉落數量（以前為 增加10%物品稀有度）。</li>
         </ul>
 
@@ -1617,18 +1620,18 @@
 
         <h2>任務</h2>
         <ul>
-            <li>現在，您必須先打開 The Halani Gates，才能將 Ascent to Power 任務進展到可以前往 Trial of the Sekhemas 的階段。</li>
-            <li>Earning Passage 任務現在在進入 Ardura Caravan（第二章）時結束，而不是在與 Zarka 談話後（在 Vastiri Outskirts）。</li>
+            <li>現在，您必須先打開 哈拉妮關口，才能將 崛起掌權任務進展到可以前往 絲克瑪試煉 的階段。</li>
+            <li>獲得通行許可任務現在在進入阿杜拉車隊（第二章）時結束，而不是在與 札卡 談話後（在 瓦斯提里郊區）。</li>
         </ul>
 
         <h2>使用者界面更改</h2>
         <ul>
             <li>死亡後觀戰隊友: 現在如果你在戰鬥中死亡，可以觀戰隊友。</li>
             <li>控制器小地圖操作: 使用控制器時，現在可以平移小地圖覆蓋層。</li>
-            <li>Presence 半徑顯示: 當將滑鼠懸停於任何 Presence 關鍵字實例時，將顯示一個圍繞角色的指示器，以可視化你的 Presence 半徑。</li>
+            <li>存在範圍 半徑顯示: 當將滑鼠懸停於任何 存在範圍 關鍵字時，將顯示一個圍繞角色的指示器，以可視化你的 存在範圍 半徑。</li>
             <li>技能欄技能描述簡化: 當將滑鼠懸停於技能欄上的技能時，現在會顯示該技能行為的簡短描述，並且會顯示打開技能資訊面板的按鈕提示。</li>
             <li>Instilling 菜單的變更: 如果你在 Instilling 菜單 中放置了物品，現在無法關閉此菜單。</li>
-            <li>Ritual Rewards 菜單: Ritual Rewards 菜單現在會暫停遊戲。</li>
+            <li>祭祀 Rewards 菜單: 祭祀 Rewards 菜單現在會暫停遊戲。</li>
             <li>物品過濾器的寶石等級篩選: 現在物品過濾器的寶石等級篩選也適用於未切割的寶石。</li>
             <li>寶石升級顯示變化: 當升級寶石時，變化現在會更明顯地突出顯示。</li>
             <li>怪物生命條文字和圖標可讀性提升: 改進了怪物生命條下的文字和圖標的可見性和可讀性。</li>
