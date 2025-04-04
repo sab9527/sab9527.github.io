@@ -309,6 +309,94 @@
             margin-top: 8px;
         }
 
+
+        .ascendancy-image {
+        cursor: pointer;
+        transition: transform 0.3s ease;
+    }
+
+    .ascendancy-image:hover {
+        transform: scale(1.05);
+    }
+
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        justify-content: center;
+        align-items: center;
+    }
+
+    .modal-content {
+        max-width: 90%;
+        max-height: 90vh;
+        object-fit: contain;
+    }
+
+    .modal.active {
+        display: flex;
+    }
+
+    .close-button {
+        position: absolute;
+        top: 15px;
+        right: 35px;
+        color: #f1f1f1;
+        font-size: 40px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+        /* 職業相關樣式 */
+        .class-section {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        margin-bottom: 30px;
+    }
+
+    .class-card {
+        position: relative;
+        overflow: hidden;
+        border-radius: 8px;
+        transition: transform 0.3s ease;
+    }
+
+    .class-card:hover {
+        transform: scale(1.02);
+    }
+
+    .class-image {
+        width: 100%;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .class-name {
+        color: #c0de52;
+        text-align: center;
+        margin-top: 10px;
+        font-size: 1.2em;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    /* 目錄相關樣式補充 */
+    .toc-list a[href="#class-changes"] {
+        color: #c0de52;
+    }
+
+    .toc-list a[href="#class-changes"]:hover {
+        color: #e6ff99;
+        background-color: rgba(192, 222, 82, 0.2);
+    }
+
+
+
                       /* ... 其他樣式 ... */
 
          </style>
@@ -348,6 +436,7 @@
             <ul class="toc-list">
                 <li><a href="#new-content">新增內容與特色</a></li>
                 <li><a href="#endgame-changes">終局改動</a></li>
+                <li><a href="#class-changes">新增昇華</a></li>
                 <li><a href="#atlas-changes">地圖天賦樹改動</a></li>
                 <li><a href="#general-improvements">一般改進</a></li>
                 <li><a href="#player-changes">玩家變更</a></li>
@@ -384,6 +473,28 @@
         </ul>
         </div>
         
+        <div class="section-container">
+            <div class="section-title" id="class-changes">職業改動</div>
+            <div class="class-section">
+                <div class="class-card">
+                    <img src="https://i.imgur.com/p1stHU4.jpeg" alt="The Amazon" class="class-image ascendancy-image">
+                    <h3 class="class-name">亞馬遜 (The Amazon)</h3>
+                </div>
+                <div class="class-card">
+                    <img src="https://i.imgur.com/Dj8rCoH.jpeg" alt="The Ritualist" class="class-image ascendancy-image">
+                    <h3 class="class-name">儀式師 (The Ritualist)</h3>
+                </div>
+                <div class="class-card">
+                    <img src="https://i.imgur.com/3UltYPq.jpeg" alt="Lich" class="class-image ascendancy-image">
+                    <h3 class="class-name">巫妖 (Lich)</h3>
+                </div>
+                <div class="class-card">
+                    <img src="https://i.imgur.com/zPgW9q1.jpeg" alt="The Smith of Kitava" class="class-image ascendancy-image">
+                    <h3 class="class-name">奇塔弗工匠 (The Smith of Kitava)</h3>
+                </div>
+            </div>
+        </div>
+
         <div class="section-container">
     <div class="section-title" id="endgame-changes">終局改動</div>
     <ul>
@@ -2448,6 +2559,14 @@
             <li>控制器技能自動瞄準: 使用控制器時，Detonating Arrow 和 Freezing Salvo 會自動瞄準敵人，無需手動瞄準。</li>
             <li>造型界面重新設計: 現在可以在 Cosmetics 面板中打開聊天，讓你可以在全球頻道中展示你的 Pilfering Ring。</li>
         </ul>
+
+        <div id="imageModal" class="modal">
+            <span class="close-button">&times;</span>
+            <img class="modal-content" id="modalImage">
+        </div>
+
+
+
         <!-- 新增回到頂部按鈕 -->
         <a href="#" class="scroll-to-top" id="scrollToTop">↑</a>
         <script>
@@ -2540,6 +2659,35 @@
 
         setInterval(updateCountdown, 1000);
         updateCountdown();
+
+        const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const closeButton = document.querySelector('.close-button');
+
+    // 為所有昇華圖片添加點擊事件
+    document.querySelectorAll('.ascendancy-image').forEach(img => {
+        img.onclick = function() {
+            modal.classList.add('active');
+            modalImg.src = this.src;
+        }
+    });
+
+    // 點擊關閉按鈕或背景關閉 Modal
+    closeButton.onclick = function() {
+        modal.classList.remove('active');
+    }
+
+    modal.onclick = function(e) {
+        if (e.target === modal) {
+            modal.classList.remove('active');
+        }
+    }
+
+
+
+
+
+
         </script> 
     </div>
 </body>
