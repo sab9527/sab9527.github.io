@@ -1,0 +1,61 @@
+{
+  "skillTypes": {
+    "normal": {
+      "name": "普通攻擊",
+      "description": "基礎攻擊技能，無特殊效果"
+    },
+    "skill": {
+      "name": "戰技",
+      "description": "具有特殊效果的技能"
+    },
+    "ultimate": {
+      "name": "終結技",
+      "description": "強大的終極技能"
+    }
+  },
+  "skillEffects": {
+    "damage": {
+      "name": "傷害",
+      "description": "造成基礎傷害",
+      "scaling": "attack"
+    },
+    "heal": {
+      "name": "治療",
+      "description": "恢復生命值",
+      "scaling": "hp"
+    },
+    "buff": {
+      "name": "增益",
+      "description": "提升屬性",
+      "duration": "turns"
+    }
+  },
+  "upgradeRequirements": {
+    "normal": [
+      {
+        "level": 2,
+        "materials": [
+          {
+            "itemId": "5001",
+            "amount": 5
+          }
+        ],
+        "credits": 1000
+      },
+      {
+        "level": 3,
+        "materials": [
+          {
+            "itemId": "5001",
+            "amount": 10
+          },
+          {
+            "itemId": "5002",
+            "amount": 2
+          }
+        ],
+        "credits": 2000
+      }
+    ]
+  }
+}

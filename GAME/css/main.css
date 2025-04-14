@@ -1,0 +1,499 @@
+/* 主要樣式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Microsoft JhengHei', Arial, sans-serif;
+    background-color: #0a0e23;
+    color: #e0e0ff;
+    line-height: 1.6;
+}
+
+#game-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #3a3f7a;
+}
+
+header h1 {
+    color: #61dafb;
+    margin-bottom: 15px;
+    text-shadow: 0 0 10px rgba(97, 218, 251, 0.5);
+}
+
+#resource-display {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: rgba(58, 63, 122, 0.3);
+    border-radius: 8px;
+    width: 100%;
+}
+
+.resource-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.resource-icon {
+    width: 24px;
+    height: 24px;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+}
+
+button {
+    background-color: #3a3f7a;
+    color: #e0e0ff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: #4a4f9a;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.screen {
+    display: none;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.screen.active {
+    display: flex;
+}
+
+footer {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 0.8em;
+    color: #8a8aaa;
+    padding-top: 10px;
+    border-top: 1px solid #3a3f7a;
+}
+
+/* 主畫面樣式 */
+#main-screen {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: auto 1fr;
+    gap: 20px;
+}
+
+.resource-summary {
+    grid-column: 1 / -1;
+    background-color: rgba(58, 63, 122, 0.2);
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.combat-display {
+    grid-column: 1;
+    grid-row: 2;
+    background-color: rgba(58, 63, 122, 0.2);
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#combat-area {
+    display: flex;
+    justify-content: space-between;
+    min-height: 200px;
+}
+
+#team-display, #enemy-display {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#combat-log {
+    background-color: rgba(10, 14, 35, 0.7);
+    padding: 10px;
+    border-radius: 4px;
+    height: 150px;
+    overflow-y: auto;
+    font-size: 0.9em;
+}
+
+.stage-selection {
+    grid-column: 2;
+    grid-row: 2;
+    background-color: rgba(58, 63, 122, 0.2);
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#planets-list, #stages-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.planet-item, .stage-item {
+    background-color: #3a3f7a;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.planet-item:hover, .stage-item:hover {
+    background-color: #4a4f9a;
+    transform: translateY(-2px);
+}
+
+.planet-item.active, .stage-item.active {
+    background-color: #61dafb;
+    color: #0a0e23;
+}
+
+/* 角色畫面樣式 */
+#character-screen {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 20px;
+}
+
+#character-list {
+    background-color: rgba(58, 63, 122, 0.2);
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.character-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background-color: rgba(58, 63, 122, 0.5);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.character-item:hover {
+    background-color: rgba(74, 79, 154, 0.5);
+}
+
+.character-item.active {
+    background-color: rgba(97, 218, 251, 0.3);
+}
+
+.character-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #4a4f9a;
+}
+
+.character-info {
+    flex: 1;
+}
+
+.character-name {
+    font-weight: bold;
+    color: #61dafb;
+}
+
+.character-level {
+    font-size: 0.8em;
+    color: #8a8aaa;
+}
+
+#character-detail {
+    background-color: rgba(58, 63, 122, 0.2);
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* 戰鬥畫面樣式 */
+#combat-screen {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: auto 1fr;
+    gap: 20px;
+}
+
+#team-selection {
+    grid-column: 1;
+    grid-row: 1 / -1;
+    background-color: rgba(58, 63, 122, 0.2);
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#battle-display {
+    grid-column: 2;
+    grid-row: 1;
+    background-color: rgba(58, 63, 122, 0.2);
+    padding: 15px;
+    border-radius: 8px;
+    min-height: 300px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#battle-controls {
+    grid-column: 2;
+    grid-row: 2;
+    background-color: rgba(58, 63, 122, 0.2);
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* 背包畫面樣式 */
+#inventory-screen {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 20px;
+}
+
+#items-list {
+    background-color: rgba(58, 63, 122, 0.2);
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.item {
+    width: 60px;
+    height: 60px;
+    background-color: rgba(58, 63, 122, 0.5);
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.item:hover {
+    background-color: rgba(74, 79, 154, 0.5);
+    transform: translateY(-2px);
+}
+
+.item.active {
+    background-color: rgba(97, 218, 251, 0.3);
+}
+
+.item-count {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    font-size: 0.7em;
+    background-color: rgba(10, 14, 35, 0.7);
+    padding: 1px 3px;
+    border-radius: 2px;
+}
+
+#item-detail {
+    background-color: rgba(58, 63, 122, 0.2);
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* 商店畫面樣式 */
+#shop-screen {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 20px;
+}
+
+#shop-items {
+    background-color: rgba(58, 63, 122, 0.2);
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.shop-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background-color: rgba(58, 63, 122, 0.5);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.shop-item:hover {
+    background-color: rgba(74, 79, 154, 0.5);
+}
+
+.shop-item.active {
+    background-color: rgba(97, 218, 251, 0.3);
+}
+
+.shop-item-icon {
+    width: 40px;
+    height: 40px;
+    background-color: #4a4f9a;
+    border-radius: 4px;
+}
+
+.shop-item-info {
+    flex: 1;
+}
+
+.shop-item-name {
+    font-weight: bold;
+    color: #61dafb;
+}
+
+.shop-item-price {
+    font-size: 0.8em;
+    color: #8a8aaa;
+}
+
+#shop-detail {
+    background-color: rgba(58, 63, 122, 0.2);
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* 城鎮畫面樣式 */
+#town-screen {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+#town-missions, #town-buildings {
+    background-color: rgba(58, 63, 122, 0.2);
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* 設定畫面樣式 */
+#settings-screen {
+    background-color: rgba(58, 63, 122, 0.2);
+    padding: 15px;
+    border-radius: 8px;
+}
+
+#game-settings {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.setting-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: rgba(58, 63, 122, 0.5);
+    border-radius: 4px;
+}
+
+.setting-label {
+    font-weight: bold;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+    #main-screen, #character-screen, #combat-screen, #inventory-screen, #shop-screen, #town-screen {
+        grid-template-columns: 1fr;
+    }
+    
+    #combat-screen {
+        grid-template-rows: auto auto auto;
+    }
+    
+    #team-selection {
+        grid-column: 1;
+        grid-row: 1;
+    }
+    
+    #battle-display {
+        grid-column: 1;
+        grid-row: 2;
+    }
+    
+    #battle-controls {
+        grid-column: 1;
+        grid-row: 3;
+    }
+}

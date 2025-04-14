@@ -1,0 +1,74 @@
+{
+  "relics": [
+    {
+      "id": "3001",
+      "name": "太空封印站",
+      "type": "head",
+      "rarity": 5,
+      "set": "太空站",
+      "maxLevel": 15,
+      "mainStat": {
+        "type": "hp",
+        "value": 1000
+      },
+      "subStats": [
+        {
+          "type": "attack",
+          "value": 50
+        },
+        {
+          "type": "defense",
+          "value": 30
+        },
+        {
+          "type": "speed",
+          "value": 20
+        }
+      ]
+    },
+    {
+      "id": "3002",
+      "name": "太空實驗站",
+      "type": "hands",
+      "rarity": 5,
+      "set": "太空站",
+      "maxLevel": 15,
+      "mainStat": {
+        "type": "attack",
+        "value": 100
+      },
+      "subStats": [
+        {
+          "type": "hp",
+          "value": 500
+        },
+        {
+          "type": "defense",
+          "value": 30
+        },
+        {
+          "type": "speed",
+          "value": 20
+        }
+      ]
+    }
+  ],
+  "sets": {
+    "太空站": {
+      "2pc": {
+        "description": "提升15%攻擊力",
+        "effect": {
+          "type": "attack_percent",
+          "value": 0.15
+        }
+      },
+      "4pc": {
+        "description": "速度提升20%，每次攻擊有30%機率獲得一層太空增幅，最多疊加5層",
+        "effect": {
+          "type": "speed_percent",
+          "value": 0.2
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "planets": [
+    {
+      "id": "planet_1",
+      "name": "空間站",
+      "description": "初始星球，適合新手探索",
+      "stages": [
+        {
+          "id": "1_1",
+          "name": "第1層",
+          "difficulty": 1,
+          "enemies": [
+            {
+              "enemyId": "4001",
+              "count": 2,
+              "level": 1
+            }
+          ],
+          "rewards": {
+            "exp": 100,
+            "credits": 500,
+            "items": [
+              {
+                "itemId": "5001",
+                "chance": 1,
+                "quantity": {
+                  "min": 1,
+                  "max": 3
+                }
+              }
+            ]
+          },
+          "unlockRequirements": {
+            "playerLevel": 1
+          }
+        },
+        {
+          "id": "1_2",
+          "name": "第2層",
+          "difficulty": 2,
+          "enemies": [
+            {
+              "enemyId": "4001",
+              "count": 3,
+              "level": 2
+            },
+            {
+              "enemyId": "4002",
+              "count": 1,
+              "level": 2
+            }
+          ],
+          "rewards": {
+            "exp": 150,
+            "credits": 800,
+            "items": [
+              {
+                "itemId": "5001",
+                "chance": 1,
+                "quantity": {
+                  "min": 2,
+                  "max": 4
+                }
+              },
+              {
+                "itemId": "5002",
+                "chance": 0.3,
+                "quantity": {
+                  "min": 1,
+                  "max": 1
+                }
+              }
+            ]
+          },
+          "unlockRequirements": {
+            "previousStage": "1_1"
+          }
+        }
+      ]
+    }
+  ],
+  "stageProgression": {
+    "maxLevel": 200,
+    "difficultyScaling": {
+      "enemyStats": 1.1,
+      "rewards": 1.05
+    }
+  }
+}

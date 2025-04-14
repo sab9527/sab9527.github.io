@@ -1,0 +1,85 @@
+{
+  "enemies": [
+    {
+      "id": "4001",
+      "name": "機械守衛",
+      "type": "normal",
+      "level": 1,
+      "stats": {
+        "hp": 1000,
+        "attack": 80,
+        "defense": 40,
+        "speed": 100
+      },
+      "skills": [
+        {
+          "id": "enemy_skill_4001_1",
+          "name": "基礎攻擊",
+          "damage": 80,
+          "cooldown": 3
+        }
+      ],
+      "drops": [
+        {
+          "itemId": "5001",
+          "name": "機械零件",
+          "chance": 0.7,
+          "quantity": {
+            "min": 1,
+            "max": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "4002",
+      "name": "精英機械守衛",
+      "type": "elite",
+      "level": 5,
+      "stats": {
+        "hp": 2000,
+        "attack": 120,
+        "defense": 60,
+        "speed": 100
+      },
+      "skills": [
+        {
+          "id": "enemy_skill_4002_1",
+          "name": "強化攻擊",
+          "damage": 120,
+          "cooldown": 3
+        },
+        {
+          "id": "enemy_skill_4002_2",
+          "name": "防禦增強",
+          "effect": {
+            "type": "defense_up",
+            "value": 0.3,
+            "duration": 2
+          },
+          "cooldown": 5
+        }
+      ],
+      "drops": [
+        {
+          "itemId": "5001",
+          "name": "機械零件",
+          "chance": 1,
+          "quantity": {
+            "min": 2,
+            "max": 5
+          }
+        },
+        {
+          "itemId": "5002",
+          "name": "高級零件",
+          "chance": 0.3,
+          "quantity": {
+            "min": 1,
+            "max": 2
+          }
+        }
+      ]
+    }
+  ]
+}
