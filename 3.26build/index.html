@@ -106,6 +106,7 @@
             color: #ffb84d;
             font-size: 16px;
             letter-spacing: 1px;
+            white-space: nowrap;
         }
         tr:nth-child(even) {
             background: #23272e;
@@ -215,7 +216,15 @@
     }
     function embedVideo(url) {
         if (!url) return '無影片連結';
-        return `<a href="${url}" target="_blank">查看影片</a>`;
+        // 只支援 YouTube
+        const ytMatch = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|v\/))([\w-]{11})/);
+        if (!ytMatch) {
+            return `<a href="${url}" target="_blank">查看影片</a>`;
+        }
+        const vid = ytMatch[1];
+        const thumb = `https://img.youtube.com/vi/${vid}/hqdefault.jpg`;
+        // 加上 data-thumb 屬性
+        return `<a href="${url}" target="_blank" class="video-link" data-thumb="${thumb}">查看影片</a>`;
     }
 
     const FIELD_MAP = ["流派名稱", "昇華", "擅長分類", "傷害類型", "作者", "影片連結", "說明"];
@@ -251,6 +260,36 @@
     window.onload = function () {
         loadCSVData();
     };
+
+    // 建立預覽元素
+    const preview = document.createElement('div');
+    preview.style.position = 'fixed';
+    preview.style.pointerEvents = 'none';
+    preview.style.display = 'none';
+    preview.style.zIndex = 9999;
+    preview.innerHTML = '<img src="" style="max-width:240px;max-height:135px;border-radius:8px;box-shadow:0 2px 12px #000a;">';
+    document.body.appendChild(preview);
+
+    document.addEventListener('mouseover', function(e) {
+        const link = e.target.closest('.video-link');
+        if (link && link.dataset.thumb) {
+            const img = preview.querySelector('img');
+            img.src = link.dataset.thumb;
+            preview.style.display = 'block';
+        }
+    });
+    document.addEventListener('mousemove', function(e) {
+        if (preview.style.display === 'block') {
+            preview.style.left = (e.clientX + 20) + 'px';
+            preview.style.top = (e.clientY + 20) + 'px';
+        }
+    });
+    document.addEventListener('mouseout', function(e) {
+        const link = e.target.closest('.video-link');
+        if (link) {
+            preview.style.display = 'none';
+        }
+    });
     </script>
 </body>
 </html>
