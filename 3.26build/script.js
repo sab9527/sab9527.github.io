@@ -147,25 +147,25 @@ function matchFilters(row, filters) {
 }
 // 1. 新增對應表（請將圖片網址換成你自己的）
 const ASCENDANCY_IMAGES = {
-    '勇士': 'https://web.poecdn.com/protected/image/promo/ascendancy/classes/Juggernaut.png?key=9QcvWBwz82ssD8VPHWBMUA',
-    '暴徒': 'https://web.poecdn.com/protected/image/promo/ascendancy/classes/Berserker.png?key=wwrBpvaFm_G9pmy7yKtUGg',
-    '酋長': 'https://web.poecdn.com/protected/image/promo/ascendancy/classes/Chieftain.png?key=OigrIPPg6pUUcLD_h0uQFgimg/ascendancy_qiuzhang.png',
-    '守林人': 'https://web.poecdn.com/protected/image/promo/ascendancy/classes/Warden.png?key=41OaJS3vcJUhYFnvSRCfUw',
-    '銳眼': 'https://web.poecdn.com/protected/image/promo/ascendancy/classes/Deadeye.png?key=cXCSUiBfopA9ApEMtnYbLw',
-    '追獵者': 'https://web.poecdn.com/protected/image/promo/ascendancy/classes/Pathfinder.png?key=tdQf9JweYNzFfy3FgH9qpQ',
-    '秘術家': 'https://web.poecdn.com/protected/image/promo/ascendancy/classes/Occultist.png?key=mV3c0qbitkd9QJL1ZGZVXQ',
-    '元素使': 'https://web.poecdn.com/protected/image/promo/ascendancy/classes/Elementalist.png?key=xTQG41cKmhvNFrwu_cN7CQ',
-    '死靈師': 'https://web.poecdn.com/protected/image/promo/ascendancy/classes/Necromancer.png?key=elS-LvLYJzjIbJuOdVP5_g',
-    '處刑者': 'https://web.poecdn.com/protected/image/promo/ascendancy/classes/Slayer.png?key=GXdlR4sUMV-AsfrB9_hjHQ',
-    '衛士': 'https://web.poecdn.com/protected/image/promo/ascendancy/classes/Gladiator.png?key=09py0OfLrWjOVQIbfU1m6w',
-    '冠軍': 'https://web.poecdn.com/protected/image/promo/ascendancy/classes/Champion.png?key=tgo2quXqkaI3QGvIRJSi6Q',
-    '判官': 'https://web.poecdn.com/protected/image/promo/ascendancy/classes/Inquisitor.png?key=DhDuviNFcgwY_8QpofzRRg',
-    '聖宗': 'https://web.poecdn.com/protected/image/promo/ascendancy/classes/Hierophant.png?key=8QDOpgoGaZS0ksXADuoUKw',
-    '守護者': 'https://web.poecdn.com/protected/image/promo/ascendancy/classes/Guardian.png?key=dUCfULonJ5ihtjU8G0cDoA',
-    '刺客': 'https://web.poecdn.com/protected/image/promo/ascendancy/classes/Assassin.png?key=ZxaRbd_wAQJa1Ma_Yu-_cA',
-    '詐欺師': 'https://web.poecdn.com/protected/image/promo/ascendancy/classes/Trickster.png?key=xsXRx0faBRn5OiV5ghrnGQ',
-    '破壞者': 'https://web.poecdn.com/protected/image/promo/ascendancy/classes/Saboteur.png?key=j7PBS-x41WkhF32aQOT0bA',
-    '昇華使徒': 'https://web.poecdn.com/protected/image/promo/ascendancy/classes/Ascendant.png?key=2-zRw53BEG3Ca-1BSn3_XQ'
+    '勇士': 'pic/勇士.png',
+    '暴徒': 'pic/暴徒.png',
+    '酋長': 'pic/酋長.png',
+    '守林人': 'pic/守林人.png',
+    '銳眼': 'pic/銳眼.png',
+    '追獵者': 'pic/追獵者.png',
+    '秘術家': 'pic/秘術家.png',
+    '元素使': 'pic/元素使.png',
+    '死靈師': 'pic/死靈師.png',
+    '處刑者': 'pic/處刑者.png',
+    '衛士': 'pic/衛士.png',
+    '冠軍': 'pic/冠軍.png',
+    '判官': 'pic/判官.png',
+    '聖宗': 'pic/聖宗.png',
+    '守護者': 'pic/守護者.png',
+    '刺客': 'pic/刺客.png',
+    '詐欺師': 'pic/詐欺師.png',
+    '破壞者': 'pic/破壞者.png',
+    '昇華使徒': 'pic/昇華使徒.png'
 };
 
 // 2. 新增渲染函式
@@ -307,4 +307,3 @@ document.addEventListener('click', function(e) {
         modalIframe.src = '';
     }
 });
-// ...existing code...
