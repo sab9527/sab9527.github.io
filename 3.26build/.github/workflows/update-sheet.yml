@@ -1,0 +1,25 @@
+name: Update Google Sheet CSV
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # 每小時執行一次 (UTC)
+  workflow_dispatch:     # 手動執行按鈕
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Download Google Sheet as CSV
+        run: curl -L "https://docs.google.com/spreadsheets/d/19NNqSISgLQEnsB9SNwSOV7lm2s-0bSk0/export?format=csv&gid=91026096" -o data.csv
+
+      - name: Commit and push if data.csv changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data.csv
+          git diff --cached --quiet || git commit -m "Update data.csv from Google Sheets"
+          git push
