@@ -7,14 +7,16 @@
         body {
             font-family: 'Segoe UI', '微軟正黑體', Arial, sans-serif;
             margin: 0;
-            background: #181c20;
+            /* 請將下行網址替換為你想要的圖片網址 */
+            background: #181c20 url('https://upload-os-bbs.hoyolab.com/upload/2023/05/10/248389752/f169af109b5d93fc3c884170d2213c09_6832829586940383967.jpg?x-oss-process=image%2Fresize%2Cs_1000%2Fauto-orient%2C0%2Finterlace%2C1%2Fformat%2Cwebp%2Fquality%2Cq_70') no-repeat center center fixed;
+            background-size: cover;
             color: #e0e0e0;
             min-height: 100vh;
         }
         h2 {
             text-align: center;
             margin-top: 32px;
-            color: #ffb84d;
+            color: #f5dbb5;
             letter-spacing: 2px;
             text-shadow: 0 2px 8px #000a;
         }
@@ -41,9 +43,9 @@
         .filter-group {
             margin: 32px auto 24px auto;
             padding: 24px 32px;
-            background: #23272e;
+            background: #263c61;
             border-radius: 12px;
-            box-shadow: 0 4px 24px #0008;
+            box-shadow: 0 4px 24px rgba(45, 219, 196, 0.986);
             max-width: 900px;
             display: flex;
             flex-wrap: wrap;
@@ -54,11 +56,13 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            flex-wrap: nowrap;   /* 新增：同一行不換行 */
         }
         .filter-label {
             color: #ffb84d;
             font-weight: bold;
             margin-right: 8px;
+            white-space: nowrap; /* 新增：防止換行 */
         }
         .filter-btn {
             background: #23272e;
@@ -165,7 +169,7 @@
     const filterOptions = {
         '昇華': ['野蠻人','女巫','聖騎士','貴族','遊俠','決鬥者','暗影刺客'],
         '擅長分類': ['打王','打圖','均衡','特化'],
-        '傷害類型': ['火焰','閃電','冰冷','直擊','持續','召喚','圖騰','法術','攻擊','弓']
+        '傷害類型': ['火焰','閃電','冰冷','物理','渾沌','直擊','持續','召喚','圖騰','法術','攻擊','弓']
     };
     function createModernFilters() {
         const filterGroup = document.getElementById('filter-group');
@@ -203,7 +207,10 @@
     }
     function matchFilters(row, filters) {
         for (let key in filters) {
-            if (!filters[key].includes(row[key])) return false;
+            // 支援多值（以, 或 、分隔）
+            const cell = (row[key] || '').split(/,|、/).map(s => s.trim());
+            // 只要有一個符合即可
+            if (!filters[key].some(val => cell.includes(val))) return false;
         }
         return true;
     }
