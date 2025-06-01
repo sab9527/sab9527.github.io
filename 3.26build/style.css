@@ -1,19 +1,4 @@
-/* style.css - 從 index.html 拆出的 CSS */
-/*
-欄位對應說明：
-- .main-flex-container, .filter-group, .filter-block, .damage-type-block, .filter-label, .filter-btn, .side-block, .side-section, .side-link-group, .side-link-btn, .side-section input, .side-section button
-  → 篩選區塊（主職業、子昇華、擅長分類、類型、常用連結、POB工具）
-- table, th, td, tr, .video-embed
-  → 主表格（流派名稱、昇華、擅長分類、類型、作者、影片連結、說明）
-- .countdown-container, .time-block, .time-number, .time-label
-  → 倒數計時器（如有）
-- .sub-ascendancy-outer, .sub-ascendancy-block, .main-class-btn, .sub-ascendancy-btn
-  → 子昇華展開區塊
-- a.build-link
-  → 流派名稱超連結
-- .side-link-btn
-  → 常用連結按鈕
-*/
+/* style.css - 最佳化與合併重複規則 */
 :root {
     --primary-color: #f5dbb5;
     --secondary-color: #ffb84d;
@@ -22,7 +7,6 @@
     --link-color: #7ecfff;
     --container-bg: #263c61;
 }
-/* body, h2 → 全站背景與標題 */
 body {
     font-family: 'Segoe UI', '微軟正黑體', Arial, sans-serif;
     margin: 0;
@@ -30,6 +14,7 @@ body {
     background-size: cover;
     color: var(--text-color);
     min-height: 100vh;
+    position: relative;
 }
 h2 {
     text-align: center;
@@ -38,7 +23,6 @@ h2 {
     letter-spacing: 2px;
     text-shadow: 0 2px 8px #000a;
 }
-/* 篩選區塊（主職業、子昇華、擅長分類、類型） */
 .main-flex-container {
     display: flex;
     flex-direction: row;
@@ -66,35 +50,34 @@ h2 {
 }
 .damage-type-block { white-space: nowrap; }
 .filter-label {
-    color: #ffb84d;
+    color: var(--secondary-color);
     font-weight: bold;
     margin-right: 8px;
     white-space: nowrap;
 }
-.filter-btn {
+.filter-btn, .side-section button, .side-link-btn {
     background: #23272e;
-    color: #e0e0e0;
-    border: 1.5px solid #444;
-    border-radius: 6px;
-    padding: 4px 14px;
+    color: #d8dfd1;
+    border: 2px solid #caad93;
+    border-radius: 60px;
+    padding: 5px 14px;
     margin: 2px 2px;
     cursor: pointer;
     transition: background 0.2s, color 0.2s, border 0.2s;
     font-size: 15px;
 }
-.filter-btn.active {
-    background: #ffb84d;
-    color: #23272e;
-    border: 1.5px solid #ffb84d;
+.filter-btn.active, .side-section button:hover, .side-link-btn:hover {
+    background: var(--secondary-color);
+    color: #2b4b83;
+    border: 1.5px solid var(--secondary-color);
     font-weight: bold;
     box-shadow: 0 2px 8px #ffb84d44;
 }
-/* 側邊欄（POB工具、常用連結） */
 .side-block {
     flex: 1 1 260px;
     max-width: 320px;
     min-width: 220px;
-    background: #263c61;
+    background: #2f5088;
     border-radius: 12px;
     box-shadow: 0 4px 24px rgba(143, 153, 85, 0.986);
     padding: 24px 32px;
@@ -108,35 +91,17 @@ h2 {
     gap: 12px;
 }
 .side-section label {
-    color: #ffb84d;
+    color: #ffb84db7;
     font-weight: bold;
     margin-bottom: 4px;
 }
 .side-section input[type="text"] {
     padding: 6px 10px;
     border-radius: 6px;
-    border: 1.5px solid #444;
-    background: #23272e;
+    border: 2px solid #38301e;
+    background: #1b1c1f;
     color: #e0e0e0;
     font-size: 15px;
-}
-.side-section button, .side-link-btn {
-    background: #23272e;
-    color: #e0e0e0;
-    border: 1.5px solid #444;
-    border-radius: 6px;
-    padding: 4px 14px;
-    margin: 2px 2px;
-    cursor: pointer;
-    transition: background 0.2s, color 0.2s, border 0.2s;
-    font-size: 15px;
-}
-.side-section button:hover, .side-link-btn:hover {
-    background: #ffb84d;
-    color: #23272e;
-    border: 1.5px solid #ffb84d;
-    font-weight: bold;
-    box-shadow: 0 2px 8px #ffb84d44;
 }
 .side-section .desc {
     color: #aaa;
@@ -148,18 +113,16 @@ h2 {
     flex-direction: column;
     gap: 8px;
 }
-/* 主表格（流派名稱、昇華、擅長分類、類型、作者、影片連結、說明） */
 table {
     width: 96%;
     margin: 0 auto 40px auto;
     border-collapse: collapse;
     background: #23272e;
     box-shadow: 0 4px 24px #0008;
-    border-radius: 12px;
     overflow: hidden;
 }
 th, td {
-    border: 1px solid #333a;
+    border: 1px solid rgb(129, 187, 53);
     padding: 10px 8px;
     text-align: center;
 }
@@ -171,7 +134,7 @@ td {
 td:last-child { white-space: normal; }
 th {
     background: #1a1e23;
-    color: #ffb84d;
+    color: var(--secondary-color);
     font-size: 16px;
     letter-spacing: 1px;
     white-space: nowrap;
@@ -185,10 +148,8 @@ tr:nth-child(odd) { background: #181c20; }
     border: none;
     background: #111;
 }
-/* 連結樣式（流派名稱、影片連結） */
-a { color: #7ecfff; text-decoration: underline; }
-a:hover { color: #ffb84d; }
-/* 倒數計時器（如有） */
+a { color: var(--link-color); text-decoration: underline; }
+a:hover { color: var(--secondary-color); }
 .countdown-container {
     position: fixed;
     top: 24px;
@@ -224,7 +185,7 @@ a:hover { color: #ffb84d; }
 .time-number {
     font-size: 2.6rem !important;
     font-family: 'Noto Serif TC', '微軟正黑體', 'DFKai-SB', serif;
-    color: #f5dbb5;
+    color: var(--primary-color);
     background: #23272e;
     border-radius: 10px;
     padding: 6px 18px;
@@ -237,17 +198,19 @@ a:hover { color: #ffb84d; }
 }
 .time-label {
     font-size: 1.1rem !important;
-    color: #ffb84d;
+    color: var(--secondary-color);
     font-family: 'Noto Serif TC', '微軟正黑體', 'DFKai-SB', serif;
     letter-spacing: 2px;
 }
-/* 響應式設計（表格、篩選區塊、倒數計時器） */
 @media (max-width: 900px) {
     .countdown-container {
         right: 2vw;
         top: 12px;
         transform: scale(var(--countdown-scale, 0.8));
     }
+    .filter-group { flex-direction: column; align-items: stretch; }
+    table, th, td { font-size: 13px; }
+    .video-embed { width: 140px; height: 80px; }
 }
 @media (max-width: 700px) {
     .countdown-container {
@@ -255,12 +218,6 @@ a:hover { color: #ffb84d; }
         top: 4px;
         transform: scale(var(--countdown-scale, 0.6));
     }
-}
-body { position: relative; }
-@media (max-width: 900px) {
-    .filter-group { flex-direction: column; align-items: stretch; }
-    table, th, td { font-size: 13px; }
-    .video-embed { width: 140px; height: 80px; }
 }
 @media (max-width: 1100px) {
     .main-flex-container {
@@ -272,10 +229,8 @@ body { position: relative; }
         min-width: 0;
     }
 }
-/* 表格淡入淡出動畫 */
 tbody.fade { opacity: 0; transition: opacity 0.3s; }
 tbody { transition: opacity 0.3s; }
-/* 子昇華展開區塊 */
 .sub-ascendancy-outer {
     width: 100%;
     display: flex;
@@ -294,28 +249,27 @@ tbody { transition: opacity 0.3s; }
 .filter-group button, .filter-group span, .filter-group div {
     font-family: '微軟正黑體', 'Segoe UI', Arial, sans-serif !important;
 }
-/* build-link 超連結樣式（流派名稱） */
 a.build-link {
-    color: #7ecfff;
+    color: var(--link-color);
     text-decoration: underline;
     font-weight: bold;
     cursor: pointer;
     transition: color 0.2s;
 }
 a.build-link:hover {
-    color: #ffb84d;
+    color: var(--secondary-color);
     text-decoration: underline;
 }
-/* 昇華欄位寬度調整，只比圖片大一點 */
 th.ascendancy, td.ascendancy,
 th:nth-child(2), td:nth-child(2) {
     max-width: 200px;
     min-width: 56px;
-    width: 70px;
+    width: 700px;
     white-space: normal;
     text-align: center;
+    min-height: unset;
+    height: auto;
 }
-/* 流派名稱欄位*/
 th.build-name, td.build-name,
 th:nth-child(1), td:nth-child(1) {
     max-width: 200px;
@@ -323,4 +277,29 @@ th:nth-child(1), td:nth-child(1) {
     width: 2000px;
     white-space: normal;
     text-align: center;
+}
+.ascendancy-glow {
+    box-shadow: 0 0 5px 2px #ffe066, 0 0 32px 3px #ffb84d66;
+    border-radius: 12px;
+    background: #23272e;
+    transition: box-shadow 0.3s;
+}
+.ascendancy-glow:hover {
+    box-shadow: 0 0 32px 1px #2b67d4, 0 0 8px 6px #3a92e4;
+}
+td.ascendancy {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 80px;
+    padding: 20px 0;
+    min-width: 80px;
+    min-height: 80px;
+    height: auto;
+}
+td.ascendancy img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
 }

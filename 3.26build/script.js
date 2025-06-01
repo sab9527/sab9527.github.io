@@ -1,6 +1,4 @@
-// script.js - 從 index.html 拆出的 JavaScript
-// ...existing code...
-// 定義全域常數
+// script.js - 最佳化與現代化語法，減少全域污染與重複操作
 const ASCENDANCY_CLASSES = {
     '野蠻人': ['勇士', '暴徒', '酋長'],
     '遊俠': ['守林人', '銳眼', '追獵者'],
@@ -10,15 +8,23 @@ const ASCENDANCY_CLASSES = {
     '暗影刺客': ['刺客', '詐欺師', '破壞者'],
     '貴族': ['昇華使徒']
 };
-
 const FIELD_MAP = ["流派名稱", "昇華", "擅長分類", "類型", "作者", "影片連結", "說明"];
-
 const filterOptions = {
     '職業': Object.keys(ASCENDANCY_CLASSES),
-    '昇華': [], // 這裡不直接顯示
+    '昇華': [],
     '擅長分類': ['打王','打圖','均衡','特化'],
     '類型': ['直擊','持續','召喚','圖騰','地雷陷阱','近戰','遠程']
 };
+const ASCENDANCY_IMAGES = {
+    '勇士': 'pic/勇士.png', '暴徒': 'pic/暴徒.png', '酋長': 'pic/酋長.png',
+    '守林人': 'pic/守林人.png', '銳眼': 'pic/銳眼.png', '追獵者': 'pic/追獵者.png',
+    '秘術家': 'pic/秘術家.png', '元素使': 'pic/元素使.png', '死靈師': 'pic/死靈師.png',
+    '處刑者': 'pic/處刑者.png', '衛士': 'pic/衛士.png', '冠軍': 'pic/冠軍.png',
+    '判官': 'pic/判官.png', '聖宗': 'pic/聖宗.png', '守護者': 'pic/守護者.png',
+    '刺客': 'pic/刺客.png', '詐欺師': 'pic/詐欺師.png', '破壞者': 'pic/破壞者.png',
+    '昇華使徒': 'pic/昇華使徒.png'
+};
+
 function createModernFilters() {
     const filterGroup = document.getElementById('filter-group');
     filterGroup.innerHTML = '';
@@ -109,17 +115,10 @@ function createModernFilters() {
 }
 function getCurrentFilters() {
     const filters = {};
-    // 主職業
     const mainBtn = document.querySelector('.main-class-btn.active');
-    if (mainBtn) {
-        filters['職業'] = [mainBtn.dataset.value];
-    }
-    // 子昇華
+    if (mainBtn) filters['職業'] = [mainBtn.dataset.value];
     const subBtns = Array.from(document.querySelectorAll('.sub-ascendancy-btn.active'));
-    if (subBtns.length > 0) {
-        filters['昇華'] = subBtns.map(btn => btn.dataset.value);
-    }
-    // 其他
+    if (subBtns.length > 0) filters['昇華'] = subBtns.map(btn => btn.dataset.value);
     document.querySelectorAll('.filter-btn.active:not(.main-class-btn):not(.sub-ascendancy-btn)').forEach(btn => {
         if (!filters[btn.dataset.field]) filters[btn.dataset.field] = [];
         filters[btn.dataset.field].push(btn.dataset.value);
@@ -129,7 +128,6 @@ function getCurrentFilters() {
 function matchFilters(row, filters) {
     for (let key in filters) {
         if (key === '職業') {
-            // 根據昇華名稱反查職業
             const ascendancy = (row['昇華'] || '').split(/,|、/).map(s => s.trim());
             const match = ascendancy.some(sub =>
                 filters['職業'].some(main =>
@@ -138,60 +136,29 @@ function matchFilters(row, filters) {
             );
             if (!match) return false;
         } else {
-            // 支援多值（以, 或 、分隔）
             const cell = (row[key] || '').split(/,|、/).map(s => s.trim());
             if (!filters[key].some(val => cell.includes(val))) return false;
         }
     }
     return true;
 }
-// 1. 新增對應表（請將圖片網址換成你自己的）
-const ASCENDANCY_IMAGES = {
-    '勇士': 'pic/勇士.png',
-    '暴徒': 'pic/暴徒.png',
-    '酋長': 'pic/酋長.png',
-    '守林人': 'pic/守林人.png',
-    '銳眼': 'pic/銳眼.png',
-    '追獵者': 'pic/追獵者.png',
-    '秘術家': 'pic/秘術家.png',
-    '元素使': 'pic/元素使.png',
-    '死靈師': 'pic/死靈師.png',
-    '處刑者': 'pic/處刑者.png',
-    '衛士': 'pic/衛士.png',
-    '冠軍': 'pic/冠軍.png',
-    '判官': 'pic/判官.png',
-    '聖宗': 'pic/聖宗.png',
-    '守護者': 'pic/守護者.png',
-    '刺客': 'pic/刺客.png',
-    '詐欺師': 'pic/詐欺師.png',
-    '破壞者': 'pic/破壞者.png',
-    '昇華使徒': 'pic/昇華使徒.png'
-};
-
-// 2. 新增渲染函式
 function renderAscendancyCell(text) {
     if (!text) return '';
-    // 支援多個昇華（以, 或 、分隔）
     return text.split(/,|、/).map(name => {
         name = name.trim();
         if (ASCENDANCY_IMAGES[name]) {
-            // 調整這裡的 height、width
-            return `<img src="${ASCENDANCY_IMAGES[name]}" alt="${name}" title="${name}" style="height:80px;width:auto;vertical-align:middle;margin:0 2px;">`;
+            return `<img src="${ASCENDANCY_IMAGES[name]}" alt="${name}" title="${name}" style="height:80px;width:auto;vertical-align:middle;margin:0 2px;" class="ascendancy-glow">`;
         }
         return name;
     }).join('');
 }
-
-// 3. 修改 renderTable
 function renderBuildNameCell(name) {
     if (!name) return '';
     const url = `https://poedb.tw/tw/search?q=${encodeURIComponent(name)}`;
     return `<a href="${url}" class="build-link" target="_blank" rel="noopener">${name}</a>`;
 }
-
 function renderTable(data, filters) {
     const tbody = document.querySelector('#games-table tbody');
-    // 動畫：先淡出
     tbody.classList.add('fade');
     setTimeout(() => {
         tbody.innerHTML = '';
@@ -211,33 +178,34 @@ function renderTable(data, filters) {
             `;
             tbody.appendChild(tr);
         });
-        // 動畫：再淡入
         tbody.classList.remove('fade');
     }, 200);
 }
 function embedVideo(url) {
     if (!url) return '無影片連結';
-    // 只支援 YouTube
     const ytMatch = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|v\/))([\w-]{11})/);
     if (!ytMatch) {
         return `<a href="${url}" target="_blank">查看影片</a>`;
     }
     const vid = ytMatch[1];
     const thumb = `https://img.youtube.com/vi/${vid}/hqdefault.jpg`;
-    // 直接顯示縮圖，點擊彈窗
     return `<img src="${thumb}" class="video-thumb" data-vid="${vid}" style="cursor:pointer;max-width:120px;border-radius:8px;box-shadow:0 2px 12px #000a;">`;
 }
-
 function parseCSV(text) {
-    const FIELD_MAP = ["流派名稱", "昇華", "擅長分類", "類型", "作者", "影片連結", "說明"];
-    return text.split(/\r?\n/).filter(line => line.trim()).slice(1).map(line => {
-        const values = line.split(',');
+    // 支援欄位內逗號（簡易處理，若需完整支援建議用 CSV 解析器）
+    const lines = text.split(/\r?\n/).filter(line => line.trim());
+    return lines.slice(1).map(line => {
+        const values = [], regex = /(?:"([^"]*)")|([^,]+)/g;
+        let match, i = 0;
+        while ((match = regex.exec(line)) && i < FIELD_MAP.length) {
+            values.push(match[1] !== undefined ? match[1] : match[2]);
+            i++;
+        }
         const obj = {};
         FIELD_MAP.forEach((key, idx) => obj[key] = values[idx] || '');
         return obj;
     });
 }
-
 async function loadCSVData() {
     try {
         const res = await fetch('data.csv?_=' + Date.now());
@@ -252,15 +220,11 @@ async function loadCSVData() {
         alert('載入 data.csv 失敗：' + e.message);
     }
 }
-
-// 初始化應用程序
 window.addEventListener('load', () => {
     loadCSVData();
     initPOBHandler();
     initSideLinkHandlers();
 });
-
-// POB Pastebin 處理
 function initPOBHandler() {
     document.getElementById('pob-url-btn').addEventListener('click', () => {
         const input = document.getElementById('pob-url-input');
@@ -277,13 +241,10 @@ function initPOBHandler() {
         window.open('https://poedb.tw/tw/pob?pastebin=' + code, '_blank');
     });
 }
-
 function extractPOBCode(url) {
     const match = url.match(/(pastebin\.com\/(?:raw\/)?([\w\d]+))|(pobb\.in\/([\w\d]+))/i);
     return match ? (match[2] || match[4]) : (/^[\w\d]{8,}$/.test(url) ? url : '');
 }
-
-// 側邊欄連結處理
 function initSideLinkHandlers() {
     document.querySelectorAll('.side-link-btn').forEach(btn => {
         btn.addEventListener('click', () => {
@@ -291,19 +252,21 @@ function initSideLinkHandlers() {
             if (url) window.open(url, '_blank');
         });
     });
-};
-// 彈窗播放影片
-const modalMask = document.getElementById('video-modal-mask');
-const modalIframe = document.getElementById('video-modal-iframe');
-const modalClose = document.getElementById('video-modal-close');
-document.addEventListener('click', function(e) {
-    const thumb = e.target.closest('.video-thumb');
-    if (thumb && thumb.dataset.vid) {
-        modalMask.style.display = 'flex';
-        modalIframe.src = `https://www.youtube.com/embed/${thumb.dataset.vid}?autoplay=1`;
-    }
-    if (e.target === modalMask || e.target === modalClose) {
-        modalMask.style.display = 'none';
-        modalIframe.src = '';
-    }
-});
+}
+// 彈窗播放影片（事件委派最佳化）
+(() => {
+    const modalMask = document.getElementById('video-modal-mask');
+    const modalIframe = document.getElementById('video-modal-iframe');
+    const modalClose = document.getElementById('video-modal-close');
+    document.addEventListener('click', function(e) {
+        const thumb = e.target.closest('.video-thumb');
+        if (thumb && thumb.dataset.vid) {
+            modalMask.style.display = 'flex';
+            modalIframe.src = `https://www.youtube.com/embed/${thumb.dataset.vid}?autoplay=1`;
+        }
+        if (e.target === modalMask || e.target === modalClose) {
+            modalMask.style.display = 'none';
+            modalIframe.src = '';
+        }
+    });
+})();
