@@ -1,0 +1,308 @@
+/* style.css - 從 index.html 拆出的 CSS */
+/*
+欄位對應說明：
+- .main-flex-container, .filter-group, .filter-block, .damage-type-block, .filter-label, .filter-btn, .side-block, .side-section, .side-link-group, .side-link-btn, .side-section input, .side-section button
+  → 篩選區塊（主職業、子昇華、擅長分類、類型、常用連結、POB工具）
+- table, th, td, tr, .video-embed
+  → 主表格（流派名稱、昇華、擅長分類、類型、作者、影片連結、說明）
+- .countdown-container, .time-block, .time-number, .time-label
+  → 倒數計時器（如有）
+- .sub-ascendancy-outer, .sub-ascendancy-block, .main-class-btn, .sub-ascendancy-btn
+  → 子昇華展開區塊
+- a.build-link
+  → 流派名稱超連結
+- .side-link-btn
+  → 常用連結按鈕
+*/
+:root {
+    --primary-color: #f5dbb5;
+    --secondary-color: #ffb84d;
+    --bg-color: #181c20;
+    --text-color: #e0e0e0;
+    --link-color: #7ecfff;
+    --container-bg: #263c61;
+}
+/* body, h2 → 全站背景與標題 */
+body {
+    font-family: 'Segoe UI', '微軟正黑體', Arial, sans-serif;
+    margin: 0;
+    background: var(--bg-color) url('https://pbs.twimg.com/media/Gq21fqHWQAAlSWh?format=jpg&name=large') no-repeat center center fixed;
+    background-size: cover;
+    color: var(--text-color);
+    min-height: 100vh;
+}
+h2 {
+    text-align: center;
+    margin-top: 32px;
+    color: var(--primary-color);
+    letter-spacing: 2px;
+    text-shadow: 0 2px 8px #000a;
+}
+/* 篩選區塊（主職業、子昇華、擅長分類、類型） */
+.main-flex-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    max-width: 1200px;
+    margin: 32px auto 24px;
+    gap: 32px;
+}
+.filter-group {
+    flex: 2 1 0%;
+    padding: 24px 32px;
+    background: var(--container-bg);
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(136, 165, 10, 0.986);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px 32px;
+}
+.filter-block {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: nowrap;
+    justify-content: flex-start !important;
+}
+.damage-type-block { white-space: nowrap; }
+.filter-label {
+    color: #ffb84d;
+    font-weight: bold;
+    margin-right: 8px;
+    white-space: nowrap;
+}
+.filter-btn {
+    background: #23272e;
+    color: #e0e0e0;
+    border: 1.5px solid #444;
+    border-radius: 6px;
+    padding: 4px 14px;
+    margin: 2px 2px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border 0.2s;
+    font-size: 15px;
+}
+.filter-btn.active {
+    background: #ffb84d;
+    color: #23272e;
+    border: 1.5px solid #ffb84d;
+    font-weight: bold;
+    box-shadow: 0 2px 8px #ffb84d44;
+}
+/* 側邊欄（POB工具、常用連結） */
+.side-block {
+    flex: 1 1 260px;
+    max-width: 320px;
+    min-width: 220px;
+    background: #263c61;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(143, 153, 85, 0.986);
+    padding: 24px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+.side-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.side-section label {
+    color: #ffb84d;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+.side-section input[type="text"] {
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1.5px solid #444;
+    background: #23272e;
+    color: #e0e0e0;
+    font-size: 15px;
+}
+.side-section button, .side-link-btn {
+    background: #23272e;
+    color: #e0e0e0;
+    border: 1.5px solid #444;
+    border-radius: 6px;
+    padding: 4px 14px;
+    margin: 2px 2px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border 0.2s;
+    font-size: 15px;
+}
+.side-section button:hover, .side-link-btn:hover {
+    background: #ffb84d;
+    color: #23272e;
+    border: 1.5px solid #ffb84d;
+    font-weight: bold;
+    box-shadow: 0 2px 8px #ffb84d44;
+}
+.side-section .desc {
+    color: #aaa;
+    font-size: 13px;
+    margin-bottom: 2px;
+}
+.side-link-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+/* 主表格（流派名稱、昇華、擅長分類、類型、作者、影片連結、說明） */
+table {
+    width: 96%;
+    margin: 0 auto 40px auto;
+    border-collapse: collapse;
+    background: #23272e;
+    box-shadow: 0 4px 24px #0008;
+    border-radius: 12px;
+    overflow: hidden;
+}
+th, td {
+    border: 1px solid #333a;
+    padding: 10px 8px;
+    text-align: center;
+}
+td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+td:last-child { white-space: normal; }
+th {
+    background: #1a1e23;
+    color: #ffb84d;
+    font-size: 16px;
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+tr:nth-child(even) { background: #23272e; }
+tr:nth-child(odd) { background: #181c20; }
+.video-embed {
+    width: 220px;
+    height: 124px;
+    border-radius: 6px;
+    border: none;
+    background: #111;
+}
+/* 連結樣式（流派名稱、影片連結） */
+a { color: #7ecfff; text-decoration: underline; }
+a:hover { color: #ffb84d; }
+/* 倒數計時器（如有） */
+.countdown-container {
+    position: fixed;
+    top: 24px;
+    right: 3vw;
+    left: auto;
+    margin: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    padding: 10px 0 8px 0;
+    background: rgba(245, 219, 181, 0.13);
+    border-radius: 18px;
+    box-shadow: 0 2px 16px #0004;
+    width: 420px;
+    min-width: 420px;
+    max-width: 420px;
+    height: 90px;
+    font-size: 16px;
+    transform: scale(var(--countdown-scale, 1));
+    transform-origin: top right;
+}
+.countdown-container * {
+    font-size: inherit !important;
+}
+.time-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 80px;
+}
+.time-number {
+    font-size: 2.6rem !important;
+    font-family: 'Noto Serif TC', '微軟正黑體', 'DFKai-SB', serif;
+    color: #f5dbb5;
+    background: #23272e;
+    border-radius: 10px;
+    padding: 6px 18px;
+    box-shadow: 0 2px 8px #a67c5244 inset;
+    border: 2px solid #cbb07a;
+    margin-bottom: 4px;
+    letter-spacing: 2px;
+    width: 60px;
+    text-align: center;
+}
+.time-label {
+    font-size: 1.1rem !important;
+    color: #ffb84d;
+    font-family: 'Noto Serif TC', '微軟正黑體', 'DFKai-SB', serif;
+    letter-spacing: 2px;
+}
+/* 響應式設計（表格、篩選區塊、倒數計時器） */
+@media (max-width: 900px) {
+    .countdown-container {
+        right: 2vw;
+        top: 12px;
+        transform: scale(var(--countdown-scale, 0.8));
+    }
+}
+@media (max-width: 700px) {
+    .countdown-container {
+        right: 1vw;
+        top: 4px;
+        transform: scale(var(--countdown-scale, 0.6));
+    }
+}
+body { position: relative; }
+@media (max-width: 900px) {
+    .filter-group { flex-direction: column; align-items: stretch; }
+    table, th, td { font-size: 13px; }
+    .video-embed { width: 140px; height: 80px; }
+}
+@media (max-width: 1100px) {
+    .main-flex-container {
+        flex-direction: column;
+        gap: 24px;
+    }
+    .filter-group, .side-block {
+        max-width: 100%;
+        min-width: 0;
+    }
+}
+/* 表格淡入淡出動畫 */
+tbody.fade { opacity: 0; transition: opacity 0.3s; }
+tbody { transition: opacity 0.3s; }
+/* 子昇華展開區塊 */
+.sub-ascendancy-outer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1), opacity 0.35s;
+    opacity: 0;
+    margin: 0;
+}
+.sub-ascendancy-outer.show {
+    max-height: 500px;
+    opacity: 1;
+}
+.filter-label, .filter-btn, .sub-ascendancy-block, .main-class-btn, .sub-ascendancy-btn, 
+.filter-group button, .filter-group span, .filter-group div {
+    font-family: '微軟正黑體', 'Segoe UI', Arial, sans-serif !important;
+}
+/* build-link 超連結樣式（流派名稱） */
+a.build-link {
+    color: #7ecfff;
+    text-decoration: underline;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+a.build-link:hover {
+    color: #ffb84d;
+    text-decoration: underline;
+}
