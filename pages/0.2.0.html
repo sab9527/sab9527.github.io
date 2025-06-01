@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="zh-TW">
     <head>
@@ -2699,3 +2700,2706 @@
     </div>
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="zh-TW">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>流亡黯道2 更新內容</title>
+          <!-- Open Graph 標籤 (用於 Facebook, Discord 等) -->
+        <meta property="og:title" content="流亡黯道2 0.2.0 版本更新說明 by sab" />
+        <meta property="og:description" content="流亡黯道2 0.2.0 版本更新說明，包含職業、被動技能樹、技能、輔助寶石、傳奇裝備等改動。" />
+        <meta property="og:description" content="流亡黯道2 0.2.0 版本更新說明，包含職業、被動技能樹、技能、輔助寶石、傳奇裝備等改動。" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://i.imgur.com/e9zIVsm.png" />
+        <meta property="og:image" content="https://i.imgur.com/e9zIVsm.png" />
+            <link rel="icon" type="image/png" sizes="32x32" href="https://i.imgur.com/e9zIVsm.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="https://i.imgur.com/e9zIVsm.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="https://i.imgur.com/e9zIVsm.png">
+        <link rel="shortcut icon" href="https://i.imgur.com/e9zIVsm.png">
+        <link rel="icon" href="https://i.imgur.com/e9zIVsm">
+        <style>
+            .page-title {
+                color: #e6e6e6;
+                text-align: center;
+                font-size: 2.5em;
+                padding: 30px 0;
+                margin: 0;
+                background-color: #2c4644;
+                border: 2px solid #3498db;  /* 新增完整邊框 */
+                border-radius: 8px;         /* 新增圓角 */
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+                margin-bottom: 20px;        /* 新增底部間距 */
+            }
+            body {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                background-color: hsl(144, 6%, 83%);
+                color: #333;
+                line-height: 1.8;
+                margin: 0;
+                padding: 0;
+            }
+            li {
+               margin-bottom: 10px;
+               color: #e6e6e6; /* 新增這行修改列表文字顏色 */
+            }
+            .container {
+                max-width: 1200px;
+                margin: 20px auto;
+                background-color: #2c4644;
+                padding: 30px;
+                border-radius: 8px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            }
+    
+            h2 {
+                color: #becbd8;
+                border-bottom: 3px solid #3498db;
+                padding-bottom: 10px;
+                margin-top: 40px;
+                font-size: 1.8em;
+            }
+    
+            h3 {
+                color: #34495e;
+                margin-top: 30px;
+                font-size: 1.5em;
+            }
+    
+            ul {
+                list-style-type: disc;
+                padding-left: 40px;
+                margin-bottom: 20px;
+            }
+    
+            ul ul {
+                list-style-type: circle;
+                padding-left: 20px;
+            }
+    
+            li {
+                margin-bottom: 10px;
+            }
+    
+            p {
+                margin: 10px 0;
+            }
+    
+            a {
+                color: #3498db;
+                text-decoration: none;
+                font-weight: bold;
+            }
+    
+            a:hover {
+                text-decoration: underline;
+            }
+    
+            /* 表格樣式 */
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 20px 0;
+                font-size: 1em;
+                text-align: left;
+            }
+    
+            table th, table td {
+                padding: 12px 15px;
+                border: 1px solid #ddd;
+            }
+    
+            table th {
+                background-color: #3498db;
+                color: #ffffff;
+            }
+    
+            table tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+    
+            /* 按鈕樣式 */
+            button {
+                background-color: #3498db;
+                color: #ffffff;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 1em;
+            }
+    
+            button:hover {
+                background-color: #2980b9;
+            }
+    
+            /* 引用樣式 */
+            blockquote {
+                margin: 20px 0;
+                padding: 15px 20px;
+                background-color: #f5f5f5;
+                border-left: 5px solid #3498db;
+                font-style: italic;
+                color: #555;
+            }
+    
+            /* 滾動條樣式 */
+            ::-webkit-scrollbar {
+                width: 10px;
+            }
+    
+            ::-webkit-scrollbar-thumb {
+                background-color: #3498db;
+                border-radius: 5px;
+            }
+    
+            ::-webkit-scrollbar-thumb:hover {
+                background-color: #2980b9;
+            }
+    
+            /* 標題間距調整 */
+            h2, h3 {
+                margin-top: 50px;
+            }
+    
+            /* 增加段落間距 */
+            p, li {
+                margin-bottom: 15px;
+            }
+           
+            /* 目錄樣式 */
+            .toc {
+                background-color: #1d2f2e;
+                padding: 25px;
+                border-radius: 12px;
+                margin-bottom: 40px;
+                box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+                border: 1px solid #727c3b;
+            }
+
+            .toc-title {
+                color: #89e047;
+                font-size: 1.8em;
+                margin-bottom: 20px;
+                text-align: center;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                border-bottom: 2px solid #7e7e41;
+                padding-bottom: 15px;
+            }
+
+            .toc-list {
+                list-style-type: none;
+                padding-left: 0;
+                columns: 2;
+                column-gap: 40px;
+            }
+
+            .toc-list li {
+                margin: 12px 0;
+                break-inside: avoid;
+                text-align: center;  /* 新增這行 */
+            }
+
+            .toc-list a {
+                color: #4cc2dd;
+                text-decoration: none;
+                transition: all 0.3s ease;
+                display: block;
+                padding: 8px 15px;
+                border-radius: 6px;
+                font-size: 1.1em;
+                text-align: center;  /* 新增這行 */
+            }
+
+            .toc-list a:hover {
+                color: #7a9631;
+                background-color: rgba(90, 160, 206, 0.432);
+                transform: translateX(5px);
+            }
+            .section-container {
+              background-color: #1d2f2e;
+              padding: 25px;
+              border-radius: 12px;
+              margin-bottom: 40px;
+              box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+              border: 2px solid #3498db;  /* 修改這行：改為藍色邊框 */
+             }
+
+            .section-title {
+            color: #c0de52;
+            font-size: 2.5em;
+            margin-bottom: 4px;
+            text-align: left;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 15px;
+             }
+             body {
+        background-image: url('https://i.imgur.com/0cQFdYc.jpeg');  /* 替換為你想要的圖片網址 */
+        background-attachment: fixed;  /* 固定背景，不隨滾動 */
+        background-size: cover;  /* 圖片覆蓋整個視窗 */
+        background-position: center;  /* 圖片置中 */
+        background-repeat: no-repeat;  /* 圖片不重複 */
+        color: #ffffff;  /* 文字顏色 */
+        line-height: 1.6;
+        margin: 0;
+        padding: 20px;
+        font-family: Arial, sans-serif;
+             }   
+             .scroll-to-top {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background-color: #3498db;
+                color: white;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                text-decoration: none;
+                opacity: 0;
+                transition: opacity 0.3s;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            }
+
+            .scroll-to-top:hover {
+                background-color: #2980b9;
+            }
+
+            .scroll-to-top.visible {
+                opacity: 1;
+            }
+
+            .poe2-countdown {
+            --countdown-image: url('https://web.poecdn.com/protected/image/poe2/home/countdown.webp');
+            min-width: 320px;
+            position: relative;
+            max-width: 1040px;
+            aspect-ratio: 7.027027027;
+            margin: 0 auto;
+            font-family: "Optimus", Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.8);
+            border: 1px solid #837053;
+        }
+
+        .countdown-container {
+            display: flex;
+            gap: 40px;
+        }
+
+        .time-block {
+            text-align: center;
+        }
+
+        .time-number {
+            font-size: 52px;
+            color: #dfcf99;
+            text-shadow: 0 0 10px rgba(223, 207, 153, 0.5);
+        }
+
+        .time-label {
+            font-size: 24px;
+            color: #837053;
+            margin-top: 8px;
+        }
+
+
+        .ascendancy-image {
+        cursor: pointer;
+        transition: transform 0.3s ease;
+    }
+
+    .ascendancy-image:hover {
+        transform: scale(1.05);
+    }
+
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        justify-content: center;
+        align-items: center;
+    }
+
+    .modal-content {
+        max-width: 90%;
+        max-height: 90vh;
+        object-fit: contain;
+    }
+
+    .modal.active {
+        display: flex;
+    }
+
+    .close-button {
+        position: absolute;
+        top: 15px;
+        right: 35px;
+        color: #f1f1f1;
+        font-size: 40px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+        /* 職業相關樣式 */
+        .class-section {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        margin-bottom: 30px;
+    }
+
+    .class-card {
+        position: relative;
+        overflow: hidden;
+        border-radius: 8px;
+        transition: transform 0.3s ease;
+    }
+
+    .class-card:hover {
+        transform: scale(1.02);
+    }
+
+    .class-image {
+        width: 100%;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .class-name {
+        color: #c0de52;
+        text-align: center;
+        margin-top: 10px;
+        font-size: 1.2em;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    /* 目錄相關樣式補充 */
+    .toc-list a[href="#class-changes"] {
+        color: #c0de52;
+    }
+
+    .toc-list a[href="#class-changes"]:hover {
+        color: #e6ff99;
+        background-color: rgba(192, 222, 82, 0.2);
+    }
+
+
+
+                      /* ... 其他樣式 ... */
+
+         </style>
+    </head>    
+<body style="background-color: #CCE8CF; color: #3A3A3A;">
+
+        <!-- 新增頂部標題 -->
+        <h1 class="page-title">流亡黯道2 0.2.0 更新 sab</h1>
+        <!-- 新增圖片容器 -->
+        <div class="header-image">
+            <img src="https://web.poecdn.com/protected/image/poe2/announcements/dawn-of-the-hunt/logo.webp?key=I-bauHZodR6kzQX9UZbfOQ" alt="Path of Exile 2" style="width: 100%; max-width: 1200px; height: auto; border-radius: 8px; margin: 20px auto; display: block; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+        </div>
+        <div class="poe2-countdown">
+            <div class="countdown-container">
+                <div class="time-block">
+                    <div class="time-number" id="days">00</div>
+                    <div class="time-label">天</div>
+                </div>
+                <div class="time-block">
+                    <div class="time-number" id="hours">00</div>
+                    <div class="time-label">小時</div>
+                </div>
+                <div class="time-block">
+                    <div class="time-number" id="minutes">00</div>
+                    <div class="time-label">分鐘</div>
+                </div>
+                <div class="time-block">
+                    <div class="time-number" id="seconds">00</div>
+                    <div class="time-label">秒</div>
+                </div>
+            </div>
+        </div>       
+
+      <div class="container">
+               <div class="toc">
+            <div class="toc-title">目錄</div>
+            <ul class="toc-list">
+                <li><a href="#new-content">新增內容與特色</a></li>
+                <li><a href="#endgame-changes">終局改動</a></li>
+                <li><a href="#class-changes">新增昇華</a></li>
+                <li><a href="#atlas-changes">地圖天賦樹改動</a></li>
+                <li><a href="#general-improvements">一般改進</a></li>
+                <li><a href="#player-changes">玩家變更</a></li>
+                <li><a href="#skill-changes">技能改動</a></li>
+                <li><a href="#support-changes">輔助寶石改動</a></li>
+                <li><a href="#legendary-changes">傳奇</a></li>
+                <li><a href="#items">道具</a></li>
+                <li><a href="#monsters">怪物</a></li>
+                <li><a href="#quests">任務</a></li>
+                <li><a href="#changes-2025">2025年4月4日新增新增</a></li>
+
+            </ul>
+        </div>
+        <div class="section-container">
+            <div class="section-title" id="new-content">新增內容與特色</div>
+            <ul>
+            <li>新增了一個可遊玩角色職業，獵人</li>
+            <li>為獵人新增了新的亞馬遜與儀式行者昇華職業</li>
+            <li>為戰士新增了新的奇塔弗工匠昇華職業</li>
+            <li>為傭兵新增了新的戰術家昇華職業</li>
+            <li>為女巫新增了新的巫妖昇華職業</li>
+            <li>新增超過 25 個新技能，主要為長矛技能</li>
+            <li>新增超過 100 個新的輔助</li>
+            <li>新增 2 個新的物品種類，長矛與輕盾</li>
+            <li>新增超過 100 個新的傳奇物品</li>
+            <li>新增 8 張新的終局地圖，每張都有新的遭遇與新的獎勵</li>
+            <li>推出 4 個傳奇保險箱 - 具有獨特遭遇的特殊箱子</li>
+            <li>推出 12 個流亡者 - 和你一樣被放逐且公開敵對的人。他們每個人都有自己的技能和個性，並且比一般的怪物聰明得多。這些流亡者使用傳奇物品，如果你成功擊殺他們，他們會掉落這些物品</li>
+            <li>推出 Azmerian Wisps - 在劇情和終局內容中都可以找到的。當你接近這些精靈時，它們會逃跑，引導你經過怪物。任何與其接觸的怪物都會被精靈注入能量，使其更強大，而精靈也會提供更豐厚的獎勵。讓它們逃跑太久，它們就會消散並返回森林</li>
+            <li>新增 15 個新的可鑲嵌物品，具有可以製作到你的物品上的新詞綴</li>
+            <li>推出暮光聖物箱鑰匙。在終局地圖的新區域聖物箱寶庫使用後，它會讓你進入一個寶庫，裡面的箱子會掉落由我們的贊助者選定的特殊閃亮版傳奇物品！它們可以包含《流亡黯道2》中找到的任何傳奇物品，但如果選定的物品是頂級首領掉落的，那麼只有相關內容掉落的特殊鑰匙才能提供這些物品。暮光聖物箱目前有 453 種閃亮版傳奇物品可供掉落</li>
+            <li>現在精髓可以使用瓦爾寶珠來使其腐化，產生一系列不可預測的結果。較高等級的精髓可以升級為四種新的腐化精髓</li>
+            <li>持續逐步改善聲音、美術、特效和環境</li>
+        </ul>
+        </div>
+        
+        <div class="section-container">
+            <div class="section-title" id="class-changes">職業改動</div>
+            <div class="class-section">
+                <div class="class-card">
+                    <img src="https://i.imgur.com/p1stHU4.jpeg" alt="The Amazon" class="class-image ascendancy-image">
+                    <h3 class="class-name"> (The Amazon)</h3>
+                </div>
+                <div class="class-card">
+                    <img src="https://i.imgur.com/Dj8rCoH.jpeg" alt="The Ritualist" class="class-image ascendancy-image">
+                    <h3 class="class-name"> (The Ritualist)</h3>
+                </div>
+                <div class="class-card">
+                    <img src="https://i.imgur.com/3UltYPq.jpeg" alt="Lich" class="class-image ascendancy-image">
+                    <h3 class="class-name">(Lich)</h3>
+                </div>
+                <div class="class-card">
+                    <img src="https://i.imgur.com/zPgW9q1.jpeg" alt="The Smith of Kitava" class="class-image ascendancy-image">
+                    <h3 class="class-name"> (The Smith of Kitava)</h3>
+                </div>
+                <div class="class-card">
+                    <img src="https://i.imgur.com/IT6gpou.jpeg" alt="The Smith of Kitava" class="class-image ascendancy-image">
+                    <h3 class="class-name"> (Tactician)</h3>
+
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="section-container">
+    <div class="section-title" id="endgame-changes">終局改動</div>
+    <ul>
+            <li>Atlas 上的腐化區域現在有一個中央腐化樞紐(Nexus)，作為苦難的源頭。在通往樞紐的區域，腐化會從被擊敗的敵人身上溢出，並聚集成強大的怪物。</li>
+            <li>到達樞紐後，你將開始淨化腐化源頭的任務。完成此任務並獲得晶化碎片，可用於獲得 Atlas 天賦點。</li>
+            <li>每個勢力都新增了一個首領，這些首領會出現在腐化樞紐中。</li>
+            <li>也新增了額外的腐化怪物勢力。</li>
+            <li>腐化怪物的視覺效果和動畫已得到改善，其技能也已重新平衡。</li>
+            <li>腐化區域不再有 +1 區域等級，但現在更可能擁有詞綴，並且這些詞綴可能更強大。還新增了一些新的腐化詞綴。</li>
+            <li>淨化樞紐將使周圍的地圖變成淨化(Clean)地圖，這些地圖有自己的一套怪物和獎勵，包括新推出的破裂石。</li>
+            <li>破裂石會隨機分裂一件至少有 4 個詞綴的稀有物品上的一個詞綴，並將其鎖定。</li>
+            <li>為了開啟腐化樞紐Nexus地圖，放置在地圖裝置中的換界石需要至少有 4 個詞綴。</li>
+            <li>你現在可以在死亡後重生並返回地圖。首次進入終局內容時，每張地圖最多有 6 次嘗試機會。當你為界石添加更多詞綴時，重生次數會減少。</li>
+            <li>在隊伍中，每個人都可以重生多次。</li>
+            <li>只要你沒有死亡，你就可以隨意進出你的地圖。傳送門的數量代表你在地圖中的復活次數。</li>
+            <li>一旦你開始首領戰，重生系統將更改為需要地圖擁有者集體重生整個隊伍。這是為了確保你必須在滿血狀態下擊殺首領。</li>
+            <li>如果你決定在沒有與任何其他地圖內容互動的情況下直接衝向地圖首領，然後死亡，你將在首領檢查點重生，並且只會出現地圖首領。所有其他怪物和內容都將被移除。這是為了防止玩家故意死亡來刷取多份相同獎勵的情況。</li>
+            <li>Atlas 上的塔數量已大幅減少，但每個塔現在都更強大。</li>
+            <li>碑牌（總督的先行者 除外）本質上會為塔增加兩倍的機制。在塔中使用更高階的換界石現在也會增加石板應用的機制數量。到 15 階時，加成會翻倍，使單個碑牌現在可以增加比以前多四倍的東西。</li>
+            <li>塔地圖現在可以生成所有額外內容機制，包括首領。</li>
+            <li>受石板影響的地圖數量平均增加了一倍，現在還會根據地圖階級進行縮放。</li>
+            <li>擊殺地圖完成所需的稀有怪物不再有機會將怪物詞綴授予剩餘的稀有怪物。</li>
+            <li>增加了地圖中稀有怪物擁有 3 或 4 個詞綴的機率（請注意，這意味著它們會掉落更多物品）。這主要是為了彌補死亡時稀有怪物將其詞綴授予其他稀有怪物的移除。</li>
+            <li>現在，當完成地圖中最後可用的可選內容時，會生成一個檢查點。</li>
+            <li>額外內容，例如裂痕、迷霧、遠征和祭祀，現在開始在遠離神廟避難所的地方生成。</li>
+            <li>地圖中獲取換界石的方式已重新設計。我們的目的是使持續獲得換界石的掉落更加可靠，並減少對隨機因素的依賴。</li>
+            <li>換界石不再會掉落低於你所在的地圖階級。</li>
+            <li>最終地圖首領掉落的換界石現在將始終比你所在的地圖階級高一級。</li>
+            <li>1 階地圖中的最終地圖首領和最後自然生成的稀有怪物有 100% 的機率掉落換界石。隨著你進入更高階的地圖，這個機率會下降，但通過適當投資換界石後綴詞綴和 Atlas 天賦樹，仍然可以保證掉落。為了彌補，自然掉落的換界石數量已減少。</li>
+            <li>移除了 Atlas 天賦樹中換界石掉落高一階的機率，並降低了 Atlas 天賦樹上可用的換界石數量。</li>
+            <li>“地圖首領有機會掉落當前階級或更高階級的換界石”的來源已替換為“增加地圖首領掉落的換界石數量”。</li>
+            <li>多里亞尼現在最多可購買 10 個換界石，可以是 1 階，也可以是你已完成的最高階級的下一階。</li>
+            <li>總督的先行者 碑牌現在會使範圍內最多 2-4 張地圖包含首領（之前為 3-7 張）。</li>
+            <li>由於新的換界石掉落機率，換界石後綴詞綴提供的換界石機率已降低。</li>
+            <li>未鑑定的換界石現在提供 30% 的換界石掉落機率增加，而不是 30% 的數量增加。</li>
+            <li>你完成的前 5 張不同的傳奇地圖，每張現在都會獎勵 2 個 Atlas 天賦點，總共 10 點。</li>
+            <li>已調整部分地圖的特性，以適應Azmerian Spirits的加入。</li>
+            <li>為總督的先行者 碑牌新增了與Azmerian Spirits相關的新詞綴。</li>
+            <li>為先驅者碑牌新增了與Azmerian Spirits和流亡者相關的新詞綴。</li>
+            <li>純淨樂園地圖現在經驗獲取提高 200-400%（之前為 150-300%）。</li>
+            <li>遠征新增了一種稱為重組的製作機制，允許你選擇兩個物品上的詞綴，希望將每個物品的最佳元素組合到一個物品上。隨著你選擇更多詞綴，成功率會降低。如果不成功，物品將被摧毀。這將在你完成第一次遠征後解鎖，並且需要遠征期間發現的文物來提供能量。</li>
+            <li>使你地圖中的祭祀恩惠有 5-10% 更高機率為預兆的碑牌詞綴，現在數值為 15-25%。</li>
+            <li>使地圖首領有 +10-20% 機率掉落當前階級或更高階級換界石的總督的先行者 碑牌詞綴，現在數值為 +5-8%。</li>
+            <li>之前給予隨機額外內容額外基礎機率的先驅者碑牌後綴，現在改為給予提高的機率（這會影響現有的物品）。</li>
+            <li>提供你地圖中發現的物品稀有度提高的碑牌詞綴，現在數值為 10-15%（之前為 10-20%）。</li>
+            <li>提供你地圖中發現的物品數量提高的碑牌詞綴，現在數值為 3-7%（之前為 3-8%）。</li>
+            <li>提供你地圖中怪物群數量提高的碑牌詞綴，現在數值為 3-7%（之前為 3-8%）。</li>
+            <li>提供你地圖中發現的金幣數量提高的碑牌詞綴，現在數值為 10-15%（之前為 5-10%）。</li>
+            <li>使你地圖中的裂痕怪物密度提高的碑牌詞綴，現在數值為 4-6%（之前為 5-10%），而同時使裂痕開啟更快的詞綴，現在數值為 3-5%（之前為 8-12%）。</li>
+            <li>稀有怪物擁有額外詞綴的碑牌詞綴不再會出現。</li>
+            <li>幻像異界 中稀有怪物擁有額外詞綴的詞綴不再出現。</li>
+            <li>引導至灰燼仲裁者遭遇的各種終局任務已合併為一個單一任務。</li>
+            <li>所有受難度和幻像異界 影響的首領現在都可以在任何難度下掉落他們特定的傳奇物品，但稀有的傳奇物品在較低難度下會更稀有。這也適用於此內容中聖物箱鑰匙的掉落機率。</li>
+            <li>與之前相比，頂級首領內容現在只需大約一半的時間即可解鎖。此外，頂級首領在難度 0 下也變得更容易。我們的目的是讓你在終局進程中更早地面對此內容的難度 0，同時仍然保留難度 4 的挑戰性。</li>
+            <li>玩家不再因在幻像異界、The Twisted Domain、Logbooks 中的 Olroth 競技場、the Crux of Nothingness 或 The Burning Monolith中死亡而損失經驗。玩家也不再從在這些區域擊殺怪物獲得經驗。</li>
+            <li>移動了幻像異界中倉庫的位置，以減少在嘗試打開倉庫時意外開始遭遇戰的可能性。</li>
+            <li>降低了聯盟特定的 Atlas 天賦樹上用於獲取日誌、裂痕碎片、幻像異界碎片和謁見國王的強力天賦點的強度。</li>
+            <li>地圖中的迷霧遭遇現在每次填滿獎勵類型時都會獎勵 1 個幻像異界碎片。</li>
+            <li>現在可以在所有地圖階級的迷霧遭遇中獲得幻像異界碎片，數量會隨著地圖階級的提高而增加。</li>
+            <li>迷霧遭遇中生成怪物的基本數量已減少，而通過觸摸迷霧之鏡出現的怪物數量已大大增加。</li>
+            <li>降低了迷霧遭遇中霧的強度。</li>
+            <li>從裂痕中生成的怪物數量已減少。</li>
+            <li>現在，更高比例的裂痕怪物總數會在遭遇戰的早期生成。</li>
+            <li>減少了發現的小型裂痕寶箱的數量。</li>
+            <li>現在可以在所有地圖階級的裂痕中獲得裂痕碎片，數量會隨著地圖階級的提高而增加。</li>
+            <li>當你打開裂痕之手或迷霧之鏡時，裂痕和迷霧遭遇現在被視為完成。</li>
+            <li>保險箱現在在地圖中生成稍微多一些的怪物群。</li>
+            <li>預兆現在總是作為地圖區域中的祭祀獎勵出現。也有很小的機率出現額外的預兆。</li>
+            <li>神廟避難所和藏身處的商人現在正確地提供 65 級的物品，而不是一個提供 60 級的物品，另一個提供 70 級的物品。</li>
+            <li>如果你在終局地圖區域中退出遊戲，重新登入同一個角色現在會將你放回地圖中（如果該地區仍然存在）。</li>
+        </ul>
+</div>
+
+        <div class="section-container">
+    <div class="section-title" id="atlas-changes">地圖天賦樹改動</div>
+    <ul>
+            <li>在地圖天賦樹中新增了「Azmerian Spirits」與「Rogue Exiles」的天賦。</li>
+            <li>增加了更多的天賦，並重新設計了一些現有天賦，使選擇變得更加多樣且有趣。</li>
+            <li>「Deadly Evolution」已被新關鍵天賦「Ecological Shift」取代，使地圖有 40% 機率額外包含隨機內容地圖內怪物群數量減少 20%。</li>
+            <li>現在最多可獲得 40 點地圖天賦點數（之前為 30 點）。</li>
+            <li>「崩毀高牆（Crumbling Walls）」額外裂痕機率調降：額外 1 個裂痕：10%（原為 15%）。額外 3 個裂痕：3%（原為 5%）。額外 10 個裂痕：1%（原為 2%）。</li>
+            <li>「極端考古學（Extreme Archaeology）」不再 讓怪物生成時損失 20% 生命。</li>
+            <li>「瘋狂入侵（Frantic Invasion）」裂痕怪物掉落的碎片數量提升 50%（原為 75%）。</li>
+            <li>「貪婪之手（Grasping Hands）」地圖內「（Clasped Hands）」數量增加 30%（原為 50%）。</li>
+            <li>裂痕之手有 20% 機率由一群魔法怪守護（原為 25%）。</li>
+            <li>「次元突襲（Interdimensional Assault）」地圖內裂痕的怪物密度增加 10%（原為 15%）。</li>
+            <li>「不祥徵兆（Ominous Portents）」地圖內儀式的兌換獎勵有 100% 機率變成「預兆（Omens）」（原為 50%）。</li>
+            <li>「烈焰升騰（Rising Pyre）」地圖內裂痕的怪物密度提升 25%（原為 40%）。</li>
+     </ul>
+</div>
+
+        <div class="section-container">
+    <div class="section-title" id="general-improvements">一般改進</div>
+    <ul>
+            <li>為了解決 NVIDIA 顯卡 在最新驅動程式上的常見遊戲崩潰問題，現在遊戲可以從 「設備移除（Device Removed）」事件中恢復。</li>
+            <li>城鎮與儲藏箱調整: 重鑄台位置已重新調整，使其更加方便使用。個人倉庫與公會倉庫 之間的距離稍微加大，以減少誤點的情況。</li>
+            <li>戰利品與箱子: Strongboxes現在可以出現在 第一章的某些區域。在 混沌試煉的 寶藏房 中新增了倉庫。</li>
+            <li>技能與圖像改進: 許多 火焰技能 現在會在地圖上 燒焦草地。召喚與復活召喚物（Minions） 的效能進一步優化，使其更加流暢。</li>
+            <li>「腐朽咒術（Decaying Hex Support）」的衰退減益（Decay debuff） 現在使用更合適的視覺效果，並會顯示在敵人的生命條下方。</li>
+            <li>投擲手榴彈技能（Grenade Skills） 現在在同時發射多顆手榴彈時，會有少量隨機的飛行距離變化。</li>
+            <li>「Firebolt」 現在使用與 「Freezing Shards」 相同的動畫，而非通用的投射物動畫。</li>
+            <li>混沌試煉與運動技能: 進一步增強了安全檢查機制，以防止 使用移動技能跳過混沌試煉的電梯機制，導致試煉無法正常進行。</li>
+            <li>「Escape Shot」與「Toxic Growth」 的跳躍能力現在可以 跳過敵人與小型地形，未來 「Vaulting Impact」 也將獲得相同的變更。</li>
+            <li>美術與介面: 更新了個人倉庫與公會倉庫的 3D 模型，使其視覺效果更加清晰。</li>
+        </ul>
+</div>
+
+        <div class="section-container">
+    <div class="section-title" id="player-changes">玩家變更</div>
+    <ul>
+        <li>等級限制: 殘酷難度現在 至少需要 25 級 才能進入。終局地區（Endgame ） 現在 至少需要 50 級 才能進入。</li>
+        <li>玩家空手時的基礎攻擊速度現在為每秒 1.4 次攻擊（之前為 1.2 次）。為了補償此變更，Killing Palm、Shattering Palm、Staggering Palm、Hand of Chayula 現在的攻擊速度降低 25%（之前為 10%）。</li>
+        <li>冰凍對敵人的累積速度現在大約降低 48%。</li>
+        <li>玩家基礎異常狀態門檻現在是最大生命的二分之一（之前為所有最大生命）。</li>
+        <li>存在光環的基礎範圍現在為 4 公尺（之前為 6 公尺）。</li>
+        <li>從稀有怪物偷取的怪物詞綴（例如透過斬首輔助）對玩家提供的效果已調整為更適當。</li>
+        <li>殘酷難度版本的燭光精髓 (章節 Boss +血量任務道具) 現在提供 5% 增加生命（之前為 8%）。</li>
+        <li>如果你最近被敵人擊中，破舊涼鞋的絲克瑪的試煉苦難現在會提供 30% 更少移動速度（之前為 25% 減少移動速度）。</li>
+        <li>透過舉盾或招架來格擋擊中，現在有機會避免累積沉重暈眩，相當於你原本閃避擊中的機率。</li>
+        <li>玩家和怪物之間的暈眩機制和術語已統一。當玩家用盾牌格擋太多傷害時所承受的「stagger」現在是一種沉重暈眩。除非機制特別說明，否則玩家仍然無法受到沉重暈眩。</li>
+        <li>玩家舉盾時不再受到輕型暈眩。</li>
+        <li>詛咒效果的詞綴已變更為適用於詛咒強度。這意味著它們與目標減益效果的其他詞綴相加。例如，時空鎖鏈的詛咒強度和緩速強度現在可以相加。</li>
+        <li>玩家創建的物件（例如冰晶）不再具有怪物強度值。</li>
+        <li>冰晶不再能套用擊殺效果，例如灰燼之捷和踐踏之鞋的超量擊殺。</li>
+        <li>玩家在過去 4 秒內每次受到暈眩時，輕型暈眩門檻增加 50%（之前為過去 6 秒內每次受到暈眩時，輕型暈眩門檻增加 25%）。</li>
+        <li>你的沉重暈眩條現在在沉重暈眩動畫完成後才開始清空（而不是在沉重暈眩動畫開始時）。</li>
+        <li>玩家的沉重暈眩持續時間現在為 3 秒（之前為 1 秒）。</li>
+        <li>玩家在受到沉重暈眩時無法格擋或閃避擊中。</li>
+        <li>暴擊弱點的堆疊現在單獨追蹤持續時間，而不是在獲得新堆疊時刷新所有堆疊的持續時間。</li>
+        <li>被釘住的目標不再能閃避。釘住目標現在也會使其受到暈眩。</li>
+        <li>耐力、狂怒和暴擊球的基礎持續時間現在為 15 秒（之前為 20 秒）。</li>
+        <li>完全破裂護甲現在會使敵人受到 20% 增加物理擊中傷害。</li>
+        <li>可復活的召喚物現在會在生成時使其技能處於冷卻狀態。這僅適用於新召喚的僕從，不適用於剛復活的召喚物。</li>
+        <li>先祖加強的猛擊現在具有 30% 更多傷害和 20% 更多作用範圍（之前兩者均為 20%）。</li>
+        <li>昇華天賦提供的持續召喚物現在會在您第一次分配天賦時自動召喚。</li>
+        <li>玩家和怪物現在僅在移動時才被視為移動，而不是在某些部分具有移動的許多動畫的整個長度內。</li>
+        <li>將屬性設定為特定值（例如 CI 將你的生命設定為 1 或血魔法將你的魔力設定為 0）現在會在套用轉換之前發生，而不是被轉換忽略。</li>            
+
+
+        </ul>
+</div>
+
+        <div class="section-container">
+    <div class="section-title">Titan（泰坦）</div>
+    <ul>
+            <li>Surprising Strength（驚人的力量）: 對沉重暈眩（Heavy Stunned）敵人造成的額外傷害 提升至 50%（先前為 40%）。</li>
+            <li>Earthbreaker（破地者）: 自施放的猛擊技能（Slam Skills）觸發餘震（Aftershock）的機率 提升至 25%（先前為 20%）。</li>
+        </ul>
+</div>
+
+        <div class="section-container">
+   <div class="section-title">Warbringer（戰爭使者）</div>
+   <ul>
+    <li>Warcaller's Bellow（戰爭呼喚者的咆哮）: 戰吼（Warcry）爆炸屍體的機制變更：先前：「戰吼範圍內的屍體爆炸，造成 25% 生命值的物理傷害」。現在：「戰吼會爆炸屍體，造成 25% 生命值的物理傷害」，並可透過 戰吼範圍 影響爆炸範圍。</li>
+    <li>Turtle Charm（戰場大師的烏龜聖符）: 減少的格擋機率 降低至 25%（先前為 35%）。</li>
+    <li>Encase in Jade（玉石切割者的魔偶）: 技能已重製。現在它會消耗所有疊層，並根據你消耗的每個玉石堆疊的最大生命值提供護盾。.</li>
+    <li>Answered Call（玉石薩滿的指引）:
+        <ul>
+            <li>Ancestral Spirits（先祖之魂）技能召喚出的召喚物現在：
+                <ul>
+                    <li>每 3 點敏捷提供 +1% 命中</li>
+                    <li>每 3 點力量提供 +1% 傷害提升</li>
+                </ul>
+            </li>
+            <li>召喚物技能變更：
+                <ul>
+                    <li>Ancestral Jadecaster（先祖玉術師）：Pinning（釘住）技能冷卻時間降低至 10 秒（先前為 15 秒）</li>
+                    <li>Ancestral Jade Hulk（先祖玉巨獸）：暈眩累積增加至 300%（先前為 200%）</li>
+                    <li>Ancestral Warhorn（先祖戰號）：
+                        <ul>
+                            <li>戰吼時獲得的怒氣（Rage）提升至 10 點（先前為 5 點）</li>
+                            <li>技能速度提升 20%（先前為 10%）</li>
+                        </ul>
+                    </li>
+                    <li>Ancestral Spirit Turtle（先祖靈龜）Paua Shell Aura（寶螺光環）：
+                        <ul>
+                            <li>提升範圍的友軍的全域防禦 80%（先前為 50%）</li>
+                            <li>提升範圍內友軍的格擋機率 40%（先前為 25%）</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+</div>
+
+        <div class="section-container">
+    <div class="section-title">Gemling Legionnaire（古靈軍團）</div>
+    <ul>
+            <li>Enhanced Effectiveness: 現在額外提供 20% 減少屬性數值（Attributes）。</li>
+            <li>Integrated Efficiency: 與 Gem-Studded互換位置。移除 +3 技能欄位，改為：紅色輔助寶石 提供 +20% 技能傷害。綠色輔助寶石 提供 +6% 技能速度。藍色輔助寶石 提供 +20% 暴擊率。</li>
+            <li>Implanted Gems（植入寶石）: 不再提供 +1 全部技能等級，而是可選擇：+2 力量需求寶石的技能等級。+2 敏捷需求寶石的技能等級。+2 智慧需求寶石的技能等級。</li>
+        </ul>
+</div>
+
+        <div class="section-container">
+    <div class="section-title">Witchhunter（女巫獵人）</div>
+    <ul>
+            <li>No Mercy（無情）: 基於敵人失去的專注（Concentration），最多造成 40% 額外傷害（先前為 30%）。</li>
+            <li>Obsessive Rituals（執念儀式）: 降低護甲與閃避的減益調整為 35%（先前為 50%）。</li>
+            <li>Sorcery Ward（秘法屏障）的充能延遲縮短 2 秒。</li>
+        </ul>
+</div>
+
+        <div class="section-container">
+    <div class="section-title">Deadeye（銳眼）</div>
+    <ul>
+            <li>Thrilling Chase（爆發）: 消耗狂怒球（Frenzy Charges）時，現在會計算為消耗兩倍數量（先前有 50% 機率觸發）。</li>
+        </ul>
+</div>
+
+        <div class="section-container">
+    <div class="section-title">Pathfinder（追獵者）</div>
+    <ul>
+            <li>Running Assault（衝刺突擊）: 移動施法的減速懲罰降低至 50%（先前為 30%）。位置與 Relentless Pursuit（無情追擊）互換。</li>
+            <li>Connected Chemistry（連鎖化學）已移除，Enduring Elixirs（耐久靈藥）無需前置技能。</li>
+            <li>新增 Practical Remedies（實用解藥）: 提供 Grounding Stick（免疫感電）、Dousing Vial（免疫點燃）、Thawing Campfire（免疫冰凍）。</li>
+            <li>新增 Sustainable Practice: 閃避的 30% 轉為元素傷害減免（需先點 Practical Remedies）。</li>
+        </ul>
+</div>
+
+        <div class="section-container">
+    <div class="section-title">Acolyte of Chayula（夏烏拉侍僧）</div>
+    <ul>
+            <li>Embrace the Darkness（靈魂昇華）: 最大黑暗值（Darkness）+8/等級（先前為 +5）。</li>
+            <li>Ravenous Doubts（貪婪之慮）: 不再提供「魔力偷取為瞬間恢復」，改為 「所有傷害類型可以像是物理傷害一樣偷取魔力」。</li>
+            <li>在絲克瑪試煉中失去的榮譽，現在會在黑暗值之前承受。</li>
+        </ul>
+</div>
+
+        <div class="section-container">
+    <div class="section-title">Invoker（施法者）</div>
+    <ul>
+            <li>「……名為無處的家」升華被動技能 現在提供 50% 降低的閃避值（先前為 40%）。</li>
+            <li>「……若非獨自一人」升華被動技能 現在會基於 身上裝備的護甲提供每 8 點能量護盾獲得 1 點精魂（先前為 6），並基於 身上裝備的護甲提供每 20 點閃避值獲得 1 點精魂（先前為 15）。</li>
+            <li>「……活在寧靜中」升華被動技能 賦予的 「元素表現」技能 現在在所有寶石等級都會造成 40% 額外傷害。</li>
+        </ul>
+</div>
+
+        <div class="section-container">
+    <div class="section-title">Blood Mage（血法師）</div>
+    <ul>
+            <li>「鮮血荊棘」升華被動技能 不再提供 10% 傷害轉為額外物理傷害，現在改為 詛咒目標所受的流血將加劇。</li>
+            <li>新增 「裂縫之間」升華被動技能，該技能使 暴擊無視怪物護甲，需要 「占血術」技能（Sanguimancy）。</li>
+        </ul>
+</div>
+
+        <div class="section-container">
+    <div class="section-title">Infernalist（獄火師）</div>
+    <ul>
+            <li>「惡魔附身」升華被動技能 賦予的 「惡魔變身」技能 冷卻時間 從 20 秒縮短為 15 秒，且 惡焰最大值變為 10（先前無上限）。現在，每層 惡焰會以固定數值每秒消耗生命（隨技能等級成長），而非過去依照最大生命值的百分比扣除。此外，惡魔變身形態下的翻滾距離縮短。</li>
+            <li>「沸騰軀體」升華被動技能 現在使 當處於「高煉獄之炎」狀態時，獲得相當於 50% 傷害的火焰傷害（先前為 20%）。</li>
+            <li>「邪惡焚化」升華被動技能 現在提供 50% 額外暴擊傷害加成（先前為 30%）。</li>
+            <li>「火祭協議」升華被動技能 現在會使 如果在過去 2 秒內未獲得煉獄之炎，則每秒失去 50% 煉獄之炎（先前為 10%）。</li>
+            <li>「火焰呼喚者」升華被動技能 現在改為 「你與身邊友軍的所有傷害均可貢獻於點燃機率與點燃強度」，不再需要 「火祭協議」技能。</li>
+            <li>「忠誠獄犬」升華被動技能 不再使 來自擊中的 20% 傷害由你的地獄犬生命承受。</li>
+            <li>「黑暗精通」升華被動技能 現在賦予 「惡魔焰不再有最大上限」。</li>
+            <li>小型「魔力」升華被動技能 現在提供 3% 最大魔力提高（先前為 4%）。</li>
+            <li>在配置 「火祭協議」升華被動技能 後，即便擁有 100% 減少的最大魔力，仍至少會有 1 層最大煉獄之焰。</li>
+            <li>在 惡魔形態 下使用 閃現（Blink） 現在會播放適當的動畫，而不再只是瞬間移動。</li>
+        </ul>
+</div>
+
+        <div class="section-container">
+    <div class="section-title">Chronomancer（時空幻術師）</div>
+    <ul>
+            <li>「心跳循環」升華被動技能 已 移除，「急流」 現在 不再需要先決條件。</li>
+            <li>「流沙沙漏」升華被動技能 現在提供 「每 10 秒獲得 50% 額外施法速度，持續 5 秒」（之前為 「每 12 秒獲得 50% 額外施法速度，持續 4 秒」）。</li>
+            <li>新增「回音洪流」升華被動技能，可授予 「釋放（Unleash）」技能。</li>
+        </ul>
+</div>
+
+        <div class="section-container">
+    <div class="section-title">Stormweaver（風暴編織者）</div>
+    <ul>
+            <li>「意志之力」升華被動技能 現在 每 25 點最大法力值（之前為 15 點）提供 1% 的密能波動（Arcane Surge）效果。</li>
+            <li>「橫掃之風」升華被動技能 現在會使 你造成的曝曬（Exposure）降低敵方的抗性額外 12%（之前為 20%）。</li>
+            <li>「二重打擊」升華顯著被動技能 不再使 感電（Shock）持續時間減少 50%，而是改為 使你造成的感電強度降低 25%。</li>
+            <li>小型「魔力」升華被動技能 不再提供 4% 最大魔力值增加，現在改為 12% 法力回復速度增加。</li>
+        </ul>
+</div>
+
+        <div class="section-container">
+    <div class="section-title">被動技能樹變更</div>
+    <ul>
+            <li>隨著新增【Huntress】及其他新遊戲機制，我們在被動技能樹中加入了相關的支援技能。獵手/遊俠區域新增了許多新的技能群組，部分現有的被動技能也進行了調整。如果你在被動樹上點選的節點位於變更區域，可能會被強制重置點數。</li>
+            <li>新增的被動技能群組：致盲相關技能群組、Volatility相關技能群組、遠程與近戰相關技能群組、Hazards相關技能群組、Companion相關技能群組、存在範圍（存在範圍 Radius）與光環（Aura）相關技能群組、招架（Parry）相關技能群組、戰旗（Banner）相關技能群組、流血（Bleeding）相關技能群組、荊棘（Thorns）相關技能群組、箭袋（Quiver）相關技能群組。</li>
+            <li>新增的主要天賦：
+    <ul>
+        <li>【血色突襲】（Crimson Assault）位於遊俠與女獵手的起始位置東南方。使你造成的流血效果變為加劇（Aggravated），並將基礎流血持續時間設為1秒。</li>
+        <li>【信賴親密】（Trusted Kinship）位於遊俠與女獵手的起始位置東南方。你可以擁有兩個不同類型的夥伴。你的夥伴獲得+1點防禦，每當你擁有該類型的2點防禦時。你自身的全域防禦降低30%。</li>
+    </ul>
+</li>
+<li>移除的顯著天賦：
+    <ul>
+        <li>以下天賦已被移除，無法再獲取，但已獲得的仍然有效：Break Focus、Hold Focus、Lasting Concoctions、No Escape、Pinned Down、Potent Concoctions</li>
+  <li>其他改動：
+    <ul>
+        <li>移除12個珠寶插槽，已插入的珠寶可透過指令取回。</li>
+        <li>【移形換影 】（Acrobatics）天賦現在降低75%閃避值（原為70%）。</li>
+        <li>【異能魔力】（Eldritch Battery）現在額外增加法力消耗加倍的效果。</li>
+        <li>【巨人之血】（Giant's Blood）天賦現在將所有 Martial 的武器的屬性需求變為三倍（原本只影響斧、鎚與劍）。</li>
+        <li>【靈貓狡捷】（Catlike Agility）閃避值加成提高至40%（原為25%），當你最近使用過翻滾（Dodge Roll）時生效。</li>
+        <li>【獵鷹技法】（Falcon Technique）攻擊速度增幅改為每25敏捷+1%（原為每15敏捷+1%）。</li>
+        <li>【解放行動】（Freedom of Movement）現在提供10%減少技能使用移動速度懲罰（原為30%閃避值提升）。</li>
+        <li>【重甲緩衝】（Heavy Buffer）現在改為5%所受傷害無視能量護盾（原為10%最大生命值降低）。</li>
+        <li>【破冰者】（Icebreaker）凍結門檻現在等於最大能量護盾的50%（原為100%）。</li>
+        <li>【魔力祝福】（Mana Blessing）不再增加5%最大法力，而是提供20%法力回復速度提升。</li>
+        <li>【箭矢大師】（Master Fletching）裝備箭袋的加成效果提高20%（原為30%），前置的小天賦加成降低。</li>
+        <li>【堆砌】（Pile On）現在改為30%護甲破壞減益效果提升。</li>
+        <li>【博學的】（Polymathy）屬性加成減少至7%（原為10%）。</li>
+        <li>【原始魔力】（Raw Mana）最大法力加成減少至8%（原為12%）。</li>
+        <li>【麵條化】（Spaghettification）現在提供+13所有屬性（原為7%屬性加成），並且混沌抗性-7%（原為-13%）。</li>
+        <li>【劈裂大地】（Split the Earth）現在對於使用自己使用的鎚類技能，10%機率觸發餘震（Aftershocks），範圍1.8公尺。</li>
+        <li>【暢通無阻】（Unhindered）現在提供12%減少移動時技能使用懲罰（原為3%增加移動速度）。此群中的一個對你產生減速效果的小天賦也已更新，可減少 8% 的移動速度懲罰。</li>
+        <li>【烈士意志】（Unwavering Stance）不再提供暈眩閾值翻倍，改為無法被輕度擊暈。</li>
+        <li>【殺手本能】（Killer Instinct）群組內的小天賦，改為10%攻擊傷害提升。</li>
+    </ul>
+        <li>光環效果相關小天賦調整：
+    <ul>
+        <li>原提供8%光環效果提升的改為5%。</li>
+        <li>原提供20%光環效果提升的天賦改為12%。</li>
+            <li>修正Iron Grip與Iron Will的天賦描述，使其更加清晰。</li>
+        </ul>
+</div>
+
+        <div class="section-container">
+    <div class="section-title" id="skill-changes">技能改動</div>
+    
+    <li>許多技能的基礎傷害和/或每級成長傷害已重新平衡。這些變更範圍廣泛，因此不會在下方逐一列出。
+    所有攻擊、印記（Marks）和戰吼（Warcries）的魔力消耗降低，特別是在較高的寶石等級時變化較明顯
+    召喚物的傷害與生命值成長進行調整。前期與之前相同，但高等級（特別是超過 20 級後）將比以前更低。
+    骷髏縱火者（Skeletal Arsonist）的 Explosive Demise 技能的生命值門檻已根據生命值成長調整。
+    骷髏牧師（Skeletal Cleric）的治療技能生命恢復量已相應調整。</li>
+
+    <li><strong>電弧（Arc）</strong>
+        <ul>
+            <li>不再因剩餘的連鎖數量而造成額外傷害。</li>
+            <li>在寶石等級 5-20 時，連鎖次數改為 6-8 次（之前為 2-5 次）。</li>
+            <li>品質加成現在提供每個剩餘連鎖 0-2% 更多傷害（之前為 0-5%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>大法師（Archmage）</strong>
+        <ul>
+            <li>現在所有等級都會讓非引導（Non-Channelling）法術獲得額外 3% 閃電傷害，每 100 最大魔力提供（之前 14-20 級為 5-6%）。</li>
+            <li>非引導法術現在會額外消耗 6.7-6.1% 最大魔力（之前為 5.35-5.05%）。</li>
+            <li>品質加成現在提供 0-10% 保留減少，不再提供非引導法術的額外閃電傷害。</li>
+        </ul>
+    </li>
+
+    <li><strong>護甲碎擊（Armour Breaker）</strong>
+        <ul>
+            <li>所有等級的破甲量降低約 20%。</li>
+        </ul>
+    </li>
+
+    <li><strong>火炮弩砲（Artillery Ballista）</strong>
+        <ul>
+            <li>物理傷害成長現在與震波圖騰（Shockwave Totem）和裂索弩砲（Ripwire Ballista）相匹配。</li>
+            <li>火炮爆炸現在轉換 100% 物理傷害為火焰傷害（之前為 90%）。</li>
+            <li>品質加成現在提供 0 到 -0.4 秒的圖騰基礎攻擊時間（之前是提升攻擊速度）。</li>
+        </ul>
+   </li>
+
+    <li><strong>先祖戰士圖騰（Ancestral Warrior Totem）</strong>
+        <ul>
+            <li>現在明確說明它使用雙手錘，以澄清其受益於你的錘類屬性。</li>
+            <li>品質加成改為 +0-2 秒圖騰持續時間（之前為 +0-0.4 秒）。</li>
+        </ul>
+    </li>
+
+    <li><strong>旗幟技能（Banner Skills）</strong>
+        <ul>
+            <li>現在擁有 4.5 米的光環半徑（之前為 4 米）。</li>
+            <li>現在正確地視為光環（Aura）技能。</li>
+        </ul>
+    </li>
+
+    <li><strong>彈幕（Barrage）</strong>
+        <ul>
+            <li>重複攻擊現在造成 50% 較少傷害（之前在寶石等級 5-20 為 23-15% 減少）。</li>
+            <li>重複攻擊的技能攻擊時間現在增加 560-410%，最多 30 秒冷卻時間（之前為 1440-1215%）。</li>
+            <li>品質加成現在使重複攻擊造成 0-5% 額外傷害（之前為 0-15%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>屏障祈願（Barrier Invocation）</strong>
+        <ul>
+            <li>現在僅從敵人擊中護盾時獲取能量，而非所有擊中護盾的傷害。</li>
+            <li>現在當護盾因傷害損失時，每 10 點護盾獲得 1 點能量（之前為每 5 點獲得 1 點）。</li>
+        </ul>
+    </li>
+
+    <li><strong>流血混合物（Bleeding Concoction）</strong>
+        <ul>
+            <li>流血傷害倍率提高 200%（之前為 100%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>閃現（Blink）</strong>
+        <ul>
+            <li>現在被歸類為旅行技能（Travel Skill）。</li>
+        </ul>
+    </li>
+
+    <li><strong>骨之爆破(Bone Blast)</strong>
+        <ul>
+            <li>現在擊中時有 40% 機率施加流血（之前為 20%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>骸骨風暴（Bonestorm）</strong>
+        <ul>
+            <li>碎片機制改為一般機制「穿刺」（Impale），類似《流亡黯道1》的穿刺機制。</li>
+            <li>當擊中敵人時觸發穿刺，下一次攻擊擊中該敵人時，將獲得等於 30% 的額外物理傷害（基於最初穿刺的物理傷害）。</li>
+            <li>骸骨風暴現在擊中時施加穿刺，而不是應用特殊的減益效果，並且穿刺傷害提高 200%。</li>
+        </ul>
+    </li>
+
+    <li><strong>召喚物死亡時施法（Cast on Minion Death）</strong>
+        <ul>
+            <li>現在只有永久型召喚物死亡時才能獲取能量。</li>
+            <li>如果召喚物技能等級遠低於區域等級，則該召喚物死亡時提供的能量減少。</li>
+            <li>20 級及以上的召喚物技能在終局內容中不會受到懲罰。</li>
+        </ul>
+    </li>
+
+    <li><strong>感電時施放（Cast on Shock）</strong>
+        <ul>
+            <li>當技能擊中敵人並造成感電時，現在每點敵人的「能量強度」獲得 1 點能量（之前為 2 點）。</li>
+        </ul>
+    </li>
+
+    <li><strong>集束擲彈（Cluster Grenade）</strong>
+        <ul>
+            <li>小型手榴彈爆炸半徑現在為 1.4 米（之前為 1.2 米）。</li>
+        </ul>
+    </li>
+
+    <li><strong>戰鬥狂熱（Combat Frenzy）</strong>
+        <ul>
+            <li>當你凍結、感電或定住（Pin）敵人時獲得狂怒球，最多每 5.3-4.1 秒獲得一次（寶石等級 8-20）（之前為 2.48-1.58 秒）。</li>
+        </ul>
+    </li>
+
+    <li><strong>藥劑技能（Concoction Skills）</strong>
+        <ul>
+            <li>現在需要空手武器組。</li>
+            <li>不再使用你的基礎空手傷害，而是只造成技能指定的攻擊傷害（類似於標記技能）。</li>
+            <li>每次施放現在消耗 5 層魔力藥劑充能（之前為 3 層）。</li>
+        </ul>
+    </li>
+
+    <li><strong>導電（Conductivity）</strong>
+        <ul>
+            <li>詛咒敵人時，降低敵人閃電抗性數值減少：7 級時降低 -25%（之前為 -32%），20 級時降低 -29%（之前為 -36%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>霜暴（Cold Snap）</strong>
+        <ul>
+            <li>爆炸範圍現在為 1.6 米（之前為 0.7 米）。</li>
+        </ul>
+    </li>
+
+    <li><strong>詛咒技能（Curse Skills）</strong>
+        <ul>
+            <li>現在施加詛咒的延遲為 1.5 秒（之前為 1 秒）。</li>
+        </ul>
+    </li>
+
+    <li><strong>黑暗雕像Dark Effigy）</strong>
+        <ul>
+            <li>投射物暴擊率現在為 7%（之前為 11%）。</li>
+            <li>衝擊半徑增加至 1.2 米（之前為 0.8 米）。</li>
+            <li>品質加成現在提供 0-20% 機率，擊中時施加 2 秒的枯萎（Withered）效果（之前為 0-50%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>分解（Decompose）（由屍骨之靴Corpsewade鞋子賦予）</strong>
+        <ul>
+            <li>毒雲現在基於屍體最大生命值的 10-19.5% 造成混沌傷害（之前為 30-39.5%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>絕望（Despair）</strong>
+        <ul>
+            <li>詛咒敵人時，降低敵人混沌抗性數值減少：9 級時降低 -20%（之前為 -32%），20 級時降低 -24%（之前為 -36%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>屍體爆破（Detonate Dead）</strong>
+        <ul>
+            <li>現在造成屍體最大生命值的 8.8-10.7% 物理傷害（寶石等級 7-20），並在 20 級後繼續成長（之前所有等級均為 20%）。</li>
+            <li>現在在 7 級時造成 41 到 61 點火焰傷害（之前為 28 到 43），20 級時造成 139 到 208 點火焰傷害（之前為 169 到 254）。</li>
+        </ul>
+    </li>
+
+    <li><strong>爆破箭矢（Detonating Arrow）</strong>
+        <ul>
+            <li>爆炸半徑增加至 2.4 米（之前為 1.8 米）。</li>
+        </ul>
+    </li>
+
+    <li><strong>指揮召喚物（Direct Minions）</strong>
+        <ul>
+            <li>現在有 0.5 秒冷卻時間。</li>
+        </ul>
+    </li>
+
+    <li><strong>元素祈願（Elemental Invocation）</strong>
+        <ul>
+            <li>當技能擊中敵人造成冰凍時，現在每點「能量強度」獲得 10 點能量（與之前相同）。</li>
+            <li>當技能擊中敵人造成點燃時，每點「能量強度」獲得 2 點能量（之前為 3），受敵人異常狀態門檻影響。</li>
+            <li>當技能擊中敵人造成感電時，每點「能量強度」獲得 1 點能量（之前為 3）。</li>
+        </ul>
+    </li>
+
+    <li><strong>逃脫之矢（Escape Shot）</strong>
+        <ul>
+            <li>冰凍累積（Freeze Buildup）現在隨寶石等級提升，在 20 級時最多提高 585%（之前所有等級固定 300%）。</li>
+            <li>品質現在提供 0-120% 更多冰凍累積（之前為 0-80%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>爆裂物（Explosive Concoction）</strong>
+        <ul>
+            <li>現在造成的點燃強度提高 200%（之前為 100%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>爆炸擲彈（Explosive Grenade）</strong>
+        <ul>
+            <li>冷卻時間增加至 7 秒（之前為 3 秒）。</li>
+            <li>爆炸半徑現在在 1-20 級時為 2-2.4 米（之前為 1.8-2.4 米）。</li>
+            <li>引爆時間增加至 3 秒（之前為 2.5 秒）。</li>
+        </ul>
+    </li>
+
+    <li><strong>凜冬之眼（Eye of Winter）</strong>
+        <ul>
+            <li>當投射物經過元素地面效果時，現在獲得 75% 額外傷害（之前為 50%）。</li>
+            <li>技能描述修正，不再錯誤顯示投射物會將經過的地面效果應用到附近敵人身上。</li>
+        </ul>
+    </li>
+
+    <li><strong>崩雷鳴（Falling Thunder）</strong>
+        <ul>
+            <li>現在每消耗一個能量球（Power Charge），投射物傷害提高 50%（之前為 25%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>火球（Fireball）</strong>
+        <ul>
+            <li>現在不再無視「烈焰幽魂（Raging Spirit）」的數量上限。</li>
+            <li>次級火球投射物現在不再受額外投射物數量影響，主要是為了防止與「狂野裂片輔助（Wildshards Support）」搭配時影響遊戲效能。</li>
+        </ul>
+    </li>
+
+    <li><strong>火彈（Firebolt）</strong>
+        <ul>
+            <li>現在對於近距離目標，最大下傾角度受到限制，使得更難透過多次爆炸擊中敵人。</li>
+        </ul>
+    </li>
+
+    <li><strong>烈炎風暴（Firestorm）</strong>
+        <ul>
+            <li>強化弩箭（Improved Bolts）現在的暴擊率為 7%（之前為 14%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>烈焰爆破（Flameblast）</strong>
+        <ul>
+            <li>現在有 15 秒冷卻時間（之前無冷卻）。</li>
+            <li>每個蓄力階段的額外傷害現在為 75%（之前為 200%）。</li>
+            <li>爆炸半徑現在每個階段增加 0.6 米（之前為 0.4 米）。</li>
+            <li>品質現在提供 0-20% 更多施法速度（之前為 0-10%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>火牆（Flame Wall）</strong>
+        <ul>
+            <li>投射物穿過火焰牆時，在 20 級時額外提供 33 至 48 點火焰傷害（之前為 64 至 91）。</li>
+            <li>1 級時傷害未變動，但 20 級以上的傷害進一步降低。</li>
+        </ul>
+    </li>
+
+    <li><strong>易燃（Flammability）</strong>
+        <ul>
+            <li>詛咒敵人時，降低敵人火焰抗性的數值減少：7 級時降低 -25%（之前為 -32%），20 級時降低 -29%（之前為 -36%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>閃光手榴彈（Flash Grenade）</strong>
+        <ul>
+            <li>暈眩累積（Stun Buildup）提高 500%（之前為 400%）。</li>
+        </ul>
+   </li>
+
+    <li><strong>分裂彈藥（Fragmentation Rounds）</strong>
+        <ul>
+            <li>基礎爆炸半徑現在固定為 1.8 米（之前在 1-20 級為 1.4-1.6 米）。</li>
+        </ul>
+    </li>
+
+    <li><strong>冰凍裂片（Freezing Shards）</strong>
+        <ul>
+            <li>現在發射 5 個投射物（之前為 7 個）。</li>
+            <li>冰凍累積提高 100%（之前為 50%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>凍結齊射（Freezing Salvo）</strong>
+        <ul>
+            <li>冰凍累積現在隨寶石等級提升，在 20 級時最多提高 107%（之前所有等級固定 50%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>寒霜爆（Frost Bomb）</strong>
+        <ul>
+            <li>脈衝與爆炸半徑現在在 1-20 級時為 2-2.7 米（之前為 1.7-2.4 米）。</li>
+        </ul>
+    </li>
+
+    <li><strong>冰牆（Frost Wall）</strong>
+        <ul>
+            <li>現在冷卻時間為 5 秒（之前為 3 秒）。</li>
+        </ul>
+    </li>
+
+    <li><strong>寒冰軌跡（Frozen Locus）</strong>
+        <ul>
+            <li>爆炸現在在 1 級時造成 6 到 9 點基礎長杖冰霜傷害（未變動），20 級時造成 141 到 212 點（之前為 89 到 134）。</li>
+            <li>20 級以上的傷害進一步調整。</li>
+            <li>爆炸半徑增加至 2.4 米（之前為 2 米）。</li>
+        </ul>
+    </li>
+
+    <li><strong>烈性混合物（Fulminating Concoction）</strong>
+        <ul>
+            <li>現在增加 200% 更多感電機率（之前為 100%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>電能碎片（Galvanic Shards）</strong>
+        <ul>
+            <li>現在將 60% 物理傷害轉換為閃電傷害（之前為 40%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>毒氣箭、毒氣手榴彈與分解（Gas Arrow, Gas Grenades, Decompose）</strong>
+        <ul>
+            <li>現在最多可存在 6 個毒雲。</li>
+        </ul>
+    </li>
+
+    <li><strong>冰川弩箭的冰晶之牆（Glacial Bolt Walls）</strong>
+        <ul>
+            <li>現在持續 8 秒（之前為 6 秒）。</li>
+        </ul>
+    </li>
+
+    <li><strong>冰川之刺（Glacial Cascade）</strong>
+        <ul>
+            <li>品質現在提供 0-10% 物理傷害轉換為冰霜傷害（之前為 0-10% 增加攻擊速度）。</li>
+        </ul>
+    </li>
+
+    <li><strong>冷酷之宴（Grim Feast）</strong>
+        <ul>
+            <li>現在無法在寶石切割選單中刻印。</li>
+            <li>現有的恐怖盛宴寶石已被停用，官方計畫在未來重新設計該技能。</li>
+        </ul>
+    </li>
+
+    <li><strong>眾神之錘（Hammer of the Gods）</strong>
+        <ul>
+            <li>現在不再有冷卻時間，但施放該技能需要 20 點「榮耀（Glory）」。</li>
+            <li>榮耀是一種通過暈眩敵人來累積的資源，獲得的榮耀量取決於被暈眩怪物的強度。</li>
+            <li>品質現在提供 +0-0.4 米衝擊半徑（之前為 1% 冷卻恢復速率）。</li>
+        </ul>
+    </li>
+
+    <li><strong>夏烏拉之手（Hand of Chayula）</strong>
+        <ul>
+            <li>現在明確說明它會觸發插槽內的標記技能（Marks），僅為描述更改，無實際影響。</li>
+        </ul>
+    </li>
+
+    <li><strong>捷光環（Herald Skills）</strong>
+        <ul>
+            <li>帶有攻擊命中的異能光環現在正確說明它們的攻擊無法被閃避，僅為描述更改，無實際影響。</li>
+        </ul>
+    </li>
+
+    <li><strong>灰燼之捷（Herald of Ash）</strong>
+        <ul>
+            <li>爆炸半徑現在為 1.2 米（之前為 1 米）。</li>
+            <li>品質現在提供「額外 0-5% 的過量傷害計入點燃基礎傷害」，取代舊效果：「若過量傷害至少為敵人最大生命的 0-2%，則點燃周圍敵人」（該舊效果會導致負面影響）。</li>
+        </ul>
+    </li>
+
+    <li><strong>冰霜之捷（Herald of Ice）</strong>
+        <ul>
+            <li>爆炸半徑現在為 1.6 米（之前為 1.8 米）。</li>
+        </ul>
+    </li>
+
+    <li><strong>瘟疫之捷（Herald of Plague）</strong>
+        <ul>
+            <li>現在需要使用「Martial Weapon」，與其他異能光環技能的武器限制保持一致。</li>
+        </ul>
+    </li>
+
+    <li><strong>閃電之捷（Herald of Thunder）</strong>
+        <ul>
+            <li>閃電衝擊半徑現在為 1.4 米（之前為 1.6 米）。</li>
+        </ul>
+    </li>
+
+    <li><strong>咒術枯萎（Hexblast）</strong>
+        <ul>
+            <li>現在只能引爆持續時間已過 50% 的詛咒，這意味著無限持續時間的詛咒無法被引爆。</li>
+            <li>當詛咒的持續時間達到 50% 時，詛咒球體將會有不同的視覺效果（若裝備了咒爆）。</li>
+            <li>爆炸半徑增加至 2 米（之前為 1.6 米）。</li>
+            <li>現在每次施放最多觸發 3 次爆炸（之前為 9 次）。</li>
+            <li>所有等級的傷害降低約 17%。</li>
+            <li>爆炸半徑進一步減少至 1.2 米（之前為 1.6 米）。</li>
+        </ul>
+    </li>
+
+    <li><strong>急凍（Hypothermia）</strong>
+        <ul>
+            <li>詛咒敵人時，降低敵人冰霜抗性的數值減少：7 級時降低 -25%（之前為 -32%），20 級時降低 -29%（之前為 -36%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>冰晶（Ice Crystals）（來自Glacial Bolt、Frost Wall）</strong>
+        <ul>
+            <li>20 級以上時生命成長下降，但 20 級以下時不變。</li>
+        </ul>
+    </li>
+
+    <li><strong>冰碎彈（Ice Shards）</strong>
+        <ul>
+            <li>爆炸半徑現在為 1.4 米（之前為 1.2 米）。</li>
+            <li>最大可存在 16 個碎片（之前為 12 個）。</li>
+            <li>每次裝填現在提供 16 發彈丸（之前為 12 發）。</li>
+            <li>存在至少 0.5 秒的碎片現在造成 700% 額外傷害（之前為 900%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>移動技能冷卻機制調整</strong>
+        <ul>
+            <li>如果玩家擁有多個具有冷卻時間的移動技能，現在它們的冷卻時間將共享。</li>
+        </ul>
+    </li>
+
+    <li><strong>天雷之珠（Ball Lightning）</strong>
+        <ul>
+            <li>描述現在更清楚地說明雷球本體不會直接擊中敵人。</li>
+        </ul>
+    </li>
+
+    <li><strong>骷髏牧師（Skeletal Cleric）</strong>
+        <ul>
+            <li>減少它們衝向敵人並嘗試近戰攻擊的情況。</li>
+        </ul>
+    </li>
+
+    <li><strong>燒毀（Incinerate）</strong>
+        <ul>
+            <li>現在點燃持續時間減少 25%（之前為 50%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>躍擊（Leap Slam）</strong>
+        <ul>
+            <li>在寶石等級 7-20 時，暈眩累積效果提升 62-88%（之前為 26%-39%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>導雷（Lightning Conduit）</strong>
+        <ul>
+            <li>當消耗敵人的感電狀態時，現在會施放額外的閃電鏈。</li>
+            <li>這些閃電鏈將分配到範圍內的敵人，但如果範圍內目標較少，則可能多次擊中同一個敵人。</li>
+            <li>每 5% 感電效果，對敵人造成的擊中傷害現在為 20%（之前為 100%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>雷彈（Lightning Bolt）</strong>
+        <ul>
+            <li>現在有 200% 額外感電機率（之前為 100%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>雷霆之杖（Lightning Rod Arrow）</strong>
+        <ul>
+            <li>現在在所有等級最多可被鏈接 6 次後消失（之前在等級 1-20 時為 8-14 次）。</li>
+            <li>箭矢現在需要 1 秒充能後才會釋放閃電爆發。</li>
+            <li>如果閃電箭鏈接到閃電引導箭，則閃電脈衝會立即觸發，而無需充能。</li>
+        </ul>
+    </li>
+
+    <li><strong>閃電傳送（Lightning Warp）</strong>
+        <ul>
+            <li>如果目標是雷球（Ball Lightning）投射物，則不再生成感電地面。</li>
+        </ul>
+    </li>
+
+    <li><strong>熔岩噴射（Magma Spray，來自熔岩屏障技能）</strong>
+        <ul>
+            <li>基礎火焰傷害現在為 6-10 至 151-226（之前為 4-7 至 234-351）。</li>
+            <li>現在每 15 點護甲提供 6-8 額外火焰傷害（之前在等級 1 為 2-4，在等級 20 為 3-6）。</li>
+            <li>傷害效果現在為 130-405%（之前為 120-490%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>電磁齊射（Magnetic Salvo）</strong>
+        <ul>
+            <li>等級 13-20 時，衝擊傷害變為 100-140%（之前為 89-125%）。</li>
+            <li>等級 13-20 時，爆炸傷害變為 155-218%（之前為 177-250%）。</li>
+            <li>現在在所有等級最多發射 8 枚飛彈（之前在等級 13-20 為 14-17 枚）。</li>
+            <li>品質現在提供 0-4 額外飛彈，而不是 0-20% 額外投射物傷害。</li>
+        </ul>
+    </li>
+
+    <li><strong>魔力暴風（Mana Tempest）</strong>
+        <ul>
+            <li>品質現在提供額外的閃電傷害，而不是使技能效果在玩家離開風暴後仍持續生效（該舊效果實際上無效）。</li>
+        </ul>
+    </li>
+
+    <li><strong>毀滅神咒（Mantra of Destruction）</strong>
+        <ul>
+            <li>夏烏拉之紫炎現在持續 8 秒（之前為 6 秒）。</li>
+        </ul>
+    </li>
+
+    <li><strong>絕滅恨惡（Malice）</strong>
+        <ul>
+            <li>現在在 19 級時每 0.52 秒施加一次致命弱點（之前為 0.64 秒）。</li>
+        </ul>
+    </li>
+
+    <li><strong>熔火爆破（Molten Blast）</strong>
+        <ul>
+            <li>現在「雙持時，發射雙倍投射物，但攻擊速度減少 15%（之前為 30%）」。</li>
+        </ul>
+    </li>
+
+    <li><strong>劇痛奉獻（Pain Offering）</strong>
+        <ul>
+            <li>靈氣現在使召喚物獲得 28-58% 增加傷害（等級 5-20），不再是 29-44% 額外傷害。</li>
+            <li>靈氣現在使召喚物獲得 22-58% 增加攻擊與施法速度（等級 5-20，之前在所有等級均為 30%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>完美打擊（Perfect Strike）</strong>
+        <ul>
+            <li>現在不再總是觸發點燃。</li>
+            <li>現在的攻擊速度為基礎的 35%（之前為 45%）。</li>
+            <li>品質現在提供 0-20% 額外點燃機率（之前為 0-20% 點燃強度）。</li>
+            <li>現在攻擊時範圍更廣，使其更容易擊中站在玩家身邊的敵人。</li>
+        </ul>
+    </li>
+
+    <li><strong>永凍弩箭（Permafrost Bolts）</strong>
+        <ul>
+            <li>現在隨寶石等級提升凍結累積效果，在 20 級時最高可獲得 186% 額外凍結累積（之前為 80% 在所有等級）。</li>
+        </ul>
+    </li>
+
+    <li><strong>病疫之難（Plague Bearer）</strong>
+        <ul>
+            <li>現在在寶石等級 4-20 時最多儲存 197-15257 毒素傷害（之前為 158-14989）。</li>
+            <li>20 級以上的傷害儲存量也有所降低。</li>
+        </ul>
+    </li>
+
+    <li><strong>毒藥（Poisonous Concoction）</strong>
+        <ul>
+            <li>現在造成 200% 中毒幅度（之前為 100%）。</li>
+            <li>現在基礎傷害為物理傷害，而不是混沌傷害。</li>
+        </ul>
+    </li>
+
+    <li><strong>粗陋祭祀（Profane Ritual）</strong>
+        <ul>
+            <li>現在的儀式半徑為 2.2 公尺（先前為 1.8 公尺）。</li>
+        </ul>
+    </li>
+
+    <li><strong>怒炎之靈（Raging Spirits）</strong>
+        <ul>
+            <li>靈體持續時間增加至 5 秒（先前為 4 秒），每次施放法術最多召喚 2 個靈體（先前為 5 個）。</li>
+            <li>技能描述已更新，以更清楚地說明觸發類法術無法召喚靈體。</li>
+            <li>優化：大量生成狂怒之靈的效能得到改善。如果同時召喚大量靈體，生成過程現在會在短時間內分散進行。</li>
+        </ul>
+    </li>
+
+    <li><strong>箭雨（Rain of Arrows）</strong>
+        <ul>
+            <li>箭矢落下的頻率現在受到投射物速度修正的影響。例如，提高投射物速度將使相同數量的箭矢在更短時間內落地。</li>
+        </ul>
+    </li>
+
+    <li><strong>收割者的祈願（Reaper's Invocation）</strong>
+        <ul>
+            <li>現在擊殺敵人時，每點力量獲得 15 點能量（先前為 10 點）。</li>
+        </ul>
+    </li>
+
+    <li><strong>撕裂砲塔（Ripwire Ballista）</strong>
+        <ul>
+            <li>現在固定敵人時，視作造成 400% 更多傷害（先前為 250%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>翻騰重擊（Rolling Slam）</strong>
+        <ul>
+            <li>現在總攻擊時間增加 1 秒（先前為 1.5 秒），並相應調整魔力消耗。</li>
+        </ul>
+    </li>
+
+    <li><strong>獻祭（Sacrifice）</strong>
+        <ul>
+            <li>現在 14 級時的復活速度降低 66%（先前為 37%），20 級時降低 60%（先前為 31%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>裂地戰吼（Seismic Cry）</strong>
+        <ul>
+            <li>不再擁有增加戰吼速度的效果。</li>
+        </ul>
+    </li>
+
+    <li><strong>碎片清除者（Shard Scavenger）</strong>
+        <ul>
+            <li>現在當消耗凍結、感電、燃燒或完全破甲時，會立即重新裝填弩箭，但每 7.3-6.1 秒（8-20 級）最多觸發一次（先前為 9.3-8.2 秒）。</li>
+        </ul>
+    </li>
+
+    <li><strong>粉碎混合物（Shattering Concoction）</strong>
+        <ul>
+            <li>現在有 200% 更多的凍結累積效果（先前為 100%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>粉碎之掌（Shattering Palm）</strong>
+        <ul>
+            <li>爆炸現在會有額外的隨機延遲。</li>
+            <li>當破碎掌的傷害性打擊擊碎現有的冰碎片時，不會再對目標施加新的冰碎片。</li>
+        </ul>
+    </li>
+
+    <li><strong>盾牆（Shield Wall）</strong>
+        <ul>
+            <li>寶石等級 20 以上的護盾生命現在與寒冰水晶（例如霜牆）一致，此變更降低了總生命值。</li>
+            <li>爆炸半徑現在為 4 公尺（先前為 3 公尺）。</li>
+        </ul>
+    </li>
+
+    <li><strong>電鍊箭矢（Shockchain Arrows）</strong>
+        <ul>
+            <li>現在可鏈接最遠 8 公尺（先前為 4 公尺）。</li>
+        </ul>
+    </li>
+
+    <li><strong>虹吸打擊（Siphoning Strike）</strong>
+        <ul>
+            <li>衝擊波半徑現在為 2 公尺（先前為 1.8 公尺）。</li>
+        </ul>
+    </li>
+
+    <li><strong>骷髏縱火者的爆炸（Skeletal Arsonist's Explosive Demise）</strong>
+        <ul>
+            <li>額外造成相當於僕從最大生命值 12% 的火焰傷害（先前為 15%）。</li>
+            <li>爆炸範圍增加至 2.4 公尺（先前為 2 公尺）。</li>
+        </ul>
+    </li>
+
+    <li><strong>骷髏巨獸（Skeletal Brute）</strong>
+        <ul>
+            <li>品質效果現在改為增加暈眩累積效果，不再提高最大生命值。</li>
+        </ul>
+    </li>
+
+    <li><strong>骸骨冰霜法師的冰爆（Skeletal Frost Mage's Ice Bomb）</strong>
+        <ul>
+            <li>冷卻時間為 8 秒（先前為 6 秒）。</li>
+        </ul>
+    </li>
+
+    <li><strong>骷髏掠奪者（Skeletal Reavers）</strong>
+        <ul>
+            <li>當「命令：狂怒（Command: Enrage）」技能啟動時，能夠正確地擊中時獲得怒火。</li>
+        </ul>
+    </li>
+
+    <li><strong>骸骨風暴法師（Skeletal Storm Mage）</strong>
+        <ul>
+            <li>連鎖次數會隨僕從寶石等級提高，在等級 20 時最多可額外連鎖 4 次（先前所有等級皆為 +2 次）。</li>
+        </ul>
+   </li>
+
+    <li><strong>骷髏戰士（Skeletal Warrior）</strong>
+        <ul>
+            <li>現在無法在寶石切割選單中進行雕刻，因為該技能僅作為臨時替代方案。</li>
+            <li>現存的骸骨戰士技能寶石會轉換為骸骨狙擊手（Skeletal Sniper）寶石。</li>
+            <li>部分權杖提供的骸骨戰士技能現在除了能免費召喚兩個骸骨戰士，還可通過預留靈魂來額外召喚骸骨。</li>
+        </ul>
+    </li>
+
+    <li><strong>狙擊（Snipe）</strong>
+        <ul>
+            <li>攻擊速度倍率與魔力消耗已調整，使攻擊時間與完美擊發的時間一致。</li>
+            <li>僅改善技能描述，功能保持不變。</li>
+        </ul>
+    </li>
+
+    <li><strong>風暴浪湧（Storm Wave）</strong>
+        <ul>
+            <li>現在擁有 100% 額外感電機率。</li>
+        </ul>
+    </li>
+
+    <li><strong>靈魂獻祭（Soul Offering）</strong>
+        <ul>
+            <li>在寶石等級 13-20 時，現在提供 56-77% 增加法術傷害（先前為 32-39% 更多法術傷害）。</li>
+        </ul>
+    </li>
+
+    <li><strong>電球（Spark）</strong>
+        <ul>
+            <li>在寶石等級 1-20 時發射 4-9 顆投射物（先前為 6-14 顆）。</li>
+            <li>不再擁有 0-19% 增加投射物速度。</li>
+            <li>品質效果現在提供 0-30% 增加投射物速度（先前為 +0-4 顆額外投射物）。</li>
+        </ul>
+    </li>
+
+    <li><strong>螺旋之弦（Spiral Volley）</strong>
+        <ul>
+            <li>現在每消耗一個狂怒球（Frenzy Charge）會使傷害提高 30%（先前為 20%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>大地震擊（Sunder）</strong>
+        <ul>
+            <li>總攻擊時間增加 +1 秒（先前為 +1.4 秒）。</li>
+            <li>魔力消耗已相應調整。</li>
+        </ul>
+    </li>
+
+    <li><strong>踐踏（Stampede）</strong>
+        <ul>
+            <li>品質效果現在提供 0-20% 機率造成餘震（Aftershock）（先前為 0-30%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>雷暴彈藥（Stormblast Bolts）</strong>
+        <ul>
+            <li>現在不再有 30% 較慢的裝填速度。</li>
+        </ul>
+    </li>
+
+    <li><strong>風暴呼喚箭矢（Stormcaller Arrow）</strong>
+        <ul>
+            <li>其閃電箭現在擁有 500% 額外感電機率（先前為 800%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>風暴之鐘（Tempest Bell）</strong>
+        <ul>
+            <li>衝擊傷害在寶石等級 3-20 時為 146-490% 攻擊傷害（先前為 145-316%）。</li>
+            <li>現在需要 10 層連擊才能使用（先前為 4 層），且鐘在所有寶石等級下受到 10 次擊中後會被摧毀（先前為寶石等級 3-20 時 10-19 次）。</li>
+            <li>品質效果現在使鐘在額外承受 0-2 次擊中後摧毀（先前為 0-6 次）。</li>
+        </ul>
+    </li>
+
+    <li><strong>風暴之鐘的衝擊波（Tempest Bell Shockwave）</strong>
+        <ul>
+            <li>不再擁有「每種影響鐘的元素異常效果可使傷害提高 30%」或「60% 物理傷害轉換為對應的元素異常屬性傷害」。</li>
+            <li>現在改為「獲得等同於 30% 物理傷害的額外元素傷害，類型與鐘上的元素異常匹配」。</li>
+            <li>傷害現在為寶石等級 3-20 時的 60-132% 攻擊傷害（先前為 96-211%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>風暴之鐘（Tempest Bell）（其他調整）</strong>
+        <ul>
+            <li>現在每 250 毫秒最多觸發一次衝擊波，此數值為嚴格限制，不受冷卻回復影響。</li>
+            <li>現在所有不同的天災鐘技能共享擺放上限。</li>
+        </ul>
+    </li>
+
+    <li><strong>捷技能（Herald Skills）</strong>
+        <ul>
+            <li>擊殺效果不再能夠觸發自身的擊殺效果。</li>
+        </ul>
+    </li>
+
+    <li><strong>龍捲射擊（Tornado Shot）</strong>
+        <ul>
+            <li>現在分裂效果也適用於投擲的長矛。</li>
+        </ul>
+    </li>
+
+    <li><strong>毒素植栽（Toxic Growth）</strong>
+        <ul>
+            <li>需要更多儲存的中毒才能達到最大爆炸範圍與傷害，且需要更多儲存的中毒才能加速消耗。</li>
+            <li>膿皰持續時間現在為 15 秒（先前為 6 秒）。</li>
+            <li>儲存的中毒現在最多可額外增加 1.5 公尺爆炸範圍（先前為 1 公尺）。</li>
+            <li>現在發射 6 支箭矢（先前為 8 支）。</li>
+            <li>品質效果現在提供「+0-2 發射箭矢與 +0-2 顆膿皰」（先前為「+0-3 顆投射物」）。</li>
+            <li>現在最多只能存在 6 顆膿皰。</li>
+        </ul>
+    </li>
+
+    <li><strong>屍術矢（Unearth）</strong>
+        <ul>
+            <li>骸骨構造體（Bone Construct）的持續時間現在為 15 秒（先前為 12 秒）。</li>
+            <li>品質效果現在提供「+0-5 秒骸骨構造體持續時間」（先前為 +0-4 秒）。</li>
+        </ul>
+    </li>
+
+    <li><strong>跳躍衝擊（Vaulting Impact）</strong>
+        <ul>
+            <li>在寶石等級 3-20 時，現在提供 54-88% 額外暈眩累積效果（先前所有等級皆為 30%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>藤箭（藤蔓箭矢）</strong>
+        <ul>
+            <li>現在最多只能存在 1 顆植物（可透過（Overabundance Support）提升至 2 顆）。</li>
+            <li>植物的持續時間現在為 8 秒（先前為 6 秒）。</li>
+        </ul>
+    </li>
+
+    <li><strong>炎火脈動（Volcanic Fissure）</strong>
+        <ul>
+            <li>現在最多只能同時存在 8 個裂痕，且餘震不再引發其他裂痕。</li>
+        </ul>
+    </li>
+
+    <li><strong>電流擲彈（Voltaic Grenade）</strong>
+        <ul>
+            <li>冷卻時間現在為 6 秒（先前為 3 秒）。</li>
+            <li>爆炸範圍在寶石等級 1-20 時為 2-2.4 公尺（先前為 1.8-2.4 公尺）。</li>
+            <li>引爆時間現在為 2.5 秒（先前為 1.2 秒）。</li>
+        </ul>
+    </li>
+
+    <li><strong>寒冰波（Wave of Frost）</strong>
+        <ul>
+            <li>在寶石等級 7-20 時，現在提供 390-585% 額外冰凍累積效果（先前所有等級皆為 275%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>疾風之舞（Wind Dancer）</strong>
+        <ul>
+            <li>現在所有寶石等級下，每層提供 10% 額外閃避值（先前為寶石等級 4-20 時 15-19%）。</li>
+            <li>現在在寶石等級 4-20 時，每 1.44 到 1.12 秒獲得 1 層風舞者層數（先前為 1.5 到 1.3 秒）。</li>
+            <li>颶風之力（Gale Force）現在在寶石等級 4-20 時，造成 53-163% 攻擊傷害（先前為 40-125%）。</li>
+            <li>颶風之力現在使用主手武器的暴擊率，不再具有 5% 固定暴擊率。</li>
+            <li>層數現在會在受到敵人擊中時消耗，而非受到近戰攻擊時消耗。</li>
+            <li>當受到攻擊時，層數累積計時器不會被打斷。</li>
+            <li>品質效果現在提供 +0 至 0.4 公尺的爆炸範圍（先前為 +0-1 最大層數）。</li>
+        </ul>
+    </li>
+
+    <li><strong>凋零光環（Withering 存在範圍）</strong>
+        <ul>
+            <li>凋零持續時間現在為 6 秒（先前為 4 秒）。</li>
+            <li>現在在寶石等級 4-20 時，每 1.74-1.42 秒對範圍內敵人施加一次凋零（先前為 2.78-1.58 秒）。</li>
+        </ul>
+    </li>
+
+    <li><strong>擴大地面技能（Expanding Ground Effect Skills）</strong>
+        <ul>
+            <li>這類技能先前錯誤地隨時間擴展半徑，而非影響範圍。現在仍會擴展半徑，但數值已調整：</li>
+            <li>毒雲（Poison Cloud）（瓦斯箭、瓦斯手雷、腐化術）現在每秒獲得 20% 額外半徑，最多提升至 80%（先前為 50%，最多 200%）。</li>
+            <li>骸骨狙擊手（Skeletal Sniper）的毒雲現在每秒獲得 20% 額外半徑，最多提升至 80%（先前為 40%，最多 200%）。</li>
+            <li>凍結領域（Frozen Locus）的冰冷地面現在每秒獲得 30% 額外半徑，最多提升至 150%（先前為 40%，最多 240%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>紀律與純淨光環（Discipline and Purity Auras）</strong>
+        <ul>
+            <li>現在同時影響持有權杖的玩家及其盟友。</li>
+        </ul>
+    </li>
+
+    <li><strong>手榴彈技能（Grenade Skills）</strong>
+        <ul>
+            <li>除（Cluster Grenade）外，擁有多顆投射物的手雷技能散射範圍降低 40%。</li>
+        </ul>
+    </li>
+
+    <li><strong>衝擊（Raise Shield Bash）</strong>
+        <ul>
+            <li>現在在格擋後立即施放舉盾技能會對前方敵人造成傷害與暈眩，如果使用（Tower Shield），還會使敵人眩暈。</li>
+            <li>現在在成功格擋技能後立即釋放舉盾技能，會對前方敵人造成傷害並使其暈眩。</li>
+            <li>若使用塔盾（Tower Shield），還會使敵人陷入遲鈍狀態。</li>
+        </ul>
+    </li>
+
+    <li><strong>新增寶石標籤 - 條件式（Conditional）.</strong>
+        <ul>
+            <li>此標籤代表必須滿足特定條件才能施放的技能，例如連擊（Combo）技能。</li>
+        </ul>
+    </li>
+
+    <li><strong>技能消耗調整（Skill Cost Adjustments）</strong>
+        <ul>
+            <li>影響技能消耗的數值加減修飾詞現在會在支援寶石的消耗倍率計算之前套用。</li>
+            <li>影響技能總消耗的數值加減修飾詞則保持不變，仍會在所有其他修正後生效。</li>
+        </ul>
+    </li>
+</ul>
+</div>
+
+<div class="section-container">
+    <div class="section-title" id="support-changes">輔助寶石改動</div>
+    <ul>
+    <li><strong>星空投影 (Astral Projection)</strong>
+        <ul>
+            <li>現在使被支援的技能範圍效果減少 25%（先前為 35%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>野性殘暴 (Brutality)</strong>
+        <ul>
+            <li>現在使被支援的技能造成 25% 更多物理傷害（先前為 35%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>爆燃銘文(Burning Inscription)</strong>
+        <ul>
+            <li>現在有 110% 的消耗倍率（先前為 100%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>食人 (Cannibalism)</strong>
+        <ul>
+            <li>現在當被支援的技能啟動時，擊殺敵人會恢復 2% 生命（先前為 4%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>電容 (Capacitor)</strong>
+        <ul>
+            <li>現在有 130% 的消耗倍率（先前為 100%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>近身戰 (Close Combat)</strong>
+        <ul>
+            <li>現在有 120% 的消耗倍率（先前為 140%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>細思施法(Considered Casting)</strong>
+        <ul>
+            <li>現在有 115% 的消耗倍率（先前為 100%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>精準破壞與提取 (Controlled Destruction and Extraction Supports)</strong>
+        <ul>
+            <li>現在無法插入具有次要傷害擊中但沒有法術傷害擊中的技能。</li>
+            <li>這些支援寶石原本無法影響這類技能的傷害，先前只是錯誤地可插入。</li>
+            <li>兩個寶石在一起所以無法按名字連結</li>
+        </ul>
+    </li>
+
+    <li><strong>逐漸增強(Crescendo)</strong>
+        <ul>
+            <li>現在有 120% 的消耗倍率（先前為 100%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>頂點(Culmination)</strong>
+        <ul>
+            <li>現在使被支援的技能每層連擊造成 3% 更多傷害（先前為 2%）。</li>
+            <li>若 4 秒內沒有獲得連擊，則失去所有連擊（先前為 3 秒）。</li>
+        </ul>
+    </li>
+
+    <li><strong>攻其之弱(Exploit Weakness)</strong>
+        <ul>
+            <li>現在使被支援的技能消耗完全破碎的敵人護甲，來造成 40% 更多傷害（先前為 50%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>豢養狂熱與肉盾 (Feeding Frenzy and Meat Shield)</strong>
+        <ul>
+            <li>現在無法支援無法被傷害的召喚物。</li>
+            <li>兩個寶石在一起所以無法按名字連結</li>
+        </ul>
+    </li>
+
+    <li><strong>拳霸(Fist of War)</strong>
+        <ul>
+            <li>現在有 150% 的消耗倍率（先前為 140%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>沙漏 (Hourglass)</strong>
+        <ul>
+            <li>現在使被支援的技能造成 30% 更多傷害（先前為 40%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>衝擊震波 (Impact Shockwave)</strong>
+        <ul>
+            <li>現在使被支援的技能在對敵人造成重度暈眩時觸發餘震，對 1.8 公尺內的敵人造成相同傷害（先前為 2.0 公尺）。</li>
+        </ul>
+    </li>
+
+    <li><strong>動力 (Impetus)</strong>
+        <ul>
+            <li>現在有 115% 的消耗倍率（先前為 100%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>封鎖 (Lockdown)</strong>
+        <ul>
+            <li>現在有 100% 的消耗倍率（先前為 120%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>增幅效果(Magnified Effect)</strong>
+        <ul>
+            <li>現在有 130% 的消耗倍率（先前為 120%），並且使被支援的技能範圍效果增加 30%（先前為 40%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>魔力閃焰(Mana Flare)</strong>
+        <ul>
+            <li>現在半徑為 2 公尺（先前為 1.6 公尺），並且消耗當前法力的 25% 來造成等量的火焰傷害（先前為 20%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>肉盾 (Meat Shield Support)</strong>
+        <ul>
+            <li>現在改為使被支援的技能召喚的僕從承受 35% 較少傷害，不再提供 50% 更多最大生命。</li>
+        </ul>
+    </li>
+
+    <li><strong>機動性 (Mobility Support)</strong>
+        <ul>
+            <li>現在使用被支援的技能時，移動速度的懲罰減少 25%（先前為 30%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>神經超載 (Neural Overload)</strong>
+        <ul>
+            <li>現在有 100% 的消耗倍率（先前為 120%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>超載 (Overcharge Support)</strong>
+        <ul>
+            <li>不再使被支援的技能造成較少感電持續時間，現在改為「被支援技能造成的感電會反射回自身」。</li>
+        </ul>
+    </li>
+
+    <li><strong>潛力(Potential)</strong>
+        <ul>
+            <li>現在當消耗暴擊球時，使被支援的技能額外獲得 40% 的暴擊機率（先前為 30%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>散射 (Scattershot Support)</strong>
+        <ul>
+            <li>現在使被支援的技能造成 35% 較少傷害（先前為 20%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>電擊虹吸(Shock Siphon)</strong>
+        <ul>
+            <li>現在無法在寶石切割選單中進行刻印，但現有版本仍可正常運作。</li>
+        </ul>
+    </li>
+
+    <li><strong>法術迴響支援 (Spell Echo Support)</strong>
+        <ul>
+            <li>現在無法支援觸發類技能。</li>
+        </ul>
+    </li>
+
+    <li><strong>螺旋之弦(Spiral Volley)</strong>
+        <ul>
+            <li>現在第一支箭會直接向前射出，而不是最後一支箭。</li>
+        </ul>
+    </li>
+
+    <li><strong>剝奪 (Strip Away)</strong>
+        <ul>
+            <li>現在使被支援的技能施加的曝露效果提升 20%（先前為 30%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>堅不可破(Unbreakable)</strong>
+        <ul>
+            <li>現在對輕度暈眩與重度暈眩有不同的暈眩門檻倍率。</li>
+        </ul>
+    </li>
+
+    <li><strong>機會之窗 (Window of Opportunity)</strong>
+        <ul>
+            <li>現在當完美時機釋放時，使被支援的技能造成 35% 更多傷害（先前為 50%）。</li>
+            <li>完美時機的觸發窗口縮短 35%（先前為 25%）。</li>
+        </ul>
+    </li>
+
+    <li><strong>凋零之觸 (Withering Touch)</strong>
+        <ul>
+            <li>現在根據擊中所造成的混沌傷害來決定施加枯萎的機率，而不是固定施加 1 層枯萎。</li>
+            <li>如果枯萎機率超過 100%，則有機會在單次擊中時施加多層枯萎。</li>
+        </ul>
+    </li>
+</ul>
+</div>
+
+<div class="section-container">
+    <div class="section-title" id="changes-2025">2025年4月4日</div>
+    <ul>
+        <li><strong>變更</strong>
+            <ul>
+                <li><strong>撕裂砲塔</strong>：
+                    <ul>
+                        <li>初始更新：彈藥釘住敵人時造成400%更多傷害（原為250%）</li>
+                        <li>最終調整：彈藥釘住敵人時造成600%更多傷害（原為250%）</li>
+                    </ul>
+                </li>
+                <li><strong>電鍊箭矢</strong>：
+                    <ul>
+                        <li>初始更新：可鏈接至8公尺遠的目標（原為4公尺）</li>
+                        <li>最終調整：可鏈接至8公尺遠的目標（原為4公尺），並且震波現在也會擊中震波來源的怪物</li>
+                    </ul>
+                </li>
+                <li><strong>細思施法</strong>：
+                    <ul>
+                        <li>初始更新：消耗倍率提高至115%（原為100%）</li>
+                        <li>最終調整：消耗倍率提高至115%（原為100%），並使輔助法術造成35%更多傷害（原為40%）</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li><strong>火砲砲塔和撕裂砲塔</strong>
+            <ul>
+                <li>現在有8公尺的仇恨範圍（原為6公尺）。</li>
+                <li>火砲砲塔現在發射3個投射物（原為1個）。</li>
+            </ul>
+        </li> 
+        <li><strong>閃電箭矢</strong>
+            <ul>
+                <li>現在在寶石等級1-20時，會對目標附近的2-4個額外敵人發射光束（原為所有等級2個）。</li>
+                <li>品質現在提供0-40%更多感電機率（原為對目標附近的+0-1個額外敵人發射光束）。</li>
+            </ul>
+        </li>
+
+        <li><strong>圍城爆發</strong>
+            <ul>
+                <li>現在對被癱瘓的敵人造成200%更多傷害（原為50%）。</li>
+                <li>品質現在是+0-80%更多對被癱瘓的敵人造成的傷害。</li>
+            </ul>
+        </li>
+
+        <li><strong>疾風之舞</strong>
+            <ul>
+                <li>颶風之力的擊退距離已減少。</li>
+            </ul>
+        </li>
+
+        <li><strong>秘能波動</strong>
+            <ul>
+                <li>現在會在對輔助技能總共消耗100%最大魔力後，使你獲得10秒的秘法湧動（原為8秒）。</li>
+            </ul>
+        </li>
+
+        <li><strong>秘能節奏</strong>
+            <ul>
+                <li>現在使輔助技能有20%更多施放速度（原為25%）。</li>
+            </ul>
+        </li>
+
+        <li><strong>打破忍耐</strong>
+            <ul>
+                <li>現在在輔助技能完全破壞護甲時，提供40%機率獲得耐力球（原為20%）。</li>
+            </ul>
+        </li>
+
+        <li><strong>破壞姿態</strong>
+            <ul>
+                <li>現在的暈眩持續8秒（原為6秒）。</li>
+            </ul>
+        </li>
+
+        <li><strong>爆裂瘟疫</strong>
+            <ul>
+                <li>觸發疫病爆發現在有5%的基礎暴擊率。</li>
+            </ul>
+        </li>
+
+        <li><strong>連擊終結輔助</strong>
+            <ul>
+                <li>現在如果你在4秒內沒有產生連擊，輔助技能會失去連擊（原為8秒）。</li>
+            </ul>
+        </li>
+
+        <li><strong>併發症</strong>
+            <ul>
+                <li>現在使輔助技能有20%更少中毒持續時間（原為30%）。</li>
+            </ul>
+        </li>
+
+        <li><strong>集中效應</strong>
+            <ul>
+                <li>現在使輔助技能造成30%更多範圍傷害（原為40%）。</li>
+            </ul>
+        </li>
+
+        <li><strong>精準破壞</strong>
+            <ul>
+                <li>現在使輔助技能造成25%更多擊中傷害（原為30%）。</li>
+                <li>描述已更新，但功能保持不變。</li>
+            </ul>
+        </li>
+
+        <li><strong>腐朽咒術</strong>
+            <ul>
+                <li>現在使輔助技能施加腐朽，每秒造成100%智慧的混沌傷害，持續8秒（原為60%）。</li>
+            </ul>
+        </li>
+
+        <li><strong>爆破手</strong>
+            <ul>
+                <li>現在使輔助技能破壞50%更多護甲（原為40%）。</li>
+            </ul>
+        </li>
+
+        <li><strong>能量保留</strong>
+            <ul>
+                <li>現在的消耗倍率為110%（原為100%）。</li>
+            </ul>
+        </li>
+
+        <li><strong>處刑</strong>
+            <ul>
+                <li>現在使輔助技能對低血量敵人造成50%更多擊中傷害（原為40%）。</li>
+            </ul>
+        </li>
+
+        <li><strong>廣闊區域</strong>
+            <ul>
+                <li>現在使輔助技能的冷卻時間增加+8秒（原為+6秒）。</li>
+            </ul>
+        </li>
+
+        <li><strong>提取</strong>
+            <ul>
+                <li>現在使輔助技能獲得35%傷害作為額外混沌傷害（原為25%）。</li>
+            </ul>
+        </li>
+
+        <li><strong>分岔</strong>
+            <ul>
+                <li>現在使輔助技能的投射物在叉狀閃電後造成30%更少傷害（原為50%）。</li>
+            </ul>
+        </li>
+
+        <li><strong>冰霜核心</strong>
+            <ul>
+                <li>現在在輔助技能冰凍敵人時，產生持續8秒的冰緩地面（原為4秒）。</li>
+            </ul>
+        </li>
+
+        <li><strong>霜咬</strong>
+            <ul>
+                <li>現在在輔助技能冰凍敵人時，攻擊獲得5秒的35%傷害作為冰冷傷害（原為3秒）。</li>
+            </ul>
+        </li>
+
+        <li><strong>末日厄運</strong>
+            <ul>
+                <li>觸發末日爆發現在有7%的基礎暴擊率（原為5%）。</li>
+            </ul>
+        </li>
+
+        <li><strong>亢奮</strong>
+            <ul>
+                <li>現在在輔助技能擊殺感電敵人時，攻擊獲得5秒的35%傷害作為閃電傷害（原為3秒）。</li>
+            </ul>
+        </li>
+
+        <li><strong>啟發</strong>
+            <ul>
+                <li>現在使輔助技能有30%更少消耗（原為40%）。</li>
+            </ul>
+        </li>
+
+        <li><strong>持續感電</strong>
+            <ul>
+                <li>現在的消耗倍率為100%（原為120%），並使輔助技能有30%更少感電機率（原為20%）。</li>
+            </ul>
+        </li>
+
+        <li><strong>生命盜竊</strong>
+            <ul>
+                <li>現在從輔助技能竊取8%的物理攻擊傷害作為生命（原為6%）。</li>
+            </ul>
+        </li>
+
+        <li><strong>遠程射擊</strong>
+            <ul>
+                <li>現在使輔助技能對距離你超過7公尺的敵人造成30%更多攻擊傷害，隨著距離縮短至3.5公尺或更近，傷害加成會逐漸降低至0%（原為35%）。</li>
+            </ul>
+        </li>
+
+        <li><strong>武術節奏</strong>
+            <ul>
+                <li>現在使輔助技能有20%更多攻擊速度（原為25%）。</li>
+            </ul>
+        </li>
+
+        <li><strong>召喚物契約</strong>
+            <ul>
+                <li>現在使輔助技能在使用時移除附近僕從的100%最大生命，以造成30%更多傷害（原為40%）。</li>
+            </ul>
+        </li>
+
+        <li><strong>穿透</strong>
+            <ul>
+                <li>現在使輔助技能的投射物在穿透敵人後造成20%更少傷害（原為30%）。</li>
+            </ul>
+        </li>
+
+        <li><strong>靈魂盜竊</strong>
+            <ul>
+                <li>現在從輔助技能竊取8%的物理攻擊傷害作為魔力（原為5%）。</li>
+            </ul>
+        </li>
+
+        <li><strong>重踏地面</strong>
+            <ul>
+                <li>觸發震波現在有5%的基礎暴擊率。</li>
+            </ul>
+        </li>
+
+        <li><strong>極速苦痛</strong>
+            <ul>
+                <li>現在使輔助技能造成30%更多非異常狀態持續傷害（原為35%）。</li>
+            </ul>
+        </li>      
+    </ul>
+</div>
+
+
+
+    <div class="section-container">
+    <div class="section-title" id="legendary-changes">傳奇</div>
+    <ul>
+        <ul>
+            <li>
+              <strong>力抗黑暗（Against the Darkness）</strong>
+              <ul>
+                <li>範圍：縮小為中型（先前為大型），此變更不影響現有物品。</li>
+                <li>顯著天賦：範圍內的顯著天賦提供 2-3% 特定屬性增加（先前為 2-4%），現有物品可使用神聖石降低數值。</li>
+                <li>小型天賦：不再使範圍內的小型天賦提供 1% 最大生命或 1% 最大魔力增加，改為 +8 最大生命或 +8 最大魔力，此變更不影響現有版本。</li>
+              </ul>
+            </li>
+            <li>
+              <strong>均衡之符 (Astramentis):</strong>
+              <ul>
+                <li>屬性：現在提供 +50-100 全屬性（先前為 +80-100）。現有物品可使用神聖石降低數值。</li>
+              </ul>
+            </li>
+            <li>
+              <strong>阿茲里的蔑視 (Atziri's Disdain):</strong>
+              <ul>
+                <li>承受傷害：現在 10% 承受傷害無視能量護盾（先前為 20-25%）。</li>
+                <li>最大魔力：現在 +60-100 最大魔力（先前為 +40-60）。</li>
+                <li>能量護盾：獲得最大生命的 10-15% 作為額外的最大能量護盾（先前為 25-30%）。現有版本可使用神聖石更新數值。</li>
+              </ul>
+            </li>
+            <li>
+              <strong>暴風之語 (Choir of the Storm):</strong>
+              <ul>
+                <li>效果：現在再次觸發雷彈（先前為高階雷彈）。</li>
+              </ul>
+            </li>
+            <li>
+              <strong>勝者之冠 (Crown of the Victor):</strong>
+              <ul>
+                <li>物品稀有度：現在提升 10-15% 發現物品稀有度（先前為 10-20%）。</li>
+              </ul>
+            </li>
+            <li>
+              <strong>夢語之痕 (Dream Fragments):</strong>
+              <ul>
+                <li>最大魔力：現在增加 10% 最大魔力（先前為 20%）。現有物品可使用神聖石更新數值。</li>
+              </ul>
+            </li>
+            <li>
+              <strong>永恆凝視 (Everlasting Gaze):</strong>
+              <ul>
+                <li>能量護盾：現在獲得 4-6% 最大魔力作為額外最大能量護盾（先前為 20-30%）。</li>
+                <li>魔力回復：提升 40-60% 魔力回復速度（先前為 50%）。</li>
+                <li>最大魔力：+40-60 最大魔力（先前為 +50）。現有版本可使用神聖石更新數值。</li>
+              </ul>
+            </li>
+            <li>
+              <strong>夏烏拉之眼 (Eye of Chayula):</strong>
+              <ul>
+                <li>效果：不再提供 +2500 暈眩門檻，改為「無法被輕度暈眩」。</li>
+              </ul>
+            </li>
+            <li>
+              <strong>火焰之花 (Fireflower):</strong>
+              <ul>
+                <li>物品稀有度：現在提升 10-15% 發現物品稀有度（先前為 10-20%）。</li>
+              </ul>
+            </li>
+            <li>
+              <strong>鬧鬼 (Ghostwrithe):</strong>
+              <ul>
+                <li>效果：現在轉換 25% 最大生命為能量護盾（先前為 50%）。現有物品可使用神聖石更新數值。</li>
+              </ul>
+            </li>
+            <li>
+              <strong>智行之手 (Hand of Wisdom and Action):</strong>
+              <ul>
+                <li>閃電傷害：現在每 20 智力提供 1 至 10 閃電傷害（先前為每 10 智力）。</li>
+                <li>攻擊速度：現在每 20 敏捷提供 1% 攻擊速度（先前為每 25 敏捷 3%）。</li>
+                <li>基底類型：基底類型改為「螺旋裹手 (Spiral Wraps)」，不再是「潛行裹手 (Furtive Wraps)」，此變更不影響現有物品。</li>
+                <li>備註：屬性相關變更會影響現有物品，其他數值可透過神聖石調整。</li>
+              </ul>
+            </li>
+            <li>
+              <strong>獨創 (Ingenuity):</strong>
+              <ul>
+                <li>戒指效果：不再提供 40-80% 提升裝備戒指的獎勵效果。現在改為提升 20-30% 左戒指的獎勵效果，提升 20-30% 右戒指的獎勵效果。</li>
+                <li>護符插槽：新增 +1-2 護符插槽。</li>
+                <li>護符充能：-20 至 20% 提升護符充能獲取，-10 至 10 減少護符充能消耗。</li>
+                <li>備註：現有版本不受影響。</li>
+              </ul>
+            </li>
+            <li>
+              <strong>終焉烈焰 (Last Flame):</strong>
+              <ul>
+                <li>效果：現在有「承受傷害無法被吸收」，吸收效果包含守護 (Guard)、玉化 (Encased in Jade) 和秘法守禦 (Sorcery Ward)。現有物品不受影響。</li>
+              </ul>
+            </li>
+            <li>
+              <strong>瑪哈薩多的陰謀 (Mahuxotl's Machination):</strong>
+              <ul>
+                <li>靈魂核心：現在插槽中的靈魂核心 (Soul Cores) 效果提升 100%（先前為 333-666%）。</li>
+                <li>新增屬性：「永恆獻祭 (Everlasting Sacrifice)」。</li>
+              </ul>
+            </li>
+            <li>
+              <strong>融解漩渦 (Melting Maelstrom):</strong>
+              <ul>
+                <li>效果：不再具有「使用時恢復所有魔力」屬性。此變更不影響現有物品。</li>
+              </ul>
+            </li>
+            <li>
+              <strong>不敗亡者 (Morior Invictus):</strong>
+              <ul>
+                <li>生成屬性：現在生成 3 個隨機屬性（先前為 2）。</li>
+                <li>移除屬性：以下隨機屬性不再出現：每個插槽的符文或靈魂核心提供 10% 提升物品稀有度、每個插槽的符文或靈魂核心提供 5% 增加最大生命、每個插槽的符文或靈魂核心提供 5% 增加最大魔力、每個插槽的符文或靈魂核心提供 5% 增加所有屬性。</li>
+                <li>調整屬性：以下隨機屬性已調整：每個插槽的符文或靈魂核心提供 +6-10 精魂（先前為 10）、每個插槽的符文或靈魂核心提供 6-10% 增加全局防禦（先前為 10）、每個插槽的符文或靈魂核心提供 +5-7% 所有元素抗性（先前為 10）。</li>
+                <li>新增屬性：新增 7 個隨機屬性，適用於每個插槽的符文或靈魂核心。</li>
+              </ul>
+            </li>
+            <li>
+              <strong>橡誓者 (Oaksworn):</strong>
+              <ul>
+                <li>效果：不再提供 +50 精神，改為提供 50% 增加生命回復速率。</li>
+              </ul>
+            </li>
+            <li>
+              <strong>囚神杵 (Pillar of the Caged God):</strong>
+              <ul>
+                <li>攻擊速度：現在每 10 敏捷提供 1% 攻擊速度，每 10 智力提供 1% 範圍效果增加（先前為各 2%）。</li>
+                <li>武器傷害：現在每 10 力量提供 10% 武器傷害（先前為每 5 力量 10%）。</li>
+                <li>備註：屬性變更會影響現有物品，其他數值可使用神聖石調整。</li>
+              </ul>
+            </li>
+            <li>
+              <strong>森后 (Queen of the Forest):</strong>
+              <ul>
+                <li>移動速度：現在每 800 躲避值提供 1% 移動速度（先前為每 500）。現有物品可使用神聖石更新數值。此屬性也<em>不</em> 再受腐化等效果影響。</li>
+              </ul>
+            </li>
+            <li>
+              <strong>沙瀑面紗 (Sandstorm Visage):</strong>
+              <ul>
+                <li>效果：現在使敵人在你的存在範圍內每秒獲得 1 次暴擊弱點，持續 15 秒（先前為 1 秒）。現有物品可使用神聖石更新數值。</li>
+              </ul>
+            </li>
+            <li>
+              <strong>時空之物 (Temporalis):</strong>
+              <ul>
+                <li>效果: 現在使技能冷卻時間減少 -2 至 -1 秒（先前為 -4 至 -2 秒）。現有版本可使用神聖石更新數值，但有什麼意義呢？</li>
+              </ul>
+            </li>
+            <li>
+              <strong>壕溝之音 (Trenchtimbre):</strong>
+              <ul>
+                <li>效果：現在提供 +1-2 提升所有召喚技能等級（先前為 +1-3）。現有物品可使用神聖石調整數值。</li>
+              </ul>
+            </li>
+            <li>
+              <strong>賭神芬多 (Ventor's Gamble):</strong>
+              <ul>
+                <li>物品稀有度: 現在提供 -25 至 25% 增加物品稀有度（先前為 -40 至 40%）。</li>
+              </ul>
+            </li>
+            <li>
+              <strong>幽墓束縛 (Gravebind):</strong>
+              <ul>
+                <li>描述：更新了描述，正確指出敵人必須在你的存在範圍內，而不是在盟友範圍內。</li>
+              </ul>
+            </li>
+            <li>
+              <strong>唯我論和 鑲嵌的寶石昇華:</strong>
+              <ul>
+                <li>描述：更新了文本，顯示它們相互疊加。這並非功能性變更。</li>
+              </ul>
+            </li>
+            <li>
+              <strong>英雄悲劇 (Heroic Tragedy) 時光寶石 (Timeless 珠寶):</strong>
+              <ul>
+                <li>傷害：現在賦予顯著被動技能的傷害災害幅度增加 5-10%（先前為 10-20%）。</li>
+                <li>傷害速度：現在賦予顯著被動技能的災害傷害速度提高 2-3%（先前為 3-7%）。</li>
+                <li>能量生成：現在賦予顯著被動技能的能量生成增加 4-12%（先前為 5-15%）。</li>
+                <li>移除效果：不再能夠獲得賦予顯著被動技能的戰吼增益效果。</li>
+              </ul>
+            </li>
+            <li>
+              <strong>英雄悲劇 (Heroic Tragedy) 時光寶石的命名和文本:</strong>
+              <ul>
+                <li>描述：現在正確匹配相關的探險領袖。Olroth 征服的鑰石 現在稱為「騎士信條」、Medved 征服的鑰石 現在稱為「圓形教義」、Vorana 征服的鑰石 現在稱為「黑色鐮刀訓練」。此變更不影響現有物品。</li>
+              </ul>
+            </li>
+          </ul>
+                  </ul>
+</div>
+
+        <div class="section-container">
+            <div class="section-title" id="items">道具</div>
+            <ul>
+        <ul>
+            <li><strong>工匠石</strong>
+                <ul>
+                    <li>現在會設置技能寶石的支持寶石插槽數量為指定值，而不是在已有的支持寶石插槽數量上增加插槽。例如，使用完美珠寶匠寶珠在一個有兩個支持寶石插槽的技能寶石上，將設置它為五個支持寶石插槽，而不是新增三個。</li>
+                </ul>
+            </li>
+            <li><strong>高級和專家物品基底</strong>
+                <ul>
+                    <li>現在有不同的名稱，以便更好地區分它們。</li>
+                </ul>
+            </li>
+            <li><strong>符文</strong>
+                <ul>
+                    <li>符文現在分為3個等級：較低、常規和較高等級。例如，風暴符文現在分為：較低風暴符文、風暴符文和高級風暴符文。</li>
+                    <li>現在可以將3個較低符文重鑄為1個常規符文，並且3個常規符文可以重鑄為1個高級符文。</li>
+                    <li>符文掉落率被提高了一倍。</li>
+                    <li>現在無法將3個符文重鑄成隨機符文。</li>
+                </ul>
+            </li>
+            <li><strong>瓦爾寶珠</strong>
+                <ul>
+                    <li>使用瓦爾寶珠在物品上不再會將1的詞綴數值減少為0。</li>
+                </ul>
+            </li>
+            <li><strong>十字弓</strong>
+                <ul>
+                    <li>所有十字弓的基礎傷害被增加。</li>
+                    <li>十字弓現在擁有雙手版的傷害附加詞綴，替代了之前的單手版本。</li>
+                </ul>
+            </li>
+            <li><strong>物理荊棘傷害</strong>
+                <ul>
+                    <li>稀有物品詞綴上的物理荊棘傷害被增強最多3.5倍，最高等級詞綴，對最低等級的詞綴則不變。</li>
+                </ul>
+            </li>
+            <li><strong>物品掉落稀有度詞綴</strong>
+                <ul>
+                    <li>後綴詞綴現在最高為25%（以前為30%）。</li>
+                    <li>前綴詞綴現在最高為25%（以前為32%）。</li>
+                </ul>
+            </li>
+            <li><strong>金色符咒</strong>
+                <ul>
+                    <li>現在提供15%提高物品掉落稀有度（以前為20%）。</li>
+                </ul>
+            </li>
+            <li><strong>裂痕戒指</strong>
+                <ul>
+                    <li>現在有最高品質為40%（以前為50%）。現有物品可以使用神聖石更新。</li>
+                    <li>裂痕戒指掉落的機率大幅降低。</li>
+                </ul>
+            </li>
+            <li><strong>顯著被動技能</strong>
+                <ul>
+                    <li>在每個職業的起始區域中，中型天賦不再能夠被塗油（或像Megalomaniac這樣的傳奇物品上找到）。</li>
+                    <li>這不會修復已有物品的顯示問題，其中Sorceress/Witch起始區域的中型技能會顯示不正確，因為Witch和Sorceress以及其他職業的中型天賦不同。</li>
+                </ul>
+            </li>
+            <li><strong>珠寶詞綴</strong>
+                <ul>
+                    <li>添加了提供與被動技能樹中新增加的被動技能類似效益的珠寶詞綴，例如召喚物最大生命增加。</li>
+                    <li>珠寶和Time-lost珠寶詞綴曾提供在被動技能樹中稀有的屬性（如盲效果增加或承受的傷害回收到生命）現在已調整。一般來說，最小值保持不變，但提供的最大值較之前低。</li>
+                    <li>光環效果增加不再能在珠寶或Time-lost珠寶上滾動。</li>
+                    <li>Fletching珠寶和Time-lost珠寶詞綴現在提供從裝備弓箭筒中獲得的增加獎勳的詞綴值為4-6%和2-3%（以前分別為5-15%和3-7%）。</li>
+                    <li>珠寶詞綴增加能量生成現在提供的詞綴為2-6%（以前為3-7%）。現有物品可以使用神聖石重骰。</li>
+                </ul>
+            </li>
+            <li><strong>艾斯卡巴靈魂核心</strong>
+                <ul>
+                    <li>現在提供增加5%金幣掉落數量（以前為增加10%物品稀有度）。</li>
+                </ul>
+            </li>
+            <li><strong>珠寶腐化詞綴</strong>
+                <ul>
+                    <li>珠寶上的腐化詞綴，原本提供+5-10點特定屬性，現在調整為+4-6點。</li>
+                </ul>
+            </li>
+            <li><strong>頭盔和戒指腐化詞綴</strong>
+                <ul>
+                    <li>頭盔和戒指上的腐化詞綴，原本提供每秒回復1-2%生命，現在無法再出現，並被新的腐化詞綴取代，新詞綴提供1-2%生命回復速率增加。</li>
+                </ul>
+            </li>
+            <li><strong>短杖召喚技能等級</strong>
+                <ul>
+                    <li>短杖現在最多只能擁有+4所有召喚技能等級（原本為+5），現有物品不受影響。</li>
+                </ul>
+            </li>
+            <li><strong>短杖存在範圍效果</strong>
+                <ul>
+                    <li>短杖現在最多能擁有80%存在範圍效果增加（原本為30%），可以使用神聖石（Divine Orb）來更新現有物品的數值。</li>
+                </ul>
+            </li>
+            <li><strong>項鍊魔力詞綴</strong>
+                <ul>
+                    <li>項鍊上的最大魔力增加詞綴數值調整為：</li>
+                    <li>原本5-6% → 現在3-4%</li>
+                    <li>原本7-8% → 現在5-6%</li>
+                    <li>原本9-10% → 現在7-8%</li>
+                </ul>
+            </li>
+            <li><strong>裝備最大魔力上限</strong>
+                <ul>
+                    <li>腰帶、手套和靴子現在最多只能擁有+105-124點最大魔力。</li>
+                    <li>頭盔現在最多只能擁有+125-149點最大魔力。</li>
+                    <li>魔杖、短杖、長杖和專注物品（Focii）現在最多只能擁有+150-164點最大魔力。</li>
+                    <li>戒指現在最多只能擁有+165-179點最大魔力。</li>
+                </ul>
+            </li>
+            <li><strong>手套減益詞綴</strong>
+                <ul>
+                    <li>手套上的腐化詞綴「你施加的減益效果的減速幅度提高20-30%」現在無法再出現。</li>
+                </ul>
+            </li>
+            <li><strong>武器元素傷害詞綴</strong>
+                <ul>
+                    <li>武器上前兩級的附加元素傷害詞綴，其數值已降低。</li>
+                    <li>武器上的附加閃電傷害詞綴，其數值略微降低。</li>
+                </ul>
+            </li>
+            <li><strong>遺物商人詞綴</strong>
+                <ul>
+                    <li>遺物詞綴「商人提供額外選項」現在只會提供一個額外選項（原本為2-3個）。可以使用神聖石（Divine Orb）來改變現有物品，使其符合新數值。</li>
+                </ul>
+            </li>
+        </ul></div>
+
+        <div class="section-container">
+            <div class="section-title" id="monsters">怪物</div>
+            <ul>
+            <li>需要執行某些動作才能推進戰鬥的首領，現在如果其生命值大幅降低到超過應該使用該動作的點，將會變得免疫傷害。這對大多數玩家應該沒有明顯的影響，但將防止首領可能被半永久性地群體控制並阻止戰鬥進程的情況。</li>
+            <li>所有怪物的護甲已降低 30%。</li>
+            <li>怪物身上的噬魂者現在每層提供 1% 技能速度和 1% 減少所受傷害（先前為 5% 和 2%）。現在最多疊加至 50 層（先前為 45 層）。</li>
+            <li>以下頂級首領的生命值已調整：殞落之源奧爾羅斯 (Olroth, The Origin of the Fall)、吾即眾 (Xesht, We That Are One)、迷霧之王 (The King in the Mists) 和灰燼仲裁者 (The Arbiter of Ash)。在難度 0 時，他們現在的生命值約為之前的一半，並在難度 4 時恢復至不變。</li>
+            <li>試煉大師 (The Trialmaster) 和時空領主札羅克 (Zarokh, The Temporal) 的生命值已降低。</li>
+            <li>以下首領不再具有護甲穿透：殞落之源奧爾羅斯、吾即眾、迷霧之王和灰燼仲裁者。</li>
+            <li>降低了灰燼仲裁者和殞落之源奧爾羅斯使用的某些技能的傷害轉換為其他元素的比例。</li>
+            <li>灰燼仲裁者現在會在正確的時間內獲得遞減的減少所受傷害增益效果。</li>
+            <li>灰燼仲裁者現在會對少數特定的技能造成更高的傷害。</li>
+            <li>天之禍殃 (Scourge of the Skies) 現在對其嘔吐技能造成更高的傷害。</li>
+            <li>龍蜥．欽路錫安 (Xyclucian, the Chimera) 現在對其躍擊造成更高的傷害。</li>
+            <li>試煉大師現在對其引導鮮血猛擊造成更高的傷害。</li>
+            <li>凍結之泉．拉霏(Rafiq of the Frozen Spring) 現在對其多重猛擊技能造成更高的傷害。</li>
+            <li>石皮金剛 (Stoneclad Gorillas) 現在對其躍擊造成較低的傷害。</li>
+            <li>神威銀拳(Mighty Silverfist) 的閃避翻滾現在造成較低的傷害。</li>
+            <li>殞落之源奧爾羅斯現在對其衝刺技能造成更高的傷害。</li>
+            <li>流沙之母．艾夏(Ashar, the Sand Mother) 現在對其毒液噴灑造成較低的傷害。</li>
+            <li>撕裂者(Rathbreaker) 現在具有冰冷抗性，且易受火焰傷害。</li>
+            <li>降低了憎恨之物 (It that Hate) 的混沌流沙技能的傷害。</li>
+            <li>鋼鐵伯爵(Count Geonor) 的 180 度橫掃攻擊不再能被格擋。</li>
+            <li>怪物現在的輕微暈眩傷害會隨著等級提高而增加。在遊戲初期沒有變化，但在終局時會增加到大約兩倍的輕微暈眩傷害。</li>
+            <li>降低了祭祀遭遇中一次可以存活的最大怪物數量，尤其是在遊戲早期。</li>
+            <li>對非玩家角色，感電累積速度約降低 44%。</li>
+            <li>對非玩家角色，束縛累積速度約降低 58%。</li>
+            <li>魔法敵人現在在重度暈眩累積達到至少 50% 時準備進入暈眩狀態，稀有敵人為 60%，獨特敵人為 70%（先前分別為 60%、70% 和 80%）。</li>
+            <li>魔法敵人現在在感電累積達到至少 50% 時準備進入感電狀態，稀有敵人為 60%，獨特敵人為 70%（先前分別為 60%、70% 和 80%）。</li>
+            <li>奇美拉賽克盧西安競技場中可破壞的柱子生命值已提高。</li>
+            <li>新增了一系列強化的稀有怪物詞綴，比標準版本更強大且獎勵更豐厚。</li>
+            <li>某些稀有怪物詞綴現在會在較高等級時提升效果，提供更好的獎勵。</li>
+            <li>時空領主札羅克不再會以非玩家角色為目標施放其「回溯」(Rewind) 技能。</li>
+            <li>樹人真菌劫掠者(Treant Fungalreaver) 現在能正確造成傷害，並且其傷害和行為已調整。</li>
+            <li>浮腫米勒(The Bloated Miller) 的衝鋒現在會將玩家推向側面，而不是將他們帶走。</li>
+            <li>浮腫米勒的盾牌衝鋒不再能被格擋。</li>
+            <li>致命稀有怪物現在賦予稀有怪物額外一個詞綴（先前為 2 個）。</li>
+            <li>稀有怪物的爪牙在防禦方面已增強，並且在組隊遊戲中現在的強度調整更為適當。</li>
+            <li>為了彌補上述變更，「強大的爪牙」詞綴的強度已降低。</li>
+            <li>如果您已擊殺位於「無畏號」(The Dreadnought) 出口附近的保證出現的魔法怪物，當您在檢查點復活時，它們將不再重生。</li>
+            <li>各種真菌主題的怪物現在具有冰冷抗性，且易受火焰傷害。</li>
+            <li>稍微降低了混沌禿鷹．伊薩穆坎(Bahlak, the Sky Seer) 羽毛噴射技能造成的傷害和發射的投射物數量。</li>
+            <li>鍛鐵執行官(Iron Enforcers) 不再使用他們的觸手抓取技能。</li>
+            <li>污水地圖的首領已從「噬童者」(The Eater of Children) 更名為「枯萎老嫗布拉卡」(Brakka, the Withered Crone)。她仍然吃小孩。</li>
+            <li>巡邏怪物不再能被囚禁在精髓中。</li>
+            <li>逐步改善了怪物行為。</li>
+        </ul>
+</div>
+
+        <div class="section-container">
+            <div class="section-title" id="quests">任務</div>
+            <ul>
+            <li>現在，您必須先打開 哈拉妮關口，才能將 崛起掌權任務進展到可以前往 絲克瑪試煉 的階段。</li>
+            <li>獲得通行許可任務現在在進入阿杜拉車隊（第二章）時結束，而不是在與 札卡 談話後（在 瓦斯提里郊區）。</li>
+        </ul>
+</div>
+
+        <div class="section-container">
+    <div class="section-title">使用者界面更改</div>
+    <ul>
+            <li>死亡後觀戰隊友: 現在如果你在戰鬥中死亡，可以觀戰隊友。</li>
+            <li>控制器小地圖操作: 使用控制器時，現在可以平移小地圖。</li>
+            <li>存在範圍 半徑顯示: 當將滑鼠懸停於任何 存在範圍 關鍵字時，將顯示一個圍繞角色的指示器，以可視化你的 存在範圍 半徑。</li>
+            <li>技能欄技能描述簡化: 當將滑鼠懸停於技能欄上的技能時，現在會顯示該技能行為的簡短描述，並且會顯示打開技能資訊面板的按鈕提示。</li>
+            <li>塗油UI的變更: 如果你在塗油中放置了物品，現在無法關閉此菜單。</li>
+            <li>祭祀 Rewards 菜單: 祭祀 Rewards 菜單現在會暫停遊戲。</li>
+            <li>物品過濾器的寶石等級篩選: 現在物品過濾器的寶石等級篩選也適用於未切割的寶石。</li>
+            <li>寶石升級顯示變化: 當升級寶石時，變化現在會更明顯地突出顯示。</li>
+            <li>怪物生命條文字和圖標可讀性提升: 改進了怪物生命條下的文字和圖標的可見性和可讀性。</li>
+            <li>角色面板和技能資訊面板改進: 改進了角色面板和技能資訊面板中顯示的統計資料。例如，角色面板現在顯示修改過的能量護盾重生延遲和異常閾值，而技能面板現在顯示更多詳細的異常和命中機會資訊（等等）。</li>
+            <li>控制器使用顯示圖示: 如果你正在使用控制器並且關閉了物品標籤，現在會顯示一個 HUD 圖示。</li>
+            <li>沙發聯機改進: 改進了許多沙發合作模式下，第二位玩家無法與機制或界面元素互動的情況。</li>
+            <li>神器快速移動: 使用控制器時，現在可以將神器快速移動到 Relic Altar。</li>
+            <li>技能目標模式設定: 使用控制器時，現在可以為每個技能設置目標模式。</li>
+            <li>沙發合作模式 UI 改進: 改進了沙發合作模式下的 UI 面板行為。</li>
+            <li>拾取物品的控制器改進: 使用控制器時，拾取物品不再會因為技能進行中而失敗。</li>
+            <li>控制器設置切換十字弓彈藥: 使用控制器時，新增可選的可綁定動作，允許玩家切換已裝配的十字弓彈藥，並忽略當前武器集禁用的技能。</li>
+            <li>控制器重新裝填十字弓彈藥: 使用控制器時，新增可選的可綁定動作來重新裝填當前的十字弓彈藥類型。</li>
+            <li>控制器裝備快速切換: 使用控制器時，快速切換裝備的武器現在會將舊武器中所插入的支援寶石移至你的背包。</li>
+            <li>控制器技能自動瞄準: 使用控制器時，Detonating Arrow 和 Freezing Salvo 會自動瞄準敵人，無需手動瞄準。</li>
+            <li>造型界面重新設計: 現在可以在 Cosmetics 面板中打開聊天，讓你可以在全球頻道中展示你的 Pilfering Ring。</li>
+        </ul>
+
+        <div id="imageModal" class="modal">
+            <span class="close-button">&times;</span>
+            <img class="modal-content" id="modalImage">
+        </div>
+
+
+
+        <!-- 新增回到頂部按鈕 -->
+        <a href="#" class="scroll-to-top" id="scrollToTop">↑</a>
+        <script>
+            // 添加CSS樣式
+            const style = document.createElement('style');
+            style.textContent = `
+                .legendary-name, .support-name, .skill-name {
+                    color: #FFA500;
+                    text-decoration: none;
+                }
+                .legendary-name:hover, .support-name:hover, .skill-name:hover {
+                    text-decoration: underline;
+                }
+            `;
+            document.head.appendChild(style);
+        
+            // 獲取所有相關區塊
+            const legendarySection = document.querySelector('#legendary-changes').parentElement;
+            const supportSection = document.querySelector('#support-changes').parentElement;
+            const skillSection = document.querySelector('#skill-changes').parentElement;
+            const skillnew = document.querySelector('#changes-2025').parentElement;
+   
+            
+            // 處理所有名稱
+            [legendarySection, supportSection, skillSection, skillnew].forEach(section => {
+                if (!section) return;
+                
+                section.querySelectorAll('strong').forEach(strong => {
+                    const text = strong.textContent;
+                    // 提取中文名稱和英文名稱
+                    const match = text.match(/^([^（]+)(?:（(.+)）)?$/);
+                    if (match) {
+                        const chineseName = match[1].trim();
+                        const englishName = match[2] ? match[2].trim() : '';
+                        
+                        // 排除不需要連結的標題
+                        if (!chineseName.includes('改動') && !chineseName.includes('調整') && !chineseName.includes('變更')) {
+                            // 創建新的連結元素
+                            const link = document.createElement('a');
+                            link.href = `https://poe2db.tw/tw/search?q=${encodeURIComponent(chineseName)}`;
+                            link.className = section === legendarySection ? 'legendary-name' : 
+                                             section === supportSection ? 'support-name' : 'skill-name';
+                            link.target = '_blank';
+                            link.textContent = text;
+                            
+                            // 替換原有內容
+                            strong.textContent = '';
+                            strong.appendChild(link);
+                        }
+                    }
+                });
+            });
+
+            const scrollToTop = document.getElementById('scrollToTop');
+            
+            // 監聽滾動事件
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    scrollToTop.classList.add('visible');
+                } else {
+                    scrollToTop.classList.remove('visible');
+                }
+            });
+
+            // 點擊事件
+            scrollToTop.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            function updateCountdown() {
+            // 設置目標日期（修改這裡的日期來設定你的目標時間）
+            const targetDate = new Date('2025-04-05T03:00:00');
+            const now = new Date();
+            const diff = targetDate - now;
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const closeButton = document.querySelector('.close-button');
+
+    // 為所有昇華圖片添加點擊事件
+    document.querySelectorAll('.ascendancy-image').forEach(img => {
+        img.onclick = function() {
+            modal.classList.add('active');
+            modalImg.src = this.src;
+        }
+    });
+
+    // 點擊關閉按鈕或背景關閉 Modal
+    closeButton.onclick = function() {
+        modal.classList.remove('active');
+    }
+
+    modal.onclick = function(e) {
+        if (e.target === modal) {
+            modal.classList.remove('active');
+        }
+    }
+
+
+
+
+
+
+        </script> 
+    </div>
+</body>
+</html>
+>>>>>>> 5040414 (V10)

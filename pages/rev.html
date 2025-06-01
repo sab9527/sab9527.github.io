@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
@@ -256,3 +257,263 @@
     </div>
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>《流放之路 2》訪談重點整理</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            line-height: 1.8;
+            color: #d3d3d3; /* 較淺的文字顏色，適合深色背景 */
+            background-color: #121212; /* 暗色背景 */
+            padding: 20px;
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #ffffff; /* 白色標題 */
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        h2 {
+            font-size: 2em;
+            color: #eeeeee; /* 較淺的副標題顏色 */
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        h3 {
+            font-size: 1.5em;
+            color: #cccccc;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            color: #d3d3d3;
+        }
+        ul, ol {
+            margin-bottom: 15px;
+        }
+        ul li, ol li {
+            font-size: 1.1em;
+            margin-bottom: 5px;
+            color: #d3d3d3;
+        }
+        .section {
+            margin-bottom: 30px;
+            background-color: #1f1f1f; /* 深色段落背景 */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3); /* 較深的陰影 */
+            border: 1px solid #333; /* 添加邊框以區分段落 */
+        }
+        .game-terminology {
+            font-weight: bold;
+            color: #e57373; /* 較亮的紅色 */
+        }
+        a {
+            color: #81d4fa; /* 淺藍色連結 */
+            text-decoration: none;
+        }
+        a:hover {
+            color: #4fc3f7;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>《流放之路 2》訪談重點整理</h1>
+
+    <div class="section">
+        <h2>1. 重組系統（Recombinators）的更新</h2>
+        <h3>問題背景</h3>
+        <p>重組器（Recombinators）是《流放之路》中高級製作（Crafting）工具，過去用於將兩個物品的詞綴（Mods）隨機融合。此次更新涉及其核心機制。</p>
+        <h3>詳細總結</h3>
+        <p>
+            在直播前一晚的設計會議中，團隊對重組器的運作方式進行了大幅改進，從原本的隨機性轉向更具玩家主導性的設計。
+            新機制允許玩家從兩個基底（Base Items）中手動挑選想要保留的詞綴，例如從一件裝備選「+力量」詞綴，從另一件選「增加暴擊率」。
+            成功率（Success Chance）取決於選擇的詞綴數量：選1個詞綴（如「+生命」）成功率可能接近80%，選6個（如全滿T1詞綴）則降至近乎0%，幾乎不可能成功。
+        </p>
+        <p>
+            若重組失敗，兩個物品都會被銷毀（Destroyed），這與過去保留一項的設計不同，增加了風險性。
+            設計目標是讓重組器不僅服務於終局（Endgame）玩家（如追求雙T1詞綴的極品裝備），也讓戰役（Campaign）階段的玩家能輕鬆利用。
+            例如，早期撿到兩件帶「+火焰抗性」和「+移動速度」的藍裝（Magic Items），就能以高成功率合成實用裝備。
+        </p>
+        <p>
+            重組成本固定為單次遠征（Expedition）可獲取的資源（如混沌石 Chaos Orbs 或遠征貨幣），與NPC製作（如丹恩 Dannig 的遠征交易）共享資源池，鼓勵玩家在兩者間權衡。
+            目前計劃在0.2版本實裝，若未及時完成，將於後續點更新（Point Release）盡快推出。
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>2. 新聯盟（League）與角色重置</h2>
+        <h3>問題背景</h3>
+        <p>《流放之路》以聯盟（Leagues）形式推出新內容，通常伴隨獨特機制與挑戰。此次更新是否為全新聯盟，以及舊角色是否需要重置。</p>
+        <h3>詳細總結</h3>
+        <p>
+            新玩家加入0.2版本時，現有角色不會被強制抹除（Wipe），但團隊強烈建議創建新角色。
+            原因在於平衡改動（如技能寶石 Skill Gems 傷害調整）與結構性變化（如被動技能樹 Passive Tree 重置）讓舊角色的數據無參考價值，反饋也無法反映新經濟（Economy）。
+        </p>
+        <p>
+            本次更新不設獨立挑戰聯盟機制，例如之前考慮的「瑪麗與靈火」（Mary and Wisps）因缺乏足夠的元機制（Meta Mechanics）未達聯盟標準，
+            且考慮到大量新手玩家（從未玩過《流放之路 1》）的適應需求，決定不設獨家內容。
+        </p>
+        <p>
+            未來計劃在下個聯盟推出完整挑戰聯盟，包含獨特機制（如過去的「深淵 Abyssal」或「軍團 Legion」），但目前專注於核心遊戲體驗，無成就（Achievements）或挑戰任務（Challenges）。
+            舊角色若登入，會因被動樹重置需重新分配點數，且平衡變化（如力量屬性 Strength Scaling）可能使其過時，體驗不如新開角色。
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>3. 女獵人（Huntress）職業的設計與調整</h2>
+        <h3>問題背景</h3>
+        <p>女獵人（Huntress）是《流放之路 2》的敏捷（Dexterity）職業，過去展示過其矛（Spear）玩法，此次更新其設計有何變化。</p>
+        <h3>詳細總結</h3>
+        <p>
+            女獵人以矛為核心武器，強調遠程（Ranged）與近戰（Melee）的雙重玩法。設計重點是讓玩家在兩者間切換，
+            例如用「投矛」（Spear Throw）拉開距離，再用「旋風斬」（Whirling Slash）近戰清怪。
+        </p>
+        <p>
+            招架（Parry）機制: 不同於《黑暗靈魂》需精確時機的格擋（Block），女獵人的招架無需完美輸入（可長按），但成功後提供短暫輕暈（Light Stun）窗口，讓玩家反擊。
+            失敗則進入重暈（Heavy Stun），增加風險。招架有明顯音效與視覺標記（如怪頭上的標記），搭配技能如「冰霜之牙」（Fangs of Frost，凍結怪群）或「狂熱衝鋒」（Frenzy Charge Dash，後撤生成狂熱充能）應對包圍。
+        </p>
+        <p>
+            連招（Combo Chains）深度超過其他職業（如僧侶 Monk），例如「旋風斬」與「龍捲風」（Tornadoes）可與地面效果（Ground Effects，如電擊地面 Shocked Ground）互動，生成火龍捲或電傷加成。
+            設計上重複使用技能（如多次旋風斬）簡化操作，保持流暢性。
+        </p>
+        <p>
+            平衡挑戰：確保終局仍獎勵連招，避免退化為單技能玩法（如只用「高射速彈」（High Velocity Rounds））。
+            例如，傭兵（Mercenary）的「破甲」（Armor Break）與「高射速彈」組合在終局不如單用後者，團隊正調整此類問題。
+        </p>
+        <p>
+            女獵人靈活性和敏捷感使其成為近戰職業中最具機動性的選擇，後期技能如「雷霆跳躍」（Thunderous Leap）進一步強化其戰場控制。
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>4. 職業與技能平衡</h2>
+        <h3>問題背景</h3>
+        <p>如何平衡複雜連招與簡單「一鍵通關」玩法，以及武器與技能的互動。</p>
+        <h3>詳細總結</h3>
+        <p>
+            目標是讓連招成為「選擇性獎勵」而非強制要求。被動樹提供條件加成，例如「近期使用遠程技能增加近戰傷害」或「對目盲（Blinded）敵人增傷」，
+            鼓勵玩家自願探索連招，而非被迫堆疊複雜性。
+        </p>
+        <p>
+            女獵人支援多元素（Elemental）與物理（如出血 Bleed）玩法，但玩家傾向專精。團隊透過技能聯繫彌補，
+            例如「雷霆跳躍」引爆出血矛，讓非專精技能（如元素技能）在出血構築（Build）中仍有用途。
+        </p>
+        <p>
+            武器與技能設計避免硬性限制，例如亞馬遜（Amazon）的「灌注」（Infusion）機制只提「投射物」（Projectiles），不限矛，允許弓（Bow）或弩（Crossbow）構築。
+            但這也增加跨職業破壞性組合的風險（如矛技能與其他職業的支援寶石搭配）。
+        </p>
+        <p>
+            技能成長調整：弩因重裝時間（Reload Time）降低攻速（Attack Speed）依賴，獲更高每級傷害（Damage per Level）；
+            火花（Spark）因投射物數量與持續時間（Duration）擴展性過強，降低成長，避免如《流放之路 1》的霸主地位。
+        </p>
+        <p>
+            平衡難點：預測所有組合幾乎不可能，需依賴玩家反饋（如POE.Ninja數據）調整。
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>5. 召喚物與支援寶石（Spectres & Support Gems）</h2>
+        <h3>問題背景</h3>
+        <p>新增召喚物（Spectres）與100多個支援寶石如何影響遊戲平衡。</p>
+        <h3>詳細總結</h3>
+        <p>
+            召喚物系統允許玩家召喚任何怪獸（如稀有怪 Rare Monsters），並搭配支援寶石（如「增加召喚物傷害」Minion Damage），創造潛在破壞性組合。
+            團隊承認無法測試所有可能性，預期玩家會發現「暗池」（Dark Pool）級別的強大構築。
+        </p>
+        <p>
+            獸王（Beast Taming）重用此技術，新增怪獸模組（如「死亡爆炸」Death Explosion 或「靈氣地面效果」Aura Ground Effects），
+            並為玩家版本單獨平衡，提升對怪傷害（Monster Damage），避免如《流放之路 1》召喚物僅「撓癢」（Tickling Monsters）。
+        </p>
+        <p>
+            支援寶石數量激增（本更新新增100+），推薦系統提供基礎建議（如「增加範圍」Area of Effect），但不考慮複雜連招，
+            未來可能改善篩選（如按出血或元素分類），但避免過度干預玩家構築自由。
+        </p>
+        <p>
+            怪獸技能全面升級，不再是《流放之路 1》的「普通攻擊殭屍」，每個怪都有獨特技能，增加召喚物潛力。
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>6. 坐騎（Rower）與同伴系統</h2>
+        <h3>問題背景</h3>
+        <p>新增坐騎「Rower」如何融入遊戲並平衡其強度。</p>
+        <h3>詳細總結</h3>
+        <p>
+            Rower 是一種遠程專用坐騎（Ranged-Only Mount），移除攻擊時的移動懲罰（Movement Penalty），大幅提升清怪速度（Clear Speed）。
+            但被擊落會觸發重暈，需高閃避（Evasion）或抗暈（Stagger Resistance）緩解。
+        </p>
+        <p>
+            屬於「同伴」（Companion）類別，與召喚獸（Tamed Beasts）互斥（需基石 Keystone 解鎖多同伴）。
+            可受被動加成（如「同伴傷害轉化為玩家傷害」）或支援寶石強化（如「召喚物生命」Minion Life）。
+        </p>
+        <p>
+            理想玩法是清怪時騎乘（如T15地圖），Boss戰下馬使用閃避滾動（Dodge Roll）。下馬後，Rower 可作為誘餌（Distraction），但耐久低，非主要傷害來源。
+        </p>
+        <p>
+            平衡挑戰：高閃避與抗暈構築可能實現「無限騎乘」，團隊希望其定位為情境工具而非全能解。
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>7. 戰鬥與平衡目標</h2>
+        <h3>問題背景</h3>
+        <p>整體戰鬥節奏與長期平衡目標。</p>
+        <h3>詳細總結</h3>
+        <p>
+            傷害目標: 普通玩家應達50k-500k DPS，擊殺巔峰Boss（Pinnacle Bosses）時間從3分鐘降至20秒，超過500k（如10M DPS）將被削弱。
+            Boss生命已下調，縮減T15與巔峰間差距。
+        </p>
+        <p>
+            削弱原則: 針對極端協同（如「電擊效果」Shock Effect 堆疊與「傳導性」Conductivity），而非基礎傷害（如「閃電導管」Lightning Conduit），
+            確保普通玩家（如用藍裝）不受影響。
+        </p>
+        <p>
+            防禦與恢復: 能量護盾（Energy Shield）因「殞地盛宴」（Grim Feast）與魔力堆疊（Mana Stacking）過強將被削弱；
+            護甲（Armour）需從頭設計，可能改變物理減傷（Physical Mitigation）邏輯。恢復（如「擊殺回血」On-Kill Recovery）在清怪中過強，
+            應需投資（如T1詞綴或獨特裝 Unique Items）而非輕鬆全滿。
+        </p>
+        <p>
+            願景: 重視戰鬥參與感而非純粹速度。初次Boss戰需互動（如躲避技能），終局可無腦強大（如秒殺巔峰），但需經濟投入（如時空石 Temporal Chains 或稀有獨特裝）。
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>8. 技術問題與改善</h2>
+        <h3>問題背景</h3>
+        <p>崩潰與效能問題的解決進展。</p>
+        <h3>詳細總結</h3>
+        <p>
+            崩潰: Nvidia驅動（560+版本）引發GPU崩潰，解決方案是遊戲暫停3秒重建設備（GPU Context），玩家可回退至舊驅動（如560前）避免問題。
+            Vulkan模式稍減輕但未根治。
+        </p>
+        <p>
+            系統凍結: Windows 11月H2更新引發全系統凍結，已修復（調整自旋鎖 Spin Lock），但原因不明。
+        </p>
+        <p>
+            效能: 修復高負載場景（如冰效果卡頓），但因崩潰修復佔用引擎團隊資源，進展有限。未來將持續優化，目標滿發布（Full Release）時達最佳狀態。
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>9. 其他問題與未來計劃</h2>
+        <ul>
+            <li><strong>戰役節奏:</strong> 大區域（如墓地 Graveyard）將增加事件（如神殿 Shrines）與怪獸多樣性（如不同生物群系 Biomes），提升密度而非縮減。</li>
+            <li><strong>天賦重置:</strong> 無全面「天賦洗點」（Respec）計畫，需具代價（如試煉 Trial of Respeccing），避免輕易改變角色身份，仍在討論。</li>
+            <li><strong>輸入切換:</strong> 鍵鼠與手把動態切換計劃於0.3.0實裝，提升操作靈活性。</li>
+            <li><strong>地圖門戶:</strong> 單門戶限制（One Portal）需解決取巧行為（如組隊代打），可能改為「一死退出」（One Death），下週敲定。</li>
+            <li><strong>儲物擴展:</strong> 符文（Runes）親和性（Affinity）即將加入，獨特標籤（如Atlas書籤）待後續更新。</li>
+        </ul>
+    </div>
+</body>
+</html>
+>>>>>>> 5040414 (V10)
