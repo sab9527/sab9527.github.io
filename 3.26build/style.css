@@ -306,3 +306,21 @@ a.build-link:hover {
     color: #ffb84d;
     text-decoration: underline;
 }
+/* 昇華欄位寬度調整，只比圖片大一點 */
+th.ascendancy, td.ascendancy,
+th:nth-child(2), td:nth-child(2) {
+    max-width: 200px;
+    min-width: 56px;
+    width: 70px;
+    white-space: normal;
+    text-align: center;
+}
+/* 流派名稱欄位*/
+th.build-name, td.build-name,
+th:nth-child(1), td:nth-child(1) {
+    max-width: 200px;
+    min-width: 56px;
+    width: 2000px;
+    white-space: normal;
+    text-align: center;
+}
