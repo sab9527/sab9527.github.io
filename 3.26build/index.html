@@ -244,7 +244,7 @@
 
     async function loadCSVData() {
         try {
-            const res = await fetch('data.csv');
+            const res = await fetch('data.csv?_=' + Date.now());
             if (!res.ok) throw new Error('無法載入 data.csv');
             const text = await res.text();
             const json = parseCSV(text);
