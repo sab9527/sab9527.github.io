@@ -128,6 +128,13 @@
             table, th, td { font-size: 13px; }
             .video-embed { width: 140px; height: 80px; }
         }
+        tbody.fade {
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        tbody {
+            transition: opacity 0.3s;
+        }
     </style>
 </head>
 <body>
@@ -148,6 +155,12 @@
         </thead>
         <tbody></tbody>
     </table>
+    <div id="video-modal-mask" style="display:none;position:fixed;z-index:10000;left:0;top:0;width:100vw;height:100vh;background:rgba(0,0,0,0.7);justify-content:center;align-items:center;">
+        <div id="video-modal-content" style="position:relative;background:none;">
+            <span id="video-modal-close" style="position:absolute;top:-32px;right:0;font-size:32px;color:#fff;cursor:pointer;">&times;</span>
+            <iframe id="video-modal-iframe" width="560" height="315" style="border-radius:12px;border:none;box-shadow:0 4px 24px #000a;background:#111;" allowfullscreen></iframe>
+        </div>
+    </div>
     <script>
     const filterOptions = {
         '昇華': ['野蠻人','女巫','聖騎士','貴族','遊俠','決鬥者','暗影刺客'],
@@ -196,23 +209,29 @@
     }
     function renderTable(data, filters) {
         const tbody = document.querySelector('#games-table tbody');
-        tbody.innerHTML = '';
-        data.filter(row => {
-            if (Object.keys(filters).length === 0) return true;
-            return matchFilters(row, filters);
-        }).forEach(row => {
-            const tr = document.createElement('tr');
-            tr.innerHTML = `
-                <td>${row['流派名稱']||''}</td>
-                <td>${row['昇華']||''}</td>
-                <td>${row['擅長分類']||''}</td>
-                <td>${row['傷害類型']||''}</td>
-                <td>${row['作者']||''}</td>
-                <td>${embedVideo(row['影片連結'])}</td>
-                <td>${row['說明']||''}</td>
-            `;
-            tbody.appendChild(tr);
-        });
+        // 動畫：先淡出
+        tbody.classList.add('fade');
+        setTimeout(() => {
+            tbody.innerHTML = '';
+            data.filter(row => {
+                if (Object.keys(filters).length === 0) return true;
+                return matchFilters(row, filters);
+            }).forEach(row => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${row['流派名稱']||''}</td>
+                    <td>${row['昇華']||''}</td>
+                    <td>${row['擅長分類']||''}</td>
+                    <td>${row['傷害類型']||''}</td>
+                    <td>${row['作者']||''}</td>
+                    <td>${embedVideo(row['影片連結'])}</td>
+                    <td>${row['說明']||''}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+            // 動畫：再淡入
+            tbody.classList.remove('fade');
+        }, 200);
     }
     function embedVideo(url) {
         if (!url) return '無影片連結';
@@ -223,8 +242,8 @@
         }
         const vid = ytMatch[1];
         const thumb = `https://img.youtube.com/vi/${vid}/hqdefault.jpg`;
-        // 加上 data-thumb 屬性
-        return `<a href="${url}" target="_blank" class="video-link" data-thumb="${thumb}">查看影片</a>`;
+        // 直接顯示縮圖，點擊彈窗
+        return `<img src="${thumb}" class="video-thumb" data-vid="${vid}" style="cursor:pointer;max-width:120px;border-radius:8px;box-shadow:0 2px 12px #000a;">`;
     }
 
     const FIELD_MAP = ["流派名稱", "昇華", "擅長分類", "傷害類型", "作者", "影片連結", "說明"];
@@ -288,6 +307,23 @@
         const link = e.target.closest('.video-link');
         if (link) {
             preview.style.display = 'none';
+        }
+    });
+
+    // 彈窗播放影片
+    const modalMask = document.getElementById('video-modal-mask');
+    const modalIframe = document.getElementById('video-modal-iframe');
+    const modalClose = document.getElementById('video-modal-close');
+
+    document.addEventListener('click', function(e) {
+        const thumb = e.target.closest('.video-thumb');
+        if (thumb && thumb.dataset.vid) {
+            modalMask.style.display = 'flex';
+            modalIframe.src = `https://www.youtube.com/embed/${thumb.dataset.vid}?autoplay=1`;
+        }
+        if (e.target === modalMask || e.target === modalClose) {
+            modalMask.style.display = 'none';
+            modalIframe.src = '';
         }
     });
     </script>
