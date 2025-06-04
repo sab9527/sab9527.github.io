@@ -14,6 +14,15 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id="disclaimer-modal-mask" style="display:flex;position:fixed;z-index:20000;left:0;top:0;width:100vw;height:100vh;background:rgba(0,0,0,0.7);justify-content:center;align-items:center;">
+        <div id="disclaimer-modal-content" style="background:#222;padding:32px 24px;border-radius:12px;box-shadow:0 4px 24px #000a;max-width:90vw;max-height:80vh;color:#fff;text-align:center;">
+            <h3 style="margin-bottom:16px;">先跟你說好</h3>
+            <div style="margin-bottom:24px;font-size:17px;line-height:1.7;">
+                這邊的流派僅供參考，自己要做好規劃和判斷，有問題可以去討論區或discord問。
+            </div>
+            <button id="disclaimer-confirm-btn" style="padding:8px 32px;font-size:18px;border:none;border-radius:6px;background:#4caf50;color:#fff;cursor:pointer;">確定</button>
+        </div>
+    </div>
     <h2>Path of Exile-3.26 Starter Build sab</h2>
     <div class="main-flex-container">
         <div class="filter-group" id="filter-group"></div>

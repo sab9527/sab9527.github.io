@@ -270,3 +270,20 @@ function initSideLinkHandlers() {
         }
     });
 })();
+// 免責聲明彈窗處理
+document.addEventListener('DOMContentLoaded', function() {
+    var disclaimerMask = document.getElementById('disclaimer-modal-mask');
+    var disclaimerBtn = document.getElementById('disclaimer-confirm-btn');
+    // 新增：檢查 localStorage
+    if (localStorage.getItem('disclaimerConfirmed') === 'yes') {
+        if (disclaimerMask) disclaimerMask.style.display = 'none';
+        return;
+    }
+    if (disclaimerMask && disclaimerBtn) {
+        disclaimerBtn.addEventListener('click', function() {
+            disclaimerMask.style.display = 'none';
+            // 新增：寫入 localStorage
+            localStorage.setItem('disclaimerConfirmed', 'yes');
+        });
+    }
+});
