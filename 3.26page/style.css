@@ -1,6 +1,6 @@
 body {
   font-family: "Segoe UI", "Noto Sans TC", Arial, sans-serif;
-  background: url("https://pbs.twimg.com/media/Gq21fqHWQAAlSWh?format=jpg&name=large")
+  background: url("https://i.postimg.cc/52WpBVS3/topbg.png")
     no-repeat center center fixed;
   background-size: cover;
   color: var(--text);
@@ -21,8 +21,8 @@ body::before {
   right: 0;
   bottom: 0;
   z-index: -1;
-  background: rgba(82, 77, 65, 0.65); /* 可調整：深色遮罩透明度 */
-  backdrop-filter: blur(3px); /* 可調整：模糊強度 */
+  background: rgba(82, 77, 65, 0); /* 可調整：深色遮罩透明度 */
+  backdrop-filter: blur(0px); /* 可調整：模糊強度 */
   pointer-events: none;
 }
 :root {
