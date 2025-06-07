@@ -1,0 +1,35 @@
+3.26web
+幫我寫一個拿來放置一次POE遊戲大改版的網站，
+由於目前現在沒有任何資料，所以先將標題 目錄 各類標題和內容區塊都用 "暫" 這個字用適當的字數來填滿即可。
+網站需要有現代化的美術界面和正常功能，如果有讀取到 youtube網址或是圖片的連結就直接轉成影片播放器和顯示圖片。
+
+
+我需要的網站從上至下為如下：
+
+標題(POE...)
+
+改版計時器
+目錄(需要能夠自動讀取每個區塊的大項標題來生成)
+
+第一個區塊 區塊標題 資訊來源與種類 
+用來放置各種資訊連結 連結必須要可以超連結
+如
+官方網站：網址.....(例子)
+預留六個空位(暫)
+
+第二個區塊到第十個區塊 區塊標題先留(暫)
+
+內文也都先留(暫)
+
+將 html css js 分開存放
+
+你可以以一個多年網頁設計經驗自由加入適當的調整與最近才開發出來的功能 至少三項
+
+插入
+    <meta property="og:image" content="https://raw.githubusercontent.com/sab9527/sab9527.github.io/main/3.26build/pic/logo.png">
+    <meta property="og:url" content="https://sab9527.github.io/3.26build/index.html">
+    <link rel="icon" href="https://raw.githubusercontent.com/sab9527/sab9527.github.io/main/3.26build/pic/logo.png" type="image/png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://raw.githubusercontent.com/sab9527/sab9527.github.io/main/3.26build/pic/logo.png">
+    <link rel="shortcut icon" href="https://raw.githubusercontent.com/sab9527/sab9527.github.io/main/3.26build/pic/logo.png">
+
+
