@@ -188,15 +188,33 @@ function renderTable(data, filters) {
         tbody.classList.remove('fade');
     }, 200);
 }
-function embedVideo(url) {
-    if (!url) return '無連結';
-    const ytMatch = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|v\/))([\w-]{11})/);
-    if (!ytMatch) {
-        return `<a href="${url}" target="_blank">查看影片</a>`;
+function embedVideo(urls) {
+    if (!urls) return '無連結';
+    // 支援多種分隔符號：全形逗號、半形逗號、頓號、空格
+    const links = urls.split(/[、,，\s]+/).map(s => s.trim()).filter(Boolean);
+    if (links.length === 0) return '無連結';
+    // 產生所有連結的預覽
+    const previews = links.map(url => {
+        // YouTube
+        const ytMatch = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|v\/))([\w-]{11})/);
+        if (ytMatch) {
+            const vid = ytMatch[1];
+            const thumb = `https://img.youtube.com/vi/${vid}/hqdefault.jpg`;
+            return `<img src=\"${thumb}\" class=\"video-thumb\" data-vid=\"${vid}\" style=\"cursor:pointer;max-width:120px;border-radius:8px;box-shadow:0 2px 12px #000a;margin-right:8px;margin-bottom:8px;\">`;
+        }
+        // Bilibili
+        if (/bilibili\.com\/video\//.test(url)) {
+            return `<a href=\"${url}\" target=\"_blank\" rel=\"noopener\" class=\"bili-link\" style=\"margin-right:8px;margin-bottom:8px;display:inline-block;\">查看連結</a>`;
+        }
+        // 其它
+        return `<a href=\"${url}\" target=\"_blank\" rel=\"noopener\" style=\"margin-right:8px;margin-bottom:8px;display:inline-block;\">查看連結</a>`;
+    });
+    // 每行最多三個，超過自動換行
+    const group = [];
+    for (let i = 0; i < previews.length; i += 3) {
+        group.push(`<div style=\"display:flex;flex-wrap:wrap;gap:0 8px;\">${previews.slice(i, i+3).join('')}</div>`);
     }
-    const vid = ytMatch[1];
-    const thumb = `https://img.youtube.com/vi/${vid}/hqdefault.jpg`;
-    return `<img src="${thumb}" class="video-thumb" data-vid="${vid}" style="cursor:pointer;max-width:120px;border-radius:8px;box-shadow:0 2px 12px #000a;">`;
+    return `<div class=\"video-preview-group\">${group.join('')}</div>`;
 }
 function parseCSV(text) {
     // 支援欄位內逗號（簡易處理，若需完整支援建議用 CSV 解析器）
