@@ -189,7 +189,7 @@ function renderTable(data, filters) {
     }, 200);
 }
 function embedVideo(url) {
-    if (!url) return '無影片連結';
+    if (!url) return '無連結';
     const ytMatch = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|v\/))([\w-]{11})/);
     if (!ytMatch) {
         return `<a href="${url}" target="_blank">查看影片</a>`;
