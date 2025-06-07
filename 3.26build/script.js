@@ -157,6 +157,13 @@ function renderBuildNameCell(name) {
     const url = `https://poedb.tw/tw/search?q=${encodeURIComponent(name)}`;
     return `<a href="${url}" class="build-link" target="_blank" rel="noopener">${name}</a>`;
 }
+function linkify(text) {
+    if (!text) return '';
+    // 將網址轉成可點擊超連結
+    return text.replace(/(https?:\/\/[\w\-\.\/?&=+#%:,;~@!$'()*\[\]]+)/g, function(url) {
+        return `<a href="${url}" target="_blank" rel="noopener">${url}</a>`;
+    });
+}
 function renderTable(data, filters) {
     const tbody = document.querySelector('#games-table tbody');
     tbody.classList.add('fade');
@@ -174,7 +181,7 @@ function renderTable(data, filters) {
                 <td>${row['類型']||''}</td>
                 <td>${row['作者']||''}</td>
                 <td>${embedVideo(row['影片連結'])}</td>
-                <td>${row['說明']||''}</td>
+                <td>${linkify(row['說明'])}</td>
             `;
             tbody.appendChild(tr);
         });
