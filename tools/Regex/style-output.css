@@ -1,0 +1,48 @@
+/* style-output.css: 正則表達式區塊、按鈕、動畫 */
+.output {
+    border-radius: 10px;
+    border: 2px solid #ffe066;
+    font-size: 1.25em;
+    color: #ffe066;
+    min-height: 36px;
+    box-shadow: 0 2px 12px #0008;
+    background: transparent;
+    padding: 18px 10px;
+    width: 93%;
+    word-break: break-all;
+    transition: color 0.6s;
+}
+.output.animate {
+    animation: regexFade 0.8s;
+}
+@keyframes regexFade {
+    0% { color: #fffbe6; }
+    50% { color: #ffe066; }
+    100% { color: #ffe066; }
+}
+.reset-btn, .copy-btn {
+    background: linear-gradient(90deg, #ffe066 0%, #ffb347 100%);
+    color: #232526;
+    border: none;
+    border-radius: 6px;
+    padding: 7px 18px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 8px #f0981933;
+    transition: background 0.2s, color 0.2s;
+    margin-right: 0;
+}
+.copy-btn {
+    background: linear-gradient(90deg, #232526 0%, #414345 100%);
+    color: #ffe066;
+    box-shadow: 0 2px 8px #0002;
+}
+.copy-btn.copied {
+    background: linear-gradient(90deg, #ffe066 0%, #ffb347 100%);
+    color: #232526;
+}
+.reset-btn:hover {
+    background: linear-gradient(90deg, #f09819 0%, #ff5858 100%);
+    color: #ffe066;
+}

@@ -1,0 +1,192 @@
+/* style-filter.css: 進階篩選區塊、提示、input、聯絡區塊 */
+.main-regex-section {
+    background: #181818;
+    border-radius: 10px;
+    border: 1.5px solid #444;
+    box-shadow: 0 2px 8px #0002;
+    padding: 14px 10px 10px 10px;
+    margin-bottom: 18px;
+    width: 100%;
+    box-sizing: border-box;
+}
+.main-regex-section .main-regex-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.main-regex-section .output-title {
+    font-weight: bold;
+    color: #ffe066;
+    font-size: 1em;
+    letter-spacing: 1px;
+    margin-bottom: 0;
+    text-align: left;
+}
+.main-regex-section .output {
+    background: #232323;
+    border: 1px solid #555;
+    padding: 12px 10px;
+    border-radius: 6px;
+    color: #ffe066;
+    font-size: 1em;
+    min-height: 32px;
+    word-break: break-all;
+    box-shadow: 0 2px 8px #0002;
+    margin-bottom: 0;
+    transition: box-shadow .2s;
+    width: 100%;
+    box-sizing: border-box;
+}
+.filter-section {
+    margin-top: 8px;
+    padding: 14px 10px 10px 10px;
+    background: #181818;
+    border-radius: 10px;
+    border: 1.5px solid #444;
+    box-shadow: 0 2px 8px #0002;
+    width: 100%;
+    box-sizing: border-box;
+}
+.filter-section .filter-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.filter-section .filter-title {
+    font-weight: bold;
+    color: #ffe066;
+    font-size: 1em;
+    letter-spacing: 1px;
+    margin-bottom: 0;
+    text-align: left;
+}
+.filter-section .filter-btn {
+    padding: 5px 16px;
+    font-size: 0.98em;
+}
+.filter-section .filter-inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px 24px;
+    align-items: flex-start;
+}
+@media (max-width: 900px) {
+    .filter-section .filter-inputs { grid-template-columns: 1fr; }
+}
+.filter-section .filter-input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 110px;
+}
+.filter-section .filter-input-label {
+    font-size: 1em;
+    line-height: 1.2;
+    margin-bottom: 2px;
+    text-align: left;
+}
+.filter-section .filter-input {
+    width: 70px;
+    height: 32px;
+    text-align: center;
+    background: #222;
+    border: 1px solid #555;
+    border-radius: 6px;
+    color: #ffe066;
+    font-size: 1.08em;
+}
+.filter-section .filter-desc {
+    color: #aaa;
+    font-size: 0.95em;
+    margin-top: 8px;
+    text-align: left;
+}
+.filter-section .filter-output {
+    margin-top: 10px;
+    color: #ffe066;
+    font-size: 1.1em;
+    background: #232323;
+    border: 1px solid #555;
+    border-radius: 6px;
+    padding: 8px 10px;
+    min-height: 28px;
+    word-break: break-all;
+}
+.btn-group {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+.filter-hint-btn {
+    margin-left: 6px;
+    background: #ffe066;
+    color: #333;
+    border: none;
+    border-radius: 50%;
+    width: 26px;
+    height: 26px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 1px 4px #0002;
+    transition: background 0.2s;
+    vertical-align: middle;
+}
+.filter-hint-btn:hover {
+    background: #ffd700;
+}
+.filter-hint-dialog {
+    position: fixed;
+    left: 0; top: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.35);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.filter-hint-content {
+    background: #23272e;
+    color: #ffe066;
+    border-radius: 10px;
+    padding: 28px 32px 22px 32px;
+    box-shadow: 0 4px 24px #0008;
+    max-width: 350px;
+    font-size: 1.08em;
+    position: relative;
+    text-align: left;
+}
+.filter-hint-close {
+    position: absolute;
+    right: 12px;
+    top: 8px;
+    font-size: 1.5em;
+    color: #ffe066;
+    cursor: pointer;
+    font-weight: bold;
+}
+.filter-hint-close:hover {
+    color: #fff;
+}
+.filter-hint-text {
+    line-height: 1.7;
+    color: #ffe066;
+}
+.contact-section {
+    margin-top: 18px;
+    padding: 12px 12px;
+    background: rgba(44,36,20,0.85);
+    border-radius: 8px;
+    border: 2.5px solid #ffe066;
+    color: #ffe066;
+    font-size: 0.3em;
+    text-align: center;
+    box-shadow: 0 2px 8px #0004;
+    width: 92%;
+    word-break: break-all;
+}
+.contact-section b {
+    color: #ffb347;
+    letter-spacing: 1px;
+}

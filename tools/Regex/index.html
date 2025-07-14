@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta property="og:title" content="流亡黯道 地圖詞綴篩選 .Sab">
+    <meta property="og:description" content="流亡黯道 地圖詞綴篩選 一般與T17等 .Sab">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://raw.githubusercontent.com/sab9527/sab9527.github.io/main/3.26build/pic/logo.png">
+    <meta property="og:url" content="https://sab9527.github.io/tools/Regex/index.html">
+    <link rel="icon" href="https://raw.githubusercontent.com/sab9527/sab9527.github.io/main/3.26build/pic/logo.png">
+    <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/sab9527/sab9527.github.io/main/3.26build/pic/logo.png">
+    <link rel="shortcut icon" href="https://raw.githubusercontent.com/sab9527/sab9527.github.io/main/3.26build/pic/logo.png">
+    <title>POE 地圖詞條篩選器 .Sab</title>
+    <link rel="stylesheet" href="style-base.css">
+    <link rel="stylesheet" href="style-panel.css">
+    <link rel="stylesheet" href="style-modlist.css">
+    <link rel="stylesheet" href="style-output.css">
+    <link rel="stylesheet" href="style-filter.css">
+</head>
+<body>
+    <h1 style="margin-left:48px">Path of Exile 地圖詞篩選器</h1>
+    <div class="save-section">
+        <div class="save-header">
+            <span class="save-title">儲存組合</span>
+            <button class="save-btn" id="saveCurrentBtn">儲存目前組合</button>
+        </div>
+        <div class="save-list" id="saveList"></div>
+    </div>
+    <div class="main-layout">
+        <div class="left-panel yellow-border-left">
+            <div class="tab-container">
+                <button class="tab-btn active" data-modfile="mod.txt">一般輿圖</button>
+                <button class="tab-btn" data-modfile="t17mod.txt">開創者、T17</button>
+                <input type="text" id="modSearch" class="mod-search" placeholder="搜尋詞條..." autocomplete="off">
+                <button id="filterHintBtn" class="filter-hint-btn" title="篩選提示">?</button>
+            </div>
+            <div class="checkbox-container" id="modList"></div>
+        </div>
+        <div class="right-panel yellow-border-left">
+            <div class="main-regex-section">
+                <div class="main-regex-header">
+                    <span class="output-title">表達式</span>
+                    <div class="btn-group">
+                        <button class="reset-btn" id="resetBtn">重置全部</button>
+                        <button class="copy-btn" id="copyBtn">複製</button>
+                    </div>
+                </div>
+                <div class="output" id="regexOutput"></div>
+            </div>
+            <div class="filter-section">
+                <div class="filter-header">
+                    <span class="filter-title">進階篩選</span>
+                    <div class="btn-group">
+                        <button class="reset-btn filter-btn" id="filterResetBtn">重置全部</button>
+                        <button class="copy-btn filter-btn" id="filterCopyBtn">複製</button>
+                    </div>
+                </div>
+                <div class="filter-inputs">
+                    <div class="filter-input-group">
+                        <span class="filter-input-label">物品數量</span>
+                        <input type="number" id="filter-quantity" class="filter-input" min="0">
+                    </div>
+                    <div class="filter-input-group">
+                        <span class="filter-input-label">物品稀有度</span>
+                        <input type="number" id="filter-rarity" class="filter-input" min="0">
+                    </div>
+                    <div class="filter-input-group">
+                        <span class="filter-input-label">怪物群</span>
+                        <input type="number" id="filter-pack" class="filter-input" min="0">
+                    </div>
+                    <div class="filter-input-group">
+                        <span class="filter-input-label">更多地圖</span>
+                        <input type="number" id="filter-map" class="filter-input" min="0">
+                    </div>
+                    <div class="filter-input-group">
+                        <span class="filter-input-label">更多聖甲蟲</span>
+                        <input type="number" id="filter-scarab" class="filter-input" min="0">
+                    </div>
+                    <div class="filter-input-group">
+                        <span class="filter-input-label">更多通貨</span>
+                        <input type="number" id="filter-currency" class="filter-input" min="0">
+                    </div>
+                </div>
+                <div class="filter-desc">請輸入最低需要數值。</div>
+                <div id="filterRegexOutput" class="filter-output"></div>
+            </div>
+            <div class="main-regex-section" id="negativeRegexSection">
+                <div class="main-regex-header">
+                    <span class="output-title">不能出現</span>
+                    <div class="btn-group">
+                        <button class="copy-btn" id="negativeCopyBtn">複製</button>
+                    </div>
+                </div>
+                <div class="output" id="negativeRegexOutput"></div>
+            </div>
+            <div class="contact-section">有問題回報或建議或想斗內我可以私我discord <b>sab9453</b></div>
+        </div>
+    </div>
+    <div id="saveDialog" class="save-dialog" style="display:none">
+        <div class="save-dialog-content">
+            <span class="save-dialog-close" id="saveDialogCloseBtn">&times;</span>
+            <div class="save-dialog-title">請輸入組合名稱</div>
+            <input type="text" id="saveNameInput" class="save-name-input" maxlength="20" placeholder="組合名稱...">
+            <div class="save-dialog-btns">
+                <button class="save-dialog-btn" id="saveDialogSaveBtn">儲存</button>
+            </div>
+        </div>
+    </div>
+    <div id="loadDialog" class="save-dialog" style="display:none">
+        <div class="save-dialog-content">
+            <span class="save-dialog-close" id="loadDialogCloseBtn">&times;</span>
+            <div class="save-dialog-title" id="loadDialogTitle">組合名稱</div>
+            <div class="save-dialog-btns">
+                <button class="save-dialog-btn" id="loadDialogLoadBtn">載入</button>
+                <button class="save-dialog-btn delete" id="loadDialogDeleteBtn">刪除</button>
+            </div>
+        </div>
+    </div>
+    <div id="filterHintDialog" class="filter-hint-dialog" style="display:none">
+        <div class="filter-hint-content">
+            <span class="filter-hint-close" id="filterHintCloseBtn">&times;</span>
+            <div class="filter-hint-text">為了管理方便，<br>部分重複只是數值差異的詞在第二頁不顯示。<br>例如：<br>怪物獲得最大生命的額外最大能量護盾<br>就是 40 - 49 % / 70 - 80 % 的差異而已，<br>篩選上並無差異。<br>部份我認為不重要的詞就不放進來了。</div>
+        </div>
+    </div>
+    <script src="regex-tool.js"></script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+/* 儲存組合卡片樣式（向下相容舊 save-card） */
+.save-item, .save-card {
+    background: rgba(44, 36, 20, 0.92);
+    border: 2px solid #ffe066;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px #0004, 0 0 4px #ffe06644;
+    color: #ffe066;
+    font-size: 1em;
+    padding: 10px 12px;
+    cursor: pointer;
+    text-align: center;
+    transition: box-shadow 0.18s, border 0.18s, background 0.18s;
+    user-select: none;
+    margin: 0;
+    min-width: 0;
+    word-break: break-all;
+}
+.save-item:hover, .save-card:hover {
+    background: #ffe06622;
+    border-color: #ffb347;
+    color: #ffb347;
+    box-shadow: 0 4px 16px #ffe06688;
+}
+/* style-modlist.css: 詞條列表、卡片、搜尋、頁籤 */
+.checkbox-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+}
+@media (min-width: 600px) {
+    .checkbox-container {
+        grid-template-columns: 1fr;
+    }
+}
+.mod-card {
+    background: rgba(44, 36, 20, 0.92);
+    border: 3px solid #b8860b;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px #000a, 0 0 8px #ffe06644;
+    padding: 14px 12px 10px 12px;
+    display: flex;
+    align-items: center;
+    transition: transform 0.15s, box-shadow 0.15s;
+}
+.mod-card:hover {
+    box-shadow: 0 8px 24px #000c, 0 0 16px #ffe06688;
+}
+.mod-card input[type="checkbox"] {
+    accent-color: #ffe066;
+    width: 22px;
+    height: 22px;
+    margin-right: 14px;
+}
+.mod-card label {
+    font-size: 1em;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+    width: 100%;
+    display: block;
+}
+.tab-container {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 12px;
+    margin-bottom: 18px;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    overflow-x: visible;
+    min-width: 0;
+    width: 100%;
+}
+.tab-btn {
+    background: linear-gradient(90deg, #232526 0%, #414345 100%);
+    color: #ffe066;
+    border: none;
+    border-radius: 8px 8px 0 0;
+    padding: 8px 28px;
+    font-size: 1em;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px #0002;
+    transition: background 0.2s, color 0.2s;
+    outline: none;
+    white-space: nowrap;
+}
+.tab-btn.active {
+    background: linear-gradient(90deg, #ffe066 0%, #ffb347 100%);
+    color: #232526;
+    box-shadow: 0 4px 16px #ffe06644;
+}
+.mod-search {
+    margin-left: auto;
+    min-width: 180px;
+    max-width: 260px;
+    padding: 7px 14px;
+    border-radius: 6px;
+    border: 2px solid #ffe066;
+    background: #232526;
+    color: #ffe066;
+    font-size: 1em;
+    font-family: '微軟正黑體', 'Microsoft JhengHei', sans-serif;
+    outline: none;
+    transition: border 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px #0002;
+}
+.mod-search:focus {
+    border: 2px solid #ffb347;
+    box-shadow: 0 4px 16px #ffe06644;
+}
+.left-panel {
+    flex: 3.5 1 0;
+    min-width: 690px;}
+/* 儲存組合區塊橫向排列，每行兩個 */
+.save-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px; /* 可依需求調整間距 */
+}
+
+.save-item {
+    flex: 0 0 calc(50% - 12px); /* 每行兩個，減去間距 */
+    box-sizing: border-box;
+    margin-bottom: 5px; /* 行距，可依需求調整 */
+}

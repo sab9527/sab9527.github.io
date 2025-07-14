@@ -1,0 +1,241 @@
+/* 黃色左邊裝飾共用 class */
+.yellow-border-left {
+    background: linear-gradient(90deg, #2b2b2bee 0%, #3a2e1aee 100%);
+    border-radius: 12px;
+    border-left: 2px solid #ffe066;
+    box-shadow: 0 4px 16px #000a;
+    position: relative;
+    z-index: 10;
+}
+/* style-panel.css: 左右面板與主要區塊 */
+body {
+    padding-left: 0;
+    padding-right: 0;
+}
+.main-layout {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 48px;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 100%;
+    max-width: 1400px;
+    box-sizing: border-box;
+}
+.left-panel, .right-panel, .save-section {
+    margin: 0;
+    box-sizing: border-box;
+}
+.left-panel {
+    flex: 1 1 0;
+    min-width: 520px;
+    max-width: 700px;
+    margin-left: 48px;
+    margin-right: 0;
+}
+.right-panel {
+    flex: 1 1 0;
+    min-width: 320px;
+    max-width: 420px;
+    margin-left: 0;
+    margin-right: 0;
+}
+.save-section {
+    width: 340px;
+    max-width: 90vw;
+    margin: 0 0 32px 0;
+    background: linear-gradient(90deg, #2b2b2bee 0%, #3a2e1aee 100%);
+    border-radius: 12px;
+    border-left: 2px solid #ffe066;
+    box-shadow: 0 4px 16px #000a;
+    padding: 36px 28px 36px 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+.left-panel {
+    flex: 2.7 1 0;
+    min-width: 0;
+    /* 原本只設定左上、左下圓角，改為四個角都圓角 */
+    border-radius: 12px;
+    padding: 36px 28px 36px 28px;
+}
+.right-panel {
+    flex: 1 1 0;
+    min-width: 320px;
+    max-width: 420px;
+    /* 主要裝飾移至 yellow-border-left 共用 class */
+    border-radius: 12 12px 12px 0;
+    padding: 36px 28px 36px 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: sticky;
+    top: 24px;
+    align-self: flex-start;
+    z-index: 10;
+}
+/* 儲存組合區塊 */
+.save-section {
+    width: 700px;
+    max-width: 900vw;
+    margin: 0 0 32px 48px;
+    /* 主要裝飾移至 yellow-border-left 共用 class */
+    padding: 32px 18px 32px 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+.save-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 12px;
+}
+.save-title {
+    font-weight: bold;
+    color: #ffe066;
+    font-size: 1.1em;
+    letter-spacing: 1px;
+}
+.save-btn {
+    background: linear-gradient(90deg, #ffe066 0%, #ffb347 100%);
+    color: #232526;
+    border: none;
+    border-radius: 6px;
+    padding: 7px 18px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 8px #f0981933;
+    transition: background 0.2s, color 0.2s;
+}
+/* 儲存組合區塊橫向排列，每行兩個 */
+.save-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    width: 100%;
+}
+.save-card {
+    background: rgba(44, 36, 20, 0.92);
+    border: 2px solid #ffe066;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px #ffe06633;
+    padding: 12px 10px;
+    font-size: 1em;
+    color: #ffe066;
+    cursor: pointer;
+    transition: box-shadow 0.15s, border 0.15s;
+    user-select: none;
+    width: 92.5%;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.save-card:hover {
+    box-shadow: 0 4px 16px #ffe06688;
+    border: 2.5px solid #ffb347;
+}
+/* 儲存/載入/刪除彈窗 */
+.save-dialog {
+    position: fixed;
+    left: 0; top: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.55);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.save-dialog-content {
+    background: #232323;
+    border-radius: 12px;
+    padding: 32px 28px 24px 28px;
+    box-shadow: 0 8px 32px #000c;
+    min-width: 260px;
+    max-width: 90vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+.save-dialog-title {
+    color: #ffe066;
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-bottom: 18px;
+}
+.save-name-input {
+    width: 180px;
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 1.5px solid #ffe066;
+    font-size: 1em;
+    margin-bottom: 18px;
+    background: #181818;
+    color: #ffe066;
+}
+.save-dialog-btns {
+    display: flex;
+    gap: 18px;
+}
+.save-dialog-btn {
+    background: linear-gradient(90deg, #ffe066 0%, #ffb347 100%);
+    color: #232526;
+    border: none;
+    border-radius: 6px;
+    padding: 7px 18px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 8px #f0981933;
+    transition: background 0.2s, color 0.2s;
+}
+.save-dialog-btn.delete {
+    background: linear-gradient(90deg, #c23232 0%, #c02828 100%);
+    color: #fffbe6;
+}
+.save-dialog-close {
+    position: absolute;
+    right: 12px;
+    top: 10px;
+    font-size: 1.5em;
+    color: #ffe066;
+    cursor: pointer;
+    font-weight: bold;
+    z-index: 10;
+}
+@media (max-width: 900px) {
+    .left-panel, .right-panel { max-width: 100%; border-radius: 12px; }
+    .right-panel { border-left: none; border-top: 2px solid #b8860b; }
+    .save-section { max-width: 100%; border-radius: 12px; margin-left: 0; margin-top: 18px; margin-bottom: 18px; }
+}
+@media (max-width: 1200px) {
+    .main-layout {
+        flex-direction: column;
+        margin-left: 8px;
+        margin-right: 8px;
+        gap: 18px;
+    }
+    .left-panel, .right-panel, .save-section {
+        max-width: 1100%;
+        min-width: 0;
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
