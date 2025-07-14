@@ -117,7 +117,7 @@ async function loadMods(modFile) {
         { re: /區域含有數道喚醒者的荒蕪/, key: '荒蕪' },
         { re: /擊中時，怪物點燃、冰凍和感電/, key: '物點' },
         { re: /擊中時，怪物有 20% 機率點燃、冰凍和感電/, key: '率點' },
-        { re: /反射.*物理傷害/, key: '射.*物', byIndex: true },
+        { re: /反射.*物理傷害/, key: '射.*物理', byIndex: true },
         { re: /反射.*元素傷害/, key: '射.*元', byIndex: true },
         { re: /傳奇頭目增加\s*\d+%\s*傷害/, key: '目增加.*傷', byIndex: true },
         { re: /傳奇頭目增加\s*\d+%\s*攻擊速度及施放速度/, key: '目增加.*攻', byIndex: true },
