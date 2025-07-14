@@ -2,7 +2,7 @@ name: Update Google Sheet CSV
 
 on:
   schedule:
-    - cron: '*/5 * * * *'  # 每五分鐘執行一次 (UTC)
+    - cron: '0 0 * * *'  # 每五分鐘執行一次 (UTC)
   workflow_dispatch:     # 手動執行按鈕
 
 jobs:
