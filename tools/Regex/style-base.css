@@ -5,7 +5,7 @@ body {
     margin:  auto;
     padding: 0;
     background: url('https://i.meee.com.tw/f0ChGeV.jpg') center center/cover no-repeat fixed;
-    color: #f3e9d2;
+    color: #f1ee1d;
     min-height: 100vh;
     scrollbar-width: none;
     -ms-overflow-style: none;
@@ -21,4 +21,7 @@ body::-webkit-scrollbar, html::-webkit-scrollbar {
 }
 @media (max-width: 900px) {
     .main-layout { flex-direction: column; height: auto; }
+}
+h1 {
+    color: #f8a82f; /* 你想要的顏色 */
 }

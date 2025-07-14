@@ -266,6 +266,90 @@ document.addEventListener('DOMContentLoaded', function() {
     if (negativeCopyBtn) {
         negativeCopyBtn.addEventListener('click', function() {
             handleCopy(negativeCopyBtn, negativeRegexOutput.textContent);
+            launchEasterEgg();
+// 彩蛋功能：複製時噴出圖片拋物線動畫
+function launchEasterEgg() {
+    // 5%機率：連續射出20個神聖石
+    if (Math.random() < 0.05) {
+        launchDivineRain();
+        return;
+    }
+    // 25%機率：射出超高DIV.webp
+    if (Math.random() < 0.25) {
+        launchFlyingImage({
+            imgSrc: 'DIV.webp',
+            high: true
+        });
+        return;
+    }
+    // 其餘：正常DIV.webp
+    launchFlyingImage({
+        imgSrc: 'DIV.webp',
+        high: false
+    });
+}
+
+// 單一圖片拋物線動畫，high=true時高度超高
+function launchFlyingImage({imgSrc, high}) {
+    const btn = document.getElementById('negativeCopyBtn');
+    if (!btn) return;
+    const rect = btn.getBoundingClientRect();
+    const img = document.createElement('img');
+    img.src = imgSrc;
+    img.style.position = 'fixed';
+    img.style.width = '64px';
+    img.style.height = '64px';
+    img.style.left = (rect.left + rect.width/2 - 32) + 'px';
+    img.style.top = (rect.top + rect.height/2 - 32) + 'px';
+    img.style.zIndex = 9999;
+    img.style.pointerEvents = 'none';
+    img.style.transition = 'filter 0.2s';
+    document.body.appendChild(img);
+
+    // 角度與速度
+    let angle, speed;
+    if (high) {
+        angle = (Math.random() * Math.PI/6) + Math.PI/2.1; // 100~130度，幾乎垂直
+        speed = 22 + Math.random() * 8; // 更大初速度
+    } else {
+        angle = (Math.random() * Math.PI/2) + Math.PI/4; // 45~135度
+        speed = 12 + Math.random() * 6;
+    }
+    let vx = Math.cos(angle) * speed;
+    let vy = -Math.sin(angle) * speed;
+    let x = rect.left + rect.width/2 - 32;
+    let y = rect.top + rect.height/2 - 32;
+    const gravity = high ? (0.5 + Math.random()*0.2) : (0.7 + Math.random()*0.3);
+    let frame = 0;
+    function animate() {
+        frame++;
+        x += vx;
+        y += vy;
+        vy += gravity;
+        img.style.left = x + 'px';
+        img.style.top = y + 'px';
+        img.style.transform = `rotate(${frame*12}deg)`;
+        if (y > window.innerHeight || x < -80 || x > window.innerWidth+80) {
+            img.remove();
+            return;
+        }
+        requestAnimationFrame(animate);
+    }
+    animate();
+}
+
+// 連續射出20個神聖石 Divine.webp
+function launchDivineRain() {
+    let count = 0;
+    function shoot() {
+        launchFlyingImage({imgSrc: 'DIV.webp', high: false});
+        count++;
+        if (count < 20) {
+            setTimeout(shoot, 60 + Math.random()*60);
+        }
+    }
+    shoot();
+}
         });
     }
     document.querySelectorAll('.tab-btn').forEach(btn => {
