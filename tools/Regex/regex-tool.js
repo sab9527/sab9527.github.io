@@ -551,18 +551,32 @@ window.onload = function() {
 }
 // ====== 新增：進階篩選功能 ======
 function updateFilterRegex() {
+    // 結構性產生大於等於 n 的正則，避免字符集誤用
     function buildRegex(label, val) {
         if (!val || isNaN(val)) return '';
         const n = parseInt(val, 10);
         if (n <= 0) return '';
-        // 單位數
-        if (n < 10) {
-            // [n-9] 匹配單位數，\d{2,} 匹配兩位數以上
-            return `${label}.*([${n}-9]|\\d{2,})`;
-        } else {
-            // 兩位數以上，直接匹配 >= n 的數字
-            return `${label}.*(${n}|[${n+1}-9]\\d*|\\d{${val.length+1},})`;
+        const nStr = n.toString();
+        const len = nStr.length;
+        let parts = [nStr];
+        // 處理同位數且大於 n 的所有數字
+        for (let i = 0; i < len; i++) {
+            let prefix = nStr.slice(0, i);
+            let curDigit = parseInt(nStr[i], 10);
+            if (curDigit < 9) {
+                let from = curDigit + 1;
+                let to = 9;
+                let range = from === to ? `${from}` : `[${from}-${to}]`;
+                let pattern = prefix + range + (i + 1 < len ? `\\d{${len - i - 1}}` : '');
+                parts.push(pattern);
+            }
         }
+        // 處理更高位數的所有數字
+        if (len > 1) {
+            parts.push(`[1-9]\\d{${len},}`);
+        }
+        let regex = `\\b(?:${parts.join('|')})\\b`;
+        return `${label}.*${regex}`;
     }
     const q = document.getElementById('filter-quantity').value;
     const r = document.getElementById('filter-rarity').value;
