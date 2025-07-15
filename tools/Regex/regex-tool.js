@@ -133,13 +133,13 @@ async function loadMods(modFile) {
         { re: /擊中時，怪物有 20% 機率點燃、冰凍和感電/, key: '率點' },
         { re: /反射.*物理傷害/, key: '射.*物理', byIndex: true },
         { re: /反射.*元素傷害/, key: '射.*元', byIndex: true },
-        { re: /傳奇頭目增加\s*\d+%\s*傷害/, key: '目增加.*傷', byIndex: true },
-        { re: /傳奇頭目增加\s*\d+%\s*攻擊速度及施放速度/, key: '目增加.*攻', byIndex: true },
-        { re: /傳奇頭目增加\s*\d+%\s*生命/, key: '目增加.*生', byIndex: true },
-        { re: /增加\s*\(\d{2,3}–\d{2,3}\)%\s*怪物傷害/, key: '加.*怪物傷', byIndex: true },
-        { re: /增加\s*\(\d{2,3}–\d{2,3}\)%\s*怪物移動速度/, key: '加.*怪物移', byIndex: true },
-        { re: /增加\s*\(\d{2,3}–\d{2,3}\)%\s*怪物攻擊速度/, key: '加.*怪物攻', byIndex: true },
-        { re: /增加\s*\(\d{2,3}–\d{2,3}\)%\s*怪物施放速度/, key: '加.*怪物施', byIndex: true },
+        { re: /傳奇頭目增加\s*\d{1,3}%\s*傷害/, key: '目增加.*傷', byIndex: true },
+        { re: /傳奇頭目增加\s*\d{1,3}%\s*攻擊速度及施放速度/, key: '目增加.*攻', byIndex: true },
+        { re: /傳奇頭目增加\s*\d{1,3}%\s*生命/, key: '目增加.*生', byIndex: true },
+        { re: /增加\s*\(\d{1,3}–\d{1,3}\)%\s*怪物傷害/, key: '加.*怪物傷', byIndex: true },
+        { re: /增加\s*\(\d{1,3}–\d{1,3}\)%\s*怪物移動速度/, key: '加.*怪物移', byIndex: true },
+        { re: /增加\s*\(\d{1,3}–\d{1,3}\)%\s*怪物攻擊速度/, key: '加.*怪物攻', byIndex: true },
+        { re: /增加\s*\(\d{1,3}–\d{1,3}\)%\s*怪物施放速度/, key: '加.*怪物施', byIndex: true },
         { re: /增加怪物\s*\d{1,3}%\s*範圍效果/, key: '物.*範', byIndex: true },
         { re: /^\(\d{1,3}–\d{1,3}\)% 更多怪物生命$/, key: '.*更多怪', byIndex: true },
     ];
@@ -574,23 +574,26 @@ function updateFilterRegex() {
         if (n <= 0) return '';
         const nStr = n.toString();
         const len = nStr.length;
-        let parts = [nStr];
-        // 處理同位數且大於 n 的所有數字
+        let parts = [];
+        // 處理更高位數的所有數字
+        parts.push(`[1-9]\\d{${len},}`);
+
+        // 處理同位數且大於等於 n 的所有數字
         for (let i = 0; i < len; i++) {
             let prefix = nStr.slice(0, i);
             let curDigit = parseInt(nStr[i], 10);
+
+            // 處理目前位數大於 n 的情況
             if (curDigit < 9) {
                 let from = curDigit + 1;
-                let to = 9;
-                let range = from === to ? `${from}` : `[${from}-${to}]`;
+                let range = `[${from}-9]`;
                 let pattern = prefix + range + (i + 1 < len ? `\\d{${len - i - 1}}` : '');
                 parts.push(pattern);
             }
+            // 將目前位數加入前綴，繼續處理下一位
+            prefix += curDigit;
         }
-        // 處理更高位數的所有數字
-        if (len > 1) {
-            parts.push(`[1-9]\\d{${len},}`);
-        }
+        parts.push(nStr); // 包含等於 n 的情況
         let regex = `\\b(?:${parts.join('|')})\\b`;
         return `${label}.*${regex}`;
     }
