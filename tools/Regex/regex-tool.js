@@ -129,6 +129,7 @@ async function loadMods(modFile) {
         { re: /玩家的召喚物減少 50% 攻擊速度 玩家的召喚物減少 50% 施放速度 玩家的召喚物減少 50% 移動速度/, key: '的召' },
         { re: /區域含有數道喚醒者的荒蕪/, key: '荒蕪' },
         { re: /擊中時，怪物點燃、冰凍和感電/, key: '物點' },
+        { re: /怪物的攻擊擊中時造成穿刺，當玩家被施加第 5 層穿刺時，移除穿刺並將物理傷害乘以其剩餘層數的傷害，反射給該玩家及其 1\.8 公尺內的友方/, key: '擊擊' },
         { re: /擊中時，怪物有 20% 機率點燃、冰凍和感電/, key: '率點' },
         { re: /反射.*物理傷害/, key: '射.*物理', byIndex: true },
         { re: /反射.*元素傷害/, key: '射.*元', byIndex: true },
@@ -191,6 +192,7 @@ function updateAllChecked(modFile) {
     const modList = document.getElementById('modList');
     const checkboxes = Array.from(modList.querySelectorAll('input[type="checkbox"]'));
     allChecked[modFile] = checkboxes.map((cb, idx) => cb.checked ? idx : -1).filter(idx => idx !== -1);
+    updateRegex();
 }
 
 // 合併所有勾選計算正則
