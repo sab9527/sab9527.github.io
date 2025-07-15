@@ -61,6 +61,8 @@ function renderModList(mods, regexKeys, modFile, filter = '') {
     });
 }
 
+const allFragments = {};
+
 async function loadMods(modFile) {
     const modList = document.getElementById('modList');
     let mods = [];
@@ -85,8 +87,7 @@ async function loadMods(modFile) {
         return ca.localeCompare(cb, 'zh-Hant');
     });
 
-    // 產生所有 2~6 字片段，並統計出現次數
-    const allFragments = {};
+    // 產生所有 2~6 字片段，並統計出現次數，合併到全域 allFragments
     const modFragments = mods.map(mod => {
         let frags = [];
         for (let n = 2; n <= 6; n++) {
@@ -95,14 +96,26 @@ async function loadMods(modFile) {
         }
         return frags;
     });
+    // 清理allFragments中不存在於所有檔案mods的片段，避免累積過多無用片段
+    const currentFragments = new Set();
     modFragments.flat().forEach(frag => {
+        currentFragments.add(frag);
         allFragments[frag] = (allFragments[frag] || 0) + 1;
+    });
+    // 移除allFragments中不在currentFragments的片段
+    Object.keys(allFragments).forEach(key => {
+        if (!currentFragments.has(key)) {
+            delete allFragments[key];
+        }
     });
 
     // 統一特殊條目寫法
     const specialCases = [
         { re: /玩家 \(-12–-9\)% 全部最大抗性/, key: '大抗' },
         { re: /玩家減少 40% 格擋率/, key: '少.*格' },
+        { re: /玩家減少 60% 來自技能的非詛咒光環效果/, key: '非詛' },
+        { re: /玩家身上的增益效果加速 70% 失效/, key: '的增' },
+        { re: /怪物身上的減益效果消逝加速 100%/, key: '的減' },
         { re: /區域內有數道增加 50% 承受傷害的感電地面/, key: '的感' },
         { re: /全部怪物傷害可以點燃、冰凍和感電/, key: '以點' },
         { re: /怪物 \+50% 攻擊傷害格擋率/, key: '害格' },
@@ -191,9 +204,10 @@ function updateRegex() {
     keys = keys.filter(Boolean);
     if (keys.length === 0) {
         document.getElementById('regexOutput').textContent = '請選擇至少一個詞條';
-        updateNegativeRegex(); // 新增
+        updateNegativeRegex();
         return;
     }
+    // 合併並去除重複詞條
     let uniqueParts = Array.from(new Set(keys));
     const hasReflectPhysical = uniqueParts.includes('反射.*物理傷害');
     const hasReflectElemental = uniqueParts.includes('反射.*元素傷害');
@@ -207,7 +221,7 @@ function updateRegex() {
     output.classList.remove('animate');
     void output.offsetWidth;
     output.classList.add('animate');
-    updateNegativeRegex(); // 新增
+    updateNegativeRegex();
 }
 
 // 新增：不能出現正則區塊
