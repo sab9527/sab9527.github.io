@@ -97,9 +97,11 @@ async function loadMods(modFile) {
         return frags;
     });
     // 清理allFragments中不存在於所有檔案mods的片段，避免累積過多無用片段
-    const currentFragments = new Set();
+    const currentFragments = new Set(modFragments.flat());
+    Object.keys(allFragments).forEach(key => {
+        if (!currentFragments.has(key)) delete allFragments[key];
+    });
     modFragments.flat().forEach(frag => {
-        currentFragments.add(frag);
         allFragments[frag] = (allFragments[frag] || 0) + 1;
     });
     // 移除allFragments中不在currentFragments的片段
@@ -181,10 +183,13 @@ async function loadMods(modFile) {
     const searchInput = document.getElementById('modSearch');
     if (searchInput) {
         searchInput.value = searchText || '';
-        searchInput.oninput = function() {
-            searchText = this.value.trim();
-            renderModList(mods, regexKeys, modFile, searchText);
-        };
+        if (!searchInput._bound) {
+            searchInput.addEventListener('input', function() {
+                searchText = this.value.trim();
+                renderModList(mods, regexKeys, modFile, searchText);
+            });
+            searchInput._bound = true;
+        }
     }
 }
 
@@ -377,19 +382,24 @@ function launchDivineRain() {
             loadMods(currentModFile);
         });
     });
-    document.getElementById('resetBtn').addEventListener('click', function() {
-        Object.keys(allChecked).forEach(modFile => allChecked[modFile] = []);
-        document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
-        updateRegex();
-    });
-    // 進階篩選重置全部
-    document.getElementById('filterResetBtn').addEventListener('click', function() {
-        ['filter-quantity','filter-rarity','filter-pack','filter-map','filter-scarab','filter-currency'].forEach(id => {
-            const el = document.getElementById(id);
-            if (el) el.value = '';
+    const resetBtn = document.getElementById('resetBtn');
+    if (resetBtn) {
+        resetBtn.addEventListener('click', function() {
+            Object.keys(allChecked).forEach(modFile => allChecked[modFile] = []);
+            document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+            updateRegex();
         });
-        document.getElementById('filterRegexOutput').textContent = '';
-    });
+    }
+    const filterResetBtn = document.getElementById('filterResetBtn');
+    if (filterResetBtn) {
+        filterResetBtn.addEventListener('click', function() {
+            ['filter-quantity','filter-rarity','filter-pack','filter-map','filter-scarab','filter-currency'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.value = '';
+            });
+            document.getElementById('filterRegexOutput').textContent = '';
+        });
+    }
     // ===== 儲存組合功能區 =====
     const saveSection = document.querySelector('.save-section');
     const saveList = document.getElementById('saveList');
