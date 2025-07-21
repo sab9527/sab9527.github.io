@@ -19,9 +19,11 @@ let allRegexKeys = {
 // 搜尋框內容只保留一組
 let searchText = '';
 
+'use strict';
 function renderModList(mods, regexKeys, modFile, filter = '') {
     const modList = document.getElementById('modList');
     modList.innerHTML = '';
+    const fragment = document.createDocumentFragment();
     mods.forEach((mod, index) => {
         if (filter && !mod.includes(filter)) return;
         const div = document.createElement('div');
@@ -57,8 +59,9 @@ function renderModList(mods, regexKeys, modFile, filter = '') {
             if (window.getSelection) window.getSelection().removeAllRanges();
             e.preventDefault();
         });
-        modList.appendChild(div);
+        fragment.appendChild(div);
     });
+    modList.appendChild(fragment);
 }
 
 const allFragments = {};
@@ -76,40 +79,43 @@ async function loadMods(modFile) {
             modsCache[modFile] = mods;
         }
     } catch (e) {
-        modList.innerHTML = '<div style="color:red;">無法讀取 '+modFile+'，請確認檔案存在！</div>';
+        modList.innerHTML = `<div style="color:red;">無法讀取 ${modFile}，請確認檔案存在！</div>`;
         return Promise.reject(e);
     }
     allMods[modFile] = mods;
     // 依第一個中文字排序，提升 UI 可讀性
     mods.sort((a, b) => {
-        const ca = a.match(/[\u4e00-\u9fa5]/)?.[0] || '';
-        const cb = b.match(/[\u4e00-\u9fa5]/)?.[0] || '';
+        const ca = a.match(/[\u4e00-\u9fa5]/)?.[0] ?? '';
+        const cb = b.match(/[\u4e00-\u9fa5]/)?.[0] ?? '';
         return ca.localeCompare(cb, 'zh-Hant');
     });
 
-    // 產生所有 2~6 字片段，並統計出現次數，合併到全域 allFragments
+    // 產生所有 2~6 字片段，並統計出現次數
+    const fragments = {};
     const modFragments = mods.map(mod => {
         let frags = [];
         for (let n = 2; n <= 6; n++) {
-            const arr = mod.match(new RegExp(`[\u4e00-\u9fa5]{${n}}`, 'g')) || [];
+            const arr = mod.match(new RegExp(`[\u4e00-\u9fa5]{${n}}`, 'g')) ?? [];
             frags = frags.concat(arr);
         }
         return frags;
     });
-    // 清理allFragments中不存在於所有檔案mods的片段，避免累積過多無用片段
-    const currentFragments = new Set(modFragments.flat());
-    Object.keys(allFragments).forEach(key => {
-        if (!currentFragments.has(key)) delete allFragments[key];
-    });
+    // 計算當前檔案的片段出現次數
     modFragments.flat().forEach(frag => {
-        allFragments[frag] = (allFragments[frag] || 0) + 1;
+        fragments[frag] = (fragments[frag] ?? 0) + 1;
     });
-    // 移除allFragments中不在currentFragments的片段
-    Object.keys(allFragments).forEach(key => {
-        if (!currentFragments.has(key)) {
-            delete allFragments[key];
-        }
-    });
+    // 如果是批次載入（非當前模組），只更新 allFragments
+    if (modFile !== currentModFile) {
+        Object.entries(fragments).forEach(([frag, count]) => {
+            allFragments[frag] = count;
+        });
+    } else {
+        // 如果是當前模組，重置並重新計算所有片段
+        Object.keys(allFragments).forEach(key => delete allFragments[key]);
+        Object.entries(fragments).forEach(([frag, count]) => {
+            allFragments[frag] = count;
+        });
+    }
 
     // 統一特殊條目寫法
     const specialCases = [
@@ -202,7 +208,7 @@ async function loadMods(modFile) {
         }
     }
     
-    return Promise.resolve();
+    return Promise.resolve({ mods, regexKeys });
 }
 
 function updateAllChecked(modFile) {
@@ -213,57 +219,54 @@ function updateAllChecked(modFile) {
 }
 
 // 合併所有勾選計算正則
-function updateRegex() {
-    let keys = [];
-    Object.keys(allChecked).forEach(modFile => {
-        (allChecked[modFile] || []).forEach(idx => {
-            keys.push(allRegexKeys[modFile][idx]);
-        });
+const updateRegex = () => {
+  let keys = [];
+  Object.keys(allChecked).forEach(modFile => {
+    (allChecked[modFile] || []).forEach(idx => {
+      keys.push(allRegexKeys[modFile][idx]);
     });
-    keys = keys.filter(Boolean);
-    if (keys.length === 0) {
-        document.getElementById('regexOutput').textContent = '請選擇至少一個詞條';
-        updateNegativeRegex();
-        return;
-    }
-    // 合併並去除重複詞條
-    let uniqueParts = Array.from(new Set(keys));
-    const hasReflectPhysical = uniqueParts.includes('反射.*物理傷害');
-    const hasReflectElemental = uniqueParts.includes('反射.*元素傷害');
-    if (hasReflectPhysical && hasReflectElemental) {
-        uniqueParts = uniqueParts.filter(k => k !== '反射.*物理傷害' && k !== '反射.*元素傷害');
-        uniqueParts.push('反射');
-    }
-    const regex = uniqueParts.join('|');
-    const output = document.getElementById('regexOutput');
-    output.textContent = regex;
-    output.classList.remove('animate');
-    void output.offsetWidth;
-    output.classList.add('animate');
+  });
+  keys = keys.filter(Boolean);
+  if (keys.length === 0) {
+    document.getElementById('regexOutput').textContent = '請選擇至少一個詞條';
     updateNegativeRegex();
-}
+    return;
+  }
+  let uniqueParts = [...new Set(keys)];
+  const hasReflectPhysical = uniqueParts.includes('反射.*物理傷害');
+  const hasReflectElemental = uniqueParts.includes('反射.*元素傷害');
+  if (hasReflectPhysical && hasReflectElemental) {
+    uniqueParts = uniqueParts.filter(k => k !== '反射.*物理傷害' && k !== '反射.*元素傷害');
+    uniqueParts.push('反射');
+  }
+  const regex = uniqueParts.join('|');
+  const output = document.getElementById('regexOutput');
+  output.textContent = regex;
+  output.classList.remove('animate');
+  void output.offsetWidth;
+  output.classList.add('animate');
+  updateNegativeRegex();
+};
 
 // 新增：不能出現正則區塊
-function updateNegativeRegex() {
-    let keys = [];
-    Object.keys(allChecked).forEach(modFile => {
-        (allChecked[modFile] || []).forEach(idx => {
-            keys.push(allRegexKeys[modFile][idx]);
-        });
+const updateNegativeRegex = () => {
+  let keys = [];
+  Object.keys(allChecked).forEach(modFile => {
+    (allChecked[modFile] || []).forEach(idx => {
+      keys.push(allRegexKeys[modFile][idx]);
     });
-    keys = keys.filter(Boolean);
-    let negative = '';
-    if (keys.length > 0) {
-        // 改為 !A|B|C 形式
-        negative = '!' + keys.join('|');
-    }
-    // 進階篩選字串
-    const filterStr = document.getElementById('filterRegexOutput').textContent;
-    let result = negative;
-    if (filterStr) {
-        result += (negative ? ' ' : '') + filterStr;
-    }
-    document.getElementById('negativeRegexOutput').textContent = result || '';
+  });
+  keys = keys.filter(Boolean);
+  let negative = '';
+  if (keys.length > 0) {
+    negative = '!' + keys.join('|');
+  }
+  const filterStr = document.getElementById('filterRegexOutput').textContent;
+  let result = negative;
+  if (filterStr) {
+    result += (negative ? ' ' : '') + filterStr;
+  }
+  document.getElementById('negativeRegexOutput').textContent = result || '';
 }
 
 function handleCopy(btn, text) {
@@ -463,7 +466,7 @@ function launchDivineRain() {
             tab: currentModFile
         };
     }
-    function setSaveData(data) {
+    async function setSaveData(data) {
         // 載入所有勾選、進階篩選
         if (!data) return;
         if (data.allChecked) {
@@ -471,14 +474,26 @@ function launchDivineRain() {
                 allChecked[k] = data.allChecked[k] || [];
             });
             // 先載入所有 mod 檔案，確保 allMods 和 allRegexKeys 都已經準備好
-            const loadPromises = Object.keys(allMods).map(modFile => loadMods(modFile));
-            Promise.all(loadPromises).then(() => {
-                // 等所有 mod 載入完成後，再更新 checkbox 狀態
+            // 暫時禁用 UI 更新
+            const originalModFile = currentModFile;
+            currentModFile = null;
+            try {
+                // 依序載入每個模組，確保片段計算的正確性
+                for (const modFile of Object.keys(allMods)) {
+                    const result = await loadMods(modFile);
+                    allMods[modFile] = result.mods;
+                    allRegexKeys[modFile] = result.regexKeys;
+                }
+                // 恢復當前模組並一次性更新 UI
+                currentModFile = originalModFile;
                 Object.keys(allMods).forEach(modFile => {
                     renderModList(allMods[modFile], allRegexKeys[modFile], modFile, searchText || '');
                 });
                 updateRegex();
-            });
+            } catch (error) {
+                console.error('載入儲存組合失敗:', error);
+                currentModFile = originalModFile;
+            }
         }
         if (data.filter) {
             document.getElementById('filter-quantity').value = data.filter.quantity || '';
