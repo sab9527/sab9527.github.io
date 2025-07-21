@@ -77,7 +77,7 @@ async function loadMods(modFile) {
         }
     } catch (e) {
         modList.innerHTML = '<div style="color:red;">無法讀取 '+modFile+'，請確認檔案存在！</div>';
-        return;
+        return Promise.reject(e);
     }
     allMods[modFile] = mods;
     // 依第一個中文字排序，提升 UI 可讀性
@@ -184,20 +184,25 @@ async function loadMods(modFile) {
         return pick;
     });
     allRegexKeys[modFile] = regexKeys;
-    // renderModList 傳入唯一搜尋字串
-    renderModList(mods, regexKeys, modFile, searchText || '');
-    // 搜尋框事件
-    const searchInput = document.getElementById('modSearch');
-    if (searchInput) {
-        searchInput.value = searchText || '';
-        if (!searchInput._bound) {
-            searchInput.addEventListener('input', function() {
-                searchText = this.value.trim();
-                renderModList(mods, regexKeys, modFile, searchText);
-            });
-            searchInput._bound = true;
+    
+    // 只在非批次載入時更新 UI
+    if (modFile === currentModFile) {
+        renderModList(mods, regexKeys, modFile, searchText || '');
+        // 搜尋框事件
+        const searchInput = document.getElementById('modSearch');
+        if (searchInput) {
+            searchInput.value = searchText || '';
+            if (!searchInput._bound) {
+                searchInput.addEventListener('input', function() {
+                    searchText = this.value.trim();
+                    renderModList(mods, regexKeys, modFile, searchText);
+                });
+                searchInput._bound = true;
+            }
         }
     }
+    
+    return Promise.resolve();
 }
 
 function updateAllChecked(modFile) {
@@ -465,9 +470,14 @@ function launchDivineRain() {
             Object.keys(allChecked).forEach(k => {
                 allChecked[k] = data.allChecked[k] || [];
             });
-            // 更新 checkbox 狀態
-            Object.keys(allMods).forEach(modFile => {
-                loadMods(modFile);
+            // 先載入所有 mod 檔案，確保 allMods 和 allRegexKeys 都已經準備好
+            const loadPromises = Object.keys(allMods).map(modFile => loadMods(modFile));
+            Promise.all(loadPromises).then(() => {
+                // 等所有 mod 載入完成後，再更新 checkbox 狀態
+                Object.keys(allMods).forEach(modFile => {
+                    renderModList(allMods[modFile], allRegexKeys[modFile], modFile, searchText || '');
+                });
+                updateRegex();
             });
         }
         if (data.filter) {
@@ -484,9 +494,7 @@ function launchDivineRain() {
             document.querySelectorAll('.tab-btn').forEach(btn => {
                 btn.classList.toggle('active', btn.getAttribute('data-modfile') === currentModFile);
             });
-            loadMods(currentModFile);
         }
-        updateRegex();
     }
     function getAllSaves() {
         const saves = JSON.parse(localStorage.getItem('poeRegexSaves') || '{}');
@@ -579,8 +587,12 @@ function launchDivineRain() {
     renderSaveList();
 });
 // 頁面初始載入
-window.onload = function() {
-    loadMods(currentModFile);
+window.onload = async function() {
+    try {
+        await loadMods(currentModFile);
+    } catch (e) {
+        console.error('初始載入失敗:', e);
+    }
 }
 // ====== 新增：進階篩選功能 ======
 function updateFilterRegex() {
