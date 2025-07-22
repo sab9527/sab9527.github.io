@@ -1,5 +1,41 @@
 [
   [
+    "Copy",
+    "複製"
+  ],
+  [
+    "Paste",
+    "貼上"
+  ],
+  [
+    "Reset",
+    "重置"
+  ],
+  [
+    "Sound",
+    "音效"
+  ],
+  [
+    "Icon",
+    "圖標"
+  ],
+  [
+    "Beam",
+    "光束"
+  ],
+  [
+    "Tx",
+    "字體色"
+  ],
+  [
+    "Bd",
+    "邊框色"
+  ],
+  [
+    "BG",
+    "背景色"
+  ],
+  [
     "This will remove this rule from the filter - the item will be hidden or shown according to the other rules in the filter.",
     "從這個規則中隱藏，但可能會被其他區塊的規則影響所顯示。"
   ],
