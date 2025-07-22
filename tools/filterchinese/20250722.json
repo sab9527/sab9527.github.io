@@ -47,6 +47,86 @@
     "低T凋落地圖"
   ],
   [
+    "Maps - Pinnacle, Exotic, Influenced, ...",
+    "地圖 - 巔峰 勢力 腐化 聯盟機制"
+  ],
+  [
+    "Maps - Normal Map Progression",
+    "地圖 - 一般地圖"
+  ],
+  [
+    "Decorators (Appearance Modifiers)",
+    "全局裝飾(一般人不用動 直接改下面)"
+  ],
+  [
+    "Maps - Unique",
+    "地圖 - 傳奇地圖"
+  ],
+  [
+    "Invitations, Tomes, Map-Likes",
+    "邀請 雕刻 聖所 史記 遺鑰"
+  ],
+  [
+    "Endgame Bossfight Invitation",
+    "王戰邀請"
+  ],
+  [
+    "Ultimatum, Sanctum, Incursion",
+    "通牒 聖所 史記"
+  ],
+  [
+    "Incursion and Ultimatum",
+    "史記和通牒"
+  ],
+  [
+    "Note: There's sadly NO way to filter these by reward, health percentage, rooms etc.",
+    "沒有任何方法用過濾器過濾通牒獎勵"
+  ],
+  [
+    "Forbidden Tome (high level)",
+    "聖所禁忌之書 高物等"
+  ],
+  [
+    "Forbidden Tome / Sanctum",
+    "聖所禁忌之書"
+  ],
+  [
+    "Reliquary Keys",
+    "遺鑰"
+  ],
+  [
+    "Heist Contracts and Blueprints",
+    "劫盜契約和藍圖"
+  ],
+    [
+    "Path of Exile lootfilters can't filter contracts by their required heist jobs or reward value!",
+    "無法用過濾器過濾任何工作類型或獎勵。(遊戲本身限制)"
+  ],
+  [
+    "Unique Contracts",
+    "傳奇契約"
+  ],
+  [
+    "Quest & Other Contracts",
+    "任務和其他契約"
+  ],
+  [
+    "Quest Contracts Can't Be Hidden!",
+    "任務物品無法被過濾器隱藏"
+  ],
+  [
+    "Blueprints - Grand Heists",
+    "藍圖(可依據地形篩選)"
+  ],
+  [
+    "Custom Contract Rules",
+    "自訂契約規則"
+  ],
+  [
+    "Custom Blueprint Rules",
+    "自訂藍圖規則"
+  ],
+  [
     "Maps - Highlight and Hide",
     "輿圖地圖"
   ],
