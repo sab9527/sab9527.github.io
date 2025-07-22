@@ -1,4 +1,51 @@
 [
+
+ [
+    "Pinnacle - Zana (High Tier)",
+    "巔峰 - 札娜（高T）"
+  ],
+  [
+    "Pinnacle - T17 Penultimate",
+    "巔峰 - T17"
+  ],
+ [
+    "Pinnacle - Zana (Low Tier)",
+    "巔峰 -札那(低T)"
+  ],
+  [
+    "Conqueror Maps",
+    "征服者地圖"
+  ],
+  [
+    "Shaper Maps",
+    "塑界者守衛地圖"
+  ],
+  [
+    "Elder Maps",
+    "尊師守衛地圖"
+  ],
+  [
+    "8-Mod Corrupted Maps",
+    "8 詞／8 mod 地圖"
+  ],
+  [
+    "Delirium or Enchanted (T14+)",
+    "譫妄玉地圖(T14+)"
+  ],
+  [
+    "Delirium or Enchanted",
+    "譫妄玉地圖"
+  ],
+  [
+    "Uber Blighted Map",
+    "凋落蔓延地圖"
+  ],  [
+    "High Blighted Map",
+    "高T凋落地圖"
+  ],  [
+    "Low Blighted Map",
+    "低T凋落地圖"
+  ],
   [
     "Maps - Highlight and Hide",
     "輿圖地圖"
@@ -1617,11 +1664,7 @@
     "large Red Square",
     "大型紅色正方形"
   ],
-  [
-    "Pinnacle - Zana (High Tier)",
-    "巔峰 - 札娜（高階）"
-  ],
-  [
+   [
     "ZanaMemory True",
     "札娜記憶"
   ],
