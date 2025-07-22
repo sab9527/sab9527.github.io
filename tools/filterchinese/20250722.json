@@ -39,7 +39,7 @@
     "Highlight corrupted maps",
     "篩選 腐化地圖"
   ],
-  [
+ [
     "Maps with implicits (T14+)",
     "篩選 特殊詞地圖 (T14+)"
   ],
@@ -80,6 +80,10 @@
     "用以顯示特定地圖的自訂規則"
   ],
   [
+    "Custom Rule: Hide specific maps",
+    "自訂規則："
+  ],
+  [
     "True",
     "是"
   ],
@@ -87,9 +91,6 @@
     "Flase",
     "是"
   ],
-
-
-
   [
     "• Map Tier:",
     "地圖階級："
