@@ -9,16 +9,8 @@
   ],
   [
     "Gear with Memory Strands",
-    "帶有記憶的裝備"
+    "帶有記憶絲縷的裝備<br>(ABCD在最下面調整基底)<br>high就是帶有60以上記憶<br>沒high就是低於60"
   ],
-
-
-
-
-
-
-
-
   [
     "Divination Card Tierlist",
     "命運卡階級"
@@ -1578,14 +1570,6 @@
     "從Uber Plus Strict超級嚴格開始停用"
   ],
   [
-    "Rank B",
-    "B 級"
-  ],
-  [
-    "MemoryStrands >= 1",
-    "記憶絲縷 >= 1"
-  ],
-  [
     "Memory Stranded gear identifies with better modtiers and the strands can be consumed to empower crating outcomes!",
     "記憶絲縷裝備具有更好的詞綴等級，並且可以增強工藝結果！"
   ],
@@ -2254,10 +2238,6 @@
     "中型黃色菱形"
   ],
   [
-    "Rank B - influenced",
-    "B 級 - 勢力"
-  ],
-  [
     "HasInfluence  [[ 6 entries ]]",
     "具有勢力  [[ 6 條 ]]"
   ],
@@ -2590,10 +2570,6 @@
     "基礎防禦百分比："
   ],
   [
-    "Rank A Overquality Armors1",
-    "A 級 超過品質 盔甲 1"
-  ],
-  [
     "Quality >= 28",
     "品質 >= 28"
   ],
@@ -2802,24 +2778,12 @@
     "迷霧詞綴可透過 Jun 解鎖，變成永久詞綴，同時您也會學到該詞綴的工藝。成員限定和小型迷霧物品會額外高亮顯示！"
   ],
   [
-    "Rank A - Veiled",
-    "A 級 - 隱匿"
-  ],
-  [
     "Identified True",
     "已鑑定 真"
   ],
   [
     "HasExplicitMod \"Veil\"",
     "具有顯性詞綴 \"隱匿\""
-  ],
-  [
-    "Rank B - Veiled",
-    "B 級 - 隱匿"
-  ],
-  [
-    "Rank C - Veiled",
-    "C 級 - 隱匿"
   ],
   [
     "Other Veiled Gear",
@@ -33100,6 +33064,10 @@
   [
     "Sage Gloves",
     "哲人手套"
+  ],
+   [
+    "哲人手套",
+    "Sage Gloves"
   ],
   [
     "Warlock Gloves",
