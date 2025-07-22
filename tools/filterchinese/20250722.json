@@ -1,4 +1,48 @@
 [
+    [
+    "Build & Special-Item Recipes",
+    "特殊配方"
+  ],
+    [
+    "Grasping Mail & Loreweave",
+    "貪婪鎧甲 和 智者織衫"
+  ],
+  [
+    "Selling a total of 60 Breach Rings together to a vendor will reward you with the Grasping Mail rare item. This item can feature exclusive modifiers, such as the +50% to all defenses. Rerolling the grasping mail will NOT spawn the exclusive mods again.",
+    "售出 60 個 裂痕戒指可以獲得一件稀有的 貪婪鎧甲(包含一個特殊詞)，重骰此物品無法獲得其他特殊詞。"
+  ],
+  [
+    "Breach Rings High ilvl",
+    "高物等裂痕戒指"
+  ],
+  [
+    "• ItemLevel:",
+    "物品等級："
+  ],
+  [
+    "Breach Rings",
+    "裂痕戒指"
+  ],
+  [
+    "Loreweave Rings",
+    "智者織衫"
+  ],
+    [
+    "7 Jeweller's Orb - reward for selling an item with 6 sockets.",
+    "六洞物品出售可以獲得 7 個工匠石"
+  ],
+    [
+    "6 sockets (large)",
+    "6 洞 (大物件)"
+  ],
+    [
+    "6 sockets",
+    "6 洞"
+  ],
+  [
+    "6sock-5links",
+    "6 洞 + 5 連"
+  ],
    [
     "1 Gemcutter's Prism - reward for selling a single gem with 20% quality gem or multiple gems with a combined total of 40% quality to a vendor.",
     "1 顆寶石匠棱鏡 - 出售一顆品質為 20% 的寶石或多顆品質總計為 40% 的寶石所獲得的獎勵。"
