@@ -1,4 +1,88 @@
 [
+[
+    "Current League: Secrets of the Atlas",
+    "聯盟通貨：輿圖之奧秘"
+  ],
+  [
+    "Most other new items have been added into the appropriate tierlist: Fragments (new bosses), Currency (new orbs), Scarabs (allflames), Maps (Zana map). Special rules for Veiled/Fractured maps and infamous gear have also been added. Thrartus gems are detected by the trans-gems rule",
+    "大部分通貨都已經在通貨的過濾規則中處理了"
+  ],
+  [
+    "Gear with Memory Strands",
+    "帶有記憶的裝備"
+  ],
+
+
+
+
+
+
+
+
+  [
+    "Divination Card Tierlist",
+    "命運卡階級"
+  ],
+  [
+    "Exotics: Stacked Card Drops",
+    "堆疊掉落"
+  ],
+  [
+    "Card added here will receive a higher highlight if dropped in a stack!",
+    "此區的命運卡如果是堆疊掉落會獲得更高階的提示"
+  ],
+  [
+    "Designed to highlight T4 and T5 divination cards if they drop in a stack. Useful, if you want to see the cards only if they're stacked.",
+    "特別顯示整疊但單張價值較低的命運卡"
+  ],
+  [
+    "Scarabs, Fragments and Splinters",
+    "甲蟲、碎片、裂片"
+  ],
+  [
+    "Scarabs & Allflames",
+    "甲蟲和餘燼"
+  ],
+  [
+    "Stacked T4 Scarabs",
+    "堆疊的低階甲蟲和餘燼"
+  ],
+  [
+    "Stacked Sacrifice Fragments",
+    "堆疊的紅門和眾神聖器"
+  ],
+  [
+    "Simulacrum Splinters",
+    "幻像斷片"
+  ],
+  [
+    "Huge Stacks",
+    "超大堆疊"
+  ],
+  [
+    "Medium Stacks",
+    "中型堆疊"
+  ],
+  [
+    "Splinters - Single",
+    "裂痕與戰亂碎片(單個)"
+  ],
+  [
+    "Splinters - High Tier (Stacked)",
+    "裂痕與戰亂碎片-高價值(堆疊)"
+  ],
+  [
+    "Splinters - Low Tier (Stacked)",
+    "裂痕與戰亂碎片-低價值(堆疊)"
+  ],
+  [
+    "Gold is auto-picked-up! You will even pick up the gold if the rules are disabled.",
+    "金幣在靠近時會自動撿起，即使你隱藏他們也依然會撿起來。"
+  ],
+  [
+    "Goldpile: Massive",
+    "金幣：個別設定某個堆疊數以上"
+  ],
   [
     "Invalid configuration to set to Hide. Please select at least one Class/BaseType/...",
     "規則無效，至少選擇一種類型來啟用。"
@@ -1472,10 +1556,6 @@
   [
     "Blue",
     "藍色"
-  ],
-  [
-    "Rank A, high strands",
-    "A 級，高記憶絲縷"
   ],
   [
     "Mirrored False",
