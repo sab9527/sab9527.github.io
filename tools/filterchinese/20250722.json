@@ -1,5 +1,82 @@
 [
-    [
+
+  [
+    "Not recommended as it's considered too slow. A Cartographer's Chisel is the reward for vendoring a 20% quality Gavel together with any map.",
+    "不推薦使用這個配方，效率非常低，使用堅錘換取製圖釘。"
+  ],
+  [
+    "Maximum Quality",
+    "最大品質"
+  ],
+  [
+    "Magic Rarity, High Quality",
+    "魔法高品質"
+  ],
+  [
+    "Normal Rarity, High Quality",
+    "普通高品質"
+  ],
+  [
+    "Magic Rarity, No Quality",
+    "魔法沒品質"
+  ],
+  [
+    "Normal Rarity, No Quality",
+    "普通沒品質"
+  ],
+  [
+    "1 Glassblower's Bauble - reward for selling a single 20% quality flask or multiple quality flasks with a total quality of 40%.",
+    "1 個玻璃彈珠，出售單個 20% 或總計 40% 品質的藥劑可獲得。"
+  ],
+  [
+    "Max quality flasks",
+    "最高品質藥劑"
+  ],
+  [
+    "Mid Quality flasks",
+    "中等品質藥劑"
+  ],
+  [
+    "Low Quality flasks",
+    "低品質藥劑"
+  ],
+  [
+    "• Rarity:",
+    "稀有度："
+  ],
+  [
+    "+1 Skill Gem Recipes",
+    "+1 技能寶石配方"
+  ],
+  [
+    "By selling a total of 40% quality worth of gems with a specific tag (such as fire) together with a Wand, Sceptre, Rune Dagger or Staff you will be rewarded with a weapon with a +1 GLOBAL level to ALL tagged spell gems. This is a powerful caster weapon early in the endgame.",
+    "出售總共 40% 品質的帶有特定標籤（例如火焰）的寶石，以及法杖、權杖、符文匕首或長杖，即可獲得一件對應 +1 等級的武器。這件武器在遊戲初期非常強大。"
+  ],
+  [
+    "+1 Cold",
+    "+1 冰冷"
+  ],
+  [
+    "+1 Fire",
+    "+1 火焰"
+  ],
+  [
+    "+1 Lightning",
+    "+1 閃電"
+  ],
+  [
+    "+1 Chaos",
+    "+1 混沌"
+  ],
+  [
+    "+1 Physical",
+    "+1 物理"
+  ],
+  [
+    "+1 Minion",
+    "+1 召喚物"
+  ],
+      [
     "Build & Special-Item Recipes",
     "特殊配方"
   ],
@@ -10,6 +87,10 @@
   [
     "Selling a total of 60 Breach Rings together to a vendor will reward you with the Grasping Mail rare item. This item can feature exclusive modifiers, such as the +50% to all defenses. Rerolling the grasping mail will NOT spawn the exclusive mods again.",
     "售出 60 個 裂痕戒指可以獲得一件稀有的 貪婪鎧甲(包含一個特殊詞)，重骰此物品無法獲得其他特殊詞。"
+  ],
+   [
+    "Selling a total of any 60 Unique Rings together to a vendor will reward you with the Loreweave Unique body armour.",
+    "售出 60 個 傳奇戒指可以獲得一件智者織衫"
   ],
   [
     "Breach Rings High ilvl",
