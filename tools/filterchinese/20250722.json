@@ -1,5 +1,74 @@
 [
   [
+    "Invalid configuration to set to Hide. Please select at least one Class/BaseType/...",
+    "規則無效，至少選擇一種類型來啟用。"
+  ],
+  [
+    "- This tier may have no items associated with it. You can't set empty rules to show/hide",
+    "可能這個階級目前沒有被歸類的基底或物品。"
+  ],
+  [
+    "- If you're building a custom rule, you need to add at least one basetype/class to it's config",
+    "如果你正在自訂規則，請至少新增一樣基底來測試。"
+  ],
+
+  [
+    "Rule Disabled! Select/Add an item to enable this rule!",
+    "規則無效 新增基底類型以啟用"
+  ],
+  [
+    "Delve Resonators",
+    "礦坑鑄新儀"
+  ],
+  [
+    "Delve Fossils",
+    "礦坑化石"
+  ],
+  [
+    "Delirium Orbs",
+    "譫妄玉"
+  ],
+  [
+    "Blight Oils T5",
+    "凋落塗油"
+  ],
+  [
+    "Remaining Oils",
+    "其他油(基本上用不到)"
+  ],
+  [
+    "Misc.",
+    "雜項"
+  ],
+  [
+    "Heist Rogue's Markers",
+    "劫盜硬幣"
+  ],
+  [
+    "High Level Incubators",
+    "高等級培育器"
+  ],
+  [
+    "Incursion Vials",
+    "穿越神廟罈子"
+  ],
+  [
+    "Omens",
+    "預兆"
+  ],
+  [
+    "Omens automatically trigger upon a certain condition when placed in your inventory. The omen is then consumed.",
+    "預兆放在背包中會自動觸發，觸發後消耗。"
+  ],
+  [
+    "Tattoos",
+    "紋身"
+  ],
+  [
+    "Tattoos are rewards from the trials - these are applied to your skill tree and replace stat-granting nodes with other effects!",
+    "紋身可以替換天賦樹中的效果"
+  ],
+  [
     "LVL7: Defeaning and Exotics",
     "LVL7: 破空與特殊精髓"
   ],
