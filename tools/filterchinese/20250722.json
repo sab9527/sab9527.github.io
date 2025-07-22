@@ -1022,31 +1022,40 @@
   ],
   [
     "Soft",
-    "Soft寬鬆"
+    "寬鬆"
   ],
   [
+    "Super-low strictness. Shows way too much, only recommended as a customization-starter",
+    "篩選的規則很寬鬆，顯示很多東西，建議作為拓荒的基準過濾器來自己自訂。"
+  ],
+
+  [
     "Regular",
-    "Regular普通"
+    "普通"
+  ],
+    [
+    "Low strictness. Shows all rares. Good for chaos-recipes. Shows way too much in the endgame.",
+    "稍微嚴格一點，依然顯示所有稀有裝備，但後期還是顯示太多物品。"
   ],
   [
     "Semi-Strict",
-    "Semi-Strict半嚴格"
+    "半嚴格"
   ],
   [
     "Strict",
-    "Strict嚴格"
+    "嚴格"
   ],
   [
     "Very Strict",
-    "Very Strict非常嚴格"
+    "非常嚴格"
   ],
   [
     "Uber Strict",
-    "Uber Strict極度嚴格"
+    "極度嚴格"
   ],
   [
     "Uber Plus Strict",
-    "Uber Plus Strict超級嚴格"
+    "超級嚴格"
   ],
   [
     "Recommended filter-strictness for beginners and league-starters. Hides terrible items. Shows anything potentially useful.",
