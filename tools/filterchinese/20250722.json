@@ -1,5 +1,32 @@
 [
-
+  [
+    "Currency - Normal",
+    "通貨 - 一般"
+  ],
+  [
+    "Stacked Tiering Mode",
+    "堆疊數量層級模式(例如1C或5C的顯示差異)"
+  ],
+  [
+    "Uses NeverSink's default tiering system for stacked currencies. You have the option to manually adjust settings within the individual stacked currency sections.",
+    "使用 NeverSink 的預設數量分級，可以手動調整各個分級的設定"
+  ],
+ [
+    "Auto",
+    "手動調整層級"
+  ],
+  [
+    "Stacked currencies are automatically mirrored from the non-stacked currency section. Customize thresholds and visuals to tailor the filter to your preferences!",
+    "手動調整各個層級的顯示樣式"
+  ],
+  [
+    "Uniform",
+    "統一"
+  ],
+  [
+    "Applies no special treatment to stacked currencies. Stacked currency items will appear and be filtered exactly like single currency drops.",
+    "不論堆疊數，使用統一的樣式。"
+  ],
   [
     "Not recommended as it's considered too slow. A Cartographer's Chisel is the reward for vendoring a 20% quality Gavel together with any map.",
     "不推薦使用這個配方，效率非常低，使用堅錘換取製圖釘。"
