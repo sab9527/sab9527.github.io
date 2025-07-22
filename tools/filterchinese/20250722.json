@@ -1,5 +1,112 @@
 [
-[
+  [
+    "Maps - Highlight and Hide",
+    "輿圖地圖"
+  ],
+  [
+    "This does NOT affect shaped, elder, guardian, unique and other special maps.",
+    "這裡的設定不會影響 尊師、塑界者、賽勒斯守衛、傳奇和特殊地圖。"
+  ],
+  [
+    "Hide corrupted non-rare maps",
+    "隱藏 已腐化 非稀有地圖"
+  ],
+  [
+    "Hide Mirrored non-rare maps",
+    "隱藏 已複製 非稀有地圖"
+  ],
+  [
+    "Hide corrupt-non-rare Zana Maps",
+    "隱藏 非稀有 開創者(札那) 系列地圖"
+  ],
+  [
+    "Hide by tier",
+    "隱藏 用階級分層"
+  ],
+  [
+    "Highlight maps with high quality",
+    "篩選 高品質"
+  ],
+  [
+    "Highlight rare maps",
+    "篩選 稀有地圖"
+  ],
+  [
+    "Highlight magic maps",
+    "篩選 魔法地圖"
+  ],
+  [
+    "Highlight corrupted maps",
+    "篩選 腐化地圖"
+  ],
+  [
+    "Maps with implicits (T14+)",
+    "篩選 特殊詞地圖 (T14+)"
+  ],
+  [
+    "Maps with implicits",
+    "篩選 特殊詞地圖"
+  ],
+  [
+    "With corrupted mod (T14+)",
+    "擁有腐化詞的地圖(T14+)"
+  ],
+  [
+    "With corrupted mod",
+    "擁有腐化詞的地圖"
+  ],
+  [
+    "Custom Rule: Highlight T17 Maps",
+    "自訂規則：T17 地圖"
+  ],
+  [
+    "This is a VERY high priority rule. It overrides everything else.",
+    "這條規則的優先級非常高"
+  ],
+  [
+    "Unnamed Custom Rule",
+    "自訂規則"
+  ],
+  [
+    "• Corrupted:",
+    "腐化："
+  ],
+  [
+    "Custom Rule: Highlight Generic maps",
+    "自訂規則：篩選一般地圖"
+  ],
+  [
+    "For highlight typical maps of a special type. This is the 'safe' rule and won't override things like T17 maps, unique maps...",
+    "用以顯示特定地圖的自訂規則"
+  ],
+  [
+    "True",
+    "是"
+  ],
+  [
+    "Flase",
+    "是"
+  ],
+
+
+
+  [
+    "• Map Tier:",
+    "地圖階級："
+  ],
+  [
+    "RESET",
+    "重置"
+  ],
+  [
+    "Highlight specific bases",
+    "篩選特定基底"
+  ],
+  [
+    "Quickly highlight bases by adding a custom rule! If you need more power and options, there's a lot more custom rules lower in the customizer",
+    "快速設定需要篩選的基底"
+  ],
+  [  
     "Current League: Secrets of the Atlas",
     "聯盟通貨：輿圖之奧秘"
   ],
@@ -9,7 +116,7 @@
   ],
   [
     "Gear with Memory Strands",
-    "帶有記憶絲縷的裝備<br>(ABCD在最下面調整基底)<br>high就是帶有60以上記憶<br>沒high就是低於60"
+    "帶有記憶絲縷的裝備(ABCD在最下面調整基底 )h。igh就是帶有60以上記憶，沒high就是低於60。"
   ],
   [
     "Divination Card Tierlist",
@@ -174,7 +281,7 @@
   ],
   [
     "Highlight Essences by type",
-    "依種類高亮(盛怒是肆虐精髓(翻譯問題))"
+    "依種類篩選(盛怒是肆虐精髓(翻譯問題))"
   ],
 
   [
@@ -1331,7 +1438,7 @@
   ],
   [
     "Reduced highlight on Uber Strict",
-    "在Uber Strict極度嚴格下減少高亮顯示"
+    "在Uber Strict極度嚴格下減少篩選顯示"
   ],
   [
     "Hidden starting with Uber Plus Strict",
@@ -1371,7 +1478,7 @@
   ],
   [
     "Reduced highlight on Very Strict",
-    "在Very Strict非常嚴格下減少高亮顯示"
+    "在Very Strict非常嚴格下減少篩選顯示"
   ],
   [
     "Hidden starting with Uber Strict",
@@ -1387,7 +1494,7 @@
   ],
   [
     "Reduced highlight on Strict",
-    "在Strict嚴格下減少高亮顯示"
+    "在Strict嚴格下減少篩選顯示"
   ],
   [
     "Hidden starting with Very Strict",
@@ -1887,7 +1994,7 @@
   ],
   [
     "Maps gain more highlight as they gain tiers. High tier (11+) and top tier (16) maps have different sounds. The filter highlights map tier upgrades with an extra color.",
-    "地圖隨著等級的提高而獲得更多的高亮顯示。高等級 (11+) 和頂級 (16) 地圖具有不同的聲音。過濾器使用額外的顏色突出顯示地圖等級升級。"
+    "地圖隨著等級的提高而獲得更多的篩選顯示。高等級 (11+) 和頂級 (16) 地圖具有不同的聲音。過濾器使用額外的顏色突出顯示地圖等級升級。"
   ],
   [
     "Map Upgrades!",
@@ -1907,7 +2014,7 @@
   ],
   [
     "The filter highlights map drops of a higher tier than the one you're in with extra highlight (disabled on some styles)",
-    "過濾器會以額外的高亮顯示突出顯示比您所在的等級更高的地圖掉落物（在某些樣式中停用）"
+    "過濾器會以額外的篩選顯示突出顯示比您所在的等級更高的地圖掉落物（在某些樣式中停用）"
   ],
   [
     "Unique Maps!",
@@ -1943,11 +2050,11 @@
   ],
   [
     "Maps gain more highlight as they gain tiers. High tier (11+) and top tier (16) maps have different sounds. The filter highlights map tier upgrades with an extra color.",
-    "地圖隨著階級的提高而獲得更多的高亮顯示。高等級 (11+) 和頂級 (16) 地圖具有不同的聲音。過濾器會以額外的顏色突出顯示地圖階級升級。"
+    "地圖隨著階級的提高而獲得更多的篩選顯示。高等級 (11+) 和頂級 (16) 地圖具有不同的聲音。過濾器會以額外的顏色突出顯示地圖階級升級。"
   ],
   [
     "The filter highlights map drops of a higher tier than the one you're in with extra highlight (disabled on some styles)",
-    "過濾器會以額外的高亮顯示突出顯示比您所在的階級更高的地圖掉落物（在某些樣式中停用）"
+    "過濾器會以額外的篩選顯示突出顯示比您所在的階級更高的地圖掉落物（在某些樣式中停用）"
   ],
   [
     "Unique Maps T3",
@@ -2675,11 +2782,11 @@
   ],
   [
     "Teal Highlight!",
-    "青色高亮！"
+    "青色篩選！"
   ],
   [
     "Any item with a teal highlight has something special about it! Typical reasons are: enchants, fractured, synthesis, identified mods, incursion mods, delve mods, abyss sockets etc. Their price differs and it often requires a manual check.",
-    "任何具有青色高亮的物品都有一些特別之處！ 通常需要手動檢查。"
+    "任何具有青色篩選的物品都有一些特別之處！ 通常需要手動檢查。"
   ],
   [
     "Jade Amulet",
@@ -2775,7 +2882,7 @@
   ],
   [
     "Veiled mods can be 'unveiled' by Jun and become permanent mods + you learn to craft that mod. Member-Specific and small veiled items receive extra highlight!",
-    "迷霧詞綴可透過 Jun 解鎖，變成永久詞綴，同時您也會學到該詞綴的工藝。成員限定和小型迷霧物品會額外高亮顯示！"
+    "迷霧詞綴可透過 Jun 解鎖，變成永久詞綴，同時您也會學到該詞綴的工藝。成員限定和小型迷霧物品會額外篩選顯示！"
   ],
   [
     "Identified True",
@@ -2803,7 +2910,7 @@
   ],
   [
     "The filer analyzes the mods of identified rare gear pieces and highlights expensive combinations. This process doesn't work with influenced gear, implicits and enchantments. It's not perfect and may sometimes pick up check combinations, but the items highlighted this way can sometimes be quite valuable.",
-    "過濾器會分析已鑑定稀有裝備的詞綴，並高亮顯示昂貴的組合。此過程不適用於受勢力影響的裝備、隱性詞綴和附魔。此功能並不完美，有時會選到不佳的組合，但以這種方式高亮顯示的物品有時可能非常珍貴。"
+    "過濾器會分析已鑑定稀有裝備的詞綴，並篩選顯示昂貴的組合。此過程不適用於受勢力影響的裝備、隱性詞綴和附魔。此功能並不完美，有時會選到不佳的組合，但以這種方式篩選顯示的物品有時可能非常珍貴。"
   ],
   [
     "medium Purple Diamond",
@@ -2991,7 +3098,7 @@
   ],
   [
     "4-linked items are very useful at the start. They're highlighted by a blue-ish border.",
-    "四連物品在遊戲初期非常有用，並以藍色邊框高亮顯示。"
+    "四連物品在遊戲初期非常有用，並以藍色邊框篩選顯示。"
   ],
   [
     "Leveling: 3-linked Items",
@@ -3011,7 +3118,7 @@
   ],
   [
     "3-linked items are highlighted during the first 2-3 acts of the campaign with a teal-ish border.",
-    "在遊戲劇情的前 2-3 章節中，三連物品以青色邊框高亮顯示。"
+    "在遊戲劇情的前 2-3 章節中，三連物品以青色邊框篩選顯示。"
   ],
   [
     "Coral Ring",
@@ -3107,7 +3214,7 @@
   ],
   [
     "Unique pseudo-map items like heist contracts, blueprints and expedition logbooks have 2 different tiers of highlight.",
-    "獨特的劫盜契約、藍圖和探險日誌，具有 2 個不同等級的高亮顯示。"
+    "獨特的劫盜契約、藍圖和探險日誌，具有 2 個不同等級的篩選顯示。"
   ],
   [
     "Heist Contract T3",
@@ -3123,7 +3230,7 @@
   ],
   [
     "Splinters are used to create map-like objects such as breachstones, simulacrums and legion map keys. The filter has specific sections to highlight stacks of them in a different way as well.",
-    "碎片用於創建類似地圖的物件，例如裂痕石、15層和五軍。過濾器具有特定的章節來以不同的方式高亮顯示它們的堆疊。"
+    "碎片用於創建類似地圖的物件，例如裂痕石、15層和五軍。過濾器具有特定的章節來以不同的方式篩選顯示它們的堆疊。"
   ],
   [
     "medium Grey Kite",
@@ -3179,7 +3286,7 @@
   ],
   [
     "Endgame currency drops are evaluated based on their stacksize based on the ingame economy. Large stacks get a stronger highlight!",
-    "終局通貨掉落物根據遊戲內經濟評估其堆疊數量。 大型堆疊獲得更強的高亮顯示！"
+    "終局通貨掉落物根據遊戲內經濟評估其堆疊數量。 大型堆疊獲得更強的篩選顯示！"
   ],
   [
     "Stacked Supplies",
@@ -3227,7 +3334,7 @@
   ],
   [
     "Lower currencies dropping in bulk receive a different highlight and are shown differently depending on the strictness.",
-    "大量掉落的較低等級通貨會收到不同的高亮顯示，並且根據嚴格程度以不同的方式顯示。"
+    "大量掉落的較低等級通貨會收到不同的篩選顯示，並且根據嚴格程度以不同的方式顯示。"
   ],
   [
     "Stacked Scrolls",
@@ -3263,7 +3370,7 @@
   ],
   [
     "Scrolls dropping in bulk receive a different highlight and are shown differently depending on the strictness.",
-    "大量掉落的捲軸會收到不同的高亮顯示，並且根據嚴格程度以不同的方式顯示。"
+    "大量掉落的捲軸會收到不同的篩選顯示，並且根據嚴格程度以不同的方式顯示。"
   ],
   [
     "Other Endgame Tierlists",
@@ -3327,7 +3434,7 @@
   ],
   [
     "Reduced highlight on Uber Plus Strict",
-    "在Uber Plus Strict超級嚴格下減少高亮顯示"
+    "在Uber Plus Strict超級嚴格下減少篩選顯示"
   ],
   [
     "Blight Oils T3",
@@ -3395,7 +3502,7 @@
   ],
   [
     "Optional & Exotic Highlights",
-    "可選高亮"
+    "可選篩選"
   ],
   [
     "Minor Idol",
@@ -33064,10 +33171,6 @@
   [
     "Sage Gloves",
     "哲人手套"
-  ],
-   [
-    "哲人手套",
-    "Sage Gloves"
   ],
   [
     "Warlock Gloves",
