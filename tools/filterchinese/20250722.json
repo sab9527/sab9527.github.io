@@ -1,5 +1,22 @@
 [
   [
+    "Medium-sized Items (2x3)",
+    "中物件(2x3)"
+  ],
+  [
+    "Large Items (2x4)",
+    "大物件(2x4)"
+  ],
+
+  [
+    "Small Items (2x2)",
+    "小物件(2x2)"
+  ],
+  [
+    "Small Items (1x3, 1x4)",
+    "小物件(1x3, 1x4)"
+  ],
+  [
     "< lower than",
     "低於"
   ],
@@ -33,7 +50,7 @@
   ],
 
   [
-    "EXAMPLE ITEM",
+    "Example Item",
     "示範物品"
   ],
   [
