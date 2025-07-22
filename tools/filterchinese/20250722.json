@@ -1,5 +1,25 @@
 [
-    [
+  [
+    "This will remove this rule from the filter - the item will be hidden or shown according to the other rules in the filter.",
+    "從這個規則中隱藏，但可能會被其他區塊的規則影響所顯示。"
+  ],
+  [
+    "Disable",
+    "隱藏"
+  ],
+  [
+    "This will show the items matched by this rule.",
+    "會依照此規則顯示"
+  ],
+  [
+    "1 Chromatic orb - reward for selling an item with a Red-Green-Blue socket group. The 3 colors need to be linked order and other sockets don't matter. Hover over the scroll left for more info.",
+    "出售一件帶有紅綠藍三色插槽的物品可獲得獎勵。"
+ ],
+  [
+    "Disabling recipe item rules will NOT hide uniques, 6links, interesting synthesised items etc. Priorities are handled internally and you don't need to worry about them.",
+    "禁用配方規則不會隱藏傳奇物品、6 個連結、特殊基底等。優先順序由過濾器規則處理，無需擔心。"
+ ],
+  [
     "Vendor Recipes",
     "商人兌換配方"
  ],
