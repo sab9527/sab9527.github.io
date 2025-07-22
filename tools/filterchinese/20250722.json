@@ -1,4 +1,69 @@
 [
+
+  [
+    "Stacked Supplies: Trans, Armour+",
+    "堆疊的蛻變、增幅"
+  ],
+  [
+    "Stacked Supplies: Wisdoms&Portals",
+    "堆疊的傳送卷軸、鑑定卷軸"
+  ],
+  [
+    "Currency Drops during the Campaign",
+    "章節中特殊規則"
+  ],
+  [
+    "Supplies and specific currencies are much more important during the campaign.",
+    "章節中這些特別重要"
+  ],
+  [
+    "Campaign: Essences",
+    "章節中：精髓"
+  ],
+  [
+    "Campaign: Chance+",
+    "章節中：磨刀、幻色、改造、機會"
+  ],
+  [
+    "Campaign Specific - Stacked Drops",
+    "章節中堆疊"
+  ],
+  [
+    "Add Custom Currency Rules",
+    "自訂通貨規則"
+  ],
+  [
+    "For all your special AreaLevel & StackSize Currency needs!",
+    "自訂適用於所有區域等級的規則"
+  ],
+  [
+    "General Currency",
+    "通貨"
+  ],
+  [
+    "DRAG & DROP items to change the tier. Add new tiers at the bottom or in the toolbar. Hover over the wisdom scroll to receive additional advise for currency management.",
+    "可以直接用拖曳的移動到其他階級"
+  ],
+  [
+    "• BaseType:",
+    "類型："
+  ],
+  [
+    "Remember that there are special rules for currency during the campaign and for stacked currency.",
+    "部分通貨在劇情中有特殊規則"
+  ],
+  [
+    "Stacked Currency Drops (Endgame)",
+    "終局掉落堆疊"
+  ],
+  [
+    "These tiers are value based. A single Chaos Orb is in 'C Tier', 3 of them will be in 'B Tier'. Use the 'Custom Stacked Tiering Mode' to auto-Manage this list",
+    "等級是基於價值，例如 1C 是 C 級，而 3C 是 B 級，使用【手動調整層級】模式可以比較方便的調整"
+  ],
+ [
+    "• StackSize:",
+    "堆疊大小"
+  ],
   [
     "Currency - Normal",
     "通貨 - 一般"
