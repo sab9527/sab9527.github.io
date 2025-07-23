@@ -1,4 +1,117 @@
 [
+    [
+    "Chancing is considered to be very inefficient by most PoE players, but some enjoy it a lot. Boss drops, recipe-exclusive or league exclusive drops can not be chanced.",
+    "篩選可以點出高價傳奇的基底，效率非常低，非常非常低。不能點出各種限定掉落。"
+  ],
+    [
+    "Flasks & Tinctures",
+    "藥劑和萃取物"
+  ],
+  [
+    "Since PoE 3.16, the base value for defences on all gear pieces can roll. Meaning the same base can have varying Armour values. Perfection is used to see how good the roll is on a scale from 1 to 100.",
+    "物等 85 的藥劑可以骰出所有詞綴的最高階級。"
+  ],
+  [
+    "High Level Utility Flasks",
+    "高等級功能藥劑"
+  ],
+  [
+    "Endgame Life & Mana Flasks",
+    "後期生命與魔力藥劑"
+  ],
+  [
+    "Exceptional Quality Flasks",
+    "高品質藥劑"
+  ],
+  [
+    "Cobalt, Viridian, Crimson Jewels",
+    " 赤紅珠寶、翠綠珠寶、鈷藍珠寶"
+  ],
+    [
+    "Generic Magic Jewels",
+    "魔法珠寶"
+  ],  
+   [
+    "Generic Rare Jewels",
+    "稀有珠寶"
+  ],
+    [
+    "Magic+Corrupted Mod",
+    "有瓦詞的魔法珠寶"
+  ],
+    [
+    "Rare+Corrupted Mod",
+    "有瓦詞的稀有珠寶"
+  ],
+    [
+    "Identified With Life or ES Mods",
+    "已鑑定帶有生命或是能量護盾詞綴"
+  ],
+    [
+    "There are 4 types of jewels, one for each build archetype:",
+    "總共有四種類型，殺戮:近戰、勘查:弓、法杖、催眠:施法、極懼:召喚物"
+  ],
+  [
+    "Corrupted Jewels",
+    "已腐化"
+  ],
+    [
+    "ILVL 86+ (Rare)",
+    "稀有 物等86+"
+  ],
+  [
+    "ILVL 86+ (Magic)",
+    "魔法 物等86+"
+  ],
+   [
+    "ILVL 82+ (Rare)",
+    "稀有 物等82+"
+  ],
+  [
+    "ILVL 82+ (Magic)",
+    "魔法 物等82+"
+  ],
+    [
+    "Any Level (Rare)",
+    "所有等級 稀有"
+  ],
+  [
+    "Any Level (Magic)",
+    "所有等級 魔法"
+  ],
+
+  [
+    "Cluster Jewels: Top Enchantments",
+    "星團珠寶：最有價值"
+  ],
+  [
+    "This section is economy based: it's generated based on poe.ninja economy data. This section is not perfect. Hide the general section on your own risk.",
+    "本區的隱藏規則是基於忍者網的數據自動調整，被隱藏的風險由使用者自己承擔。"
+  ],
+  [
+    "Cluster Jewels: Good Enchantments",
+    "星團珠寶：次好價值"
+  ],
+  [
+    "Cluster Jewels: Any Enchantment",
+    "星團珠寶：普通價值"
+  ],
+  [
+    "Cluster Jewels: Custom Enchantment Rule",
+    "星團珠寶：自訂規則"
+  ],
+  [
+    "Cluster Jewels: Custom Any Enchantment...",
+    "星團珠寶：其他"
+  ],
+    [
+    "Trinkets & Relics",
+    "劫盜飾品和聖所聖物"
+  ],
+    [
+    "Sanctum Relics",
+    "聖所聖物"
+  ],
   [
     "Searing Exarch & Eater of Worlds",
     "灼烙總督和吞噬天地"
@@ -86,6 +199,10 @@
   [
     "Identified Mods: Incursion",
     "穿越/神廟詞綴道具"
+  ],
+  [
+    "Identified Mods: Bestiary",
+    "野獸祝福詞綴道具"
   ],
   [
     "Identified Mods: Delve",
