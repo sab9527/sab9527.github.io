@@ -1,4 +1,179 @@
 [
+  [
+    "Searing Exarch & Eater of Worlds",
+    "灼烙總督和吞噬天地"
+  ],
+  [
+    "High Level",
+    "好基底"
+  ],
+  [
+    "Remaining",
+    "其餘基底"
+  ],
+  [
+    "Tierlist for desirable influenced bases across all influences",
+    "好基底的勢力道具"
+  ],
+  [
+    "High Rank Influenced Items",
+    "用基底分層顯示"
+  ],
+  [
+    "• HasInfluence:",
+    "有勢力："
+  ],
+  [
+    "Elder",
+    "尊師"
+  ],
+  [
+    "Hunter",
+    "狩獵者"
+  ],
+  [
+    "Redeemer",
+    "救贖者"
+  ],
+  [
+    "Shaper",
+    "塑者"
+  ],
+  [
+    "Warlord",
+    "總督軍"
+  ],
+  [
+    "Rank A - Atlas exclusive armors and jewellery",
+    "Rank A - 最好的基底與特殊基底與珠寶"
+  ],
+  [
+    "Rank B - Best non-atlas exclusive bases",
+    "Rank B - 次好的基底、好基底飾品"
+  ],
+  [
+    "Rank C - Niche and second grade bases",
+    "Rank C - 更次級的基底"
+  ],
+  [
+    "Certain geartype/influence combos are desirable - such as Hunter boots. These can be set up here.",
+    "某些勢力與基底的組合將會非常好，例如狩獵者鞋子，這邊可以自訂規則。"
+  ],
+  [
+    "Influenced GearTypes - Shaper",
+    "塑者"
+  ],
+    [
+    "Influenced GearTypes - Elder",
+    "尊師"
+  ],
+  [
+    "Influenced GearTypes - Crusader",
+    "聖戰士"
+  ],
+  [
+    "Influenced GearTypes - Hunter",
+    "就竹"
+  ],
+  [
+    "Influenced GearTypes - Warlord",
+    "總督軍"
+  ],
+  [
+    "Influenced GearTypes - Redeemer",
+    "救贖者"
+  ],
+  [
+    "Identified Mods: Incursion",
+    "穿越/神廟詞綴道具"
+  ],
+  [
+    "Identified Mods: Delve",
+    "礦坑 詞綴道具"
+  ],
+  [
+    "Fractured Delve Mods",
+    "破裂礦坑詞"
+  ],
+  [
+    "Identified Mods: Essence",
+    "破裂精髓詞道具"
+  ],
+  [
+    "Identified Mods: Mercenaries",
+    "傭兵/萬惡道具"
+  ],
+  [
+    "Identified Mods: Warband",
+    "Warband道具 (已過時)"
+  ],
+  [
+    "Currently Unobtainable",
+    "無法直接取得"
+  ],
+  [
+    "Items with Crucible passive tree",
+    "帶有熔火天賦(3.21)的道具"
+  ],
+  [
+    "Kalandra Lake exclusive Bases",
+    "卡蘭德迷湖(3.19)的限定基底"
+  ],
+  [
+    "Influenced Items",
+    "有勢力的道具"
+  ],
+  [
+    "League-specific items and mods",
+    "聯盟機制產物"
+  ],
+  [
+    "Talismans",
+    "魔符"
+  ],
+  [
+    "Expedition Ward-Bases",
+    "探險保護裝"
+  ],
+  [
+    "Expedition introduced a new defence mechanic, Ward, in addition to the traditional ones like Armour or Evasion. Ward can only be found on these new BaseTypes:",
+    "探險與金斯馬區船運限定基底"
+  ],
+  [
+    "Breach Grasping Mail",
+    "裂痕-貪婪鎧甲"
+  ],
+  [
+    "Stygian Vise, High ItemLevel",
+    "冥河腰帶 86+ 物等"
+  ],
+  [
+    "Sacrificial Garbs",
+    "祭禮束衣"
+  ],
+  [
+    "Ritual BaseTypes",
+    "祭祀限定基底"
+  ],
+  [
+    "Corpses for Spectres",
+    "祭祀限定屍體"
+  ],
+  [
+    "Heist Experimented BaseType",
+    "劫盜限定基底"
+  ],
+  [
+    "Abyss socketed items",
+    "深淵插槽裝備"
+  ],
+  [
+    "Blight Anointed Items",
+    "已塗油道具"
+  ],
+
+
+
     [
     "Overquality, Synthesised and Others",
     "超高品質、追憶、其他"
@@ -111,9 +286,19 @@
     "Necropolis items with Necropolis-Exclusive mods are highlighted using this rule",
     "Necropolis道具 新聯盟不會有"
   ],
+  [
+    "Single corrupted rare quivers",
+    "有瓦詞的稀有箭袋"
+  ],
+  [
+    "2x-Corrupted handpicked items",
+    "雙瓦詞的可能有價道具"
+  ],
+  [
+    "2x-Corrupted remaining items",
+    "有兩個瓦詞的其他道具"
+  ],
 
-
-  
   [
     "High level, specific crafting bases are in high demand early in the league and can be useful in SSF environments. This section handles non-influenced versions of these items.",
     "高物等的好基底在聯盟初期需求量比較大，在自立環境中也持續有需求，這裡篩選的是無勢力的一般裝備。"
@@ -2955,7 +3140,7 @@
   ],
   [
     "Cluster jewels are delirium exclusive drops, that can expand the skilltree in exclusive ways. Itemlevel matters on them. They come in 3 sizes.",
-    "星團珠寶是譫妄聯盟的專屬掉落物，可以以獨特的方式擴展技能樹。 物品等級對它們很重要。 它們有 3 種尺寸。"
+    "星團珠寶是譫妄聯盟的限定掉落物，可以以獨特的方式擴展技能樹。 物品等級對它們很重要。 它們有 3 種尺寸。"
   ],
   [
     "Vendor recipes",
@@ -19750,10 +19935,6 @@
     "睜大雙眼"
   ],
   [
-    "Warlord",
-    "督軍"
-  ],
-  [
     "Warlords Mark",
     "督軍印記"
   ],
@@ -21912,10 +22093,6 @@
   [
     "Sanctuary Map",
     "聖所地圖"
-  ],
-  [
-    "Shaper",
-    "聖杯"
   ],
   [
     "Paladin Aura",
@@ -37044,10 +37221,6 @@
   [
     "Cannot Die",
     "不朽之軀"
-  ],
-  [
-    "Elemental Weapon",
-    "元素武器"
   ],
   [
     "Attribute Override",
