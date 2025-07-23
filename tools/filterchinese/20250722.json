@@ -1,5 +1,35 @@
 [
   [
+    "Decorators highlight specific characteristics of an item, by changing the appearance, without deciding whether it is hidden or shown.",
+    "外觀選項用來改變整體的顯示樣式，不影響顯示規則"
+  ],
+  [
+    "Decorator: Corrupted Implicit",
+    "外觀：已腐化 有固定詞綴"
+  ],
+  [
+    "Decorator: Corrupted - No implicit",
+    "外觀：已腐化 沒有固定詞綴"
+  ],
+  [
+    "Jewellery",
+    "飾品 - 戒指項鍊腰帶 最底調基底"
+  ],
+  [
+    "Weapons and Armours",
+    "武器和護甲"
+  ],
+  [
+    "• Perfection:",
+    "防禦值基礎百分比"
+  ],
+
+
+
+
+
+
+  [
     "Hide Corrupted, Outleveled, [...] Rares",
     "隱藏腐化、低物等裝等等"
   ],
@@ -2356,7 +2386,7 @@
   ],
   [
     "Many Players also choose to use rares for the 'Chaos Recipe'. This is a safe and consistent way to make currency, especially early on in the league. For that you need to sell a full equipment of rares (boots, gloves, helm, 2 rings, 1 amulet, belt, armor, weapon+shield or a 2h weapon) of itemlevel 60+ (found in act 9 or later). The vendor will reward you with a Chaos Orb. If all items are unidentified, he'll give you 2 Chaos Orbs.",
-    "許多玩家也選擇使用稀有物品進行「混沌石配方」。 這是一種安全且一致的賺取通貨的方式，尤其是在賽季初期。 為此，您需要出售一套完整的稀有裝備（鞋子、手套、頭盔、2 個戒指、1 個護身符、腰帶、盔甲、武器+盾牌或 2h 武器），物品等級 60+（在第九章或之後找到）。 供應商將獎勵您一顆混沌石。 如果所有物品都未鑑定，他會給你 2 顆混沌石。"
+    "許多玩家也選擇使用稀有物品進行「混沌石配方」。 這是一種安全且一致的賺取通貨的方式，尤其是在賽季初期。 為此，您需要出售一套完整的稀有裝備（鞋子、手套、頭盔、2 個戒指、1 個護身符、腰帶、胸甲、武器+盾牌或 2h 武器），物品等級 60+（在第九章或之後找到）。 供應商將獎勵您一顆混沌石。 如果所有物品都未鑑定，他會給你 2 顆混沌石。"
   ],
   [
     "The",
@@ -2512,7 +2542,7 @@
   ],
   [
     "Weapon&Armour Tier 1",
-    "武器和盔甲 T1"
+    "武器和護甲 T1"
   ],
   [
     "Backgrounds:",
@@ -2532,7 +2562,7 @@
   ],
   [
     "Weapon&Armour Tier 2",
-    "武器和盔甲 T2"
+    "武器和護甲 T2"
   ],
   [
     "Quite good rares, that are just a few steps away from being top bases. These include several handpicked T2-T3 bases.",
@@ -2552,7 +2582,7 @@
   ],
   [
     "Weapon&Armour Tier 3",
-    "武器和盔甲 T3"
+    "武器和護甲 T3"
   ],
   [
     "Technically one can spend the time to identify every single rare, however this is fairly time consuming and also increasingly annoying for most players. Even T3/T4 rares can be quite amazing. Yet it's a safer investment of time to focus on higher rares, at least if your build is sufficiently fast and you're not playing SSF/HC.",
@@ -2572,7 +2602,7 @@
   ],
   [
     "Weapon&Armour Tier 4",
-    "武器和盔甲 T4"
+    "武器和護甲 T4"
   ],
   [
     "A chaos recipe is selling a full “set” of rare items to a vendor - One amulet, two rings, one chest armor, etc… at the same time. The vendor will reward you with one Chaos Orb if all items are itemlevel 60+.",
