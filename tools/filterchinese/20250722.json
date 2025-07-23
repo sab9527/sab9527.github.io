@@ -7,20 +7,28 @@
     "These rules are enabled in higher strictness. They hide lower rares if they drop in high level zones.",
     "高嚴格度的情況下會使用這些規則，在高區域等級的圖內掉落低物等裝備將會被隱藏。"
   ],
+  [
+    "By default the filter will hide all (unidentified) corrupted/mirrored rares without an implicit. This of course excludes 6-links and all kind of other exotic items",
+    "預設情況下，過濾器會隱藏所有未鑑定的已腐化/已複製稀有物品（無固定詞）。這當然不包括 6 連和其他所有類型的特殊物品。"
+  ],
+  [
+    "The filter comes with a system to check if an identified rare has interesting stat combos. Identified rares drop rarely, but if NO statcombo was detected, you might consider hiding them. This can be done here.",
+    "過濾器有內建一些規則來檢查已鑑定的裝備是否有不錯的詞綴組合"
+  ],
+  [
+    "The filter will check identified rares for interesting mod combinations and highlight these items. By setting this rule to HIDE all items that have NOT passed the 'interesting identified mods check' will be hidden. This is useful if you're still searching for specific rare combinations, but would like to reduce the number of items visible.",
+    "過濾器有內建一些規則來檢查已鑑定的裝備是否有不錯的詞綴組合並且特別篩選出來顯示，將此規則設為【隱藏】之後所有不符合規則的已鑑定稀有裝將被隱藏。"
+  ],
+  [
+    "Hide all remaining identified items that were not highlighted by the mod filtering rules.",
+    "隱藏所有詞綴沒有被上述特殊規則篩選出來的已鑑定裝備"
+  ],
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+  [
+    "Rule Disabled! Click on Show/Hide to enable this rule!",
+    "規則禁用！點顯示來啟用"
+  ],
 
   [
     "Add custom Show/Hide rule (EG rares)",
