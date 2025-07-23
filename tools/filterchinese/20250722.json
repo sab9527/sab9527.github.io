@@ -1,5 +1,21 @@
 [
   [
+    "Optional filter modules",
+    "額外選項"
+  ],
+  [
+    "ANIMATE WEAPON: This section should only interest Animate Weapon skill-gem users. Please note that if you use Cloak/Transfigured AW Gems, you'll have to activate multiple entries below, not only one. This entry has a lower priority than crafting, chancing, and other valuable normal/magic weapons.",
+    "用於篩選手動幻化武器的過濾"
+  ],
+  [
+    "These rules will NEVER override T1, T2 and valuable multibase drops. Since the disenchanter only has limited space, we use dust/slot as the primary value.",
+    "用於篩選拿去金斯馬區破幻的傳奇，高價傳奇會以高價的過濾規則處理。"
+  ],
+  [
+    "Identified Mod Filtering",
+    "已鑑定的詞綴過濾"
+  ],
+  [
     "Misc. Items",
     "其他雜項"
   ],
