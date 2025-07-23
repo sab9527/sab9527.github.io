@@ -1,5 +1,73 @@
 [
   [
+    "High level, specific crafting bases are in high demand early in the league and can be useful in SSF environments. This section handles non-influenced versions of these items.",
+    "高物等的好基底在聯盟初期需求量比較大，在自立環境中也持續有需求，這裡篩選的是無勢力的一般裝備。"
+  ],
+    [
+    "Enable&Disable Tiers",
+    "修改各 Rank 的顯示規則"
+  ],
+    [
+    "Itemlevel matters a LOT. Crafting bases are grouped by level. Example: Any Gloves will be part of and ONLY of the level 85 rules.",
+    "物品等級非常重要。下面的分類 Level 代表他的詞綴最高只需要這個等級"
+  ],
+    [
+    "LEVEL 86: Body Armours, Boots, Shields, Bows, Belts, Quivers",
+    "LEVEL 86:胸甲、鞋子、盾、弓、腰帶、箭袋"
+  ],
+    [
+    "LEVEL 85: Amulets, Gloves, Helmets",
+    "LEVEL 85: 項鍊、手套、頭盔"
+  ],
+    [
+    "LEVEL 84: Caster Weapons & Rings",
+    "LEVEL 8: 施法武器、戒指"
+  ],
+   [
+    "LEVEL 83: All Attack Weapons",
+    "LEVEL 83: 全部攻擊武器"
+  ],
+  [
+    "Any Level: All items together. Not recommended!",
+    "Any Level: 任何種類同時"
+  ],
+  [
+    "Control WHAT items are in what tier:",
+    "在這裡調整分級"
+  ],
+  [
+    "Fractured items",
+    "破裂物品"
+  ],
+   [
+    "Some itemclasses like 'Jewels' are completely covered through the class-based filtering below and don't need representing through the matrix.",
+    "部分類型如 珠寶 由細項裡面的部位類型中包含在內 所以不會在 Rank 中有選項。（Sab提醒:在NS的分級下依嚴格程度會逐漸隱藏較低 Rank 分級的破裂物品，所以如果你需求的破裂物品並不嚴格要求基底時請記得要來正確調整。）"
+  ],
+   [
+    "Veiled Items",
+    "隱匿物品"
+  ],
+   [
+    "Armour Classes",
+    "護甲類型"
+  ],
+   [
+    "Linked Items",
+    "連線物品"
+  ],
+   [
+    "• Mirrored:",
+    "已複製："
+  ],
+   [
+    "6-Links: Best",
+    "6 連的好基底"
+  ],
+   [
+    "6-Links: Others",
+    "6 連的一般物品"
+  ],
+   [
     "Decorators highlight specific characteristics of an item, by changing the appearance, without deciding whether it is hidden or shown.",
     "外觀選項用來改變整體的顯示樣式，不影響顯示規則"
   ],
@@ -23,12 +91,6 @@
     "• Perfection:",
     "防禦值基礎百分比"
   ],
-
-
-
-
-
-
   [
     "Hide Corrupted, Outleveled, [...] Rares",
     "隱藏腐化、低物等裝等等"
@@ -658,7 +720,7 @@
   ],
   [
     "Crafting",
-    "裝備相關"
+    "做裝底材"
   ],
   [
     "Essences",
