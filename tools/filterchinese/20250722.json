@@ -1,4 +1,66 @@
 [
+  [
+    "Act- & Build-specific items",
+    "章節中依流派特殊顯示規則"
+  ],
+  [
+    "Magic Caster Weapons",
+    "魔法 法術武器"
+  ],
+  [
+    "Magic boots (for movement speed)",
+    "魔法 鞋子(找移動速度)"
+  ],
+    [
+    "Act 1 Caster rings",
+    "Act 1 好底戒指"
+  ],
+    [
+    "Act 1 Physical accessories",
+    "Act 1 物理用戒指 腰帶"
+  ],
+  [
+    "Act 1 selected jewellery",
+    "Act 1 飾品"
+  ],
+  [
+    "Remaining Act 1 jewellery",
+    "Act 1 其他飾品規則"
+  ],
+  [
+    "Act 2 and 3 are fairly lightning heavy. Topaz rings are a good opportunity to boost your defenses, when rushing.",
+    "Act 2 和 3 有比較多的閃電傷害 換上電抗戒指不錯。"
+  ],
+  [
+    "Acts 4-6 contain a lot of deadly fire damage sources. Ruby rings help a lot. After act 5 you want keep your resistances as high as possible. Consider throwing an essence or even an alchemy orb on one of these!",
+    "Acts 4 到 6 有比較多的火焰傷害 換上火炕戒指不錯，第 5 張後需要注意維持抗性。"
+  ],
+  [
+    "Summoner gear",
+    "召喚裝備"
+  ],
+  [
+    "Item Progression",
+    "物品進度"
+  ],
+  [
+    "Item progressions highlight the best available class (such as only 1h Axe or Claw) available on your level. Select up to 3 types below and we'll create the progression in just 1 click. The filter also comes with a default item progression. It's less precise than the custom ones, but covers multiple classes.",
+    "這邊的規則可以幫你特別顯示符合你的等級可使用的幾種類型"
+  ],
+  [
+    "Other Normal and magic Items",
+    "其他普通或魔法道具"
+  ],
+  [
+    "Magic items and normal early on provide sockets, base defenses and magics can be sold for shards. It's not recommended to adjust these unless you know what you're doing",
+    "魔法和普通裝備在前期可以幫助解決洞色和出售換取通貨碎片，不建議新手隨意調整。"
+  ],
+
+
+
+
+
+
  [
     "Campaign (below lvl 68)",
     "章節 (區域低於68等)"
@@ -33,7 +95,7 @@
   ],
     [
     "Colors and Links",
-    ""
+    "顏色和連線"
   ],
   [
     "Chromatic Recipe Items",
@@ -66,6 +128,14 @@
   [
     "Rare items",
     "稀有裝備"
+  ],
+  [
+    "Rare Accessories",
+    "稀有飾品"
+  ],
+  [
+    "Gloves, Helmets",
+    "手套、頭盔"
   ],
  [
     "Jewellery & Armours",
@@ -160,7 +230,7 @@
   ],
     [
     "There are 4 types of jewels, one for each build archetype:",
-    "總共有四種類型，殺戮:近戰、勘查:弓、法杖、催眠:施法、極懼:召喚物"
+    "總共有四種類型，殺戮:近戰、勘查:弓、法杖、催眠:法術、極懼:召喚物"
   ],
   [
     "Corrupted Jewels",
@@ -549,7 +619,7 @@
   ],
     [
     "LEVEL 84: Caster Weapons & Rings",
-    "LEVEL 8: 施法武器、戒指"
+    "LEVEL 8: 法術武器、戒指"
   ],
    [
     "LEVEL 83: All Attack Weapons",
@@ -609,7 +679,7 @@
   ],
   [
     "Jewellery",
-    "飾品 - 戒指項鍊腰帶 最底調基底"
+    "飾品 - 戒指項鍊腰帶"
   ],
   [
     "Weapons and Armours",
@@ -3284,7 +3354,7 @@
   ],
   [
     "Generic jewels come in 3 types: red, green and blue. The red ones have affinities towards rolling melee mods and physical defense, green ones focus on bows, daggers, evasion etc and blue ones focus on spellcasters, energy shield and minions.",
-    "通用珠寶分為三種類型：紅色、綠色和藍色。 紅色珠寶傾向於洗出近戰詞綴和物理防禦，綠色珠寶專注於弓、匕首、迴避等，藍色珠寶專注於施法者、能量護盾和召喚物。"
+    "通用珠寶分為三種類型：紅色、綠色和藍色。 紅色珠寶傾向於洗出近戰詞綴和物理防禦，綠色珠寶專注於弓、匕首、迴避等，藍色珠寶專注於法術者、能量護盾和召喚物。"
   ],
   [
     "A particularly valuable corruption result is the 'corrupting blood cannot be inflicted on you' implicit.",
@@ -3324,7 +3394,7 @@
   ],
   [
     "Murderous eye jewels focus on strength based attack builds, such as most melee builds, searching eyes benefit dexterity based attacks builds, hypnotic eye jewels have spellcaster mods and ghastly eye jewels on minion builds.",
-    "殺戮之眼珠寶專注於基於力量的攻擊流派，例如大多數近戰流派，勘查之眼有利於基於敏捷的攻擊流派，催眠之眼珠寶具有施法者詞綴，而極懼之眼珠寶則用於召喚流派。"
+    "殺戮之眼珠寶專注於基於力量的攻擊流派，例如大多數近戰流派，勘查之眼有利於基於敏捷的攻擊流派，催眠之眼珠寶具有法術者詞綴，而極懼之眼珠寶則用於召喚流派。"
   ],
   [
     "Generic jewels roll percentual life and defenses, while abyss jewels mostly focus on flat mod bonuses.",
@@ -3960,7 +4030,7 @@
   ],
   [
     "Leveling rare caster weapons",
-    "練等稀有施法武器"
+    "練等稀有法術武器"
   ],
   [
     "Leveling Rare Summoner Gear",
@@ -3968,7 +4038,7 @@
   ],
   [
     "Good Melee, Archer and Caster rares (especially weapons) are signalized using the red, green and blue backgrounds and borders while leveling. Note that this is not available on certain styles.",
-    "在練等時，良好的近戰、弓箭手和施法者稀有物品（尤其是武器）會使用紅色、綠色和藍色背景及邊框表示。請注意，某些樣式無法使用此功能。"
+    "在練等時，良好的近戰、弓箭手和法術的稀有物品（尤其是武器）會使用紅色、綠色和藍色背景及邊框表示。請注意，某些樣式無法使用此功能。"
   ],
   [
     "Leveling: 4-linked Items",
@@ -4033,10 +4103,6 @@
   [
     "Other Endgame Items",
     "其他終局物品"
-  ],
-  [
-    "Act 1 selected jewellery",
-    "第一章精選珠寶"
   ],
   [
     "Early Leveling Boots ilvl 12",
