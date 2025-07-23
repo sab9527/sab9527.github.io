@@ -1,5 +1,182 @@
 [
   [
+    "Note that filtering by mods is only possible for EXPLICIT mods of IDENTIFIED items! This excludes any labyrinth enchantments as those are implicit.",
+    "用來篩選已鑑定裝備詞綴的規則，帶有預設的好組合規則"
+  ],
+  [
+    "Attack Weapons",
+    "攻擊系武器"
+  ],
+  [
+    "Caster Weapons",
+    "法術系武器"
+  ],
+  [
+    "Gem Weapons",
+    "寶石等級系列武器"
+  ],
+  [
+    "Boots, Gloves, Helmets",
+    "鞋子、手套、頭盔"
+  ],
+  [
+    "Items with Corrupted Implicits",
+    "有好詞的裝備+瓦詞"
+  ],
+  [
+    "These items are identified, have several good mods and a corrupted implicit. Ideally with luck, these can roll mods like curses on hit, chain and extra projectiles.",
+    "好組合的稀有黃裝袋有一個瓦詞，可能有不錯的結果。"
+  ],
+  [
+    "Uncorrupted Single Valuable Mods",
+    "有單條高價值的裝備"
+  ],
+  [
+    "Heist Follower Equipment",
+    "劫盜 NPC 裝備"
+  ],
+  [
+    "Exceptional & Exotic Gems",
+    "卓越、特殊、覺醒寶石"
+  ],
+  [
+    "Awakened Gems",
+    "覺醒寶石 依價格"
+  ],
+  [
+    "Empower Class",
+    "卓越寶石 依等級"
+  ],
+  [
+    "Transfigured Gems",
+    "改造寶石(迷宮限定)"
+  ],
+  [
+    "Top Gems, high level and quality",
+    "高等級與高品質寶石"
+  ],
+  [
+    "These are compiled through economy data!",
+    "從忍者網抓取價格自洞分級"
+  ],
+  [
+    "Gems with Gem-Levels",
+    "一般寶石"
+  ],
+  [
+    "Gems during Campaign",
+    "章節中特殊顯示"
+  ],
+  [
+    "Vaal & Normal Gems",
+    "瓦爾版與自訂規則"
+  ],
+  [
+    "Exotic Unique Rules",
+    "額外傳奇規則"
+  ],
+  [
+    "Uniques with high Socket/Link Number",
+    "有高洞數和連結的傳奇"
+  ],
+  [
+    "Specific Uniques With Exotics Sockets",
+    "有特殊規則的傳奇"
+  ],
+  [
+    "Exotics: Replica Uniques",
+    "贗品傳奇"
+  ],
+ [
+    "Exotics: Abyss Sockets",
+    "帶有深淵插槽的傳奇"
+  ],
+  [
+    "Exotics: Influenced&Synthesized",
+    "追憶與特殊勢力傳奇"
+  ],
+  [
+    "Rational Doctrine Jewel",
+    "理性主義"
+  ],
+  [
+    "Synthesized Uniques",
+    "追憶"
+  ],
+  [
+    "This rule detects Circle of Guilt, Circle of Anguish, Circle of Fear, Circle of Nostalgia and Circle of Regret rings using the fact that they are Synthesised.",
+    "這邊主要用來篩選捷光環戒指，也可以透過新增基礎類型來篩選其他的追憶傳奇，如無常禮袍、銀河星雲等"
+  ],
+[
+    "You can detect other Synthesised uniques in this rule or in Rational Doctrine rule by adding their basetypes:",
+    " "
+  ],
+  [
+    "Garb of the Ephemeral: Savant's Robe",
+    " "
+  ],
+  [
+    "Mask of the Tribulan: Magistrate Crown",
+    " "
+  ],
+  [
+    "Nebulis: Void Sceptre",
+    " "
+  ],
+  [
+    "Offering to the Serpent: Legion Gloves",
+    " "
+  ],
+
+  [
+    "Exotics: Corrupted Uniques",
+    "已腐化的傳奇"
+  ],
+ [
+    "Triad Grip (4White)",
+    "4 白洞三弦"
+  ],
+  [
+    "Double corrupted uniques",
+    "雙瓦詞傳奇"
+  ],
+  [
+    "Corruption-Outcome Jewels",
+    "經腐化後才轉變的傳奇珠寶"
+  ],
+  [
+    "Uniques with corrupted implicit",
+    "有瓦詞的傳奇裝"
+  ],
+  [
+    "Exotics: Others",
+    "其他傳奇"
+  ],
+  [
+    "Beachhead Pieces",
+    "傳奇組件"
+  ],
+  [
+    "Adorned Jewel Pieces",
+    "假掰組件"
+  ],
+  [
+    "High Level Agnerod Staves",
+    "維克塔廣場組件"
+  ],
+  [
+    "Unique with Crucible Tree",
+    "有熔火冥獄(3.21)天賦的傳奇"
+  ],
+  [
+    "Exotics: Unique Maps",
+    "傳奇神諭第塗"
+  ],
+  [
+    "Highlight specific unique maps",
+    "傳奇自訂規則"
+  ],
+  [
     "Miscellaneous",
     "其他各類自訂規則"
   ],
@@ -25586,10 +25763,6 @@
   [
     "Font",
     "變更字型"
-  ],
-  [
-    "Transfigured Gems",
-    "變異寶石"
   ],
   [
     "Divination Scarab of Plenty",
