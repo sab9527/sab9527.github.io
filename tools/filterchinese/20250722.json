@@ -1,4 +1,70 @@
 [
+    [
+    "Overquality, Synthesised and Others",
+    "超高品質、追憶、其他"
+  ],
+    [
+    "Early endgame harvest bases",
+    "早期適合骰的基底"
+  ],
+    [
+    "Overquality (21+)",
+    "超高品質 (21+)"
+  ],
+    [
+    "Overquality Armours",
+    "超高品質 護甲"
+  ],
+    [
+    "Overquality Weapons",
+    "超高品質 武器"
+  ],
+    [
+    "Items can rarely drop uncorrupted with 20-30 quality. These rules look for the right combination of basetype, level and quality.",
+    "在很稀有的情況下會掉落隨機品質超越20的基底，這邊的規則用來篩選相關道具"
+  ],
+    [
+    "Optional Perfection-Based Tiering",
+    "高防禦基礎百分比的道具"
+  ],
+    [
+    "• Identified:",
+    "已鑑定："
+  ],
+    [
+    "Synth: Selected bases",
+    "追憶：依物品"
+  ],
+  [
+    "Synth: Selected Classes",
+    "追憶：依類型"
+  ],
+  [
+    "Synth: All Others",
+    "追憶：其他(上面沒有的類型可以在這邊調整)"
+  ],
+  [
+    "Economy-Based Expensive 86+ bases",
+    "依交易價值篩選 86 等基底"
+  ],
+  [
+    "This section contains all bases that are currently worth around 10++ chaos, no matter the rarity. Only atlas bases (and some exceptions) are allowed in this section.",
+    "此區域預設篩選約 10 c 以上的基底"
+  ],
+  [
+    "Noteworthy Corrupted Items",
+    "值得注意的腐化道具"
+  ],
+  [
+    "ItemLevel 80+ quivers can roll valuable chain corruptions. This rule helps detecting these.",
+    "物品等級 80 以上的箭袋可以瓦出箭矢連鎖，這邊規則可以篩選這類物品。"
+  ],
+
+
+
+  
+  
+  
   [
     "High level, specific crafting bases are in high demand early in the league and can be useful in SSF environments. This section handles non-influenced versions of these items.",
     "高物等的好基底在聯盟初期需求量比較大，在自立環境中也持續有需求，這裡篩選的是無勢力的一般裝備。"
@@ -3172,7 +3238,7 @@
   ],
   [
     "Synthesised items",
-    "0 敏捷"
+    "追憶物品"
   ],
   [
     "Special: Synthesis",
