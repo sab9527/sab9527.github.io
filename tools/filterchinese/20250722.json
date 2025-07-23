@@ -1,4 +1,115 @@
 [
+ [
+    "Campaign (below lvl 68)",
+    "章節 (區域低於68等)"
+  ],
+  [
+    "Add custom Show/Hide rules (campaign)",
+    "新增隱藏和顯示規則"
+  ],
+  [
+    "Augment the filter with entirely new rules, such as 'only show AR and AR/EV armors', 'highlight all rare axes' and 'hide all wands'",
+    "此區的規則會偏向大方向，盡量減少無關拓荒流派的低價值裝備。"
+  ],
+   [
+    "Highlight items by Base",
+    "依基底特別顯示"
+  ],
+  [
+    "Highlight items by Armour Type",
+    "依護甲類型特別顯示"
+  ],
+  [
+    "Highlight items by slot",
+    "依部位特別顯示"
+  ],
+  [
+    "Hide items by Armour Type",
+    "依護甲類型隱藏"
+  ],
+  [
+    "Hide items by slot",
+    "依部位隱藏"
+  ],
+    [
+    "Colors and Links",
+    ""
+  ],
+  [
+    "Chromatic Recipe Items",
+    "換色石配方"
+  ],
+  [
+    "Linked Gear",
+    "有連線的裝備"
+  ],
+  [
+    "Custom Linked item rules",
+    "自訂連線規則"
+  ],
+  [
+    "Custom Socket rules",
+    "自訂洞數/色規則"
+  ],
+  [
+    "Flask Progression",
+    "生命魔力藥劑"
+  ],
+  [
+    "This section combines 30 different rules that will highlight the best available life, mana and hybrid flasks, during your Campaign progress.",
+    "預設的規則已經有寫好了規則可顯示藥水，這裡主要調整樣式。"
+  ],
+  [
+    "Quality Flasks",
+    "品質藥劑"
+  ],
+  [
+    "Rare items",
+    "稀有裝備"
+  ],
+ [
+    "Jewellery & Armours",
+    "飾品和護甲"
+  ],
+ [
+    "Weapon Highlight",
+    "特別顯示武器"
+  ],
+  [
+    "Disabling any of the following sections will only remove the highlight (not hide the items). The rares will be caught under 'Remaining Rares'. It's recommended to only keep the parts on you care about.",
+    "停用以下的規則會在章節中移除特別顯示，但仍然會用一般樣式顯示由下一你需要的部分條規則處理，建議只留下你需要的部分。"
+  ],
+
+  [
+    "Melee 2H (progression)",
+    "雙手近戰武器"
+  ],
+  [
+    "Melee 1H (progression)",
+    "單手近戰武器"
+  ],
+  [
+    "Bows (progression)",
+    "弓"
+  ],
+  [
+    "Caster",
+    "法術"
+  ],
+  [
+    "Caster LVL1-16",
+    "法術 (物等1-16)"
+  ],
+  [
+    "Minion Gear",
+    "召喚物"
+  ],
+  [
+    "Remaining rares",
+    "其他規則"
+  ],
+
+
     [
     "Chancing is considered to be very inefficient by most PoE players, but some enjoy it a lot. Boss drops, recipe-exclusive or league exclusive drops can not be chanced.",
     "篩選可以點出高價傳奇的基底，效率非常低，非常非常低。不能點出各種限定掉落。"
