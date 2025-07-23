@@ -21,7 +21,7 @@
   ],
     [
     "Items can rarely drop uncorrupted with 20-30 quality. These rules look for the right combination of basetype, level and quality.",
-    "在很稀有的情況下會掉落隨機品質超越20的基底，這邊的規則用來篩選相關道具"
+    "在很稀有的情況下會掉落隨機品質超越20的基底，這邊的規則用來篩選相關道具。"
   ],
     [
     "Optional Perfection-Based Tiering",
@@ -59,11 +59,60 @@
     "ItemLevel 80+ quivers can roll valuable chain corruptions. This rule helps detecting these.",
     "物品等級 80 以上的箭袋可以瓦出箭矢連鎖，這邊規則可以篩選這類物品。"
   ],
+  [
+    "Special Veiled Items",
+    "特殊隱匿道具"
+  ],
+  [
+    "Other Exotic Scenarios",
+    "其他特殊物品"
+  ],
+  [
+    "3 White sockets",
+    "3 白洞"
+  ],
+    [
+    "6 White sockets",
+    "6 白洞"
+  ],
+    [
+    "This is mostly relevant for heist-based drops",
+    "附魔：大部分是劫盜的產物。"
+  ],
+  [
+    "Enchanted items",
+    "附魔道具"
+  ],
+  [
+    "30% Quality items can sometimes be dropped by conversion rares or in heist encounters",
+    "30 品質的道具有時是稀有怪的詞綴轉換後掉落，有時候是劫盜產物。"
+  ],
+  [
+    "Items that have a fractured and veiled mod. It is NOT garantueed that the veiled mod is the fractured one",
+    "含有破裂和隱匿詞的道具，不代表破裂的是隱匿詞。"
+  ],
+  [
+    "Fractured+Veiled/Incursion Items",
+    "破裂+隱匿/穿越(神廟)道具"
+  ],
+  [
+    "Fractured Exotic Classes",
+    "特殊破裂-珠寶、藥劑、劫盜NPC裝備"
+  ],
+  [
+    "Memory Strands and Veiled Mod",
+    "記憶絲縷+隱匿詞"
+  ],
+  [
+    "Memory Strands and Fractured Mod",
+    "記憶絲縷+破裂"
+  ],
+  [
+    "Necropolis items with Necropolis-Exclusive mods are highlighted using this rule",
+    "Necropolis道具 新聯盟不會有"
+  ],
 
 
-
-  
-  
   
   [
     "High level, specific crafting bases are in high demand early in the league and can be useful in SSF environments. This section handles non-influenced versions of these items.",
