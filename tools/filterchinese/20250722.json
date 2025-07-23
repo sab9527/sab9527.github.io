@@ -1,5 +1,50 @@
 [
   [
+    "Misc. Items",
+    "其他雜項"
+  ],
+  [
+    "Fishing Rod and Bricked Uniques",
+    "釣魚道具和特殊篩選用"
+  ],
+  [
+    "Bricked Uniques",
+    "特殊基底傳奇"
+  ],
+  [
+    "Will highlight exotic bases bricked into a rare, such as 'Kalandra's Touch'. May generate a lifetime supply of salt if that happens. You're welcome.",
+    "用以篩選部分特別基底的傳奇"
+  ],
+  [
+    "Quest & quest-like items",
+    "任務道具、虛空石、迷宮物品"
+  ],
+  [
+    "Legacy of Phrecia - Idols",
+    "費西亞魔偶"
+  ],
+  [
+    "Misc. Currency",
+    "其他通貨"
+  ],
+  [
+    "Harbinger Upgrade Tokens",
+    "神諭傳奇升級卷軸"
+  ],
+  [
+    "Misc Currency",
+    "拓印、還原"
+  ],
+  [
+    "Untiered Items",
+    "防呆篩選"
+  ],
+  [
+    "You should never see these items. Either your filter is outdated or there is a problem in your filter.",
+    "正常情況下不會看到這類篩選，有的話代表你過濾器應該更新了。"
+  ],
+
+  [
     "Note that filtering by mods is only possible for EXPLICIT mods of IDENTIFIED items! This excludes any labyrinth enchantments as those are implicit.",
     "用來篩選已鑑定裝備詞綴的規則，帶有預設的好組合規則"
   ],
