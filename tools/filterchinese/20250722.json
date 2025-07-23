@@ -1,5 +1,37 @@
 [
   [
+    "Miscellaneous",
+    "其他各類自訂規則"
+  ],
+  [
+    "Add additional Show/Hide rules",
+    "新增額外的顯示或是隱藏規則"
+  ],
+  [
+    "Use this section to add exotic rules and exception. This section is NOT foolproof, you can accidentally hide valuable items by misusing it. With great power comes great responsibility.",
+    "使用任何的自訂規則之前必須確保你不會影藏到任何其他物品。"
+  ],
+  [
+    "Add Basetype-Based Rules",
+    "新增依基底類型顯示的規則"
+  ],
+  [
+    "Add Class-Based Rules",
+    "新增依種類顯示的規則"
+  ],
+  [
+    "Add Mod-Filtering Rule",
+    "新增依詞綴顯示的規則"
+  ],
+  [
+    "Add Armour-Type-Based Rules",
+    "新增依護甲類型顯示的規則"
+  ],
+  [
+    "Add Misc. Rules",
+    "新增其他規則"
+  ],
+  [
     "Act- & Build-specific items",
     "章節中依流派特殊顯示規則"
   ],
@@ -29,11 +61,11 @@
   ],
   [
     "Act 2 and 3 are fairly lightning heavy. Topaz rings are a good opportunity to boost your defenses, when rushing.",
-    "Act 2 和 3 有比較多的閃電傷害 換上電抗戒指不錯。"
+    "Act 2 和 3 有比較多的閃電傷害，換上電抗戒指不錯。"
   ],
   [
     "Acts 4-6 contain a lot of deadly fire damage sources. Ruby rings help a lot. After act 5 you want keep your resistances as high as possible. Consider throwing an essence or even an alchemy orb on one of these!",
-    "Acts 4 到 6 有比較多的火焰傷害 換上火炕戒指不錯，第 5 張後需要注意維持抗性。"
+    "Acts 4 到 6 有比較多的火焰傷害，換上火抗戒指不錯，第 5 張後需要注意維持抗性。"
   ],
   [
     "Summoner gear",
@@ -55,12 +87,6 @@
     "Magic items and normal early on provide sockets, base defenses and magics can be sold for shards. It's not recommended to adjust these unless you know what you're doing",
     "魔法和普通裝備在前期可以幫助解決洞色和出售換取通貨碎片，不建議新手隨意調整。"
   ],
-
-
-
-
-
-
  [
     "Campaign (below lvl 68)",
     "章節 (區域低於68等)"
@@ -2173,8 +2199,13 @@
     "我的過濾器"
   ],
   [
+    "Weapon Classes",
+    "武器類型"
+  ],
+
+  [
     "system instead of re-uploading files!.",
-    "系統，而不是重新上傳檔案！。"
+    "系統不再重新上傳檔案！。"
   ],
   [
     "I understand",
