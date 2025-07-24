@@ -1,4 +1,20 @@
 [
+[
+    "Press Ctrl +",
+    "按下 Ctrl +"
+  ],
+  [
+    "+ C while hovering over an item in your PoE inventory to copy it. Then, paste into this box to import that item into FilterBlade.",
+    "+ C 將遊戲內的物品資訊複製到下方的欄位 可以預覽樣式和找到相關的過濾規則"
+  ],
+  [
+    "This will let you see the rule that caught this item, what that rule is for and directly edit it.",
+    "可以進行修改。(只能辨識英文資料，台服和中文化不行。)"
+  ],
+  [
+    "Please note that this module cannot detect",
+    "有一些小部分無法辨識>>"
+  ],
   [
     "Add rule",
     "新增規則"
@@ -791,7 +807,7 @@
   ],
   [
     "Influenced GearTypes - Hunter",
-    "就竹"
+    "狩獵者"
   ],
   [
     "Influenced GearTypes - Warlord",
@@ -1341,6 +1357,10 @@
   [
     "Maps - Highlight and Hide",
     "輿圖地圖"
+  ],
+  [
+    "Highlight & Hide based on Map Properties",
+    "顯示或隱藏特定條件"
   ],
   [
     "This does NOT affect shaped, elder, guardian, unique and other special maps.",
