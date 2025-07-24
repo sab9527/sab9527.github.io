@@ -1,5 +1,169 @@
 [
   [
+    "Add rule",
+    "新增規則"
+  ],
+  [
+    "Remove rule",
+    "移除規則"
+  ],
+  [
+    "Add condition",
+    "新增條件"
+  ],
+  [
+    "Remove condition",
+    "移除條件"
+  ],
+[
+    "Basics",
+    "基礎規則"
+  ],
+  [
+    "Class",
+    "類型"
+  ],
+  [
+    "DropLevel",
+    "掉落等級"
+  ],
+  [
+    "Width",
+    "寬度"
+  ],
+  [
+    "Height",
+    "高度"
+  ],
+  [
+    "AreaLevel",
+    "區域等級"
+  ],
+  [
+    "BaseEnergyShield",
+    "基礎能量護盾"
+  ],
+  [
+    "BaseEvasion",
+    "基礎閃避值"
+  ],
+  [
+    "BaseArmour",
+    "基礎護甲值"
+  ],
+  [
+    "BaseWard",
+    "基礎保護值"
+  ],
+  [
+    "BaseDefencePercentile",
+    "防禦值基礎百分比"
+  ],
+  [
+    "Flags",
+    "特殊"
+  ],
+  [
+    "ZanaMemory",
+    "開創者(札那記憶)"
+  ],
+  [
+    "Identified",
+    "已鑑定"
+  ],
+  [
+    "FracturedItem",
+    "破裂道具"
+  ],
+  [
+    "SynthesisedItem",
+    "追憶道具"
+  ],
+  [
+    "AnyEnchantment",
+    "任何附魔"
+  ],
+  [
+    "HasCruciblePassiveTree",
+    "熔火天賦"
+  ],
+  [
+    "HasImplicitMod",
+    "有固定詞"
+  ],
+  [
+    "Replica",
+    "贗品"
+  ],
+  [
+    "Scourged",
+    "災魘轉化"
+  ],
+[
+    "MapTier",
+    "地圖階級"
+  ],
+  [
+    "BlightedMap",
+    "凋落地圖"
+  ],
+  [
+    "UberBlightedMap",
+    "凋落蔓延"
+  ],
+[
+    "Sockets",
+    "洞數"
+  ],
+  [
+    "LinkedSockets",
+    "連線數"
+  ],
+  [
+    "SocketGroup",
+    "指定顏色"
+  ],
+  [
+    "Implicits, Influences & Mods",
+    "固定詞、勢力、詞綴"
+  ],
+  [
+    "HasExplicitMod",
+    "隨機詞綴"
+  ],
+  [
+    "HasInfluence",
+    "勢力"
+  ],
+  [
+    "HasSearingExarchImplicit",
+    "有灼烙總督固定詞"
+  ],
+  [
+    "HasEaterOfWorldsImplicit",
+    "有吞噬天地固定詞"
+  ],
+[
+    "Other",
+    "其他"
+  ],
+  [
+    "MemoryStrands",
+    "記憶絲縷"
+  ],
+  [
+    "EnchantmentPassiveNode",
+    "星團種類"
+  ],
+  [
+    "CorruptedMods",
+    "腐化詞綴"
+  ],
+  [
+    "EnchantmentPassiveNum",
+    "星團小點數量"
+  ],
+  [
     "Optional filter modules",
     "額外選項"
   ],
@@ -451,10 +615,6 @@
     [
     "Flasks & Tinctures",
     "藥劑和萃取物"
-  ],
-  [
-    "Since PoE 3.16, the base value for defences on all gear pieces can roll. Meaning the same base can have varying Armour values. Perfection is used to see how good the roll is on a scale from 1 to 100.",
-    "物等 85 的藥劑可以骰出所有詞綴的最高階級。"
   ],
   [
     "High Level Utility Flasks",
@@ -1042,7 +1202,7 @@
   ],
   [
     "• Sockets (total):",
-    "洞數顏色"
+    "洞數"
   ],
   [
     "• Corrupts:",
@@ -1588,11 +1748,6 @@
     "Essences",
     "精髓"
   ],
-  [
-    "Highlight Essences by type",
-    ""
-  ],
-
   [
     "Large Stacks",
     "大堆疊"
