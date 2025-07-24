@@ -1,5 +1,57 @@
 [
-[
+  [
+    "Optional",
+    "選像"
+  ],
+  [
+    "Public",
+    "公開"
+  ],
+  [
+    "(?)",
+    "公開的作用"
+  ],
+  [
+    "Public filters can be shared and accessed on your profile. Private ones are only available to you.",
+    "公開後可以在上方的 Profile 區域將過濾器分享給別人"
+  ],
+  [
+    "Description",
+    "過濾器說明"
+  ],
+  [
+    "After saving, you can go to",
+    "儲存之後可以在"
+  ],
+  [
+    "later to continue customizing or updating it.",
+    "載入繼續編輯"
+  ],
+  [
+    "When we release a new filter version, just go to 'My Filters', load your filter and export it again.",
+    "當過濾器自動更新後可以回到網站重新載入之後就會自動套用最新的改動"
+  ],
+  [
+    "Load by default",
+    "當每次進入網站時候自動載入這個過濾器"
+  ],
+  [
+    "Frequently used text colors:",
+    "常用到的文字顏色"
+  ],
+  [
+    "Frequently used text colors:",
+    "常用到的邊框顏色"
+  ],
+  [
+    "Frequently used background colors:",
+    "常用到的背景顏色"
+  ],
+  [
+    "Frequently used sounds:",
+    "常用音效"
+  ],
+  [
     "Press Ctrl +",
     "按下 Ctrl +"
   ],
@@ -2180,7 +2232,7 @@
   ],
   [
     "STYLE",
-    "風格"
+    "風格(一次調整大量外觀與音效)"
   ],
   [
     "ADVANCED",
@@ -2525,7 +2577,7 @@
   ],
   [
     "Review changes",
-    "檢閱變更"
+    "檢閱變更(檢查所有你親手變更的規則)"
   ],
   [
     "Visualize every single change that you customized in the currently active filter.",
@@ -2537,7 +2589,7 @@
   ],
   [
     "About the filter",
-    "關於過濾器"
+    "過濾器整體效果檢視與風格變化"
   ],
   [
     "Clicking the buttons below will compare how your current filter will look like with different strictnesses or styles. It will not actively change your current filter. You can change the used style or strictness without losing any changes on the Overview tab afterwards.",
@@ -2726,7 +2778,7 @@
   ],
   [
     "Individual files",
-    "個別檔案"
+    "壓縮檔"
   ],
   [
     "SUPPORT US",
