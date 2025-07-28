@@ -304,6 +304,14 @@ document.addEventListener('DOMContentLoaded', function() {
         negativeCopyBtn.addEventListener('click', function() {
             handleCopy(negativeCopyBtn, negativeRegexOutput.textContent);
             launchEasterEgg();
+        });
+    }
+    const orCopyBtn = document.getElementById('orCopyBtn');
+    if (orCopyBtn) {
+        orCopyBtn.addEventListener('click', function() {
+            handleCopy(orCopyBtn, document.getElementById('orRegexOutput').textContent);
+        });
+    }
 // 彩蛋功能：複製時噴出圖片拋物線動畫
 function launchEasterEgg() {
     // 5%機率：連續射出20個神聖石
@@ -388,8 +396,7 @@ function launchDivineRain() {
     shoot();
 }
         });
-    }
-    document.querySelectorAll('.tab-btn').forEach(btn => {
+       document.querySelectorAll('.tab-btn').forEach(btn => {
         btn.addEventListener('click', function() {
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
             this.classList.add('active');
@@ -414,6 +421,8 @@ function launchDivineRain() {
                 if (el) el.value = '';
             });
             document.getElementById('filterRegexOutput').textContent = '';
+            document.getElementById('orRegexOutput').textContent = '';
+            document.getElementById('negativeRegexOutput').textContent = '';
         });
     }
     // ===== 儲存組合功能區 =====
@@ -497,14 +506,14 @@ function launchDivineRain() {
             }
         }
         if (data.filter) {
-            document.getElementById('filter-quantity').value = data.filter.quantity || '';
-            document.getElementById('filter-rarity').value = data.filter.rarity || '';
-            document.getElementById('filter-pack').value = data.filter.pack || '';
-            document.getElementById('filter-map').value = data.filter.map || '';
-            document.getElementById('filter-scarab').value = data.filter.scarab || '';
-            document.getElementById('filter-currency').value = data.filter.currency || '';
-            updateFilterRegex();
-        }
+                document.getElementById('filter-quantity').value = data.filter.quantity || '';
+                document.getElementById('filter-rarity').value = data.filter.rarity || '';
+                document.getElementById('filter-pack').value = data.filter.pack || '';
+                document.getElementById('filter-map').value = data.filter.map || '';
+                document.getElementById('filter-scarab').value = data.filter.scarab || '';
+                document.getElementById('filter-currency').value = data.filter.currency || '';
+                updateFilterRegex(); // 確保在載入篩選數據後更新正則
+            }
         if (data.tab) {
             currentModFile = data.tab;
             document.querySelectorAll('.tab-btn').forEach(btn => {
@@ -530,6 +539,12 @@ function launchDivineRain() {
                 currentLoadKey = key;
                 loadDialogTitle.textContent = key;
                 loadDialog.style.display = 'flex';
+            });
+            div.addEventListener('mouseover', function(e) {
+                showSavePreview(saves[key], e);
+            });
+            div.addEventListener('mouseout', function() {
+                hideSavePreview();
             });
             saveList.appendChild(div);
         });
@@ -600,8 +615,134 @@ function launchDivineRain() {
             loadDialog.style.display = 'none';
         });
     }
+
+    // 預覽視窗元素
+    let previewTooltip = null;
+
+    function showSavePreview(data, event) {
+        if (!previewTooltip) {
+            previewTooltip = document.createElement('div');
+            previewTooltip.id = 'savePreviewTooltip';
+            previewTooltip.style.cssText = `
+                position: fixed;
+                background-color: rgba(30, 30, 30, 0.9);
+                border: 1px solid #555;
+                padding: 10px;
+                border-radius: 5px;
+                color: #eee;
+                font-size: 0.9em;
+                pointer-events: none;
+                z-index: 10000;
+                max-width: 300px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                display: none;
+            `;
+            document.body.appendChild(previewTooltip);
+        }
+
+        let content = '';
+
+        // 顯示「篩有任意一詞」部分
+        if (data.allChecked) {
+            let allKeys = [];
+            Object.keys(data.allChecked).forEach(modFile => {
+                (data.allChecked[modFile] || []).forEach(idx => {
+                    // 這裡需要從 allRegexKeys 獲取實際的 key
+                    // 但由於 allRegexKeys 是全域變數，且在載入時會被覆蓋，
+                    // 所以這裡需要一個更穩健的方式來獲取儲存時的 key。
+                    // 暫時先假設 allRegexKeys 在此時是正確的，或者需要重新設計儲存結構。
+                    // 為了預覽，我們直接使用儲存的 allChecked 索引來嘗試獲取 key
+                    if (allRegexKeys[modFile] && allRegexKeys[modFile][idx]) {
+                        allKeys.push(allRegexKeys[modFile][idx]);
+                    }
+                });
+            });
+            if (allKeys.length > 0) {
+                content += `<div><b>篩選:</b> ${[...new Set(allKeys)].join(' | ')}</div>`;
+            }
+        }
+
+        // 顯示獎勵詞篩選中填入的數字
+        if (data.filter) {
+            let filterParts = [];
+            if (data.filter.quantity) filterParts.push(`數量: ${data.filter.quantity}`);
+            if (data.filter.rarity) filterParts.push(`稀有度: ${data.filter.rarity}`);
+            if (data.filter.pack) filterParts.push(`怪物群: ${data.filter.pack}`);
+            if (data.filter.map) filterParts.push(`地圖: ${data.filter.map}`);
+            if (data.filter.scarab) filterParts.push(`聖甲蟲: ${data.filter.scarab}`);
+            if (data.filter.currency) filterParts.push(`通貨: ${data.filter.currency}`);
+            if (filterParts.length > 0) {
+                content += `<div><b>獎勵詞篩選:</b> ${filterParts.join(', ')}</div>`;
+            }
+        }
+
+        if (content) {
+            previewTooltip.innerHTML = content;
+            previewTooltip.style.display = 'block';
+
+            // 定位預覽視窗
+            const x = event.clientX + 15; // 稍微偏離滑鼠位置
+            const y = event.clientY + 15;
+
+            previewTooltip.style.left = `${x}px`;
+            previewTooltip.style.top = `${y}px`;
+
+            // 確保預覽視窗不會超出螢幕邊界
+            const rect = previewTooltip.getBoundingClientRect();
+            if (rect.right > window.innerWidth) {
+                previewTooltip.style.left = `${event.clientX - rect.width - 15}px`;
+            }
+            if (rect.bottom > window.innerHeight) {
+                previewTooltip.style.top = `${event.clientY - rect.height - 15}px`;
+            }
+        } else {
+            hideSavePreview();
+        }
+    }
+
+    function hideSavePreview() {
+        if (previewTooltip) {
+            previewTooltip.style.display = 'none';
+        }
+    }
+
+    // 實現 updateFilterRegex 函數
+    function updateFilterRegex() {
+        const quantity = document.getElementById('filter-quantity').value;
+        const rarity = document.getElementById('filter-rarity').value;
+        const pack = document.getElementById('filter-pack').value;
+        const map = document.getElementById('filter-map').value;
+        const scarab = document.getElementById('filter-scarab').value;
+        const currency = document.getElementById('filter-currency').value;
+
+        let filterParts = [];
+        if (quantity) filterParts.push(`"MapQuantity":"${quantity}",`);
+        if (rarity) filterParts.push(`"MapRarity":"${rarity}",`);
+        if (pack) filterParts.push(`"PackSize":"${pack}",`);
+        if (map) filterParts.push(`"MapTier":"${map}",`);
+        if (scarab) filterParts.push(`"ScarabQuantity":"${scarab}",`);
+        if (currency) filterParts.push(`"CurrencyQuantity":"${currency}",`);
+
+        let filterRegex = '';
+        if (filterParts.length > 0) {
+            filterRegex = `{
+  "Filter": {
+    ${filterParts.join('\n    ')}
+  }
+}`; // 修正字串格式
+        }
+
+        document.getElementById('filterRegexOutput').textContent = filterRegex;
+        // 這裡可能還需要更新 orRegexOutput 和 negativeRegexOutput，取決於它們的邏輯
+        // 例如：
+        // updateOrRegex();
+        // updateNegativeRegex();
+    }
+
     renderSaveList();
-});
+    loadMods(currentModFile);
+
+
 // 頁面初始載入
 window.onload = async function() {
     try {
@@ -656,6 +797,9 @@ function updateFilterRegex() {
     if (s) regexArr.push(buildRegex('蟲', s));
     if (c) regexArr.push(buildRegex('貨', c));
     document.getElementById('filterRegexOutput').textContent = regexArr.filter(Boolean).join(' | ');
+    const orArr = regexArr.filter(Boolean);
+    const orStr = orArr.length > 0 ? orArr.join('|') : '';
+    document.getElementById('orRegexOutput').textContent = orStr;
 }
 // 進階篩選 input 綁定
 ['filter-quantity','filter-rarity','filter-pack','filter-map','filter-scarab','filter-currency'].forEach(id => {

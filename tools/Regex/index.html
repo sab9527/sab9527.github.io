@@ -37,7 +37,7 @@
             </div>
             <div class="checkbox-container" id="modList"></div>
         </div>
-        <div class="right-panel yellow-border-left">
+        <div class="top-right-section yellow-border-left">
             <div class="main-regex-section">
                 <div class="main-regex-header">
                     <span class="output-title">篩有任意一詞的</span>
@@ -48,6 +48,9 @@
                 </div>
                 <div class="output" id="regexOutput"></div>
             </div>
+            <div class="contact-section">有問題或建議或想斗內我可以私我 Discord <b>sab9453</b></div>
+        </div>
+        <div class="bottom-right-section yellow-border-left">
             <div class="filter-section">
                 <div class="filter-header">
                     <span class="filter-title">獎勵詞篩選</span>
@@ -85,6 +88,15 @@
                 <div class="filter-desc">請輸入最低需要數值。</div>
                 <div id="filterRegexOutput" class="filter-output"></div>
             </div>
+            <div class="main-regex-section" id="orRegexSection">
+                <div class="main-regex-header">
+                    <span class="output-title">獎勵詞任意一達標</span>
+                    <div class="btn-group">
+                        <button class="copy-btn" id="orCopyBtn">複製</button>
+                    </div>
+                </div>
+                <div class="output" id="orRegexOutput"></div>
+            </div>
             <div class="main-regex-section" id="negativeRegexSection">
                 <div class="main-regex-header">
                     <span class="output-title">獎勵詞達標排除所有選取詞條</span>
@@ -94,7 +106,6 @@
                 </div>
                 <div class="output" id="negativeRegexOutput"></div>
             </div>
-            <div class="contact-section">有問題回報或建議或想斗內我可以私我discord <b>sab9453</b></div>
         </div>
     </div>
     <div id="saveDialog" class="save-dialog" style="display:none">
