@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POE 選角階段</title>
+    <link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="background-image"></div>
+    <div id="content">
+        <button id="start-button">開始</button>
+        <div id="animation-area" style="display: none;"></div>
+        <div id="dice-area" style="display: none;">
+            <div id="team1-dice" class="dice"></div>
+            <div id="team2-dice" class="dice"></div>
+        </div>
+        <div id="teams-block">
+            <div id="team1" class="team">
+                <div class="logo-container">
+                    <img src="team1_logo.png" alt="Team 1 Logo" class="logo">
+                </div>
+                <div class="selections"></div>
+            </div>
+            <div id="team2" class="team">
+                <div class="logo-container">
+                    <img src="team2_logo.png" alt="Team 2 Logo" class="logo">
+                </div>
+                <div class="selections"></div>
+            </div>
+        </div>
+        <div id="ascensions" style="display: none;">
+            <!-- 昇華圖片將由JS動態載入 -->
+        </div>
+        <div id="progress" style="display: none;">
+            <!-- 進度UI -->
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

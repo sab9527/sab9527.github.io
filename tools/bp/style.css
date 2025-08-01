@@ -1,0 +1,516 @@
+/* POE 選角階段 CSS 樣式 */
+
+* {
+    font-family: 'Noto Sans TC', '思源黑體', Arial, sans-serif !important; /* 使用 !important 來強制覆蓋 */
+}
+
+/* 全局樣式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* 背景圖片區塊 */
+#background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('back.gif');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: brightness(0.25) contrast(1.1);
+    z-index: -1; /* 確保背景在最底層 */
+}
+
+/* 內容區塊 */
+#content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1; /* 確保內容在背景之上 */
+}
+
+/* 開始按鈕 */
+#start-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 15px 40px;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(135deg, #6ecc21, #2980b9);
+    border: none;
+    border-radius: 50px;
+    box-shadow: 0 0 20px rgba(106, 141, 102, 0.7);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+#start-button:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+    box-shadow: 0 0 30px rgba(52, 152, 219, 0.9);
+}
+
+/* 骰子區域 */
+#dice-area {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: space-around;
+    width: 300px;
+    height: 150px;
+    z-index: 5;
+}
+
+/* 骰子樣式 */
+.dice {
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    padding: 10px;
+    transition: transform 0.3s ease;
+}
+
+.dice.rolling {
+    animation: roll 0.2s infinite alternate;
+}
+
+.dice.hidden-border {
+    border: 2px solid transparent;
+}
+
+@keyframes roll {
+    0% { transform: rotate(-5deg); }
+    100% { transform: rotate(5deg); }
+}
+
+/* 骰子點 */
+.pip {
+    width: 15px;
+    height: 15px;
+    background-color: #000000;
+    border-radius: 50%;
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.5);
+    justify-self: center;
+    align-self: center;
+}
+
+/* 確認選擇按鈕 */
+#enter-selection-button {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    padding: 12px 30px;
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(135deg, #3c89e0, #a33232);
+    border: none;
+    border-radius: 50px;
+    box-shadow: 0 0 15px rgba(243, 156, 18, 0.7);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+#enter-selection-button:hover {
+    transform: translate(-50%, 0) scale(1.1);
+    box-shadow: 0 0 25px rgba(243, 156, 18, 0.9);
+}
+
+/* 隊伍區塊 */
+#teams-block {
+width: 90vw;
+    max-width: 14000px;
+    margin: 0 auto;
+    display: flex
+;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    background: rgba(30, 30, 50, 0.85);
+    border-radius: 30px;
+    box-shadow: 0 0 40px 10px rgba(0, 255, 255, 0.15);
+    padding: 40px 30px 30px 30px;
+    gap: 40px;
+    position: absolute;
+    top: 200px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+/* 隊伍子區塊 */
+.team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 45%;
+    padding: 15px;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+#team1 {
+    background-color: rgba(52, 152, 219, 0.3);
+}
+
+#team2 {
+    background-color: rgba(231, 76, 60, 0.3);
+}
+
+.team.active-pick {
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+    transform: scale(1.05);
+}
+
+/* 結算介面樣式 */
+#result-title {
+    color: #fff;
+    font-size: 48px;
+    text-align: center;
+    margin-bottom: 30px;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.team-title {
+    color: #fff;
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 20px;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+.ascension-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    width: 100%;
+}
+
+.ascension-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.ascension-item:hover {
+    transform: scale(1.05);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.ascension-item img {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.ascension-item .ascension-name {
+    color: #fff;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+/* 隊伍標誌圖片 */
+.logo {
+    width: 165px;
+    height: 165px;
+    border-radius: 50%;
+    border: 0px solid #fff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+    position: relative; /* Add this for positioning the fire effect */
+    z-index: 2; /* Ensure logo is above the fire effect */
+}
+
+.logo-container {
+    position: relative;
+    width: 175px; /* Slightly larger than logo to act as border */
+    height: 175px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    background-image: url('FIRE.gif');
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    overflow: hidden; /* Hide overflow of the gif */
+    box-shadow: 0 0 15px rgb(255, 255, 255); /* Orange glow for fire */
+    z-index: 1;
+}
+
+.logo.active-pick {
+    border: 4px solid gold;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.8); }
+    50% { box-shadow: 0 0 30px rgba(255, 215, 0, 1); }
+    100% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.8); }
+}
+
+/* 選擇項容器 */
+.selections {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.selections img {
+    width: 165px;
+    height: 80px;
+    border-radius: 0px;
+    border: px solid white;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.selections img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+/* 升華使區塊 */
+#ascensions {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1200px;
+    background-color: rgba(48, 47, 47, 0.7);
+    border-radius: 15px;
+    padding: 20px;
+    max-height: 40vh;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.ascension-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.ascension-container:hover {
+    transform: scale(1.1);
+}
+
+.ascension-container img {
+    width: 200px;
+    height: 100px;
+    border-radius: 10px;
+    border: 2px solid rgb(92, 196, 132);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.ascension-name {
+    margin-top: 5px;
+    color: rgb(126 246 152);
+    font-size: 25px;
+    text-align: center;
+    text-shadow: 0px 0px 0px rgb(0 0 0);
+    font-family: 'Noto Sans CJK' !important;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+
+}
+
+/* 進度條區塊 */
+#progress {
+    position: absolute;
+    top: 1%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: flex-start;
+    gap: 5px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+    width: 69%;
+    max-width: 1385px;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgb(255 255 255 / 50%) rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border: 10px solid rgba(255, 255, 255, 0.1);
+/* 進度步驟 */
+.progress-step {
+    min-width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    backdrop-filter: blur(5px);
+    margin: 0 5px;
+}
+
+.progress-step::after {
+    content: '';
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.progress-step:last-child::after {
+    display: none;
+}
+
+.progress-step .team-label {
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    text-shadow: 0 0 3px black;
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+}
+
+.progress-step span:last-child {
+    font-size: 18px;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    text-shadow: 0 0 3px black;
+    opacity: 0.9;
+}
+
+/* 進度步驟激活狀態 */
+.progress-step.active {
+    background: linear-gradient(135deg, #f1c40f, #f39c12);
+    border: 2px solid rgba(255, 215, 0, 0.8);
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+    transform: scale(1.1) translateY(-5px);
+    z-index: 2;
+}
+
+.progress-step.active::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 12px;
+    padding: 2px;
+    background: linear-gradient(45deg, #ffd700, #ffa500);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+}
+
+/* 隊伍1進度步驟 */
+.progress-step.team1 {
+    background: linear-gradient(135deg, rgba(29, 108, 226, 0.8), rgba(41, 128, 185, 0.8));
+}
+
+/* 隊伍2進度步驟 */
+.progress-step.team2 {
+    background: linear-gradient(135deg, rgba(211, 113, 102, 0.8), rgba(192, 57, 43, 0.8));
+}
+
+/* 自定義進度條滾動條 */
+#progress::-webkit-scrollbar {
+    height: 6px;
+}
+
+#progress::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 3px;
+}
+
+#progress::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+#progress::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.7);
+}
+
+/* 動畫區域 */
+#animation-area {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 20;
+    pointer-events: none;
+}
+
+/* 自定義滾動條 */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.7);
+} }
