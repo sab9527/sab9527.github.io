@@ -1,5 +1,37 @@
 [
   [
+    "Current League: 3.27 Keepers of the Flame",
+    "當前聯盟：3.27 暗焰守護者"
+  ],
+  [
+    "Add Custom Graft Rule",
+    "新增 接肢 (移植物) 規則"
+  ],
+  [
+    "High Level Crafting Bases",
+    "高物等做裝底材"
+  ],
+  [
+    "Fractured Items",
+    "破裂物品"
+  ],
+  [
+    "Memory-Stranded Items",
+    "記憶絲縷裝備"
+  ],
+  [
+    "Overquality, Synthesized & Other Items",
+    "超高品質、追憶、其他"
+  ],
+  [
+    "Blight Oils",
+    "凋落油"
+  ],
+  [
+    "Harvest Lifeforce",
+    "豐收命能"
+  ],
+  [
     "Optional",
     "選項"
   ],
@@ -32,7 +64,7 @@
     "當過濾器自動更新後可以回到網站重新載入之後就會自動套用最新的改動"
   ],
   [
-    "Load by default",
+    "Load by defau lt",
     "當每次進入網站時候自動載入這個過濾器"
   ],
   [
