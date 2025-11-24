@@ -115,7 +115,7 @@
     "Remove condition",
     "移除條件"
   ],
-[
+  [
     "Basics",
     "基礎規則"
   ],
@@ -199,7 +199,7 @@
     "Scourged",
     "災魘轉化"
   ],
-[
+  [
     "MapTier",
     "地圖階級"
   ],
@@ -211,7 +211,7 @@
     "UberBlightedMap",
     "凋落蔓延"
   ],
-[
+  [
     "Sockets",
     "洞數"
   ],
@@ -243,7 +243,7 @@
     "HasEaterOfWorldsImplicit",
     "有吞噬天地固定詞"
   ],
-[
+  [
     "Other",
     "其他"
   ],
@@ -323,7 +323,6 @@
     "You should never see these items. Either your filter is outdated or there is a problem in your filter.",
     "正常情況下不會看到這類篩選，有的話代表你過濾器應該更新了。"
   ],
-
   [
     "Note that filtering by mods is only possible for EXPLICIT mods of IDENTIFIED items! This excludes any labyrinth enchantments as those are implicit.",
     "用來篩選已鑑定裝備詞綴的規則，帶有預設的好組合規則"
@@ -412,7 +411,7 @@
     "Exotics: Replica Uniques",
     "贗品傳奇"
   ],
- [
+  [
     "Exotics: Abyss Sockets",
     "帶有深淵插槽的傳奇"
   ],
@@ -432,7 +431,7 @@
     "This rule detects Circle of Guilt, Circle of Anguish, Circle of Fear, Circle of Nostalgia and Circle of Regret rings using the fact that they are Synthesised.",
     "這邊主要用來篩選捷光環戒指，也可以透過新增基礎類型來篩選其他的追憶傳奇，如無常禮袍、銀河星雲等"
   ],
-[
+  [
     "You can detect other Synthesised uniques in this rule or in Rational Doctrine rule by adding their basetypes:",
     " "
   ],
@@ -452,12 +451,11 @@
     "Offering to the Serpent: Legion Gloves",
     " "
   ],
-
   [
     "Exotics: Corrupted Uniques",
     "已腐化的傳奇"
   ],
- [
+  [
     "Triad Grip (4White)",
     "4 白洞三弦"
   ],
@@ -545,11 +543,11 @@
     "Magic boots (for movement speed)",
     "魔法 鞋子(找移動速度)"
   ],
-    [
+  [
     "Act 1 Caster rings",
     "Act 1 好底戒指"
   ],
-    [
+  [
     "Act 1 Physical accessories",
     "Act 1 物理用戒指 腰帶"
   ],
@@ -589,7 +587,7 @@
     "Magic items and normal early on provide sockets, base defenses and magics can be sold for shards. It's not recommended to adjust these unless you know what you're doing",
     "魔法和普通裝備在前期可以幫助解決洞色和出售換取通貨碎片，不建議新手隨意調整。"
   ],
- [
+  [
     "Campaign (below lvl 68)",
     "章節 (區域低於68等)"
   ],
@@ -601,7 +599,7 @@
     "Augment the filter with entirely new rules, such as 'only show AR and AR/EV armors', 'highlight all rare axes' and 'hide all wands'",
     "此區的規則會偏向大方向，盡量減少無關拓荒流派的低價值裝備。"
   ],
-   [
+  [
     "Highlight items by Base",
     "依基底特別顯示"
   ],
@@ -621,7 +619,7 @@
     "Hide items by slot",
     "依部位隱藏"
   ],
-    [
+  [
     "Colors and Links",
     "顏色和連線"
   ],
@@ -665,11 +663,11 @@
     "Gloves, Helmets",
     "手套、頭盔"
   ],
- [
+  [
     "Jewellery & Armours",
     "飾品和護甲"
   ],
- [
+  [
     "Weapon Highlight",
     "特別顯示武器"
   ],
@@ -677,7 +675,6 @@
     "Disabling any of the following sections will only remove the highlight (not hide the items). The rares will be caught under 'Remaining Rares'. It's recommended to only keep the parts on you care about.",
     "停用以下的規則會在章節中移除特別顯示，但仍然會用一般樣式顯示由下一你需要的部分條規則處理，建議只留下你需要的部分。"
   ],
-
   [
     "Melee 2H (progression)",
     "雙手近戰武器"
@@ -706,13 +703,11 @@
     "Remaining rares",
     "其他規則"
   ],
-
-
-    [
+  [
     "Chancing is considered to be very inefficient by most PoE players, but some enjoy it a lot. Boss drops, recipe-exclusive or league exclusive drops can not be chanced.",
     "篩選可以點出高價傳奇的基底，效率非常低，非常非常低。不能點出各種限定掉落。"
   ],
-    [
+  [
     "Flasks & Tinctures",
     "藥劑和萃取物"
   ],
@@ -732,27 +727,27 @@
     "Cobalt, Viridian, Crimson Jewels",
     " 赤紅珠寶、翠綠珠寶、鈷藍珠寶"
   ],
-    [
+  [
     "Generic Magic Jewels",
     "魔法珠寶"
-  ],  
-   [
+  ],
+  [
     "Generic Rare Jewels",
     "稀有珠寶"
   ],
-    [
+  [
     "Magic+Corrupted Mod",
     "有瓦詞的魔法珠寶"
   ],
-    [
+  [
     "Rare+Corrupted Mod",
     "有瓦詞的稀有珠寶"
   ],
-    [
+  [
     "Identified With Life or ES Mods",
     "已鑑定帶有生命或是能量護盾詞綴"
   ],
-    [
+  [
     "There are 4 types of jewels, one for each build archetype:",
     "總共有四種類型，殺戮:近戰、勘查:弓、法杖、催眠:法術、極懼:召喚物"
   ],
@@ -760,7 +755,7 @@
     "Corrupted Jewels",
     "已腐化"
   ],
-    [
+  [
     "ILVL 86+ (Rare)",
     "稀有 物等86+"
   ],
@@ -768,7 +763,7 @@
     "ILVL 86+ (Magic)",
     "魔法 物等86+"
   ],
-   [
+  [
     "ILVL 82+ (Rare)",
     "稀有 物等82+"
   ],
@@ -776,7 +771,7 @@
     "ILVL 82+ (Magic)",
     "魔法 物等82+"
   ],
-    [
+  [
     "Any Level (Rare)",
     "所有等級 稀有"
   ],
@@ -784,7 +779,6 @@
     "Any Level (Magic)",
     "所有等級 魔法"
   ],
-
   [
     "Cluster Jewels: Top Enchantments",
     "星團珠寶：最有價值"
@@ -809,11 +803,11 @@
     "Cluster Jewels: Custom Any Enchantment...",
     "星團珠寶：其他"
   ],
-    [
+  [
     "Trinkets & Relics",
     "劫盜飾品和聖所聖物"
   ],
-    [
+  [
     "Sanctum Relics",
     "聖所聖物"
   ],
@@ -881,7 +875,7 @@
     "Influenced GearTypes - Shaper",
     "塑者"
   ],
-    [
+  [
     "Influenced GearTypes - Elder",
     "尊師"
   ],
@@ -993,42 +987,39 @@
     "Blight Anointed Items",
     "已塗油道具"
   ],
-
-
-
-    [
+  [
     "Overquality, Synthesised and Others",
     "超高品質、追憶、其他"
   ],
-    [
+  [
     "Early endgame harvest bases",
     "早期適合骰的基底"
   ],
-    [
+  [
     "Overquality (21+)",
     "超高品質 (21+)"
   ],
-    [
+  [
     "Overquality Armours",
     "超高品質 護甲"
   ],
-    [
+  [
     "Overquality Weapons",
     "超高品質 武器"
   ],
-    [
+  [
     "Items can rarely drop uncorrupted with 20-30 quality. These rules look for the right combination of basetype, level and quality.",
     "在很稀有的情況下會掉落隨機品質超越20的基底，這邊的規則用來篩選相關道具。"
   ],
-    [
+  [
     "Optional Perfection-Based Tiering",
     "高防禦基礎百分比的道具"
   ],
-    [
+  [
     "• Identified:",
     "已鑑定："
   ],
-    [
+  [
     "Synth: Selected bases",
     "追憶：依物品"
   ],
@@ -1068,11 +1059,11 @@
     "3 White sockets",
     "3 白洞"
   ],
-    [
+  [
     "6 White sockets",
     "6 白洞"
   ],
-    [
+  [
     "This is mostly relevant for heist-based drops",
     "附魔：大部分是劫盜的產物。"
   ],
@@ -1120,32 +1111,31 @@
     "2x-Corrupted remaining items",
     "有兩個瓦詞的其他道具"
   ],
-
   [
     "High level, specific crafting bases are in high demand early in the league and can be useful in SSF environments. This section handles non-influenced versions of these items.",
     "高物等的好基底在聯盟初期需求量比較大，在自立環境中也持續有需求，這裡篩選的是無勢力的一般裝備。"
   ],
-    [
+  [
     "Enable&Disable Tiers",
     "修改各 Rank 的顯示規則"
   ],
-    [
+  [
     "Itemlevel matters a LOT. Crafting bases are grouped by level. Example: Any Gloves will be part of and ONLY of the level 85 rules.",
     "物品等級非常重要。下面的分類 Level 代表他的詞綴最高只需要這個等級"
   ],
-    [
+  [
     "LEVEL 86: Body Armours, Boots, Shields, Bows, Belts, Quivers",
     "LEVEL 86:胸甲、鞋子、盾、弓、腰帶、箭袋"
   ],
-    [
+  [
     "LEVEL 85: Amulets, Gloves, Helmets",
     "LEVEL 85: 項鍊、手套、頭盔"
   ],
-    [
+  [
     "LEVEL 84: Caster Weapons & Rings",
     "LEVEL 8: 法術武器、戒指"
   ],
-   [
+  [
     "LEVEL 83: All Attack Weapons",
     "LEVEL 83: 全部攻擊武器"
   ],
@@ -1161,35 +1151,35 @@
     "Fractured items",
     "破裂物品"
   ],
-   [
+  [
     "Some itemclasses like 'Jewels' are completely covered through the class-based filtering below and don't need representing through the matrix.",
     "部分類型如 珠寶 由細項裡面的部位類型中包含在內 所以不會在 Rank 中有選項。（Sab提醒:在NS的分級下依嚴格程度會逐漸隱藏較低 Rank 分級的破裂物品，所以如果你需求的破裂物品並不嚴格要求基底時請記得要來正確調整。）"
   ],
-   [
+  [
     "Veiled Items",
     "隱匿物品"
   ],
-   [
+  [
     "Armour Classes",
     "護甲類型"
   ],
-   [
+  [
     "Linked Items",
     "連線物品"
   ],
-   [
+  [
     "• Mirrored:",
     "已複製："
   ],
-   [
+  [
     "6-Links: Best",
     "6 連的好基底"
   ],
-   [
+  [
     "6-Links: Others",
     "6 連的一般物品"
   ],
-   [
+  [
     "Decorators highlight specific characteristics of an item, by changing the appearance, without deciding whether it is hidden or shown.",
     "外觀選項用來改變整體的顯示樣式，不影響顯示規則"
   ],
@@ -1237,13 +1227,10 @@
     "Hide all remaining identified items that were not highlighted by the mod filtering rules.",
     "隱藏所有詞綴沒有被上述特殊規則篩選出來的已鑑定裝備"
   ],
-
-
   [
     "Rule Disabled! Click on Show/Hide to enable this rule!",
     "規則禁用！點顯示來啟用"
   ],
-
   [
     "Add custom Show/Hide rule (EG rares)",
     "自訂終局稀有裝規則"
@@ -1268,7 +1255,7 @@
     "Highlight chromatic Rares",
     "chromatic Rares(不建議從這裡改)"
   ],
- [
+  [
     "Hide rares by Base",
     "隱藏特定基底"
   ],
@@ -1308,11 +1295,7 @@
     "• Corrupts:",
     "瓦詞"
   ],
-
-
-
-
- [
+  [
     "Pinnacle - Zana (High Tier)",
     "巔峰 - 札娜（高T）"
   ],
@@ -1320,7 +1303,7 @@
     "Pinnacle - T17 Penultimate",
     "巔峰 - T17"
   ],
- [
+  [
     "Pinnacle - Zana (Low Tier)",
     "巔峰 -札那(低T)"
   ],
@@ -1351,10 +1334,12 @@
   [
     "Uber Blighted Map",
     "凋落蔓延地圖"
-  ],  [
+  ],
+  [
     "High Blighted Map",
     "高T凋落地圖"
-  ],  [
+  ],
+  [
     "Low Blighted Map",
     "低T凋落地圖"
   ],
@@ -1410,7 +1395,7 @@
     "Heist Contracts and Blueprints",
     "劫盜契約和藍圖"
   ],
-    [
+  [
     "Path of Exile lootfilters can't filter contracts by their required heist jobs or reward value!",
     "無法用過濾器過濾任何工作類型或獎勵。(遊戲本身限制)"
   ],
@@ -1482,7 +1467,7 @@
     "Highlight corrupted maps",
     "篩選 腐化地圖"
   ],
- [
+  [
     "Maps with implicits (T14+)",
     "篩選 特殊詞地圖 (T14+)"
   ],
@@ -1550,7 +1535,7 @@
     "Quickly highlight bases by adding a custom rule! If you need more power and options, there's a lot more custom rules lower in the customizer",
     "快速設定需要篩選的基底"
   ],
-  [  
+  [
     "Current League: Secrets of the Atlas",
     "聯盟通貨：輿圖之奧秘"
   ],
@@ -1578,7 +1563,8 @@
     "Energy Shield",
     "能量護盾"
   ],
-  [  "ES / Evasion",
+  [
+    "ES / Evasion",
     "能量護盾/閃避"
   ],
   [
@@ -1673,7 +1659,6 @@
     "- If you're building a custom rule, you need to add at least one basetype/class to it's config",
     "如果你正在自訂規則，請至少新增一樣基底來測試。"
   ],
-
   [
     "Rule Disabled! Select/Add an item to enable this rule!",
     "規則無效 新增基底類型以啟用"
@@ -1762,12 +1747,11 @@
     "Highlight Essences by type",
     "依種類篩選(盛怒是肆虐精髓(翻譯問題))"
   ],
-
   [
     "Woe",
     "悲痛"
   ],
-[
+  [
     "Greed",
     "貪婪"
   ],
@@ -1839,7 +1823,6 @@
     "Remnant",
     "遺忘的污染器皿"
   ],
-
   [
     "Currency - Special",
     "通貨－特殊"
@@ -1928,7 +1911,7 @@
     "These tiers are value based. A single Chaos Orb is in 'C Tier', 3 of them will be in 'B Tier'. Use the 'Custom Stacked Tiering Mode' to auto-Manage this list",
     "等級是基於價值，例如 1C 是 C 級，而 3C 是 B 級，使用【手動調整層級】模式可以比較方便的調整"
   ],
- [
+  [
     "• StackSize:",
     "堆疊大小"
   ],
@@ -1944,7 +1927,7 @@
     "Uses NeverSink's default tiering system for stacked currencies. You have the option to manually adjust settings within the individual stacked currency sections.",
     "使用 NeverSink 的預設數量分級，可以手動調整各個分級的設定"
   ],
- [
+  [
     "Auto",
     "手動調整層級"
   ],
@@ -2036,11 +2019,11 @@
     "+1 Minion",
     "+1 召喚物"
   ],
-      [
+  [
     "Build & Special-Item Recipes",
     "特殊配方"
   ],
-    [
+  [
     "Grasping Mail & Loreweave",
     "貪婪鎧甲 和 智者織衫"
   ],
@@ -2048,7 +2031,7 @@
     "Selling a total of 60 Breach Rings together to a vendor will reward you with the Grasping Mail rare item. This item can feature exclusive modifiers, such as the +50% to all defenses. Rerolling the grasping mail will NOT spawn the exclusive mods again.",
     "售出 60 個 裂痕戒指可以獲得一件稀有的 貪婪鎧甲 (包含一個特殊詞)，重骰此物品無法獲得其他特殊詞。"
   ],
-   [
+  [
     "Selling a total of any 60 Unique Rings together to a vendor will reward you with the Loreweave Unique body armour.",
     "售出 60 個 傳奇戒指可以獲得一件智者織衫"
   ],
@@ -2068,15 +2051,15 @@
     "Loreweave Rings",
     "智者織衫"
   ],
-    [
+  [
     "7 Jeweller's Orb - reward for selling an item with 6 sockets.",
     "六洞物品出售可以獲得 7 個工匠石"
   ],
-    [
+  [
     "6 sockets (large)",
     "6 洞 (大物件)"
   ],
-    [
+  [
     "6 sockets",
     "6 洞"
   ],
@@ -2084,7 +2067,7 @@
     "6sock-5links",
     "6 洞 + 5 連"
   ],
-   [
+  [
     "1 Gemcutter's Prism - reward for selling a single gem with 20% quality gem or multiple gems with a combined total of 40% quality to a vendor.",
     "1 顆寶石匠棱鏡 - 出售一顆品質為 20% 的寶石或多顆品質總計為 40% 的寶石所獲得的獎勵。"
   ],
@@ -2120,7 +2103,6 @@
     "Large Items (2x4)",
     "大物件(2x4)"
   ],
-
   [
     "Small Items (2x2)",
     "小物件(2x2)"
@@ -2161,7 +2143,6 @@
     "• AreaLevel:",
     "區域等級："
   ],
-
   [
     "Example Item",
     "示範物品"
@@ -2217,20 +2198,20 @@
   [
     "1 Chromatic orb - reward for selling an item with a Red-Green-Blue socket group. The 3 colors need to be linked order and other sockets don't matter. Hover over the scroll left for more info.",
     "出售一件帶有紅綠藍三色插槽的物品可獲得獎勵。"
- ],
+  ],
   [
     "Disabling recipe item rules will NOT hide uniques, 6links, interesting synthesised items etc. Priorities are handled internally and you don't need to worry about them.",
     "禁用配方規則不會隱藏傳奇物品、6 個連結、特殊基底等。優先順序由過濾器規則處理，無需擔心。"
- ],
+  ],
   [
     "Vendor Recipes",
     "商人兌換配方"
- ],
+  ],
   [
     "Perfect Defenses",
     "很好的基底值"
- ],
- [
+  ],
+  [
     "Superior Ruby Flask",
     "精良紅玉藥劑"
   ],
@@ -2374,12 +2355,11 @@
     "Super-low strictness. Shows way too much, only recommended as a customization-starter",
     "篩選的規則很寬鬆，顯示很多東西，建議作為拓荒的基準過濾器來自己自訂。"
   ],
-
   [
     "Regular",
     "普通"
   ],
-    [
+  [
     "Low strictness. Shows all rares. Good for chaos-recipes. Shows way too much in the endgame.",
     "稍微嚴格一點，依然顯示所有稀有裝備，但後期還是顯示太多物品。"
   ],
@@ -2699,7 +2679,6 @@
     "Weapon Classes",
     "武器類型"
   ],
-
   [
     "system instead of re-uploading files!.",
     "系統不再重新上傳檔案！。"
@@ -3104,7 +3083,7 @@
     "large Red Square",
     "大型紅色正方形"
   ],
-   [
+  [
     "ZanaMemory True",
     "札娜記憶"
   ],
@@ -39987,5 +39966,497 @@
   [
     "Black Mórrigan",
     "黑色莫里根"
+  ],
+  [
+    "Grafts",
+    "接肢"
+  ],
+  [
+    "Wombgifts",
+    "胎贈"
+  ],
+  [
+    "Augmentation Implant",
+    "增幅植入物"
+  ],
+  [
+    "Regal Implant",
+    "富豪植入物"
+  ],
+  [
+    "Exalted Implant",
+    "崇高植入物"
+  ],
+  [
+    "Unstable Implant",
+    "不穩定植入物"
+  ],
+  [
+    "Foulborn Orb of Augmentation",
+    "穢生增幅石"
+  ],
+  [
+    "Foulborn Regal Orb",
+    "穢生父豪石"
+  ],
+  [
+    "Foulborn Exalted Orb",
+    "穢生崇高石"
+  ],
+  [
+    "Somatic Wand",
+    "軀體魔杖"
+  ],
+  [
+    "Blasting Wand",
+    "爆裂魔杖"
+  ],
+  [
+    "Kinetic Wand",
+    "動能魔杖"
+  ],
+  [
+    "Cryonic Ring",
+    "低溫之戒"
+  ],
+  [
+    "Enthalpic Ring",
+    "焓能之戒"
+  ],
+  [
+    "Synaptic Ring",
+    "突觸之戒"
+  ],
+  [
+    "Organic Ring",
+    "有機之戒"
+  ],
+  [
+    "Fugitive Ring",
+    "亡命之戒"
+  ],
+  [
+    "Formless Ring",
+    "無形之戒"
+  ],
+  [
+    "Wall of Force",
+    "力量之壁"
+  ],
+  [
+    "Conflagration",
+    "燎原箭矢"
+  ],
+  [
+    "Kinetic Rain",
+    "力量驟雨"
+  ],
+  [
+    "Somatic Shell",
+    "心靈壁壘"
+  ],
+  [
+    "Thunderstorm",
+    "天雷暴雨"
+  ],
+  [
+    "Kinetic Fusillade",
+    "力量猛射"
+  ],
+  [
+    "Lonely Reliquary Key",
+    "孤獨遺鑰"
+  ],
+  [
+    "Reverent Reliquary Key",
+    "敬畏遺鑰"
+  ],
+  [
+    "Traumatic Reliquary Key",
+    "創傷遺鑰"
+  ],
+  [
+    "Captured Soul of Merveil, the Returned",
+    "奪取之魂：復生者莫薇兒"
+  ],
+  [
+    "Captured Soul of Enticer of Rot",
+    "奪取之魂：腐化魅惑者"
+  ],
+  [
+    "Captured Soul of Hybrid Widow",
+    "奪取之魂：混種黑寡婦"
+  ],
+  [
+    "Captured Soul of Fire and Fury",
+    "奪取之魂：熾怒之靈"
+  ],
+  [
+    "Captured Soul of The Winged Death",
+    "奪取之魂：雙翼死神"
+  ],
+  [
+    "Captured Soul of Ormud, Fiend of the Flood",
+    "奪取之魂：洪災惡魔．歐爾曼"
+  ],
+  [
+    "Captured Soul of Mephod, the Earth Scorcher",
+    "奪取之魂：旱地者密法德"
+  ],
+  [
+    "Captured Soul of Oriath's Vigil",
+    "奪取之魂：奧瑞亞的堡壘"
+  ],
+  [
+    "Captured Soul of Preethi, Eye-Pecker",
+    "奪取之魂：啄眼者布里斯"
+  ],
+  [
+    "Captured Soul of Gorulis, Will-Thief",
+    "奪取之魂：意念竊取者葛羅斯"
+  ],
+  [
+    "Maven's Invitation: The Remembered",
+    "釋界之邀：返憶"
+  ],
+  [
+    "Hivebrain Gland",
+    "巢裔主腦腺體"
+  ],
+  [
+    "[DNT - UNUSED] Test Runegraft",
+    "None"
+  ],
+  [
+    "[DNT - UNUSED] Arcane Orders Runegraft",
+    "None"
+  ],
+  [
+    "[DNT - UNUSED] Martial Orders Runegraft",
+    "None"
+  ],
+  [
+    "Runegraft of Refraction",
+    "折射符文之結"
+  ],
+  [
+    "[DNT - UNUSED] Limiting Runegraft",
+    "None"
+  ],
+  [
+    "[DNT - UNUSED] Allflame Ember of Rats",
+    "None"
+  ],
+  [
+    "Windburst Support",
+    "風破輔助"
+  ],
+  [
+    "Kinetic Instability Support",
+    "力量紊亂輔助"
+  ],
+  [
+    "Living Lightning Support",
+    "活體閃電輔助"
+  ],
+  [
+    "Fleshgraft",
+    "血肉接肢"
+  ],
+  [
+    "Battering Uulgraft",
+    "烏爾尼托的破壞接肢"
+  ],
+  [
+    "Return to Dust",
+    "回歸塵土"
+  ],
+  [
+    "Spiking Uulgraft",
+    "烏爾尼托的銳釘接肢"
+  ],
+  [
+    "Seize the Flesh",
+    "肉身奪取"
+  ],
+  [
+    "Impaling Uulgraft",
+    "烏爾尼托的穿刺接肢"
+  ],
+  [
+    "Violent Desire",
+    "暴力渴望"
+  ],
+  [
+    "Hardening Uulgraft",
+    "烏爾尼托的硬化接肢"
+  ],
+  [
+    "Tender Embrace",
+    "慈愛之擁"
+  ],
+  [
+    "Molten Xophgraft",
+    "索伏的熔岩接肢"
+  ],
+  [
+    "Erupting Xophgraft",
+    "索伏的噴湧接肢"
+  ],
+  [
+    "His Burning Message",
+    "他的焚炎句語"
+  ],
+  [
+    "Flamecaller Xophgraft",
+    "索伏的換焰接肢"
+  ],
+  [
+    "Call the Pyre",
+    "炎葬之喚"
+  ],
+  [
+    "Stoking Xophgraft",
+    "索伏的燃灼接肢"
+  ],
+  [
+    "The Grey Wind Howls",
+    "灰風咆嘯"
+  ],
+  [
+    "Storming Eshgraft",
+    "艾許的雷暴接肢"
+  ],
+  [
+    "Wreathed in Light",
+    "光暈纏繞"
+  ],
+  [
+    "Replicating Eshgraft",
+    "艾許的重現接肢"
+  ],
+  [
+    "Glowing Silhouette",
+    "閃爍剪影"
+  ],
+  [
+    "Draining Eshgraft",
+    "艾許的汲取接肢"
+  ],
+  [
+    "Enervating Grasp",
+    "虛弱之握"
+  ],
+  [
+    "Jolting Eshgraft",
+    "艾許的震顫接肢"
+  ],
+  [
+    "Overcharged Sinews",
+    "過載筋腱"
+  ],
+  [
+    "Squalling Tulgraft",
+    "托沃的狂號接肢"
+  ],
+  [
+    "Dance in the White",
+    "白中之舞"
+  ],
+  [
+    "Freezing Tulgraft",
+    "托沃的冷凍接肢"
+  ],
+  [
+    "Falling Crystals",
+    "碎晶墜落"
+  ],
+  [
+    "Summoning Tulgraft",
+    "托沃的召喚接肢"
+  ],
+  [
+    "The Great Avalanche",
+    "浩劫雪崩"
+  ],
+  [
+    "Aegis Tulgraft",
+    "托沃的聖盾接肢"
+  ],
+  [
+    "Preserving Stillness",
+    "靜守不移"
+  ],
+  [
+    "Provisioning Wombgift",
+    "供應之胎贈"
+  ],
+  [
+    "Lavish Wombgift",
+    "奢華之胎贈"
+  ],
+  [
+    "Ancient Wombgift",
+    "古老之胎贈"
+  ],
+  [
+    "Growing Wombgift",
+    "成長之胎贈"
+  ],
+  [
+    "Mysterious Wombgift",
+    "神秘之胎贈"
+  ],
+  [
+    "Traumatic Fragment",
+    "創傷碎片"
+  ],
+  [
+    "Reverent Fragment",
+    "敬畏碎片"
+  ],
+  [
+    "Lonely Fragment",
+    "孤獨碎片"
+  ],
+  [
+    "The Last Laugh",
+    "最終一笑"
+  ],
+  [
+    "The Lake",
+    "湖泊"
+  ],
+  [
+    "One Last Score",
+    "最後一票"
+  ],
+  [
+    "Bound by Flame",
+    "縛焰之契"
+  ],
+  [
+    "Outfoxed",
+    "反被算計"
+  ],
+  [
+    "Elemental Weapon",
+    "元素武器"
+  ],
+  [
+    "Moment of Peace",
+    "安寧之刻"
+  ],
+  [
+    "Moment of Truth",
+    "真相之刻"
+  ],
+  [
+    "Moment of Forgiveness",
+    "寬恕之刻"
+  ],
+  [
+    "Unlight Extant",
+    "黯光存現"
+  ],
+  [
+    "Cowards' Wail",
+    "懦夫之哀"
+  ],
+  [
+    "Bitter Instinct",
+    "苦澀直覺"
+  ],
+  [
+    "Wellwater Phylactery",
+    "井泉魂罐"
+  ],
+  [
+    "One Hundred Snakes",
+    "百蛇"
+  ],
+  [
+    "Hand of the Lords",
+    "諸王之手"
+  ],
+  [
+    "The Grey Wind",
+    "灰風"
+  ],
+  [
+    "Jiquani's Potential",
+    "吉卡尼的潛力"
+  ],
+  [
+    "The Unseen Hue",
+    "無形之彩"
+  ],
+  [
+    "Woespike",
+    "悲嘆之刺"
+  ],
+  [
+    "The Will of Tul",
+    "托沃之意志"
+  ],
+  [
+    "The Will of Xoph",
+    "索伏之意志"
+  ],
+  [
+    "The Will of Esh",
+    "艾許之意志"
+  ],
+  [
+    "The Will of Uul-Netol",
+    "烏爾尼托之意志"
+  ],
+  [
+    "The Sundered Will",
+    "破碎之志"
+  ],
+  [
+    "Lost Unity",
+    "失落同心"
+  ],
+  [
+    "The Golden Charlatan",
+    "黃金詐術師"
+  ],
+  [
+    "Wing of the Wyvern",
+    "飛龍之翼"
+  ],
+  [
+    "The Caged Mammoth",
+    "囚籠猛獸"
+  ],
+  [
+    "Bonemeld",
+    "骨融"
+  ],
+  [
+    "Refuge in Isolation",
+    "孤寂庇所"
+  ],
+  [
+    "Festering Resentment",
+    "潰爛怨恨"
+  ],
+  [
+    "Rigwald's Hunt",
+    "瑞佛之狩"
+  ],
+  [
+    "The Monastery Bell",
+    "修道院之鐘"
+  ],
+  [
+    "Haunting Memories",
+    "縈繞回憶"
+  ],
+  [
+    "The Hallowed Monarch",
+    "受祈聖君"
   ]
 ]
