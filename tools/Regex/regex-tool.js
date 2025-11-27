@@ -51,7 +51,7 @@ function renderModList(mods, regexKeys, modFile, filter = '') {
         label.appendChild(keySpan);
         div.appendChild(checkbox);
         div.appendChild(label);
-        div.addEventListener('click', function(e) {
+        div.addEventListener('click', function (e) {
             if (e.target === checkbox) return;
             if (window.getSelection && window.getSelection().toString()) return;
             checkbox.checked = !checkbox.checked;
@@ -142,7 +142,7 @@ async function loadMods(modFile) {
         { re: /地圖含有燃燒地面/, key: '燃燒' },
         { re: /玩家使用藥劑時被隕石瞄準/, key: '隕石' },
         { re: /玩家的召喚物減少 50% 攻擊速度 玩家的召喚物減少 50% 施放速度 玩家的召喚物減少 50% 移動速度/, key: '的召' },
-        { re: /區域含有數道喚醒者的荒蕪/, key: '荒蕪' },
+        { re: /區域含有數道喚醒者的荒蕪/, key: '的荒' },
         { re: /擊中時，怪物點燃、冰凍和感電/, key: '物點' },
         { re: /怪物的攻擊擊中時造成穿刺，當玩家被施加第 5 層穿刺時，移除穿刺並將物理傷害乘以其剩餘層數的傷害，反射給該玩家及其 1\.8 公尺內的友方/, key: '擊擊' },
         { re: /擊中時，怪物有 20% 機率點燃、冰凍和感電/, key: '率點' },
@@ -191,7 +191,7 @@ async function loadMods(modFile) {
         return pick;
     });
     allRegexKeys[modFile] = regexKeys;
-    
+
     // 只在非批次載入時更新 UI
     if (modFile === currentModFile) {
         renderModList(mods, regexKeys, modFile, searchText || '');
@@ -200,7 +200,7 @@ async function loadMods(modFile) {
         if (searchInput) {
             searchInput.value = searchText || '';
             if (!searchInput._bound) {
-                searchInput.addEventListener('input', function() {
+                searchInput.addEventListener('input', function () {
                     searchText = this.value.trim();
                     renderModList(mods, regexKeys, modFile, searchText);
                 });
@@ -208,7 +208,7 @@ async function loadMods(modFile) {
             }
         }
     }
-    
+
     return Promise.resolve({ mods, regexKeys });
 }
 
@@ -221,53 +221,53 @@ function updateAllChecked(modFile) {
 
 // 合併所有勾選計算正則
 const updateRegex = () => {
-  let keys = [];
-  Object.keys(allChecked).forEach(modFile => {
-    (allChecked[modFile] || []).forEach(idx => {
-      keys.push(allRegexKeys[modFile][idx]);
+    let keys = [];
+    Object.keys(allChecked).forEach(modFile => {
+        (allChecked[modFile] || []).forEach(idx => {
+            keys.push(allRegexKeys[modFile][idx]);
+        });
     });
-  });
-  keys = keys.filter(Boolean);
-  if (keys.length === 0) {
-    document.getElementById('regexOutput').textContent = '請選擇至少一個詞條';
+    keys = keys.filter(Boolean);
+    if (keys.length === 0) {
+        document.getElementById('regexOutput').textContent = '請選擇至少一個詞條';
+        updateNegativeRegex();
+        return;
+    }
+    let uniqueParts = [...new Set(keys)];
+    const hasReflectPhysical = uniqueParts.includes('反射.*物理傷害');
+    const hasReflectElemental = uniqueParts.includes('反射.*元素傷害');
+    if (hasReflectPhysical && hasReflectElemental) {
+        uniqueParts = uniqueParts.filter(k => k !== '反射.*物理傷害' && k !== '反射.*元素傷害');
+        uniqueParts.push('反射');
+    }
+    const regex = uniqueParts.join('|');
+    const output = document.getElementById('regexOutput');
+    output.textContent = regex;
+    output.classList.remove('animate');
+    void output.offsetWidth;
+    output.classList.add('animate');
     updateNegativeRegex();
-    return;
-  }
-  let uniqueParts = [...new Set(keys)];
-  const hasReflectPhysical = uniqueParts.includes('反射.*物理傷害');
-  const hasReflectElemental = uniqueParts.includes('反射.*元素傷害');
-  if (hasReflectPhysical && hasReflectElemental) {
-    uniqueParts = uniqueParts.filter(k => k !== '反射.*物理傷害' && k !== '反射.*元素傷害');
-    uniqueParts.push('反射');
-  }
-  const regex = uniqueParts.join('|');
-  const output = document.getElementById('regexOutput');
-  output.textContent = regex;
-  output.classList.remove('animate');
-  void output.offsetWidth;
-  output.classList.add('animate');
-  updateNegativeRegex();
 };
 
 // 新增：不能出現正則區塊
 const updateNegativeRegex = () => {
-  let keys = [];
-  Object.keys(allChecked).forEach(modFile => {
-    (allChecked[modFile] || []).forEach(idx => {
-      keys.push(allRegexKeys[modFile][idx]);
+    let keys = [];
+    Object.keys(allChecked).forEach(modFile => {
+        (allChecked[modFile] || []).forEach(idx => {
+            keys.push(allRegexKeys[modFile][idx]);
+        });
     });
-  });
-  keys = keys.filter(Boolean);
-  let negative = '';
-  if (keys.length > 0) {
-    negative = '!' + keys.join('|');
-  }
-  const filterStr = document.getElementById('filterRegexOutput').textContent;
-  let result = negative;
-  if (filterStr) {
-    result += (negative ? ' ' : '') + filterStr;
-  }
-  document.getElementById('negativeRegexOutput').textContent = result || '';
+    keys = keys.filter(Boolean);
+    let negative = '';
+    if (keys.length > 0) {
+        negative = '!' + keys.join('|');
+    }
+    const filterStr = document.getElementById('filterRegexOutput').textContent;
+    let result = negative;
+    if (filterStr) {
+        result += (negative ? ' ' : '') + filterStr;
+    }
+    document.getElementById('negativeRegexOutput').textContent = result || '';
 }
 
 function handleCopy(btn, text) {
@@ -283,347 +283,347 @@ function handleCopy(btn, text) {
     });
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const copyBtn = document.getElementById('copyBtn');
     const regexOutput = document.getElementById('regexOutput');
     if (copyBtn) {
-        copyBtn.addEventListener('click', function() {
+        copyBtn.addEventListener('click', function () {
             handleCopy(copyBtn, regexOutput.textContent);
         });
     }
     const filterCopyBtn = document.getElementById('filterCopyBtn');
     const filterRegexOutput = document.getElementById('filterRegexOutput');
     if (filterCopyBtn) {
-        filterCopyBtn.addEventListener('click', function() {
+        filterCopyBtn.addEventListener('click', function () {
             handleCopy(filterCopyBtn, filterRegexOutput.textContent);
         });
     }
     const negativeCopyBtn = document.getElementById('negativeCopyBtn');
     const negativeRegexOutput = document.getElementById('negativeRegexOutput');
     if (negativeCopyBtn) {
-        negativeCopyBtn.addEventListener('click', function() {
+        negativeCopyBtn.addEventListener('click', function () {
             handleCopy(negativeCopyBtn, negativeRegexOutput.textContent);
             launchEasterEgg();
         });
     }
     const orCopyBtn = document.getElementById('orCopyBtn');
     if (orCopyBtn) {
-        orCopyBtn.addEventListener('click', function() {
+        orCopyBtn.addEventListener('click', function () {
             handleCopy(orCopyBtn, document.getElementById('orRegexOutput').textContent);
         });
     }
-// 彩蛋功能：複製時噴出圖片拋物線動畫
-function launchEasterEgg() {
-    // 5%機率：連續射出20個神聖石
-    if (Math.random() < 0.05) {
-        launchDivineRain();
-        return;
-    }
-    // 25%機率：射出超高DIV.webp
-    if (Math.random() < 0.25) {
-        launchFlyingImage({
-            imgSrc: 'DIV.webp',
-            high: true
-        });
-        return;
-    }
-    // 其餘：正常DIV.webp
-    launchFlyingImage({
-        imgSrc: 'DIV.webp',
-        high: false
-    });
-}
-
-// 單一圖片拋物線動畫，high=true時高度超高
-function launchFlyingImage({imgSrc, high}) {
-    const btn = document.getElementById('negativeCopyBtn');
-    if (!btn) return;
-    const rect = btn.getBoundingClientRect();
-    const img = document.createElement('img');
-    img.src = imgSrc;
-    img.style.position = 'fixed';
-    img.style.width = '64px';
-    img.style.height = '64px';
-    img.style.left = (rect.left + rect.width/2 - 32) + 'px';
-    img.style.top = (rect.top + rect.height/2 - 32) + 'px';
-    img.style.zIndex = 9999;
-    img.style.pointerEvents = 'none';
-    img.style.transition = 'filter 0.2s';
-    document.body.appendChild(img);
-
-    // 角度與速度
-    let angle, speed;
-    if (high) {
-        angle = (Math.random() * Math.PI/6) + Math.PI/2.1; // 100~130度，幾乎垂直
-        speed = 22 + Math.random() * 8; // 更大初速度
-    } else {
-        angle = (Math.random() * Math.PI/2) + Math.PI/4; // 45~135度
-        speed = 12 + Math.random() * 6;
-    }
-    let vx = Math.cos(angle) * speed;
-    let vy = -Math.sin(angle) * speed;
-    let x = rect.left + rect.width/2 - 32;
-    let y = rect.top + rect.height/2 - 32;
-    const gravity = high ? (0.5 + Math.random()*0.2) : (0.7 + Math.random()*0.3);
-    let frame = 0;
-    function animate() {
-        frame++;
-        x += vx;
-        y += vy;
-        vy += gravity;
-        img.style.left = x + 'px';
-        img.style.top = y + 'px';
-        img.style.transform = `rotate(${frame*12}deg)`;
-        if (y > window.innerHeight || x < -80 || x > window.innerWidth+80) {
-            img.remove();
+    // 彩蛋功能：複製時噴出圖片拋物線動畫
+    function launchEasterEgg() {
+        // 5%機率：連續射出20個神聖石
+        if (Math.random() < 0.05) {
+            launchDivineRain();
             return;
         }
-        requestAnimationFrame(animate);
-    }
-    animate();
-}
-
-// 連續射出20個神聖石 Divine.webp
-function launchDivineRain() {
-    let count = 0;
-    function shoot() {
-        launchFlyingImage({imgSrc: 'DIV.webp', high: false});
-        count++;
-        if (count < 20) {
-            setTimeout(shoot, 60 + Math.random()*60);
-        }
-    }
-    shoot();
-}
-        });
-       document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-            currentModFile = this.getAttribute('data-modfile');
-            // 切換頁籤時，載入對應搜尋內容
-            loadMods(currentModFile);
-        });
-    });
-    const resetBtn = document.getElementById('resetBtn');
-    if (resetBtn) {
-        resetBtn.addEventListener('click', function() {
-            Object.keys(allChecked).forEach(modFile => allChecked[modFile] = []);
-            document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
-            updateRegex();
-        });
-    }
-    const filterResetBtn = document.getElementById('filterResetBtn');
-    if (filterResetBtn) {
-        filterResetBtn.addEventListener('click', function() {
-            ['filter-quantity','filter-rarity','filter-pack','filter-map','filter-scarab','filter-currency'].forEach(id => {
-                const el = document.getElementById(id);
-                if (el) el.value = '';
+        // 25%機率：射出超高DIV.webp
+        if (Math.random() < 0.25) {
+            launchFlyingImage({
+                imgSrc: 'DIV.webp',
+                high: true
             });
-            document.getElementById('filterRegexOutput').textContent = '';
-            document.getElementById('orRegexOutput').textContent = '';
-            document.getElementById('negativeRegexOutput').textContent = '';
-        });
-    }
-    // ===== 儲存組合功能區 =====
-    const saveSection = document.querySelector('.save-section');
-    const saveList = document.getElementById('saveList');
-    const saveCurrentBtn = document.getElementById('saveCurrentBtn');
-    const saveDialog = document.getElementById('saveDialog');
-    const saveDialogCloseBtn = document.getElementById('saveDialogCloseBtn');
-    const saveDialogSaveBtn = document.getElementById('saveDialogSaveBtn');
-    const saveNameInput = document.getElementById('saveNameInput');
-    const loadDialog = document.getElementById('loadDialog');
-    const loadDialogCloseBtn = document.getElementById('loadDialogCloseBtn');
-    const loadDialogLoadBtn = document.getElementById('loadDialogLoadBtn');
-    const loadDialogDeleteBtn = document.getElementById('loadDialogDeleteBtn');
-    const loadDialogTitle = document.getElementById('loadDialogTitle');
-    let currentLoadKey = '';
-
-    // ====== 新增：提示按鈕功能 ======
-    const filterHintBtn = document.getElementById('filterHintBtn');
-    const filterHintDialog = document.getElementById('filterHintDialog');
-    const filterHintCloseBtn = document.getElementById('filterHintCloseBtn');
-    if (filterHintBtn && filterHintDialog) {
-        filterHintBtn.addEventListener('click', function() {
-            filterHintDialog.style.display = 'flex';
-        });
-    }
-    if (filterHintCloseBtn && filterHintDialog) {
-        filterHintCloseBtn.addEventListener('click', function() {
-            filterHintDialog.style.display = 'none';
-        });
-    }
-    // 點擊遮罩區域關閉提示
-    if (filterHintDialog) {
-        filterHintDialog.addEventListener('click', function(e) {
-            if (e.target === filterHintDialog) filterHintDialog.style.display = 'none';
+            return;
+        }
+        // 其餘：正常DIV.webp
+        launchFlyingImage({
+            imgSrc: 'DIV.webp',
+            high: false
         });
     }
 
-    function getSaveData() {
-        // 儲存所有勾選、進階篩選
-        return {
-            allChecked: JSON.parse(JSON.stringify(allChecked)),
-            filter: {
-                quantity: document.getElementById('filter-quantity').value,
-                rarity: document.getElementById('filter-rarity').value,
-                pack: document.getElementById('filter-pack').value,
-                map: document.getElementById('filter-map').value,
-                scarab: document.getElementById('filter-scarab').value,
-                currency: document.getElementById('filter-currency').value
-            },
-            tab: currentModFile
-        };
-    }
-    async function setSaveData(data) {
-        // 載入所有勾選、進階篩選
-        if (!data) return;
-        if (data.allChecked) {
-            Object.keys(allChecked).forEach(k => {
-                allChecked[k] = data.allChecked[k] || [];
-            });
-            // 先載入所有 mod 檔案，確保 allMods 和 allRegexKeys 都已經準備好
-            // 暫時禁用 UI 更新
-            const originalModFile = currentModFile;
-            currentModFile = null;
-            try {
-                // 依序載入每個模組，確保片段計算的正確性
-                for (const modFile of Object.keys(allMods)) {
-                    const result = await loadMods(modFile);
-                    allMods[modFile] = result.mods;
-                    allRegexKeys[modFile] = result.regexKeys;
-                }
-                // 恢復當前模組並一次性更新 UI
-                currentModFile = originalModFile;
-                Object.keys(allMods).forEach(modFile => {
-                    renderModList(allMods[modFile], allRegexKeys[modFile], modFile, searchText || '');
-                });
-                updateRegex();
-            } catch (error) {
-                console.error('載入儲存組合失敗:', error);
-                currentModFile = originalModFile;
-            }
+    // 單一圖片拋物線動畫，high=true時高度超高
+    function launchFlyingImage({ imgSrc, high }) {
+        const btn = document.getElementById('negativeCopyBtn');
+        if (!btn) return;
+        const rect = btn.getBoundingClientRect();
+        const img = document.createElement('img');
+        img.src = imgSrc;
+        img.style.position = 'fixed';
+        img.style.width = '64px';
+        img.style.height = '64px';
+        img.style.left = (rect.left + rect.width / 2 - 32) + 'px';
+        img.style.top = (rect.top + rect.height / 2 - 32) + 'px';
+        img.style.zIndex = 9999;
+        img.style.pointerEvents = 'none';
+        img.style.transition = 'filter 0.2s';
+        document.body.appendChild(img);
+
+        // 角度與速度
+        let angle, speed;
+        if (high) {
+            angle = (Math.random() * Math.PI / 6) + Math.PI / 2.1; // 100~130度，幾乎垂直
+            speed = 22 + Math.random() * 8; // 更大初速度
+        } else {
+            angle = (Math.random() * Math.PI / 2) + Math.PI / 4; // 45~135度
+            speed = 12 + Math.random() * 6;
         }
-        if (data.filter) {
-                document.getElementById('filter-quantity').value = data.filter.quantity || '';
-                document.getElementById('filter-rarity').value = data.filter.rarity || '';
-                document.getElementById('filter-pack').value = data.filter.pack || '';
-                document.getElementById('filter-map').value = data.filter.map || '';
-                document.getElementById('filter-scarab').value = data.filter.scarab || '';
-                document.getElementById('filter-currency').value = data.filter.currency || '';
-                updateFilterRegex(); // 確保在載入篩選數據後更新正則
-            }
-        if (data.tab) {
-            currentModFile = data.tab;
-            document.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.getAttribute('data-modfile') === currentModFile);
-            });
-        }
-    }
-    function getAllSaves() {
-        const saves = JSON.parse(localStorage.getItem('poeRegexSaves') || '{}');
-        return saves;
-    }
-    function setAllSaves(saves) {
-        localStorage.setItem('poeRegexSaves', JSON.stringify(saves));
-    }
-    function renderSaveList() {
-        const saves = getAllSaves();
-        saveList.innerHTML = '';
-        Object.keys(saves).forEach(key => {
-            const div = document.createElement('div');
-            div.className = 'save-item';
-            div.textContent = key;
-            div.addEventListener('click', function() {
-                currentLoadKey = key;
-                loadDialogTitle.textContent = key;
-                loadDialog.style.display = 'flex';
-            });
-            div.addEventListener('mouseover', function(e) {
-                showSavePreview(saves[key], e);
-            });
-            div.addEventListener('mouseout', function() {
-                hideSavePreview();
-            });
-            saveList.appendChild(div);
-        });
-    }
-    // 儲存目前組合
-    if (saveCurrentBtn) {
-        saveCurrentBtn.addEventListener('click', function() {
-            saveDialog.style.display = 'flex';
-            saveNameInput.value = '';
-            setTimeout(() => saveNameInput.focus(), 100);
-        });
-    }
-    // 關閉儲存彈窗
-    if (saveDialogCloseBtn) {
-        saveDialogCloseBtn.addEventListener('click', function() {
-            saveDialog.style.display = 'none';
-        });
-    }
-    // 儲存彈窗遮罩點擊關閉
-    if (saveDialog) {
-        saveDialog.addEventListener('click', function(e) {
-            if (e.target === saveDialog) saveDialog.style.display = 'none';
-        });
-    }
-    // 儲存組合
-    if (saveDialogSaveBtn) {
-        saveDialogSaveBtn.addEventListener('click', function() {
-            const name = saveNameInput.value.trim();
-            if (!name) {
-                saveNameInput.focus();
+        let vx = Math.cos(angle) * speed;
+        let vy = -Math.sin(angle) * speed;
+        let x = rect.left + rect.width / 2 - 32;
+        let y = rect.top + rect.height / 2 - 32;
+        const gravity = high ? (0.5 + Math.random() * 0.2) : (0.7 + Math.random() * 0.3);
+        let frame = 0;
+        function animate() {
+            frame++;
+            x += vx;
+            y += vy;
+            vy += gravity;
+            img.style.left = x + 'px';
+            img.style.top = y + 'px';
+            img.style.transform = `rotate(${frame * 12}deg)`;
+            if (y > window.innerHeight || x < -80 || x > window.innerWidth + 80) {
+                img.remove();
                 return;
             }
-            const saves = getAllSaves();
-            saves[name] = getSaveData();
-            setAllSaves(saves);
-            saveDialog.style.display = 'none';
-            renderSaveList();
-        });
+            requestAnimationFrame(animate);
+        }
+        animate();
     }
-    // 關閉載入/刪除彈窗
-    if (loadDialogCloseBtn) {
-        loadDialogCloseBtn.addEventListener('click', function() {
-            loadDialog.style.display = 'none';
-        });
-    }
-    if (loadDialog) {
-        loadDialog.addEventListener('click', function(e) {
-            if (e.target === loadDialog) loadDialog.style.display = 'none';
-        });
-    }
-    // 載入組合
-    if (loadDialogLoadBtn) {
-        loadDialogLoadBtn.addEventListener('click', function() {
-            const saves = getAllSaves();
-            if (saves[currentLoadKey]) {
-                setSaveData(saves[currentLoadKey]);
+
+    // 連續射出20個神聖石 Divine.webp
+    function launchDivineRain() {
+        let count = 0;
+        function shoot() {
+            launchFlyingImage({ imgSrc: 'DIV.webp', high: false });
+            count++;
+            if (count < 20) {
+                setTimeout(shoot, 60 + Math.random() * 60);
             }
-            loadDialog.style.display = 'none';
+        }
+        shoot();
+    }
+});
+document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', function () {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        currentModFile = this.getAttribute('data-modfile');
+        // 切換頁籤時，載入對應搜尋內容
+        loadMods(currentModFile);
+    });
+});
+const resetBtn = document.getElementById('resetBtn');
+if (resetBtn) {
+    resetBtn.addEventListener('click', function () {
+        Object.keys(allChecked).forEach(modFile => allChecked[modFile] = []);
+        document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+        updateRegex();
+    });
+}
+const filterResetBtn = document.getElementById('filterResetBtn');
+if (filterResetBtn) {
+    filterResetBtn.addEventListener('click', function () {
+        ['filter-quantity', 'filter-rarity', 'filter-pack', 'filter-map', 'filter-scarab', 'filter-currency'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.value = '';
+        });
+        document.getElementById('filterRegexOutput').textContent = '';
+        document.getElementById('orRegexOutput').textContent = '';
+        document.getElementById('negativeRegexOutput').textContent = '';
+    });
+}
+// ===== 儲存組合功能區 =====
+const saveSection = document.querySelector('.save-section');
+const saveList = document.getElementById('saveList');
+const saveCurrentBtn = document.getElementById('saveCurrentBtn');
+const saveDialog = document.getElementById('saveDialog');
+const saveDialogCloseBtn = document.getElementById('saveDialogCloseBtn');
+const saveDialogSaveBtn = document.getElementById('saveDialogSaveBtn');
+const saveNameInput = document.getElementById('saveNameInput');
+const loadDialog = document.getElementById('loadDialog');
+const loadDialogCloseBtn = document.getElementById('loadDialogCloseBtn');
+const loadDialogLoadBtn = document.getElementById('loadDialogLoadBtn');
+const loadDialogDeleteBtn = document.getElementById('loadDialogDeleteBtn');
+const loadDialogTitle = document.getElementById('loadDialogTitle');
+let currentLoadKey = '';
+
+// ====== 新增：提示按鈕功能 ======
+const filterHintBtn = document.getElementById('filterHintBtn');
+const filterHintDialog = document.getElementById('filterHintDialog');
+const filterHintCloseBtn = document.getElementById('filterHintCloseBtn');
+if (filterHintBtn && filterHintDialog) {
+    filterHintBtn.addEventListener('click', function () {
+        filterHintDialog.style.display = 'flex';
+    });
+}
+if (filterHintCloseBtn && filterHintDialog) {
+    filterHintCloseBtn.addEventListener('click', function () {
+        filterHintDialog.style.display = 'none';
+    });
+}
+// 點擊遮罩區域關閉提示
+if (filterHintDialog) {
+    filterHintDialog.addEventListener('click', function (e) {
+        if (e.target === filterHintDialog) filterHintDialog.style.display = 'none';
+    });
+}
+
+function getSaveData() {
+    // 儲存所有勾選、進階篩選
+    return {
+        allChecked: JSON.parse(JSON.stringify(allChecked)),
+        filter: {
+            quantity: document.getElementById('filter-quantity').value,
+            rarity: document.getElementById('filter-rarity').value,
+            pack: document.getElementById('filter-pack').value,
+            map: document.getElementById('filter-map').value,
+            scarab: document.getElementById('filter-scarab').value,
+            currency: document.getElementById('filter-currency').value
+        },
+        tab: currentModFile
+    };
+}
+async function setSaveData(data) {
+    // 載入所有勾選、進階篩選
+    if (!data) return;
+    if (data.allChecked) {
+        Object.keys(allChecked).forEach(k => {
+            allChecked[k] = data.allChecked[k] || [];
+        });
+        // 先載入所有 mod 檔案，確保 allMods 和 allRegexKeys 都已經準備好
+        // 暫時禁用 UI 更新
+        const originalModFile = currentModFile;
+        currentModFile = null;
+        try {
+            // 依序載入每個模組，確保片段計算的正確性
+            for (const modFile of Object.keys(allMods)) {
+                const result = await loadMods(modFile);
+                allMods[modFile] = result.mods;
+                allRegexKeys[modFile] = result.regexKeys;
+            }
+            // 恢復當前模組並一次性更新 UI
+            currentModFile = originalModFile;
+            Object.keys(allMods).forEach(modFile => {
+                renderModList(allMods[modFile], allRegexKeys[modFile], modFile, searchText || '');
+            });
+            updateRegex();
+        } catch (error) {
+            console.error('載入儲存組合失敗:', error);
+            currentModFile = originalModFile;
+        }
+    }
+    if (data.filter) {
+        document.getElementById('filter-quantity').value = data.filter.quantity || '';
+        document.getElementById('filter-rarity').value = data.filter.rarity || '';
+        document.getElementById('filter-pack').value = data.filter.pack || '';
+        document.getElementById('filter-map').value = data.filter.map || '';
+        document.getElementById('filter-scarab').value = data.filter.scarab || '';
+        document.getElementById('filter-currency').value = data.filter.currency || '';
+        updateFilterRegex(); // 確保在載入篩選數據後更新正則
+    }
+    if (data.tab) {
+        currentModFile = data.tab;
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.getAttribute('data-modfile') === currentModFile);
         });
     }
-    // 刪除組合
-    if (loadDialogDeleteBtn) {
-        loadDialogDeleteBtn.addEventListener('click', function() {
-            const saves = getAllSaves();
-            delete saves[currentLoadKey];
-            setAllSaves(saves);
-            renderSaveList();
-            loadDialog.style.display = 'none';
+}
+function getAllSaves() {
+    const saves = JSON.parse(localStorage.getItem('poeRegexSaves') || '{}');
+    return saves;
+}
+function setAllSaves(saves) {
+    localStorage.setItem('poeRegexSaves', JSON.stringify(saves));
+}
+function renderSaveList() {
+    const saves = getAllSaves();
+    saveList.innerHTML = '';
+    Object.keys(saves).forEach(key => {
+        const div = document.createElement('div');
+        div.className = 'save-item';
+        div.textContent = key;
+        div.addEventListener('click', function () {
+            currentLoadKey = key;
+            loadDialogTitle.textContent = key;
+            loadDialog.style.display = 'flex';
         });
-    }
+        div.addEventListener('mouseover', function (e) {
+            showSavePreview(saves[key], e);
+        });
+        div.addEventListener('mouseout', function () {
+            hideSavePreview();
+        });
+        saveList.appendChild(div);
+    });
+}
+// 儲存目前組合
+if (saveCurrentBtn) {
+    saveCurrentBtn.addEventListener('click', function () {
+        saveDialog.style.display = 'flex';
+        saveNameInput.value = '';
+        setTimeout(() => saveNameInput.focus(), 100);
+    });
+}
+// 關閉儲存彈窗
+if (saveDialogCloseBtn) {
+    saveDialogCloseBtn.addEventListener('click', function () {
+        saveDialog.style.display = 'none';
+    });
+}
+// 儲存彈窗遮罩點擊關閉
+if (saveDialog) {
+    saveDialog.addEventListener('click', function (e) {
+        if (e.target === saveDialog) saveDialog.style.display = 'none';
+    });
+}
+// 儲存組合
+if (saveDialogSaveBtn) {
+    saveDialogSaveBtn.addEventListener('click', function () {
+        const name = saveNameInput.value.trim();
+        if (!name) {
+            saveNameInput.focus();
+            return;
+        }
+        const saves = getAllSaves();
+        saves[name] = getSaveData();
+        setAllSaves(saves);
+        saveDialog.style.display = 'none';
+        renderSaveList();
+    });
+}
+// 關閉載入/刪除彈窗
+if (loadDialogCloseBtn) {
+    loadDialogCloseBtn.addEventListener('click', function () {
+        loadDialog.style.display = 'none';
+    });
+}
+if (loadDialog) {
+    loadDialog.addEventListener('click', function (e) {
+        if (e.target === loadDialog) loadDialog.style.display = 'none';
+    });
+}
+// 載入組合
+if (loadDialogLoadBtn) {
+    loadDialogLoadBtn.addEventListener('click', function () {
+        const saves = getAllSaves();
+        if (saves[currentLoadKey]) {
+            setSaveData(saves[currentLoadKey]);
+        }
+        loadDialog.style.display = 'none';
+    });
+}
+// 刪除組合
+if (loadDialogDeleteBtn) {
+    loadDialogDeleteBtn.addEventListener('click', function () {
+        const saves = getAllSaves();
+        delete saves[currentLoadKey];
+        setAllSaves(saves);
+        renderSaveList();
+        loadDialog.style.display = 'none';
+    });
+}
 
-    // 預覽視窗元素
-    let previewTooltip = null;
+// 預覽視窗元素
+let previewTooltip = null;
 
-    function showSavePreview(data, event) {
-        if (!previewTooltip) {
-            previewTooltip = document.createElement('div');
-            previewTooltip.id = 'savePreviewTooltip';
-            previewTooltip.style.cssText = `
+function showSavePreview(data, event) {
+    if (!previewTooltip) {
+        previewTooltip = document.createElement('div');
+        previewTooltip.id = 'savePreviewTooltip';
+        previewTooltip.style.cssText = `
                 position: fixed;
                 background-color: rgba(30, 30, 30, 0.9);
                 border: 1px solid #555;
@@ -637,114 +637,114 @@ function launchDivineRain() {
                 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
                 display: none;
             `;
-            document.body.appendChild(previewTooltip);
-        }
+        document.body.appendChild(previewTooltip);
+    }
 
-        let content = '';
+    let content = '';
 
-        // 顯示「篩有任意一詞」部分
-        if (data.allChecked) {
-            let allKeys = [];
-            Object.keys(data.allChecked).forEach(modFile => {
-                (data.allChecked[modFile] || []).forEach(idx => {
-                    // 這裡需要從 allRegexKeys 獲取實際的 key
-                    // 但由於 allRegexKeys 是全域變數，且在載入時會被覆蓋，
-                    // 所以這裡需要一個更穩健的方式來獲取儲存時的 key。
-                    // 暫時先假設 allRegexKeys 在此時是正確的，或者需要重新設計儲存結構。
-                    // 為了預覽，我們直接使用儲存的 allChecked 索引來嘗試獲取 key
-                    if (allRegexKeys[modFile] && allRegexKeys[modFile][idx]) {
-                        allKeys.push(allRegexKeys[modFile][idx]);
-                    }
-                });
+    // 顯示「篩有任意一詞」部分
+    if (data.allChecked) {
+        let allKeys = [];
+        Object.keys(data.allChecked).forEach(modFile => {
+            (data.allChecked[modFile] || []).forEach(idx => {
+                // 這裡需要從 allRegexKeys 獲取實際的 key
+                // 但由於 allRegexKeys 是全域變數，且在載入時會被覆蓋，
+                // 所以這裡需要一個更穩健的方式來獲取儲存時的 key。
+                // 暫時先假設 allRegexKeys 在此時是正確的，或者需要重新設計儲存結構。
+                // 為了預覽，我們直接使用儲存的 allChecked 索引來嘗試獲取 key
+                if (allRegexKeys[modFile] && allRegexKeys[modFile][idx]) {
+                    allKeys.push(allRegexKeys[modFile][idx]);
+                }
             });
-            if (allKeys.length > 0) {
-                content += `<div><b>篩選:</b> ${[...new Set(allKeys)].join(' | ')}</div>`;
-            }
-        }
-
-        // 顯示獎勵詞篩選中填入的數字
-        if (data.filter) {
-            let filterParts = [];
-            if (data.filter.quantity) filterParts.push(`數量: ${data.filter.quantity}`);
-            if (data.filter.rarity) filterParts.push(`稀有度: ${data.filter.rarity}`);
-            if (data.filter.pack) filterParts.push(`怪物群: ${data.filter.pack}`);
-            if (data.filter.map) filterParts.push(`地圖: ${data.filter.map}`);
-            if (data.filter.scarab) filterParts.push(`聖甲蟲: ${data.filter.scarab}`);
-            if (data.filter.currency) filterParts.push(`通貨: ${data.filter.currency}`);
-            if (filterParts.length > 0) {
-                content += `<div><b>獎勵詞篩選:</b> ${filterParts.join(', ')}</div>`;
-            }
-        }
-
-        if (content) {
-            previewTooltip.innerHTML = content;
-            previewTooltip.style.display = 'block';
-
-            // 定位預覽視窗
-            const x = event.clientX + 15; // 稍微偏離滑鼠位置
-            const y = event.clientY + 15;
-
-            previewTooltip.style.left = `${x}px`;
-            previewTooltip.style.top = `${y}px`;
-
-            // 確保預覽視窗不會超出螢幕邊界
-            const rect = previewTooltip.getBoundingClientRect();
-            if (rect.right > window.innerWidth) {
-                previewTooltip.style.left = `${event.clientX - rect.width - 15}px`;
-            }
-            if (rect.bottom > window.innerHeight) {
-                previewTooltip.style.top = `${event.clientY - rect.height - 15}px`;
-            }
-        } else {
-            hideSavePreview();
+        });
+        if (allKeys.length > 0) {
+            content += `<div><b>篩選:</b> ${[...new Set(allKeys)].join(' | ')}</div>`;
         }
     }
 
-    function hideSavePreview() {
-        if (previewTooltip) {
-            previewTooltip.style.display = 'none';
-        }
-    }
-
-    // 實現 updateFilterRegex 函數
-    function updateFilterRegex() {
-        const quantity = document.getElementById('filter-quantity').value;
-        const rarity = document.getElementById('filter-rarity').value;
-        const pack = document.getElementById('filter-pack').value;
-        const map = document.getElementById('filter-map').value;
-        const scarab = document.getElementById('filter-scarab').value;
-        const currency = document.getElementById('filter-currency').value;
-
+    // 顯示獎勵詞篩選中填入的數字
+    if (data.filter) {
         let filterParts = [];
-        if (quantity) filterParts.push(`"MapQuantity":"${quantity}",`);
-        if (rarity) filterParts.push(`"MapRarity":"${rarity}",`);
-        if (pack) filterParts.push(`"PackSize":"${pack}",`);
-        if (map) filterParts.push(`"MapTier":"${map}",`);
-        if (scarab) filterParts.push(`"ScarabQuantity":"${scarab}",`);
-        if (currency) filterParts.push(`"CurrencyQuantity":"${currency}",`);
-
-        let filterRegex = '';
+        if (data.filter.quantity) filterParts.push(`數量: ${data.filter.quantity}`);
+        if (data.filter.rarity) filterParts.push(`稀有度: ${data.filter.rarity}`);
+        if (data.filter.pack) filterParts.push(`怪物群: ${data.filter.pack}`);
+        if (data.filter.map) filterParts.push(`地圖: ${data.filter.map}`);
+        if (data.filter.scarab) filterParts.push(`聖甲蟲: ${data.filter.scarab}`);
+        if (data.filter.currency) filterParts.push(`通貨: ${data.filter.currency}`);
         if (filterParts.length > 0) {
-            filterRegex = `{
+            content += `<div><b>獎勵詞篩選:</b> ${filterParts.join(', ')}</div>`;
+        }
+    }
+
+    if (content) {
+        previewTooltip.innerHTML = content;
+        previewTooltip.style.display = 'block';
+
+        // 定位預覽視窗
+        const x = event.clientX + 15; // 稍微偏離滑鼠位置
+        const y = event.clientY + 15;
+
+        previewTooltip.style.left = `${x}px`;
+        previewTooltip.style.top = `${y}px`;
+
+        // 確保預覽視窗不會超出螢幕邊界
+        const rect = previewTooltip.getBoundingClientRect();
+        if (rect.right > window.innerWidth) {
+            previewTooltip.style.left = `${event.clientX - rect.width - 15}px`;
+        }
+        if (rect.bottom > window.innerHeight) {
+            previewTooltip.style.top = `${event.clientY - rect.height - 15}px`;
+        }
+    } else {
+        hideSavePreview();
+    }
+}
+
+function hideSavePreview() {
+    if (previewTooltip) {
+        previewTooltip.style.display = 'none';
+    }
+}
+
+// 實現 updateFilterRegex 函數
+function updateFilterRegex() {
+    const quantity = document.getElementById('filter-quantity').value;
+    const rarity = document.getElementById('filter-rarity').value;
+    const pack = document.getElementById('filter-pack').value;
+    const map = document.getElementById('filter-map').value;
+    const scarab = document.getElementById('filter-scarab').value;
+    const currency = document.getElementById('filter-currency').value;
+
+    let filterParts = [];
+    if (quantity) filterParts.push(`"MapQuantity":"${quantity}",`);
+    if (rarity) filterParts.push(`"MapRarity":"${rarity}",`);
+    if (pack) filterParts.push(`"PackSize":"${pack}",`);
+    if (map) filterParts.push(`"MapTier":"${map}",`);
+    if (scarab) filterParts.push(`"ScarabQuantity":"${scarab}",`);
+    if (currency) filterParts.push(`"CurrencyQuantity":"${currency}",`);
+
+    let filterRegex = '';
+    if (filterParts.length > 0) {
+        filterRegex = `{
   "Filter": {
     ${filterParts.join('\n    ')}
   }
 }`; // 修正字串格式
-        }
-
-        document.getElementById('filterRegexOutput').textContent = filterRegex;
-        // 這裡可能還需要更新 orRegexOutput 和 negativeRegexOutput，取決於它們的邏輯
-        // 例如：
-        // updateOrRegex();
-        // updateNegativeRegex();
     }
 
-    renderSaveList();
-    loadMods(currentModFile);
+    document.getElementById('filterRegexOutput').textContent = filterRegex;
+    // 這裡可能還需要更新 orRegexOutput 和 negativeRegexOutput，取決於它們的邏輯
+    // 例如：
+    // updateOrRegex();
+    // updateNegativeRegex();
+}
+
+renderSaveList();
+loadMods(currentModFile);
 
 
 // 頁面初始載入
-window.onload = async function() {
+window.onload = async function () {
     try {
         await loadMods(currentModFile);
     } catch (e) {
@@ -802,9 +802,9 @@ function updateFilterRegex() {
     document.getElementById('orRegexOutput').textContent = orStr;
 }
 // 進階篩選 input 綁定
-['filter-quantity','filter-rarity','filter-pack','filter-map','filter-scarab','filter-currency'].forEach(id => {
+['filter-quantity', 'filter-rarity', 'filter-pack', 'filter-map', 'filter-scarab', 'filter-currency'].forEach(id => {
     const el = document.getElementById(id);
-    if (el) el.addEventListener('input', function() {
+    if (el) el.addEventListener('input', function () {
         updateFilterRegex();
         updateNegativeRegex();
     });
