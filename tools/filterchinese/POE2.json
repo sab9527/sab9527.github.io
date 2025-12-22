@@ -1,5 +1,277 @@
 [
   [
+    "COMMON CURRENCIES",
+    "常用通貨"
+  ],
+  [
+    "Tablets",
+    "碑牌"
+  ],
+  [
+    "Splinters",
+    "各種裂片"
+  ],
+  [
+    "Endgame Waystones",
+    "換界石"
+  ],
+  [
+    "Rare Items (endgame)",
+    "終局稀有裝"
+  ],
+  [
+    "Rare & Magic Items - High Tier",
+    "高階級魔法與稀有裝備"
+  ],
+  [
+    "Others Bases",
+    "其他基底"
+  ],
+  [
+    "Crafting Bases",
+    "做裝基底"
+  ],
+  [
+    "Charms (Endgame)",
+    "後期護符"
+  ],
+  [
+    "Flasks (Endgame)",
+    "後期藥劑"
+  ],
+  [
+    "Campaign and Leveling",
+    "章節物品"
+  ],
+  [
+    "Socketables",
+    "可鑲嵌物品"
+  ],
+  [
+    "Campaign & Exotics Currencies",
+    "章節與機制通貨"
+  ],
+  [
+    "CAMPAIGN: Currency",
+    "章節通貨"
+  ],
+  [
+    "CAMPAIGN: Socketables",
+    "章節可鑲嵌"
+  ],
+  [
+    "Emotions (Delirium)",
+    "液態情感（譫妄迷霧）"
+  ],
+  [
+    "Catalysts (Breach)",
+    "催化劑（裂痕）"
+  ],
+  [
+    "Omen (Ritual)",
+    "預兆（祭祀）"
+  ],
+  [
+    "Uniques",
+    "傳奇"
+  ],
+  [
+    "Chancing",
+    "機會石基底"
+  ],
+  [
+    "Gems",
+    "技能、輔助、精魂"
+  ],
+  [
+    "Lineage Gems",
+    "族裔輔助"
+  ],
+  [
+    "Current League: Fate of the Vaal",
+    "瓦爾命途 聯盟相關物品"
+  ],
+  [
+    "Twice-Corruption Outcomes",
+    "雙瓦相關規則"
+  ],
+  [
+    "Vaal-Specific Uniques",
+    "瓦爾相關傳奇"
+  ],
+  [
+    "Endgame Rares & Crafting",
+    "後期稀有裝與基底"
+  ],
+  [
+    "Hide Armour Classes & Weapon Types",
+    "隱藏特定種類護甲與武器、階級"
+  ],
+  [
+    "• Unid.Tier:",
+    "鑑定前顯示階級："
+  ],
+  [
+    "Add custom Show/Hide rule",
+    "新增規則"
+  ],
+  [
+    "Decorators (advanced)",
+    "整體外觀（一般人用不到）"
+  ],
+  [
+    "Weapons & Armours",
+    "武器、護甲"
+  ],
+  [
+    "NO-TIER RARES: High Waystones",
+    "無階級 高物等 稀有"
+  ],
+  [
+    "NO-TIER RARES: Lower Waystones",
+    "無階級 低物等 稀有"
+  ],
+  [
+    "NORMAL BASES + NO TIER MAGICS",
+    "無階級 高物等 普通"
+  ],
+  [
+    "Exceptional & Identified Rules",
+    "已鑑定或特殊規則"
+  ],
+  [
+    "Chance Bases: Overquality",
+    "超高品質"
+  ],
+  [
+    "Chance Bases: Oversocket",
+    "超高洞數"
+  ],
+  [
+    "Value-bases: Oversocket",
+    "好基底 超高洞數"
+  ],
+  [
+    "Value-bases: High Overquality",
+    "好基底 超高品質"
+  ],
+  [
+    "Any Oversocket Exceptional Item",
+    "任義物等 超高洞數"
+  ],
+  [
+    "Any Overquality Exceptional Item",
+    "任意物等 超高品質"
+  ],
+  [
+    "Uniques: Overquality",
+    "傳奇 超高品質"
+  ],
+  [
+    "Uniques: Oversocket",
+    "傳奇 超高洞數"
+  ],
+  [
+    "Breach rings",
+    "裂痕戒指"
+  ],
+  [
+    "Breach Rings, high level",
+    "高物等裂痕戒指"
+  ],
+  [
+    "Optional Rules",
+    "其他規則"
+  ],
+  [
+    "Flasks & Charms",
+    "藥劑和護符"
+  ],
+  [
+    "Special Waystones",
+    "特殊換界石"
+  ],
+  [
+    "Delirium 'Enchanted' High",
+    "迷霧塗抹 高"
+  ],
+  [
+    "Delirium 'Enchanted' Mid",
+    "迷霧塗抹 中"
+  ],
+  [
+    "Delirium 'Enchanted' Low",
+    "迷霧塗抹 低"
+  ],
+  [
+    "Corrupted with 7+ Mods (high)",
+    "已腐化 T14 7詞以上"
+  ],
+  [
+    "Corrupted with 7+ Mods (low)",
+    "已腐化 低T 7詞以上"
+  ],
+  [
+    "Decorators (advanced)",
+    "外觀（一般人用不到）"
+  ],
+  [
+    "Tablets and Map-like items",
+    "碑牌、地圖門票、鑰匙"
+  ],
+  [
+    "Ascendancy Keys",
+    "昇華門票"
+  ],
+  [
+    "Endgame Salvagable Items",
+    "回收用基底"
+  ],
+  [
+    "Campaign",
+    "章節"
+  ],
+  [
+    "Campaign Gear",
+    "章節裝備"
+  ],
+  [
+    "Campaign Flasks & Charms",
+    "章節藥劑和護符"
+  ],
+  [
+    "Campaign Salvagable Items",
+    "章節回收用基底"
+  ],
+  [
+    "Time-lost Jewels",
+    "時迭綠紅藍"
+  ],
+  [
+    "Corrupted Jewels: enchanted",
+    "已腐化 珠寶"
+  ],
+  [
+    "Corrupted Jewels: 5-Mod",
+    "已腐化 5 詞"
+  ],
+  [
+    "Special Rules",
+    "特殊規則"
+  ],
+  [
+    "Unique Special Cases",
+    "傳奇特殊"
+  ],
+  [
+    "Corrupted Uniques",
+    "已腐化 傳奇"
+  ],
+  [
+    "Exotic Bases",
+    "異域基底（Exotic）"
+  ],
+  [
     "Current League: Keepers of the Flame",
     "當前聯盟：3.27 暗焰守護者"
   ],
