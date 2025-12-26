@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自訂排名產生器 (Tier List Maker)</title>
+    <style>
+        :root {
+            --bg-color: #f0f2f5;
+            --text-color: #333;
+            --card-bg: #fff;
+            --border-color: #ddd;
+            --shadow: 0 2px 5px rgba(0,0,0,0.1);
+            --drag-over-bg: rgba(0, 0, 0, 0.05);
+            --item-bg: #fff;
+            --item-text: #000;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #1a1a1a;
+            --text-color: #f0f0f0;
+            --card-bg: #2d2d2d;
+            --border-color: #444;
+            --shadow: 0 2px 5px rgba(0,0,0,0.3);
+            --drag-over-bg: rgba(255, 255, 255, 0.05);
+            --item-bg: #3d3d3d;
+            --item-text: #fff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', 'Microsoft JhengHei', sans-serif;
+            user-select: none;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+        }
+
+        .controls-top {
+            display: flex;
+            gap: 10px;
+        }
+
+        button {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            background-color: #4a90e2;
+            color: white;
+            font-size: 0.9rem;
+            transition: background-color 0.2s;
+        }
+
+        button:hover {
+            background-color: #357abd;
+        }
+
+        button.secondary {
+            background-color: #6c757d;
+        }
+
+        button.secondary:hover {
+            background-color: #5a6268;
+        }
+
+        button.danger {
+            background-color: #dc3545;
+        }
+
+        button.danger:hover {
+            background-color: #c82333;
+        }
+
+        /* Tier Rows */
+        .tier-row {
+            display: flex;
+            min-height: 100px;
+            margin-bottom: 4px;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+        }
+
+        .tier-label {
+            width: 100px;
+            min-width: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: #000;
+            text-align: center;
+            padding: 10px;
+            word-break: break-word;
+        }
+
+        .tier-content {
+            flex-grow: 1;
+            padding: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-content: flex-start;
+            transition: background-color 0.2s;
+        }
+
+        .tier-content.drag-over {
+            background-color: var(--drag-over-bg);
+        }
+
+        /* Items */
+        .item {
+            background-color: var(--item-bg);
+            color: var(--item-text);
+            padding: 10px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            cursor: grab;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            min-width: 60px;
+            text-align: center;
+            position: relative;
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-size: 0.95rem;
+        }
+
+        .item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+        }
+
+        .item.dragging {
+            opacity: 0.5;
+            cursor: grabbing;
+        }
+
+        /* Input Area */
+        .input-area {
+            margin-top: 30px;
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+        }
+
+        .input-controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            flex-grow: 1;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-size: 1rem;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #4a90e2;
+        }
+
+        .unranked-pool {
+            min-height: 100px;
+            border: 2px dashed var(--border-color);
+            border-radius: 4px;
+            padding: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-content: flex-start;
+        }
+
+        .unranked-pool.drag-over {
+            background-color: var(--drag-over-bg);
+            border-color: #4a90e2;
+        }
+
+        /* Context Menu */
+        #context-menu {
+            display: none;
+            position: absolute;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            border-radius: 4px;
+            z-index: 1000;
+            min-width: 120px;
+        }
+
+        .menu-item {
+            padding: 8px 12px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            color: var(--text-color);
+        }
+
+        .menu-item:hover {
+            background-color: var(--drag-over-bg);
+        }
+
+        .menu-item.delete {
+            color: #dc3545;
+        }
+
+        /* Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal {
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: 8px;
+            width: 300px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .modal h3 {
+            margin-bottom: 15px;
+        }
+
+        .modal-buttons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .tier-label {
+                width: 60px;
+                font-size: 0.9rem;
+            }
+            
+            .controls-top {
+                width: 100%;
+                justify-content: space-between;
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>🏆 自訂排名產生器</h1>
+        <div class="controls-top">
+            <button id="theme-btn" class="secondary">🌓 切換主題</button>
+            <button id="export-btn" class="secondary">💾 匯出設定</button>
+            <input type="file" id="import-input" style="display: none" accept=".json">
+            <button id="import-btn" class="secondary">📂 匯入設定</button>
+            <button id="reset-btn" class="danger">🗑️ 重置所有</button>
+        </div>
+    </header>
+
+    <div id="tier-container">
+        <!-- Tiers will be generated here -->
+    </div>
+
+    <div class="input-area">
+        <h3>新增項目</h3>
+        <div class="input-controls">
+            <input type="text" id="new-item-input" placeholder="輸入文字內容...">
+            <button id="add-btn">確認新增</button>
+        </div>
+        <div id="unranked-pool" class="unranked-pool" data-tier="unranked">
+            <!-- New items appear here -->
+        </div>
+    </div>
+</div>
+
+<!-- Context Menu -->
+<div id="context-menu">
+    <div class="menu-item" id="menu-edit">✏️ 編輯</div>
+    <div class="menu-item delete" id="menu-delete">🗑️ 刪除</div>
+</div>
+
+<!-- Edit Modal -->
+<div class="modal-overlay" id="edit-modal">
+    <div class="modal">
+        <h3>編輯內容</h3>
+        <input type="text" id="edit-input" style="width: 100%;">
+        <div class="modal-buttons">
+            <button class="secondary" id="modal-cancel">取消</button>
+            <button id="modal-confirm">確定</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Configuration
+    const DEFAULT_TIERS = [
+        { id: 'tier-1', name: '夯', color: '#ff7f7f' },
+        { id: 'tier-2', name: '頂級', color: '#ffbf7f' },
+        { id: 'tier-3', name: '人上人', color: '#ffdf7f' },
+        { id: 'tier-4', name: 'NPC', color: '#ffff7f' },
+        { id: 'tier-5', name: '拉完了', color: '#bfffff' },
+        { id: 'tier-6', name: '待定', color: '#d9d9d9' }
+    ];
+
+    // State
+    let state = {
+        items: [], // { id, text, tierId }
+        tiers: JSON.parse(JSON.stringify(DEFAULT_TIERS)),
+        theme: 'light'
+    };
+
+    // DOM Elements
+    const tierContainer = document.getElementById('tier-container');
+    const unrankedPool = document.getElementById('unranked-pool');
+    const newItemInput = document.getElementById('new-item-input');
+    const addBtn = document.getElementById('add-btn');
+    const contextMenu = document.getElementById('context-menu');
+    const editModal = document.getElementById('edit-modal');
+    const editInput = document.getElementById('edit-input');
+    const themeBtn = document.getElementById('theme-btn');
+    const exportBtn = document.getElementById('export-btn');
+    const importBtn = document.getElementById('import-btn');
+    const importInput = document.getElementById('import-input');
+    const resetBtn = document.getElementById('reset-btn');
+
+    let draggedItem = null;
+    let contextMenuItemId = null;
+
+    // Initialization
+    function init() {
+        loadState();
+        renderTiers();
+        renderItems();
+        applyTheme();
+        setupEventListeners();
+    }
+
+    // State Management
+    function saveState() {
+        localStorage.setItem('tierListState', JSON.stringify(state));
+    }
+
+    function loadState() {
+        const saved = localStorage.getItem('tierListState');
+        if (saved) {
+            try {
+                const parsed = JSON.parse(saved);
+                // Merge simply to ensure structure
+                state = { ...state, ...parsed };
+                // Ensure default tiers if missing (backward compatibility)
+                if (!state.tiers || state.tiers.length === 0) {
+                    state.tiers = JSON.parse(JSON.stringify(DEFAULT_TIERS));
+                }
+            } catch (e) {
+                console.error('Failed to load state', e);
+            }
+        }
+    }
+
+    // Rendering
+    function renderTiers() {
+        tierContainer.innerHTML = '';
+        state.tiers.forEach(tier => {
+            const row = document.createElement('div');
+            row.className = 'tier-row';
+            
+            const label = document.createElement('div');
+            label.className = 'tier-label';
+            label.textContent = tier.name;
+            label.style.backgroundColor = tier.color;
+            
+            const content = document.createElement('div');
+            content.className = 'tier-content';
+            content.dataset.tierId = tier.id;
+            
+            // Drag events for drop zone
+            setupDropZone(content);
+
+            row.appendChild(label);
+            row.appendChild(content);
+            tierContainer.appendChild(row);
+        });
+
+        // Setup unranked pool as drop zone too
+        setupDropZone(unrankedPool);
+    }
+
+    function renderItems() {
+        // Clear all containers first
+        document.querySelectorAll('.tier-content, .unranked-pool').forEach(el => {
+            el.innerHTML = '';
+        });
+
+        state.items.forEach(item => {
+            const itemEl = createItemElement(item);
+            const targetContainer = item.tierId === 'unranked' 
+                ? unrankedPool 
+                : document.querySelector(`.tier-content[data-tier-id="${item.tierId}"]`);
+            
+            if (targetContainer) {
+                targetContainer.appendChild(itemEl);
+            } else {
+                // Fallback if tier doesn't exist
+                unrankedPool.appendChild(itemEl);
+                item.tierId = 'unranked';
+            }
+        });
+    }
+
+    function createItemElement(item) {
+        const el = document.createElement('div');
+        el.className = 'item';
+        el.draggable = true;
+        el.textContent = item.text;
+        el.dataset.id = item.id;
+        
+        el.addEventListener('dragstart', handleDragStart);
+        el.addEventListener('dragend', handleDragEnd);
+        el.addEventListener('contextmenu', handleContextMenu);
+        el.addEventListener('dblclick', () => openEditModal(item.id));
+        
+        return el;
+    }
+
+    // Drag and Drop Logic
+    function setupDropZone(el) {
+        el.addEventListener('dragover', e => {
+            e.preventDefault();
+            
+            // 添加視覺提示
+            document.querySelectorAll('.drag-over').forEach(d => {
+                if (d !== el) d.classList.remove('drag-over');
+            });
+            el.classList.add('drag-over');
+            
+            const draggable = document.querySelector('.dragging');
+            if (!draggable) return;
+
+            // 計算插入位置 (二維判定)
+            const afterElement = getDragAfterElement(el, e.clientX, e.clientY);
+            const currentAfterElement = draggable.nextElementSibling;
+
+            // 只有當位置真的改變時才進行 DOM 操作和動畫
+            // 情況 1: 跨容器移動
+            // 情況 2: 同容器內順序改變
+            if (el !== draggable.parentNode || afterElement !== currentAfterElement) {
+                // FLIP Animation Start: 記錄所有項目的位置
+                const allItems = document.querySelectorAll('.item:not(.dragging)');
+                const positions = new Map();
+                allItems.forEach(item => {
+                    const rect = item.getBoundingClientRect();
+                    positions.set(item.dataset.id, { left: rect.left, top: rect.top });
+                });
+
+                // DOM 操作
+                if (afterElement == null) {
+                    el.appendChild(draggable);
+                } else {
+                    el.insertBefore(draggable, afterElement);
+                }
+
+                // FLIP Animation End: 計算並應用動畫
+                allItems.forEach(item => {
+                    const prev = positions.get(item.dataset.id);
+                    if (prev) {
+                        const current = item.getBoundingClientRect();
+                        const dx = prev.left - current.left;
+                        const dy = prev.top - current.top;
+
+                        if (dx !== 0 || dy !== 0) {
+                            // Invert: 瞬間移動回舊位置
+                            item.style.transition = 'none';
+                            item.style.transform = `translate(${dx}px, ${dy}px)`;
+
+                            // Play: 平滑過渡到新位置
+                            requestAnimationFrame(() => {
+                                // Force reflow
+                                item.getBoundingClientRect();
+                                item.style.transition = 'transform 0.3s cubic-bezier(0.2, 0, 0, 1)';
+                                item.style.transform = '';
+                            });
+                        }
+                    }
+                });
+            }
+        });
+
+        el.addEventListener('dragleave', (e) => {
+            // 只有當真正離開容器時才移除樣式
+            if (e.target === el) {
+                el.classList.remove('drag-over');
+            }
+        });
+
+        el.addEventListener('drop', e => {
+            e.preventDefault();
+            el.classList.remove('drag-over');
+            if (draggedItem) {
+                updateStateFromDOM();
+            }
+        });
+    }
+
+    function getDragAfterElement(container, x, y) {
+        // 獲取容器內所有非拖曳元素
+        const draggableElements = [...container.querySelectorAll('.item:not(.dragging)')];
+
+        // 找到第一個符合「鼠標在其之前」條件的元素
+        // 因為 DOM 順序就是流式佈局順序，所以找到的第一個就是目標
+        return draggableElements.find(child => {
+            const box = child.getBoundingClientRect();
+            
+            // 判斷是否在同一行 (允許一定誤差)
+            // 如果鼠標明顯在該元素所在行的上方，則該元素肯定在鼠標之後
+            if (y < box.top - 5) return true;
+            
+            // 如果鼠標明顯在該元素所在行的下方，則該元素在鼠標之前，跳過
+            if (y > box.bottom + 5) return false;
+            
+            // 如果在同一行，比較 X 軸中心點
+            // 如果鼠標在元素中心點左側，則該元素在鼠標之後
+            if (x < box.left + box.width / 2) return true;
+            
+            return false;
+        });
+    }
+
+    function updateStateFromDOM() {
+        // Rebuild items array based on DOM order to persist sorting
+        const newItems = [];
+        
+        // 1. Scan Tier Containers
+        document.querySelectorAll('.tier-content').forEach(container => {
+            const tierId = container.dataset.tierId;
+            container.querySelectorAll('.item').forEach(itemEl => {
+                const id = itemEl.dataset.id;
+                const item = state.items.find(i => i.id === id);
+                if (item) {
+                    newItems.push({ ...item, tierId: tierId });
+                }
+            });
+        });
+
+        // 2. Scan Unranked Pool
+        document.querySelectorAll('#unranked-pool .item').forEach(itemEl => {
+            const id = itemEl.dataset.id;
+            const item = state.items.find(i => i.id === id);
+            if (item) {
+                newItems.push({ ...item, tierId: 'unranked' });
+            }
+        });
+
+        // 3. Keep items that might be missing from DOM (should not happen but safe)
+        // or just replace state.items with newItems if we trust DOM is complete
+        // We trust DOM is complete as we didn't delete anything during drag
+        
+        // Filter out any duplicates just in case
+        state.items = newItems;
+        saveState();
+    }
+
+    function handleDragStart(e) {
+        draggedItem = this;
+        this.classList.add('dragging');
+        e.dataTransfer.effectAllowed = 'move';
+    }
+
+    function handleDragEnd() {
+        this.classList.remove('dragging');
+        draggedItem = null;
+        
+        // Ensure drag-over classes are removed from all containers
+        document.querySelectorAll('.drag-over').forEach(el => el.classList.remove('drag-over'));
+    }
+
+    // Event Listeners
+    function setupEventListeners() {
+        // Add Item
+        addBtn.addEventListener('click', addNewItem);
+        newItemInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') addNewItem();
+        });
+
+        // Theme Toggle
+        themeBtn.addEventListener('click', () => {
+            state.theme = state.theme === 'light' ? 'dark' : 'light';
+            applyTheme();
+            saveState();
+        });
+
+        // Reset
+        resetBtn.addEventListener('click', () => {
+            if(confirm('確定要刪除所有項目並重置嗎？')) {
+                state.items = [];
+                state.tiers = JSON.parse(JSON.stringify(DEFAULT_TIERS));
+                saveState();
+                renderTiers();
+                renderItems();
+            }
+        });
+
+        // Export
+        exportBtn.addEventListener('click', () => {
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(state));
+            const downloadAnchorNode = document.createElement('a');
+            downloadAnchorNode.setAttribute("href", dataStr);
+            downloadAnchorNode.setAttribute("download", "tier-list-config.json");
+            document.body.appendChild(downloadAnchorNode);
+            downloadAnchorNode.click();
+            downloadAnchorNode.remove();
+        });
+
+        // Import
+        importBtn.addEventListener('click', () => importInput.click());
+        importInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                try {
+                    const importedState = JSON.parse(event.target.result);
+                    state = importedState;
+                    saveState();
+                    renderTiers();
+                    renderItems();
+                    applyTheme();
+                    alert('匯入成功！');
+                } catch (err) {
+                    alert('匯入失敗：檔案格式錯誤');
+                }
+            };
+            reader.readAsText(file);
+            e.target.value = ''; // Reset input
+        });
+
+        // Global Click to close context menu
+        document.addEventListener('click', (e) => {
+            if (!contextMenu.contains(e.target)) {
+                contextMenu.style.display = 'none';
+            }
+        });
+
+        // Context Menu Actions
+        document.getElementById('menu-edit').addEventListener('click', () => {
+            if (contextMenuItemId) {
+                openEditModal(contextMenuItemId);
+                contextMenu.style.display = 'none';
+            }
+        });
+
+        document.getElementById('menu-delete').addEventListener('click', () => {
+            if (contextMenuItemId) {
+                if(confirm('確定要刪除此項目嗎？')) {
+                    state.items = state.items.filter(i => i.id !== contextMenuItemId);
+                    saveState();
+                    renderItems();
+                }
+                contextMenu.style.display = 'none';
+            }
+        });
+
+        // Modal Actions
+        document.getElementById('modal-cancel').addEventListener('click', () => {
+            editModal.style.display = 'none';
+        });
+
+        document.getElementById('modal-confirm').addEventListener('click', () => {
+            const newText = editInput.value.trim();
+            const editingId = editModal.dataset.editingId;
+            
+            if (newText && editingId) {
+                const item = state.items.find(i => i.id === editingId);
+                if (item) {
+                    item.text = newText;
+                    saveState();
+                    renderItems();
+                }
+            }
+            editModal.style.display = 'none';
+        });
+    }
+
+    // Logic Functions
+    function addNewItem() {
+        const text = newItemInput.value.trim();
+        if (!text) return;
+
+        const newItem = {
+            id: 'item-' + Date.now(),
+            text: text,
+            tierId: 'unranked'
+        };
+
+        state.items.push(newItem);
+        saveState();
+        
+        // Append directly to avoid full re-render
+        const el = createItemElement(newItem);
+        unrankedPool.appendChild(el);
+        
+        newItemInput.value = '';
+    }
+
+    function applyTheme() {
+        document.documentElement.setAttribute('data-theme', state.theme);
+    }
+
+    function handleContextMenu(e) {
+        e.preventDefault();
+        contextMenuItemId = this.dataset.id;
+        
+        // Position menu
+        contextMenu.style.display = 'block';
+        contextMenu.style.left = `${e.pageX}px`;
+        contextMenu.style.top = `${e.pageY}px`;
+    }
+
+    function openEditModal(id) {
+        const item = state.items.find(i => i.id === id);
+        if (item) {
+            editInput.value = item.text;
+            editModal.dataset.editingId = id;
+            editModal.style.display = 'flex';
+            editInput.focus();
+        }
+    }
+
+    // Run
+    init();
+
+</script>
+</body>
+</html>
