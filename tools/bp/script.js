@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     loser = 'team1';
                 } else {
                     // 平手，重擲
-                    setTimeout(rollDice, 1000); 
+                    setTimeout(rollDice, 1000);
                     return;
                 }
                 enterSelectionButton.style.display = 'block';
@@ -102,12 +102,12 @@ document.addEventListener('DOMContentLoaded', () => {
         dice.innerHTML = '';
         if (num < 1 || num > 6) return;
         const positions = {
-            1: [[1,1]],
-            2: [[0,0], [2,2]],
-            3: [[0,0], [1,1], [2,2]],
-            4: [[0,0], [0,2], [2,0], [2,2]],
-            5: [[0,0], [0,2], [1,1], [2,0], [2,2]],
-            6: [[0,0], [0,1], [0,2], [2,0], [2,1], [2,2]]
+            1: [[1, 1]],
+            2: [[0, 0], [2, 2]],
+            3: [[0, 0], [1, 1], [2, 2]],
+            4: [[0, 0], [0, 2], [2, 0], [2, 2]],
+            5: [[0, 0], [0, 2], [1, 1], [2, 0], [2, 2]],
+            6: [[0, 0], [0, 1], [0, 2], [2, 0], [2, 1], [2, 2]]
         };
         positions[num].forEach(pos => {
             const pip = document.createElement('div');
@@ -135,12 +135,12 @@ document.addEventListener('DOMContentLoaded', () => {
         isPicking = true; // 開始處理選擇，設置為 true
         const img = container.querySelector('img');
         const target = document.getElementById(currentTeam).querySelector('.selections');
-        
+
         // 動畫效果
         container.style.transition = 'all 1s cubic-bezier(0.4,0,0.2,1)';
         container.style.transform = `translate(${currentTeam === 'team1' ? '-50%' : '50%'}, -50%) scale(1.3)`;
         container.style.opacity = '0';
-        
+
         setTimeout(() => {
             // 只移動圖片到隊伍區域
             target.appendChild(img);
@@ -150,15 +150,15 @@ document.addEventListener('DOMContentLoaded', () => {
             img.style.opacity = '';
             container.remove();
         }, 1000);
-        
-            setTimeout(() => {
-                remainingPicks--;
-                isPicking = false; // 選擇處理完成，設置為 false
-                if (remainingPicks === 0) {
-                    currentStep++;
-                    nextPick();
-                }
-            }, 1000);
+
+        setTimeout(() => {
+            remainingPicks--;
+            isPicking = false; // 選擇處理完成，設置為 false
+            if (remainingPicks === 0) {
+                currentStep++;
+                nextPick();
+            }
+        }, 1000);
     }
 
     function setupProgress() {
@@ -237,89 +237,80 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function showFinalResult() {
-        // 隱藏所有現有UI元素
+        // 隱藏不必要的 UI
         diceArea.style.display = 'none';
         ascensionsDiv.style.display = 'none';
         progressDiv.style.display = 'none';
         enterSelectionButton.style.display = 'none';
-        
-        // 移除所有選取特效
-        document.querySelectorAll('.team').forEach(team => {
-            team.classList.remove('active-pick');
-        });
-        document.querySelectorAll('.logo').forEach(logo => {
-            logo.classList.remove('active-pick');
-        });
 
-        // 重新設置隊伍區塊樣式
+        // 移除選取狀態
+        document.querySelectorAll('.team').forEach(team => team.classList.remove('active-pick'));
+        document.querySelectorAll('.logo').forEach(logo => logo.classList.remove('active-pick'));
+
+        // 使用 CSS class 處理佈局
         const teamsBlock = document.getElementById('teams-block');
-        teamsBlock.style.top = '50%';
-        teamsBlock.style.transform = 'translate(-50%, -50%)';
-        teamsBlock.style.background = 'rgba(30, 30, 50, 0.95)';
-        teamsBlock.style.padding = '40px';
+        teamsBlock.classList.add('final-result');
 
-        // 為每個隊伍創建昇華列表
+        // 生成結果清單
         ['team1', 'team2'].forEach(teamId => {
             const team = document.getElementById(teamId);
             const selections = team.querySelector('.selections');
+            const images = selections.querySelectorAll('img');
+
             const ascensionList = document.createElement('div');
             ascensionList.className = 'ascension-list';
-            
-            // 獲取所有昇華圖片
-            const images = selections.getElementsByTagName('img');
+
             Array.from(images).forEach(img => {
-                const ascensionItem = document.createElement('div');
-                ascensionItem.className = 'ascension-item';
-                
+                const item = document.createElement('div');
+                item.className = 'ascension-item';
+
                 const name = document.createElement('span');
                 name.className = 'ascension-name';
                 name.textContent = img.alt;
-                
-                ascensionItem.appendChild(img.cloneNode(true));
-                ascensionItem.appendChild(name);
-                ascensionList.appendChild(ascensionItem);
+
+                item.appendChild(img.cloneNode(true));
+                item.appendChild(name);
+                ascensionList.appendChild(item);
             });
-            
-            // 清空原有的selections並添加新的列表
+
+            // 清空並重新排列
             selections.innerHTML = '';
             selections.appendChild(ascensionList);
-            
-            // 添加隊伍標題
+
             const teamTitle = document.createElement('h2');
-            teamTitle.className = 'team-title';
-            teamTitle.textContent = teamId === 'team1' ? '夏烏拉昇華' : '賽勒斯昇華';
+            teamTitle.className = 'team-title orbitron';
+            teamTitle.textContent = teamId === 'team1' ? 'BLUE TEAM' : 'RED TEAM';
             team.insertBefore(teamTitle, selections);
         });
 
-        // 添加結算標題
+        // 顯示結果大標題
         const resultTitle = document.createElement('h1');
         resultTitle.id = 'result-title';
-        resultTitle.textContent = '選角結果';
-        document.body.insertBefore(resultTitle, teamsBlock);
+        resultTitle.className = 'orbitron';
+        resultTitle.textContent = 'FINAL SELECTIONS';
+        document.body.appendChild(resultTitle);
     }
 
     function setupAscensions() {
         ascensionsDiv.innerHTML = '';
-        ascensionsDiv.style.display = 'grid';
-        ascensionsDiv.style.gridTemplateColumns = 'repeat(auto-fill, minmax(150px, 1fr))';
-        ascensionsDiv.style.gap = '20px';
-        
+        ascensionsDiv.style.display = 'flex';
+
         ascensions.forEach(ascension => {
             const container = document.createElement('div');
             container.className = 'ascension-container';
-            
+
             const img = document.createElement('img');
             img.src = ascension;
             img.alt = ascension.split('.')[0];
-            
+
             const name = document.createElement('div');
             name.className = 'ascension-name';
             name.textContent = img.alt;
-            
+
             container.appendChild(img);
             container.appendChild(name);
             container.addEventListener('click', () => selectAscension(container));
-            
+
             ascensionsDiv.appendChild(container);
         });
     }

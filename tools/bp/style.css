@@ -1,23 +1,46 @@
-/* POE 選角階段 CSS 樣式 */
+/* POE 選角階段 - 電競風格重設計 */
 
-* {
-    font-family: 'Noto Sans TC', '思源黑體', Arial, sans-serif !important; /* 使用 !important 來強制覆蓋 */
+:root {
+    --bg-dark: #0a0a12;
+    --primary: #00f2ff;
+    --primary-glow: rgba(0, 242, 255, 0.5);
+    --secondary: #ff0055;
+    --secondary-glow: rgba(255, 0, 85, 0.5);
+    --gold: #f1c40f;
+    --gold-glow: rgba(241, 196, 15, 0.5);
+    --text-main: #e0e0e0;
+    --glass-bg: rgba(20, 20, 35, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.1);
 }
 
-/* 全局樣式重置 */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Inter', 'Noto Sans TC', sans-serif;
 }
 
-body, html {
+body,
+html {
     width: 100%;
     height: 100%;
     overflow: hidden;
+    background-color: var(--bg-dark);
+    color: var(--text-main);
 }
 
-/* 背景圖片區塊 */
+/* 標題字體使用 Orbitron */
+h1,
+h2,
+.orbitron,
+#start-button,
+.team-label,
+.progress-step span {
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 2px;
+}
+
+/* 背景與動態效果 */
 #background-image {
     position: fixed;
     top: 0;
@@ -27,490 +50,390 @@ body, html {
     background-image: url('back.gif');
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
-    filter: brightness(0.25) contrast(1.1);
-    z-index: -1; /* 確保背景在最底層 */
+    filter: brightness(0.2) contrast(1.2) saturate(0.8);
+    z-index: -1;
 }
 
-/* 內容區塊 */
+#background-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, transparent 0%, var(--bg-dark) 100%);
+}
+
 #content {
     position: relative;
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    z-index: 1; /* 確保內容在背景之上 */
+    z-index: 1;
 }
 
-/* 開始按鈕 */
+/* 開始按鈕 - 電競風格 */
 #start-button {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    padding: 15px 40px;
-    font-size: 24px;
-    font-weight: bold;
-    color: white;
-    background: linear-gradient(135deg, #6ecc21, #2980b9);
+    padding: 20px 60px;
+    font-size: 28px;
+    font-weight: 900;
+    color: #fff;
+    background: linear-gradient(135deg, #00f2ff, #2980b9);
     border: none;
-    border-radius: 50px;
-    box-shadow: 0 0 20px rgba(106, 141, 102, 0.7);
+    clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
     cursor: pointer;
-    transition: all 0.3s ease;
-    z-index: 10;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 0 30px var(--primary-glow);
+    z-index: 100;
 }
 
 #start-button:hover {
     transform: translate(-50%, -50%) scale(1.1);
-    box-shadow: 0 0 30px rgba(52, 152, 219, 0.9);
+    background: linear-gradient(135deg, #00ffff, #3498db);
+    box-shadow: 0 0 50px var(--primary);
+}
+
+/* 進度條 - 頂部斜邊風格 */
+#progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    padding: 0 40px;
+    z-index: 50;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+#progress::-webkit-scrollbar {
+    display: none;
+}
+
+.progress-step {
+    min-width: 90px;
+    height: 60px;
+    clip-path: polygon(15% 0, 100% 0, 85% 100%, 0 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    transition: all 0.4s ease;
+    filter: grayscale(0.5);
+    opacity: 0.6;
+}
+
+.progress-step.active {
+    filter: grayscale(0);
+    opacity: 1;
+    transform: translateY(5px) scale(1.1);
+    background: var(--gold);
+    box-shadow: 0 0 20px var(--gold-glow);
+}
+
+.progress-step.team1 {
+    background: rgba(0, 242, 255, 0.2);
+    border-left: 4px solid var(--primary);
+}
+
+.progress-step.team2 {
+    background: rgba(255, 0, 85, 0.2);
+    border-left: 4px solid var(--secondary);
+}
+
+.progress-step .team-label {
+    font-size: 12px;
+    margin-bottom: 2px;
+}
+
+.progress-step span:last-child {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+/* 隊伍區塊 - 兩翼對稱佈局 */
+#teams-block {
+    position: absolute;
+    top: 120px;
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none;
+}
+
+.team {
+    width: 42%;
+    padding: 20px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 4px;
+    transition: all 0.5s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+#team1 {
+    clip-path: polygon(0 0, 100% 0, 95% 100%, 0 100%);
+    border-left: 5px solid var(--primary);
+}
+
+#team2 {
+    clip-path: polygon(5% 0, 100% 0, 100% 100%, 0 100%);
+    border-right: 5px solid var(--secondary);
+    align-items: flex-end;
+}
+
+/* 結算畫面特別處理 */
+#teams-block.final-result {
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: 90% !important;
+    max-width: 1400px;
+    height: auto;
+    pointer-events: auto;
+    background: rgba(15, 15, 25, 0.95);
+    padding: 60px 40px;
+    flex-direction: row;
+}
+
+#teams-block.final-result .team {
+    width: 48%;
+    clip-path: none !important;
+    border: 1px solid var(--glass-border);
+    background: rgba(255, 255, 255, 0.03);
+    padding: 30px;
+}
+
+#teams-block.final-result #team1 {
+    border-left: 5px solid var(--primary);
+}
+
+#teams-block.final-result #team2 {
+    border-right: 5px solid var(--secondary);
+    align-items: center;
+}
+
+#teams-block.final-result .logo-container {
+    margin-bottom: 30px;
+}
+
+#teams-block.final-result .team-title {
+    margin-bottom: 30px;
+}
+
+
+.team.active-pick {
+    background: rgba(40, 40, 60, 0.9);
+    border-color: var(--gold);
+    box-shadow: 0 0 30px var(--gold-glow);
+    transform: scale(1.02);
+}
+
+.logo-container {
+    width: 140px;
+    height: 140px;
+    background-image: url('FIRE.gif');
+    background-size: cover;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.logo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.selections {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: flex-start;
+}
+
+#team2 .selections {
+    justify-content: flex-end;
+}
+
+.selections img {
+    width: 120px;
+    height: 60px;
+    object-fit: cover;
+    border: 1px solid var(--glass-border);
+    transition: transform 0.3s;
 }
 
 /* 骰子區域 */
 #dice-area {
     position: absolute;
-    top: 70%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
-    justify-content: space-around;
-    width: 300px;
-    height: 150px;
-    z-index: 5;
-}
-
-/* 骰子樣式 */
-.dice {
-    width: 100px;
-    height: 100px;
-    background-color: white;
-    border-radius: 15px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    padding: 10px;
-    transition: transform 0.3s ease;
-}
-
-.dice.rolling {
-    animation: roll 0.2s infinite alternate;
-}
-
-.dice.hidden-border {
-    border: 2px solid transparent;
-}
-
-@keyframes roll {
-    0% { transform: rotate(-5deg); }
-    100% { transform: rotate(5deg); }
-}
-
-/* 骰子點 */
-.pip {
-    width: 15px;
-    height: 15px;
-    background-color: #000000;
-    border-radius: 50%;
-    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.5);
-    justify-self: center;
-    align-self: center;
-}
-
-/* 確認選擇按鈕 */
-#enter-selection-button {
-    position: absolute;
-    bottom: 50%;
-    left: 50%;
-    transform: translate(-50%, 0);
-    padding: 12px 30px;
-    font-size: 30px;
-    font-weight: bold;
-    color: white;
-    background: linear-gradient(135deg, #3c89e0, #a33232);
-    border: none;
-    border-radius: 50px;
-    box-shadow: 0 0 15px rgba(243, 156, 18, 0.7);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    z-index: 10;
-}
-
-#enter-selection-button:hover {
-    transform: translate(-50%, 0) scale(1.1);
-    box-shadow: 0 0 25px rgba(243, 156, 18, 0.9);
-}
-
-/* 隊伍區塊 */
-#teams-block {
-width: 90vw;
-    max-width: 14000px;
-    margin: 0 auto;
-    display: flex
-;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-    background: rgba(30, 30, 50, 0.85);
-    border-radius: 30px;
-    box-shadow: 0 0 40px 10px rgba(0, 255, 255, 0.15);
-    padding: 40px 30px 30px 30px;
     gap: 40px;
-    position: absolute;
-    top: 200px;
-    left: 50%;
-    transform: translateX(-50%);
     z-index: 10;
 }
 
-/* 隊伍子區塊 */
-.team {
+.dice {
+    width: 80px;
+    height: 80px;
+    background: #fff;
+    border-radius: 12px;
+    display: grid;
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+    padding: 8px;
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
+}
+
+.pip {
+    width: 12px;
+    height: 12px;
+    background: #111;
+    border-radius: 50%;
+    place-self: center;
+}
+
+/* 職業選擇區 - 底部滾動橫條 */
+#ascensions {
+    position: absolute;
+    bottom: 20px;
+    width: 95%;
+    height: 200px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    padding: 20px;
+    display: flex !important;
+    /* JS 會改，這裡強制 flex */
+    overflow-x: auto;
+    gap: 20px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary) transparent;
+}
+
+.ascension-container {
+    min-width: 180px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 45%;
-    padding: 15px;
-    border-radius: 15px;
+    cursor: pointer;
     transition: all 0.3s ease;
+    position: relative;
 }
 
-#team1 {
-    background-color: rgba(52, 152, 219, 0.3);
+.ascension-container:hover {
+    transform: translateY(-10px);
 }
 
-#team2 {
-    background-color: rgba(231, 76, 60, 0.3);
+.ascension-container img {
+    width: 180px;
+    height: 90px;
+    object-fit: cover;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
 }
 
-.team.active-pick {
-    box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
-    transform: scale(1.05);
+.ascension-name {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--primary);
+    text-transform: uppercase;
 }
 
-/* 結算介面樣式 */
-#result-title {
-    color: #fff;
-    font-size: 48px;
-    text-align: center;
-    margin-bottom: 30px;
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+.ascension-container:hover img {
+    border-color: var(--primary);
+    box-shadow: 0 0 15px var(--primary-glow);
+}
+
+/* 按鈕風格 */
+#enter-selection-button {
     position: absolute;
-    top: 50px;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 15px 40px;
+    background: var(--secondary);
+    color: white;
+    border: none;
+    font-weight: 900;
+    clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+    cursor: pointer;
+    box-shadow: 0 0 20px var(--secondary-glow);
+    z-index: 60;
+}
+
+/* 結算介面 */
+#result-title {
+    position: absolute;
+    top: 10%;
     left: 50%;
     transform: translateX(-50%);
+    font-size: 60px;
+    font-weight: 900;
+    color: var(--gold);
+    text-shadow: 0 0 30px var(--gold);
+    z-index: 100;
 }
 
-.team-title {
-    color: #fff;
-    font-size: 32px;
-    text-align: center;
-    margin-bottom: 20px;
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-}
 
 .ascension-list {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 15px;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.3);
-    border-radius: 15px;
     width: 100%;
 }
 
 .ascension-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 10px;
     display: flex;
     align-items: center;
     gap: 15px;
-    padding: 10px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    transition: transform 0.3s ease;
-}
-
-.ascension-item:hover {
-    transform: scale(1.05);
-    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid var(--glass-border);
 }
 
 .ascension-item img {
-    width: 60px;
-    height: 60px;
-    border-radius: 8px;
+    width: 80px;
+    height: 40px;
     object-fit: cover;
 }
 
 .ascension-item .ascension-name {
+    margin: 0;
     color: #fff;
-    font-size: 25px;
-    font-weight: bold;
+    font-size: 16px;
 }
 
-/* 隊伍標誌圖片 */
-.logo {
-    width: 165px;
-    height: 165px;
-    border-radius: 50%;
-    border: 0px solid #fff;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-    transition: transform 0.3s ease;
-    position: relative; /* Add this for positioning the fire effect */
-    z-index: 2; /* Ensure logo is above the fire effect */
-}
-
-.logo-container {
-    position: relative;
-    width: 175px; /* Slightly larger than logo to act as border */
-    height: 175px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
-    background-image: url('FIRE.gif');
-    background-size: cover;
-    background-position: center;
-    border-radius: 50%;
-    overflow: hidden; /* Hide overflow of the gif */
-    box-shadow: 0 0 15px rgb(255, 255, 255); /* Orange glow for fire */
-    z-index: 1;
-}
-
-.logo.active-pick {
-    border: 4px solid gold;
-    box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
-    animation: pulse 1.5s infinite;
-}
-
-@keyframes pulse {
-    0% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.8); }
-    50% { box-shadow: 0 0 30px rgba(255, 215, 0, 1); }
-    100% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.8); }
-}
-
-/* 選擇項容器 */
-.selections {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    width: 100%;
-}
-
-.selections img {
-    width: 165px;
-    height: 80px;
-    border-radius: 0px;
-    border: px solid white;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-    transition: all 0.3s ease;
-}
-
-.selections img:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-}
-
-/* 升華使區塊 */
-#ascensions {
-    position: absolute;
-    bottom: 5%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90%;
-    max-width: 1200px;
-    background-color: rgba(48, 47, 47, 0.7);
-    border-radius: 15px;
-    padding: 20px;
-    max-height: 40vh;
-    overflow-y: auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
-}
-
-.ascension-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.ascension-container:hover {
-    transform: scale(1.1);
-}
-
-.ascension-container img {
-    width: 200px;
-    height: 100px;
-    border-radius: 10px;
-    border: 2px solid rgb(92, 196, 132);
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-}
-
-.ascension-name {
-    margin-top: 5px;
-    color: rgb(126 246 152);
-    font-size: 25px;
-    text-align: center;
-    text-shadow: 0px 0px 0px rgb(0 0 0);
-    font-family: 'Noto Sans CJK' !important;
-    font-optical-sizing: auto;
-    font-weight: 600;
-    font-style: normal;
-
-}
-
-/* 進度條區塊 */
-#progress {
-    position: absolute;
-    top: 1%;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    justify-content: flex-start;
-    gap: 5px;
-    background-color: rgba(0, 0, 0, 0.8);
-    border-radius: 15px;
-    padding: 20px;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
-    width: 69%;
-    max-width: 1385px;
-    overflow-x: auto;
-    scrollbar-width: thin;
-    scrollbar-color: rgb(255 255 255 / 50%) rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(10px);
-    border: 10px solid rgba(255, 255, 255, 0.1);
-/* 進度步驟 */
-.progress-step {
-    min-width: 80px;
-    height: 80px;
-    border-radius: 12px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease;
-    position: relative;
-    backdrop-filter: blur(5px);
-    margin: 0 5px;
-}
-
-.progress-step::after {
-    content: '';
-    position: absolute;
-    right: -20px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 20px;
-    height: 2px;
-    background: rgba(255, 255, 255, 0.2);
-}
-
-.progress-step:last-child::after {
-    display: none;
-}
-
-.progress-step .team-label {
-    font-size: 20px;
-    font-weight: bold;
-    color: rgb(255, 255, 255);
-    text-shadow: 0 0 3px black;
-    margin-bottom: 5px;
-    letter-spacing: 1px;
-}
-
-.progress-step span:last-child {
-    font-size: 18px;
-    font-weight: bold;
-    color: rgb(255, 255, 255);
-    text-shadow: 0 0 3px black;
-    opacity: 0.9;
-}
-
-/* 進度步驟激活狀態 */
-.progress-step.active {
-    background: linear-gradient(135deg, #f1c40f, #f39c12);
-    border: 2px solid rgba(255, 215, 0, 0.8);
-    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
-    transform: scale(1.1) translateY(-5px);
-    z-index: 2;
-}
-
-.progress-step.active::before {
-    content: '';
-    position: absolute;
-    inset: -2px;
-    border-radius: 12px;
-    padding: 2px;
-    background: linear-gradient(45deg, #ffd700, #ffa500);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-}
-
-/* 隊伍1進度步驟 */
-.progress-step.team1 {
-    background: linear-gradient(135deg, rgba(29, 108, 226, 0.8), rgba(41, 128, 185, 0.8));
-}
-
-/* 隊伍2進度步驟 */
-.progress-step.team2 {
-    background: linear-gradient(135deg, rgba(211, 113, 102, 0.8), rgba(192, 57, 43, 0.8));
-}
-
-/* 自定義進度條滾動條 */
-#progress::-webkit-scrollbar {
+/* 滾動條樣式 */
+::-webkit-scrollbar {
+    width: 6px;
     height: 6px;
 }
 
-#progress::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.3);
-    border-radius: 3px;
-}
-
-#progress::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.5);
-    border-radius: 3px;
-    transition: all 0.3s ease;
-}
-
-#progress::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.7);
-}
-
-/* 動畫區域 */
-#animation-area {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 20;
-    pointer-events: none;
-}
-
-/* 自定義滾動條 */
-::-webkit-scrollbar {
-    width: 10px;
-}
-
 ::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.3);
-    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.2);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.5);
-    border-radius: 10px;
+    background: var(--primary);
+    border-radius: 3px;
 }
-
-::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.7);
-} }
