@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>終末地武器相關.Sab</title>
+    <meta name="description" content="終末地武器、關卡詞條與刷取推薦">
+
+    <!-- 字型 -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap"
+        rel="stylesheet">
+
+    <!-- 樣式表 -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- 背景影片 -->
+    <div class="video-container">
+        <video autoplay loop muted playsinline id="bgVideo">
+            <source src="B.mp4" type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
+    </div>
+
+    <!-- 頁首導航 -->
+    <header>
+        <div class="header-content">
+            <div class="logo-area">
+                <img src="logo.png" alt="終末地 Logo" class="logo-img">
+                <h1>終末地武器圖鑑.Sab</h1>
+            </div>
+            <nav class="nav-tabs">
+                <button class="nav-tab active" data-tab="weapons">武器圖鑑</button>
+                <button class="nav-tab" data-tab="stages">關卡詞條</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 主要內容 -->
+    <main>
+        <!-- 武器圖鑑分頁 -->
+        <div id="weapons" class="tab-content active">
+            <div class="section-header">
+                <h2 class="section-title">武器圖鑑</h2>
+                <p class="section-desc">瀏覽所有武器，點擊查看詳情與推薦刷取關卡</p>
+            </div>
+            <div class="filters">
+                <div class="filter-group" style="flex:1">
+                    <label class="filter-label">搜尋武器</label>
+                    <input type="text" class="filter-input" id="weaponSearch" placeholder="輸入武器名稱...">
+                </div>
+            </div>
+            <div class="filters">
+                <div class="filter-group" style="width:48%">
+                    <label class="filter-label">稀有度</label>
+                    <div id="rarityFilter" class="checkbox-grid"></div>
+                </div>
+                <div class="filter-group" style="width:48%">
+                    <label class="filter-label">種類</label>
+                    <div id="typeFilter" class="checkbox-grid"></div>
+                </div>
+            </div>
+            <!-- 詞條篩選 -->
+            <div class="filters">
+                <div class="filter-group" style="width:100%">
+                    <label class="filter-label">主能力篩選</label>
+                    <div id="mainStatFilter" class="checkbox-grid"></div>
+                </div>
+            </div>
+            <div class="filters">
+                <div class="filter-group" style="width:48%">
+                    <label class="filter-label">附加屬性篩選</label>
+                    <div id="subStatFilter" class="checkbox-grid"></div>
+                </div>
+                <div class="filter-group" style="width:48%">
+                    <label class="filter-label">技能篩選</label>
+                    <div id="skillFilter" class="checkbox-grid"></div>
+                </div>
+            </div>
+            <div id="weaponGrid" class="weapon-grid"></div>
+        </div>
+
+        <!-- 關卡詞條分頁 -->
+        <div id="stages" class="tab-content">
+            <div class="section-header">
+                <h2 class="section-title">關卡詞條</h2>
+                <p class="section-desc">選擇關卡查看詞條，可同時選擇最多3種基礎屬性 + 1種附加/技能屬性進行篩選</p>
+            </div>
+            <div class="stage-grid" id="stageGrid"></div>
+            <div id="stageDetail" class="results-panel" style="display:none;">
+                <h3 class="results-title" id="stageDetailTitle"></h3>
+                <div id="stageDetailContent"></div>
+            </div>
+            <div id="tagWeapons" class="results-panel" style="display:none;">
+                <h3 class="results-title">符合的武器 (<span id="tagWeaponCount">0</span>)</h3>
+                <div id="tagWeaponGrid" class="weapon-grid"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 武器詳情彈窗 -->
+    <div class="modal-overlay" id="modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 id="modalTitle">武器詳情</h3>
+                <button class="modal-close" id="modalClose">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
+
+    <!-- 共同刷取推薦彈窗 -->
+    <div class="modal-overlay" id="coFarmModal">
+        <div class="modal" style="max-width: 800px;">
+            <div class="modal-header">
+                <h3 id="coFarmModalTitle">共同刷取推薦</h3>
+                <button class="modal-close" id="coFarmModalClose">&times;</button>
+            </div>
+            <div class="modal-body" id="coFarmModalBody"></div>
+        </div>
+    </div>
+
+    <!-- 頁尾 -->
+    <footer>
+        <div class="footer-content">
+            <p>本網頁由 Sab 編修 有錯誤請聯繫 discord sab9453</p>
+        </div>
+    </footer>
+
+    <!-- 載入資料和程式碼 -->
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,1259 @@
+/**
+ * 武器圖鑑網站樣式表
+ */
+
+:root {
+    /* 核心配色：深灰黑底色配金黃色強調色 */
+    --bg-primary: #0a0b0e;
+    --bg-secondary: rgba(22, 23, 29, 0.85);
+    --bg-card: rgba(28, 30, 36, 0.7);
+    --bg-card-hover: rgba(38, 41, 51, 0.9);
+    --text-primary: #f0f0f2;
+    --text-secondary: #a0a0aa;
+
+    /* 強調色漸層 */
+    --accent-color: #f7c948;
+    --accent: linear-gradient(135deg, #f7c948 0%, #ffeb3b 100%);
+    --accent-light: #fff59d;
+    --accent-dim: rgba(247, 201, 72, 0.15);
+    --accent-blue: #00d4ff;
+    --accent-green: #a2f24c;
+
+    /* 玻璃擬態 */
+    --glass-bg: rgba(22, 23, 29, 0.75);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-blur: blur(12px);
+
+    /* 稀有度顏色 - 使用更飽和的漸層感 */
+    --rarity-6: linear-gradient(135deg, #f7c948 0%, #b45309 100%);
+    --rarity-5: linear-gradient(135deg, #c084fc 0%, #7e22ce 100%);
+    --rarity-4: linear-gradient(135deg, #60a5fa 0%, #1d4ed8 100%);
+    --rarity-3: linear-gradient(135deg, #9ca3af 0%, #4b5563 100%);
+
+    --border-radius-sm: 4px;
+    --border-radius-md: 8px;
+    --border-radius-lg: 12px;
+
+    --corner-size: 20px;
+    --border-width: 2px;
+    --clip-path: polygon(var(--corner-size) 0%, 100% 0%, 100% calc(100% - var(--corner-size)), calc(100% - var(--corner-size)) 100%, 0% 100%, 0% var(--corner-size));
+
+    --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.4);
+    --shadow-glow: 0 0 10px rgba(247, 201, 72, 0.2);
+    /* 減弱後的基礎光效 */
+    --glitch-scan-color: rgba(247, 200, 72, .229);
+    /* 4C 掃描線顏色，調整 alpha 可控制亮度 */
+    --glitch-speed: 2s;
+    /* 掃描速度，數值越大越慢 */
+    --transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-color) transparent;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+    border-radius: 10px;
+}
+
+body {
+    font-family: 'Outfit', 'Noto Sans TC', sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    min-height: 100vh;
+    line-height: 1.6;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* 背景影片容器 */
+.video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    overflow: hidden;
+}
+
+#bgVideo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(8px);
+    /* 模糊效果 */
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(5, 5, 8, 0.85);
+    /* 進一步加強變黑效果 */
+    z-index: -1;
+}
+
+/* 掃描線效果 */
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%,
+            rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg,
+            rgba(255, 0, 0, 0.02),
+            rgba(0, 255, 0, 0.01),
+            rgba(0, 0, 255, 0.02));
+    background-size: 100% 4px, 3px 100%;
+    pointer-events: none;
+    z-index: 999;
+    opacity: 0.3;
+}
+
+/* 頂部裝飾線 */
+header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--accent);
+    box-shadow: 0 0 10px var(--accent);
+}
+
+/* ==================== Header & Navigation ==================== */
+
+header {
+    background: rgba(10, 11, 14, 0.95);
+    /* 更飽和的深色背景 */
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    padding: 1.25rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 2px solid var(--accent-color);
+    /* 加粗底部裝飾線 */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+.header-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.logo-img {
+    height: 42px;
+    width: auto;
+    filter: drop-shadow(0 0 12px var(--accent-dim));
+    transition: var(--transition);
+}
+
+.logo-area:hover .logo-img {
+    transform: scale(1.05) rotate(-5deg);
+}
+
+h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0;
+    color: var(--text-primary);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 800;
+    background: var(--accent);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 10px var(--accent-dim));
+}
+
+/* 移除舊有的 h1 圖標 */
+
+.nav-tabs {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.nav-tab {
+    padding: 0.6rem 1.8rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--glass-border);
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    font-family: inherit;
+    transition: var(--transition);
+    clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-tab:hover {
+    color: var(--text-primary);
+    border-color: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-2px);
+}
+
+.nav-tab.active {
+    background: var(--accent);
+    color: #0c0d10;
+    border-color: transparent;
+    font-weight: 700;
+    box-shadow: 0 4px 15px rgba(247, 201, 72, 0.4);
+}
+
+/* ==================== Main Content ==================== */
+
+main {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.tab-content {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==================== Section Headers ==================== */
+
+.filters {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+    padding: 1.8rem;
+    background: var(--accent-color);
+    /* 背景作為邊框顏色 */
+    position: relative;
+    clip-path: var(--clip-path);
+    animation: slideUp 0.6s ease-out;
+}
+
+.filters::after {
+    content: "";
+    position: absolute;
+    inset: var(--border-width);
+    background: #3b3a3a;
+    backdrop-filter: var(--glass-blur);
+    clip-path: polygon(calc(var(--corner-size) - 1px) 0%, 100% 0%, 100% calc(100% - calc(var(--corner-size) - 1px)), calc(100% - calc(var(--corner-size) - 1px)) 100%, 0% 100%, 0% calc(var(--corner-size) - 1px));
+    z-index: 0;
+}
+
+.filters>* {
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.filters::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--accent);
+}
+
+.section-header {
+    margin-bottom: 2rem;
+    border-left: 4px solid var(--accent);
+    padding-left: 1rem;
+}
+
+.section-title {
+    font-size: 1.75rem;
+    margin-bottom: 0.25rem;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.filter-label {
+    font-size: 0.8rem;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 2px;
+    opacity: 0.9;
+}
+
+.filter-input {
+    padding: 0.8rem 1.2rem;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-left: 3px solid var(--accent-color);
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    border-radius: 2px;
+    transition: var(--transition);
+}
+
+.filter-input:focus {
+    outline: none;
+    background: rgba(0, 0, 0, 0.5);
+    border-color: var(--accent-color);
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.checkbox-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1.2rem;
+    background: #1e1f24;
+    /* 按鈕深灰色 */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    color: #e0e0e0;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: var(--transition);
+    clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+    min-width: 90px;
+    justify-content: center;
+}
+
+.checkbox-item:hover {
+    background: #2a2b32;
+    color: white;
+    transform: translateY(-1px);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.checkbox-item input:checked+span,
+.checkbox-item:has(input:checked) {
+    background: var(--accent-color);
+    color: #000;
+    font-weight: 700;
+}
+
+.checkbox-item input {
+    display: none;
+    /* 隱藏原生 checkbox */
+}
+
+.checkbox-item input:checked {
+    background: var(--accent);
+}
+
+.checkbox-item input:checked::after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 8px;
+    height: 8px;
+    background: #000;
+}
+
+/* ==================== Weapon Grid ==================== */
+
+.weapon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1.5rem;
+}
+
+.weapon-card {
+    position: relative;
+    width: 100%;
+    cursor: pointer;
+    transition: var(--transition);
+    background:
+        linear-gradient(135deg, transparent var(--corner-size), var(--bg-card) 0) top left,
+        linear-gradient(315deg, transparent var(--corner-size), var(--bg-card) 0) bottom right,
+        linear-gradient(45deg, var(--bg-card) 0, var(--bg-card) 100%) center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    border: none;
+    /* 基礎狀態下不顯示強烈光效 */
+    filter: drop-shadow(0 0 2px rgba(0, 242, 255, 0.1));
+    overflow: hidden;
+    /* 確保掃描線不會跑出卡片 */
+}
+
+/* 4C 雷達掃描線 - 使用獨立層以免衝突 */
+.weapon-card::after {
+    content: "";
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom,
+            transparent,
+            var(--glitch-scan-color),
+            transparent);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 10;
+    /* 確保在圖片和裝飾之上 */
+    transition: opacity 0.3s ease;
+}
+
+.weapon-card:hover::after {
+    animation: radar-scan var(--glitch-speed) infinite linear;
+    opacity: 1;
+}
+
+@keyframes radar-scan {
+    0% {
+        top: -100%;
+    }
+
+    100% {
+        top: 100%;
+    }
+}
+
+/* 輕微閃爍效果 */
+@keyframes glitch-flicker {
+
+    0%,
+    100% {
+        filter: brightness(1);
+    }
+
+    50% {
+        filter: brightness(1.05);
+    }
+}
+
+
+/* 右下角三角形裝飾 - 改用 ::before 的不同實踐（或保留原樣但確保不被覆蓋） */
+/* 注意：現在 ::after 被掃描線佔用，我們將三角形裝飾移至內部 img 的偽元素或改寫結構 */
+/* 為簡化且不改動 HTML，我們將兩個三角形都放在其他地方，這裡先恢復裝飾 */
+
+.weapon-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: var(--corner-size);
+    height: var(--corner-size);
+    background: var(--accent-blue);
+    clip-path: polygon(0 0, 100% 0, 0 100%);
+    z-index: 2;
+}
+
+/* 由於 ::after 被佔用，我們將右下角三角形掛在 .weapon-info 上 */
+.weapon-info::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: var(--corner-size);
+    height: var(--corner-size);
+    background: var(--accent-blue);
+    clip-path: polygon(100% 0, 100% 100%, 0 100%);
+    z-index: 2;
+    transition: var(--transition);
+}
+
+
+.weapon-card:hover {
+    transform: translateY(-5px);
+    animation: glitch-flicker 0.2s infinite;
+    /* 減弱 hover 時的整體光暈 */
+    filter: drop-shadow(0 0 8px rgba(0, 242, 255, 0.3));
+}
+
+/* 根據稀有度調整裝飾顏色 */
+.weapon-card.rarity-6::before,
+.weapon-card.rarity-6 .weapon-info::after {
+    background: #f7c948;
+}
+
+.weapon-card.rarity-5::before,
+.weapon-card.rarity-5 .weapon-info::after {
+    background: #c084fc;
+}
+
+.weapon-card.rarity-4::before,
+.weapon-card.rarity-4 .weapon-info::after {
+    background: #60a5fa;
+}
+
+.weapon-card.rarity-3::before,
+.weapon-card.rarity-3 .weapon-info::after {
+    background: #9ca3af;
+}
+
+
+
+.weapon-image {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: contain;
+    background: var(--bg-secondary);
+    padding: 1.5rem;
+    mask: linear-gradient(135deg, transparent var(--corner-size), #fff 0);
+    /* 確保圖片不蓋到裝飾 */
+}
+
+.weapon-info {
+    padding: 1rem;
+}
+
+.weapon-name {
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    font-size: 0.95rem;
+}
+
+.weapon-meta {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.weapon-rarity {
+    display: inline-block;
+    padding: 0.25rem 0.8rem;
+    font-size: 0.75rem;
+    margin-right: 0.5rem;
+    text-transform: uppercase;
+    font-weight: 800;
+    clip-path: polygon(5px 0, 100% 0, calc(100% - 5px) 100%, 0 100%);
+    letter-spacing: 1px;
+}
+
+.weapon-rarity.r6 {
+    background: var(--rarity-6);
+    color: #000;
+    box-shadow: 0 0 10px rgba(247, 201, 72, 0.3);
+}
+
+.weapon-rarity.r5 {
+    background: var(--rarity-5);
+    color: #fff;
+    box-shadow: 0 0 10px rgba(192, 132, 252, 0.3);
+}
+
+.weapon-rarity.r4 {
+    background: var(--rarity-4);
+    color: #fff;
+}
+
+.weapon-rarity.r3 {
+    background: var(--rarity-3);
+    color: #fff;
+}
+
+/* ==================== Stage Cards ==================== */
+
+.stage-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.stage-card {
+    background: var(--accent-color);
+    /* 邊框色 */
+    padding: var(--border-width);
+    cursor: pointer;
+    transition: var(--transition);
+    clip-path: var(--clip-path);
+    position: relative;
+}
+
+.stage-card-inner {
+    background: var(--bg-card);
+    padding: 1.5rem;
+    height: 100%;
+    clip-path: polygon(calc(var(--corner-size) - 1px) 0%, 100% 0%, 100% calc(100% - calc(var(--corner-size) - 1px)), calc(100% - calc(var(--corner-size) - 1px)) 100%, 0% 100%, 0% calc(var(--corner-size) - 1px));
+    transition: var(--transition);
+}
+
+.stage-card:hover .stage-card-inner,
+.stage-card.selected .stage-card-inner {
+    background: var(--bg-card-hover);
+}
+
+.stage-card:hover,
+.stage-card.selected {
+    filter: drop-shadow(0 0 10px var(--accent-dim));
+}
+
+.stage-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--accent);
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.stage-card.selected::before {
+    opacity: 1;
+}
+
+.stage-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--accent-light);
+}
+
+.stage-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.stage-tag-group {
+    margin-bottom: 0.75rem;
+}
+
+.stage-tag-label {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.25rem;
+}
+
+/* ==================== Tags ==================== */
+
+.tag {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.85rem;
+    margin: 0.2rem;
+    cursor: pointer;
+    transition: var(--transition);
+    clip-path: polygon(6px 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.tag:hover,
+.tag.selected {
+    background: var(--accent);
+    color: #0c0d10;
+    border-color: transparent;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(247, 201, 72, 0.3);
+    transform: translateY(-2px);
+}
+
+.tag.main-stat {
+    border-color: var(--accent-green);
+    color: var(--accent-green);
+    background: rgba(162, 242, 76, 0.05);
+}
+
+.tag.main-stat:hover,
+.tag.main-stat.selected {
+    background: var(--accent-green);
+    color: #000;
+}
+
+.tag.sub-stat {
+    border-color: var(--accent-blue);
+    color: var(--accent-blue);
+    background: rgba(0, 212, 255, 0.05);
+}
+
+.tag.sub-stat:hover,
+.tag.sub-stat.selected {
+    background: var(--accent-blue);
+    color: #000;
+}
+
+.tag.skill-stat {
+    border-color: var(--accent-light);
+    color: var(--accent-light);
+    background: rgba(255, 245, 157, 0.05);
+}
+
+.tag.skill-stat:hover,
+.tag.skill-stat.selected {
+    background: var(--accent-light);
+    color: #000;
+}
+
+/* ==================== Results Panel ==================== */
+
+.results-panel {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: var(--bg-secondary);
+    border-radius: var(--border-radius);
+}
+
+.results-title {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--bg-card);
+}
+
+/* ==================== Modal ==================== */
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.9);
+    /* 背景更黑 */
+    z-index: 1000;
+    /* 提高 z-index 確保蓋過 header */
+    justify-content: center;
+    align-items: flex-start;
+    /* 改為靠上，方便捲動 */
+    padding: 2rem 1rem;
+    overflow-y: auto;
+    /* 讓 overlay 負責捲動 */
+}
+
+/* 當 Modal 開啟時禁止 body 捲動 */
+body.modal-open {
+    overflow: hidden;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    max-width: 800px;
+    width: 100%;
+    margin-top: 2rem;
+    /* 頂部留白 */
+    margin-bottom: 2rem;
+    animation: modalIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    clip-path: polygon(30px 0, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%, 0 30px);
+    border: 1px solid var(--glass-border);
+    position: relative;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+    overflow: visible;
+    /* 讓外部捲動 */
+}
+
+@keyframes modalIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.modal-header {
+    padding: 2.5rem;
+    border-bottom: 1px solid var(--glass-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.03);
+    position: relative;
+}
+
+.modal-header::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 60px;
+    height: 2px;
+    background: var(--accent-color);
+    box-shadow: 0 0 10px var(--accent-color);
+}
+
+.modal-header h3 {
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--text-primary);
+    font-weight: 800;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    line-height: 1;
+}
+
+.modal-close:hover {
+    color: var(--text-primary);
+}
+
+.modal-body {
+    padding: 2rem;
+}
+
+.modal-weapon-image {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    margin: 0 auto 2rem;
+    display: block;
+    clip-path: var(--clip-path);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+.modal-weapon-stats {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem;
+    background: var(--bg-card);
+    border-radius: 8px;
+}
+
+.stat-label {
+    color: var(--text-secondary);
+}
+
+.stat-value {
+    font-weight: 500;
+}
+
+/* ==================== Recommended Stages ==================== */
+
+.recommended-stages {
+    margin-top: 1.5rem;
+}
+
+/* ==================== Footer ==================== */
+
+footer {
+    padding: 2rem;
+    margin-top: 4rem;
+    background: rgba(10, 11, 14, 0.8);
+    border-top: 1px solid var(--glass-border);
+    text-align: center;
+}
+
+.footer-content p {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    opacity: 0.7;
+    transition: var(--transition);
+}
+
+.footer-content p:hover {
+    opacity: 1;
+    color: var(--accent-light);
+}
+
+.recommended-stages h4 {
+    margin-bottom: 1rem;
+    color: var(--accent-light);
+}
+
+.stage-recommend-item {
+    padding: 0.75rem;
+    background: var(--bg-card);
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+}
+
+.stage-recommend-name {
+    font-weight: 500;
+}
+
+.stage-recommend-reason {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+/* ==================== Co-Farm Button & Section ==================== */
+
+.co-farm-btn {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 0.75rem;
+    background: linear-gradient(135deg, var(--accent), #a855f7);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.co-farm-btn:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+}
+
+.co-farm-section {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: var(--bg-card);
+    border-radius: var(--border-radius);
+}
+
+.co-farm-stage {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background: var(--bg-secondary);
+    border-radius: 8px;
+}
+
+.co-farm-stage-name {
+    font-weight: 700;
+    color: var(--accent-light);
+    margin-bottom: 0.5rem;
+}
+
+.co-farm-config {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.75rem;
+}
+
+.co-farm-weapons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.co-farm-weapon {
+    padding: 0.25rem 0.75rem;
+    background: var(--bg-card);
+    border-radius: 15px;
+    font-size: 0.8rem;
+}
+
+/* ==================== Misc ==================== */
+
+.no-results {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-secondary);
+}
+
+.checkbox-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+/* 隱藏原生複選框，改用 tag 樣式 */
+.checkbox-item input {
+    display: none;
+}
+
+.checkbox-item {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: var(--transition);
+    clip-path: polygon(6px 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
+    color: var(--text-secondary);
+    font-weight: 500;
+    text-align: center;
+}
+
+.checkbox-item:has(input:checked) {
+    background: var(--accent);
+    color: #0c0d10;
+    border-color: transparent;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(247, 201, 72, 0.3);
+    transform: translateY(-2px);
+}
+
+.checkbox-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-primary);
+}
+
+/* ==================== Responsive ==================== */
+
+@media (max-width: 768px) {
+    header {
+        padding: 0.8rem 1rem;
+    }
+
+    .logo-img {
+        height: 32px;
+    }
+
+    h1 {
+        font-size: 1.1rem;
+        letter-spacing: 1px;
+    }
+
+    main {
+        padding: 1rem;
+    }
+
+    .nav-tabs {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .nav-tab {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+        flex: 1;
+        text-align: center;
+    }
+
+    .weapon-grid {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: 0.75rem;
+    }
+
+    .filters {
+        padding: 1.25rem;
+        gap: 1rem;
+    }
+}
+
+/* ==================== Weapon Stats Line ==================== */
+
+.weapon-stats-line {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--bg-secondary);
+}
+
+.weapon-stats-line .stat-main {
+    color: var(--accent-green);
+}
+
+.weapon-stats-line .stat-sub {
+    color: var(--accent-light);
+}
+
+.weapon-stats-line .stat-skill {
+    color: #f59e0b;
+}
+
+/* ==================== Best Config Styles ==================== */
+
+.best-config {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    border-left: 3px solid var(--accent);
+}
+
+.config-title {
+    font-weight: 700;
+    color: var(--accent-light);
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+}
+
+.config-detail {
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.config-label {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    min-width: 80px;
+}
+
+.config-tag {
+    display: inline-block;
+    padding: 0.25rem 0.6rem;
+    background: var(--accent);
+    color: #000;
+    /* 強制文字為黑色 */
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.config-tag.main {
+    background: var(--accent-green);
+    color: #000;
+    /* 強制文字為黑色 */
+}
+
+.config-weapons-title {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    margin: 0.75rem 0 0.5rem 0;
+}
+
+.config-weapons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+}
+
+/* ==================== Mini Weapon Card ==================== */
+
+.mini-weapon-card {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    background: var(--bg-card);
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: var(--transition);
+    border: 1px solid transparent;
+}
+
+.mini-weapon-card:hover {
+    background: var(--bg-card-hover);
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.mini-weapon-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 3px;
+}
+
+.mini-weapon-card.rarity-6::before {
+    background: var(--rarity-6);
+}
+
+.mini-weapon-card.rarity-5::before {
+    background: var(--rarity-5);
+}
+
+.mini-weapon-card.rarity-4::before {
+    background: var(--rarity-4);
+}
+
+.mini-weapon-card.rarity-3::before {
+    background: var(--rarity-3);
+}
+
+.mini-weapon-card img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    background: var(--bg-secondary);
+    border-radius: 4px;
+}
+
+.mini-weapon-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.mini-weapon-name {
+    font-size: 0.8rem;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mini-weapon-stats {
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
