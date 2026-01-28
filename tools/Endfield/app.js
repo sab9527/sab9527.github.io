@@ -200,7 +200,7 @@ function showWeaponModal(weapon) {
                 `;
 
                 // 顯示可同時刷取的武器卡片（小型版）
-                rec.bestConfig.weapons.forEach(w => {
+                sortByRarity(rec.bestConfig.weapons).forEach(w => {
                     const subStatDisplay = w.subStat === "/" ? "-" : w.subStat.replace("提升", "");
                     recsHtml += `
                         <div class="mini-weapon-card ${getRarityClass(w.rarity)}" onclick="showWeaponByName('${w.name}')" style="cursor: pointer;">

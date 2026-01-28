@@ -25,10 +25,10 @@
     --glass-blur: blur(12px);
 
     /* 稀有度顏色 - 使用更飽和的漸層感 */
-    --rarity-6: linear-gradient(135deg, #f7c948 0%, #b45309 100%);
-    --rarity-5: linear-gradient(135deg, #c084fc 0%, #7e22ce 100%);
-    --rarity-4: linear-gradient(135deg, #60a5fa 0%, #1d4ed8 100%);
-    --rarity-3: linear-gradient(135deg, #9ca3af 0%, #4b5563 100%);
+    --rarity-6: linear-gradient(135deg, rgb(254, 90, 0) 0%, #b45309 100%);
+    --rarity-5: linear-gradient(135deg, rgb(255, 187, 3) 0%, #d97706 100%);
+    --rarity-4: linear-gradient(135deg, rgb(148, 82, 250) 0%, #7e22ce 100%);
+    --rarity-3: linear-gradient(135deg, rgb(87, 198, 198) 0%, #0d9488 100%);
 
     --border-radius-sm: 4px;
     --border-radius-md: 8px;
@@ -527,22 +527,22 @@ main {
 /* 根據稀有度調整裝飾顏色 */
 .weapon-card.rarity-6::before,
 .weapon-card.rarity-6 .weapon-info::after {
-    background: #f7c948;
+    background: rgb(254, 90, 0);
 }
 
 .weapon-card.rarity-5::before,
 .weapon-card.rarity-5 .weapon-info::after {
-    background: #c084fc;
+    background: rgb(255, 187, 3);
 }
 
 .weapon-card.rarity-4::before,
 .weapon-card.rarity-4 .weapon-info::after {
-    background: #60a5fa;
+    background: rgb(148, 82, 250);
 }
 
 .weapon-card.rarity-3::before,
 .weapon-card.rarity-3 .weapon-info::after {
-    background: #9ca3af;
+    background: rgb(87, 198, 198);
 }
 
 
@@ -685,14 +685,17 @@ main {
 .tag {
     display: inline-block;
     padding: 0.4rem 1rem;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.08);
+    /* 增加背景亮度 */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    /* 增加邊框亮度 */
     font-size: 0.85rem;
     margin: 0.2rem;
     cursor: pointer;
     transition: var(--transition);
     clip-path: polygon(6px 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
-    color: var(--text-secondary);
+    color: var(--text-primary);
+    /* 從 secondary 改為 primary，讓字變白 */
     font-weight: 500;
 }
 
@@ -709,7 +712,8 @@ main {
 .tag.main-stat {
     border-color: var(--accent-green);
     color: var(--accent-green);
-    background: rgba(162, 242, 76, 0.05);
+    background: rgba(162, 242, 76, 0.1);
+    /* 調高背景透明度 */
 }
 
 .tag.main-stat:hover,
@@ -721,7 +725,8 @@ main {
 .tag.sub-stat {
     border-color: var(--accent-blue);
     color: var(--accent-blue);
-    background: rgba(0, 212, 255, 0.05);
+    background: rgba(0, 212, 255, 0.1);
+    /* 調高背景透明度 */
 }
 
 .tag.sub-stat:hover,
@@ -733,7 +738,8 @@ main {
 .tag.skill-stat {
     border-color: var(--accent-light);
     color: var(--accent-light);
-    background: rgba(255, 245, 157, 0.05);
+    background: rgba(255, 245, 157, 0.1);
+    /* 調高背景透明度 */
 }
 
 .tag.skill-stat:hover,
@@ -884,9 +890,13 @@ body.modal-open {
 .stat-row {
     display: flex;
     justify-content: space-between;
+    gap: 1rem;
+    /* 增加間距 */
     padding: 0.75rem;
     background: var(--bg-card);
     border-radius: 8px;
+    flex-wrap: wrap;
+    /* 內容過長時允許換行 */
 }
 
 .stat-label {
@@ -895,6 +905,10 @@ body.modal-open {
 
 .stat-value {
     font-weight: 500;
+    text-align: right;
+    flex: 1;
+    min-width: 120px;
+    /* 確保右側內容有空間且能換行 */
 }
 
 /* ==================== Recommended Stages ==================== */
@@ -1030,13 +1044,16 @@ footer {
 .checkbox-item {
     display: inline-block;
     padding: 0.4rem 1rem;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.08);
+    /* 增加背景亮度 */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    /* 增加邊框亮度 */
     font-size: 0.85rem;
     cursor: pointer;
     transition: var(--transition);
     clip-path: polygon(6px 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
-    color: var(--text-secondary);
+    color: var(--text-primary);
+    /* 從 secondary 改為 primary，讓字變白 */
     font-weight: 500;
     text-align: center;
 }
@@ -1176,7 +1193,8 @@ footer {
 
 .config-weapons-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    /* 加大最小寬度從 150px -> 220px */
     gap: 0.75rem;
     margin-top: 0.5rem;
 }
@@ -1185,9 +1203,10 @@ footer {
 
 .mini-weapon-card {
     display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem;
+    align-items: flex-start;
+    /* 改為頂部對齊，適合多行文字 */
+    gap: 0.6rem;
+    padding: 0.6rem;
     background: var(--bg-card);
     border-radius: 8px;
     position: relative;
@@ -1243,17 +1262,17 @@ footer {
 }
 
 .mini-weapon-name {
-    font-size: 0.8rem;
-    font-weight: 600;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 2px;
+    /* 移除強致單行 */
+    white-space: normal;
 }
 
 .mini-weapon-stats {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     color: var(--text-secondary);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    /* 允許文字換行並完整顯示 */
+    white-space: normal;
+    line-height: 1.3;
 }
