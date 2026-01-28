@@ -35,6 +35,7 @@
             <nav class="nav-tabs">
                 <button class="nav-tab active" data-tab="weapons">武器圖鑑</button>
                 <button class="nav-tab" data-tab="stages">關卡詞條</button>
+                <button class="nav-tab" data-tab="planner">刷取規劃</button>
             </nav>
         </div>
     </header>
@@ -101,6 +102,38 @@
         </div>
     </main>
 
+        <!-- 刷取規劃分頁 -->
+        <div id="planner" class="tab-content">
+            <div class="section-header">
+                <h2 class="section-title">刷取規劃</h2>
+                <p class="section-desc">勾選您持有的武器，系統將自動計算並推薦最佳刷取關卡</p>
+            </div>
+
+            <!-- 武器選擇區 -->
+            <div class="planner-section">
+                <div class="planner-controls">
+                    <h3>1. 勾選持有武器</h3>
+                    <div class="planner-actions">
+                        <button id="selectAllBtn" class="action-btn">全選</button>
+                        <button id="clearAllBtn" class="action-btn">清除全選</button>
+                        <span id="selectedCount" class="count-display">已選: 0</span>
+                    </div>
+                </div>
+                <!-- 這裡將複用 weapon-grid 樣式，但會加上額外的選取邏輯 -->
+                <div id="plannerWeaponGrid" class="weapon-grid selector-mode"></div>
+            </div>
+
+            <!-- 計算結果區 -->
+            <div class="planner-section">
+                <div class="planner-controls">
+                    <h3>2. 刷取效率推薦</h3>
+                </div>
+                <div id="efficiencyList" class="efficiency-list">
+                    <div class="placeholder-text">請先選擇上方武器以開始計算...</div>
+                </div>
+            </div>
+        </div>
+
     <!-- 武器詳情彈窗 -->
     <div class="modal-overlay" id="modal">
         <div class="modal">
@@ -121,6 +154,12 @@
             </div>
             <div class="modal-body" id="coFarmModalBody"></div>
         </div>
+    </div>
+
+    <!-- 武器預覽浮窗 -->
+    <div id="weaponPreviewTooltip" class="weapon-preview-tooltip">
+        <img id="previewImg" src="" alt="預覽">
+        <div id="previewName" class="preview-name"></div>
     </div>
 
     <!-- 頁尾 -->

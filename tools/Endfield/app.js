@@ -63,6 +63,78 @@ function createWeaponCard(weapon, onClick, index = 0) {
     return card;
 }
 
+function createWeaponListItem(weapon, onClick) {
+    const item = document.createElement('div');
+    item.className = `weapon-list-item ${getRarityClass(weapon.rarity)}`;
+    
+    const subStatDisplay = weapon.subStat === "/" ? "-" : weapon.subStat.replace("提升", "");
+    const mainStatDisplay = weapon.mainStat.replace("提升", "");
+    
+    item.innerHTML = `
+        <div class="item-selection-box"></div>
+        <div class="item-rarity-indicator"></div>
+        <div class="item-name">${weapon.name}</div>
+        <div class="item-stats">
+            <span class="item-stat-tag main">${mainStatDisplay}</span>
+            <span class="item-stat-tag sub">${subStatDisplay}</span>
+            <span class="item-stat-tag skill">${weapon.skill}</span>
+        </div>
+    `;
+    
+    item.addEventListener('click', () => onClick(weapon, item));
+
+    // 添加預覽事件
+    item.addEventListener('mouseenter', (e) => showWeaponPreview(weapon, e));
+    item.addEventListener('mousemove', (e) => moveWeaponPreview(e));
+    item.addEventListener('mouseleave', () => hideWeaponPreview());
+
+    return item;
+}
+
+// ==================== 武器預覽浮窗邏輯 ====================
+
+function showWeaponPreview(weapon, event) {
+    const tooltip = document.getElementById('weaponPreviewTooltip');
+    const img = document.getElementById('previewImg');
+    const name = document.getElementById('previewName');
+    
+    if (!tooltip || !img || !name) return;
+
+    img.src = getImagePath(weapon.name);
+    name.textContent = weapon.name;
+    tooltip.style.display = 'flex';
+    
+    moveWeaponPreview(event);
+}
+
+function moveWeaponPreview(event) {
+    const tooltip = document.getElementById('weaponPreviewTooltip');
+    if (!tooltip) return;
+
+    const x = event.clientX + 15;
+    const y = event.clientY + 15;
+
+    // 檢查是否超出螢幕右側或下方
+    const tooltipRect = tooltip.getBoundingClientRect();
+    let finalX = x;
+    let finalY = y;
+
+    if (x + tooltipRect.width > window.innerWidth) {
+        finalX = event.clientX - tooltipRect.width - 15;
+    }
+    if (y + tooltipRect.height > window.innerHeight) {
+        finalY = event.clientY - tooltipRect.height - 15;
+    }
+
+    tooltip.style.left = `${finalX}px`;
+    tooltip.style.top = `${finalY}px`;
+}
+
+function hideWeaponPreview() {
+    const tooltip = document.getElementById('weaponPreviewTooltip');
+    if (tooltip) tooltip.style.display = 'none';
+}
+
 // ==================== 計算最佳刷取配置 ====================
 
 function getBestFarmConfigs(targetWeapon, stageName, stageData) {
@@ -727,3 +799,290 @@ document.getElementById('coFarmModal').addEventListener('click', e => {
 initFilters();
 renderWeapons();
 renderStages();
+
+// ==================== 刷取規劃 (Farming Planner) ====================
+
+const MY_WEAPONS_KEY = 'sab_my_weapons';
+let myWeapons = new Set();
+
+function initPlanner() {
+    loadMyWeapons();
+    renderMyWeaponSelector();
+    updateSelectedCount();
+    renderEfficiencyResults();
+
+    const selectAllBtn = document.getElementById('selectAllBtn');
+    if (selectAllBtn) selectAllBtn.addEventListener('click', selectAllWeapons);
+    
+    const clearAllBtn = document.getElementById('clearAllBtn');
+    if (clearAllBtn) clearAllBtn.addEventListener('click', clearAllWeapons);
+}
+
+function loadMyWeapons() {
+    try {
+        const stored = localStorage.getItem(MY_WEAPONS_KEY);
+        if (stored) {
+            myWeapons = new Set(JSON.parse(stored));
+        }
+    } catch (e) {
+        console.error('Failed to load my weapons', e);
+    }
+}
+
+function saveMyWeapons() {
+    localStorage.setItem(MY_WEAPONS_KEY, JSON.stringify([...myWeapons]));
+}
+
+function updateSelectedCount() {
+    const el = document.getElementById('selectedCount');
+    if (el) el.textContent = `已選: ${myWeapons.size}`;
+}
+
+function selectAllWeapons() {
+    weapons.forEach(w => myWeapons.add(w.name));
+    renderMyWeaponSelector();
+    saveMyWeapons();
+    updateSelectedCount();
+    renderEfficiencyResults();
+}
+
+function clearAllWeapons() {
+    myWeapons.clear();
+    renderMyWeaponSelector();
+    saveMyWeapons();
+    updateSelectedCount();
+    renderEfficiencyResults();
+}
+
+function renderMyWeaponSelector() {
+    const grid = document.getElementById('plannerWeaponGrid');
+    if (!grid) return;
+
+    grid.innerHTML = '';
+    grid.className = 'weapon-list-selector';
+
+    const grouped = {};
+    weaponTypes.forEach(type => {
+        grouped[type] = weapons.filter(w => w.type === type);
+        sortByRarity(grouped[type]);
+    });
+
+    for (const [type, list] of Object.entries(grouped)) {
+        if (list.length === 0) continue;
+
+        const groupSection = document.createElement('div');
+        groupSection.className = 'weapon-type-group';
+        
+        const header = document.createElement('div');
+        header.className = 'group-header';
+        header.innerHTML = `
+            <span class="group-title">${type}</span>
+            <span class="group-count">(${list.length})</span>
+        `;
+        groupSection.appendChild(header);
+
+        const listContainer = document.createElement('div');
+        listContainer.className = 'group-list';
+
+        list.forEach(w => {
+            const handleSelect = (weapon, element) => {
+                toggleWeaponSelection(weapon, element);
+            };
+
+            const item = createWeaponListItem(w, handleSelect);
+            if (myWeapons.has(w.name)) {
+                item.classList.add('selected');
+            }
+            listContainer.appendChild(item);
+        });
+
+        groupSection.appendChild(listContainer);
+        grid.appendChild(groupSection);
+    }
+}
+
+function toggleWeaponSelection(weapon, element) {
+    if (myWeapons.has(weapon.name)) {
+        myWeapons.delete(weapon.name);
+        element.classList.remove('selected');
+    } else {
+        myWeapons.add(weapon.name);
+        element.classList.add('selected');
+    }
+    saveMyWeapons();
+    updateSelectedCount();
+    renderEfficiencyResults();
+}
+
+/**
+ * 基於定軌機制尋找給定關卡中，能同時滿足最多已選武器的最佳配置
+ */
+function findBestPlannerConfig(selectedWeaponNames, stageData) {
+    const selectedWeapons = weapons.filter(w => selectedWeaponNames.has(w.name));
+    
+    const potentialWeapons = selectedWeapons.filter(w => {
+        const hasSub = w.subStat === "/" || stageData.subStats.includes(w.subStat);
+        const hasSkill = stageData.skills.includes(w.skill);
+        return hasSub || hasSkill;
+    });
+
+    if (potentialWeapons.length === 0) return null;
+
+    const allMainStats = ["敏捷提升", "力量提升", "意志提升", "智識提升", "主能力提升"];
+    const mainCombos = [];
+    for (let i = 0; i < 5; i++) {
+        for (let j = i + 1; j < 5; j++) {
+            for (let k = j + 1; k < 5; k++) {
+                mainCombos.push([allMainStats[i], allMainStats[j], allMainStats[k]]);
+            }
+        }
+    }
+
+    const possibleSubSkills = [
+        ...stageData.subStats.map(s => ({ type: 'sub', value: s })),
+        ...stageData.skills.map(s => ({ type: 'skill', value: s }))
+    ];
+
+    let bestScore = 0;
+    let bestConfig = null;
+    let bestMatchedWeapons = [];
+
+    for (const mainCombo of mainCombos) {
+        for (const subSkill of possibleSubSkills) {
+            const currentMatches = potentialWeapons.filter(w => {
+                const mainMatch = mainCombo.includes(w.mainStat);
+                if (!mainMatch) return false;
+
+                if (subSkill.type === 'sub') {
+                    return w.subStat === subSkill.value;
+                } else {
+                    return w.skill === subSkill.value;
+                }
+            });
+
+            if (currentMatches.length > bestScore) {
+                bestScore = currentMatches.length;
+                bestConfig = { mainStats: mainCombo, subSkill: subSkill };
+                bestMatchedWeapons = currentMatches;
+            }
+        }
+    }
+
+    return bestScore > 0 ? { score: bestScore, config: bestConfig, matchedWeapons: bestMatchedWeapons } : null;
+}
+
+function renderEfficiencyResults() {
+    const listContainer = document.getElementById('efficiencyList');
+    if (!listContainer) return;
+
+    listContainer.innerHTML = '';
+
+    if (myWeapons.size === 0) {
+        listContainer.innerHTML = '<div class="placeholder-text">請先選擇上方武器以開始計算...</div>';
+        return;
+    }
+
+    const stageResults = [];
+    for (const [stageName, stageData] of Object.entries(stages)) {
+        const result = findBestPlannerConfig(myWeapons, stageData);
+        // 條件 3: 如果只有一把的話 就不要推薦了 (score > 1)
+        if (result && result.score > 1) {
+            stageResults.push({
+                name: stageName,
+                ...result,
+                weight: getRarityWeight(result.matchedWeapons)
+            });
+        }
+    }
+
+    // 條件 4: 以六星五星四星三星數量的排列優先
+    stageResults.sort((a, b) => {
+        if (b.score !== a.score) {
+            return b.score - a.score;
+        }
+        return b.weight - a.weight;
+    });
+
+    if (stageResults.length === 0) {
+        listContainer.innerHTML = '<div class="placeholder-text" style="color: #666; text-align: center; padding: 2rem;">目前所選武器無法在任何關卡中透過單一「定軌配置」同時獲取多把武器。</div>';
+        return;
+    }
+
+    stageResults.forEach((item, index) => {
+        const rankClass = index < 3 ? `rank-${index + 1}` : '';
+        
+        const weaponTagsContainer = document.createElement('div');
+        weaponTagsContainer.className = 'eff-details-list';
+
+        item.matchedWeapons
+            .sort((a, b) => {
+                const order = { "六星": 0, "五星": 1, "四星": 2, "三星": 3 };
+                return order[a.rarity] - order[b.rarity];
+            })
+            .forEach(w => {
+                const tag = document.createElement('span');
+                tag.className = `eff-weapon-tag ${getRarityClass(w.rarity)}`;
+                tag.textContent = w.name;
+                
+                // 條件 2: 推薦區的武器上時 浮現該把武器的圖片
+                tag.addEventListener('mouseenter', (e) => showWeaponPreview(w, e));
+                tag.addEventListener('mousemove', (e) => moveWeaponPreview(e));
+                tag.addEventListener('mouseleave', () => hideWeaponPreview());
+                
+                weaponTagsContainer.appendChild(tag);
+            });
+
+        const subStatTitle = item.config.subSkill.type === 'sub' ? '定軌副屬性' : '定軌技能';
+
+        const itemEl = document.createElement('div');
+        itemEl.className = `efficiency-item ${rankClass}`;
+        itemEl.innerHTML = `
+            <div class="eff-info">
+                <div class="eff-header">
+                    <div class="eff-name">${item.name}</div>
+                    <div class="eff-badge">推薦關卡</div>
+                </div>
+                
+                <div class="eff-config-suggestion">
+                    <div class="suggestion-row">
+                        <span class="suggestion-label">建議定軌主屬性：</span>
+                        <div class="suggestion-tags">
+                            ${item.config.mainStats.map(s => `<span class="suggest-tag main">${s.replace("提升", "")}</span>`).join('')}
+                        </div>
+                    </div>
+                    <div class="suggestion-row">
+                        <span class="suggestion-label">${subStatTitle}：</span>
+                        <div class="suggestion-tags">
+                            <span class="suggest-tag ${item.config.subSkill.type}">${item.config.subSkill.value}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="eff-details">
+                    <div class="eff-details-header">在此配置下可同時刷取 <strong>${item.score}</strong> 把武器：</div>
+                    <div id="tags-container-${index}"></div>
+                </div>
+            </div>
+            <div class="eff-score-box">
+                <div class="eff-score">${item.score}</div>
+                <span class="eff-score-label">同時獲取數</span>
+            </div>
+        `;
+        
+        listContainer.appendChild(itemEl);
+        document.getElementById(`tags-container-${index}`).appendChild(weaponTagsContainer);
+    });
+}
+
+function getRarityWeight(matchedWeapons) {
+    let weight = 0;
+    matchedWeapons.forEach(w => {
+        if (w.rarity === "六星") weight += 100000;
+        else if (w.rarity === "五星") weight += 10000;
+        else if (w.rarity === "四星") weight += 1000;
+        else if (w.rarity === "三星") weight += 100;
+    });
+    return weight;
+}
+
+initPlanner();
