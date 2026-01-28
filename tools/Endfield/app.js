@@ -102,8 +102,8 @@ function getBestFarmConfig(targetWeapon, stageName, stageData) {
                 for (const subSkill of possibleSubSkills) {
                     // 計算符合此配置的武器
                     const matchingWeapons = eligibleWeapons.filter(w => {
-                        // 主屬性必須符合（或是主能力提升）
-                        const mainMatch = mainCombo.includes(w.mainStat) || w.mainStat === "主能力提升";
+                        // 主屬性必須符合
+                        const mainMatch = mainCombo.includes(w.mainStat);
                         if (!mainMatch) return false;
 
                         // 副詞條或技能必須符合選定的
@@ -515,8 +515,7 @@ function updateFilteredWeapons() {
 
     let filtered = weapons.filter(w => {
         const mainMatch = selectedMainStats.length === 0 ||
-            selectedMainStats.includes(w.mainStat) ||
-            w.mainStat === "主能力提升";
+            selectedMainStats.includes(w.mainStat);
         const subMatch = !selectedSubStat || w.subStat === selectedSubStat;
         const skillMatch = !selectedSkill || w.skill === selectedSkill;
         return mainMatch && subMatch && skillMatch;
