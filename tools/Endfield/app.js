@@ -66,10 +66,10 @@ function createWeaponCard(weapon, onClick, index = 0) {
 function createWeaponListItem(weapon, onClick) {
     const item = document.createElement('div');
     item.className = `weapon-list-item ${getRarityClass(weapon.rarity)}`;
-    
+
     const subStatDisplay = weapon.subStat === "/" ? "-" : weapon.subStat.replace("提升", "");
     const mainStatDisplay = weapon.mainStat.replace("提升", "");
-    
+
     item.innerHTML = `
         <div class="item-selection-box"></div>
         <div class="item-rarity-indicator"></div>
@@ -80,7 +80,7 @@ function createWeaponListItem(weapon, onClick) {
             <span class="item-stat-tag skill">${weapon.skill}</span>
         </div>
     `;
-    
+
     item.addEventListener('click', () => onClick(weapon, item));
 
     // 添加預覽事件
@@ -97,13 +97,13 @@ function showWeaponPreview(weapon, event) {
     const tooltip = document.getElementById('weaponPreviewTooltip');
     const img = document.getElementById('previewImg');
     const name = document.getElementById('previewName');
-    
+
     if (!tooltip || !img || !name) return;
 
     img.src = getImagePath(weapon.name);
     name.textContent = weapon.name;
     tooltip.style.display = 'flex';
-    
+
     moveWeaponPreview(event);
 }
 
@@ -750,7 +750,17 @@ function updateFilteredWeapons() {
             selectedMainStats.includes(w.mainStat);
         const subMatch = !selectedSubStat || w.subStat === selectedSubStat;
         const skillMatch = !selectedSkill || w.skill === selectedSkill;
-        return mainMatch && subMatch && skillMatch;
+
+        // Check if the weapon is actually farmable in this stage
+        let isFarmableHere = true;
+        if (selectedStage) {
+            const stageData = stages[selectedStage];
+            const subStatFarmable = w.subStat === "/" || stageData.subStats.includes(w.subStat);
+            const skillFarmable = stageData.skills.includes(w.skill);
+            isFarmableHere = subStatFarmable && skillFarmable;
+        }
+
+        return mainMatch && subMatch && skillMatch && isFarmableHere;
     });
 
     sortByRarity(filtered);
@@ -813,7 +823,7 @@ function initPlanner() {
 
     const selectAllBtn = document.getElementById('selectAllBtn');
     if (selectAllBtn) selectAllBtn.addEventListener('click', selectAllWeapons);
-    
+
     const clearAllBtn = document.getElementById('clearAllBtn');
     if (clearAllBtn) clearAllBtn.addEventListener('click', clearAllWeapons);
 }
@@ -872,7 +882,7 @@ function renderMyWeaponSelector() {
 
         const groupSection = document.createElement('div');
         groupSection.className = 'weapon-type-group';
-        
+
         const header = document.createElement('div');
         header.className = 'group-header';
         header.innerHTML = `
@@ -919,11 +929,11 @@ function toggleWeaponSelection(weapon, element) {
  */
 function findBestPlannerConfig(selectedWeaponNames, stageData) {
     const selectedWeapons = weapons.filter(w => selectedWeaponNames.has(w.name));
-    
+
     const potentialWeapons = selectedWeapons.filter(w => {
         const hasSub = w.subStat === "/" || stageData.subStats.includes(w.subStat);
         const hasSkill = stageData.skills.includes(w.skill);
-        return hasSub || hasSkill;
+        return hasSub && hasSkill;
     });
 
     if (potentialWeapons.length === 0) return null;
@@ -1010,7 +1020,7 @@ function renderEfficiencyResults() {
 
     stageResults.forEach((item, index) => {
         const rankClass = index < 3 ? `rank-${index + 1}` : '';
-        
+
         const weaponTagsContainer = document.createElement('div');
         weaponTagsContainer.className = 'eff-details-list';
 
@@ -1023,12 +1033,12 @@ function renderEfficiencyResults() {
                 const tag = document.createElement('span');
                 tag.className = `eff-weapon-tag ${getRarityClass(w.rarity)}`;
                 tag.textContent = w.name;
-                
+
                 // 條件 2: 推薦區的武器上時 浮現該把武器的圖片
                 tag.addEventListener('mouseenter', (e) => showWeaponPreview(w, e));
                 tag.addEventListener('mousemove', (e) => moveWeaponPreview(e));
                 tag.addEventListener('mouseleave', () => hideWeaponPreview());
-                
+
                 weaponTagsContainer.appendChild(tag);
             });
 
@@ -1068,7 +1078,7 @@ function renderEfficiencyResults() {
                 <span class="eff-score-label">同時獲取數</span>
             </div>
         `;
-        
+
         listContainer.appendChild(itemEl);
         document.getElementById(`tags-container-${index}`).appendChild(weaponTagsContainer);
     });
