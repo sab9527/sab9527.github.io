@@ -936,7 +936,7 @@ function findBestPlannerConfig(selectedWeaponNames, stageData) {
         return hasSub && hasSkill;
     });
 
-    if (potentialWeapons.length === 0) return null;
+    if (potentialWeapons.length === 0) return [];
 
     const allMainStats = ["敏捷提升", "力量提升", "意志提升", "智識提升", "主能力提升"];
     const mainCombos = [];
@@ -954,8 +954,7 @@ function findBestPlannerConfig(selectedWeaponNames, stageData) {
     ];
 
     let bestScore = 0;
-    let bestConfig = null;
-    let bestMatchedWeapons = [];
+    let bestConfigs = [];
 
     for (const mainCombo of mainCombos) {
         for (const subSkill of possibleSubSkills) {
@@ -970,15 +969,40 @@ function findBestPlannerConfig(selectedWeaponNames, stageData) {
                 }
             });
 
-            if (currentMatches.length > bestScore) {
-                bestScore = currentMatches.length;
-                bestConfig = { mainStats: mainCombo, subSkill: subSkill };
-                bestMatchedWeapons = currentMatches;
+            const score = currentMatches.length;
+            if (score > 0) {
+                if (score > bestScore) {
+                    bestScore = score;
+                    bestConfigs = [{ mainStats: mainCombo, subSkill: subSkill, weapons: currentMatches }];
+                } else if (score === bestScore) {
+                    bestConfigs.push({ mainStats: mainCombo, subSkill: subSkill, weapons: currentMatches });
+                }
             }
         }
     }
 
-    return bestScore > 0 ? { score: bestScore, config: bestConfig, matchedWeapons: bestMatchedWeapons } : null;
+    if (bestScore === 0) return [];
+
+    // 去重：如果「副詞條/技能」相同 且 「刷到的武器列表」相同，則視為相同策略
+    // (主屬性組合可能不同，但我們只需要一個代表)
+    const uniqueStrategies = [];
+    const seen = new Set();
+
+    for (const config of bestConfigs) {
+        const weaponIds = config.weapons.map(w => w.name).sort().join(',');
+        const key = `${config.subSkill.type}:${config.subSkill.value}|${weaponIds}`;
+
+        if (!seen.has(key)) {
+            seen.add(key);
+            uniqueStrategies.push({
+                score: bestScore,
+                config: { mainStats: config.mainStats, subSkill: config.subSkill },
+                matchedWeapons: config.weapons
+            });
+        }
+    }
+
+    return uniqueStrategies;
 }
 
 function renderEfficiencyResults() {
@@ -994,18 +1018,19 @@ function renderEfficiencyResults() {
 
     const stageResults = [];
     for (const [stageName, stageData] of Object.entries(stages)) {
-        const result = findBestPlannerConfig(myWeapons, stageData);
-        // 條件 3: 如果只有一把的話 就不要推薦了 (score > 1)
-        if (result && result.score > 1) {
+        const results = findBestPlannerConfig(myWeapons, stageData);
+        // results check: array and score > 1
+        if (results && results.length > 0 && results[0].score > 1) {
             stageResults.push({
                 name: stageName,
-                ...result,
-                weight: getRarityWeight(result.matchedWeapons)
+                strategies: results,
+                score: results[0].score,
+                weight: Math.max(...results.map(r => getRarityWeight(r.matchedWeapons)))
             });
         }
     }
 
-    // 條件 4: 以六星五星四星三星數量的排列優先
+    // 排序：數量優先 > 稀有度權重優先
     stageResults.sort((a, b) => {
         if (b.score !== a.score) {
             return b.score - a.score;
@@ -1020,58 +1045,58 @@ function renderEfficiencyResults() {
 
     stageResults.forEach((item, index) => {
         const rankClass = index < 3 ? `rank-${index + 1}` : '';
-
-        const weaponTagsContainer = document.createElement('div');
-        weaponTagsContainer.className = 'eff-details-list';
-
-        item.matchedWeapons
-            .sort((a, b) => {
-                const order = { "六星": 0, "五星": 1, "四星": 2, "三星": 3 };
-                return order[a.rarity] - order[b.rarity];
-            })
-            .forEach(w => {
-                const tag = document.createElement('span');
-                tag.className = `eff-weapon-tag ${getRarityClass(w.rarity)}`;
-                tag.textContent = w.name;
-
-                // 條件 2: 推薦區的武器上時 浮現該把武器的圖片
-                tag.addEventListener('mouseenter', (e) => showWeaponPreview(w, e));
-                tag.addEventListener('mousemove', (e) => moveWeaponPreview(e));
-                tag.addEventListener('mouseleave', () => hideWeaponPreview());
-
-                weaponTagsContainer.appendChild(tag);
-            });
-
-        const subStatTitle = item.config.subSkill.type === 'sub' ? '定軌副屬性' : '定軌技能';
-
         const itemEl = document.createElement('div');
         itemEl.className = `efficiency-item ${rankClass}`;
+
+        let strategiesHtml = '';
+
+        item.strategies.forEach((strategy, sIdx) => {
+            const isMultiObj = item.strategies.length > 1;
+            const subStatTitle = strategy.config.subSkill.type === 'sub' ? '定軌副屬性' : '定軌技能';
+            const strategyLabel = isMultiObj ? `<div class="strategy-badge">方案 ${sIdx + 1}</div>` : '';
+
+            // 構建武器 Tags
+            const weaponTagsContainer = document.createElement('div');
+            // 我們這裡用 string 暫存，稍後再一次 append event listener 會比較麻煩
+            // 所以先生成 HTML 結構
+
+            // 為了綁定事件方便，我們依然用 DOM 操作比較好，但這裡為了混合 HTML string 稍微複雜
+            // 改為先生成 outer HTML，插入後再處理 weapon tags
+
+            let tagsHtmlId = `tags-container-${index}-${sIdx}`;
+
+            strategiesHtml += `
+                <div class="strategy-block ${isMultiObj ? 'multi-strategy' : ''}">
+                    ${strategyLabel}
+                    <div class="eff-config-suggestion">
+                        <div class="suggestion-row">
+                            <span class="suggestion-label">建議定軌主屬性：</span>
+                            <div class="suggestion-tags">
+                                ${strategy.config.mainStats.map(s => `<span class="suggest-tag main">${s.replace("提升", "")}</span>`).join('')}
+                            </div>
+                        </div>
+                        <div class="suggestion-row">
+                            <span class="suggestion-label">${subStatTitle}：</span>
+                            <div class="suggestion-tags">
+                                <span class="suggest-tag ${strategy.config.subSkill.type}">${strategy.config.subSkill.value}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="eff-details">
+                        <div class="eff-details-header">在此配置下可同時刷取 <strong>${strategy.score}</strong> 把武器：</div>
+                        <div id="${tagsHtmlId}" class="eff-details-list"></div>
+                    </div>
+                </div>
+            `;
+        });
+
         itemEl.innerHTML = `
             <div class="eff-info">
                 <div class="eff-header">
                     <div class="eff-name">${item.name}</div>
                     <div class="eff-badge">推薦關卡</div>
                 </div>
-                
-                <div class="eff-config-suggestion">
-                    <div class="suggestion-row">
-                        <span class="suggestion-label">建議定軌主屬性：</span>
-                        <div class="suggestion-tags">
-                            ${item.config.mainStats.map(s => `<span class="suggest-tag main">${s.replace("提升", "")}</span>`).join('')}
-                        </div>
-                    </div>
-                    <div class="suggestion-row">
-                        <span class="suggestion-label">${subStatTitle}：</span>
-                        <div class="suggestion-tags">
-                            <span class="suggest-tag ${item.config.subSkill.type}">${item.config.subSkill.value}</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="eff-details">
-                    <div class="eff-details-header">在此配置下可同時刷取 <strong>${item.score}</strong> 把武器：</div>
-                    <div id="tags-container-${index}"></div>
-                </div>
+                ${strategiesHtml}
             </div>
             <div class="eff-score-box">
                 <div class="eff-score">${item.score}</div>
@@ -1080,7 +1105,27 @@ function renderEfficiencyResults() {
         `;
 
         listContainer.appendChild(itemEl);
-        document.getElementById(`tags-container-${index}`).appendChild(weaponTagsContainer);
+
+        // 後續填充 Weapon Tags 並綁定事件
+        item.strategies.forEach((strategy, sIdx) => {
+            const tagsContainer = document.getElementById(`tags-container-${index}-${sIdx}`);
+            if (tagsContainer) {
+                strategy.matchedWeapons
+                    .sort((a, b) => {
+                        const order = { "六星": 0, "五星": 1, "四星": 2, "三星": 3 };
+                        return order[a.rarity] - order[b.rarity];
+                    })
+                    .forEach(w => {
+                        const tag = document.createElement('span');
+                        tag.className = `eff-weapon-tag ${getRarityClass(w.rarity)}`;
+                        tag.textContent = w.name;
+                        tag.addEventListener('mouseenter', (e) => showWeaponPreview(w, e));
+                        tag.addEventListener('mousemove', (e) => moveWeaponPreview(e));
+                        tag.addEventListener('mouseleave', () => hideWeaponPreview());
+                        tagsContainer.appendChild(tag);
+                    });
+            }
+        });
     });
 }
 
