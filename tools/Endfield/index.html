@@ -98,7 +98,6 @@
                 <div id="tagWeaponGrid" class="weapon-grid"></div>
             </div>
         </div>
-    </main>
 
         <!-- 刷取規劃分頁 -->
         <div id="planner" class="tab-content">
@@ -122,15 +121,15 @@
             </div>
 
             <!-- 計算結果區 -->
-            <div class="planner-section">
-                <div class="planner-controls">
-                    <h3>2. 刷取效率推薦</h3>
-                </div>
-                <div id="efficiencyList" class="efficiency-list">
-                    <div class="placeholder-text">請先選擇上方武器以開始計算...</div>
-                </div>
+            <div class="planner-controls">
+                <h3>2. 刷取效率推薦</h3>
+                <button id="recommendSpecificBtn" class="action-btn recommend-specific-btn">選取特定武器推薦</button>
+            </div>
+            <div id="efficiencyList" class="efficiency-list">
+                <div class="placeholder-text">請先選擇上方武器以開始計算...</div>
             </div>
         </div>
+    </main>
 
     <!-- 武器詳情彈窗 -->
     <div class="modal-overlay" id="modal">
@@ -158,6 +157,14 @@
     <div id="weaponPreviewTooltip" class="weapon-preview-tooltip">
         <img id="previewImg" src="" alt="預覽">
         <div id="previewName" class="preview-name"></div>
+        <div class="preview-stats">
+            <div class="preview-stat-row"><span class="preview-stat-label">主詞條</span><span id="previewMainStat"
+                    class="preview-stat-value main"></span></div>
+            <div class="preview-stat-row"><span class="preview-stat-label">副詞條</span><span id="previewSubStat"
+                    class="preview-stat-value sub"></span></div>
+            <div class="preview-stat-row"><span class="preview-stat-label">技能</span><span id="previewSkill"
+                    class="preview-stat-value skill"></span></div>
+        </div>
     </div>
 
     <!-- 頁尾 -->

@@ -97,11 +97,20 @@ function showWeaponPreview(weapon, event) {
     const tooltip = document.getElementById('weaponPreviewTooltip');
     const img = document.getElementById('previewImg');
     const name = document.getElementById('previewName');
+    const mainStat = document.getElementById('previewMainStat');
+    const subStat = document.getElementById('previewSubStat');
+    const skill = document.getElementById('previewSkill');
 
     if (!tooltip || !img || !name) return;
 
     img.src = getImagePath(weapon.name);
     name.textContent = weapon.name;
+
+    // 填入三個屬性
+    if (mainStat) mainStat.textContent = weapon.mainStat.replace("提升", "");
+    if (subStat) subStat.textContent = weapon.subStat === "/" ? "無" : weapon.subStat.replace("提升", "");
+    if (skill) skill.textContent = weapon.skill;
+
     tooltip.style.display = 'flex';
 
     moveWeaponPreview(event);
@@ -553,11 +562,23 @@ function initFilters() {
 
     // 附加屬性篩選
     const subContainer = document.getElementById('subStatFilter');
-    allSubStats.forEach(stat => {
-        const label = document.createElement('label');
-        label.className = 'checkbox-item';
-        label.innerHTML = `<input type="checkbox" value="${stat}" class="sub-filter-cb"> ${stat.replace("提升", "")}`;
-        subContainer.appendChild(label);
+    // 指定順序：
+    // 第一行 物理傷害 法術 攻擊 生命
+    // 第二行 終結技充能效率 源石技義強度 治療效率 暴擊率
+    // 第三行 寒冷 電磁 灼熱 自然
+    const requestedSubStatsOrder = [
+        "物理傷害提升", "法術提升", "攻擊提升", "生命提升",
+        "終結技充能效率提升", "源石技藝強度提升", "治療效率提升", "暴擊率提升",
+        "寒冷傷害提升", "電磁傷害提升", "灼熱傷害提升", "自然傷害提升"
+    ];
+
+    requestedSubStatsOrder.forEach(stat => {
+        if (allSubStats.includes(stat)) {
+            const label = document.createElement('label');
+            label.className = 'checkbox-item';
+            label.innerHTML = `<input type="checkbox" value="${stat}" class="sub-filter-cb"> ${stat.replace("提升", "")}`;
+            subContainer.appendChild(label);
+        }
     });
 
     // 技能篩選
@@ -826,6 +847,9 @@ function initPlanner() {
 
     const clearAllBtn = document.getElementById('clearAllBtn');
     if (clearAllBtn) clearAllBtn.addEventListener('click', clearAllWeapons);
+
+    const recommendSpecificBtn = document.getElementById('recommendSpecificBtn');
+    if (recommendSpecificBtn) recommendSpecificBtn.addEventListener('click', showWeaponSelectionForRecommendation);
 }
 
 function loadMyWeapons() {
@@ -1138,6 +1162,163 @@ function getRarityWeight(matchedWeapons) {
         else if (w.rarity === "三星") weight += 100;
     });
     return weight;
+}
+
+// ==================== 特定武器推薦邏輯 ====================
+
+function showWeaponSelectionForRecommendation() {
+    if (myWeapons.size === 0) {
+        alert('請先勾選您持有的武器！');
+        return;
+    }
+
+    const modal = document.getElementById('coFarmModal');
+    const title = document.getElementById('coFarmModalTitle');
+    const body = document.getElementById('coFarmModalBody');
+
+    title.textContent = '選取一把武器以查看詳細推薦';
+
+    let html = '<div class="specific-weapon-selector-grid">';
+
+    // 只列出已選取的武器
+    const selectedWeaponsList = weapons.filter(w => myWeapons.has(w.name));
+    sortByRarity(selectedWeaponsList);
+
+    selectedWeaponsList.forEach(w => {
+        html += `
+            <div class="mini-weapon-card ${getRarityClass(w.rarity)}" onclick="handleSpecificWeaponRecommendation('${w.name}')">
+                <img src="${getImagePath(w.name)}" alt="${w.name}">
+                <div class="mini-weapon-info">
+                    <div class="mini-weapon-name">${w.name}</div>
+                    <div class="mini-weapon-stats">${w.rarity} / ${w.type}</div>
+                </div>
+            </div>
+        `;
+    });
+
+    html += '</div>';
+    body.innerHTML = html;
+    modal.classList.add('active');
+}
+
+window.handleSpecificWeaponRecommendation = function (weaponName) {
+    const weapon = weapons.find(w => w.name === weaponName);
+    if (!weapon) return;
+
+    // 關閉 Modal
+    document.getElementById('coFarmModal').classList.remove('active');
+
+    // 計算推薦
+    renderSpecificWeaponRecommendations(weapon);
+};
+
+function renderSpecificWeaponRecommendations(targetWeapon) {
+    const listContainer = document.getElementById('efficiencyList');
+    if (!listContainer) return;
+
+    listContainer.innerHTML = '';
+
+    const stageResults = [];
+    for (const [stageName, stageData] of Object.entries(stages)) {
+        // 使用 findBestPlannerConfig 的邏輯，只從已勾選的武器中計算
+        const allStrategies = findBestPlannerConfig(myWeapons, stageData);
+
+        // 從結果中篩選出包含目標武器的配置
+        const targetStrategies = allStrategies.filter(s =>
+            s.matchedWeapons.some(w => w.name === targetWeapon.name)
+        );
+
+        if (targetStrategies.length > 0) {
+            stageResults.push({
+                name: stageName,
+                strategies: targetStrategies
+            });
+        }
+    }
+
+    // 排序：按最大獲取數
+    stageResults.sort((a, b) => {
+        const aMax = Math.max(...a.strategies.map(s => s.score));
+        const bMax = Math.max(...b.strategies.map(s => s.score));
+        return bMax - aMax;
+    });
+
+    if (stageResults.length === 0) {
+        listContainer.innerHTML = `<div class="placeholder-text" style="color: #666; text-align: center; padding: 2rem;">這把武器「${targetWeapon.name}」無法在任何關卡中透過定軌獲取（僅限已勾選的武器範圍）。</div>`;
+        return;
+    }
+
+    // 渲染標題
+    const header = document.createElement('div');
+    header.className = 'specific-recommendation-header';
+    header.innerHTML = `顯示與 <strong>${targetWeapon.name}</strong> 相關的所有刷取推薦方案（僅限已勾選武器）：`;
+    listContainer.appendChild(header);
+
+    stageResults.forEach((item, index) => {
+        const itemEl = document.createElement('div');
+        itemEl.className = `efficiency-item rank-${index + 1}`;
+
+        let strategiesHtml = '';
+        item.strategies.forEach((strategy, sIdx) => {
+            const subStatTitle = strategy.config.subSkill.type === 'sub' ? '定軌副屬性' : '定軌技能';
+            const tagsHtmlId = `specific-tags-${index}-${sIdx}`;
+
+            strategiesHtml += `
+                <div class="strategy-block">
+                    <div class="eff-config-suggestion">
+                        <div class="suggestion-row">
+                            <span class="suggestion-label">建議定軌主屬性：</span>
+                            <div class="suggestion-tags">
+                                ${strategy.config.mainStats.map(s => `<span class="suggest-tag main">${s.replace("提升", "")}</span>`).join('')}
+                            </div>
+                        </div>
+                        <div class="suggestion-row">
+                            <span class="suggestion-label">${subStatTitle}：</span>
+                            <div class="suggestion-tags">
+                                <span class="suggest-tag ${strategy.config.subSkill.type}">${strategy.config.subSkill.value}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="eff-details">
+                        <div class="eff-details-header">在此配置下可同時刷取 <strong>${strategy.score}</strong> 把武器：</div>
+                        <div id="${tagsHtmlId}" class="eff-details-list"></div>
+                    </div>
+                </div>
+            `;
+        });
+
+        itemEl.innerHTML = `
+            <div class="eff-info">
+                <div class="eff-header">
+                    <div class="eff-name">${item.name}</div>
+                    <div class="eff-badge">特定武器推薦</div>
+                </div>
+                ${strategiesHtml}
+            </div>
+            <div class="eff-score-box">
+                <div class="eff-score">${Math.max(...item.strategies.map(s => s.score))}</div>
+                <span class="eff-score-label">最大獲取數</span>
+            </div>
+        `;
+
+        listContainer.appendChild(itemEl);
+
+        // 填充武器 Tags
+        item.strategies.forEach((strategy, sIdx) => {
+            const tagsContainer = document.getElementById(`specific-tags-${index}-${sIdx}`);
+            if (tagsContainer) {
+                sortByRarity(strategy.matchedWeapons).forEach(w => {
+                    const tag = document.createElement('span');
+                    tag.className = `eff-weapon-tag ${getRarityClass(w.rarity)} ${w.name === targetWeapon.name ? 'highlight' : ''}`;
+                    tag.textContent = w.name;
+                    tag.addEventListener('mouseenter', (e) => showWeaponPreview(w, e));
+                    tag.addEventListener('mousemove', (e) => moveWeaponPreview(e));
+                    tag.addEventListener('mouseleave', () => hideWeaponPreview());
+                    tagsContainer.appendChild(tag);
+                });
+            }
+        });
+    });
 }
 
 initPlanner();
