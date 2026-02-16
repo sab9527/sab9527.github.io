@@ -1212,21 +1212,116 @@ window.handleSpecificWeaponRecommendation = function (weaponName) {
     renderSpecificWeaponRecommendations(weapon);
 };
 
+/**
+ * 尋找包含特定目標武器的所有有效配置 (專為特定武器推薦使用)
+ * 邏輯：
+ * 1. 確保目標武器在此關卡可刷
+ * 2. 找出所有包含目標武器的配置
+ * 3. 根據可同時刷取的武器數量排序，只回傳最佳策略
+ */
+function findConfigsContainingWeapon(targetWeapon, selectedWeaponNames, stageData) {
+    // 檢查目標武器是否可在此關卡刷取
+    const subStatFarmable = targetWeapon.subStat === "/" || stageData.subStats.includes(targetWeapon.subStat);
+    const skillFarmable = stageData.skills.includes(targetWeapon.skill);
+    if (!subStatFarmable || !skillFarmable) return [];
+
+    // 篩選潛在武器：在已選列表中且可在此關卡刷取
+    const potentialWeapons = weapons.filter(w =>
+        selectedWeaponNames.has(w.name) &&
+        w.name !== targetWeapon.name &&
+        (w.subStat === "/" || stageData.subStats.includes(w.subStat)) &&
+        stageData.skills.includes(w.skill)
+    );
+
+    // 關卡提供的附加屬性選項 (包含 skill)，只保留與 targetWeapon 相關的選項
+    const allowedSubSkills = [];
+    if (stageData.subStats.includes(targetWeapon.subStat)) {
+        allowedSubSkills.push({ type: 'sub', value: targetWeapon.subStat });
+    }
+    if (stageData.skills.includes(targetWeapon.skill)) {
+        allowedSubSkills.push({ type: 'skill', value: targetWeapon.skill });
+    }
+
+    if (allowedSubSkills.length === 0) return [];
+
+    let allConfigs = [];
+
+    // Main Stat 必須包含 targetWeapon.mainStat
+    // 從剩餘 4 個中選 2 個來搭配
+    const otherMainStats = mainStats.filter(s => s !== targetWeapon.mainStat);
+    const mainCombos = [];
+    for (let i = 0; i < otherMainStats.length; i++) {
+        for (let j = i + 1; j < otherMainStats.length; j++) {
+            mainCombos.push([targetWeapon.mainStat, otherMainStats[i], otherMainStats[j]]);
+        }
+    }
+
+    for (const subSkill of allowedSubSkills) {
+        for (const mainCombo of mainCombos) {
+            // 這個 config 必然包含 targetWeapon
+            const matchedWeapons = [targetWeapon];
+
+            // 檢查其他 potentialWeapons 是否也符合
+            potentialWeapons.forEach(w => {
+                const mainMatch = mainCombo.includes(w.mainStat);
+                let subSkillMatch = false;
+                if (subSkill.type === 'sub') {
+                    subSkillMatch = (w.subStat === subSkill.value);
+                } else {
+                    subSkillMatch = (w.skill === subSkill.value);
+                }
+
+                if (mainMatch && subSkillMatch) {
+                    matchedWeapons.push(w);
+                }
+            });
+
+            allConfigs.push({
+                score: matchedWeapons.length,
+                config: { mainStats: mainCombo, subSkill: subSkill },
+                matchedWeapons: matchedWeapons
+            });
+        }
+    }
+
+    if (allConfigs.length === 0) return [];
+
+    // Sort by score desc
+    allConfigs.sort((a, b) => b.score - a.score);
+
+    // 只保留最高分的策略
+    const maxScore = allConfigs[0].score;
+    allConfigs = allConfigs.filter(c => c.score === maxScore);
+
+    // 去重 (相同 subSkill + 相同 matchedWeapons)
+    const uniqueStrategies = [];
+    const seen = new Set();
+
+    for (const config of allConfigs) {
+        const weaponIds = config.matchedWeapons.map(w => w.name).sort().join(',');
+        const key = `${config.config.subSkill.type}:${config.config.subSkill.value}|${weaponIds}`;
+
+        if (!seen.has(key)) {
+            seen.add(key);
+            uniqueStrategies.push(config);
+        }
+    }
+
+    return uniqueStrategies;
+}
+
 function renderSpecificWeaponRecommendations(targetWeapon) {
     const listContainer = document.getElementById('efficiencyList');
     if (!listContainer) return;
 
     listContainer.innerHTML = '';
 
+    // 如果沒選該武器，暫不需要提示，因為是從已選武器中點進來的
+
     const stageResults = [];
     for (const [stageName, stageData] of Object.entries(stages)) {
-        // 使用 findBestPlannerConfig 的邏輯，只從已勾選的武器中計算
-        const allStrategies = findBestPlannerConfig(myWeapons, stageData);
-
-        // 從結果中篩選出包含目標武器的配置
-        const targetStrategies = allStrategies.filter(s =>
-            s.matchedWeapons.some(w => w.name === targetWeapon.name)
-        );
+        // 使用專用的查找函數，不再受限於全域最佳解
+        const targetStrategies = findConfigsContainingWeapon(targetWeapon, myWeapons, stageData);
 
         if (targetStrategies.length > 0) {
             stageResults.push({
