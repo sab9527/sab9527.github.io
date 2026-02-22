@@ -1979,3 +1979,33 @@ footer {
     margin-bottom: 0.8rem;
     clip-path: polygon(5px 0, 100% 0, calc(100% - 5px) 100%, 0 100%);
 }
+
+/* ==================== Bonus Weapons (額外可刷武器) ==================== */
+
+.bonus-weapons-section {
+    margin-top: 1rem;
+    padding: 0.8rem 1rem;
+    background: rgba(34, 197, 94, 0.06);
+    border: 1px dashed rgba(34, 197, 94, 0.3);
+    border-radius: 8px;
+    position: relative;
+}
+
+.bonus-weapons-header {
+    font-size: 0.85rem;
+    color: #4ade80;
+    margin-bottom: 0.5rem;
+}
+
+.bonus-weapons-header strong {
+    color: #86efac;
+}
+
+.bonus-weapon-tag {
+    opacity: 0.85;
+    border-style: dashed !important;
+}
+
+.bonus-weapon-tag:hover {
+    opacity: 1;
+}

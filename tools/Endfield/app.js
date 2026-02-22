@@ -950,6 +950,7 @@ function toggleWeaponSelection(weapon, element) {
 
 /**
  * 基於定軌機制尋找給定關卡中，能同時滿足最多已選武器的最佳配置
+ * 額外功能：計算每個配置中未選取但也能刷到的「額外可刷武器」
  */
 function findBestPlannerConfig(selectedWeaponNames, stageData) {
     const selectedWeapons = weapons.filter(w => selectedWeaponNames.has(w.name));
@@ -961,6 +962,13 @@ function findBestPlannerConfig(selectedWeaponNames, stageData) {
     });
 
     if (potentialWeapons.length === 0) return [];
+
+    // 預先計算：所有未選取但在此關卡可刷的武器
+    const unselectedFarmable = weapons.filter(w =>
+        !selectedWeaponNames.has(w.name) &&
+        (w.subStat === "/" || stageData.subStats.includes(w.subStat)) &&
+        stageData.skills.includes(w.skill)
+    );
 
     const allMainStats = ["敏捷提升", "力量提升", "意志提升", "智識提升", "主能力提升"];
     const mainCombos = [];
@@ -978,7 +986,7 @@ function findBestPlannerConfig(selectedWeaponNames, stageData) {
     ];
 
     let bestScore = 0;
-    let bestConfigs = [];
+    let allConfigs = [];
 
     for (const mainCombo of mainCombos) {
         for (const subSkill of possibleSubSkills) {
@@ -995,11 +1003,22 @@ function findBestPlannerConfig(selectedWeaponNames, stageData) {
 
             const score = currentMatches.length;
             if (score > 0) {
+                // 計算此配置下的額外可刷武器（未選取但匹配的）
+                const bonusWeapons = unselectedFarmable.filter(w => {
+                    const mainMatch = mainCombo.includes(w.mainStat);
+                    if (!mainMatch) return false;
+                    if (subSkill.type === 'sub') {
+                        return w.subStat === subSkill.value;
+                    } else {
+                        return w.skill === subSkill.value;
+                    }
+                });
+
                 if (score > bestScore) {
                     bestScore = score;
-                    bestConfigs = [{ mainStats: mainCombo, subSkill: subSkill, weapons: currentMatches }];
+                    allConfigs = [{ mainStats: mainCombo, subSkill, weapons: currentMatches, bonusWeapons }];
                 } else if (score === bestScore) {
-                    bestConfigs.push({ mainStats: mainCombo, subSkill: subSkill, weapons: currentMatches });
+                    allConfigs.push({ mainStats: mainCombo, subSkill, weapons: currentMatches, bonusWeapons });
                 }
             }
         }
@@ -1008,23 +1027,33 @@ function findBestPlannerConfig(selectedWeaponNames, stageData) {
     if (bestScore === 0) return [];
 
     // 去重：如果「副詞條/技能」相同 且 「刷到的武器列表」相同，則視為相同策略
-    // (主屬性組合可能不同，但我們只需要一個代表)
-    const uniqueStrategies = [];
-    const seen = new Set();
+    // 在相同已選武器的情況下，優先保留額外可刷武器最多的主屬性組合
+    const strategyMap = new Map();
 
-    for (const config of bestConfigs) {
+    for (const config of allConfigs) {
         const weaponIds = config.weapons.map(w => w.name).sort().join(',');
         const key = `${config.subSkill.type}:${config.subSkill.value}|${weaponIds}`;
 
-        if (!seen.has(key)) {
-            seen.add(key);
-            uniqueStrategies.push({
-                score: bestScore,
-                config: { mainStats: config.mainStats, subSkill: config.subSkill },
-                matchedWeapons: config.weapons
-            });
+        if (!strategyMap.has(key)) {
+            strategyMap.set(key, config);
+        } else {
+            // 如果新配置的額外可刷武器更多，替換之
+            const existing = strategyMap.get(key);
+            if (config.bonusWeapons.length > existing.bonusWeapons.length) {
+                strategyMap.set(key, config);
+            }
         }
     }
+
+    const uniqueStrategies = Array.from(strategyMap.values()).map(config => ({
+        score: bestScore,
+        config: { mainStats: config.mainStats, subSkill: config.subSkill },
+        matchedWeapons: config.weapons,
+        bonusWeapons: config.bonusWeapons
+    }));
+
+    // 排序：額外可刷武器數量多的優先
+    uniqueStrategies.sort((a, b) => b.bonusWeapons.length - a.bonusWeapons.length);
 
     return uniqueStrategies;
 }
@@ -1110,6 +1139,11 @@ function renderEfficiencyResults() {
                         <div class="eff-details-header">在此配置下可同時刷取 <strong>${strategy.score}</strong> 把武器：</div>
                         <div id="${tagsHtmlId}" class="eff-details-list"></div>
                     </div>
+                    ${strategy.bonusWeapons && strategy.bonusWeapons.length > 0 ? `
+                    <div class="bonus-weapons-section">
+                        <div class="bonus-weapons-header">⚡ 此配置還可額外刷取以下<strong>未選取</strong>武器的基質：</div>
+                        <div id="bonus-${tagsHtmlId}" class="eff-details-list"></div>
+                    </div>` : ''}
                 </div>
             `;
         });
@@ -1148,6 +1182,27 @@ function renderEfficiencyResults() {
                         tag.addEventListener('mouseleave', () => hideWeaponPreview());
                         tagsContainer.appendChild(tag);
                     });
+            }
+
+            // 填充額外可刷武器 Tags
+            if (strategy.bonusWeapons && strategy.bonusWeapons.length > 0) {
+                const bonusContainer = document.getElementById(`bonus-tags-container-${index}-${sIdx}`);
+                if (bonusContainer) {
+                    strategy.bonusWeapons
+                        .sort((a, b) => {
+                            const order = { "六星": 0, "五星": 1, "四星": 2, "三星": 3 };
+                            return order[a.rarity] - order[b.rarity];
+                        })
+                        .forEach(w => {
+                            const tag = document.createElement('span');
+                            tag.className = `eff-weapon-tag bonus-weapon-tag ${getRarityClass(w.rarity)}`;
+                            tag.textContent = w.name;
+                            tag.addEventListener('mouseenter', (e) => showWeaponPreview(w, e));
+                            tag.addEventListener('mousemove', (e) => moveWeaponPreview(e));
+                            tag.addEventListener('mouseleave', () => hideWeaponPreview());
+                            bonusContainer.appendChild(tag);
+                        });
+                }
             }
         });
     });
@@ -1233,6 +1288,13 @@ function findConfigsContainingWeapon(targetWeapon, selectedWeaponNames, stageDat
         stageData.skills.includes(w.skill)
     );
 
+    // 預先計算：所有未選取但在此關卡可刷的武器
+    const unselectedFarmable = weapons.filter(w =>
+        !selectedWeaponNames.has(w.name) &&
+        (w.subStat === "/" || stageData.subStats.includes(w.subStat)) &&
+        stageData.skills.includes(w.skill)
+    );
+
     // 關卡提供的附加屬性選項 (包含 skill)，只保留與 targetWeapon 相關的選項
     const allowedSubSkills = [];
     if (stageData.subStats.includes(targetWeapon.subStat)) {
@@ -1276,10 +1338,22 @@ function findConfigsContainingWeapon(targetWeapon, selectedWeaponNames, stageDat
                 }
             });
 
+            // 計算額外可刷武器
+            const bonusWeapons = unselectedFarmable.filter(w => {
+                const mainMatch = mainCombo.includes(w.mainStat);
+                if (!mainMatch) return false;
+                if (subSkill.type === 'sub') {
+                    return w.subStat === subSkill.value;
+                } else {
+                    return w.skill === subSkill.value;
+                }
+            });
+
             allConfigs.push({
                 score: matchedWeapons.length,
                 config: { mainStats: mainCombo, subSkill: subSkill },
-                matchedWeapons: matchedWeapons
+                matchedWeapons: matchedWeapons,
+                bonusWeapons: bonusWeapons
             });
         }
     }
@@ -1293,19 +1367,26 @@ function findConfigsContainingWeapon(targetWeapon, selectedWeaponNames, stageDat
     const maxScore = allConfigs[0].score;
     allConfigs = allConfigs.filter(c => c.score === maxScore);
 
-    // 去重 (相同 subSkill + 相同 matchedWeapons)
-    const uniqueStrategies = [];
-    const seen = new Set();
+    // 去重 (相同 subSkill + 相同 matchedWeapons)，優先保留 bonusWeapons 最多的
+    const strategyMap = new Map();
 
     for (const config of allConfigs) {
         const weaponIds = config.matchedWeapons.map(w => w.name).sort().join(',');
         const key = `${config.config.subSkill.type}:${config.config.subSkill.value}|${weaponIds}`;
 
-        if (!seen.has(key)) {
-            seen.add(key);
-            uniqueStrategies.push(config);
+        if (!strategyMap.has(key)) {
+            strategyMap.set(key, config);
+        } else {
+            const existing = strategyMap.get(key);
+            if (config.bonusWeapons.length > existing.bonusWeapons.length) {
+                strategyMap.set(key, config);
+            }
         }
     }
+
+    const uniqueStrategies = Array.from(strategyMap.values());
+    // 排序：額外可刷武器數量多的優先
+    uniqueStrategies.sort((a, b) => b.bonusWeapons.length - a.bonusWeapons.length);
 
     return uniqueStrategies;
 }
@@ -1378,6 +1459,11 @@ function renderSpecificWeaponRecommendations(targetWeapon) {
                         <div class="eff-details-header">在此配置下可同時刷取 <strong>${strategy.score}</strong> 把武器：</div>
                         <div id="${tagsHtmlId}" class="eff-details-list"></div>
                     </div>
+                    ${strategy.bonusWeapons && strategy.bonusWeapons.length > 0 ? `
+                    <div class="bonus-weapons-section">
+                        <div class="bonus-weapons-header">⚡ 此配置還可額外刷取以下<strong>未選取</strong>武器的基質：</div>
+                        <div id="bonus-${tagsHtmlId}" class="eff-details-list"></div>
+                    </div>` : ''}
                 </div>
             `;
         });
@@ -1411,6 +1497,22 @@ function renderSpecificWeaponRecommendations(targetWeapon) {
                     tag.addEventListener('mouseleave', () => hideWeaponPreview());
                     tagsContainer.appendChild(tag);
                 });
+            }
+
+            // 填充額外可刷武器 Tags
+            if (strategy.bonusWeapons && strategy.bonusWeapons.length > 0) {
+                const bonusContainer = document.getElementById(`bonus-specific-tags-${index}-${sIdx}`);
+                if (bonusContainer) {
+                    sortByRarity(strategy.bonusWeapons).forEach(w => {
+                        const tag = document.createElement('span');
+                        tag.className = `eff-weapon-tag bonus-weapon-tag ${getRarityClass(w.rarity)}`;
+                        tag.textContent = w.name;
+                        tag.addEventListener('mouseenter', (e) => showWeaponPreview(w, e));
+                        tag.addEventListener('mousemove', (e) => moveWeaponPreview(e));
+                        tag.addEventListener('mouseleave', () => hideWeaponPreview());
+                        bonusContainer.appendChild(tag);
+                    });
+                }
             }
         });
     });
