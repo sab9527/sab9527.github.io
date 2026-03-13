@@ -76,7 +76,10 @@ const weapons = [
     { name: "破碎君王", mainStat: "力量提升", subStat: "暴擊率提升", skill: "粉碎", rarity: "六星", type: "雙手劍" },
     { name: "負山", mainStat: "敏捷提升", subStat: "物理傷害提升", skill: "效益", rarity: "六星", type: "長柄武器" },
     { name: "驍勇", mainStat: "敏捷提升", subStat: "物理傷害提升", skill: "巧技", rarity: "六星", type: "長柄武器" },
-    { name: "J.E.T.", mainStat: "主能力提升", subStat: "攻擊提升", skill: "壓制", rarity: "六星", type: "長柄武器" }
+    { name: "J.E.T.", mainStat: "主能力提升", subStat: "攻擊提升", skill: "壓制", rarity: "六星", type: "長柄武器" },
+    { name: "光榮記憶", mainStat: "敏捷提升", subStat: "暴擊率提升", skill: "夜幕", rarity: "六星", type: "單手劍" },
+    { name: "望鄉", mainStat: "敏捷提升", subStat: "寒冷傷害提升", skill: "壓制", rarity: "六星", type: "手銃" },
+    { name: "落草", mainStat: "敏捷提升", subStat: "攻擊提升", skill: "迸發", rarity: "六星", type: "手銃" }
 ];
 
 
@@ -84,7 +87,7 @@ const weapons = [
 
 const mainStats = [
     "敏捷提升",
-    "力量提升", 
+    "力量提升",
     "意志提升",
     "智識提升",
     "主能力提升"
@@ -203,6 +206,28 @@ const stages = {
             "迸發",
             "夜幕",
             "流轉"
+        ]
+    },
+    "清波寨": {
+        subStats: [
+            "生命提升",
+            "物理傷害提升",
+            "電磁傷害提升",
+            "寒冷傷害提升",
+            "源石技藝強度提升",
+            "終結技充能效率提升",
+            "法術提升",
+            "治療效率提升"
+        ],
+        skills: [
+            "壓制",
+            "粉碎",
+            "昂揚",
+            "巧技",
+            "醫療",
+            "切骨",
+            "迸發",
+            "夜幕"
         ]
     }
 };
