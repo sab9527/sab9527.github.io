@@ -1,5 +1,113 @@
 [
   [
+    "Heist Target",
+    "劫盜任務"
+  ],
+  [
+    "Incursion Stones of Passage",
+    "神廟鑰匙和炸彈"
+  ],
+  [
+    "Lab-Items (Keys and Trinkets)",
+    "昇華鑰匙和相關道具"
+  ],
+  [
+    "Random Quest Items",
+    "任務道具"
+  ],
+  [
+    "Maven's Quest-Only Invitations",
+    "Maven 任務邀請"
+  ],
+  [
+    "Unique Exception: Overquality",
+    "超高品質傳奇"
+  ],
+  [
+    "Exotics: Links&Sockets",
+    "特殊傳奇規則"
+  ],
+  [
+    "Transfigured and Special Cases",
+    "改造和卓越寶石"
+  ],
+  [
+    "Exceptional Gems Tierlist",
+    "卓越寶石 Tier"
+  ],
+  [
+    "Leveling rare boots low speed",
+    "跑速鞋"
+  ],
+  [
+    "Leveling rare boots high speed",
+    "高跑速鞋"
+  ],
+  [
+    "Special Noteworthy Drops",
+    "特殊值得拾取"
+  ],
+  [
+    "This section covers all other influenced items, not covered by the rules above",
+    "此區包含所有未被上述規則涵蓋的其他物品"
+  ],
+  [
+    "Exarch & Eater Influences",
+    "灼烙總督與吞噬天地勢力"
+  ],
+  [
+    "Specific Influence Classes",
+    "特定勢力基底類型"
+  ],
+  [
+    "With some atlas choices Exarch/Eater items can drop. These can sometimes hold some value at league start if they roll a highly specific mod. Can be safely disabled later on.",
+    "某些地圖選擇會掉落灼烙總督/吞噬天地物品。這些物品在聯盟初期如果帶有特定的詞綴可能會有價值。之後可以停用。"
+  ],
+  [
+    "Specific Influence BaseTypes",
+    "特定勢力基底"
+  ],
+  [
+    "Sometimes highly specific items not covered by the list above can hold high value, such as a 'Crusader Moonstone Ring'. This list is designed to cover this niche. You can also add your requirements here.",
+    "有時候一些不在清單上的特定物品可能很有價值。這個清單旨在涵蓋這些物品。您也可以在此處新增您的需求。"
+  ],
+  [
+    "Ultimatum",
+    "通牒"
+  ],
+  [
+    "Alva Incursion Temple Map",
+    "艾瓦神廟史記"
+  ],
+  [
+    "Low Blighted Maps",
+    "低T凋落地圖"
+  ],
+  [
+    "High Blighted Maps",
+    "高T凋落地圖"
+  ],
+  [
+    "Blight Ravaged Maps",
+    "凋落蔓延地圖"
+  ],
+  [
+    "Map Fragments & Invitations",
+    "地圖碎片和邀請"
+  ],
+  [
+    "Designed to highlight lower tiers (Tier C and lower) divination cards if they drop in a stack. Useful, if you want to see the cards only if they're stacked.",
+    "此功能旨在突出顯示堆疊的低階（C 階及以下）卡。如果您只想查看堆疊的卡，此功能非常有用。"
+  ],
+  [
+    "Highlight Essences by Type",
+    "按精髓種類"
+  ],
+  [
+    "Delve Fossils & Resonators",
+    "化石和鑄新儀"
+  ],
+  [
     "Tomes, Map-Likes",
     "雕刻 類地圖物品"
   ],
