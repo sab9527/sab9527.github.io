@@ -80,7 +80,8 @@ const weapons = [
     { name: "光榮記憶", mainStat: "敏捷提升", subStat: "暴擊率提升", skill: "夜幕", rarity: "六星", type: "單手劍" },
     { name: "望鄉", mainStat: "敏捷提升", subStat: "寒冷傷害提升", skill: "壓制", rarity: "六星", type: "手銃" },
     { name: "落草", mainStat: "敏捷提升", subStat: "攻擊提升", skill: "迸發", rarity: "六星", type: "手銃" },
-    { name: "狼之緋", mainStat: "敏捷提升", subStat: "暴擊率提升", skill: "切骨", rarity: "六星", type: "單手劍" }
+    { name: "狼之緋", mainStat: "敏捷提升", subStat: "暴擊率提升", skill: "切骨", rarity: "六星", type: "單手劍" },
+    { name: "孤舟", mainStat: "意志提升", subStat: "攻擊提升", skill: "壓制", rarity: "六星", type: "施術單元" }
 
 ];
 
@@ -230,6 +231,28 @@ const stages = {
             "切骨",
             "迸發",
             "夜幕"
+        ]
+    },
+    "首敦": {
+        subStats: [
+            "攻擊提升",
+            "物理傷害提升",
+            "灼熱傷害提升",
+            "電磁傷害提升",
+            "自然傷害提升",
+            "暴擊率提升",
+            "終結技充能效率提升",
+            "法術提升"
+        ],
+        skills: [
+            "強攻",
+            "追襲",
+            "昂揚",
+            "殘暴",
+            "附術",
+            "夜幕",
+            "流轉",
+            "效益"
         ]
     }
 };
