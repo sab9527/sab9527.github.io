@@ -81,7 +81,8 @@ const weapons = [
     { name: "望鄉", mainStat: "敏捷提升", subStat: "寒冷傷害提升", skill: "壓制", rarity: "六星", type: "手銃" },
     { name: "落草", mainStat: "敏捷提升", subStat: "攻擊提升", skill: "迸發", rarity: "六星", type: "手銃" },
     { name: "狼之緋", mainStat: "敏捷提升", subStat: "暴擊率提升", skill: "切骨", rarity: "六星", type: "單手劍" },
-    { name: "孤舟", mainStat: "意志提升", subStat: "攻擊提升", skill: "壓制", rarity: "六星", type: "施術單元" }
+    { name: "孤舟", mainStat: "意志提升", subStat: "攻擊提升", skill: "壓制", rarity: "六星", type: "施術單元" },
+    { name: "霧中微光", mainStat: "意志提升", subStat: "電磁傷害提升", skill: "效益", rarity: "六星", type: "施術單元" }
 
 ];
 
