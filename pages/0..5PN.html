@@ -1,0 +1,2156 @@
+<!DOCTYPE html>
+<html lang="zh-TW" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Path of Exile 2: Return of the Ancients — 版本更新 0.5.0 完整改版資訊</title>
+    
+    <!-- Google Fonts for premium typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Eye-friendly Dark Mode (Default) */
+            --bg-color: #121513;
+            --bg-color-rgb: 18, 21, 19;
+            --card-bg: #1a201c;
+            --card-bg-hover: #222a24;
+            --text-primary: #e2e9e5;
+            --text-secondary: #9cb1a6;
+            --accent-color: #5eead4;
+            --accent-color-hover: #2dd4bf;
+            --accent-rgb: 94, 234, 212;
+            --border-color: #26332c;
+            --sidebar-bg: #151a17;
+            --toc-active: #5eead4;
+            --toc-active-bg: rgba(94, 234, 212, 0.08);
+            --kbd-bg: #222b25;
+            --code-bg: #161c19;
+            --code-text: #6ee7b7;
+            --scrollbar-thumb: #26332c;
+            --scrollbar-track: #121513;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            
+            --alert-note-bg: rgba(56, 189, 248, 0.06);
+            --alert-note-border: #0ea5e9;
+            --alert-note-text: #e0f2fe;
+            
+            --font-sans: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --font-title: 'Outfit', 'Noto Sans TC', sans-serif;
+            --font-mono: 'Fira Code', 'Courier New', Courier, monospace;
+            
+            --transition-speed: 0.25s;
+        }
+        
+        [data-theme="light"] {
+            /* Eye-friendly Light Mode */
+            --bg-color: #f7f6f2;
+            --bg-color-rgb: 247, 246, 242;
+            --card-bg: #ffffff;
+            --card-bg-hover: #fcfbfa;
+            --text-primary: #2d312e;
+            --text-secondary: #5e6660;
+            --accent-color: #0b7a6f;
+            --accent-color-hover: #085e55;
+            --accent-rgb: 11, 122, 111;
+            --border-color: #e2ddd3;
+            --sidebar-bg: #ece9df;
+            --toc-active: #0b7a6f;
+            --toc-active-bg: rgba(11, 122, 111, 0.08);
+            --kbd-bg: #e5e0d5;
+            --code-bg: #eae6db;
+            --code-text: #0b7a6f;
+            --scrollbar-thumb: #dcd7ca;
+            --scrollbar-track: #f7f6f2;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            
+            --alert-note-bg: rgba(14, 165, 233, 0.06);
+            --alert-note-border: #0284c7;
+            --alert-note-text: #0369a1;
+        }
+        
+        /* Reset and Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: var(--font-sans);
+            line-height: 1.75;
+            font-size: 16px;
+            display: flex;
+            min-height: 100vh;
+            overflow-x: hidden;
+            transition: background-color var(--transition-speed), color var(--transition-speed);
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--scrollbar-track);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--scrollbar-thumb);
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-color);
+        }
+        
+        /* App Layout */
+        .sidebar {
+            width: 320px;
+            background-color: var(--sidebar-bg);
+            border-right: 1px solid var(--border-color);
+            height: 100vh;
+            position: sticky;
+            top: 0;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transition: transform 0.3s ease, background-color var(--transition-speed), border-color var(--transition-speed);
+            z-index: 1000;
+            flex-shrink: 0;
+        }
+        
+        .sidebar-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo-text {
+            font-family: var(--font-title);
+            font-weight: 800;
+            font-size: 1.15rem;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            display: inline-block;
+        }
+        
+        .toc-container {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1.5rem;
+        }
+        
+        .toc-title {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-secondary);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .toc-list {
+            list-style: none;
+        }
+        
+        .toc-item {
+            margin-bottom: 0.25rem;
+        }
+        
+        .toc-item a {
+            display: block;
+            padding: 0.5rem 0.75rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .toc-item a:hover {
+            color: var(--text-primary);
+            background-color: var(--card-bg-hover);
+        }
+        
+        .toc-item a.active {
+            color: var(--toc-active);
+            background-color: var(--toc-active-bg);
+            font-weight: 600;
+            border-left: 3px solid var(--accent-color);
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            padding-left: 0.6rem;
+        }
+        
+        .toc-sublist {
+            list-style: none;
+            padding-left: 1rem;
+            margin-top: 0.25rem;
+            margin-bottom: 0.5rem;
+            border-left: 1px solid var(--border-color);
+        }
+        
+        .toc-sublist a {
+            font-size: 0.8rem;
+            padding: 0.3rem 0.6rem;
+        }
+        
+        /* Content Panel */
+        .content-wrapper {
+            flex: 1;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        
+        /* Sticky Top Bar */
+        .top-bar {
+            position: sticky;
+            top: 0;
+            background-color: rgba(var(--bg-color-rgb), 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 0.85rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            z-index: 900;
+            transition: background-color var(--transition-speed), border-color var(--transition-speed);
+        }
+        
+        .search-wrapper {
+            position: relative;
+            flex: 1;
+            max-width: 480px;
+        }
+        
+        .search-input-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 0.95rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            pointer-events: none;
+        }
+        
+        .search-input {
+            width: 100%;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 0.65rem 1rem 0.65rem 2.6rem;
+            border-radius: 9999px;
+            font-size: 0.9rem;
+            font-family: var(--font-sans);
+            transition: all 0.2s ease;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.15);
+            background-color: var(--card-bg-hover);
+        }
+        
+        .search-count-badge {
+            position: absolute;
+            right: 1rem;
+            font-size: 0.75rem;
+            color: var(--accent-color);
+            font-weight: 600;
+            pointer-events: none;
+        }
+        
+        .top-bar-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .btn-action {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-action:hover {
+            background-color: var(--card-bg-hover);
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+        
+        .btn-action svg {
+            width: 20px;
+            height: 20px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        
+        /* Mobile Menu Toggle */
+        .mobile-menu-btn {
+            display: none;
+        }
+        
+        /* Main Typography and Content Spacing */
+        .main-container {
+            max-width: 960px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            flex: 1;
+        }
+        
+        .main-title {
+            font-family: var(--font-title);
+            font-size: 2.2rem;
+            font-weight: 850;
+            line-height: 1.3;
+            letter-spacing: -0.03em;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, var(--text-primary) 30%, var(--accent-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .paragraph {
+            margin-bottom: 1.25rem;
+            font-size: 1.05rem;
+            color: var(--text-primary);
+        }
+        
+        .paragraph a, .patch-item a {
+            color: var(--accent-color);
+            text-decoration: none;
+            border-bottom: 1px dashed var(--accent-color);
+            transition: all 0.2s;
+        }
+        
+        .paragraph a:hover, .patch-item a:hover {
+            color: var(--accent-color-hover);
+            border-bottom-style: solid;
+            background-color: rgba(var(--accent-rgb), 0.05);
+        }
+        
+        .section-divider {
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, var(--border-color), transparent);
+            margin: 2.5rem 0;
+        }
+        
+        /* Alert Box */
+        .alert-box {
+            display: flex;
+            gap: 1rem;
+            padding: 1.25rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            background-color: var(--alert-note-bg);
+            border: 1px solid var(--alert-note-border);
+            color: var(--alert-note-text);
+        }
+        
+        .alert-icon {
+            flex-shrink: 0;
+            color: var(--alert-note-border);
+            display: flex;
+            align-items: flex-start;
+            padding-top: 2px;
+        }
+        
+        .alert-content {
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        /* Section Containers */
+        .patch-section {
+            margin-bottom: 3.5rem;
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        
+        .patch-section.has-no-match {
+            display: none !important;
+        }
+        
+        .section-header {
+            font-family: var(--font-title);
+            font-size: 1.65rem;
+            font-weight: 750;
+            color: var(--text-primary);
+            margin-top: 2.5rem;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            cursor: pointer;
+            user-select: none;
+            transition: all 0.2s ease;
+        }
+        
+        .section-header:hover {
+            color: var(--accent-color);
+            border-bottom-color: rgba(var(--accent-rgb), 0.5);
+        }
+        
+        .section-header::before {
+            content: "#";
+            color: var(--accent-color);
+            font-weight: 350;
+            font-family: var(--font-title);
+            transition: transform 0.2s ease;
+        }
+        
+        .section-header:hover::before {
+            transform: scale(1.2);
+        }
+        
+        .subsection-header {
+            font-family: var(--font-title);
+            font-size: 1.25rem;
+            font-weight: 650;
+            color: var(--accent-color);
+            margin-top: 2rem;
+            margin-bottom: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            scroll-margin-top: 80px; /* Offset for sticky header */
+        }
+        
+        /* Bullet Lists and Items */
+        ul.level-1 {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+        
+        .patch-item {
+            position: relative;
+            padding: 0.75rem 1rem 0.75rem 2.25rem;
+            margin-bottom: 0.5rem;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+        }
+        
+        .patch-item:hover {
+            background-color: var(--card-bg-hover);
+            border-color: rgba(var(--accent-rgb), 0.4);
+            transform: translateX(4px);
+            box-shadow: var(--shadow);
+        }
+        
+        .patch-item::before {
+            content: "•";
+            color: var(--accent-color);
+            font-size: 1.6rem;
+            position: absolute;
+            left: 1rem;
+            top: 0.55rem;
+            line-height: 1;
+        }
+        
+        /* Nested Lists */
+        ul.level-2 {
+            list-style: none;
+            padding-left: 1.5rem;
+            margin-top: 0.4rem;
+            margin-bottom: 0.4rem;
+            border-left: 2px dashed var(--border-color);
+        }
+        
+        ul.level-2 .patch-item {
+            background: transparent;
+            border: none;
+            border-radius: 0;
+            padding: 0.35rem 0.5rem 0.35rem 1.25rem;
+            margin-bottom: 0.25rem;
+            font-size: 0.95rem;
+        }
+        
+        ul.level-2 .patch-item:hover {
+            background: transparent;
+            transform: translateX(2px);
+            box-shadow: none;
+            color: var(--accent-color);
+        }
+        
+        ul.level-2 .patch-item::before {
+            content: "◦";
+            color: var(--text-secondary);
+            font-size: 1.15rem;
+            left: 0.25rem;
+            top: 0.25rem;
+        }
+        
+        /* Code Styling */
+        .inline-code {
+            font-family: var(--font-mono);
+            font-size: 0.9em;
+            background-color: var(--code-bg);
+            color: var(--code-text);
+            padding: 0.15rem 0.4rem;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            word-break: break-word;
+        }
+        
+        /* Formula Block */
+        .formula-block {
+            background-color: var(--code-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            text-align: center;
+            box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .formula-label {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .formula-display {
+            font-family: var(--font-title);
+            font-size: 1.35rem;
+            color: var(--text-primary);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.35rem;
+            margin-bottom: 1rem;
+            padding: 0.5rem 1rem;
+            background-color: var(--bg-color);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .math-var {
+            font-weight: 600;
+            color: var(--accent-color);
+            font-style: italic;
+        }
+        
+        .math-paren {
+            font-size: 1.6rem;
+            font-weight: 300;
+            color: var(--text-secondary);
+        }
+        
+        .math-frac {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            vertical-align: middle;
+            padding: 0 0.5rem;
+        }
+        
+        .math-num {
+            border-bottom: 1.5px solid var(--text-primary);
+            padding-bottom: 1px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .math-den {
+            padding-top: 1px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .formula-legend {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        
+        /* Highlight match inside search results */
+        .search-highlight {
+            background-color: rgba(94, 234, 212, 0.25);
+            color: #ffffff;
+            border-radius: 3px;
+            padding: 0 2px;
+            font-weight: 600;
+            box-shadow: 0 0 4px rgba(94, 234, 212, 0.5);
+        }
+        
+        [data-theme="light"] .search-highlight {
+            background-color: rgba(11, 122, 111, 0.2);
+            color: #000000;
+        }
+        
+        /* Floating buttons */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+            color: #121513;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 800;
+            border: none;
+        }
+        
+        [data-theme="light"] .back-to-top {
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(11, 122, 111, 0.25);
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .back-to-top:hover {
+            background-color: var(--accent-color-hover);
+            transform: translateY(-4px);
+        }
+        
+        /* Footer */
+        footer {
+            margin-top: 5rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+        
+        .footer-poe-note {
+            margin-top: 0.75rem;
+            font-size: 0.8rem;
+            opacity: 0.75;
+        }
+        
+        /* Responsive Media Queries */
+        @media (max-width: 1100px) {
+            .sidebar {
+                width: 260px;
+            }
+        }
+        
+        @media (max-width: 1024px) {
+            body {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                position: fixed;
+                left: 0;
+                top: 0;
+                height: 100vh;
+                width: 300px;
+                transform: translateX(-100%);
+                box-shadow: 5px 0 25px rgba(0,0,0,0.4);
+            }
+            
+            body.sidebar-open .sidebar {
+                transform: translateX(0);
+            }
+            
+            .top-bar {
+                padding: 0.85rem 1.25rem;
+            }
+            
+            .mobile-menu-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .main-container {
+                padding: 2rem 1.25rem;
+            }
+            
+            .main-title {
+                font-size: 1.8rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .back-to-top {
+                bottom: 1.5rem;
+                right: 1.5rem;
+                width: 42px;
+                height: 42px;
+            }
+        }
+        
+        /* Animation transitions */
+        .collapsed-items {
+            display: none !important;
+        }
+        
+        .collapse-indicator {
+            margin-left: auto;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease;
+        }
+        
+        .section-header.collapsed .collapse-indicator {
+            transform: rotate(-90deg);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Responsive Sidebar (TOC) -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <span class="logo-text"><span class="logo-dot"></span>POE2 0.5.0 Patch</span>
+            <button class="btn-action mobile-menu-btn" id="sidebar-close" style="width:32px; height:32px; border-radius:8px;">
+                <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+        </div>
+        <div class="toc-container">
+            <div class="toc-title">目錄導覽</div>
+            <ul class="toc-list" id="dynamic-toc">
+                <!-- Dynamically populated via JS -->
+            </ul>
+        </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="content-wrapper">
+        
+        <!-- Sticky Top bar -->
+        <header class="top-bar">
+            <!-- Mobile Toggle Button -->
+            <button class="btn-action mobile-menu-btn" id="sidebar-toggle" title="開啟目錄">
+                <svg viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
+            
+            <!-- Real-time Search Input -->
+            <div class="search-wrapper">
+                <div class="search-input-container">
+                    <span class="search-icon">
+                        <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    </span>
+                    <input type="text" id="search-input" class="search-input" placeholder="在改版資訊中搜尋... (支援即時高亮)">
+                    <span id="search-count" class="search-count-badge"></span>
+                </div>
+            </div>
+            
+            <!-- Actions (Theme Toggle, Collapse/Expand All) -->
+            <div class="top-bar-actions">
+                <button class="btn-action" id="expand-collapse-all" title="展開/收合所有章節">
+                    <svg viewBox="0 0 24 24"><path d="M4 14h6v6M20 10h-6V4M14 10l7-7M10 14l-7 7"/></svg>
+                </button>
+                <button class="btn-action" id="theme-toggle" title="切換護眼佈景主題">
+                    <svg viewBox="0 0 24 24" class="sun-icon"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Body -->
+        <main class="main-container" id="main-content">
+            
+            <h1 class="main-title">Path of Exile 2: Return of the Ancients — 版本更新 0.5.0 完整改版資訊</h1>
+<div class="alert-box note">
+                <div class="alert-icon">
+                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                </div>
+                <div class="alert-content">
+                    本文件為 <strong>Path of Exile 2: Return of the Ancients (版本 0.5.0)</strong> 的完整繁體中文翻譯，專有名詞均保留英文以便於對照。
+                </div>
+            </div>
+<hr class="section-divider">
+<hr class="section-divider">
+<p class="paragraph"><code class="inline-code">Return of the Ancients</code> 擴充內容包含了一個全新的挑戰聯盟、Path of Exile 2 終局內容的徹底翻新、六個全新的終局故事線、2 個全新昇華職業以及大量其他內容。欲了解更多關於此擴充內容的資訊，請前往 <a href="https://pathofexile2.com/ancients" target="_blank" class="content-link">pathofexile2.com/ancients</a>。</p>
+<hr class="section-divider">
+<section class="patch-section" id="runes-of-aldur-聯盟">
+  <h2 class="section-header">Runes of Aldur 聯盟</h2>
+  <ul class="level-1">
+    <li class="patch-item">在全新的經濟體系中，於 <strong>Runes of Aldur</strong> 聯盟展開新的旅程。</li>
+    <li class="patch-item">在 <strong>Runes of Aldur</strong> 聯盟 of Aldur 聯盟的每個區域中，你都會發現一個 <strong>Remnant</strong>。你可以使用刻在 <strong>Remnant</strong> 插槽上的 <strong>Runic Recipes</strong> 來製作你自選的物品。</li>
+    <li class="patch-item">根據所使用的 <strong>Runeshapes</strong>，你將面臨與強大敵人的遭遇戰，你必須擊敗他們才能領取你的物品。</li>
+    <li class="patch-item">製作物品時每多使用一個 <strong>runeshape</strong>，都會增加敵人的波數，並在每一波中為敵人添加額外的 <strong>runic</strong> 詞綴。</li>
+    <li class="patch-item"><strong>Remnants</strong> 起始的插槽數量在 2 到 10 個之間，插槽數越高越稀有，但能讓你製作出更 rare 的物品。</li>
+    <li class="patch-item">由 <strong>Remnants</strong> 喚醒的怪物會掉落 <strong>Verisium</strong> 金屬，這是一種全新的通貨。</li>
+    <li class="patch-item">新增了全新 NPC <strong>Farrow</strong> 以及劇情戰役中的 4 個全新任務，讓你能解鎖各種全新製作功能。</li>
+</ul>
+  <h3 class="subsection-header" id="全新製作系統-verisium-runeforging">全新製作系統：Verisium Runeforging</h3>
+  <ul class="level-1">
+    <li class="patch-item">在第 1 章解鎖 <strong>Verisium Runeforging</strong> 後，此系統允許你透過消耗 <strong>verisium</strong> 為你的防具（護甲）添加 <strong>Runic Ward</strong>。低於 55 級的護甲獲得 <strong>Runic Ward</strong> 且沒有副作用。高於此等級的護甲則會以犧牲部分常規基礎防禦為代價來換取 <strong>Runic Ward</strong>。</li>
+    <li class="patch-item">新增防禦機制：<strong>Runic Ward</strong>。此防禦機制在你達到 1 生命值時觸發，讓你能繼續存活，而你的 <strong>Runic Ward</strong> 將代為承受傷害。<strong>Runic Ward</strong> 會獨立於你的生命值進行恢復。</li>
+    <li class="patch-item">新增了 13 種全新的 <strong>Alloy</strong> 通貨物品，可在完成 <strong>Farrow</strong> 於第 2 章的任務後，透過 <strong>Remnant</strong> 遭遇戰解鎖。這些物品透過替換現有詞綴來為物品添加各種全新的製作詞綴，類似於 <strong>Perfect Essences</strong>。</li>
+    <li class="patch-item">在第 3 章解鎖 <strong>Unique Verisium Runeforging</strong> 後，你可以升級低於 55 級掉落的傳奇（Unique）防具的基底類型。這些升級通常會增加基礎防禦，使低階傳奇防具在終局遊戲中更具競爭力。高於 55 級的傳奇防具仍然可以進行 <strong>Runeforged</strong> 以修改其防禦，以降低其他防禦為代價來加入 <strong>runic ward</strong>，類似於普通基底。</li>
+    <li class="patch-item"><strong>Unique Verisium Runeforging</strong> 用在 <strong>Kalguuran Uniques</strong> 上時，會具有額外的屬性。</li>
+    <li class="patch-item">新增了 13 種 <strong>Ancient Runes</strong>，可在完成 <strong>Farrow</strong> 於第 4 章的任務後透過 <strong>Remnant</strong> 遭遇戰解鎖。這些符文具有針對每種武器類型的強大加成。</li>
+    <li class="patch-item">新增了 13 種 <strong>Mythical</strong> 遊戲早期符文，可從 <strong>Remnant</strong> 遭遇戰中製作，為 15 級以上的角色提供顯著的提升。</li>
+    <li class="patch-item">新增了 3 種 <strong>Fluxes</strong>，可從 <strong>Remnants</strong> 製作，用以將物品上的抗性從一種元素轉換為另一種元素。</li>
+    <li class="patch-item">新增了 15 種 <strong>Meta</strong> 製作符文，可從 <strong>remnants</strong> 製作。</li>
+    <li class="patch-item">新增了 60 多種符文，可透過摧毀一件傳奇物品來製作，該符文會獲得該傳奇物品的部分屬性。</li>
+    <li class="patch-item">新增了 15 種以上與 <strong>Runic Ward</strong> 相關的 <strong>Runic Ward Runes</strong>，可從 <strong>Remnants</strong> 製作，用以新增或修改與 <strong>Runic Ward</strong> 相關的屬性。</li>
+    <li class="patch-item">新增了 21 個 <strong>Kalguuran</strong> 技能，可從 <strong>Remnants</strong> 製作：</li>
+  <ul class="level-2">
+    <li class="patch-item"><em>Animus Exchange</em>, <em>Animus Splinters</em>, <em>Bitter Dead</em>, <em>Conductive Runes</em>, <em>Detonate Living</em>, <em>Eternal March</em>, <em>Explosive Transmutation</em>, <em>Fragments of the Past</em>, <em>Frostflame Nova</em>, <em>Grim Pillars</em>, <em>Hollow Shell</em>, <em>Leylines</em>, <em>Powered by Verisium</em>, <em>Refutation</em>, <em>Remnants of Kalguur</em>, <em>Repulsion</em>, <em>Runic Reprieve</em>, <em>Skyfall</em>, <em>Triskelion Cascade</em>, <em>Verisium Manifestations</em> 和 <em>Voltaic Barrier</em>。</li>
+  </ul>
+    <li class="patch-item">新增了 8 個 <strong>Kalguuran</strong> 輔助技能（輔助寶石），可從 <strong>remnants</strong> 製作：</li>
+  <ul class="level-2">
+    <li class="patch-item"><em>Concussive Runes</em>, <em>Fist of Kalguur</em>, <em>Healing Runes</em>, <em>Kalguuran Conviction</em>, <em>Runeforged Blades</em>, <em>Runic Extraction</em>, <em>Runic Infusion</em> 和 <em>Scouring Flame</em>。</li>
+  </ul>
+    <li class="patch-item"><strong>Expedition Remnants</strong> 已被修改為 <strong>The Runes of Aldur</strong> 聯盟的 <strong>Remnants</strong>。</li>
+    <li class="patch-item"><strong>全新終局故事</strong>：與 <strong>Farrow</strong> 一起踏上探險之旅，探索海洋，調查墮落 <strong>Kalguurans</strong> 的陵墓並挑戰他們，以賺取豐厚的獎勵。尋找墜落隕石坑，那是一個純 <strong>Verisium</strong> 的隕石，你希望從中鍛造出擁有巨大力量的物品……如果你能擊敗在那裡等待著你的敵人的話。</li>
+    <li class="patch-item">現在，在輿圖起點的東南方有一個 <strong>The Runes of Aldur</strong> 的城鎮區域「<strong>The Ruins of Kingsmarch</strong>」。</li>
+    <li class="patch-item"><strong>Logbook</strong> 機制已修改為海洋探索（<strong>Ocean Exploring</strong>）機制。現在使用 <strong>logbooks</strong> 將會揭示海洋的一部分，其中有各種島嶼可供探索。</li>
+    <li class="patch-item">新增了許多在探險期間可以發現的全新地下區域。</li>
+    <li class="patch-item">新增了許多島嶼以及全新的 <strong>Grand Expeditions</strong>（先前稱為 <strong>logbooks</strong>）。</li>
+    <li class="patch-item"><strong>Medved</strong>、<strong>Vorana</strong> 和 <strong>Uhtred</strong> 加入 <strong>Olroth</strong> 的行列，成為 4 位可在海洋中發現的新島嶼上交戰的陣營首領（<strong>Faction Leaders</strong>）。</li>
+    <li class="patch-item">擊敗 <strong>Olroth</strong> 將獲得一把鑰匙，可用於開啟 <strong>The Runes of Aldur</strong> 的全新 <strong>Pinnacle Boss</strong> 戰鬥。</li>
+    <li class="patch-item">全新的 <strong>Runes of Aldur</strong> 挑戰聯盟包含了 <strong>Path of Exile 2</strong> 的第一套挑戰。當你在 <strong>Runes of Aldur</strong> 中完成 2、4、6 和 8 個挑戰時，即可獲得 <strong>Knight of Aldur Armour Set</strong> 護甲套裝的各個部件。這些挑戰獎勵僅在此聯盟中可獲得。</li>
+    <li class="patch-item">從第 1 個挑戰開始，之後每完成一個挑戰，你都會獲得藏身處（<strong>Hideout</strong>）裝飾物 <strong>Runes of Aldur Totem</strong> 的部件。該圖騰柱會永久展示你在聯盟期間完成了多少個 <strong>Runes of Aldur</strong> 挑戰。</li>
+    <li class="patch-item">你在搶先體驗（<strong>Early Access</strong>）推出時創建的所有舊角色仍然存在，但由於 these 變更，已提供免費的被動技能樹重置。我們強烈建議你加入新聯盟，以完整體驗我們在 0.5.0 更新中所做的變更。</li>
+    <li class="patch-item">在 0.5.0 版本中，提供 <strong>Runes of Aldur</strong> 挑戰聯盟的 <strong>Standard</strong>、<strong>Hardcore</strong> 和 <strong>Solo Self-Found (SSF)</strong> 版本。它們具有相同的核心機制和物品，你也可以創建這些聯盟的私人聯盟（<strong>Private League</strong>）版本。</li>
+    <li class="patch-item"><strong>Runes of Aldur</strong> 的 <strong>Hardcore</strong> 版本與其對應的 <strong>Standard Runes of Aldur</strong> 聯盟相連，這意味著如果你在 <strong>Hardcore Runes of Aldur</strong> 中死亡，你可以繼續在 <strong>Standard Runes of Aldur</strong> 聯盟中進行遊戲。</li>
+</ul>
+<hr class="section-divider">
+</section>
+<section class="patch-section" id="終局內容-endgame">
+  <h2 class="section-header">終局內容 (Endgame)</h2>
+  <ul class="level-1">
+    <li class="patch-item">輿圖（<strong>Atlas</strong>）現在在特定位置設有固定的「興趣點」（<strong>fixed points of interest</strong>），為你提供易於尋找的明確目標。</li>
+    <li class="patch-item">輿圖上的所有聯盟機制現在都設有任務，用以引導和介紹該機制，並指引你通過各個階段，直到面對 <strong>Pinnacle Boss</strong>。</li>
+    <li class="patch-item">所有 <strong>Pinnacle Bosses</strong> 現在都擁有可以確定性開啟的「任務版本」，以及提供更大挑戰且可重複挑戰的「非任務版本」。</li>
+    <li class="patch-item">新增了 30 個全新的終局地圖區域（<strong>Endgame Map Areas</strong>）。</li>
+</ul>
+<hr class="section-divider">
+</section>
+<section class="patch-section" id="origins-of-divinity終局遊戲翻新">
+  <h2 class="section-header">Origins of Divinity：終局遊戲翻新</h2>
+  <ul class="level-1">
+    <li class="patch-item"><strong>全新終局故事線</strong>：<strong>The Cataclysm of the Beast</strong> 觸發了一項古老的協定，該協定旨在清除和淨化如此嚴重的腐化。穿越輿圖進入 <strong>Fortress</strong> 並啟動 <strong>Gates</strong>。獲取鑰匙以到達古老的 <strong>Precursor</strong> 武器並解除它們的武裝。</li>
+    <li class="patch-item">完成你的第一座塔後，一座 <strong>Fortress</strong> 將從地下升起。</li>
+    <li class="patch-item"><strong>Fortress</strong> 內的地圖會為輿圖被動技能樹（<strong>Atlas Passive Tree</strong>）提供一個或多個被動點數。這完全取代了以前獲得輿圖點數的方法。</li>
+    <li class="patch-item">輿圖技能樹已大幅擴展，擁有超過 300 個節點。在完成 <strong>Fortress</strong> 內的所有地圖後，你將獲得足夠的被動點數以完全點滿整個輿圖技能樹。</li>
+    <li class="patch-item">由於整個輿圖技能樹可以完全點滿，因此不再需要提供重置（洗點）功能。技能樹上的多重選擇節點可以隨時在不同選項之間進行切換。</li>
+    <li class="patch-item"><strong>Fortress</strong> 內的多張地圖具有 <strong>Ancient Modifiers</strong>，這些詞綴會增加或修改地圖的內容。任何帶有「為地圖新增次要內容」之詞綴的地圖，也會隱性地將該內容新增至該地圖中。</li>
+    <li class="patch-item">新增了 40 多種 <strong>Ancient Modifiers</strong>，有機會出現在 <strong>Fortress</strong> 之外的任何地圖上。</li>
+    <li class="patch-item">新增了三張 <strong>Gateway</strong> 地圖以及兩位全新首領，可用於進入 <strong>Fortress</strong> 的不同區域。</li>
+    <li class="patch-item">在 <strong>Fortress</strong> 之外新增了全新的 <strong>Precursor Tower</strong> 地圖。</li>
+    <li class="patch-item"><strong>The Burning Monolith</strong> 與 <strong>Arbiter of Ash</strong> 已被移入 <strong>Fortress</strong> 中。</li>
+    <li class="patch-item"><strong>Crisis</strong> 碎片的任務版本已新增至 <strong>Fortress</strong> 內的兩個 <strong>Enigma</strong> 密室中。</li>
+    <li class="patch-item">新增了兩張 <strong>Citadel</strong> 地圖以及兩位全新首領，他們會掉落通往全新 <strong>Pinnacle Boss</strong> 的鑰匙。</li>
+    <li class="patch-item">新增了 <strong>Arbiter of Divinity</strong> Pinnacle Boss。</li>
+    <li class="patch-item">或者，你可以透過擊殺 <strong>Arbiter of Divinity</strong> 5 次來自動完成 <strong>Fortress</strong> 的不同區域，以獲得輿圖技能樹點數。</li>
+</ul>
+<hr class="section-divider">
+</section>
+<section class="patch-section" id="輿圖大師-masters-of-the-atlas">
+  <h2 class="section-header">輿圖大師 (Masters of the Atlas)</h2>
+  <ul class="level-1">
+    <li class="patch-item">除了輿圖技能樹之外，名為 <strong>Masters of the Atlas</strong> 的全新系統為終局內容引入了類似昇華職業的進度系統。玩家可以與不同的輿圖大師結盟（例如 <strong>Order of the Djinn</strong> 的 <strong>Jado</strong>，或是怪物獵人 <strong>Hilda</strong>），每位大師都提供獨特的、不對稱的加成，並且可以在地圖之間隨意切換，從而提供對流派（<strong>Build</strong>）至關重要的決定性加成。</li>
+    <li class="patch-item">每位輿圖大師擁有 12 個節點，其中可以同時選擇 4 個。你可以隨時更改你的選擇。</li>
+    <li class="patch-item">所有三位大師都可以同時分配點數，並在執行地圖前透過快速選擇按鈕在每位大師之間切換。</li>
+    <li class="patch-item">透過為輿圖大師執行任務來解鎖每一排的 3 個節點。</li>
+    <li class="patch-item">全新輿圖大師：<strong>Doryani's Science</strong> 任務線可透過清除一個 <strong>corruption nexus</strong> 來解鎖。</li>
+    <li class="patch-item">全新輿圖大師：<strong>Hilda's Hunting</strong> 任務線可透過造訪位於輿圖起點西南方不遠處的 <strong>Hilda's Campsite</strong> 來解鎖。</li>
+    <li class="patch-item">全新輿圖大師：<strong>Jado's Spycraft</strong> 任務線可透過完成起點附近的一張 <strong>anomaly</strong> 地圖來解鎖。</li>
+</ul>
+<hr class="section-divider">
+</section>
+<section class="patch-section" id="delirium-譫妄">
+  <h2 class="section-header">Delirium (譫妄)</h2>
+  <ul class="level-1">
+    <li class="patch-item"><strong>全新故事線</strong>：一個古老的欺詐之神（<strong>Trickster God</strong>）已被釋放，將瘋狂散播至整個 <strong>Wraeclast</strong>。你敢去揭開他的起源並面對你最深層的恐懼嗎？詳情請參閱 <a href="https://pathofexile2.com/ancients#delirium" target="_blank" class="content-link">pathofexile2.com/ancients#delirium</a>。</li>
+    <li class="patch-item">現在在輿圖西南方有一個 <strong>Delirium</strong> 的城鎮區域「<strong>The Withered Willow</strong>」。該位置周圍的地圖都包含 <strong>Deliriums</strong>，並為你提供 <strong>Delirium</strong> 輿圖被動技能樹點數。</li>
+    <li class="patch-item"><strong>Delirium</strong> 輿圖被動技能樹已完全重製，新增了許多新節點，並對現有節點進行了調整。</li>
+    <li class="patch-item">觸發 <strong>Delirium</strong> 鏡子後，現在會顯示一個進度條，顯示你在迷霧中的深度，以及距離迷霧消散還有多少時間。<strong>Delirium</strong> 進度條的起點代表你在 <strong>Delirium</strong> 鏡子處的初始位置，終點則代表地圖首領（<strong>Map Boss</strong>）的位置。</li>
+    <li class="patch-item">現在在 <strong>Delirium</strong> 進度條上可以看到一系列全新的 <strong>Delirium Encounters</strong>。達到特定深度會導致出現彩色的鏡子碎片。走入這些鏡子碎片會將其打破，從而觸發新的遭遇戰。</li>
+    <li class="patch-item">可以透過觀察迷霧效果來判定地圖首領的方向。朝著迷霧的方向移動將始終引導你找到地圖首領。</li>
+    <li class="patch-item"><strong>Delirium</strong> 中的地圖首領將始終處於 100% 譫妄（<strong>100% delirious</strong>）狀態。</li>
+    <li class="patch-item">降低了 <strong>Delirium</strong> 給予怪物的傷害與生命加成。</li>
+    <li class="patch-item">新增了 5 種全新 <strong>Elite Delirium</strong> 怪物。</li>
+    <li class="patch-item">新增了全新子區域：<strong>Loathsome Mire</strong>。</li>
+    <li class="patch-item"><strong>Loathsome Mire</strong> 會掉落兩種全新的項鍊基底類型，這些基底會提供兩個被動技能樹上的 <strong>instilled notables</strong>，但代價是減少 1 個後綴或 1 個前綴（<strong>-1 suffix</strong> 或 <strong>-1 prefix</strong>）。</li>
+    <li class="patch-item"><strong>Liquid Emotions</strong> 現在可用於在珠寶（<strong>Jewels</strong>）上製作額外的詞綴。這些運作方式類似於 <strong>greater essences</strong>，每種都有一個特定的詞綴組，會隨機替換物品上已有的詞綴。</li>
+    <li class="patch-item">完成 <strong>Delirium Mirrors</strong> 現在有機率在輿圖上的鄰近地圖上生成 <strong>Grand Mirrors</strong>。<strong>Grand mirrors</strong> 會在受影響的地圖中創建一個地圖首領的複製體。擊殺這兩個地圖首領將解鎖一個全新的輿圖機制：<strong>The Trial of Madness</strong>。</li>
+    <li class="patch-item">觸發 <strong>The Trial of Madness</strong> 後，迷霧將從你選擇的輿圖地圖擴散，其中包括一個鎖定的 <strong>Simulacrum</strong>。在迷霧內時，整張地圖都處於 <strong>Delirious</strong> 狀態（起始為 10%）。擊殺稀有（<strong>Rare</strong>）怪物與地圖首領會增加迷霧中所有地圖的 <strong>Deliriousness</strong>。達到 100% 時，<strong>Simulacrum</strong> 將變為可用。<strong>Deliriousness</strong> 還可以繼續增加，最高可達 200% <strong>delirious</strong>。</li>
+    <li class="patch-item"><strong>Delirious</strong> 地圖中的稀有和傳奇怪物擁有一組全新的 <strong>Delirious</strong> 詞綴，賦予他們奇特的新能力。</li>
+    <li class="patch-item"><strong>Delirious</strong> 地圖的地圖首領還會額外掉落一組 3 種全新的 <strong>Potent emotions</strong>，可用於在珠寶上製作一般珠寶詞綴池中無法獲得的強大新詞綴。這些 <strong>emotions</strong> 還可用於灌注 16 個通常在被動技能樹上無法獲得的全新被動技能樹核心天賦（<strong>Passive Tree Notables</strong>）。</li>
+    <li class="patch-item"><strong>Simulacrum</strong> 已更新，現在為 7 波的遭遇戰。</li>
+    <li class="patch-item">完成 <strong>Simulacrum</strong> 現在會給你一把鑰匙，用以挑戰全新的 <strong>Delirium Pinnacle Boss</strong>。</li>
+    <li class="patch-item">新增了一組 10 種 <strong>Ancient Emotions</strong>，如果透過輿圖技能樹解鎖便會掉落，可用於製作 <strong>Timelost Jewels</strong>。此外還有 3 種 <strong>Ancient Potent emotions</strong>，可用於在 <strong>Timelost Jewels</strong> 上製作一般詞綴池中通常無法獲得的強大新詞綴。</li>
+    <li class="patch-item">部分非項鍊的 <strong>Delirium</strong> 傳奇物品現在掉落時會帶有 <strong>Raven-Touched</strong> 詞綴，使它們可以被灌注。</li>
+</ul>
+<hr class="section-divider">
+</section>
+<section class="patch-section" id="breach-裂痕">
+  <h2 class="section-header">Breach (裂痕)</h2>
+  <ul class="level-1">
+    <li class="patch-item"><strong>全新 Breach 故事線</strong>：前往 <strong>Monastery of the Keepers</strong>，這是 <strong>Keepers of the Flame</strong> 的神聖殿堂，並探索 <strong>The Genesis Tree</strong>。這棵樹是從敵人手中奪取，並由 <strong>Dreamer</strong> 親自贈予守護者的。欲了解更多資訊，請參閱：<a href="https://pathofexile2.com/ancients#breach" target="_blank" class="content-link">pathofexile2.com/ancients#breach</a>。</li>
+    <li class="patch-item">現在在輿圖南方有一個全新的城鎮區域「<strong>The Monastery of the Keepers</strong>」。此位置周圍的地圖都包含 <strong>Breach</strong> 遭遇戰。完成這些地圖會為你提供 <strong>Breach</strong> 輿圖技能樹點數。</li>
+    <li class="patch-item"><strong>Breach</strong> 輿圖被動技能樹已完全重製，新增了許多新節點，並對現有節點進行了調整。</li>
+    <li class="patch-item">開啟一個 <strong>breach</strong> 現在會顯示一個進度條，顯示距離裂痕關閉還有多少時間，以及擊殺怪物為裂痕延長了多少時間。</li>
+    <li class="patch-item">在該進度條達到 100% 時，將開啟一項新機制：<strong>Stabilised Breach</strong> (穩定裂痕)。<strong>Stabilised breach</strong> 將在其起點生成新的挑戰。</li>
+    <li class="patch-item">新增首領至 <strong>Stabilised Breach</strong>：<strong>Vruun, Marshal of Xesht</strong>。</li>
+    <li class="patch-item">新增製作系統：<strong>The Genesis Tree</strong>。</li>
+    <li class="patch-item"><strong>The Genesis Tree</strong> 允許消耗 <strong>Wombgifts</strong> 和 <strong>Hiveblood</strong> 來製作戒指、項鍊、腰帶和通貨。</li>
+    <li class="patch-item">可以分配 <strong>The Genesis Tree</strong> 上的節點來影響將被製作的物品類型。</li>
+    <li class="patch-item">使用 <strong>Wombgifts</strong> 來解鎖新節點。</li>
+    <li class="patch-item">新增了 6 種全新的戒指基底類型，只能透過 <strong>The Genesis Tree</strong> 獨家製作。</li>
+    <li class="patch-item">新增了 4 種全新的項鍊基底類型，只能透過 <strong>The Genesis Tree</strong> 獨家製作。</li>
+    <li class="patch-item">新增了 4 種全新的腰帶基底類型，只能透過 <strong>The Genesis Tree</strong> 獨家製作。</li>
+    <li class="patch-item">新增了一組施法者（<strong>Caster</strong>）和召喚物（<strong>Minion</strong>）詞綴，可使用 <strong>The Genesis Tree</strong> 製作至戒指和腰帶上。</li>
+    <li class="patch-item"><strong>Catalysts</strong> (催化劑) 不再由怪物掉落，現在完全只能從 <strong>The Genesis Tree</strong> 獲得。</li>
+    <li class="patch-item">新增了一組 12 種 <strong>Catalysts</strong>，可為珠寶添加全新的品質詞綴。</li>
+    <li class="patch-item">在 <strong>Breach</strong> 中擊殺怪物現在會掉落 <strong>Hiveblood</strong>、<strong>Wombgifts</strong> 和 <strong>Breachstone Splinters</strong> (裂痕石裂片)。</li>
+    <li class="patch-item"><strong>Breachstone splinters</strong> 在疊滿時會轉化為一個特殊的 <strong>wombgift</strong>。這可以提交給 <strong>The Genesis Tree</strong> 以製作成 <strong>Breachstone</strong> (裂痕石)。</li>
+    <li class="patch-item">全新的 <strong>Breach Domains</strong> 現在會在輿圖上生成。使用 <strong>Breachstone</strong> 將揭示該領域內的地圖，允許你進入。</li>
+    <li class="patch-item"><strong>Breach domain</strong> 內的地圖包含全新的遭遇戰：<strong>Breach Hives</strong>、<strong>Sky Hives</strong> 和 <strong>Sky Fortresses</strong>。</li>
+    <li class="patch-item"><strong>Breach Hives</strong> 擁有一系列的牆壁，可以透過走過它們來燒毀。每摧毀一面牆壁都會增加可以在中心觸發的遭遇戰中的怪物數量。</li>
+    <li class="patch-item"><strong>Sky Hives</strong> 是一個全新的區域，<strong>Breachlords</strong> 在這裡建造了堡壘，你需要對其發起進攻。<strong>Sky hives</strong> 包含一個極具挑戰性的多波遭遇戰，你需要在 <strong>Ailith</strong> 關閉該領域時保護她。<strong>Ailith</strong> 將獲得一系列可以在遭遇戰期間觸發的技能，並伴隨各種效果。</li>
+    <li class="patch-item"><strong>Fortresses</strong> 是一個全新的區域，擁有一對全新首領：<strong>Tul</strong> 與 <strong>Esh</strong>。擊敗 <strong>Tul</strong> 與 <strong>Esh</strong> 將獲得一把鑰匙，用以挑戰現有的 <strong>Breach Pinnacle boss</strong>。</li>
+</ul>
+<hr class="section-divider">
+</section>
+<section class="patch-section" id="ritual-祭祀">
+  <h2 class="section-header">Ritual (祭祀)</h2>
+  <ul class="level-1">
+    <li class="patch-item"><strong>全新故事線</strong>：<strong>Aoife</strong> 作為一個不得安息的靈魂徘徊著，被束縛在 <strong>Wildwood</strong> 中，尋找可能回應她呼喚的人。<strong>The King in the Mists</strong> 奪走了她的肉身，讓她的靈魂漂泊無依、無法超生。她相信唯有奪回被奪走的一切，她才能再次完整。欲了解更多資訊，請參閱：<a href="https://pathofexile2.com/ancients#ritual" target="_blank" class="content-link">pathofexile2.com/ancients#ritual</a>。</li>
+    <li class="patch-item">現在在輿圖西方有一個全新的城鎮區域「<strong>Caer Tarth</strong>」。此位置周圍的地圖都包含 <strong>Ritual</strong> 遭遇戰。完成這些地圖會為你提供 <strong>Ritual</strong> 輿圖技能樹點數。</li>
+    <li class="patch-item"><strong>Ritual</strong> 輿圖被動技能樹已完全重製，新增了許多新節點，並對現有節點進行了調整。</li>
+    <li class="patch-item">在地圖中完成一個 <strong>Ritual Altar</strong> (祭祀祭壇) 遭遇戰後，蝗蟲會指向下一個祭壇的方向。</li>
+    <li class="patch-item">終局遊戲中的 <strong>Ritual</strong> 獎勵畫面中的所有物品現在不是傳奇物品就是 <strong>Omens</strong> (預兆)。</li>
+    <li class="patch-item">任何未花費在獎勵上的貢獻度（<strong>tribute</strong>）現在可以被犧牲，以獲得與 <strong>King in the Mists</strong> (迷霧之王) 會面的機會（<strong>Audience with the King</strong>）。</li>
+    <li class="patch-item">擊殺 <strong>King in the Mists</strong> 現在會掉落一把新鑰匙：<strong>The Head of the King</strong>。這把鑰匙可在 <strong>Caer Tarth</strong> 中使用，以開啟 <strong>Rite of the Nameless</strong>。</li>
+    <li class="patch-item"><strong>Rite of the Nameless</strong> 是一個全新的輿圖機制，你可以在其中選擇一系列的 5 張地圖來完成一個單一且連續的祭祀。來自每次祭祀的怪物（包括地圖首領）將重新出現在該序列的每張地圖中，從而構成一個非常具有挑戰性的遭遇戰。來自每張地圖的獨特首領將僅出現在每張地圖的最終祭祀中。</li>
+    <li class="patch-item">在為 <strong>Rite of the Nameless</strong> 選擇地圖時，除第一張地圖外的每張地圖都將包含額外的詞綴，這些詞綴會影響儀式期間的難度與獎勵。</li>
+    <li class="patch-item"><strong>Rite of the Nameless</strong> 中的每張地圖都會獎勵用於開啟 <strong>Ritual Pinnacle Boss</strong> 之鑰匙的其中一個部件。</li>
+    <li class="patch-item">新增首領：<strong>The Queen in the Mists</strong> (迷霧女王)，可在分配輿圖技能樹上的特定節點後挑戰。此首領會掉落三個全新的已腐化 <strong>Idols</strong>。</li>
+    <li class="patch-item">現在防止 <strong>Freythorn Rituals</strong> 顯示保留物品（<strong>deferred items</strong>），以確保在高階角色返回此區域時不會丟失物品。</li>
+</ul>
+<hr class="section-divider">
+</section>
+<section class="patch-section" id="fate-of-the-vaal-併入核心遊戲">
+  <h2 class="section-header">Fate of the Vaal 併入核心遊戲</h2>
+  <ul class="level-1">
+    <li class="patch-item"><strong>Fate of the Vaal</strong> 已加入核心遊戲。你首先會在第 3 章中遭遇一系列的 6 個 <strong>Ancient Beacons</strong>，為它們充能以獲得 <strong>Energised Crystals</strong> 並開啟通往 <strong>Vaal Ruins</strong> 的傳送門。你將在幕間（<strong>Interludes</strong>）中遭遇第二組 6 個 <strong>Ancient Beacons</strong>。</li>
+    <li class="patch-item">現在有了針對 <strong>Fate of the Vaal</strong> 聯盟機制的輿圖被動技能樹。</li>
+    <li class="patch-item">現在可以在輿圖起點東北方的 <strong>Lira Vaal</strong> 廢墟中找到 <strong>Atziri's Temple</strong> (阿茲里神殿)。<strong>Lira Vaal</strong> 城內的地圖將始終擁有 <strong>Energised Crystals</strong>，並提供 <strong>Fate of the Vaal</strong> 輿圖被動技能樹點數。</li>
+    <li class="patch-item">還有全新的 <strong>Temple Precursor Tablets</strong>，如果你想專注於此聯盟，它們將確保你的地圖中出現 <strong>Vaal Beacons</strong>。</li>
+    <li class="patch-item">現在無法再阻止房間從神殿中被刪除。房間這可以防止「蛇」策略。</li>
+    <li class="patch-item">首次開啟神殿時的房間數量已增加，以便能更快地挑戰 <strong>Atziri</strong>。</li>
+    <li class="patch-item">在解鎖神殿輿圖技能樹上的對應能力後，房間現在可以升級至 <strong>Tier 4</strong>。這允許對特定房間類型進行更深入的專業化，並鼓勵更有趣的神殿布局。</li>
+    <li class="patch-item">擊敗 <strong>Architect</strong> 後從主控制台（console）獲得的 <strong>Reward Rooms</strong> (獎勵房) 已大幅改善，除了升級所有現有獎勵外，還新增了更多可解鎖的種類。</li>
+    <li class="patch-item"><strong>Atziri's Temple</strong> 中可進入的限制房間（<strong>Restricted Rooms</strong>）在離開神殿時將始終變得不穩定（<strong>destabilise</strong>）。</li>
+    <li class="patch-item"><strong>Atziri's Temple Medallions</strong> 的掉落率現在將根據神殿中的路徑數量以及其他房間進行縮放（以前僅根據其他房間）。</li>
+    <li class="patch-item">與房間相關的 <strong>Medallions</strong> 不再能在已開啟的神殿內使用。</li>
+    <li class="patch-item">與房間相關的 <strong>Medallions</strong> 現在在懸停時會顯示升級資訊。</li>
+    <li class="patch-item"><strong>Medallions</strong> 現在在無法放置時會輸出詳細的錯誤訊息。</li>
+    <li class="patch-item">你可以儲存的 <strong>Energised Crystals</strong> 預設上限已增加至 60 個，且 <strong>Medallions</strong> 的上限已增加至 6 個。用以增加儲存上限的 <strong>Medallions</strong> 不再是必需的。</li>
+    <li class="patch-item">神殿的怪物等級現在會將「用於開啟它的水晶之獲取區域物等」納入考量。</li>
+    <li class="patch-item"><strong>Corruption Chamber</strong> (腐化房) 神殿加成已更新為增加「怪物詞綴機率」，而非「額外怪物詞綴」。</li>
+    <li class="patch-item">在 <strong>Temple of Atziri</strong> 中創建的傳送門現在會在對應的 <strong>Vaal Ruins</strong> 母區域中創建一個相應的傳送門，以便於進出。</li>
+    <li class="patch-item"><strong>Vaal Beacons</strong> 在完成後現在會在小地圖上顯示一個灰色的圖示。</li>
+    <li class="patch-item">現在有 4 種類型的 <strong>Infusers</strong>，現有的 <strong>Vaal Infusers</strong> 現在是 <strong>Vaal Armourer's Infusers</strong>，可應用於防具（Armour）。</li>
+    <li class="patch-item"><strong>Vaal Blacksmith's Infusers</strong> 可應用於近戰武器（Martial Weapons），而 <strong>Vaal Arcanist's Infusers</strong> 則可應用於法杖（Wands）、長杖（Staves）與權杖（Sceptres）。</li>
+    <li class="patch-item"><strong>Vaal Catalysing Infusers</strong> 可應用於首飾（Jewellery）。</li>
+    <li class="patch-item">所有 <strong>Infusers</strong> 僅能使用於品質在 20% 或以上的物品。</li>
+    <li class="patch-item"><strong>Fate of the Vaal</strong> 通貨物品在存放在通貨倉庫頁（<strong>Currency Stash Tab</strong>）的任意插槽中時，最大堆疊數量現在為 5,000。</li>
+    <li class="patch-item">更新了將 <strong>Vaal Cultivation Orbs</strong> 應用於傳奇物品時的部分可能結果：</li>
+  <ul class="level-2">
+    <li class="patch-item">傳奇長杖 <strong>Atziri's Rule</strong> 現在可以骰出 10-20% 提高生命消耗效率（<strong>increased Life Cost Efficiency</strong>）（先前為 20-40%）。</li>
+    <li class="patch-item">傳奇胸甲 <strong>Atziri's Splendour</strong> 現在可以骰出 +66-100 最大能量護盾（先前為 +100-200）。</li>
+    <li class="patch-item">傳奇胸甲 <strong>The Covenant</strong> 現在可以骰出 10-25% 提高生命消耗效率（先前為 25-50%）。</li>
+    <li class="patch-item">傳奇手套 <strong>Hateforge</strong> 現在可以骰出「若你在過去 20 秒內使用過需要 Glory 的技能，則 +16-30 最大怒氣（<strong>maximum Rage</strong>）」（先前為「過去 6 秒內每使用一個需要 Glory 的技能，則 +8-12 最大怒氣，最多疊加 5 次」）。</li>
+    <li class="patch-item">傳奇副手 <strong>Rathpith Globe</strong> 現在可以骰出 8-15% 提高生命消耗效率（先前為 12-20%）。</li>
+    <li class="patch-item">傳奇手套 <strong>Shackles of the Wretched</strong> 不再能骰出「你造成的冰凍以外之元素異常狀態反射給你」，現在能骰出「你身上每個詛咒使你提高 10-15% 傷害」。</li>
+    <li class="patch-item">傳奇頭盔 <strong>The Vertex</strong> 不再能骰出「+2-4 所有技能寶石等級」，現在能骰出「+3-5 所有詛咒（Curse）技能寶石等級」。</li>
+</ul>
+</ul>
+<hr class="section-divider">
+</section>
+<section class="patch-section" id="abyss-深淵">
+  <h2 class="section-header">Abyss (深淵)</h2>
+  <ul class="level-1">
+    <li class="patch-item">輿圖上現在會出現巨大的 <strong>Abyss</strong> 裂口。完成輿圖中的 <strong>Abyss</strong> 將會關閉裂口，並始終為你提供一個帶有首領戰的 <strong>Abyssal Depths</strong> (深淵幽域)。</li>
+    <li class="patch-item"><strong>Abyss</strong> 輿圖技能樹已重製，新增了許多新節點並對現有節點進行了變更。</li>
+    <li class="patch-item"><strong>Kulemak's Invitation</strong> 現在始終分配給地圖擁有者。</li>
+    <li class="patch-item"><strong>Abyss Omens</strong> 不再在低於 65 級的區域中掉落。</li>
+    <li class="patch-item">增加地圖中寶箱數量的詞綴現在也會應用於 <strong>Abyss</strong> 中發現的寶箱。這些詞綴也應用於發現 <strong>Abyssal Depths</strong> 的機率，因此發現深淵幽域的機率不會隨著區域內寶箱的增多而降低。</li>
+    <li class="patch-item">調整了 <strong>Meteoric Demise</strong> 深淵怪物詞綴 of the Meteoric Demise 的傷害。</li>
+    <li class="patch-item">來自 <strong>Lithomantic Runes</strong> 深淵怪物詞綴的 <strong>Lithomantic Runes</strong> 現在會在更長的延遲後啟動。</li>
+</ul>
+<hr class="section-divider">
+</section>
+<section class="patch-section" id="expedition-探險">
+  <h2 class="section-header">Expedition (探險)</h2>
+  <ul class="level-1">
+    <li class="patch-item">由於與 <strong>The Runes of Aldur</strong> 整合，<strong>Expedition</strong> 聯盟在 <strong>Standard</strong> (標準) 聯盟中已被暫時停用。這將在 <strong>The Runes of Aldur</strong> 結束後重新整合回標準聯盟。</li>
+    <li class="patch-item"><strong>The Recombinator</strong> (重組器) 已停用。<strong>Omen of Recombination</strong> (重組預兆) 已被移除。現有的 <strong>Omens of Recombination</strong> 在登入時將被刪除。</li>
+    <li class="patch-item">暫時停止掉落 <strong>The Forgotten By Time</strong> 探險 <strong>Precursor Tablet</strong>。</li>
+    <li class="patch-item"><strong>Expedition</strong> 炸藥現在會等到前一個炸藥出土的大部分怪物被擊殺後才會爆炸。</li>
+    <li class="patch-item">你現在可以使用倉庫中的通貨直接向 <strong>Expedition</strong> 商人購買物品。</li>
+</ul>
+<hr class="section-divider">
+</section>
+<section class="patch-section" id="其他終局內容變更">
+  <h2 class="section-header">其他終局內容變更</h2>
+  <ul class="level-1">
+    <li class="patch-item">隨著全新終局故事線的引入，輿圖進度已被重置。你現有的 <strong>tablets</strong> 和 <strong>waystones</strong> 將繼續有效，因此你可以照常繼續你的進度。但為了獲得輿圖技能樹的點數，你需要完成 <strong>Origins of Divinity</strong> 故事線。</li>
+    <li class="patch-item">為終局輿圖地圖增加了搜尋功能。</li>
+    <li class="patch-item">你現在可以在輿圖畫面中稍微進一步縮小畫面。</li>
+    <li class="patch-item">每個 Pinnacle Boss 現在都有兩個版本：任務版本（<strong>Quest version</strong>）與無限刷怪版本（<strong>Infinite Farm version</strong>）。因此，無法再獲得 <strong>Primary</strong>, <strong>Secondary</strong> 和 <strong>Tertiary Calamity Fragments</strong>。</li>
+    <li class="patch-item">現在可以同時使用相同類型的 <strong>Tablets</strong>，以增加生成的聯盟內容數量。具體細節因各內容類型而異。在某些情況下，添加多個 tablets 會增加單次遭遇戰的規模，而在其他情況下，則會增加生成的遭遇戰數量。</li>
+    <li class="patch-item">每個空的 <strong>tablet</strong> 插槽現在會增加區域內隨機生成的非 tablet 聯盟內容的數量。這意味著如果所有 tablet 插槽都滿了，你將只能看到來自你所使用的 tablets 的聯盟內容。此變更旨在確保你不需要為你不打算執行的聯盟去點滿輿圖技能樹。</li>
+    <li class="patch-item">現在必須先鑑定 <strong>Waystones</strong> (換界石) 才能在輿圖裝置（<strong>Map Device</strong>）中將其啟動。</li>
+    <li class="patch-item">你現在可以在 <strong>Tablets</strong> 上使用 <strong>Orbs of Chance</strong> (機會石)。</li>
+    <li class="patch-item">部分物品與內容現在需要你透過輿圖被動技能進行專業化解鎖，包括 <strong>Exceptional Items</strong>、<strong>Fracturing Orbs</strong>，以及基礎與 <strong>Overseer precursor tablets</strong>。</li>
+    <li class="patch-item"><strong>Tablets</strong> 不再能使用於無法包含額外內容的地圖上（例如傳奇地圖 <strong>Unique Maps</strong>）。</li>
+    <li class="patch-item">聯盟專屬的 <strong>Tablets</strong> 不再由非地圖區域掉落，例如 <strong>Simulacrum</strong>、<strong>Abyssal Depths</strong> 或 <strong>Twisted Domain</strong>。</li>
+    <li class="patch-item">由於輿圖技能樹提供了更大的加成，稍微降低了地圖中出現 <strong>Essences</strong>, <strong>Azmeri Spirits</strong>, <strong>Shrines</strong>, <strong>Strongboxes</strong>, <strong>Summoning Circles</strong> 和 <strong>Rogue Exiles</strong> 的基礎機率。</li>
+    <li class="patch-item">輿圖被動現在可與 <strong>Overseer Precursor Tablets</strong> 以及其他強大地圖首領來源協同運作。</li>
+    <li class="patch-item">調整了通用 <strong>Precursor Tablet</strong> 詞綴的數值，使其與 <strong>Waystone</strong> 詞綴所給予的同類型加成相似。同時也降低了這些詞綴的Roll點波動。</li>
+    <li class="patch-item">以下詞綴不再能在 <strong>Waystones</strong> 上骰出：<em>Baron's</em>, <em>Beastly</em>, <em>Brambled</em>, <em>Doryani's</em>, <em>Enervating</em>, <em>Faridun's</em>, <em>Hallowed</em>, <em>of Nemeses</em>, <em>Perennial's</em>, <em>Rusted</em>, 以及 <em>Sacrificial</em>。</li>
+    <li class="patch-item">調整了地圖詞綴是前綴還是後綴的規則，一般而言，前綴是「影響怪物對玩家輸出」的詞綴，而後綴是「影響玩家或怪物防禦」的詞綴。</li>
+    <li class="patch-item">以下後綴詞綴現在改為前綴：<em>Of Destruction</em>, <em>of Fleeting</em>, <em>of Impact</em>, <em>of Penetration</em>, <em>of Puncturing</em>, <em>of Shattering</em>, <em>of Splitting</em>, 以及 <em>of Venom</em>。</li>
+    <li class="patch-item">以下前綴詞綴現在改為後綴：<em>Buffering</em>, <em>Enduring</em>, <em>Enfeebling</em>, <em>Eroding</em>, <em>Evasive</em>, <em>Flaming</em>, <em>Hexwarded</em>, <em>Shocking</em>, <em>Sleet</em>, 以及 <em>Slowing</em>。</li>
+    <li class="patch-item"><strong>of Overpowering</strong> 換界石詞綴不再導致怪物增加冰凍累積（<strong>Freeze Buildup</strong>）、感電機率（<strong>Shock Chance</strong>）或施加更高的易燃效果。現在改為導致怪物增加元素異常狀態施加率（<strong>Elemental Ailment Application</strong>）。</li>
+    <li class="patch-item">更新了 <strong>Waystone</strong> 詞綴加成。它們現在根據詞綴的不同，提供更多的怪物效果、群怪大小（<strong>Pack Size</strong>）、物品稀有度、怪物稀有度或換界石掉落率。這些詞綴與其他來源（例如輿圖被動技能樹上的加成）呈相乘（multiplicative）計算。</li>
+    <li class="patch-item">群怪大小的詞綴現在還會提供機率，使額外的稀有怪物出現在稀有群怪中。</li>
+    <li class="patch-item">怪物稀有度（<strong>Monster Rarity</strong>）是一個全新的屬性，會影響魔法與稀有怪物的生成機率，以及稀有怪物獲得額外詞綴的機率。</li>
+    <li class="patch-item">包含「增加稀有怪物數量」或「增加魔法怪物數量」來源的地圖詞綴已更新，現在僅在標頭顯示數量，而不再顯示於顯性詞綴中。這並非功能性變更。</li>
+    <li class="patch-item">將增加怪物效果（<strong>Monster Effectiveness</strong>）（例如來自阿茲里神殿）所提供的掉落物品數量與經驗值獲得加成減半。</li>
+    <li class="patch-item">反轉了 <strong>Omen of Chaotic Rarity</strong>、<strong>Omen of Chaotic Quantity</strong> 和 <strong>Omen of Chaotic Monsters</strong> 的功能。它們不再確保新詞綴屬於其類型，而是防止詞綴屬於其類型。</li>
+    <li class="patch-item">新增了 <strong>Omen of Chaotic Effectiveness</strong>。當此物品存在於你的背包中時，你的下一個 <strong>Chaos Orb</strong> (混沌石) 會將換界石上的所有詞綴替換為「不提供怪物效果」的詞綴。</li>
+    <li class="patch-item">最多可同時使用 3 個上述的 <strong>Omens</strong>。</li>
+    <li class="patch-item">以下神殿所賦予的「傷害轉為額外傷害」Buff 減半：<em>Freezing Shrine</em>, <em>Gloom Shrine</em>, <em>Meteoric Shrine</em>, 以及 <em>Tempest Shrine</em>。</li>
+    <li class="patch-item">完成輿圖上的固定位置現在會與隊友共享。</li>
+    <li class="patch-item">隨著輿圖地圖上增加了更多樣的內容，內容指示器的尺寸增加了 50%。</li>
+    <li class="patch-item"><strong>Waystones</strong> 獲得了全新的 2D 美術圖。</li>
+</ul>
+<hr class="section-divider">
+</section>
+<section class="patch-section" id="劇情戰役重玩性">
+  <h2 class="section-header">劇情戰役重玩性</h2>
+  <ul class="level-1">
+    <li class="patch-item">為了縮短資深玩家在每個新聯盟中重玩劇情的所需時間，我們在多個劇情戰役區域中增加了引導方向的元素（如果你知道該注意什麼的話）。你可以在此影片中查看一些範例：<a href="https://www.youtube.com/watch?v=miL0Ms-VwGI" target="_blank" class="content-link">youtube.com/watch?v=miL0Ms-VwGI</a>。</li>
+    <li class="patch-item">縮短了遊戲中的部分區域。</li>
+    <li class="patch-item">移除了第二個無畏號（dreadnaught）區域「<strong>The Dreadnaught Vanguard</strong>」。第 2 章的首領現在位於「<strong>The Dreadnaught</strong>」中。</li>
+    <li class="patch-item">稍微重新調整了第 3 章的區域順序，以使進度更流暢。</li>
+    <li class="patch-item"><strong>The Waterways</strong> (水道) 的拉桿已被改為壓力板，你只需走過去即可啟動，並且該關卡的最後一部分水流已預先排乾。</li>
+    <li class="patch-item">減少了劇情戰役後半段的怪物密度，特別是在幕間（<strong>Interludes</strong>）中，以便能更快通過這些區域。</li>
+</ul>
+<hr class="section-divider">
+</section>
+<section class="patch-section" id="玩家變更">
+  <h2 class="section-header">玩家變更</h2>
+  <ul class="level-1">
+    <li class="patch-item">玩家身上的流血（<strong>Bleed</strong>）傷害在玩家移動時不再增加。此變更不影響玩家施加在怪物身上的流血效果。</li>
+    <li class="patch-item">現在，當你開始 <strong>Trial of the Sekhemas</strong> 時，你的最大 <strong>Runic Ward</strong> 會加到你的初始 <strong>Honour</strong> (榮譽值) 中。</li>
+    <li class="patch-item">「<strong>Defences</strong>」(防禦) 關鍵字已不再使用。現有使用「<strong>Defences</strong>」一詞的地方現在明確改為「護甲值、閃避值與能量護盾（<strong>Armour, Evasion and Energy Shield</strong>）」，以更清楚地表明這些詞綴不適用於 <strong>Runic Ward</strong>、抗性、格擋或其它保護形式。這純粹是描述上的變更。</li>
+    <li class="patch-item">每個資源（生命、魔力或能量護盾）同時只能生效一個吸取（<strong>Leech</strong>）實例。當多個吸取實例處於活動狀態時，僅有恢復速率最高的實例會為你進行恢復，直到其過期，之後才會套用下一個恢復速率最高的實例。</li>
+    <li class="patch-item">現在對吸取計算中單次擊中可被視為造成的最大傷害量進行了限制。造成低於 40,000 總傷害的擊中不受影響，但若單次擊中造成的總傷害高於 40,000，則在計算吸取時僅會被視為造成 40,000 傷害。擊中中的每種傷害類型數值將等比例向下縮放以達到此限制。這意味著極高傷害的擊中在超過一定程度後將停止提升吸取效果，但增加你的吸取百分比將始終增加你獲得的資源量。</li>
+    <li class="patch-item">調整了偏向機率（<strong>chance to Deflect</strong>）的公式，以隨著對偏向值（<strong>Deflection Rating</strong>）的投資提供更好的縮放，偏向機率上限為 95%（類似於閃避率上限為 95%）。</li>
+    <li class="patch-item"><div class="formula-block">
+            <span class="formula-label">偏向機率公式 (Deflect Chance Formula)</span>
+            <div class="formula-display">
+                <span class="math-var">Deflect Chance</span> = 150 &times; <span class="math-paren">(</span>1 - <div class="math-frac"><div class="math-num">A</div><div class="math-den">A + 0.12 &times; D</div></div><span class="math-paren">)</span>
+            </div>
+            <div class="formula-legend">
+                其中 <span class="math-var">A</span> = 攻擊者命中值 (attacker accuracy rating)，而 <span class="math-var">D</span> = 防禦者偏向值 (defender deflection rating)
+            </div>
+        </div></li>
+    <li class="patch-item"><strong>Parry</strong> (招架)、<strong>Shield Block</strong> (盾牌格擋) 和 <strong>Resonating Shield</strong> (共鳴之盾) 不再延遲重眩暈（<strong>Heavy Stun</strong>）累積值的消退時間。</li>
+    <li class="patch-item">近戰攻擊現在每次傷害區域僅能施加一次濺射傷害（<strong>Splash Damage</strong>）。部分攻擊在使用過程中會創建多個傷害區域。例如，<strong>Whirling Assault</strong> 會在你移動時在你的周圍創建多個傷害區域。</li>
+    <li class="patch-item">當召喚物因資源變更（例如更換武器）而被移除時，現在會優先移除較新（較晚召喚）的召喚物，而非較舊的召喚物，以避免無謂地浪費召喚物的冷卻技能。</li>
+    <li class="patch-item">受 <strong>Last Gasp Support</strong> 或 <strong>Tecrod's Revenge Lineage Support</strong> 影響的召喚物，以及受 <strong>Unnamed Heartwood Oracle</strong> 被動技能影響的圖騰，在其效果期間內不再會因承受超過其最大生命值的傷害而死亡。</li>
+    <li class="patch-item">描述為「當你收集一個 <strong>Remnant</strong> 時」的屬性，現在當盟友與你共享 <strong>Remnant</strong> 的效果時，將不再為你提供這些屬性的加成。</li>
+    <li class="patch-item">更新了 <strong>Trinity</strong> (三位一體) 賦予的 Buff 名稱，將其改為 <strong>Affinity</strong>（因為 <strong>Resonance</strong> 是核心天賦技能的名稱）。這純粹是描述上的更新。</li>
+    <li class="patch-item">執政官（<strong>Archon</strong>）Buff 在你攻擊時不再會固有的失去。這現在是元素執政官（<strong>Elemental Archon</strong>）專有的屬性。</li>
+</ul>
+<hr class="section-divider">
+</section>
+<section class="patch-section" id="全新內容與功能">
+  <h2 class="section-header">全新內容與功能</h2>
+  <ul class="level-1">
+    <li class="patch-item">引入了 Monk (武僧) 的全新昇華職業：<strong>Martial Artist</strong> (武術家)。經過數十年的訓練，<strong>Martial Artist</strong> 已成為幻影大師。在鑲嵌在身體上的符文增強下，該職業能創造強大的幻影，召喚幻影鐘（illusory bells）來協助他，並擅長將雙手作為武器。</li>
+    <li class="patch-item">引入了 Huntress (獵手) 的全新昇華職業：<strong>Spirit Walker</strong> (靈魂行者)。與荒野相連，該職業能喚醒靈魂來回應她的意志，提供與 雄鹿(Stag)、貓頭鷹(Owl) 或 熊(Bear) 結盟的不同能力。在他們的引導下，<strong>Spirit Walker</strong> 可以制服即使是最強大的野獸，將它們束縛在靈魂中，或召喚出一個幽靈伴侶與她並肩作戰。</li>
+</ul>
+  <h3 class="subsection-header" id="全新-lineage-support-族裔輔助寶石">全新 Lineage Support (族裔輔助寶石)</h3>
+  <ul class="level-1">
+    <li class="patch-item"><em>Arbiter's Reach</em></li>
+    <li class="patch-item"><em>Breachlord's Amalgam</em></li>
+    <li class="patch-item"><em>Catha's Brilliance</em></li>
+    <li class="patch-item"><em>Eonyr's Thunder</em></li>
+    <li class="patch-item"><em>Esh's Prowess</em></li>
+    <li class="patch-item"><em>Helbrym's Hide</em></li>
+    <li class="patch-item"><em>Her Declaration</em></li>
+    <li class="patch-item"><em>Medved's Felling</em></li>
+    <li class="patch-item"><em>Mórrigan's Insight</em></li>
+    <li class="patch-item"><em>Prototype Seventeen</em></li>
+    <li class="patch-item"><em>Seraph's Heart</em></li>
+    <li class="patch-item"><em>Styrn's Ferocity</em></li>
+    <li class="patch-item"><em>Styrn's Mountain</em></li>
+    <li class="patch-item"><em>Tangmazu's Thurible</em></li>
+    <li class="patch-item"><em>Trickster's Shard</em></li>
+    <li class="patch-item"><em>Tul's Avalanche</em></li>
+    <li class="patch-item"><em>Uhtred's Constellation</em></li>
+    <li class="patch-item"><em>Uhtred's Rite</em></li>
+    <li class="patch-item"><em>Vorana's Siege</em></li>
+    <li class="patch-item"><em>Vruun's Inevitability</em></li>
+    <li class="patch-item"><em>Vruun's Aftermath</em></li>
+</ul>
+  <h3 class="subsection-header" id="全新傳奇物品-new-uniques">全新傳奇物品 (New Uniques)</h3>
+  <ul class="level-1">
+    <li class="patch-item"><em>Berek's Grip</em></li>
+    <li class="patch-item"><em>Berek's Pass</em></li>
+    <li class="patch-item"><em>Berek's Respite</em></li>
+    <li class="patch-item"><em>Brutus' Lead Sprinkler</em></li>
+    <li class="patch-item"><em>Cat O' Nine Tails</em></li>
+    <li class="patch-item"><em>Decree of Acuity</em></li>
+    <li class="patch-item"><em>Decree of Flight</em></li>
+    <li class="patch-item"><em>Decree of Loyalty</em></li>
+    <li class="patch-item"><em>Duality</em></li>
+    <li class="patch-item"><em>Eventide Petals</em></li>
+    <li class="patch-item"><em>Eyes of the Runefather</em></li>
+    <li class="patch-item"><em>Facebreaker</em></li>
+    <li class="patch-item"><em>Farrow's Gift</em></li>
+    <li class="patch-item"><em>Forgotten Warden</em></li>
+    <li class="patch-item"><em>Geofri's Sanctuary</em></li>
+    <li class="patch-item"><em>Gatecrasher</em></li>
+    <li class="patch-item"><em>Horror's Flight</em></li>
+    <li class="patch-item"><em>Ironbound</em></li>
+    <li class="patch-item"><em>Liminal Coil</em></li>
+    <li class="patch-item"><em>Loreweave</em></li>
+    <li class="patch-item"><em>Mageblood</em> (魔血)</li>
+    <li class="patch-item"><em>Mastered Domain</em></li>
+    <li class="patch-item"><em>Nightfall</em></li>
+    <li class="patch-item"><em>Opportunity</em></li>
+    <li class="patch-item"><em>Redemption</em></li>
+    <li class="patch-item"><em>Periphery</em></li>
+    <li class="patch-item"><em>Sadist's Mercy</em></li>
+    <li class="patch-item"><em>Serle's Grit</em></li>
+    <li class="patch-item"><em>Spiteful Floret</em></li>
+    <li class="patch-item"><em>Split Personality</em></li>
+    <li class="patch-item"><em>Surge of the Tide</em></li>
+    <li class="patch-item"><em>Sylvan's Effigy</em></li>
+    <li class="patch-item"><em>The Auspex</em></li>
+    <li class="patch-item"><em>The Hollow Mask</em></li>
+    <li class="patch-item"><em>The Ordained</em></li>
+    <li class="patch-item"><em>The Raven's Flock</em></li>
+    <li class="patch-item"><em>The Sunken Vessel</em></li>
+    <li class="patch-item"><em>The Unleashed</em></li>
+    <li class="patch-item"><em>Twisted Empyrean</em></li>
+    <li class="patch-item"><em>Vestige of Darkness</em></li>
+    <li class="patch-item"><em>Veilpiercer</em></li>
+    <li class="patch-item"><em>Voices</em> (星聲)</li>
+    <li class="patch-item">新增了 8 種全新的 <strong>Idols</strong>，這些物品完全來自被 <strong>Azmerian Spirits</strong> 附身的怪物。</li>
+    <li class="patch-item">新增了 <strong>Minion Splash</strong> 和 <strong>Minion Splash II</strong> 力量型輔助寶石。這些輔助技能能使被輔助的召喚物進行打擊（Strike）時，造成近戰濺射（Melee Splash）。</li>
+    <li class="patch-item">碎片倉庫頁（<strong>Fragment Stash Tab</strong>）現在可在 <strong>Path of Exile 2</strong> 中使用。它可以存放你的碎片（包括裂痕裂片 <strong>Breach Splinters</strong>、<strong>Simulacrums</strong>、<strong>Audience with the King</strong>）、<strong>Inscribed Ultimatums</strong> 與 <strong>Baryas</strong>，以及 <strong>Tablets</strong>。如果你之前在 Path of Exile 中購買過它，一旦 0.5.0 補丁上線，它將自動提供給你。對於沒有碎片倉庫頁的玩家，你可以在 0.5.0 上線後於微交易商店的倉庫頁部分找到它。</li>
+    <li class="patch-item">新增了對流派指南（<strong>Build Guides</strong>）的支援。撰寫流派指南的社群創作者現在可以建立 <code class="inline-code">.build</code> 檔案供玩家下載。在遊戲客戶端中選擇後，這些將向你展示該流派所需的一切資訊，包括要分配的被動技能、要選擇的昇華被動技能、要裝備的技能寶石，以及推薦的輔助寶石。</li>
+    <li class="patch-item">新增了使用你擁有的物品在交易市集中快速搜尋的功能。在物品上按下 <strong>Shift-Alt + 左鍵點擊</strong> 將自動填寫交易市集的搜尋過濾器，以便你可以查看當前的價格。對於稀有物品，你可以啟用和停用每個詞綴，以輕鬆判定每個詞綴對物品價格的影響。</li>
+    <li class="patch-item">在多人組隊遊戲中，你現在可以在擊敗首領後快速復活任何倒下的隊友。</li>
+    <li class="patch-item">你現在可以透過按下 <strong>Escape</strong> 鍵來跳過與 NPC 的對話序列。</li>
+    <li class="patch-item">在 <strong>Trial of the Sekhemas</strong> 的入口處新增了一個重鑄台（<strong>Reforging Bench</strong>）。</li>
+    <li class="patch-item">持續逐步改進音效、美術、特效和環境。</li>
+</ul>
+<hr class="section-divider">
+</section>
+<section class="patch-section" id="昇華職業變更">
+  <h2 class="section-header">昇華職業變更</h2>
+  <h3 class="subsection-header" id="acolyte-of-chayula">Acolyte of Chayula</h3>
+  <ul class="level-1">
+    <li class="patch-item">由 <strong>Waking Dream</strong> 被動技能賦予的 <strong>Into the Breach</strong> 技能現在在收集 <strong>Red Flame of Chayula</strong> 時為你提供生命吸取 20% 的最大生命（先前為 15%），且在收集 <strong>Blue Flame of Chayula</strong> 時為你提供魔力吸取 20% 的最大魔力（先前為 15%）。</li>
+    <li class="patch-item">更新了 <strong>Into the Breach</strong> 技能的文字描述，以澄清與 <strong>Flames of Chayula</strong> 相關的行為範圍。</li>
+    <li class="patch-item"><strong>Into the Breach</strong> 現在會將「遺跡拾取範圍詞綴」應用於可看見 <strong>Flames of Chayula</strong> 的範圍。這純粹是視覺上的變更。</li>
+</ul>
+  <h3 class="subsection-header" id="blood-mage">Blood Mage</h3>
+  <ul class="level-1">
+    <li class="patch-item"><strong>Vitality Siphon</strong> 被動技能現在賦予 20% 的法術傷害轉為生命吸取（先前為 10%）。</li>
+</ul>
+  <h3 class="subsection-header" id="chronomancer">Chronomancer</h3>
+  <ul class="level-1">
+    <li class="patch-item">移除了 <strong>Rapid River</strong> 被動技能，其位置由 <strong>Now and Again</strong> 取代。</li>
+    <li class="patch-item">重製了 <strong>Now and Again</strong> 被動技能：現在賦予「可串聯法術（<strong>Cascadable Spells</strong>）有 20% 機率回響（<strong>Echo</strong>），且可重複法術（<strong>Repeatable Spells</strong>）有 20% 機率重複（<strong>Repeat</strong>）」。</li>
+    <li class="patch-item"><strong>Unbound Encore</strong> 被動技能取得了先前 <strong>Now and Again</strong> 的位置。</li>
+    <li class="patch-item"><strong>Ultimate Command</strong> 被動技能現在需要 <strong>Unbound Encore</strong>。</li>
+    <li class="patch-item">新增了全新的 <strong>Phased Form</strong> 被動技能，位於 <strong>Footprints in the Sand</strong> 之前。<strong>Phased Form</strong> 賦予「承受傷害減少 30%，且在被敵人的擊中造成傷害 4 秒後，承受等同於該次擊中傷害 30% 的傷害」。</li>
+    <li class="patch-item">更新了由 <strong>Footprints in the Sand</strong> 被動技能賦予的 <strong>Temporal Rift</strong> 技能。現在其施放時間為 0.1 秒（先前為 0.5），且現在還會移除來自 <strong>Phased Form</strong> 的延遲傷害。</li>
+    <li class="patch-item">重製了由 <strong>Inevitability</strong> 被動技能賦予的 <strong>Inevitable Agony</strong> 技能。它不再是詛咒（<strong>Curse</strong>），且擁有 2 秒的冷卻時間。該減益效果（Debuff）現在是一個生命流失（Life Loss）效果，而非次要擊中傷害，並且減益量現在會顯示在靜態血條上。當總生命流失達到撲殺臨界值時，減益效果現在還會立即撲殺（<strong>Cull</strong>）敵人。現在賦予「受減益影響的目標在受減益影響期間，流失等同於對其造成的擊中傷害 25% 的生命（先前為 50%）」。怪物的詛咒效果降低不再適用於此技能，這意味著傳奇敵人的效果與先前相同，而其他敵人的效果則較低。減益持續時間現在為 12 秒（先前為 6-8.6 秒）。品質現在賦予 +0-0.5 公尺初始施放半徑（先前為詛咒區域爆發延遲降低 0-10%）。該技能還獲得了全新的視覺效果。</li>
+    <li class="patch-item">由 <strong>Quicksand Hourglass</strong> 被動技能賦予的 <strong>Sands of Time</strong> Buff 現在賦予 1-60% 提高技能速度（先前為施法速度），並且也獲得了全新的視覺效果。</li>
+</ul>
+  <h3 class="subsection-header" id="gemling-legionnaire">Gemling Legionnaire</h3>
+  <ul class="level-1">
+    <li class="patch-item">移除了 <strong>Crystalline Potential</strong> 被動技能。</li>
+    <li class="patch-item">新增了全新被動技能：<strong>Essence of Virtue</strong>。這會賦予 <strong>Virtuous Barrier</strong> 技能，該技能在活動狀態下，會隨著時間推移召喚出一面閃爍的屏障，累積每種屬性類型的寶石護體（Motes），但在你被擊中時會失去一個隨機的 Mote。</li>
+    <li class="patch-item"><strong>Advanced Thaumaturgy</strong> 被動技能不再賦予 <strong>Thaumaturgical Dynamism</strong> 技能。它現在改為賦予「寶石品質賦予鑲嵌技能一個額外效果」。在點選此天賦後，遊戲中的所有寶石在按下 Alt 時，都會顯示一個額外的品質屬性。</li>
+</ul>
+  <h3 class="subsection-header" id="pathfinder">Pathfinder</h3>
+  <ul class="level-1">
+    <li class="patch-item"><strong>Overwhelming Toxicity</strong> 被動技能現在賦予「毒藥持續時間減少 50%（先前為減少 35%）」。</li>
+    <li class="patch-item"><strong>Running Assault</strong> 被動技能現在賦予「移動中使用技能的移動速度懲罰減少 30%（先前為減少 50%）」。</li>
+</ul>
+  <h3 class="subsection-header" id="witchhunter">Witchhunter</h3>
+  <ul class="level-1">
+    <li class="patch-item"><strong>Obsessive Rituals</strong> 現在賦予「護甲與閃避值減少 50%（先前為減少 35%）」。</li>
+</ul>
+<hr class="section-divider">
+</section>
+<section class="patch-section" id="被動技能樹變更">
+  <h2 class="section-header">被動技能樹變更</h2>
+  <ul class="level-1">
+    <li class="patch-item">在被動技能樹中新增了 19 個與<strong>召喚物/伴侶 (Companion)</strong>主題相關的全新被動技能。</li>
+    <li class="patch-item">在被動技能樹中新增了 9 個與<strong>生命回補速度 (Life Recoup Speed)</strong>相關的全新被動技能。</li>
+    <li class="patch-item">在被動技能樹的 Witch/Sorceress 區域新增了一個 <strong>Archon of Undeath</strong> 技能集群。</li>
+    <li class="patch-item"><strong>Ancestral Bond</strong> (雙圖騰) 核心天賦現在導致放置圖騰沒有消耗，且不需要消耗充能即可放置。它仍然導致每個圖騰保留 75 精魂（Spirit），且現在是使圖騰上限翻倍，而非完全移除上限。</li>
+    <li class="patch-item"><strong>Trusted Kinship</strong> 核心天賦現在賦予「Companion 技能的保留效率提高 30%，且非 Companion 技能的保留效率降低 20%」。它不再提供「你減少 30% 防禦，或你的 Companions 每擁有 2 點對應防禦就獲得 +1 對應防禦」。</li>
+    <li class="patch-item"><strong>Vaal Pact</strong> (瓦爾冥約) 核心天賦現在賦予「生命吸取量提高 50%，生命吸取速度減少 67%，無法透過吸取以外的方式恢復生命，且當未保留生命值填滿時吸取效果不會被移除」。它不再提供「生命吸取變為瞬間，或無法使用生命藥劑」。</li>
+    <li class="patch-item">移除了 <strong>Reformed Barrier</strong> 技能集群。</li>
+    <li class="patch-item">移除了 <strong>Warding Fetish</strong> 技能集群的位置，且它不再連接到一個珠寶插槽。</li>
+    <li class="patch-item"><strong>Stormcharged</strong> 和 <strong>Breaking Point</strong> 技能集群不再連接到珠寶插槽。</li>
+    <li class="patch-item"><strong>Adamant Recovery</strong> 被動技能已被 <strong>Fortified Aegis</strong> 取代，後者賦予「從裝備的盾牌中獲得的護甲、閃避與能量護盾提高 100%」。</li>
+    <li class="patch-item"><strong>Arcane Mixtures</strong> 被動技能現在賦予「若你最近使用過魔力藥劑，則提高 10% 施法速度」，而非「能量護盾開始回復速度提高 25%」。</li>
+    <li class="patch-item"><strong>Bastion of the Forest</strong> 被動技能現在賦予「能量護盾開始回復速度提高 10%（先前為 15%）」。</li>
+    <li class="patch-item"><strong>Casting Cascade</strong> 被動技能現在賦予「在過去八秒內（先前為四秒）每施放一個不同的法術，施法速度提高 6%」。</li>
+    <li class="patch-item"><strong>Chakra of Breathing</strong> 被動技能現在賦予「能量護盾開始回復速度提高 20%」，而非「每 4 點敏捷提高 1% 能量護盾回復率」。</li>
+    <li class="patch-item"><strong>Commanding Rage</strong> 被動技能現在賦予「每 5 點怒氣（Rage）提高 2% 召喚物攻擊速度（先前為每點怒氣提高 1%）」。</li>
+    <li class="patch-item"><strong>Convalescence</strong> 被動技能現在賦予「能量護盾開始回復速度提高 20%（先前為 40%），且能量護盾回復率降低 10%（先前為 15%）」。</li>
+    <li class="patch-item"><strong>Core of the Guardian</strong> 被動技能現在賦予「格擋機率提高 30%，且最大能量護盾減少 20%」（先前為「裝備盾牌所提供的護甲、閃避與能量護盾提高 100%」）。</li>
+    <li class="patch-item"><strong>Covering Ward</strong> 被動技能現在賦予「格擋時獲得 25 能量護盾（先前為 20），且格擋機率提高 12%」。它不再提供「能量護盾回復率提高 25%」。</li>
+    <li class="patch-item"><strong>Craving Slaughter</strong> 被動技能現在提供「若你在過去 20 秒內使用過需要 Glory 的技能，則 +15 最大怒氣（先前為在過去 6 秒內每使用一個需要 Glory 的技能則 +8，最高疊加 5 次）」。</li>
+    <li class="patch-item"><strong>Critical Overload</strong> 被動技能現在提供「法術暴擊傷害加成提高 15%」（先前為「若你最近造成過暴擊，則提高 15% 法術傷害」）。</li>
+    <li class="patch-item"><strong>Cunning Fox</strong> 被動技能已被 <strong>The Quick Fox</strong> 取代，後者賦予「移動時偏向值（Deflection Rating）提高 20%」。在該天賦之前的全屬性小被動點現在改為賦予「移動時閃避值提高 20%」。</li>
+    <li class="patch-item"><strong>Deadly Force</strong> 被動技能現在提供「暴擊機率提高 15%（先前為 10%），且若你在過去 8 秒內造成過暴擊，則提高 15% 傷害（先前為 25%）」。</li>
+    <li class="patch-item"><strong>Dependable Ward</strong> 被動技能現在賦予「+8% 混沌抗性，且能量護盾開始回復速度提高 12%（先前為 25%）」。</li>
+    <li class="patch-item"><strong>Devoted Protector</strong> 被動技能現在賦予「能量護盾開始回復速度提高 10%（先前為 15%）」。</li>
+    <li class="patch-item"><strong>Echoing Pulse</strong> 被動技能現在賦予「回響法術的範圍提高 25%」。它不再提供「法術的最後一次重複範圍提高 30%」，該屬性之前未正常運作。</li>
+    <li class="patch-item"><strong>Effervescent</strong> 被動技能現在賦予「在過去八秒內（先前為四秒）每施放一個不同的法術，施法速度提高 4%」。</li>
+    <li class="patch-item"><strong>Energising Archon</strong> 被動技能現在賦予「執政官（Archon）持續時間提高 30%」，而非「受執政官 Buff 影響時，能量護盾回復率提高 40%」。</li>
+    <li class="patch-item"><strong>Energising Deflection</strong> 被動技能現在賦予「能量護盾開始回復速度提高 12%」，而非「能量護盾回復率提高 30%」。</li>
+    <li class="patch-item"><strong>Essence Infusion</strong> 被動技能現在賦予「能量護盾開始回復速度提高 12%，且 +12 智慧（先前為 +10）」。它不再提供「能量護盾回復率提高 40%」。</li>
+    <li class="patch-item"><strong>Fast Metabolism</strong> 被動技能現在賦予「在吸取生命時提高 40% 傷害」（先前為「生命吸取效果在未保留生命填滿時不會被移除」）。</li>
+    <li class="patch-item"><strong>Fortifying Blood</strong> 被動技能現在賦予「生命吸取量提高 15%（先前為 20%）」。</li>
+    <li class="patch-item"><strong>Goring</strong> 被動技能不再賦予「物理傷害提高 40%」，它現在改為賦予「最大生命提高 3%，且生命吸取量提高 20%」（先前為「最大生命減少 3%，且生命吸取量提高 30%」）。</li>
+    <li class="patch-item"><strong>Immortal Infamy</strong> 被動技能現在賦予「生命回復速度提高 6%」，而非「能量護盾回復率提高 10%」。</li>
+    <li class="patch-item"><strong>Lifelong Friend</strong> 和 <strong>Nurturing Guardian</strong> 被動技能交換了位置。</li>
+    <li class="patch-item"><strong>Mystic Stance</strong> 被動技能現在賦予「能量護盾開始回復速度提高 12%（先前為 30%）」。</li>
+    <li class="patch-item"><strong>Patient Barrier</strong> 被動技能現在賦予「最大能量護盾提高 50%（先前為 60%）」。</li>
+    <li class="patch-item"><strong>Quick Response</strong> 被動技能現在賦予「能量護盾開始回復速度提高 10%（先前為 20%），且在未滿血時能量護盾開始回復速度提高 20%（先前為 30%）」。</li>
+    <li class="patch-item"><strong>Rapid Recharge</strong> 被動技能現在賦予「能量護盾開始回復速度提高 12%，且能量護盾回復率提高 12%（先前兩者均為 25%）」。</li>
+    <li class="patch-item"><strong>Refocus</strong> 被動技能現在賦予「靜止時魔力回復速度提高 20%」，而非「能量護盾回復率提高 30%」。</li>
+    <li class="patch-item"><strong>Shatter Palm</strong> 被動技能現在提供「暴擊傷害加成提高 20%」（先前為「10% 機率使敵人眩暈（Daze）」）。</li>
+    <li class="patch-item"><strong>Shimmering</strong> 被動技能現在賦予「能量護盾開始回復速度提高 10%，且若你最近被擊中過，則提高 20% 閃避值」。它不再提供「若你最近沒有被擊中，則能量護盾回復速度提高 20%」。</li>
+    <li class="patch-item"><strong>Staggering Palm</strong> 被動技能現在提供「物理傷害提高 25%（先前為 20%），且現在提供 10% 機率使敵人眩暈，而非暴擊傷害加成提高 20%」。</li>
+    <li class="patch-item"><strong>Stormcharged</strong> 被動技能現在提供「傷害穿透敵人 8% 元素抗性，且使用元素技能時攻擊與施法速度提高 5%」。它不再提供「暴擊機率提高 15%，或若你最近造成過暴擊則提高 40% 元素傷害」。</li>
+    <li class="patch-item"><strong>Tempered Mind</strong> 被動技能現在提供「完全擊碎護甲（Fully Broken Armour）之效果提高 15%（先前為暴擊傷害加成提高 20%）」。</li>
+    <li class="patch-item"><strong>Voracious</strong> 被動技能不再賦予「20% 的生命吸取變為瞬間」，它現在改為賦予「吸取時提高 15% 攻擊速度」。</li>
+    <li class="patch-item"><strong>Wide Barrier</strong> 被動技能現在小幅改動為「格擋機率提高 30%，且護甲值減少 20%」（先前為「減少 25% 防禦」）。</li>
+    <li class="patch-item"><strong>Wyvern's Breath</strong> 被動技能已更新，現在提供「若你最近變形為野獸形態，則元素異常狀態施加率提高 40%」。這現在也適用於冰凍累積（Freeze Buildup），但其他部分完全相同。</li>
+    <li class="patch-item">位於 Witch 和 Sorceress 起點區域的前兩個施法傷害小被動點，現在提供提高 10% 法術傷害（先前為 8%）。</li>
+    <li class="patch-item">賦予「能量護盾開始回復速度提高」的小被動點數值現在改為 6%（先前為 15%）。</li>
+    <li class="patch-item">移除了被動技能樹中所有賦予「能量護盾回復率」的小被動點，並由數值較低的「能量護盾開始回復速度提高」取代。</li>
+    <li class="patch-item">賦予「生命吸取量提高 10%」的小被動點數值現在改為 8%。</li>
+    <li class="patch-item">橫幅範圍（<strong>Banner Area of Effect</strong>）小被動點現在提供橫幅範圍提高 12%（先前為 15%）。</li>
+    <li class="patch-item">橫幅範圍策略家（<strong>Banner Area Tactician</strong>）小被動點現在提供橫幅範圍提高 16% (先前為 20%)。</li>
+    <li class="patch-item">時迭珠寶（Timeless Jewel）的核心天賦 <strong>Unsavored Feast</strong> 不再於你擁有至少 200 點貢獻度時賦予 20% 瞬間吸取。它現在改為在你有至少 100 點貢獻度時，使生命吸取速度加快 35%（先前為 25%）。</li>
+</ul>
+<hr class="section-divider">
+</section>
+<section class="patch-section" id="技能變更">
+  <h2 class="section-header">技能變更</h2>
+  <ul class="level-1">
+    <li class="patch-item">擁有固定投射物數量的技能（引導如 <strong>Glacial Lance</strong>）現在可以受益於「使投射物數量修正應用於其他數值」的效果（例如 <strong>Ricochet III Support</strong>）。</li>
+    <li class="patch-item">消耗 0 魔力的技能現在會顯示此消耗。這允許玩家區分完全沒有消耗的技能（例如預設攻擊，其不受任何增加消耗修正的影響）與基礎消耗為 0 但有基礎消耗值的技能（其受所有增加消耗修正的影響，即使它們增加了不同的資源消耗，例如為基礎魔力消耗為 0 的技能添加生命消耗）。</li>
+    <li class="patch-item">弩砲彈藥技能（<strong>Crossbow Ammunition Skills</strong>）現在具有 0 的基礎消耗，而非完全停用其消耗，這意味著增加額外消耗的效果現在將適用於它們。</li>
+    <li class="patch-item">被點燃的油地面（<strong>Oil Ground</strong>）對目標施加的燃燒效果（Ignites）不再能疊加，且不能與同一次技能使用產生的其他燃燒效果疊加。</li>
+    <li class="patch-item">所有命令技能（<strong>Command Skills</strong>）在使用技能期間現在有 50% 的移動速度懲罰（先前為 70%）。</li>
+    <li class="patch-item"><strong>Align Fate</strong>（由 <strong>Oracle's Fateful Vision</strong> 被動技能賦予）：現在擁有「冷卻時間回復率修正也適用於幻象出現頻率」。</li>
+    <li class="patch-item"><strong>Ancestral Warrior Totem</strong>：不再擁有隱藏的 0.6 秒技能使用延遲。相反，此延遲現在為該技能攻擊時間的 50%，並且已在技能描述中進行了相應說明。</li>
+    <li class="patch-item"><strong>Bonestorm</strong>：不再具有 <strong>Sustained</strong> (持續) 標籤。</li>
+    <li class="patch-item"><strong>Boneshatter</strong>：品質現在賦予 0-20% 提高攻擊速度（先前為 0-30% 提高攻擊速度）。</li>
+    <li class="patch-item"><strong>Comet</strong>：現在在寶石等級 11 時造成 212 至 318 冰冷傷害（先前為 223 至 335），在寶石等級 20 時縮放至 787 至 1181 傷害（先前為 829 至 1243）。<strong>Fire-Infused Comet</strong> 現在在寶石等級 11 時造成 212 至 318 火焰與冰冷傷害（先前為 279 至 418），在寶石等級 20 時縮放至 787 至 1181 火焰與冰冷傷害（先前為 1036 至 1554）。</li>
+    <li class="patch-item"><strong>Cull the Weak</strong>：現在擁有「無法被閃避」。在寶石等級 3-20 時造成 109-281% 的攻擊傷害（先前為 60%-156%）。攻擊速度現在為基礎的 75%（先前為 60%），並且在寶石等級 3-20 時消耗 8-42 魔力（先前為 9-46）。最大衝刺距離增加了 15%。</li>
+    <li class="patch-item"><strong>Defiance Banner</strong>, <strong>Dread Banner</strong>, 以及 <strong>War Banner</strong>：在使用期間不再有移動速度懲罰。現在具有 6 公尺的橫幅光環基礎半徑（先前為 4.5）。</li>
+    <li class="patch-item"><strong>Earthquake</strong>：餘震現在在寶石等級 1-20 時造成 184-666% 的攻擊傷害（先前為 160-580%）。</li>
+    <li class="patch-item"><strong>Eternal Rage</strong>：無法再於特定的武器組中被啟用。現在要求在兩個武器組中均處於活動狀態，若無法滿足此條件則啟用將會失敗。</li>
+    <li class="patch-item"><strong>Feral Invocation</strong>：不再繞過鑲嵌技能的冷卻時間。</li>
+    <li class="patch-item"><strong>Flame Breath</strong>：現在具有類似於 <strong>Incinerate</strong> (焚燒) 的精魂獲取懲罰（Energy Gain penalty）。</li>
+    <li class="patch-item"><strong>Fortifying Cry</strong>：現在在你引爆盾牆以在每個盾牆片段周圍創建衝擊波時，僅消耗一層堆疊。來自單個盾牆的 <strong>Fortifying Cry</strong> 衝擊波無法多次擊中同一個敵人。盾波現在每擁有 15 點盾牌護甲值提供 5 至 7 點額外物理傷害（先前為 6 至 8）。</li>
+    <li class="patch-item"><strong>Fragmentation Rounds</strong>：品質現在賦予每發射擊 +0-2 碎片（先前為 0-20% 更多物理傷害）。</li>
+    <li class="patch-item"><strong>Freezing Salvo</strong>：現在在寶石等級 3-20 時施加的冰凍累積與冰冷效果幅度提高 34-68%（先前為 56-107%）。</li>
+    <li class="patch-item"><strong>Gathering Storm</strong>：現在導致完美時機的衝刺會在擊中時引爆任何 <strong>Tempest Bell</strong>，創建一個造成 564-869% 攻擊傷害的巨大衝擊波（在寶石等級 13-20 時）。完美時機衝擊波現在每次技能使用僅能擊中敵人一次，且不再與非 <strong>Tempest Bell</strong> 技能創建的物體互動。衝擊波上限現在為 50。品質現在賦予 0-20% 更長的完美時機窗口（先前為每次使用增加 +0-8 最大衝擊波）。</li>
+    <li class="patch-item"><strong>Ghost Dance</strong> (鬼影大師)：獲得鬼影護體（<strong>Ghost Shrouds</strong>）的間隔不再是持續時間。它現在擁有「冷卻時間回復率修正也適用於鬼影護體獲得頻率」。它現在還擁有「被擊中時，失去一個鬼影護體」，以及「若你最近失去過鬼影護體，則每秒回復等同於你閃避值 2% 的能量護盾」。</li>
+    <li class="patch-item"><strong>Grim Feast</strong>：<strong>Grim Resurrection</strong> 現在擁有 1 秒的冷卻時間。</li>
+    <li class="patch-item"><strong>Ice Shot</strong>：冰霜碎片不再擁有 25% 更多的冰凍累積。</li>
+    <li class="patch-item"><strong>Ice Strike</strong>：品質現在賦予 0-20% 提高攻擊速度（先前為 0-10% 更多攻擊速度）。</li>
+    <li class="patch-item"><strong>Lightning Arrow</strong> (閃電箭矢)：多條閃電束不再能連鎖到同一個目標上。</li>
+    <li class="patch-item"><strong>Lunar Blessing</strong>：觸發的月光束不再被視為近戰技能。</li>
+    <li class="patch-item"><strong>Magma Barrier</strong>：現在每擁有 15 點盾牌護甲與閃避值提供 5 至 7 點額外火焰傷害（先前為 6 至 8）。</li>
+    <li class="patch-item"><strong>Mirage Archer</strong> (幻影射手) 與 <strong>Mirage Deadeye</strong>：現在可以與引導技能（<strong>Channelled Skills</strong>）協同使用，包括 <strong>Snipe</strong>、<strong>Plasma Blast</strong> 和 <strong>Detonating Arrow</strong>。</li>
+    <li class="patch-item"><strong>Mirror of Refraction</strong>（由傳奇長杖 <strong>Atziri's Rule</strong> 賦予）：現在擁有「冷卻時間回復率修正也適用於鏡像出現頻率」。</li>
+    <li class="patch-item"><strong>Oil Barrage</strong>：魔力消耗降低了 18%。增強的 <strong>Oil Barrage</strong> 現在每秒的魔力消耗等同於 <strong>Oil Barrage</strong> 的初始魔力消耗。<strong>Oil Barrage</strong> 現在在所有等級造成提高 10% 的傷害，而增強的 <strong>Oil Barrage</strong> 現在在所有等級造成的傷害降低 10%。增強的 <strong>Oil Barrage</strong> 現在每 1.5 秒消耗一個暴擊充能以繼續引導（先前為每 2 秒）。</li>
+    <li class="patch-item"><strong>Parry</strong> (招架)：傷害範圍已調整，以更接近其動畫。不再具有額外攻擊距離。</li>
+    <li class="patch-item"><strong>Poisonburst Arrow</strong>：毒藥持續時間在所有寶石等級下均為 3 秒（先前在寶石等級 1-20 時為 3-4.9 秒）。品質現在賦予所施加毒藥幅度提高 0-10%（先前為 0-20%）。</li>
+    <li class="patch-item"><strong>Pounce</strong>：現在在寶石等級 3-20 時擁有 6-5.1 秒的冷卻時間（先前在寶石等級 3-20 時為 4.9-4 秒）。</li>
+    <li class="patch-item"><strong>Ravenous Swarm</strong>：現在擁有「冷卻時間回復率修正也適用於蟲群生成頻率」。</li>
+    <li class="patch-item"><strong>Rend</strong>：修正了閃電充能的 <strong>Rend</strong> 的傷害會隨等級重複縮放的 Bug，並提高了基礎傷害作為補償。閃電充能的 <strong>Rend</strong> 現在在等級 1-20 時造成 130-405% 的攻擊傷害（先前為 120-586%）。</li>
+    <li class="patch-item"><strong>Resonating Shield</strong>：現在每擁有 15 點盾牌護甲值提供 5 至 7 點額外物理傷害（先前為 6 至 8）。</li>
+    <li class="patch-item"><strong>Rolling Magma</strong>：現在在寶石等級 1 時連鎖 3 次（先前為 2次），在寶石等級 20 時縮放至連鎖 5 次（先前為 4次）。</li>
+    <li class="patch-item"><strong>Rolling Slam</strong>：現在總攻擊時間增加 +1 秒（先前為 +1.5 秒）。第一次重擊現在在寶石等級 1-20 時造成 75-272% 的攻擊傷害（先前為 90-367%），第二次重擊現在在寶石等級 1-20 時造成 150-543% 的攻擊傷害（先前為 180-735%）。</li>
+    <li class="patch-item"><strong>Shattering Spite</strong>（由傳奇長矛 <strong>Atziri's Contempt</strong> 賦予）：現在擁有「你施加的傷害性異常狀態幅度降低 50%」。不再擁有「在使用至少 15 個 Bloodstone Lances 的爆炸時，生命吸取變為瞬間」的效果。</li>
+    <li class="patch-item"><strong>Shield Wall</strong> (盾牆)：現在每擁有 15 點盾牌護甲值提供 5 至 7 點額外物理傷害（先前為 6 至 8）。</li>
+    <li class="patch-item"><strong>Shred</strong>：品質現在賦予 0-20% 提高攻擊速度（先前為 0-10% 更多攻擊速度）。</li>
+    <li class="patch-item"><strong>Snipe</strong> (狙擊)：現在在寶石等級 3-20 時造成 121-312% 的攻擊傷害（先前為 133-343%），且爆炸現在在寶石等級 3-20 時造成 484-1449% 的攻擊傷害（先前為 454-1358%）。<strong>Icy Blast</strong> 現在在寶石等級 3-20 時造成 764-3067% 的攻擊傷害（先前為 913-3062%），且在寶石等級 3-20 時，源自傳奇敵人的爆炸擊中傷害提高 33-50%（先前始終為 50%）。<strong>Icy Blast</strong> 的爆炸半徑現在為 3 公尺（先前為 3.2）。</li>
+    <li class="patch-item"><strong>Spell Totem</strong> (法術圖騰)：現在可以在移動中使用，且獲得了更新的動畫。</li>
+    <li class="patch-item"><strong>Supercharged Slam</strong>：現在更清楚地說明它具有無法被修正的固定攻擊時間。這純粹是描述上的變更。</li>
+    <li class="patch-item"><strong>Tame Beast</strong>：召喚的野獸現在在寶石等級 9 時造成提高 40% 的傷害，在寶石等級 20 時縮放至 84%。如果你有足夠的精魂，現在會立即召喚新馴服的野獸。</li>
+    <li class="patch-item"><strong>Tempest Bell</strong>：現在可以像近戰打擊技能一樣獲得祖先加強（Ancestrally Boosted），且其最大活動 Bell 數量已增加至 3 個（先前為 1），大幅提升了其連招潛力。其衝擊波現在在寶石等級 3-20 時造成 45-119% 的攻擊傷害（先前為 60-132%），且每 0.3 秒可以觸發一次，而非 0.25 秒。</li>
+    <li class="patch-item"><strong>Toxic Growth</strong>：現在發術 5 個膿包（先前為 4），上限為 5 個膿包（先前為 12）。品質現在賦予發射 +0-1 膿包且上限 +0-1 膿包（先前為 +0-2 且 +0-2）。</li>
+    <li class="patch-item"><strong>Thrashing Vines</strong>：更新了描述以澄清其生成藤蔓的頻率。這並非功能性變更。</li>
+    <li class="patch-item"><strong>Time of Need</strong>：恩賜（Blessings）之間的間隔不再是持續時間。它現在擁有「冷卻時間回復率修正也適用於恩賜頻率」，且在寶石等級 8-20 時，間隔已降低至 9.3-8.1 秒（先前為 11.3-10.1 秒）。</li>
+    <li class="patch-item"><strong>Volcano</strong>：現在具有 8% 的基礎暴擊率（先前為 5%）。</li>
+    <li class="patch-item"><strong>Whirling Assault</strong>：品質現在賦予 0-20% 提高攻擊速度（先前為 0-15% 更多攻擊速度）。</li>
+    <li class="patch-item"><strong>Wing Blast</strong>：衝擊波現在在所有等級造成的傷害提高 25%。</li>
+</ul>
+<hr class="section-divider">
+</section>
+<section class="patch-section" id="輔助寶石變更">
+  <h2 class="section-header">輔助寶石變更</h2>
+  <ul class="level-1">
+    <li class="patch-item"><strong>Unleash</strong>, <strong>Expand</strong>, <strong>Salvo</strong>, 以及 <strong>Freezing Salvo Supports</strong> 現在都使用相同的「封印（<strong>Seals</strong>）」概念，而非各自擁有獨特版本。這意味著封印的標準化規則將在所有情況下保持一致，從而導致部分行為變更。賦予封印的輔助寶石現在一致地擁有 <strong>Seal</strong> 標籤。</li>
+    <li class="patch-item"><strong>Freezing Salvo</strong> 和 <strong>Salvo Support</strong> 先前有一項額外限制，即相關技能在你執行該技能時無法獲得封印。現在不再有此限制，使其與其他封印機制保持一致。</li>
+    <li class="patch-item"><strong>Salvo Support</strong> 先前每 2 秒提供一個封印，上限為 3 個，且每個封印提供 2 個投射物。現在它改為每 1 秒獲得一個封印，上限為 6 個，每個封印提供 1 個投射物。</li>
+    <li class="patch-item"><strong>Advancing Storm</strong>：現在可以在任何條件下輔助任何 Storm 技能，而非僅能輔助你自己使用的法術。</li>
+    <li class="patch-item"><strong>Arjun's Medal</strong>：現在在用被輔助技能擊殺敵人時，有 25% 的機率為所有弩槍技能裝填弩箭（先前為 100%）。</li>
+    <li class="patch-item"><strong>Atziri's Impatience</strong>：不再能輔助持續性技能（<strong>Persistent Skills</strong>）。</li>
+    <li class="patch-item"><strong>Bhatair's Vengeance</strong>：當你使用被輔助技能冰凍目標時，你擁有的每 2 點怒氣（Rage）會使你和附近的盟友獲得 1% 的傷害轉為冰冷傷害，持續 15 秒（先前為每 1 點怒氣，持續 20 秒）。</li>
+    <li class="patch-item"><strong>Brink I</strong>：現在可被切割為等級 1 的輔助寶石（先前為等級 2）。</li>
+    <li class="patch-item"><strong>Culmination II</strong>：不再擁有「被輔助技能的連招數（Combo count）流失速度減慢 50%」的效果。它現在擁有「若你 6 秒內（先前為 4 秒）未產生連招，則被輔助技能失去連招」。被輔助技能現在最多可獲得 10 連招（先前為 20），且被輔助技能現在每層連招造成提高 4% 的傷害（先前為 2%）。</li>
+    <li class="patch-item"><strong>Corrupting Cry I</strong>, <strong>Corrupting Cry II</strong>：不再導致被輔助技能施加腐化之血，而是觸發一個施加腐化之血的技能，其傷害依據其所鑲嵌的寶石等級進行縮放。</li>
+    <li class="patch-item"><strong>Decaying Hex</strong>：不再導致被輔助的詛咒施加凋零（Decay），而是觸發一個施加凋零的技能，其傷害依據其所鑲嵌的寶石等級進行縮放。</li>
+    <li class="patch-item"><strong>Dialla's Desire</strong>：現在賦予被輔助技能 +5% 品質（先前為 +10%）。</li>
+    <li class="patch-item"><strong>Doedre's Undoing</strong>：不再導致被輔助技能創建的詛咒地面變為危害（Hazards）。現在改為導致被輔助技能創建的詛咒地面每隔一段時間生成巫蟾（Witchtoads），它們會尋找敵人並爆炸，造成混沌傷害。</li>
+    <li class="patch-item"><strong>Infernal Legion I</strong> (煉獄之魂 I)：現在導致被輔助技能的召喚物每秒承受等同於其最大生命值 10% 的火焰傷害（先前為 20%），且被輔助技能的召喚物會點燃 1.5 公尺半徑內的敵人，如同造成等同於召喚物最大生命值 10% 的基礎火焰傷害（先前為 20%）。</li>
+    <li class="patch-item"><strong>Infernal Legion II</strong> (煉獄之魂 II)：現在導致被輔助技能的召喚物每秒承受等同於其最大生命值 10% 的火焰傷害（先前為 20%），且被輔助技能的召喚物會點燃 2 公尺半徑內的敵人，如同造成等同於召喚物最大生命值 10% 的基礎火焰傷害（先前為 20%）。現在還額外賦予被輔助技能的召喚物 +20% 火焰抗性。</li>
+    <li class="patch-item"><strong>Infernal Legion III</strong> (煉獄之魂 III)：無法再獲得。</li>
+    <li class="patch-item"><strong>Living Lightning</strong>：在已達到最大召喚物數量時召喚新召喚物時，不再會替換現有的召喚物。</li>
+    <li class="patch-item"><strong>Morgana's Tempest</strong>：現在可以在任何條件下輔助任何 Storm 技能，而非僅能輔助你自己使用的法術。</li>
+    <li class="patch-item"><strong>Overabundance III</strong>：現在正確地描述了它無法輔助持續性技能（<strong>Persistent Skills</strong>）。</li>
+    <li class="patch-item"><strong>Overextend</strong>：無法再獲得，現有物品不受此變更影響。</li>
+    <li class="patch-item"><strong>Paquate's Pact</strong>：不再導致被輔助技能施加腐化之血，而是觸發一個施加腐化之血的技能，其傷害依據其所鑲嵌的寶石等級進行縮放。不再擁有「每被輔助技能施加一層腐化之血，便失去 2% 最大生命」的效果。相反，它現在擁有「你最近每次使用被輔助技能，被輔助技能的生命消耗增加 10%，最高增加 30%」。</li>
+    <li class="patch-item"><strong>Rage I</strong>, <strong>Rage II</strong>, 以及 <strong>Rage III</strong>：現在可以輔助召喚物技能（<strong>Minion Skills</strong>）。</li>
+    <li class="patch-item"><strong>Ratha's Assault</strong>：現在賦予「在你閃避時被輔助技能裝填 4 點弩箭（先前為 5），且被輔助技能額外裝填 3 點弩箭（先前為 4）」。現在還賦予被輔助技能提高 10% 的攻擊速度（先前為 20%）。</li>
+    <li class="patch-item"><strong>Refraction I</strong>：現在還會導致被輔助的橫幅技能賦予盟友等同於其閃避值 15% 的偏向值（<strong>Deflection Rating</strong>）。</li>
+    <li class="patch-item"><strong>Refraction II</strong>：現在還會導致被輔助的橫幅技能賦予盟友等同於其閃避值 20% 的偏向值。</li>
+    <li class="patch-item"><strong>Shock Conduction II</strong>：無法再獲得。</li>
+    <li class="patch-item"><strong>Static Shocks</strong>：更新了描述以澄清它是從感電擊中（<strong>Shocking Hits</strong>）中觸發。</li>
+    <li class="patch-item"><strong>Uhtred's Augury</strong>：現在若依舊恰好有另外兩個輔助寶石在修正該技能，則賦予被輔助技能等級 +2（先前為 +3）。</li>
+    <li class="patch-item"><strong>Uhtred's Omen</strong>：現在若依舊恰好有另外一個輔助寶石在修正該技能，則賦予被輔助技能等級 +2（先前為 +3）。</li>
+    <li class="patch-item"><strong>Volt</strong>：現在賦予被輔助技能每移動一公尺獲得 2 點感電充能（<strong>Voltaic Charge</strong>）（先前為 3）。被輔助技能現在每消耗一點感電充能，獲得等同於傷害 1% 的額外閃電傷害（先前為每消耗十點感電充能獲得 5%）。</li>
+</ul>
+<hr class="section-divider">
+</section>
+<section class="patch-section" id="傳奇物品變更">
+  <h2 class="section-header">傳奇物品變更</h2>
+  <ul class="level-1">
+    <li class="patch-item">傳奇鞋子 <strong>Ab Aeterno</strong> 不再擁有「在過去 20 秒內每次翻滾使移動與技能速度降低 10%」的效果，現在具有 200-250% 提高護甲、閃避與能量護盾（先前為 100-150%）。它現在具有「衝刺時你的速度不受減速效果影響，且在你翻滾時獲得超載（<strong>Overencumbrance</strong>），持續 4 秒」。現有版本的此傳奇物品可以使用 <strong>Divine Orb</strong> (神聖石) 更新為新的護甲、閃避與能量護盾數值，但不會獲得任何其他變更。</li>
+    <li class="patch-item">傳奇副手 <strong>Apep's Supremacy</strong> 不再具有 30-50% 能量護盾開始回復速度提高的屬性。</li>
+    <li class="patch-item">重製了傳奇手套 <strong>Atziri's Acuity</strong> (阿茲里之手)：它們現在賦予 150-200% 提高護甲值、+100-150 最大生命、10% 物理攻擊傷害轉為生命吸取，且你造成的 10% 物理擊中傷害會導致失血（Blood Loss）並套用瓦爾冥約（<strong>Vaal Pact</strong>）。它們還賦予 <strong>Herald of the Royal Queen</strong> 技能。<strong>Atziri's Acuity</strong> 上的 <strong>Vaal Cultivation Orb</strong> 結果也發生了變更。現有物品不受此變更影響。</li>
+    <li class="patch-item">傳奇胸甲 <strong>Sierran Inheritance</strong> 現在賦予 15-30% 能量護盾回復率提高，而非 30-50% 能量護盾開始回復速度提高。</li>
+    <li class="patch-item">傳奇戒指 <strong>Blackflame</strong> (黑炎) 不再擁有「被你點燃的敵人承受混沌傷害，而非點燃造成的火焰傷害」。它現在具有「你施加的萎縮（Withered）也會增加承受的火焰傷害，你施加的點燃造成混沌傷害而非火焰傷害，且被你點燃的敵人身上的萎縮不會過期」。此外，它現在具有 80-100% 提高點燃幅度（先前為 50%），以及敵人身上的點燃持續時間減少 60-75%（先前為減少 50%）。點燃幅度與持續時間修正可以使用 <strong>Divine Orb</strong> 更新為新數值，其他修正將保持不變。</li>
+    <li class="patch-item">傳奇戒指 <strong>Blistering Bond</strong> 現在除了其他修正外，還具有「火焰傷害也會有助於流血幅度，且你施加的流血造成火焰傷害而非物理傷害」。現有物品不受此變更影響。</li>
+    <li class="patch-item">傳奇胸甲 <strong>The Brass Dome</strong> (黃銅穹頂) 現在具有 500-600% 提高護甲值（先前為 700-800%）。現有版本的此傳奇物品可以使用 <strong>Divine Orb</strong> 變差。</li>
+    <li class="patch-item">傳奇項鍊 <strong>Carnage Heart</strong> (屠戮之心) 現在具有「吸取時提高 25-50% 傷害」。現有物品不受此變更影響。</li>
+    <li class="patch-item">傳奇重錘 <strong>Chober Chaber</strong> 現在具有 +2-3 所有召喚物技能寶石等級。現有物品不受此變更影響。</li>
+    <li class="patch-item">傳奇長弓 <strong>Death's Harp</strong> (死亡之弦) 不再具有「弓箭攻擊額外發射 3 根箭矢」，相反地，它現在具有 +250-330% 額外機率（Surpassing Chance）發射一根額外箭矢。</li>
+    <li class="patch-item">傳奇頭盔 <strong>Elevore</strong> 現在賦予「護符（Charms）每秒獲得 1 點充能（先前為 0.5）」，且現在提供 +1-2 護符插槽（先前為 +1）。現有物品可以使用 <strong>Divine Orb</strong> 獲得增強。</li>
+    <li class="patch-item">傳奇戒指 <strong>Eshtera's Path</strong> 不再具有「冰冷抗性不受區域懲罰影響」。它現在具有「每裝備一件具有閃電抗性修正的物品，則 +5-10% 火焰與冰冷抗性」。現有物品不受此變更影響。</li>
+    <li class="patch-item">傳奇戒指 <strong>Glowswarm</strong> 現在具有「使用魔力藥劑會獲得等同於藥劑回復量 100% 的護體（Guard），持續 4 秒」。現有物品不受此變更影響。</li>
+    <li class="patch-item">傳奇頭盔 <strong>The Hollow Mask</strong> 現在賦予 <strong>Wildwood's Gifts</strong> 技能（在此技能下，<strong>Azmerian</strong> 靈魂會提供指引，使你能夠看到附近的 <strong>Ancient Blooms</strong>）。它現在還具有「你創建的 <strong>Remnants</strong> 在收集時也會影響你附近的盟友，且提高 <strong>Remnant</strong> 技能的保留效率 80-100%」。</li>
+    <li class="patch-item">傳奇胸甲 <strong>Husk of Dreams</strong> 已重新命名為 <strong>Reverie</strong>。它不再具有「閃避藥劑獲得充能提高 20-30%」或「藥劑充能消耗降低 50%」。它現在賦予 <strong>Rite of Restoration</strong> 技能，且具有「非傳奇生命藥劑會持續施加其效果」。它現在還具有「無法使用生命藥劑，來自生命藥劑的恢復無法變為瞬間，來自生命藥劑的恢復無法應用於你之外的任何事物，以及生命藥劑恢復量減少 40-60%」。現有版本的此物品無法獲得這些新詞綴。</li>
+    <li class="patch-item">傳奇胸甲 <strong>Hyrri's Ire</strong> (海利之息) 現在具有 100-150% 提高閃避值（先前為 200-250%），且「獲得等同於傷害 10-20% 的額外冰冷傷害（先前為 15-25%）」。現有版本的此傳奇物品可以使用 <strong>Divine Orb</strong> 變差。</li>
+    <li class="patch-item">傳奇頭盔 <strong>Keeper of the Arc</strong> 現在具有 240-340% 提高護甲與能量護盾（先前為 150-250%）。現有物品可以使用 <strong>Divine Orb</strong> 更新為新數值。</li>
+    <li class="patch-item">傳奇戒指 <strong>Levinstone</strong> 不再具有 +1 所有閃電技能等級。它現在具有「閃電技能連鎖 +1 次」。</li>
+    <li class="patch-item">傳奇珠寶 <strong>Megalomaniac</strong> (狂妄) 現在掉落時已鑑定。</li>
+    <li class="patch-item">傳奇手套 <strong>Plaguefinger</strong> 現在具有「無法施加元素異常狀態」。</li>
+    <li class="patch-item">傳奇戒指 <strong>Prized Pain</strong> 不再具有「對你使用近戰攻擊眩暈的敵人造成你的反傷（Thorns damage）」。它現在具有「在使用近戰攻擊擊中敵人時，有 15-25% 的機率造成你的反傷」。現有物品不受此變更影響。</li>
+    <li class="patch-item">傳奇頭盔 <strong>Radiant Grief</strong> 現在具有「你附近的敵人會被點燃，如同受到 200 基礎火焰傷害（先前為 100）」。現有物品可以使用 <strong>Divine Orb</strong> 更新為新數值.</li>
+    <li class="patch-item">傳奇戒指 <strong>Safrin's Resolve</strong> 不再具有「閃電抗性不受區域懲罰影響」。它現在具有「每裝備一件具有火焰抗性修正的物品，則 +5-10% 冰冷與閃電抗性」。現有物品不受此變更影響。</li>
+    <li class="patch-item">傳奇戒指 <strong>Seed of Cataclysm</strong> 不再具有 30-50% 法術暴擊傷害加成提高。它現在具有「你最近每次使用法術造成暴擊，法術暴擊傷害加成降低 5%」，且「法術造成的暴擊傷害有 15-30% 機率是幸運的（Lucky）」。現有物品不受此變更影響。</li>
+    <li class="patch-item">傳奇戒指 <strong>Sekhema's Resolve</strong> 已被重命名為 <em>Safrin's Resolve</em>, <em>Zaida's Longevity</em>, 以及 <em>Eshtera's Path</em>。</li>
+    <li class="patch-item">傳奇手套 <strong>Sine Aequo</strong> 現在具有 150-200% 提高護甲、閃避與能量護盾（先前為 100-150%）。它不再具有「被你定身的敵人承受傷害提高 20%」，而是具有「對定身敵人的傷害提高 30-50%」。</li>
+    <li class="patch-item">傳奇胸甲 <strong>Soul Mantle</strong> (靈魂衣櫥) 不再具有「減少 20-30% 圖騰生命」，而是具有 +75 精魂（<strong>Spirit</strong>）。現有版本的此物品不受此變更影響。</li>
+    <li class="patch-item">傳奇盾牌 <strong>Svalinn</strong> (斯瓦林) 的「格擋時施放（Cast on Block）」技能現在具有「被輔助的技能不消耗 any 資源」。它現在還具有 +50-100 <strong>Runic Ward</strong>，現有物品不受此變更影響。</li>
+    <li class="patch-item">傳奇戒指 <strong>Zaida's Longevity</strong> 不再具有「閃電抗性不受區域懲罰影響」。它現在具有「每裝備一件具有冰冷抗性修正的物品，則 +5-10% 火焰與閃電抗性」。現有物品不受此變更影響。</li>
+    <li class="patch-item">傳奇腰帶 <strong>Zerphi's Genesis</strong> 不再具有「提高 10-30% 護符充能消耗」。它現在除了其他修正外，還具有「被使用的生命藥劑所消耗之充能的 50% 會賦予給你的護符，在任何藥劑效果期間，來自已腐化寶石的技能提高 15-25% 消耗效率，且已腐化護符效果持續時間提高 25-50%」。</li>
+</ul>
+<hr class="section-divider">
+</section>
+<section class="patch-section" id="物品變更">
+  <h2 class="section-header">物品變更</h2>
+  <ul class="level-1">
+    <li class="patch-item"><strong>Greater</strong> 和 <strong>Perfect</strong> 等級的貨幣已被調整得更為稀有，而 <strong>Transmutation</strong> (蛻變石) 與 <strong>Augmentation</strong> (增幅石) 則被調整得顯著更為稀有。</li>
+    <li class="patch-item"><strong>Greater Orbs of Transmutation</strong> 與 <strong>Greater Orbs of Augmentation</strong> 現在具有 44 的最低修正等級上限（先前為 55），使其更容易獲得。它們現在可以在第 4 章開始掉落。</li>
+    <li class="patch-item"><strong>Divine Orbs</strong> (神聖石) 現在更為常見。</li>
+    <li class="patch-item">將物品腐化後使詞綴數值隨機超出正常範圍的結果，現在會根據「當前數值進行相乘」，而非隨機重骰數值。</li>
+    <li class="patch-item">對物品進行神聖化（<strong>Sanctifying</strong>）現在會根據當前數值進行相乘，而非隨機重骰數值。</li>
+    <li class="patch-item">無法再獲得 <strong>Omen of Corruption</strong> (腐化預兆)。</li>
+    <li class="patch-item">在劇情戰役中發現的近戰武器與藥劑，現在更有可能是該等級可用的最高基底類型。</li>
+    <li class="patch-item">劇情戰役中發現的 <strong>Essences</strong> (精華) 總量已增加，但其中屬於 <strong>Essences of the Infinite</strong> 的比例已顯著降低。這將導致隨著你的進度，能找到更多有用的精華。</li>
+    <li class="patch-item">隨著你達到更高難度，物品與詞綴所賦予的護甲值總量已增加。在 65 級時，你應該擁有大約多出 33% 的護甲值，在 80 級以上時則遞減至多出 15%。</li>
+    <li class="patch-item">隨著你達到更高難度，物品與詞綴所賦予的閃避值總量已增加。在 65 級時，你應該擁有大約多出 33% 的閃避值，在 80 級以上時則遞減至多出 15%。</li>
+    <li class="patch-item">物品賦予的能量護盾在 65 級時現在大約多出 8%，而在 80 級以上時保持不變。</li>
+    <li class="patch-item">護甲基底類型 <strong>Vile Robe</strong> 現在具有 171 基礎能量護盾（先前為 184）。</li>
+    <li class="patch-item">現有物品的基礎護甲值將自動調整，而現有物品上的護甲詞綴可以使用 <strong>Divine Orb</strong> 進行更新。</li>
+    <li class="patch-item">增加了部分近戰武器基底類型的基礎武器距離（<strong>Weapon Range</strong>）。單手槌現在具有 1.3 的基礎武器距離（先前為 1.1），雙手槌為 1.5（先前為 1.3），長杖（Quarterstaves）為 1.4（先前為 1.3）。</li>
+    <li class="patch-item">弓箭基底類型 <strong>Obliterator Bow</strong> 與 <strong>Artillery Bow</strong> 現在具有每秒 1.1 次攻擊速度（先前為 1.15）。</li>
+    <li class="patch-item"><strong>Warden</strong> 與 <strong>Guardian Bows</strong> 的固定詞綴（implicit modifier）現在提供 25-35% 的機率額外連鎖一次（先前為 20-30%）。現有物品可以使用 <strong>Divine Orb</strong> 進行更新。</li>
+    <li class="patch-item"><strong>Rabid</strong>, <strong>Fury</strong> 與 <strong>Maji Talismans</strong> 的固定詞綴現在提供 +7-10 最大怒氣（先前為 +8-12）。現有物品可以使用 <strong>Divine Orb</strong> 進行更新。</li>
+    <li class="patch-item"><strong>Voltfang</strong> 與 <strong>Thunder Talismans</strong> 的固定詞綴現在提供施加的感電幅度提高 20-30%（先前為 15-25%）。現有物品可以使用 <strong>Divine Orb</strong> 進行更新。</li>
+    <li class="patch-item">替代品質物品（來自 Breach 催化劑）現在可以被回收，以返還一部分所使用的催化劑。</li>
+    <li class="patch-item">雙手攻擊武器上的「+ 所有近戰技能等級」詞綴在 Tier 1 時現在具有 +5 的數值（先前為 +7），較低 Tier 的數值也進行了調整。</li>
+    <li class="patch-item">雙手攻擊武器上的「+ 所有投射物技能等級」詞綴在 Tier 1 時現在具有 +5 的數值（先前為 +7），較低 Tier 的數值也進行了調整。</li>
+    <li class="patch-item">單手攻擊武器上的「+ 所有近戰技能等級」詞綴在 Tier 1 時現在具有 +4 的數值（先前為 +5），較低 Tier 的數值也進行了調整。</li>
+    <li class="patch-item">單手攻擊武器上的「+ 所有投射物技能等級」詞綴在 Tier 1 時現在具有 +4 的數值（先前為 +5），較低 Tier 的數值也進行了調整。</li>
+    <li class="patch-item">箭袋上的「+2 投射物技能等級」詞綴現在具有 +1 的數值。</li>
+    <li class="patch-item">攻擊武器上的「+ 所有寶石等級」現在僅能在 18 級以上骰出。</li>
+    <li class="patch-item">為箭袋新增了額外機率（Surpassing chance）發射一根額外箭矢的詞綴。</li>
+    <li class="patch-item"><strong>Perfect Essence of Battle</strong> 現在在雙手近戰武器或弩槍上提供 +3 所有攻擊技能等級（先前為 +5），且在單手近戰武器或弓上提供 +2 所有攻擊技能等級（先前為 +3）。</li>
+    <li class="patch-item"><strong>Essence of Hysteria</strong> 在應用於副手（Foci）時，現在賦予能量護盾回復率提高 20-23%（先前為 41-45%）。</li>
+    <li class="patch-item"><strong>Body Runes</strong> 在鑲嵌於護甲物品中時，現在賦予 +30/45/60 最大生命（先前為 +20/30/40），在鑲嵌於長杖與法杖中時，賦予 +30/40/50 最大能量護盾（先前為 +25/30/35），在鑲嵌於近戰武器中時，賦予 3/4/5% 物理傷害轉為生命吸取（先前為 2/2.5/3%）。</li>
+    <li class="patch-item"><strong>Mind Runes</strong> 在鑲嵌於護甲物品中時，現在賦予 +20/30/40 最大魔力（先前為 +15/25/35），在鑲嵌於長杖與法杖中時，賦予 +45/60/75 最大魔力（先前為 +30/40/50），在鑲嵌於近戰武器中時，賦予 2/3/4% 物理傷害轉為魔力吸取（先前為 1.5/2/2.5%）。</li>
+    <li class="patch-item"><strong>Rebirth Runes</strong> 在鑲嵌於近戰武器中時，現在賦予擊殺每個敵人獲得 15/25/35 生命（先前為 10/20/30），在鑲嵌於護甲物品中時，賦予每秒回復最大生命 0.35/0.4/0.45%（先前為 0.25/0.3/0.35%）。</li>
+    <li class="patch-item"><strong>Inspiration Runes</strong> 在鑲嵌於近戰武器中時，現在賦予擊殺每個敵人獲得 10/20/30 魔力（先前為 8/16/24），在鑲嵌於長杖與法杖中時，賦予魔力回復速度提高 20/25/30%（先前為 16/20/24%）。</li>
+    <li class="patch-item"><strong>Stone Runes</strong> 在鑲嵌於近戰武器中時，現在導致增加 20/30/40% 眩暈累積（先前為 20/25/30%），在鑲嵌於護甲物品中時，賦予 +50/75/100 眩暈門檻（先前為 +40/60/80）。</li>
+    <li class="patch-item"><strong>Vision Runes</strong> 在鑲嵌於近戰武器中時，現在賦予 +60/90/120 命中值（先前為 +50/80/110），在鑲嵌於護甲物品中時，賦予生命與魔力藥劑恢復量提高 8/12/16%（先前為 8/10/12%）。</li>
+    <li class="patch-item"><strong>Desert Runes</strong> 在鑲嵌於護甲物品中時，現在賦予 +10/14/18% 火焰抗性（先前為 +10/12/14%）。在近戰武器、法杖與長杖上的共鳴（Bonded）詞綴現在賦予燃燒幅度提高 30%（先前為 25%）。</li>
+    <li class="patch-item"><strong>Glacial Runes</strong> 在鑲嵌於護甲物品中時，現在賦予 +10/14/18% 冰冷抗性（先前為 +10/12/14%）。</li>
+    <li class="patch-item"><strong>Storm Runes</strong> 在鑲嵌於護甲物品中時，現在賦予 +10/14/18% 閃電抗性（先前為 +10/12/14%）。</li>
+    <li class="patch-item"><strong>Robust Runes</strong> 在鑲嵌於裝備中時，現在賦予 +6/9/12 力量（先前為 +6/8/10）。</li>
+    <li class="patch-item"><strong>Adept Runes</strong> 在鑲嵌於裝備中時，現在賦予 +6/9/12 敏捷（先前為 +6/8/10）。</li>
+    <li class="patch-item"><strong>Resolve Runes</strong> 在鑲嵌於裝備中時，現在賦予 +6/9/12 智慧（先前為 +6/8/10）。</li>
+    <li class="patch-item">普通符文共鳴（<strong>Rune Bonded</strong>）詞綴在鑲嵌於護甲物品中時，現在賦予 20 生命與 20 魔力（先前為 10 生命與 10 魔力）。</li>
+    <li class="patch-item"><strong>Lesser Rebirth Runes</strong> 在鑲嵌於法杖或長杖中時，現在賦予能量護盾回復率提高 4%（先前為 12%）。此變更適用於現有物品。</li>
+    <li class="patch-item"><strong>Rebirth Runes</strong> 在鑲嵌於法杖或長杖中時，現在賦予能量護盾回復率提高 6%（先前為 15%）。此變更適用於現有物品。</li>
+    <li class="patch-item"><strong>Greater Rebirth Runes</strong> 在鑲嵌於法杖或長杖中時，現在賦予能量護盾回復率提高 8%（先前為 18%）。此變更適用於現有物品。</li>
+    <li class="patch-item"><strong>Craiceann's Rune of Recovery</strong> 在鑲嵌於胸甲中時，現在賦予能量護盾回復率提高 30%（先前為 50%）。現有物品隨之受此變更影響。</li>
+    <li class="patch-item"><strong>Lady Hestra's Rune of Winter</strong> 不再賦予「附加 19 至 28 冰冷傷害」，而是賦予「對被冰凍或感電的敵人附加 19 至 28 冰冷傷害」。</li>
+    <li class="patch-item"><strong>Thane Leld's Rune of Spring</strong> 不再賦予「附加 1 至 60 閃電傷害」，而是賦予「對被感電的敵人附加 1 至 60 閃電傷害」。</li>
+    <li class="patch-item"><strong>Thane Myrk's Rune of Summer</strong> 不再賦予「附加 23 至 34 火焰傷害」，而是賦予「對被點燃的敵人附加 23 至 34 火焰傷害」。</li>
+    <li class="patch-item">所有 <strong>Idols</strong> 現在也都可以被鑲嵌於權杖（<strong>Sceptres</strong>）中。</li>
+    <li class="patch-item"><strong>Idol of Egrin</strong> 在鑲嵌於權杖中時，現在賦予詛咒持續時間提高 20%。</li>
+    <li class="patch-item"><strong>Idol of Eeshta</strong> 在鑲嵌於頭盔中時，現在賦予魔力消耗效率提高 15%（先前為 12%）。在鑲嵌於權杖中時，現在賦予「當你的 Companion 在你附近時，魔力回復速度提高 30%」。</li>
+    <li class="patch-item"><strong>Idol of Grold</strong> 現在改為鑲嵌於鞋子（<strong>Boots</strong>）中。在鑲嵌於鞋子中時，現在賦予戰吼計算的總強度提高 50%（先前為 20%）。在鑲嵌於權杖中時，現在賦予「你附近每有一個不同的 Companion，提高 15% 傷害」。共鳴（Bonded）詞綴現在賦予 Glory 獲得率提高 30%（先前為 20%）。</li>
+    <li class="patch-item"><strong>Idol of Maxarius</strong> 在鑲嵌於權杖中時，現在賦予每秒獲得 0.2 藥劑充能。</li>
+    <li class="patch-item"><strong>Idol of Ralakesh</strong> 在鑲嵌於權杖中時，現在賦予「當你的 Companion 在你附近時，護甲、閃避與能量護盾提高 40%」。</li>
+    <li class="patch-item"><strong>Idol of Sirrius</strong> 在鑲嵌於權杖中時，現在賦予你附近的盟友提高 8% 移動速度。共鳴（Bonded）詞綴現在賦予減速效果降低 20%（先前為 15%）。</li>
+    <li class="patch-item"><strong>Idol of Thruldana</strong> 在鑲嵌於權杖中時，現在賦予你附近的盟友附加 13 至 27 點攻擊混沌傷害。</li>
+    <li class="patch-item"><strong>Bear Idol</strong> 在鑲嵌於頭盔中時，現在賦予範圍提高 10%（先前為 8%）。共鳴（Bonded）詞綴現在賦予 Companion 技能保留效率提高 12%（先前為 10%）。</li>
+    <li class="patch-item"><strong>Boar Idol</strong> 在鑲嵌於權杖中時，現在賦予你附近的盟友每秒回復你最大生命的 0.5%（先前為每秒回復 8 點生命）。共鳴（Bonded）詞綴在鑲嵌於手套中時，現在賦予戰吼冷卻時間回復速度提高 25%（先前為 15%）。</li>
+    <li class="patch-item"><strong>Cat Idol</strong> 在鑲嵌於手套中時，現在賦予命中值提高 25%（先前為 15%）。共鳴（Bonded）詞綴在鑲嵌於手套中時，現在賦予獲得的護符充能提高 30%（先前為 20%）。</li>
+    <li class="patch-item"><strong>Fox Idol</strong> 現在限制上限為 1。在鑲嵌於胸甲中時，現在賦予「此物品中鑲嵌的其他 Idols 也會賦予其共鳴詞綴（先前為所有技能品質 +2%）」。共鳴（Bonded）詞綴現在在鑲嵌於胸甲中時，賦予所有技能品質 +5%（先前為所有屬性 +4）。</li>
+    <li class="patch-item"><strong>Owl Idol</strong> 在鑲嵌於副手中時，現在賦予冷卻時間回復速度提高 12%（先前為 10%），在鑲嵌於權杖中時，賦予你附近的盟友提高 10% 施法速度（先前為 8%）。共鳴（Bonded）詞綴在鑲嵌於副手中時，現在賦予你身上的執政官（Archon）Buff 效果提高 20%（先前為 15%）。</li>
+    <li class="patch-item"><strong>Ox Idol</strong> 在鑲嵌於盾牌與圓盾中時，現在賦予格擋機率提高 15%（先前為 10%），在鑲嵌於權杖中時，賦予你附近的盟友 +12% 所有元素抗性（先前為 8%）。共鳴（Bonded）詞綴在鑲嵌於盾牌與圓盾中時，現在賦予「擊中你的敵人傷害有 15% 機率是差勁的（unlucky）（先前為 10%）」。</li>
+    <li class="patch-item"><strong>Primate Idol</strong> 在鑲嵌於頭盔中時，現在賦予召喚物最大生命提高 15%（先前為 12%），在鑲嵌於權杖中時，賦予你附近的盟友提高 40% 傷害（先前為 30%）。共鳴（Bonded）詞綴現在在鑲嵌於頭盔中時，賦予可以在多出 15% 的距離收集 Remnants（先前為 20%）。</li>
+    <li class="patch-item"><strong>Rabbit Idol</strong> 現在限制上限為 1。在鑲嵌於胸甲中時，現在賦予獲得物品的稀有度提高 12%（先前為 5%），在鑲嵌於權杖中時，賦予精魂（Spirit）提高 15%（先前為 10%）。共鳴（Bonded）詞綴現在在鑲嵌於胸甲中時，賦予被擊殺敵人掉落的金幣數量提高 10%（先前為 5%）。</li>
+    <li class="patch-item"><strong>Snake Idol</strong> 在鑲嵌於手套中時，現在賦予詛咒幅度提高 8%（先前為 5%），在鑲嵌於權杖中時，賦予你附近的盟友提高 10% 攻擊速度（先前為 8%）。共鳴（Bonded）詞綴現在在鑲嵌於手套中時，賦予 Remnants 效果提高 15%（先前為 10%）。</li>
+    <li class="patch-item"><strong>Stag Idol</strong> 現在限制上限為 1。在鑲嵌於頭盔中時，現在賦予投射物有 15% 機率分叉（Fork）（先前為反傷暴擊機率提高 50%）。頭盔的共鳴（Bonded）詞綴現在賦予分叉時有 30% 機率產生一個額外投射物（先前為反傷傷害有 40% 機率無視敵人護甲）。</li>
+    <li class="patch-item"><strong>Wolf Idol</strong> 在鑲嵌於手套中時，現在賦予你施加的流血幅度提高 15%（先前為 10%），在鑲嵌於權杖中時，賦予你附近的盟友暴擊傷害加成提高 20%（先前為 14%）。共鳴（Bonded）詞綴現在在鑲嵌於手套中時，賦予你身上的流血幅度降低 25%（先前為 15%）。</li>
+    <li class="patch-item"><strong>Atmohua's Soul Core of Retreat</strong> 在鑲嵌於胸甲或副手中時，不再賦予 30% 能量護盾開始回復速度提高。相反，它現在賦予「獲得等同於最大能量護盾 15% 的額外異常狀態門檻，以及獲得等同於最大能量護盾 15% 的額外眩暈門檻」。此變更適用於現有物品。</li>
+    <li class="patch-item">紅色珠寶（<strong>Ruby Jewels</strong>）上的最大怒氣現在可以骰出 +1-2 最大怒氣（先前為 +1）。現有物品可以透過使用 <strong>Divine Orb</strong> 更新為新數值。</li>
+    <li class="patch-item">藍色珠寶（<strong>Sapphire Jewels</strong>）上的混沌傷害提高現在可以骰出 7-13%（先前為 6-12%）。現有物品可以透過使用 <strong>Divine Orb</strong> 更新為新數值。</li>
+    <li class="patch-item">賦予「能量護盾開始回復速度提高」的後綴詞綴不再能在副手、智慧型胸甲或珠寶上骰出。</li>
+    <li class="patch-item">提高能量護盾回復率的後綴詞綴現在可以在智慧型胸甲上骰出。</li>
+    <li class="patch-item"><strong>Arcane Raiment</strong> 與 <strong>Sacramental Robe</strong> 胸甲上的固定詞綴現在改為提高 15-25% 能量護盾回復率，而非能量護盾開始回復速度提高 40-50%。此變更不影響現有物品。</li>
+    <li class="patch-item">「<strong>Fevered</strong>」(狂熱的) 前綴詞綴不再能在 <strong>Time-Lost Sapphire</strong> 與 <strong>Sapphire Jewels</strong> 上骰出。</li>
+    <li class="patch-item">「<strong>of Diffusion</strong>」,「<strong>of Dispersal</strong>」, 以及「<strong>of Enlivening</strong>」後綴詞綴不再能在胸甲與副手上骰出。</li>
+    <li class="patch-item">「<strong>of Buffering</strong>」後綴詞綴現在賦予能量護盾回復率提高 12-15%（先前為 36-40%）。你可以神聖化現有物品以使其變差。</li>
+    <li class="patch-item">「<strong>of Ardour</strong>」後綴詞綴現在賦予能量護盾回復率提高 16-19%（先前為 41-45%）。你可以神聖化現有物品以使其變差。</li>
+    <li class="patch-item">「<strong>of Suffusion</strong>」後綴詞綴現在賦予能量護盾回復率提高 20-23%（先前為 46-50%）。你可以神聖化現有物品以使其變差。</li>
+    <li class="patch-item">戒指與項鍊上的施法速度詞綴不再與副手和法杖共享。對於戒指與項鍊，這些詞綴現在會在稍高的等級下骰出。戒指的最高階施法速度詞綴現在在 60 級骰出，項鍊則在 66 級。這些詞綴的最大數值保持不變。</li>
+    <li class="patch-item">珠寶上的提高橫幅範圍詞綴現在具有 6-16% 的數值（先前為 10-20%）。現有物品可以使用 <strong>Divine Orb</strong> 更新為新數值。</li>
+    <li class="patch-item">賦予瞬間吸取（<strong>Instant Leech</strong>）的 <strong>Desecrated</strong> 詞綴不再能骰出，現有物品不受此變更影響。</li>
+    <li class="patch-item">武器上的「<strong>Squire's</strong>」(扈從之) 物理傷害與命中混合詞綴現在具有最低等級 8 的限制（先前為 1）。現有物品的等級需求將發生變更。</li>
+    <li class="patch-item">武器上的「<strong>Journeyman's</strong>」(旅人之) 物理傷害與命中混合詞綴現在具有最低等級 14 的限制（先前為 11）。現有物品的等級需求將發生變更。</li>
+    <li class="patch-item">武器上的「<strong>Precise</strong>」(精準之) 命中詞綴現在具有最低等級 8 的限制（先前為 1）。現有物品的等級需求將發生變更。</li>
+    <li class="patch-item">武器上的「<strong>Reliable</strong>」(可靠之) 命中詞綴現在具有最低等級 13 的限制（先前為 11）。現有物品的等級需求將發生變更。</li>
+    <li class="patch-item">護甲基底類型 <strong>Gladiatoral Helm</strong> 已重命名為 <strong>Cassis Helm</strong>。</li>
+    <li class="patch-item"><strong>Oswald</strong> 不再在第 3 章中為你發現的 <strong>Priceless Idols</strong> (無價魔偶) 扣減價格，現在為每個提供 3,000, 4,000, 與 6,000 金幣（先前為 500, 1,000, 與 1,500）。</li>
+    <li class="patch-item">用於非同步交易（拍賣行）的武器金幣價格增加了大約 50%。</li>
+    <li class="patch-item"><strong>Desecrated Map</strong> 詞綴「<strong>of Union</strong>」不再起作用。這是一個僅在搶先體驗聯盟中存在的遺留詞綴。</li>
+</ul>
+<hr class="section-divider">
+</section>
+<section class="patch-section" id="怪物變更">
+  <h2 class="section-header">怪物變更</h2>
+  <ul class="level-1">
+    <li class="patch-item">普通怪物的撲殺臨界值（<strong>Culling Strike Threshold</strong>）現在為其最大生命的 35%（先前為 30%）。</li>
+    <li class="patch-item">怪物的吸取抗性現在從稍後的等級開始，且在每個等級的數值均較低。所有怪物稀有度現在都具有相同數值的吸取抗性。</li>
+    <li class="patch-item">精華怪物群（<strong>Essence Monster Packs</strong>）現在受群怪大小詞綴的影響。</li>
+    <li class="patch-item">從怪物身上釋放的 <strong>Azmeri Spirits</strong> 現在會保留其力量，並增強從該怪物身上釋放的其他靈魂。</li>
+    <li class="patch-item"><strong>Priest of the Sun</strong> (太陽祭司) 的光束將不再穿過部分牆壁。</li>
+    <li class="patch-item">當 <strong>Viper Napuatzi</strong> 的士兵限制其戰鬥場地的尺寸時，你現在會回復部分藥劑充能。</li>
+    <li class="patch-item"><strong>Ogham Village</strong> 中的 <strong>Burning Dead</strong> 現在會將其一部分傷害作為火焰傷害造成（先前純粹是物理傷害）。</li>
+    <li class="patch-item">改善了閃電 <strong>Doryani</strong> 精英怪物的視覺效果與前兆示警。</li>
+</ul>
+<hr class="section-divider">
+</section>
+<section class="patch-section" id="任務變更">
+  <h2 class="section-header">任務變更</h2>
+  <ul class="level-1">
+    <li class="patch-item">在你在 Kingsmarch 中交齊所有 4 個地圖碎片之前，你將無法再進入 <strong>Plunder's Point</strong>。</li>
+    <li class="patch-item">現在與 <strong>Navali</strong> 互動時，在 <strong>Halls of the Dead</strong> 中會獲得一個 <strong>Greater Mind Rune</strong>（先前為 <strong>Lesser Mind Rune</strong>）。</li>
+    <li class="patch-item">如果你已經釋放了 <strong>Risu</strong>，你將不再需要造訪 <strong>Halani Gates</strong> 即可進入 <strong>Traitor's Passage</strong>。</li>
+</ul>
+<hr class="section-divider">
+</section>
+<section class="patch-section" id="使用者介面變更">
+  <h2 class="section-header">使用者介面變更</h2>
+  <ul class="level-1">
+    <li class="patch-item">在設定（Options）面板的 UI 部分新增了增加彈出視窗尺寸的無障礙設定。</li>
+    <li class="patch-item">新增了一個專門用於執行翻滾（<strong>dodge roll</strong>）的快捷鍵設定，當按住該鍵時不會導致玩家衝刺。此快捷鍵預設為未綁定，如果您想使用它，必須在輸入設定中手動指定。</li>
+    <li class="patch-item">使用滑鼠和鍵盤時，在藏身處裝飾物列表中新增了「僅顯示可用（<strong>Show Only Available</strong>）」選項。</li>
+    <li class="patch-item">對於使用點擊移動（<strong>click to move</strong>）的玩家，在引導可以一邊移動一邊使用的技能時，點擊移動將不再中斷引導。這將顯著提高 <strong>Flame Breath</strong> 與 <strong>Incinerate</strong> 等技能在點擊移動下的可用性。</li>
+    <li class="patch-item">改善了第 1 至 3 章世界地圖的視覺清晰度、載入時間與效能。此外，它們現在能更準確地反映區域布局的遊戲內方向性。</li>
+    <li class="patch-item">技能資訊彈出視窗不再將被修正的屬性移動到面板頂部。它們仍然顯示為藍色。</li>
+    <li class="patch-item">當你的商鋪倉庫頁售出物品時的通知，在售出物品屬於不同聯盟時，現在會顯示不同的訊息。</li>
+    <li class="patch-item">當你有免費重骰次數可用時，<strong>Ritual</strong> UI 中的重骰按鈕現在會發光。</li>
+    <li class="patch-item">強化召喚物（源自各種詞綴或來源）現在會更新在怪物上顯示的「召喚物（<strong>Minion</strong>）」文字。</li>
+    <li class="patch-item">增幅石倉庫頁（<strong>Augments Stash Tab</strong>）已更新，現在具有五個部分。</li>
+    <li class="patch-item">標記敵人現在會在他們的血條上顯示該標記（<strong>Mark</strong>）。</li>
+    <li class="patch-item">最大怒氣、怒氣流失延遲與每秒怒氣流失現在會顯示在角色面板中。</li>
+    <li class="patch-item">將搜尋文字方塊的最大字元限制增加至 250 個字元。</li>
+    <li class="patch-item">複製物品的文字現在將始終複製進階描述格式。</li>
+    <li class="patch-item">透過物品的文字進行搜尋現在將匹配進階描述格式。</li>
+    <li class="patch-item">使用滑鼠和鍵盤時，您現在可以在貨幣交易所中設定「最愛交易（<strong>Favourite trades</strong>）」。</li>
+    <li class="patch-item">您現在可以在您的社交個人資料上釘選一個追蹤卷軸，展示給您的好友、公會與隊友看。</li>
+    <li class="patch-item">您現在可以在化妝品商店中預覽微交易武器外觀，而無需裝備適用的武器類型。</li>
+    <li class="patch-item">使用控制器時，新增了用於編輯藏身處的俯視相機視角。</li>
+    <li class="patch-item">新增了在使用控制器玩遊戲時快速更改當前應用之貨幣的功能。</li>
+    <li class="patch-item">重製了使用控制器玩遊戲時的貨幣交易所 UI。</li>
+    <li class="patch-item">改善了使用控制器時物品與可互動目標的選擇機制。</li>
+    <li class="patch-item">更新並重組了設定功能表。</li>
+    <li class="patch-item">為 PlayStation 與 Xbox 啟用了遊戲內時鐘選項。</li>
+</ul>
+<hr class="section-divider">
+</section>
+<section class="patch-section" id="商城物品變更">
+  <h2 class="section-header">商城物品變更</h2>
+  <ul class="level-1">
+    <li class="patch-item">啟用了以下現有的防具套裝微交易以在 <strong>Path of Exile 2</strong> 中使用：</li>
+  <ul class="level-2">
+    <li class="patch-item"><em>Arcane</em>, <em>Arctic Crystal</em>, <em>Assassin</em>, <em>Atlantis</em>, <em>Black and White</em>, <em>Chimera</em>, <em>Coliseum</em>, <em>Cursed</em>, <em>Darkprism</em>, <em>Doomguard</em>, <em>Eclipse</em>, <em>Eyrie</em>, <em>Fire</em>, <em>Fire and Ice</em>, <em>Imperial Eagle</em>, <em>Mageguard</em>, <em>Malachai</em>, <em>Miracle</em>, <em>Scavenger</em>, <em>Seeker</em>, <em>Twilight</em>, <em>Void Emperor</em>, <em>Vulcan</em>, 以及 <em>Wild</em>。</li>
+  </ul>
+    <li class="patch-item">啟用了以下現有的背部飾品微交易以在 <strong>Path of Exile 2</strong> 中使用：</li>
+  <ul class="level-2">
+    <li class="patch-item"><em>Apollyon Cloak</em>, <em>Apollyon Wings</em>, <em>Arcane Cloak</em>, <em>Assassin Cloak</em>, <em>Azurite Back Attachment</em>, <em>Balefire Back Attachment</em>, <em>Corsair Back Attachment</em>, <em>Corsair Cloak</em>, <em>Crucible Back Attachment</em>, <em>Darkwood Cloak</em>, <em>Dreadspire Cloak</em>, <em>Empyrean Back Attachment</em>, <em>Glimmersprite Wings</em>, <em>Gorgon Back Attachment</em>, <em>Illusionist Back Attachment</em>, <em>Innocence Cloak</em>, <em>Innocence Wings</em>, <em>Lightbringer Cloak</em>, <em>Lightbringer Wings</em>, <em>Midnight Pact Cloak</em>, <em>Midnight Pact Wings</em>, <em>Misery Swords Back Attachment</em>, <em>Misery Wings</em>, <em>Myrmidon Cloak</em>, <em>Necrotic Cloak</em>, <em>Necrotic Wings</em>, <em>Nightfall Cloak</em>, <em>Nightfall Wings</em>, <em>Orion Back Attachment</em>, <em>Overseer Cloak</em>, <em>Overseer Wings</em>, <em>Pitfighter Back Attachment</em>, <em>Rapture Back Attachment</em>, <em>Scavenger Back Attachment</em>, <em>Seraph Banner Back Attachment</em>, <em>Sin Cloak</em>, <em>Sin Wings</em>, <em>Spectre Cloak</em>, <em>Spectre Wings</em>, <em>Spider Back Attachment</em>, <em>Scavenger Tail Attachment</em>, <em>Starfall Cloak</em>, <em>Starfall Wings</em>, <em>Suffering Back Attachment</em>, <em>Suffering Cloak</em>, <em>Sunprism Cloak</em>, <em>Sunprism Wings</em>, <em>Sunrise Cloak</em>, <em>Sunrise Wings</em>, <em>Twilight Cloak</em>, <em>Vaal Orb Cloak</em>, <em>Vampiric Wings</em>, <em>Vanguard Banner Back Attachment</em>, 以及 <em>Verdant Cloak</em>。</li>
+  </ul>
+    <li class="patch-item">啟用了以下現有的頭盔微交易以在 <strong>Path of Exile 2</strong> 中使用：</li>
+  <ul class="level-2">
+    <li class="patch-item"><em>Assassin Hood</em>, <em>Black and White Hood</em>, <em>Cursed Hat</em>, <em>Eyrie Hood</em>, <em>Mageguard Hood</em>, 以及 <em>Wild Cougar Helmet</em>。</li>
+  </ul>
+    <li class="patch-item">啟用了所有剩餘的頭像框微交易以在 <strong>Path of Exile 2</strong> 中使用。</li>
+    <li class="patch-item">啟用了現有的 <strong>Originator's</strong> 與 <strong>Awakener's</strong> 角色特效微交易以在 <strong>Path of Exile 2</strong> 中使用。</li>
+    <li class="patch-item">啟用了 <em>Something Fishy</em>, <em>Trapped Wisps</em>, 以及 <em>Not the Bees!</em> 寶箱額外特效微交易以在 <strong>Path of Exile 2</strong> 中使用。</li>
+    <li class="patch-item">啟用了現有的 <strong>Anchor Drop Rare Finisher Effect</strong> 擊殺特效微交易以在 <strong>Path of Exile 2</strong> 中使用。</li>
+    <li class="patch-item">啟用了現有的 <strong>Torture Mace</strong> 武器外觀微交易以在 <strong>Path of Exile 2</strong> 中使用。</li>
+    <li class="patch-item">啟用了現有的 <strong>Mirage Gauntlet</strong> 微交易以在 <strong>Path of Exile 2</strong> 中使用。</li>
+    <li class="patch-item">啟用了現有的 <strong>Twilight Helmet Attachment</strong> 頭盔飾品微交易以在 <strong>Path of Exile 2</strong> 中使用。</li>
+    <li class="patch-item">啟用了現有的 <em>Coliseum Helmet Attachment</em>, <em>Swan Crest Helmet Attachment</em>, 以及 <em>Aquila Crest Helmet Attachment</em> 頭盔飾品微交易以在 <strong>Path of Exile 2</strong> 中使用。</li>
+    <li class="patch-item"><strong>Bronze</strong> 和 <strong>Silver Marionette</strong> 角色皮膚現在具有第二階，允許你隱藏角色基礎防具。</li>
+    <li class="patch-item"><strong>Exile's Pilfering Ring</strong> 與 <strong>Tracking Scroll of Crafting</strong> 現在額外追蹤 <strong>Hinekora's Lock</strong> (席瓦之鎖) 與 <strong>Fracturing Orb</strong> (破裂石) 物品，這對於高價值製作非常有用。</li>
+    <li class="patch-item"><strong>Tracking Scroll of Headhunting</strong> 已更新，現在也會追蹤部分新首領。</li>
+</ul>
+<hr class="section-divider">
+</section>
+<section class="patch-section" id="錯誤修正-bug-fixes">
+  <h2 class="section-header">錯誤修正 (Bug Fixes)</h2>
+  <ul class="level-1">
+    <li class="patch-item">修正了即使 <strong>Enduring Elixirs Pathfinder</strong> 被動點允許生命藥劑效果在滿血時保持，生命藥劑卻不一定能在滿血時使用的 Bug。</li>
+    <li class="patch-item">修正了 <strong>Ritualist's Ritual Sacrifice</strong> 技能特別在等級 20 時會獲得冷卻時間的 Bug。關於對自身使用 <strong>Ritual Sacrifice</strong> 的資訊現在已合併至該技能的描述中，而非分開在「<strong>As the Whispers Demand</strong>」被動點中描述。這純粹是描述上的變更。</li>
+    <li class="patch-item">修正了 <strong>Pounce</strong> 會向 <strong>Predator's Mark</strong> 或鑲嵌之標記提供額外標記效果的 Bug。</li>
+    <li class="patch-item">修正了阻止 <strong>Mirage Archer</strong> 與 <strong>Mirage Deadeye</strong> 在使用 <strong>Rapid Shot</strong> 與類似技能時正確旋轉以跟隨其目標的問題。</li>
+    <li class="patch-item">修正了允許某些原本不該被鑲嵌的技能被鑲嵌至 <strong>Mirage Archer</strong> 與 <strong>Mirage Deadeye</strong> 中的問題。</li>
+    <li class="patch-item">修正了導致 <strong>Devour</strong> 與 <strong>Feral Invocation</strong> 無法正確互動的 Bug。</li>
+    <li class="patch-item">修正了 <strong>Minion Instability</strong> (召喚物不穩定) 無法繞過 <strong>Last Gasp</strong> 的 Bug。</li>
+    <li class="patch-item">修正了可在地圖界外創建雷雨的 Bug。</li>
+    <li class="patch-item">修正了 <strong>Hollow Palm Technique</strong> (空手道) 無法向大部分可與任何近戰武器協同使用的技能提供其加成的問題。<strong>Hollow Palm Technique</strong> 現在改為替代你受影響之攻擊的空手基礎傷害，而非在空手基礎傷害之上增加傷害。</li>
+    <li class="patch-item">修正了可能導致空手暴擊機率修正無法應用於技能資訊彈出視窗中顯示之暴擊機率的 Bug。</li>
+    <li class="patch-item">修正了與「使投射物數量修正應用於其他數值」之機制相關的多個問題。</li>
+    <li class="patch-item">修正了在某些情況下，給予額外投射物機率的某些屬性無法應用於 <strong>Rain of Arrows</strong> (箭雨) 等利用投射物數量來判定放置物體數量的技能的問題。</li>
+    <li class="patch-item">修正了在某些情況下，額外連鎖的某些屬性無法應用於某些射線技能的問題。</li>
+    <li class="patch-item">修正了品質賦予 <strong>Comet</strong> 的加成未正常運作的 Bug。</li>
+    <li class="patch-item">修正了 <strong>Devour</strong> 與 <strong>Lightning Warp</strong> (閃電傳送) 能夠吞噬或爆破某些不該被處理的屍體的 Bug。</li>
+    <li class="patch-item">修正了 <strong>Poison Spores Support</strong> 沒有合適的商店與非同步交易價格的 Bug。</li>
+    <li class="patch-item">修正了 <strong>Burning Inscription Support</strong> 會在怪物周圍而非符文刻印上方創建燃燒地面的 Bug。</li>
+    <li class="patch-item">修正了 <strong>Low Tolerance</strong> 被動技能被錯誤地描述為提高毒藥效果（Effect）而非提高幅度（Magnitude） the Bug。</li>
+    <li class="patch-item">修正了在使用 <strong>Echoing Cry</strong> 時，<strong>Arctic Howl</strong> 會在人類形態下為你增強的 Bug。</li>
+    <li class="patch-item">修正了在某些情況下，源自 <strong>Glacial Bolt</strong> 的冰晶可能會產生奇異傷害計算的問題。</li>
+    <li class="patch-item">修正了傳奇副手 <strong>Rathpith Globe</strong> 缺少其獨特施法效果的 Bug。除非對其使用 <strong>Divine Orb</strong>，否則此問題在現有物品上不會被修復。</li>
+    <li class="patch-item">修正了 <strong>Tactician's Cannons, Ready!</strong> 被動技能在玩家使用 <strong>Molten Blast</strong>, <strong>Rolling Magma</strong>, <strong>Oil Barrage</strong> 或 <strong>Power Charged Falling Thunder</strong> 時不會導致圖騰進行攻擊的 Bug。</li>
+    <li class="patch-item">修正了傳奇魔力藥劑 <strong>Melting Maelstrom</strong> 無法擊中敵人的 Bug。</li>
+    <li class="patch-item">修正了在雙持武器時，同時使用兩把武器進行打擊的攻擊其攻擊時間會長於預期的 Bug。此處的意圖是讓這些技能使用你武器的平均攻擊時間。</li>
+    <li class="patch-item">修正了當你沒有最大能量護盾時，消耗最大能量護盾百分比的技能無法使用的 Bug。</li>
+    <li class="patch-item">修正了「賦予投射物有機率從地形連鎖」的屬性未正確計算已使用的連鎖次數，導致投射物在某些情況下可以無限地從地形連鎖的 Bug。</li>
+    <li class="patch-item">修正了在為巨人昇華的 <strong>Ancestral Empowerment</strong> 被動技能追蹤重擊（Slams）時，<strong>Forge Hammer Slams</strong> 不被計入的 Bug。</li>
+    <li class="patch-item">修正了 <strong>Heightened Charges Support</strong> 無法應用於 <strong>Flicker Strike</strong> (閃現打擊) 每次消耗暴擊充能產生的額外閃現的 Bug。</li>
+    <li class="patch-item">修正了 <strong>Living Lightning II</strong> 的等級不會根據其所輔助的寶石進行縮放的 Bug。</li>
+    <li class="patch-item">修正了 <strong>Into the Breach</strong> 無法受益於 <strong>Selfless Remnants Support Gem</strong> 的 Bug。</li>
+    <li class="patch-item">修正了多個與玩家版本的 <strong>Azmeri Spirit Possessions</strong> (由傳奇護符 <strong>Rite of Passage</strong> 創建) 未使用其技能或無法正常運作相關的 Bug。玩家版本的 <strong>Azmeri Spirit Possession</strong> 修正（由傳奇護符 <strong>Rite of Passage</strong> 創建）現在造成顯著更高的傷害，且使用其技能的頻率更高。怪物版本保持不變。</li>
+    <li class="patch-item">修正了 <strong>Dialla's Desire Lineage Support</strong> 無法向 Meta 技能寶石與物品賦予的技能寶石提供品質的 Bug。</li>
+    <li class="patch-item">修正了 <strong>Hayoxi's Fulmination Lineage Support</strong> 能夠輔助非詛咒技能的 Bug。</li>
+    <li class="patch-item">修正了與 <strong>Heavy Armour</strong> 被動技能相關的 Bug，並調整了描述使其更為清晰。</li>
+    <li class="patch-item">修正了 <strong>Shockwave Totem</strong> (衝擊波圖騰) 能夠被鑲嵌至 <strong>Ancestral Warrior Totem</strong> 中的問題。</li>
+    <li class="patch-item">修正了 <strong>Echoing Cry</strong> 能夠輔助 <strong>Ancestral Cry</strong> (先祖戰嚎) 的 Bug。</li>
+    <li class="patch-item">修正了傳奇魔力藥劑 <strong>Melting Maelstrom</strong> 無法擊中敵人的 Bug。</li>
+    <li class="patch-item">修正了 <strong>Mirage Archer</strong> 與 <strong>Deadeye</strong> 對某些技能的部分非預期輔助相容性。</li>
+    <li class="patch-item">修正了若 <strong>Infernal Legion</strong> 具有任何數值的暴擊機率，則其計算始終為暴擊的 Bug。</li>
+    <li class="patch-item">修正了部分旨在繼承玩家移動速度修正的復活型召喚物未照常繼承的問題。具體而言：<em>Smith of Kitava's Manifest Weapon</em>, <em>Rhoa Mount</em>（當玩家下坐騎時），以及由傳奇護符 <em>Hysseg's Claw</em> 召喚的鬣狗。</li>
+    <li class="patch-item">修正了在某些情況下，強化同一次技能使用的兩種效果無法如預期般疊加的問題。</li>
+    <li class="patch-item">修正了傳奇頭盔 <strong>Blood Price</strong> 的保留與其他保留結合時的極端邊界互動問題。</li>
+    <li class="patch-item">修正了部分固有觸發的技能在其他屬性中未被視為觸發技能的問題。</li>
+    <li class="patch-item">修正了導致 <strong>Grim Feast</strong> 有時無法復活召喚物的 Bug。</li>
+    <li class="patch-item">修正了投射物會無視由 <strong>Frozen Locus</strong> 創建的冰晶的 Bug。</li>
+    <li class="patch-item">修正了導致 <strong>Ice Nova</strong> (冰霜新星) 在重複時具有錯誤視覺效果與音效的 Bug。</li>
+    <li class="patch-item">修正了由傳奇長杖 <strong>The Unborn Lich</strong> 賦予的 <strong>His Winnowing Flame</strong> 技能在擊中時施加暴擊虛弱（critical weakness）的 Bug，以及其因消耗點燃而觸發的爆炸不造成傷害的另一個 Bug。</li>
+    <li class="patch-item">修正了引導技能無法被另一個引導技能中斷的 Bug。</li>
+    <li class="patch-item">修正了 <strong>Abyss Precursor Tablets</strong> 會各增加 1 個額外深淵，而非僅啟用深淵生成的 Bug。</li>
+    <li class="patch-item">修正了負韌性（Toughness）不會導致目標承受更多傷害的 Bug。現在負數值的韌性將施加等量的承受傷害提高。實際上，每 100% 的韌性會使怪物承受的傷害減半，而每 -100% 的韌性會使怪物承受的傷害翻倍。</li>
+    <li class="patch-item">修正了在多人組隊遊戲中，若玩家死於 <strong>Atziri</strong>, <strong>Red Queen</strong> 或 <strong>Xipocado, the Royal Architect</strong>，則玩家可能無法重新復活的 Bug。</li>
+    <li class="patch-item">修正了首領偶爾會將玩家推離其競技場的 Bug。真粗魯！</li>
+    <li class="patch-item">修正了阻止 <strong>The Iron Count</strong> 使用其劍插地（sword impale）技能的 Bug。</li>
+    <li class="patch-item">修正了阻止 <strong>The Bloated Miller</strong> 的反手揮擊被格擋、招架或閃避的問題。</li>
+    <li class="patch-item">修正了導致部分首領技能無法以玩家召喚物為目標的 Bug。</li>
+    <li class="patch-item">修正了導致深淵坑（<strong>Abyss Pits</strong>）有時不關閉的問題。</li>
+    <li class="patch-item">修正了地圖包含召喚陣的機率提高實際上改為提供地圖包含召喚陣之基礎機率的 Bug。</li>
+    <li class="patch-item">修正了 <strong>Rogue Exiles</strong> (流亡者) 的最大灌注（Infusion）次數高於預期的 Bug。</li>
+    <li class="patch-item">修正了在擊敗首領後，<strong>Stronghold Map</strong> 中的首領競技場力場有時無法被移除的問題。</li>
+    <li class="patch-item">修正了 <strong>Synthflesh Lab</strong> 中受實驗怪物有時會卡住的問題。</li>
+    <li class="patch-item">修正了 <strong>Beyond</strong> (超靈) 首領在首次生成時獲得高於預期的傷害減免的問題。</li>
+    <li class="patch-item">修正了無論是否消耗閃電灌注（<strong>Lightning Infusion</strong>），<strong>Arc</strong> (電弧) 都會提供額外連鎖的 Bug。</li>
+    <li class="patch-item">修正了傳奇頭盔 <strong>Atsak's Sight</strong> 上的「暴擊時施加毒藥」修正不適用於反傷（Thorns）傷害暴擊的 Bug。</li>
+    <li class="patch-item">修正了使用弩槍裝填或切換彈藥被計為攻擊的 Bug。</li>
+    <li class="patch-item">修正了許多流血機率修正不適用於反傷傷害的 Bug。</li>
+    <li class="patch-item">修正了某些觸發技能可以產生精魂（Energy）的 Bug。</li>
+    <li class="patch-item">修正了傳奇珠寶 <strong>Prism of Belief</strong> 可以骰出 <strong>Solar Orb</strong> 修正的 Bug。</li>
+    <li class="patch-item">修正了 <strong>Stoicism Support</strong> 能夠輔助非攻擊技能的 Bug。</li>
+    <li class="patch-item">修正了 <strong>Volt Support</strong> 錯誤地具有連鎖（Chaining）標籤的問題。</li>
+    <li class="patch-item">修正了 <strong>Iron Ward</strong> 的新星未被 <strong>Astral Projection Support</strong> 正確影響的 Bug。</li>
+    <li class="patch-item">修正了 <strong>Lightning Warp</strong> (閃電傳送) 優先選擇指定目標而非可撲殺敵人或電球（Ball Lightning）投射物的 Bug。</li>
+    <li class="patch-item">修正了賦予「祖先加強攻擊範圍提高」的被動技能實際上是呈相乘計算的 Bug。</li>
+    <li class="patch-item">修正了 <strong>Blink</strong>, <strong>Parry</strong> 和 <strong>Raise Shield</strong> 未被計為技能使用的 Bug。這也修正了使用 <strong>Parry</strong> 或 <strong>Raise Shield</strong> 未被計為引導技能的 Bug。</li>
+    <li class="patch-item">修正了發射額外箭矢機率（Surpassing chance to Fire an Additional Arrow）可能導致避雷針（Lightning Rod）箭矢射向錯誤位置的 Bug。</li>
+    <li class="patch-item">修正了在死於某些首領後復活時，你可能會被放置在錯誤檢查點的 Bug。</li>
+    <li class="patch-item">修正了腐化精華有時會移除該精華的 Bug。</li>
+    <li class="patch-item">修正了精華怪物群中的召喚物沒有因屬於稀有怪物群而提高屬性的 Bug。</li>
+    <li class="patch-item">修正了在遊戲暫停時，<strong>Delirium</strong> 迷霧在視覺上仍會繼續擴散的 Bug。</li>
+    <li class="patch-item">修正了沒有詞綴的物品可能出現在較低等級 <strong>Ritual</strong> 遭遇戰中的 Bug。</li>
+    <li class="patch-item">修正了在殺死首領後，你無法在 <strong>Creek Map</strong> 的首領競技場中開啟傳送門的 Bug。</li>
+    <li class="patch-item">修正了無法完成 <strong>Kriar Village</strong> 中 <strong>Roving Wisps</strong> 遭遇戰的問題。</li>
+    <li class="patch-item">修正了在首領被擊敗且召喚陣崩塌後，召喚陣仍會阻擋投射物的問題。</li>
+    <li class="patch-item">修正了當被敵人包圍時，神殿難以被選中的問題。</li>
+    <li class="patch-item">修正了在 <strong>Grelwood</strong> 釋放兜帽人後，在 <strong>Tree of Souls</strong> 附近行走可能會發生不同步（desynced）的問題。</li>
+    <li class="patch-item">修正了在野狼（Werewolf）形態下被減速時，可能導致玩家視覺上移離螢幕中心的 Bug。</li>
+    <li class="patch-item">修正了如果你在首領完成其死亡動畫之前離開該區域，以下任務將無法完成的問題：<em>Shrike Island</em>, <em>Isle of Kin</em>, <em>Whakapanu Island</em>, 以及 <em>Abandoned Prison</em>。</li>
+    <li class="patch-item">修正了可以使用單個 <strong>Soul Core</strong> 完成 <strong>Soul Core Ultimatum Encounters</strong> 的 Bug。</li>
+    <li class="patch-item">修正了一個罕見問題：在 <strong>Jiquani's Machinarium</strong> 的第一個石質祭壇中沒有 <strong>Small Soul Core</strong> 可供使用。</li>
+    <li class="patch-item">修正了當完成相應的深淵幽域時，位於 <strong>Ngakanu</strong> 的輿圖深淵圖示未能完成的問題。</li>
+    <li class="patch-item">修正了 <strong>Shoreline Hideout</strong> 輿圖圖示未完成的 Bug。</li>
+    <li class="patch-item">修正了地面效果在 <strong>Path of Mourning</strong> 中可能顯示錯誤的問題。</li>
+    <li class="patch-item">修正了玩家移動的某些來源有時會導致玩家向與預期略有不同的方向移動的問題。這在使用控制器以及使用具有內建位移的技能（例如翻滾和大多數近戰技能）時尤為明顯。</li>
+    <li class="patch-item">修正了 <strong>Parry</strong> (招架) 的描述未說明所有擊中均可被招架，而僅提及打擊與投射物的問題。</li>
+    <li class="patch-item">修正了 <strong>Varashta's Blessing Lineage Support</strong> 未說明其不修改召喚物技能的問題。這純粹是描述上的變更。</li>
+    <li class="patch-item">修正了 <strong>Herald of Blood</strong> 錯誤地說明其傷害基於最大生命的問題，它現在正確地說明其傷害基於失血量（Blood Loss）。</li>
+    <li class="patch-item">修正了來自隊友的各種擊中音效播放過大的 Bug。</li>
+    <li class="patch-item">修正了若能量護盾耗盡的原因是持續傷害（DoT），則會阻止播放能量護盾耗盡音效提示的 Bug。</li>
+    <li class="patch-item">修正了如果你分配了 <strong>Ancestral Bond</strong> (雙圖騰) 核心天賦，在技能面板中懸停在圖騰上時會錯誤地提示你「按右鍵以啟用」的 Bug。</li>
+    <li class="patch-item">修正了當你打算使用 <strong>Exalted Orb</strong> (崇高石) 時，無法對其使用崇高石的物品會被錯誤地高亮顯示的 Bug。</li>
+    <li class="patch-item">修正了連按兩次具有確認彈出視窗的傳送門或區域轉換會顯示該彈出視窗兩次的 Bug。</li>
+    <li class="patch-item">修正了首領血條在輿圖畫面上可見的問題。</li>
+    <li class="patch-item">修正了在經歷實例崩潰後，PlayStation 上的好友列表有時可能會顯示為空白的 Bug。</li>
+    <li class="patch-item">修正了升級版的 <strong>Grip of Kulemak</strong> 無法存放在傳奇倉庫頁中的 Bug。</li>
+    <li class="patch-item">修正了範圍半徑指示器在某些情況下可能會停止運作的 Bug。</li>
+    <li class="patch-item">修正了在某些語系中，不支援的字元字形顯示在千分位處的 Bug。</li>
+    <li class="patch-item">修正了一個 Bug：在切割輔助寶石時，可能導致由昇華被動技能賦予的技能被從適用技能列表中隱藏。</li>
+    <li class="patch-item">修正了在某些情況下，文字欄位中的「逐字」文字導航（Ctrl + 左/右）會錯誤地折返到文字輸入末尾的 Bug。</li>
+    <li class="patch-item">修正了若在另一個角色上完成了 <strong>Hostile Takeover</strong> 任務，則在你的角色進入第 4 章之前就會顯示第 4 章世界地圖的 Bug。</li>
+    <li class="patch-item">修正了在使用控制器玩遊戲時，市集收益頁面中無法使用「批次移動」操作的 Bug。</li>
+    <li class="patch-item">修正了在另一個物體內部復活的玩家不會被移動到安全地帶的 Bug。</li>
+    <li class="patch-item">修正了你無法為某些技能選擇「始終在不移動的情況下攻擊（<strong>Always Attack Without Moving</strong>）」的 Bug。</li>
+    <li class="patch-item">修正了在主機上玩遊戲時停用跨平台遊玩（crossplay）設定會在你於 PC 上登入該帳戶時被同步套用的問題。</li>
+    <li class="patch-item">修正了在單機雙人（couch co-op）模式下玩遊戲時，若公開隊伍僅有剛好容納他們的空間，試圖加入公開隊伍的玩家將被拒絕的 Bug。</li>
+    <li class="patch-item">修正了在單機雙人模式下玩遊戲時，如果玩家 2 建立並進入了地圖，其他玩家可能會被錯誤地踢出隊伍的 Bug。</li>
+    <li class="patch-item">修正了在單機雙人模式下玩遊戲時，無法與 <strong>Xipocado's Console</strong> 進行互動的 Bug。</li>
+    <li class="patch-item">修正了中斷並重新連接控制器會停用觸覺反饋（haptics）的 Bug。</li>
+    <li class="patch-item">修正了即使跨平台遊玩設定顯示為已啟用，該功能實際上仍可能被停用的 Bug。</li>
+    <li class="patch-item">修正了在單機雙人模式下玩遊戲時，您可以嘗試選擇兩個不同聯盟中的角色的 Bug。</li>
+    <li class="patch-item">修正了在角色選擇過濾器中選擇 <strong>Solo Self-Found</strong> 會使建立角色按鈕變灰的問題。</li>
+    <li class="patch-item">修正了低血量時的控制器觸覺回饋在遊戲暫停時仍會繼續播放的 Bug。</li>
+    <li class="patch-item">修正了在使用控制器時，退出藏身處編輯模式時可能會卡在布景中的 Bug。</li>
+    <li class="patch-item">修正了傳奇法杖 <strong>Enezun's Charge</strong> 缺少 3D 模型的問題。</li>
+    <li class="patch-item">修正了 <strong>Pounce</strong> 的寶石美術未反映其為 Meta 寶石的 Bug。</li>
+    <li class="patch-item">修正了 <strong>Consuming Tentacle Rare Finisher Effect</strong> 擊殺特效先前說明已在 Path of Exile 2 中啟用但無法裝備的問題。</li>
+    <li class="patch-item">修正了 <strong>Black Hole Rare Finisher Effect</strong> 擊殺特效先前說明已在 Path of Exile 2 中啟用但無法裝備的問題。</li>
+    <li class="patch-item">修正了 <strong>Dragon Fire Rare Finisher Effect</strong> 擊殺特效先前說明已在 Path of Exile 2 中啟用但無法裝備的問題。</li>
+    <li class="patch-item">修正了 <strong>Arachnamagus Portal Effect</strong> 傳送門特效微交易缺少其特效的 Bug。</li>
+</ul>
+<hr class="section-divider">
+<p class="paragraph">我們真的希望您會喜歡 <strong>Path of Exile 2: Return of the Ancients</strong>。感謝您的支持！</p>
+</section>
+
+            
+            <footer>
+                <p>Path of Exile 2: Return of the Ancients — 版本更新 0.5.0 完整改版資訊</p>
+                <p class="footer-poe-note">本文件僅供社群交流及玩家參考，遊戲商標及改版原文版權均屬 Grinding Gear Games 所有。</p>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Back to top button -->
+    <button class="back-to-top" id="back-to-top" title="回到頂部">
+        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+    </button>
+
+    <!-- Custom Functionality Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.patch-section');
+            const searchInput = document.getElementById('search-input');
+            const searchCount = document.getElementById('search-count');
+            const themeToggle = document.getElementById('theme-toggle');
+            const backToTopBtn = document.getElementById('back-to-top');
+            const sidebarToggle = document.getElementById('sidebar-toggle');
+            const sidebarClose = document.getElementById('sidebar-close');
+            const expandCollapseAllBtn = document.getElementById('expand-collapse-all');
+            const tocContainer = document.getElementById('dynamic-toc');
+            
+            // 1. DYNAMIC TOC GENERATION
+            sections.forEach(section => {
+                const h2 = section.querySelector('.section-header');
+                if (!h2) return;
+                
+                const id = section.id;
+                const text = h2.textContent.trim();
+                
+                const li = document.createElement('li');
+                li.className = 'toc-item';
+                
+                const a = document.createElement('a');
+                a.href = '#' + id;
+                a.textContent = text;
+                a.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+                    if (window.innerWidth <= 1024) {
+                        document.body.classList.remove('sidebar-open');
+                    }
+                });
+                
+                li.appendChild(a);
+                
+                // Add subsections (H3)
+                const h3s = section.querySelectorAll('.subsection-header');
+                if (h3s.length > 0) {
+                    const subUl = document.createElement('ul');
+                    subUl.className = 'toc-sublist';
+                    h3s.forEach(h3 => {
+                        const subId = h3.id;
+                        const subText = h3.textContent.trim();
+                        
+                        const subLi = document.createElement('li');
+                        subLi.className = 'toc-item';
+                        
+                        const subA = document.createElement('a');
+                        subA.href = '#' + subId;
+                        subA.textContent = subText;
+                        subA.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            document.getElementById(subId).scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            if (window.innerWidth <= 1024) {
+                                document.body.classList.remove('sidebar-open');
+                            }
+                        });
+                        
+                        subLi.appendChild(subA);
+                        subUl.appendChild(subLi);
+                    });
+                    li.appendChild(subUl);
+                }
+                
+                tocContainer.appendChild(li);
+            });
+
+            // 2. COLLAPSIBLE SECTIONS
+            // Initialize H2s with collapse indicators
+            sections.forEach(section => {
+                const h2 = section.querySelector('.section-header');
+                if (!h2) return;
+                
+                const indicator = document.createElement('span');
+                indicator.className = 'collapse-indicator';
+                indicator.innerHTML = '<svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>';
+                h2.appendChild(indicator);
+                
+                h2.addEventListener('click', () => {
+                    const listContainer = section.querySelector('ul.level-1');
+                    const paragraphs = section.querySelectorAll('.paragraph');
+                    const subheaders = section.querySelectorAll('.subsection-header');
+                    const formulas = section.querySelectorAll('.formula-block');
+                    const alertBoxes = section.querySelectorAll('.alert-box');
+                    
+                    h2.classList.toggle('collapsed');
+                    
+                    const hide = h2.classList.contains('collapsed');
+                    
+                    if (listContainer) listContainer.classList.toggle('collapsed-items', hide);
+                    paragraphs.forEach(p => p.classList.toggle('collapsed-items', hide));
+                    subheaders.forEach(h => h.classList.toggle('collapsed-items', hide));
+                    formulas.forEach(f => f.classList.toggle('collapsed-items', hide));
+                    alertBoxes.forEach(ab => ab.classList.toggle('collapsed-items', hide));
+                });
+            });
+
+            // Global expand/collapse toggle
+            let allExpanded = true;
+            expandCollapseAllBtn.addEventListener('click', () => {
+                allExpanded = !allExpanded;
+                sections.forEach(section => {
+                    const h2 = section.querySelector('.section-header');
+                    if (!h2) return;
+                    
+                    const listContainer = section.querySelector('ul.level-1');
+                    const paragraphs = section.querySelectorAll('.paragraph');
+                    const subheaders = section.querySelectorAll('.subsection-header');
+                    const formulas = section.querySelectorAll('.formula-block');
+                    const alertBoxes = section.querySelectorAll('.alert-box');
+                    
+                    if (allExpanded) {
+                        h2.classList.remove('collapsed');
+                        if (listContainer) listContainer.classList.remove('collapsed-items');
+                        paragraphs.forEach(p => p.classList.remove('collapsed-items'));
+                        subheaders.forEach(h => h.classList.remove('collapsed-items'));
+                        formulas.forEach(f => f.classList.remove('collapsed-items'));
+                        alertBoxes.forEach(ab => ab.classList.remove('collapsed-items'));
+                    } else {
+                        h2.classList.add('collapsed');
+                        if (listContainer) listContainer.classList.add('collapsed-items');
+                        paragraphs.forEach(p => p.classList.add('collapsed-items'));
+                        subheaders.forEach(h => h.classList.add('collapsed-items'));
+                        formulas.forEach(f => f.classList.add('collapsed-items'));
+                        alertBoxes.forEach(ab => ab.classList.add('collapsed-items'));
+                    }
+                });
+            });
+
+            // 3. SCROLLSPY (Highlight active TOC link)
+            const scrollspyOptions = {
+                root: null,
+                rootMargin: '-80px 0px -80% 0px',
+                threshold: 0
+            };
+            
+            const spyObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.id;
+                        document.querySelectorAll('.toc-item a').forEach(a => {
+                            if (a.getAttribute('href') === '#' + id) {
+                                a.classList.add('active');
+                                // Ensure active item is visible in TOC sidebar
+                                a.scrollIntoView({ behavior: 'auto', block: 'nearest' });
+                            } else {
+                                a.classList.remove('active');
+                            }
+                        });
+                    }
+                });
+            }, scrollspyOptions);
+            
+            sections.forEach(section => spyObserver.observe(section));
+            
+            // Also observe H3 subsections
+            document.querySelectorAll('.subsection-header').forEach(sub => spyObserver.observe(sub));
+
+            // 4. THEME TOGGLE
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            updateThemeButton(savedTheme);
+            
+            themeToggle.addEventListener('click', () => {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                updateThemeButton(newTheme);
+            });
+            
+            function updateThemeButton(theme) {
+                if (theme === 'light') {
+                    themeToggle.innerHTML = '<svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+                    themeToggle.setAttribute('title', '切換至深色護眼模式');
+                } else {
+                    themeToggle.innerHTML = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></svg>';
+                    themeToggle.setAttribute('title', '切換至淺色護眼模式');
+                }
+            }
+
+            // 5. SIDEBAR MOBILE TOGGLES
+            sidebarToggle.addEventListener('click', () => {
+                document.body.classList.add('sidebar-open');
+            });
+            
+            sidebarClose.addEventListener('click', () => {
+                document.body.classList.remove('sidebar-open');
+            });
+            
+            // Close sidebar when clicking outside of it on mobile
+            document.addEventListener('click', (e) => {
+                if (window.innerWidth <= 1024 && 
+                    document.body.classList.contains('sidebar-open') && 
+                    !e.target.closest('.sidebar') && 
+                    !e.target.closest('#sidebar-toggle')) {
+                    document.body.classList.remove('sidebar-open');
+                }
+            });
+
+            // 6. BACK TO TOP BUTTON
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 400) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                }
+            });
+            
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // 7. REAL-TIME SEARCH FILTER ENGINE
+            searchInput.addEventListener('input', () => {
+                const query = searchInput.value.trim().toLowerCase();
+                
+                // Clear previous highlights
+                const highlights = document.querySelectorAll('.search-highlight');
+                highlights.forEach(hl => {
+                    const parent = hl.parentNode;
+                    parent.replaceChild(document.createTextNode(hl.textContent), hl);
+                    parent.normalize();
+                });
+                
+                if (query === '') {
+                    // Show everything and reset
+                    sections.forEach(section => {
+                        section.style.display = '';
+                        section.classList.remove('has-no-match');
+                        
+                        const elements = section.querySelectorAll('.patch-item, .paragraph, .subsection-header, .formula-block, .alert-box, ul.level-1');
+                        elements.forEach(el => {
+                            el.style.display = '';
+                        });
+                        
+                        const h2 = section.querySelector('.section-header');
+                        if (h2 && h2.classList.contains('collapsed')) {
+                            // Keep collapse state respected
+                            const listContainer = section.querySelector('ul.level-1');
+                            const paragraphs = section.querySelectorAll('.paragraph');
+                            const subheaders = section.querySelectorAll('.subsection-header');
+                            const formulas = section.querySelectorAll('.formula-block');
+                            const alertBoxes = section.querySelectorAll('.alert-box');
+                            
+                            if (listContainer) listContainer.classList.add('collapsed-items');
+                            paragraphs.forEach(p => p.classList.add('collapsed-items'));
+                            subheaders.forEach(h => h.classList.add('collapsed-items'));
+                            formulas.forEach(f => f.classList.add('collapsed-items'));
+                            alertBoxes.forEach(ab => ab.classList.add('collapsed-items'));
+                        }
+                    });
+                    searchCount.textContent = '';
+                    return;
+                }
+                
+                let totalMatches = 0;
+                
+                sections.forEach(section => {
+                    let sectionHasMatch = false;
+                    
+                    // Filter normal list items
+                    const items = section.querySelectorAll('.patch-item');
+                    items.forEach(item => {
+                        const text = item.textContent.toLowerCase();
+                        if (text.includes(query)) {
+                            item.style.display = '';
+                            sectionHasMatch = true;
+                            totalMatches++;
+                            highlightNodeText(item, query);
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                    
+                    // Filter normal paragraphs
+                    const paragraphs = section.querySelectorAll('.paragraph');
+                    paragraphs.forEach(p => {
+                        const text = p.textContent.toLowerCase();
+                        if (text.includes(query)) {
+                            p.style.display = '';
+                            sectionHasMatch = true;
+                            totalMatches++;
+                            highlightNodeText(p, query);
+                        } else {
+                            p.style.display = 'none';
+                        }
+                    });
+                    
+                    // Handle subheaders and sublists
+                    const subheaders = section.querySelectorAll('.subsection-header');
+                    subheaders.forEach(h => {
+                        const text = h.textContent.toLowerCase();
+                        if (text.includes(query)) {
+                            h.style.display = '';
+                            sectionHasMatch = true;
+                            highlightNodeText(h, query);
+                        } else {
+                            h.style.display = sectionHasMatch ? '' : 'none';
+                        }
+                    });
+
+                    // Ensure alert boxes are shown/hidden appropriately
+                    const alertBoxes = section.querySelectorAll('.alert-box');
+                    alertBoxes.forEach(ab => {
+                        const text = ab.textContent.toLowerCase();
+                        if (text.includes(query)) {
+                            ab.style.display = '';
+                            sectionHasMatch = true;
+                            highlightNodeText(ab, query);
+                        } else {
+                            ab.style.display = 'none';
+                        }
+                    });
+                    
+                    if (sectionHasMatch) {
+                        section.style.display = '';
+                        section.classList.remove('has-no-match');
+                        
+                        // Force items open if they are collapsed but contain a search match
+                        const h2 = section.querySelector('.section-header');
+                        if (h2 && h2.classList.contains('collapsed')) {
+                            h2.classList.remove('collapsed');
+                            const listContainer = section.querySelector('ul.level-1');
+                            const paragraphs = section.querySelectorAll('.paragraph');
+                            const subheaders = section.querySelectorAll('.subsection-header');
+                            const formulas = section.querySelectorAll('.formula-block');
+                            const alertBoxes = section.querySelectorAll('.alert-box');
+                            
+                            if (listContainer) listContainer.classList.remove('collapsed-items');
+                            paragraphs.forEach(p => p.classList.remove('collapsed-items'));
+                            subheaders.forEach(h => h.classList.remove('collapsed-items'));
+                            formulas.forEach(f => f.classList.remove('collapsed-items'));
+                            alertBoxes.forEach(ab => ab.classList.remove('collapsed-items'));
+                        }
+                    } else {
+                        section.style.display = 'none';
+                        section.classList.add('has-no-match');
+                    }
+                });
+                
+                searchCount.textContent = `找到 ${totalMatches} 筆結果`;
+            });
+            
+            function highlightNodeText(element, query) {
+                const walk = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, null, false);
+                let node;
+                const nodesToReplace = [];
+                
+                while (node = walk.nextNode()) {
+                    if (node.nodeValue.toLowerCase().includes(query)) {
+                        nodesToReplace.push(node);
+                    }
+                }
+                
+                nodesToReplace.forEach(textNode => {
+                    const text = textNode.nodeValue;
+                    const regex = new RegExp('(' + escapeRegExp(query) + ')', 'gi');
+                    const span = document.createElement('span');
+                    span.innerHTML = text.replace(regex, '<mark class="search-highlight">$1</mark>');
+                    textNode.parentNode.replaceChild(span, textNode);
+                    
+                    // Unwrap the temporary wrapper span
+                    const childNodes = Array.from(span.childNodes);
+                    childNodes.forEach(child => {
+                        span.parentNode.insertBefore(child, span);
+                    });
+                    span.parentNode.removeChild(span);
+                });
+            }
+            
+            function escapeRegExp(string) {
+                return string.replace(/[.*+?^$/{}(|)[]\\]/g, '\\$&');
+            }
+        });
+    </script>
+</body>
+</html>
