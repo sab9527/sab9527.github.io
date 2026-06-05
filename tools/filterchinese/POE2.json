@@ -1,5 +1,197 @@
 [
   [
+    "To update your filter, just load it. This will automatically merge your customization into the new filter version.",
+    "要更新過濾器，只需載入它即可。系統會自動將您的自訂設定合併到新版本的篩選器中。"
+  ],
+  [
+    "Auto-Adjust to your class/build",
+    "自動根據您的職業/流派進行調整"
+  ],
+  [
+    "ONLY affects campaign areas.",
+    "僅影響章節區域。"
+  ],
+  [
+    "Finetune the loot for your leveling build.",
+    "微調您升級流派的掉落物。"
+  ],
+  [
+    "ONLY affects endgame areas..",
+    "僅影響終局區域。"
+  ],
+  [
+    "Adjust loot for your build&trade needs.",
+    "根據您的流派與交易需求調整掉落物。"
+  ],
+  [
+    "Basic supplies used to perform common operations. They're not worth much, but are important nonetheless. People frequently hide them or buy them in bulk.",
+    "用於進行常見製作的基本物資。它們價值不高，但依然很重要。人們經常隱藏它們或大量購買。"
+  ],
+  [
+    "Hover over the scroll above for more information! ( recommended for new players )",
+    "將滑鼠懸停在上方卷軸上以獲取更多資訊！（推薦新手玩家）"
+  ],
+  [
+    "RUNES OF ALDUR DROPS",
+    "阿德爾符文相關"
+  ],
+  [
+    "Many items are undiscovered (we only know the names). These come with a new highlight. Keep the filter updated frequently, until we know more!",
+    "許多物品尚未被發現（我們僅知道名稱）。這些物品會有新的高亮顯示。請經常更新過濾器，直到我們了解更多！"
+  ],
+  [
+    "You can find gold all throughout the game. Use it to shop at vendors or respec your skill tree.",
+    "您可以在遊戲各處找到金幣。使用它向商人購買物品或重置您的天賦樹。"
+  ],
+  [
+    "All top value items have the same white background and drop-sound. They also come with a red beam and a huge red star on the minimap. These items include top tier currencies, valuable uniques, great divination cards, reliquary keys and everything else that is worth a LOT.",
+    "所有最高價值的物品都具有相同的白色背景與掉落音效。它們還帶有紅色光束和小地圖上的巨大紅色星號。這些物品包含頂級通貨、有價值的傳奇物品、優秀的命運卡、遺物鑰匙以及所有價值連城的東西。"
+  ],
+  [
+    "Breach and delirium splinters increase their highlight with stack size",
+    "裂痕與譫妄裂片的顯示會隨著堆疊數量增加"
+  ],
+  [
+    "Uncut skill gems are highlighted based on the arealevel and their gemlevel. You'll see them clearly during the campaign. In the endgame high level ones receive extra highlight!",
+    "未切割的技能寶石會根據區域等級及其寶石等級進行高亮。您在劇情期間能清楚地看到它們。在終局中，高等級的寶石會獲得額外高亮！"
+  ],
+  [
+    "Waystones gain more highlight as they gain tiers. High tier (11+) and top tier (16) Waystones have different sounds. The filter highlights waystone tier upgrades with an extra color.",
+    "換界石的顯示會隨著階級提升而增加。高階(11+)與頂階(16)換界石有不同的音效。過濾器會以額外顏色顯示換界石的階級升級。"
+  ],
+  [
+    "The filter highlights Waystones drops of a higher tier than the one you're in with extra highlight (disabled on some styles)",
+    "過濾器會以額外高亮顯示掉落階級高於您當前所在階級的換界石（在某些風格中已停用）"
+  ],
+  [
+    "Rare Items Progression",
+    "稀有物品進度"
+  ],
+  [
+    "As you enter higher waystones new basetypes can drop. The filter will automatically highlight lower level basetypes less. The 3 basetypes on the left side have the levels 65-70-80. The higher level bow is less useful by comparison to other available basetypes",
+    "當您進入更高階的換界石時，可能會掉落新的基底類型。過濾器會自動減少較低等級基底的顯示。左側的3種基底等級為65-70-80。相較於其他可用的基底，高階的弓較不實用"
+  ],
+  [
+    "Rare Item Ranking",
+    "稀有物品排名"
+  ],
+  [
+    "The filter has a ranking system for all gear-basetypes. Better basetypes receive more highlight, while worse ones are hidden on higher strictnesses (NOTE: transparency rendering is a bit weird on filterblade, works better ingame).",
+    "過濾器對所有裝備基底類型都有排名系統。較好的基底會獲得更多高亮，而較差的則在較高嚴格度下被隱藏（注意：透明度在 FilterBlade 上的渲染有些奇怪，在遊戲中效果較好）。"
+  ],
+  [
+    "Jewellery has a ranking of it's own and distinct highlight and strictness progression",
+    "飾品有其自身的排名，以及獨特的高亮顯示與嚴格度進度"
+  ],
+  [
+    "Itemlevel 82 rares are capable of rolling the best available mods. These are highlighted by a slightly orange hue.",
+    "物品等級 82 的稀有物品能夠擲出最佳的可用詞綴。這些物品會以略帶橙色的色調高亮顯示。"
+  ],
+  [
+    "Rare & Magic items can drop with a higher 'tier'. The tier affects the initially rolled mods. Higher tier items are strongly biased to have higher mod values. Non-tiered items CAN be just as good, but are way less likely to be so.",
+    "稀有與魔法物品掉落時可能帶有更高的「階級」。階級會影響最初擲出的詞綴。高階級物品極度傾向擁有較高的詞綴數值。非階級物品「可能」同樣好，但機率要低得多。"
+  ],
+  [
+    "Useful normal and magic bases get highlighted in the endgame in order to attempt craft them up. ItemLevel 82 (highest relevant itemlevel) bases also have an orange border.",
+    "有用的普通與魔法基底會在終局高亮顯示，以便嘗試進行工藝製作。物品等級 82（最高相關物等）基底也會有橙色邊框。"
+  ],
+  [
+    "Jewels in PoE2 can be quite valuable and come with lucrative corruption options. The filter highlights this appropriately.",
+    "PoE2 中的珠寶可能相當有價值，並帶有豐厚的瓦爾腐化選項。過濾器會適當地高亮顯示這點。"
+  ],
+  [
+    "ItemLevel 83 charms can roll some exclusive mods. These are highlighted with an orange border, similar to most ILVL 82-83 items.",
+    "物品等級 83 的咒符能擲出一些專屬詞綴。這些物品會以橙色邊框高亮顯示，類似於大多數物等 82-83 的物品。"
+  ],
+  [
+    "ItemLevel 83 flasks can roll some exclusive mods. These are highlighted with an orange border, similar to most ILVL 82-83 items.",
+    "物品等級 83 的藥劑能擲出一些專屬詞綴。這些物品會以橙色邊框高亮顯示，類似於大多數物等 82-83 的物品。"
+  ],
+  [
+    "Useful currency that drops while leveling. These rules have priority over normal currency rules, but only apply during campaign zones. Great for new leagues!",
+    "升級時掉落的有用通貨。這些規則優先於一般通貨規則，但僅適用於劇情區域。非常適合新聯盟！"
+  ],
+  [
+    "Campaign Specific Rules",
+    "章節特定規則"
+  ],
+  [
+    "Certain items like jewellery, magic boots (chance for movementspeed) are highlighted more during the campaign",
+    "某些物品（如飾品、可能帶有移動速度的魔法鞋）在章節期間會獲得更多高亮顯示"
+  ],
+  [
+    "Leveling Flasks",
+    "章節藥劑"
+  ],
+  [
+    "Overleveling Items",
+    "等級過高物品"
+  ],
+  [
+    "During the campaign the itemfilter will remove normal (and on higher strictnesses magic) bases that are completely overleveled and no longer have a good use case.",
+    "在章節期間，物品過濾器將移除完全等級過高且不再有良好用途的普通（以及在較高嚴格度下的魔法）基底。"
+  ],
+  [
+    "Change visibility by clicking the checkmark. Expand sections and Drag&Drop items to change tiers.",
+    "點擊勾號即可更改可見度。展開區塊並拖放物品以更改階級。"
+  ],
+  [
+    "Note that there are also additional rules for currency during the campaign.",
+    "請注意，章節期間還有額外的通貨規則。"
+  ],
+  [
+    "An 'Orb of Chance' has a chance to turn a normal item into a unique. The chances for that are fairly low, but it can be pretty thrilling and profitable if you hit the lottery. The following section suggests potential chancing bases.",
+    "「機會石」有機會將普通物品變成傳奇物品。其機率相當低，但如果中獎，會非常令人興奮且有利可圖。以下區塊建議了潛在的點機會石基底。"
+  ],
+  [
+    "Only non-boss drops can be chanced. Acquiring certain bases is harder than finding the chance orbs. So some very profitable chance bases can be VERY expensive:",
+    "只有非首領掉落物可以被機會石點出。獲得某些基底比找到機會石更難。因此，一些非常有利可圖的機會石基底可能會「非常」昂貴："
+  ],
+  [
+    "More gem tiers and a better visual will be added once more is known about these gems!",
+    "一旦我們對這些寶石有更多了解，將會加入更多寶石階級與更好的視覺效果！"
+  ],
+  [
+    "Current league: Return of the Ancients",
+    "當前聯盟：上古回歸"
+  ],
+  [
+    "Open the rule and select the weapons you DON'T want. Otherwise it'll hide ALL weapons.",
+    "展開規則並選擇您「不想要」的武器。否則它將隱藏「所有」武器。"
+  ],
+  [
+    "Augment the filter with entirely new rules, such as 'hide all belts', 'highlight all bows in a special color', 'hide all evasion type armors, gloves, shields, and boots' or 'show all corrupted rares'.",
+    "使用全新規則擴充過濾器，例如「隱藏所有腰帶」、「以特殊顏色高亮所有弓」、「隱藏所有閃避類型的護甲、手套、盾牌與鞋子」或「顯示所有已腐化的稀有物品」。"
+  ],
+  [
+    "Exceptional: Quality/Sockets",
+    "例外：品質/插槽"
+  ],
+  [
+    "If an S or A tier unique base drops with exceptional number of sockets or quality it's highlighted by this rule. This rule will be further refined when more data is known",
+    "如果 S 級或 A 級的傳奇基底掉落時帶有例外的插槽數量或品質，將會被此規則高亮顯示。當獲得更多數據後，此規則將會進一步完善"
+  ],
+  [
+    "Items with exceptional amount of quality or sockets and potentially very valuable bases are highlighted by these rules",
+    "帶有例外數量的品質或插槽，且潛在價值極高的基底物品將被這些規則高亮顯示"
+  ],
+  [
+    "Any other normal, magic or rare exceptional item will get caught by the rules below.",
+    "任何其他普通、魔法或稀有的例外物品將被以下規則捕捉。"
+  ],
+  [
+    "Double Corrupted Items",
+    "雙重腐化物品"
+  ],
+  [
+    "Identified items with one or multiple desired T1 mods are highlighted here. There intent is to be used for recombinations",
+    "此處高亮顯示帶有一個或多個理想 T1 詞綴的已鑑定物品。它們的用途是用於重組"
+  ],
+  [
+    "Map Fragments & Tablets",
+    "地圖碎片與石板"
+  ],
+  [
     "COMMON CURRENCIES",
     "常用通貨"
   ],
@@ -9165,7 +9357,7 @@
   ],
   [
     "Charms",
-    "咒語"
+    "護符"
   ],
   [
     "Portentia%2C the Foul",
