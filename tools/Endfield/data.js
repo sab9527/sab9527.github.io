@@ -85,7 +85,8 @@ const weapons = [
     { name: "霧中微光", mainStat: "意志提升", subStat: "電磁傷害提升", skill: "效益", rarity: "六星", type: "施術單元" },
     { name: "赤纓", mainStat: "力量提升", subStat: "攻擊提升", skill: "巧技", rarity: "六星", type: "雙手劍" },
     { name: "幻想苦痛", mainStat: "力量提升", subStat: "源石技藝強度提升", skill: "/", rarity: "六星", type: "雙手劍" },
-    { name: "燈火使命", mainStat: "敏捷提升", subStat: "終結技充能效率提升", skill: "效益", rarity: "六星", type: "長柄武器" }
+    { name: "燈火使命", mainStat: "敏捷提升", subStat: "終結技充能效率提升", skill: "效益", rarity: "六星", type: "長柄武器" },
+    { name: "鍍紅祝福", mainStat: "敏捷提升", subStat: "灼熱傷害提升", skill: "流轉", rarity: "六星", type: "長柄武器" }
 
 ];
 
