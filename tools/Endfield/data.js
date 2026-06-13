@@ -83,7 +83,9 @@ const weapons = [
     { name: "狼之緋", mainStat: "敏捷提升", subStat: "暴擊率提升", skill: "切骨", rarity: "六星", type: "單手劍" },
     { name: "孤舟", mainStat: "意志提升", subStat: "攻擊提升", skill: "壓制", rarity: "六星", type: "施術單元" },
     { name: "霧中微光", mainStat: "意志提升", subStat: "電磁傷害提升", skill: "效益", rarity: "六星", type: "施術單元" },
-    { name: "赤纓", mainStat: "力量提升", subStat: "攻擊提升", skill: "巧技", rarity: "六星", type: "雙手劍" }
+    { name: "赤纓", mainStat: "力量提升", subStat: "攻擊提升", skill: "巧技", rarity: "六星", type: "雙手劍" },
+    { name: "幻想苦痛", mainStat: "力量提升", subStat: "源石技藝強度提升", skill: "/", rarity: "六星", type: "雙手劍" },
+    { name: "燈火使命", mainStat: "敏捷提升", subStat: "終結技充能效率提升", skill: "效益", rarity: "六星", type: "長柄武器" }
 
 ];
 
