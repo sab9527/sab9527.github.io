@@ -82,7 +82,8 @@ const weapons = [
     { name: "落草", mainStat: "敏捷提升", subStat: "攻擊提升", skill: "迸發", rarity: "六星", type: "手銃" },
     { name: "狼之緋", mainStat: "敏捷提升", subStat: "暴擊率提升", skill: "切骨", rarity: "六星", type: "單手劍" },
     { name: "孤舟", mainStat: "意志提升", subStat: "攻擊提升", skill: "壓制", rarity: "六星", type: "施術單元" },
-    { name: "霧中微光", mainStat: "意志提升", subStat: "電磁傷害提升", skill: "效益", rarity: "六星", type: "施術單元" }
+    { name: "霧中微光", mainStat: "意志提升", subStat: "電磁傷害提升", skill: "效益", rarity: "六星", type: "施術單元" },
+    { name: "赤纓", mainStat: "力量提升", subStat: "攻擊提升", skill: "巧技", rarity: "六星", type: "雙手劍" }
 
 ];
 
@@ -253,6 +254,28 @@ const stages = {
             "附術",
             "夜幕",
             "流轉",
+            "效益"
+        ]
+    },
+    "藏劍谷": {
+        subStats: [
+            "攻擊提升",
+            "生命提升",
+            "物理傷害提升",
+            "灼熱傷害提升",
+            "寒冷傷害提升",
+            "自然傷害提升",
+            "源石技藝強度提升",
+            "治療效率提升"
+        ],
+        skills: [
+            "強攻",
+            "追襲",
+            "昂揚",
+            "巧技",
+            "醫療",
+            "切骨",
+            "迸發",
             "效益"
         ]
     }
