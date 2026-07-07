@@ -178,6 +178,44 @@
         </div>
     </footer>
 
+    <!-- 停止更新公告彈窗 -->
+    <div class="modal-overlay" id="updateNoticeModal" style="display: flex;">
+        <div class="modal" style="max-width: 500px;">
+            <div class="modal-header">
+                <h3>重要公告</h3>
+                <button class="modal-close" id="updateNoticeModalClose">&times;</button>
+            </div>
+            <div class="modal-body" style="text-align: center; padding: 2rem 1rem;">
+                <p style="font-size: 1.2rem; color: var(--text-primary); margin-bottom: 1rem;">因有其他的優秀工具可使用，本網頁停止更新。</p>
+                <p style="font-size: 1rem; color: var(--text-secondary);">如有興趣接手專案可連絡我。</p>
+                <button id="updateNoticeModalOk"
+                    style="margin-top: 2rem; padding: 0.6rem 2.5rem; background: var(--accent); color: #000; border: none; font-weight: bold; cursor: pointer; border-radius: 4px; font-family: inherit; font-size: 1rem; transition: transform 0.2s;">我知道了</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const noticeModal = document.getElementById('updateNoticeModal');
+            const closeBtn = document.getElementById('updateNoticeModalClose');
+            const okBtn = document.getElementById('updateNoticeModalOk');
+
+            const closeModal = () => {
+                noticeModal.style.display = 'none';
+            };
+
+            closeBtn.addEventListener('click', closeModal);
+            okBtn.addEventListener('click', closeModal);
+
+            // 點擊背景也可關閉
+            noticeModal.addEventListener('click', (e) => {
+                if (e.target === noticeModal) {
+                    closeModal();
+                }
+            });
+        });
+    </script>
+
     <!-- 載入資料和程式碼 -->
     <script src="data.js"></script>
     <script src="app.js"></script>
