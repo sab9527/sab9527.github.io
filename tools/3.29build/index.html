@@ -6,21 +6,33 @@
     <meta name="description" content="每次開啟都讀取最新 Google 表單的 POE 開季拓荒流派清單。" />
     <title>POE 開季拓荒流派指南</title>
     <link rel="icon" href="./public/favicon.svg" />
-    <link rel="stylesheet" href="./styles.css?v=20260721-3" />
+    <link rel="stylesheet" href="./styles.css?v=20260721-4" />
     <script defer src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
-    <script defer src="./app.js?v=20260721-2"></script>
+    <script defer src="./app.js?v=20260721-3"></script>
   </head>
   <body>
     <header class="masthead">
+      <nav class="topbar" aria-label="主要導覽">
+        <a class="brand" href="#top" id="top">
+          <span class="brand-mark" aria-hidden="true">◆</span>
+          <span>EXILE ARCHIVE <small>拓荒流派指南</small></span>
+        </a>
+        <a class="source-link" href="https://docs.google.com/spreadsheets/d/144qCjaZPTZalqZ96NvHRV-a7-M0pKoqypbb-Anpm4SU/edit?gid=0" target="_blank" rel="noreferrer">查看原始表單 ↗</a>
+      </nav>
       <div class="masthead__inner">
-        <div>
+        <div class="hero-copy">
           <p class="eyebrow">PATH OF EXILE · LEAGUE STARTER</p>
-          <h1>開季拓荒流派指南</h1>
-          <p class="subtitle">保留原表格的閱讀節奏，補上搜尋、篩選與影片預覽。</p>
+          <h1>開季拓荒<span>流派指南</span></h1>
+          <p class="subtitle">從角色、標籤與實戰評價快速找到下一隻拓荒角色。每次開啟都直接取得蛋捲公開表單的最新資料。</p>
+          <div class="masthead__meta">
+            <span id="status"><i></i>正在取得最新表單…</span>
+            <button id="hero-refresh" type="button">重新整理</button>
+          </div>
         </div>
-        <div class="masthead__meta">
-          <span id="status"><i></i>正在取得最新表單…</span>
-          <a href="https://docs.google.com/spreadsheets/d/144qCjaZPTZalqZ96NvHRV-a7-M0pKoqypbb-Anpm4SU/edit?gid=0" target="_blank" rel="noreferrer">原始表單 ↗</a>
+        <div class="ascendancy-showcase" aria-hidden="true">
+          <img alt="" decoding="async" src="https://web.poecdn.com/protected/image/promo/ascendancy/classes/Elementalist.png?key=xTQG41cKmhvNFrwu_cN7CQ" />
+          <img alt="" decoding="async" src="https://web.poecdn.com/protected/image/promo/ascendancy/classes/Slayer.png?key=GXdlR4sUMV-AsfrB9_hjHQ" />
+          <img alt="" decoding="async" src="https://web.poecdn.com/protected/image/promo/ascendancy/classes/Deadeye.png?key=cXCSUiBfopA9ApEMtnYbLw" />
         </div>
       </div>
     </header>
@@ -45,6 +57,14 @@
           <small>資料在每次開啟頁面時更新</small>
         </div>
       </section>
+
+      <div class="section-heading">
+        <span>01</span>
+        <div>
+          <p class="eyebrow">BUILD DATABASE</p>
+          <h2>拓荒流派資料庫</h2>
+        </div>
+      </div>
 
       <section class="toolbar" aria-label="流派篩選">
         <label class="search-box">
@@ -109,6 +129,9 @@
       </section>
     </main>
 
-    <footer>資料僅供拓荒選擇參考 · 原表作者：蛋捲</footer>
+    <footer>
+      資料僅供拓荒選擇參考 · 原表作者：蛋捲 · 圖片來源：
+      <a href="https://www.pathofexile.com/ascendancy/classes" target="_blank" rel="noreferrer">Path of Exile</a>
+    </footer>
   </body>
 </html>

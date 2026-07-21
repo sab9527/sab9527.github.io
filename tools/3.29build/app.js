@@ -8,6 +8,33 @@
     "💎": "綁傳奇", "🩸": "持續傷害", "👻": "召喚", "💣": "陷阱地雷",
     "🤡": "搞耍", "🗿": "圖騰", "🎇": "華麗",
   };
+  const CLASS_COLORS = {
+    "女巫": "#9f8cff", "聖堂武僧": "#e7c66b", "決鬥者": "#e36d5b",
+    "遊俠": "#69c693", "野蠻人": "#d98252", "暗影刺客": "#6ea8d9", "貴族": "#d7b7d9",
+  };
+  const ASCENDANCY_ART = {
+    "元素使": "https://web.poecdn.com/protected/image/promo/ascendancy/classes/Elementalist.png?key=xTQG41cKmhvNFrwu_cN7CQ",
+    "死靈師": "https://web.poecdn.com/protected/image/promo/ascendancy/classes/Necromancer.png?key=elS-LvLYJzjIbJuOdVP5_g",
+    "秘術家": "https://web.poecdn.com/protected/image/promo/ascendancy/classes/Occultist.png?key=mV3c0qbitkd9QJL1ZGZVXQ",
+    "刺客": "https://web.poecdn.com/protected/image/promo/ascendancy/classes/Assassin.png?key=ZxaRbd_wAQJa1Ma_Yu-_cA",
+    "破壞者": "https://web.poecdn.com/protected/image/promo/ascendancy/classes/Saboteur.png?key=j7PBS-x41WkhF32aQOT0bA",
+    "詐欺師": "https://web.poecdn.com/protected/image/promo/ascendancy/classes/Trickster.png?key=xsXRx0faBRn5OiV5ghrnGQ",
+    "追獵者": "https://web.poecdn.com/protected/image/promo/ascendancy/classes/Pathfinder.png?key=tdQf9JweYNzFfy3FgH9qpQ",
+    "守望者": "https://web.poecdn.com/protected/image/promo/ascendancy/classes/Warden.png?key=41OaJS3vcJUhYFnvSRCfUw",
+    "銳眼": "https://web.poecdn.com/protected/image/promo/ascendancy/classes/Deadeye.png?key=cXCSUiBfopA9ApEMtnYbLw",
+    "處刑者": "https://web.poecdn.com/protected/image/promo/ascendancy/classes/Slayer.png?key=GXdlR4sUMV-AsfrB9_hjHQ",
+    "衛士": "https://web.poecdn.com/protected/image/promo/ascendancy/classes/Gladiator.png?key=09py0OfLrWjOVQIbfU1m6w",
+    "冠軍": "https://web.poecdn.com/protected/image/promo/ascendancy/classes/Champion.png?key=tgo2quXqkaI3QGvIRJSi6Q",
+    "勇士": "https://web.poecdn.com/protected/image/promo/ascendancy/classes/Juggernaut.png?key=9QcvWBwz82ssD8VPHWBMUA",
+    "酋長": "https://web.poecdn.com/protected/image/promo/ascendancy/classes/Chieftain.png?key=OigrIPPg6pUUcLD_h0uQFg",
+    "暴徒": "https://web.poecdn.com/protected/image/promo/ascendancy/classes/Berserker.png?key=wwrBpvaFm_G9pmy7yKtUGg",
+    "判官": "https://web.poecdn.com/protected/image/promo/ascendancy/classes/Inquisitor.png?key=DhDuviNFcgwY_8QpofzRRg",
+    "聖宗": "https://web.poecdn.com/protected/image/promo/ascendancy/classes/Hierophant.png?key=8QDOpgoGaZS0ksXADuoUKw",
+    "守護者": "https://web.poecdn.com/protected/image/promo/ascendancy/classes/Guardian.png?key=dUCfULonJ5ihtjU8G0cDoA",
+    "昇華使徒": "https://web.poecdn.com/protected/image/promo/ascendancy/classes/Ascendant.png?key=2-zRw53BEG3Ca-1BSn3_XQ",
+    "遺守使徒": "https://web.poecdn.com/protected/image/promo/ascendancy/classes/Reliquarian.png?key=0z5VuH8szeVPb39WEjOCPg",
+    "輝耀使徒": "https://web.poecdn.com/protected/image/promo/ascendancy/classes/Ascendant.png?key=2-zRw53BEG3Ca-1BSn3_XQ",
+  };
 
   function text(value) {
     return String(value ?? "").replace(/\s*\r?\n\s*/g, "").replace(/\s+/g, " ").trim();
@@ -145,6 +172,7 @@
       body: document.getElementById("build-rows"), search: document.getElementById("search"),
       character: document.getElementById("character"), rating: document.getElementById("rating"),
       refresh: document.getElementById("refresh"), status: document.getElementById("status"),
+      heroRefresh: document.getElementById("hero-refresh"),
       loading: document.getElementById("loading"), error: document.getElementById("error"),
       empty: document.getElementById("empty"), visible: document.getElementById("visible-count"),
       total: document.getElementById("total-count"), tags: document.getElementById("tag-filter"),
@@ -189,6 +217,7 @@
 
       rows.forEach((build, index) => {
         const row = document.createElement("tr");
+        row.style.setProperty("--class-accent", CLASS_COLORS[build.character] || "#b79b67");
         const newCharacter = index === 0 || rows[index - 1].character !== build.character;
         const newAscendancy = index === 0 || rows[index - 1].character !== build.character || rows[index - 1].ascendancy !== build.ascendancy;
         if (newCharacter) {
@@ -198,8 +227,23 @@
           row.append(cell);
         }
         if (newAscendancy) {
-          const cell = td("ascendancy-cell", build.ascendancy || "未標示");
+          const cell = td("ascendancy-cell", "");
           cell.rowSpan = spanLength(rows, index, (item) => `${item.character}\0${item.ascendancy}`);
+          const panel = document.createElement("div");
+          panel.className = "ascendancy-card";
+          const art = ASCENDANCY_ART[build.ascendancy];
+          if (art) {
+            const image = document.createElement("img");
+            image.src = art;
+            image.alt = "";
+            image.loading = "lazy";
+            image.decoding = "async";
+            panel.append(image);
+          }
+          const label = document.createElement("strong");
+          label.textContent = build.ascendancy || "未標示";
+          panel.append(label);
+          cell.append(panel);
           row.append(cell);
         }
 
@@ -285,6 +329,7 @@
       elements.loading.hidden = false;
       elements.error.hidden = true;
       elements.refresh.disabled = true;
+      elements.heroRefresh.disabled = true;
       elements.status.parentElement.classList.remove("is-error");
       elements.status.innerHTML = "<i></i>正在取得最新表單…";
       try {
@@ -304,6 +349,7 @@
       } finally {
         elements.loading.hidden = true;
         elements.refresh.disabled = false;
+        elements.heroRefresh.disabled = false;
       }
     }
 
@@ -311,6 +357,7 @@
     elements.character.addEventListener("change", render);
     elements.rating.addEventListener("change", render);
     elements.refresh.addEventListener("click", load);
+    elements.heroRefresh.addEventListener("click", load);
     load();
   }
 
