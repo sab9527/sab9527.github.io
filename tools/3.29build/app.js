@@ -132,7 +132,7 @@
     if (!globalThis.XLSX) throw new Error("試算表解析器載入失敗，請重新整理頁面。");
     const url = new URL(EXPORT_URL);
     url.searchParams.set("fresh", Date.now().toString());
-    const response = await fetch(url, { cache: "no-store", headers: { "Cache-Control": "no-cache" } });
+    const response = await fetch(url, { cache: "no-store" });
     if (!response.ok) throw new Error(`Google 表單回應錯誤（${response.status}）`);
     const workbook = globalThis.XLSX.read(await response.arrayBuffer(), { type: "array" });
     const sheet = workbook.Sheets[workbook.SheetNames[0]];
