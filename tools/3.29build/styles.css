@@ -12,6 +12,7 @@
 }
 
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 html { background: #151714; scroll-behavior: smooth; }
 body { margin: 0; color: var(--ink); background: var(--paper); font-family: Inter, "Noto Sans TC", "Microsoft JhengHei", sans-serif; }
 button, input, select { font: inherit; }
