@@ -129,6 +129,7 @@
   }
 
   async function fetchLatestBuilds() {
+    if (!globalThis.XLSX) throw new Error("試算表解析器載入失敗，請重新整理頁面。");
     const url = new URL(EXPORT_URL);
     url.searchParams.set("fresh", Date.now().toString());
     const response = await fetch(url, { cache: "no-store", headers: { "Cache-Control": "no-cache" } });
