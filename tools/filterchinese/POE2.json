@@ -1,5 +1,281 @@
 [
   [
+    "Start",
+    "開始製作"
+  ],
+  [
+    "Customize",
+    "自訂"
+  ],
+  [
+    "Simulate",
+    "模擬測試"
+  ],
+  [
+    "Themes",
+    "主題(一般人用不到)"
+  ],
+  [
+    "Advanced",
+    "進階"
+  ],
+  [
+    "Generate a filter specific to your inGame character!",
+    "為你的遊戲角色產生專屬的過濾器！"
+  ],
+  [
+    "Select how many items are shown.",
+    "選擇要顯示的物品數量。"
+  ],
+  [
+    "Recommendation: start with Semi-Strict and increase it one level at a time if you see too many items.",
+    "建議：先從「半嚴格」開始；若仍看到太多物品，再逐級提高嚴格度。"
+  ],
+  [
+    "Your customizations take priority over strictness changes, so you can adjust the strictness at any time without losing them.",
+    "你的自訂設定優先於嚴格度變更，因此可隨時調整嚴格度而不會失去設定。"
+  ],
+  [
+    "Recommended for early-to-mid endgame maps. Hides many rares and lowest single currencies (shows stacks).",
+    "推薦用於終局前期至中期地圖。隱藏許多稀有裝備與最低階的單個通貨（仍顯示堆疊）。"
+  ],
+  [
+    "Recommended for higher tier mapping. Hides poor uniques, poor currency and most rares.",
+    "推薦用於較高階地圖。隱藏價值較低的傳奇物品、低價通貨與大多數稀有裝備。"
+  ],
+  [
+    "Endgame farming: T11+ maps only. Alchemy+ pure currency only. Designed for optimized gameplay",
+    "終局刷圖：僅限 T11 以上地圖。僅顯示點金石以上的純通貨。專為最佳化遊玩設計。"
+  ],
+  [
+    "Endgame farming: T14+ maps only. Chaos+ pure currency only. Designed for high-juiced gameplay.",
+    "終局刷圖：僅限 T14 以上地圖。僅顯示混沌石以上的純通貨。專為高投資刷圖設計。"
+  ],
+  [
+    "WARNING: Will hide many boss-drop-uniques to minimize clutter in maps. Check hidden items when bossing",
+    "警告：為減少地圖中的雜亂，將隱藏許多首領掉落的傳奇物品。挑戰首領時請檢查隱藏物品。"
+  ],
+  [
+    "Base Strictness",
+    "基礎嚴格度"
+  ],
+  [
+    "Overwrites",
+    "覆寫設定"
+  ],
+  [
+    "Recipes & Linked Gear",
+    "配方與連線裝備"
+  ],
+  [
+    "Regular Rares",
+    "一般稀有裝備"
+  ],
+  [
+    "Veiled Rares",
+    "隱匿稀有裝備"
+  ],
+  [
+    "Memory Stranded",
+    "記憶"
+  ],
+  [
+    "Fractured & Synth",
+    "破裂與追憶"
+  ],
+  [
+    "Gear - Exotic",
+    "裝備－特殊"
+  ],
+  [
+    "Leveling",
+    "章節"
+  ],
+  [
+    "Scarabs and Fragments",
+    "聖甲蟲與碎片"
+  ],
+  [
+    "Heist,Sanctum,Logbook",
+    "劫盜、禁忌聖域、日誌"
+  ],
+  [
+    "Customize",
+    "自訂"
+  ],
+  [
+    "Game mode:",
+    "遊戲模式："
+  ],
+  [
+    "Select your base-filter based on what you are playing.",
+    "依照你遊玩的模式選擇基礎過濾器。"
+  ],
+  [
+    "NeverSink SC Event",
+    "NeverSink SC"
+  ],
+  [
+    "SC filter for the Ancestors event! Updated every 4 hours.",
+    "先祖活動專用的軟核過濾器！每 4 小時更新一次。"
+  ],
+  [
+    "NeverSink HC Event",
+    "NeverSink HC"
+  ],
+  [
+    "HC filter for the Ancestors event! Updated every 4 hours.",
+    "先祖活動專用的硬核過濾器！每 4 小時更新一次。"
+  ],
+  [
+    "Hardcore",
+    "專家模式"
+  ],
+  [
+    "Export filter",
+    "匯出過濾器"
+  ],
+  [
+    "Download the filter, or sync it to your PoE profile!",
+    "下載過濾器，或同步至你的《流亡黯道》帳號！"
+  ],
+  [
+    "Welcome to FilterBlade!",
+    "歡迎使用 FilterBlade！"
+  ],
+  [
+    "Intro",
+    "介紹"
+  ],
+  [
+    "FilterBlade is an online editor for loot-filters for the games",
+    "FilterBlade 是《流亡黯道》遊戲掉落物過濾器的線上編輯器。"
+  ],
+  [
+    "What is a loot-filter?",
+    "什麼是掉落物過濾器？"
+  ],
+  [
+    "How to use?",
+    "如何使用？"
+  ],
+  [
+    "The base NeverSink filter is already solid. You can do a quick setup using the options above to adapt it to your",
+    "NeverSink 基礎過濾器本身已相當完善。你可以透過上方選項快速設定，使其符合你的遊玩方式。"
+  ],
+  [
+    "Astrolabes",
+    "星盤"
+  ],
+  [
+    "Astrolabes are a new way to juice up maps in the endgame. These are found after defeating the incarnations of Dread, Neglect and Fear.",
+    "星盤是終局強化地圖的新方式。擊敗恐懼、漠視與畏懼的化身後即可取得。"
+  ],
+  [
+    "Currency & Rewards",
+    "通貨與獎勵"
+  ],
+  [
+    "DRAG & DROP items to change the tier. Add new tiers at the bottom or in the toolbar. Hover over the wisdom scroll to receive additional advice for currency management.",
+    "拖放物品以變更階級。可在底部或工具列新增階級。將游標移至知識卷軸上，可取得更多通貨管理建議。"
+  ],
+  [
+    "Campaign Special Rules",
+    "劇情戰役特殊規則"
+  ],
+  [
+    "Misc. Exotic Currencies",
+    "其他特殊通貨"
+  ],
+  [
+    "Endgame",
+    "終局"
+  ],
+  [
+    "Endgame - Maps, Contracts, Logbooks etc",
+    "終局－地圖、契約、遠征日誌等"
+  ],
+  [
+    "Endgame - Rares",
+    "終局－稀有裝備"
+  ],
+  [
+    "Endgame - Special Bases & Crafting",
+    "終局－特殊基底與工藝"
+  ],
+  [
+    "Endgame - Jewels, Flasks, Tinctures",
+    "終局－珠寶、藥劑、萃取物"
+  ],
+  [
+    "Endgame - Highlight specific bases",
+    "終局－醒目顯示特定基底"
+  ],
+  [
+    "Campaign & Leveling",
+    "劇情戰役與練等"
+  ],
+  [
+    "Save & Auto Upload",
+    "儲存並自動上傳"
+  ],
+  [
+    "(every 4 hours)",
+    "（每 4 小時）"
+  ],
+  [
+    "Premium feature",
+    "進階功能"
+  ],
+  [
+    "continuous automated updates & fixes",
+    "持續自動更新與修正"
+  ],
+  [
+    "economy updates for tierlists of uniques, currency, etc.",
+    "傳奇物品、通貨等階級列表的經濟資訊更新"
+  ],
+  [
+    "support a small development team :)",
+    "支持小型開發團隊 :)"
+  ],
+  [
+    "Save & Upload once",
+    "儲存並上傳一次"
+  ],
+  [
+    "Recommended",
+    "推薦"
+  ],
+  [
+    "one-time upload to your PoE account",
+    "一次性上傳至你的《流亡黯道》帳號"
+  ],
+  [
+    "no manual import required",
+    "無需手動匯入"
+  ],
+  [
+    "instantly available inGame",
+    "立即可在遊戲中使用"
+  ],
+  [
+    "Save & Download",
+    "儲存並下載"
+  ],
+  [
+    "manual file download",
+    "手動下載檔案"
+  ],
+  [
+    "no console support",
+    "不支援主機平台"
+  ],
+  [
+    "import to PoE via game files on your PC",
+    "透過電腦上的遊戲檔案匯入至《流亡黯道》"
+  ],
+  [
     "To update your filter, just load it. This will automatically merge your customization into the new filter version.",
     "要更新過濾器，只需載入它即可。系統會自動將您的自訂設定合併到新版本的篩選器中。"
   ],
