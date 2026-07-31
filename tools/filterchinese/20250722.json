@@ -41574,5 +41574,537 @@
   [
     "Heroic Tragedy",
     "英勇悲劇"
+  ],
+  [
+    "Chart",
+    "海圖"
+  ],
+  [
+    "Enshrouded Items",
+    "壟罩物品"
+  ],
+  [
+    "Albino Crab Claw",
+    "白化螃蟹鉗子"
+  ],
+  [
+    "Broken Mirror of Kalandra",
+    "碎裂的卡蘭德魔鏡"
+  ],
+  [
+    "Scrying Orb",
+    "占卜寶珠"
+  ],
+  [
+    "Ghostflame Blade",
+    "青焰利刃"
+  ],
+  [
+    "Pearlescent Amulet",
+    "珠光項鍊"
+  ],
+  [
+    "Chieftain Talisman",
+    "酋長魔符"
+  ],
+  [
+    "Gargantuan Talisman",
+    "龐然魔符"
+  ],
+  [
+    "Goliath Talisman",
+    "巨人魔符"
+  ],
+  [
+    "Rhoa Talisman",
+    "恐喙鳥魔符"
+  ],
+  [
+    "Blood Viper Talisman",
+    "血蛇魔符"
+  ],
+  [
+    "Chimeral Talisman",
+    "龍蜥魔符"
+  ],
+  [
+    "Squid Talisman",
+    "烏賊魔符"
+  ],
+  [
+    "Sand Spitter Talisman",
+    "噴砂爪蟹魔符"
+  ],
+  [
+    "Shield Crab Talisman",
+    "盾螯魔符"
+  ],
+  [
+    "Goatman Talisman",
+    "羊人魔符"
+  ],
+  [
+    "Devourer Talisman",
+    "吞噬者魔符"
+  ],
+  [
+    "Plagued Arachnid Talisman",
+    "瘟疫毒蛛魔符"
+  ],
+  [
+    "Watcher Talisman",
+    "觀察者魔符"
+  ],
+  [
+    "Savage Crab Talisman",
+    "殘暴蟹魔符"
+  ],
+  [
+    "Flame Hellion Talisman",
+    "烈炎地獄犬魔符"
+  ],
+  [
+    "Frost Hellion Talisman",
+    "冰霜犬魔符"
+  ],
+  [
+    "Lynx Talisman",
+    "山貓魔符"
+  ],
+  [
+    "Ape Talisman",
+    "靈猴魔符"
+  ],
+  [
+    "Wolf Alpha Talisman",
+    "狼王魔符"
+  ],
+  [
+    "Magma Hound Talisman",
+    "熔犬魔符"
+  ],
+  [
+    "Pitbull Talisman",
+    "鬥牛犬魔符"
+  ],
+  [
+    "Ursa Talisman",
+    "墮落之爪魔符"
+  ],
+  [
+    "Taurus Talisman",
+    "金牛人魔符"
+  ],
+  [
+    "Retch Talisman",
+    "反芻鳥魔符"
+  ],
+  [
+    "Cobra Talisman",
+    "眼鏡蛇魔符"
+  ],
+  [
+    "Carrion Queen Talisman",
+    "食腐蟲后魔符"
+  ],
+  [
+    "Scrabbler Talisman",
+    "搗亂者魔符"
+  ],
+  [
+    "Black Widow Talisman",
+    "黑寡婦魔符"
+  ],
+  [
+    "Scorpion Talisman",
+    "毒蠍魔符"
+  ],
+  [
+    "Tiger Talisman",
+    "猛虎魔符"
+  ],
+  [
+    "Vulture Talisman",
+    "禿鷹魔符"
+  ],
+  [
+    "Rhex Talisman",
+    "雛鳥魔符"
+  ],
+  [
+    "Hybrid Arachnid Talisman",
+    "混血蜘蛛魔符"
+  ],
+  [
+    "Octopus Talisman",
+    "章魚魔符"
+  ],
+  [
+    "Spider Crab Talisman",
+    "蛛蛛蟹魔符"
+  ],
+  [
+    "Great Maw Talisman",
+    "巨口魔符"
+  ],
+  [
+    "Croaker Talisman",
+    "鳴蛙魔符"
+  ],
+  [
+    "Craicic Talisman",
+    "奎爾珊魔符"
+  ],
+  [
+    "Fenumal Talisman",
+    "菲恩絲魔符"
+  ],
+  [
+    "Saqawine Talisman",
+    "斯卡沃魔符"
+  ],
+  [
+    "Farric Talisman",
+    "費爾羅魔符"
+  ],
+  [
+    "Dark Bargain",
+    "暗夜血契"
+  ],
+  [
+    "Mana-Infused Staff",
+    "魔能長杖"
+  ],
+  [
+    "Communion Support",
+    "共融輔助"
+  ],
+  [
+    "Coursing Current Support",
+    "雷鳴湍流輔助"
+  ],
+  [
+    "Crystalfall Support",
+    "晶墜輔助"
+  ],
+  [
+    "Pact of Beidat",
+    "貝達特誓約"
+  ],
+  [
+    "Pact of Ghorr",
+    "戈沃誓約"
+  ],
+  [
+    "Pact of K'Tash",
+    "克塔什誓約"
+  ],
+  [
+    "Pact of Lycia",
+    "利希亞誓約"
+  ],
+  [
+    "Assembled Eye Jewel",
+    "拼湊之眼珠寶"
+  ],
+  [
+    "Captured Soul of Shock and Horror",
+    "奪取之魂：恐懼之雷"
+  ],
+  [
+    "Captured Soul of Oak the Mighty",
+    "奪取之魂：巨力歐克"
+  ],
+  [
+    "Captured Soul of Forest of Flames",
+    "奪取之魂：烈焰之森"
+  ],
+  [
+    "Captured Soul of Captain Clayborne, The Accursed",
+    "奪取之魂：被詛咒的．隊長克雷波恩"
+  ],
+  [
+    "Abyss Scarab of Crystals",
+    "聖甲蟲：晶石深淵"
+  ],
+  [
+    "Abyss Scarab of the Consort",
+    "聖甲蟲：伴侶深淵"
+  ],
+  [
+    "Trarthan Scarab",
+    "特拉特斯聖甲蟲"
+  ],
+  [
+    "Trarthan Scarab of Infamy",
+    "聖甲蟲：萬惡傭兵"
+  ],
+  [
+    "Trarthan Scarab of Renown",
+    "聖甲蟲：聲名傭兵"
+  ],
+  [
+    "Trarthan Scarab of Surprising Alliances",
+    "聖甲蟲：意外盟友傭兵"
+  ],
+  [
+    "Omen of Trichromatism",
+    "三色之預兆"
+  ],
+  [
+    "Forbidden Tattoo of the Ranger",
+    "遊俠的禁忌紋身"
+  ],
+  [
+    "Forbidden Tattoo of the Duelist",
+    "決鬥者的禁忌紋身"
+  ],
+  [
+    "Forbidden Tattoo of the Marauder",
+    "野蠻人的禁忌紋身"
+  ],
+  [
+    "Forbidden Tattoo of the Templar",
+    "聖堂武僧的禁忌紋身"
+  ],
+  [
+    "Forbidden Tattoo of the Witch",
+    "女巫的禁忌紋身"
+  ],
+  [
+    "Forbidden Tattoo of the Shadow",
+    "暗影刺客的禁忌紋身"
+  ],
+  [
+    "Forbidden Tattoo of the Scion",
+    "貴族的禁忌紋身"
+  ],
+  [
+    "Allflame Ember of K'Tash",
+    "不滅之火克塔什餘燼"
+  ],
+  [
+    "Deceptive Astrolabe",
+    "幻象星盤"
+  ],
+  [
+    "Karui Enshrouding Crystal",
+    "卡魯壟罩晶石"
+  ],
+  [
+    "Imperial Enshrouding Crystal",
+    "永恆壟罩晶石"
+  ],
+  [
+    "Vaal Enshrouding Crystal",
+    "瓦爾壟罩晶石"
+  ],
+  [
+    "Templar Enshrouding Crystal",
+    "聖宗壟罩晶石"
+  ],
+  [
+    "Maraketh Enshrouding Crystal",
+    "馬拉克斯壟罩晶石"
+  ],
+  [
+    "Enshrouded Gloves",
+    "壟罩的手套"
+  ],
+  [
+    "Enshrouded Boots",
+    "壟罩的鞋子"
+  ],
+  [
+    "Enshrouded Helmet",
+    "壟罩的頭盔"
+  ],
+  [
+    "Enshrouded Shield",
+    "壟罩的盾牌"
+  ],
+  [
+    "Enshrouded Body Armour",
+    "壟罩的胸甲"
+  ],
+  [
+    "Sandy Seabed Chart",
+    "沙質海床海圖"
+  ],
+  [
+    "Coral Forest Chart",
+    "珊瑚林海圖"
+  ],
+  [
+    "Coral Reef Chart",
+    "珊瑚礁海圖"
+  ],
+  [
+    "Thermal Vents Chart",
+    "海底熱泉海圖"
+  ],
+  [
+    "Mercenary Warrant",
+    "傭兵契約書"
+  ],
+  [
+    "Merrick's Ducat",
+    "莫里克的達克特"
+  ],
+  [
+    "Cyaxan's Ducat",
+    "塞亞珊的達克特"
+  ],
+  [
+    "Dead Man's Sulphur",
+    "亡者硫酸"
+  ],
+  [
+    "Zorath's Eye of Malevolence",
+    "澤洛斯的惡意之眼"
+  ],
+  [
+    "Zorath's Eye of Authority",
+    "澤洛斯的強權之眼"
+  ],
+  [
+    "Zorath's Eye of the Inevitable",
+    "澤洛斯的必然之眼"
+  ],
+  [
+    "Zorath's Eye of the Endless",
+    "澤洛斯的無盡之眼"
+  ],
+  [
+    "Message in a Bottle",
+    "瓶中信"
+  ],
+  [
+    "The Changeling's Ducat",
+    "變形靈的達克特"
+  ],
+  [
+    "The Genteel's Ducat",
+    "文雅者的達克特"
+  ],
+  [
+    "Kishara's Ducat",
+    "奇夏拉的達克特"
+  ],
+  [
+    "Telesia's Ducat",
+    "特雷西亞的達克特"
+  ],
+  [
+    "Rotmother's Ducat",
+    "腐母的達克特"
+  ],
+  [
+    "Brinehook's Ducat",
+    "布琳霍克的達克特"
+  ],
+  [
+    "Katakohi's Ducat",
+    "卡塔科希的達克特"
+  ],
+  [
+    "Tzamoto's Ducat",
+    "薩摩特的達克特"
+  ],
+  [
+    "Pearls Before Swine",
+    "明珠投豕"
+  ],
+  [
+    "Energy Sword",
+    "能量之劍"
+  ],
+  [
+    "Divine Shard",
+    "神聖碎片"
+  ],
+  [
+    "Replica Maata's Teaching",
+    "贗品．瑪塔的教導"
+  ],
+  [
+    "Zana's Ingenuity",
+    "札娜的獨創"
+  ],
+  [
+    "Seablister",
+    "潮壺絞者"
+  ],
+  [
+    "The Crustacean's Call",
+    "甲殼之喚"
+  ],
+  [
+    "Stormblood",
+    "浪潮之血"
+  ],
+  [
+    "Waxen Soul",
+    "熔燭之魂"
+  ],
+  [
+    "Festering Vengeance",
+    "潰爛復仇"
+  ],
+  [
+    "Subsume the Source",
+    "歸入起源"
+  ],
+  [
+    "Spinesnatch",
+    "脊骨劫奪"
+  ],
+  [
+    "Dread Captain's Cutlass",
+    "滅亡海盜彎刀"
+  ],
+  [
+    "Extinguishing Grasp",
+    "撲滅之握"
+  ],
+  [
+    "Baleful Dominion",
+    "邪惡統治"
+  ],
+  [
+    "Destructive Aspiration",
+    "滅亡之願"
+  ],
+  [
+    "Reclaimed Malevolence",
+    "重奪惡意"
+  ],
+  [
+    "The Unblinking Eye",
+    "不眨之眼"
+  ],
+  [
+    "Pearl of Tsoatha",
+    "特索塔之珠"
+  ],
+  [
+    "Rotmother's Mutiny",
+    "腐母的暴亂"
+  ],
+  [
+    "Ventor's Strongbox",
+    "芬多的保險箱"
+  ],
+  [
+    "Unholy Accomplice",
+    "不潔共犯"
+  ],
+  [
+    "The Wellhook",
+    "深井之鉤"
+  ],
+  [
+    "Craicic Croaker",
+    "奎爾珊石首魚"
   ]
 ]
