@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="POE 重組器規則指引：模擬、推薦與白話講解">
+  <title>重組器指引｜POE Recombinator Guide</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#simulate" aria-label="回到重組模擬">
+        <span class="brand-mark">R</span>
+        <span><strong>重組器指引</strong><small>POE Recombinator Guide</small></span>
+      </a>
+      <nav class="main-nav" aria-label="主要導覽">
+        <button class="nav-button active" data-page="simulate">模擬重組</button>
+        <button class="nav-button" data-page="recommend">推薦路線</button>
+        <button class="nav-button" data-page="explain">白話講解</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="app-shell">
+    <section class="page active" id="page-simulate">
+      <div class="page-intro">
+        <div><p class="eyebrow">SIMULATE</p><h1>先放入兩件素材，看看重組會留下什麼。</h1></div>
+      </div>
+      <div class="sim-layout">
+        <section class="input-panel panel">
+          <div class="panel-heading"><div><p class="eyebrow">INPUTS</p><h2>兩件裝備</h2><p class="panel-help">前綴與後綴分開計算。啟用詞綴後，可勾選它是不是限定詞，並設定它的非原生對象。</p></div><button class="text-button" id="reset-button">全部重設</button></div>
+          <div id="items-editor" class="items-editor"></div>
+          <div class="inline-help">
+            <strong>原生</strong><span>詞綴正常屬於這個基底；結果選中該基底時，這條詞綴可以被抽到。</span>
+            <strong>非原生（NNN）</strong><span>這條詞綴是跟著其中一件的基底來的。若結果選到「另一件」的基底，它就不存在，但仍然會佔用詞綴池，影響這一側會留下幾條。</span>
+            <strong>限定詞（Exclusive）</strong><span>精髓、面紗、尊爵勢力、掘獄等來源的獨佔詞綴。成品最多只會有一條；兩件素材合計通常也只能放一條。</span>
+          </div>
+          <div id="validation" class="validation" role="status"></div>
+          <button class="primary-button" id="calculate-button">計算重組結果 <span>→</span></button>
+        </section>
+        <section class="result-panel panel" id="result-panel">
+          <div class="panel-heading"><div><p class="eyebrow">RESULTS</p><h2>結果機率</h2></div><span class="result-state" id="result-state">等待輸入</span></div>
+          <div id="result-content" class="result-content empty-state"><div class="empty-symbol">↗</div><h3>設定詞綴後開始計算</h3></div>
+        </section>
+      </div>
+    </section>
+
+    <section class="page" id="page-recommend">
+      <div class="page-intro"><div><p class="eyebrow">PLAN</p><h1>說出你想要的成品，幫你排出素材準備路線。</h1></div></div>
+      <div class="plan-layout">
+        <section class="panel goal-panel">
+          <div class="panel-heading"><div><p class="eyebrow">TARGET</p><h2>想要的成品</h2></div></div>
+          <label class="goal-field">目標基底
+            <select id="plan-base">
+              <option value="same">兩件素材同基底（推薦）</option>
+              <option value="A">Item A 的基底（兩件素材不同基底）</option>
+              <option value="B">Item B 的基底（兩件素材不同基底）</option>
+            </select>
+          </label>
+          <div class="preset-row">
+            <button class="chip" data-preset="3p3s">3 前 3 後</button>
+            <button class="chip" data-preset="3p2s">3 前 2 後</button>
+            <button class="chip" data-preset="2p2s">2 前 2 後</button>
+            <button class="chip" data-preset="clear">清空</button>
+          </div>
+          <div class="goal-group"><p class="goal-title">想要的前綴</p><div id="plan-prefixes"></div></div>
+          <div class="goal-group"><p class="goal-title">想要的後綴</p><div id="plan-suffixes"></div></div>
+          <button class="primary-button" id="plan-button">規劃素材路線 <span>→</span></button>
+        </section>
+        <section class="result-panel panel">
+          <div class="panel-heading"><div><p class="eyebrow">ROUTES</p><h2>素材準備路線</h2></div><span class="result-state" id="plan-state">等待目標</span></div>
+          <div id="plan-output" class="result-content empty-state"><div class="empty-symbol">↗</div><h3>設定想要的詞綴後開始規劃</h3></div>
+        </section>
+      </div>
+    </section>
+
+    <section class="page" id="page-explain">
+      <div class="page-intro"><div><p class="eyebrow">EXPLAIN</p><h1>把重組器拆成四個你能看懂的步驟。</h1></div></div>
+      <div class="explain-grid">
+        <article class="explain-card"><span class="step-number">01</span><h2>先選基底</h2><p>結果會從兩件裝備中選一件的基底，Item A 與 Item B 各有 50% 機會。基底不是詞綴，而是裝備本身的類型；它決定某些詞綴在結果上是不是「原生」。</p><div class="mini-diagram"><b>A 基底</b><i>50%</i><b>B 基底</b><i>50%</i></div></article>
+        <article class="explain-card"><span class="step-number">02</span><h2>什麼是原生？</h2><p>原生是指某條詞綴正常屬於這個基底。若結果選中該基底，原生詞綴可以被抽到；若詞綴不是這個基底原本能出現的詞綴，就是非原生。</p><div class="formula">原生：可以出現<br>非原生：不能正常出現</div></article>
+        <article class="explain-card"><span class="step-number">03</span><h2>什麼是非原生？</h2><p>有些詞綴是跟著某一邊的基底來的。如果結果選到「另一件」的基底，這條詞綴就不存在——這就是非原生（NNN）。它不會從詞綴池消失，仍然佔位，讓這一側更難填滿真正能用的詞綴。</p><div class="formula">跟著 A 來的詞綴 → 選到 B 基底時不存在<br>跟著 B 來的詞綴 → 選到 A 基底時不存在<br>雙方非原生 → 兩種基底都不存在</div></article>
+        <article class="explain-card"><span class="step-number">04</span><h2>排除不能出現的詞綴</h2><p>非原生詞綴不會出現在不相容的基底上；限定詞（Exclusive）整件最多一條；同名詞綴不會出現兩份。剩下才是可能的成品。</p><div class="legend"><span class="tag normal">原生</span><span class="tag exclusive">限定詞</span><span class="tag nnn">非原生</span></div></article>
+      </div>
+      <section class="definitions panel"><p class="eyebrow">DEFINITIONS</p><h2>名詞快速查閱</h2><dl>
+        <div><dt>原生 Native</dt><dd>詞綴正常屬於這個基底，所以結果選中該基底時可以出現。</dd></div>
+        <div><dt>非原生 NNN</dt><dd>這條詞綴跟著某一邊的基底而來。結果選到另一件（或雙方）的基底時，它就不存在；但仍會佔用詞綴池，影響該側留下幾條。</dd></div>
+        <div><dt>限定詞 Exclusive</dt><dd>精髓、面紗、尊爵勢力、掘獄等來源的獨佔詞綴。一般情況成品最多一條，兩件素材合計也通常只能有一條。</dd></div>
+        <div><dt>1p1e + 1e1s 特例</dt><dd>一件為「1 前綴＋1 限定詞後綴」，另一件為「1 限定詞前綴＋1 後綴」。此例結果為 1 前綴 1 後綴的機率至少約 33.3%，實測常見更高，但精確值受詞綴權重影響。</dd></div>
+      </dl></section>
+      <section class="panel prob-panel"><p class="eyebrow">ODDS TABLE</p><h2>機率表</h2>
+        <p class="prob-intro">池的大小 = 兩件裝備同一側的詞綴數相加。前綴與後綴各自查一次，兩個結果相乘才是這次重組的總分布。</p>
+        <table class="prob-table">
+          <thead><tr><th>池大小</th><th>0 條</th><th>1 條</th><th>2 條</th><th>3 條</th></tr></thead>
+          <tbody>
+            <tr><td>0</td><td>100%</td><td>—</td><td>—</td><td>—</td></tr>
+            <tr><td>1</td><td>41%</td><td>59%</td><td>—</td><td>—</td></tr>
+            <tr><td>2</td><td>—</td><td>66.7%</td><td>33.3%</td><td>—</td></tr>
+            <tr><td>3</td><td>—</td><td>38%</td><td>52%</td><td>10%</td></tr>
+            <tr><td>4</td><td>—</td><td>10%</td><td>59%</td><td>31%</td></tr>
+            <tr><td>5</td><td>—</td><td>—</td><td>43%</td><td>57%</td></tr>
+            <tr><td>6</td><td>—</td><td>—</td><td>28%</td><td>72%</td></tr>
+          </tbody>
+        </table>
+        <div class="prob-notes">
+          <p><strong>怎麼讀</strong>：兩件都是 3 前綴 ⇒ 前綴池 6 ⇒ 留 3 條 72%；後綴同樣 72% ⇒ 同時做到 3 前綴 3 後綴 = 72% × 72% ≈ 51.8%。</p>
+          <p><strong>池只有 1 條</strong>：該側有 41% 直接全空，所以單詞綴素材不要直接接高階件。</p>
+          <p><strong>有非原生詞綴時</strong>：該側可達上限下降，超過上限的機率會併回去。例：池 3、其中 1 條對這個基底非原生 ⇒ 上限 2 條 ⇒ 變成 1 條 38%、2 條 62%。</p>
+        </div>
+      </section>
+    </section>
+  </main>
+  <footer class="site-footer"></footer>
+  <script src="js/rules.js"></script><script src="js/planner.js"></script><script src="js/app.js"></script>
+</body>
+</html>
