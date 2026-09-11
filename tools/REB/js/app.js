@@ -20,6 +20,20 @@
   let state = { items: [defaultItem('Item A'), defaultItem('Item B')] };
   const qs = (s, root = document) => root.querySelector(s);
   const qsa = (s, root = document) => [...root.querySelectorAll(s)];
+  // ---------- 配色主題 ----------
+  const THEME_KEY = 'recomb.theme';
+  const THEMES = ['emerald', 'graphite', 'ember'];
+  function applyTheme(name) {
+    const theme = THEMES.includes(name) ? name : 'emerald';
+    document.documentElement.dataset.theme = theme;
+    qsa('.theme-dot').forEach(btn => btn.setAttribute('aria-pressed', String(btn.dataset.theme === theme)));
+    // 手機瀏覽器列的顏色跟著配色走
+    const meta = qs('meta[name="theme-color"]');
+    if (meta) meta.setAttribute('content', getComputedStyle(document.documentElement).getPropertyValue('--bg').trim() || '#0f0f0f');
+    try { localStorage.setItem(THEME_KEY, theme); } catch (error) { /* 無痕模式等情形忽略 */ }
+  }
+  qsa('.theme-dot').forEach(btn => btn.addEventListener('click', () => applyTheme(btn.dataset.theme)));
+  applyTheme(document.documentElement.dataset.theme);
   // ---------- 本機儲存 / 即時運算 ----------
   const SIM_KEY = 'recomb.simulate.v1';
   const PLAN_KEY = 'recomb.plan.v1';
@@ -440,7 +454,8 @@
     qs('#validation').textContent = '';
     const content = qs('#result-content');
     content.className = 'result-content empty-state';
-    content.innerHTML = '<div class="empty-symbol">↗</div><h3>設定詞綴後開始計算</h3>';
+    content.innerHTML = '<h3>左邊填好詞綴，這裡就會算出機率</h3>'
+      + '<p>會列出結果基底的 50／50 分配、這一側留幾條詞綴的分布，以及兩件素材的具體組合。</p>';
   });
   qs('#result-content').addEventListener('click', e => {
     if (e.target.closest('#toggle-combos')) { showAllCombos = !showAllCombos; calculate(); }

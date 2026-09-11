@@ -2,25 +2,54 @@
 <html lang="zh-Hant">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="POE 重組器規則指引：模擬、推薦與白話講解">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>重組器指引｜POE Recombinator Guide</title>
+  <meta name="description" content="Path of Exile 重組器規則指引：輸入兩件底材的詞綴，看機率分布與具體組合，再排出素材準備路線。">
+  <meta name="author" content="widy">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="重組器指引｜POE Recombinator Guide">
+  <meta property="og:description" content="輸入兩件底材的詞綴，看機率分布與具體組合，再排出素材準備路線。">
+  <!-- 上線後改成絕對網址（例：https://<帳號>.github.io/<repo>/og-image.png），社群平台才抓得到 -->
+  <meta property="og:image" content="./og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="重組器指引">
+  <meta property="og:locale" content="zh_TW">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="重組器指引｜POE Recombinator Guide">
+  <meta name="twitter:description" content="輸入兩件底材的詞綴，看機率分布與具體組合，再排出素材準備路線。">
+  <meta name="twitter:image" content="./og-image.png">
+  <meta name="theme-color" content="#0f0f0f">
+  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/sab9527/sab9527.github.io/refs/heads/main/tools/Logo/LOGO.png">
+  <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/sab9527/sab9527.github.io/refs/heads/main/tools/Logo/LOGO.png">
   <link rel="stylesheet" href="styles.css">
+  <script>
+    // 先套用記住的配色，避免載入時閃一下預設色
+    try { document.documentElement.dataset.theme = localStorage.getItem('recomb.theme') || 'emerald'; }
+    catch (error) { document.documentElement.dataset.theme = 'emerald'; }
+  </script>
 </head>
 
 <body>
   <header class="site-header">
     <div class="header-inner">
       <a class="brand" href="#simulate" aria-label="回到重組模擬">
-        <span class="brand-mark">R</span>
+        <img class="brand-logo" src="https://raw.githubusercontent.com/sab9527/sab9527.github.io/refs/heads/main/tools/Logo/LOGO.png" alt="" width="46" height="50" decoding="async">
         <span><strong>重組器指引</strong><small>POE Recombinator Guide</small></span>
       </a>
-      <nav class="main-nav" aria-label="主要導覽">
-        <button class="nav-button active" data-page="simulate">模擬重組</button>
-        <button class="nav-button" data-page="recommend">推薦路線</button>
-        <button class="nav-button" data-page="explain">白話講解</button>
-      </nav>
+      <div class="header-right">
+        <nav class="main-nav" aria-label="主要導覽">
+          <button class="nav-button active" data-page="simulate">模擬重組</button>
+          <button class="nav-button" data-page="recommend">推薦路線</button>
+          <button class="nav-button" data-page="explain">機制講解</button>
+        </nav>
+        <div class="theme-switch" role="group" aria-label="配色主題">
+          <button class="theme-dot" type="button" data-theme="emerald" title="深綠" aria-label="深綠配色" aria-pressed="true"></button>
+          <button class="theme-dot" type="button" data-theme="graphite" title="石墨" aria-label="石墨配色" aria-pressed="false"></button>
+          <button class="theme-dot" type="button" data-theme="ember" title="暖褐" aria-label="暖褐配色" aria-pressed="false"></button>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -28,7 +57,6 @@
     <section class="page active" id="page-simulate">
       <div class="page-intro">
         <div>
-          <p class="eyebrow">SIMULATE</p>
           <h1>設定兩件底材，查看可能的結果。</h1>
         </div>
       </div>
@@ -45,10 +73,10 @@
           <div class="inline-help">
             <strong>結果基底</strong><span>結果會從兩件素材中挑一件的基底，各 50%。結果區會分別列出「選中 Item A 基底」與「選中 Item B 基底」兩種情況。</span>
             <strong>詞綴類型</strong><span><b>一般</b>：正常屬於這個基底。<b>機制掉落限定</b>：取得管道被特定機制限制、但不算限定詞的詞綴，規則上<b>視為原生</b>，存在條件固定為原生、只加標示。<b>限定詞</b>：神廟（限定掉落詞）、挖礦、大師、部分精髓等來源的獨佔詞綴，成品通常只允許存在一條。</span>
-            <strong>原生</strong><span>這條詞綴兩個基底都可能出現。<b>如果是勢力詞，那對於非同勢力的裝備來說為非原生。</b>例：法術壓抑率在閃避底（A）、B 是力量底，力量底不會有法術壓抑率 ⇒ 這條要設成「只能存在 A 基底」。</span>
+            <strong>原生</strong><span>這條詞綴兩個基底都可能出現。如果是勢力詞，那對於非同勢力的裝備來說為非原生。例：法術壓抑率在閃避底（A）、B 是力量底，力量底不會有法術壓抑率 ⇒ 這條要設成「只能存在 A 基底」。</span>
             <strong>NNN（非原生）</strong><span>不會被合成到任何一件裝備上。它仍然佔一格：留幾條的機率看的是池的總數（含 NNN），而 NNN 永遠抽不到，所以相對增加其他詞的機率。</span>
             <strong>合成前查證</strong><span>建議在合成之前查詢該詞綴是否為 exclusive（限定詞）：<b>取得管道相同不等於類型相同</b>，同一來源的詞綴要逐條查證。查證方式：準備一件帶已知限定詞的素材與待測詞綴，重組後若兩者不會同時出現，待測詞綴就是限定詞。</span>
-            <strong>同名詞綴</strong><span>兩件上的同名詞綴會被視為<b>同一條</b>，同一側最多只留一條。若它們其實是不同的詞綴，請取不同名稱；若本來就是同一條詞綴、或彼此互斥（不可能同時出現），取名相同即可。</span>
+            <strong>同名詞綴</strong><span>兩件上的同名詞綴會被視為<b>同一條</b>，同一側最多只留一條。若它們其實是不同的詞綴，請取不同名稱；若本來就是同一條詞綴、或彼此互斥（同一 family 的詞不可能同時出現），取名相同即可。</span>
           </div>
           <div id="validation" class="validation" role="status"></div>
           <div id="input-warning" class="validation" role="status"></div>
@@ -61,8 +89,8 @@
             </div>
           </div>
           <div id="result-content" class="result-content empty-state">
-            <div class="empty-symbol">↗</div>
-            <h3>設定詞綴後開始計算</h3>
+            <h3>左邊填好詞綴，這裡就會算出機率</h3>
+            <p>會列出結果基底的 50／50 分配、這一側留幾條詞綴的分布，以及兩件素材的具體組合。</p>
           </div>
         </section>
       </div>
@@ -71,8 +99,7 @@
     <section class="page" id="page-recommend">
       <div class="page-intro">
         <div>
-          <p class="eyebrow">PLAN</p>
-          <h1>說出你想要的成品，幫你排出素材準備路線。</h1>
+          <h1>輸入想要的成品，排出素材準備路線。</h1>
         </div>
       </div>
       <div class="plan-layout">
@@ -114,8 +141,8 @@
             </div><span class="result-state" id="plan-state">等待目標</span>
           </div>
           <div id="plan-output" class="result-content empty-state">
-            <div class="empty-symbol">↗</div>
-            <h3>設定想要的詞綴後開始規劃</h3>
+            <h3>在左邊挑想要的詞綴，這裡就會排出路線</h3>
+            <p>會列出每件素材要準備哪些詞綴、需要幾個單詞綴底材，以及容易失敗的地方。</p>
           </div>
         </section>
       </div>
@@ -124,34 +151,46 @@
     <section class="page" id="page-explain">
       <div class="page-intro">
         <div>
-          <p class="eyebrow">EXPLAIN</p>
-          <h1>把重組器拆成四個你能看懂的步驟。</h1>
+          <h1>重組器的原理</h1>
         </div>
       </div>
       <div class="explain-grid">
         <article class="explain-card"><span class="step-number">01</span>
           <h2>先選基底</h2>
-          <p>結果會從兩件裝備中選一件的基底，Item A 與 Item B 各有 50% 機會。基底不是詞綴，而是裝備本身的類型；它決定某些詞綴在結果上是不是「原生」。</p>
+          <p>結果會從兩件裝備裡挑一件的基底，Item A 與 Item B 各 50%。基底是裝備本身的類型，不是詞綴。有些詞綴只有在特定基底上才可能出現，這就是後面要講的原生與非原生。</p>
           <div class="mini-diagram"><b>A 基底</b><i>50%</i><b>B 基底</b><i>50%</i></div>
         </article>
         <article class="explain-card"><span class="step-number">02</span>
           <h2>什麼是原生？</h2>
-          <p>原生是指某條詞綴正常屬於這個基底 —— 判斷方式是「這個基底本來骰不骰得出這條詞綴」，骰得出來就是原生。<b>如果是勢力詞，那對於非同勢力的裝備來說為非原生。</b></p>
-          <p class="explain-eg"><strong>例</strong>：法術壓抑率放在 A（閃避底），而 B 是力量底。力量底不會出現法術壓抑率，所以這條在工具裡要設成「<b>只能存在 A 基底</b>」——
-            也就是「原生 A」。</p>
+          <p>原生是指某條詞綴正常屬於這個基底。判斷方式很直接：這個基底本來骰不骰得出這條詞綴，骰得出來就是原生。如果是勢力詞，對非同勢力的裝備來說就是非原生。</p>
+          <p class="explain-eg"><strong>例</strong>：法術壓抑率放在 A（閃避底），B 是力量底。力量底骰不出法術壓抑率，所以這條在工具裡要設成「<b>只能存在 A 基底</b>」，也就是原生 A。</p>
           <div class="formula">原生：這個基底骰得出來<br>非原生（NNN）：這個基底骰不出來</div>
         </article>
         <article class="explain-card"><span class="step-number">03</span>
           <h2>什麼是非原生（NNN）？</h2>
-          <p>定義很簡單：<b>除了原生、以及機制掉落限定以外，其他都算 NNN</b>（Natural
-            Non-Native）。判定只要問一句：<b>結果選到某個基底時，這條詞綴還能不能存在？</b>存在不了的那個基底，對這條詞綴來說就是 NNN。</p>
-          <div class="formula">只能存在 A 基底 → 選到 B 基底時不存在<br>只能存在 B 基底 → 選到 A 基底時不存在<br>兩邊都不會出現 → 兩種基底都不存在</div>
+          <p><b>除了原生與機制掉落限定，其他都算 NNN</b>（Natural Non-Native）。判斷方式只有一句：結果選到某個基底時，這條詞綴<b>還能不能存在</b>。存在不了的那個基底，對這條詞綴來說就是 NNN。</p>
+          <table class="nnn-table">
+            <thead><tr><th>詞綴在工具裡設成</th><th>選中 A 基底</th><th>選中 B 基底</th></tr></thead>
+            <tbody>
+              <tr><th>原生（兩邊都可能）</th><td class="yes">可以</td><td class="yes">可以</td></tr>
+              <tr><th>只能存在 A 基底</th><td class="yes">可以</td><td class="no">不存在</td></tr>
+              <tr><th>只能存在 B 基底</th><td class="no">不存在</td><td class="yes">可以</td></tr>
+              <tr><th>兩邊都不會出現（NNN）</th><td class="no">不存在</td><td class="no">不存在</td></tr>
+            </tbody>
+          </table>
           <p>NNN 詞綴<b>不會被合成到任何一件裝備上</b>。它仍然佔一格：留幾條的機率看的是池的<b>總數（含 NNN）</b>，而 NNN 永遠抽不到，所以相對增加其他詞的機率。<br>例：池 3 條、其中 1 條對這個基底是 NNN ⇒ 上限剩 2 條，機率從「1 條 38%／2 條 52%／3 條 10%」變成「1 條 38%／2 條 62%」（原本 3 條那 10% 被灌進 2 條）。</p>
         </article>
         <article class="explain-card"><span class="step-number">04</span>
           <h2>排除不能出現的詞綴</h2>
-          <p>非原生（NNN）詞綴不會出現在不相容的基底上；<b>限定詞</b>（神廟這一類<b>限定掉落詞</b>、挖礦、大師、部分精髓等來源）成品通常只允許存在一條；同名詞綴不會出現兩份；而<b>機制掉落限定</b>（取得管道受限、但不算限定詞）視為原生，只是標示、不影響結果。剩下的才是可能的成品。</p>
-          <p class="explain-eg"><strong>合成前查證</strong>：建議先查詢該詞綴是不是 exclusive（限定詞）—— 取得管道相同不等於類型相同，同一來源的詞綴要逐條查證。查法：拿一件帶已知限定詞的素材與待測詞綴重組，若兩者不會同時出現，待測詞綴就是限定詞。</p>
+          <p>最後一步是把不可能同時存在的詞綴濾掉。有四種情況：</p>
+          <ul class="rule-list">
+            <li>非原生（NNN）不會出現在不相容的基底上。</li>
+            <li><b>限定詞</b>（神廟這一類<b>限定掉落詞</b>、挖礦、大師、部分精髓等來源）成品通常只留一條。</li>
+            <li><b>同一 family（詞綴群組）的詞彼此互斥</b>，例如同一條屬性有多個等級的版本，它們不會同時出現。</li>
+            <li>同名詞綴不會出現兩份。</li>
+          </ul>
+          <p><b>機制掉落限定</b>（取得管道受限、但不算限定詞）視為原生，只加標示，不影響結果。</p>
+          <p class="explain-eg"><strong>合成前查證</strong>：先查該詞綴是不是 exclusive（限定詞）。取得管道相同不等於類型相同，同一來源的詞綴要逐條查證。查法：拿一件帶已知限定詞的素材和待測詞綴重組，兩者不會同時出現，待測詞綴就是限定詞。</p>
           <div class="legend"><span class="tag normal">原生</span><span class="tag mech">機制掉落限定</span><span
               class="tag exclusive">限定詞</span><span class="tag nnn">非原生 NNN</span></div>
         </article>
@@ -226,7 +265,7 @@
       <section class="panel prob-panel">
         <p class="eyebrow">SPECIAL CASE</p>
         <h2>1p1e + 1e1s 特例</h2>
-        <p class="prob-intro">有一組配置不走上面的機率表，而是走另一套規則。</p>
+        <p class="prob-intro">這組配置不走上面的機率表，走另一套規則。</p>
         <div class="prob-notes">
           <p><strong>觸發條件</strong>：兩件素材都只有 1 前綴 1 後綴、各帶 1
             條限定詞、兩條限定詞分別落在前綴側與後綴側，而且全部原生（沒有非原生詞綴）。也就是「一般前綴＋限定詞後綴」對上「限定詞前綴＋一般後綴」。</p>
