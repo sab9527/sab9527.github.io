@@ -74,7 +74,21 @@ window.RECOMB_ENGINE = {
     if (exclusives > 1 && !special) {
       return { ok: false, message: '一般情況兩件素材合計最多一條限定詞；兩條只有在 1p1e + 1e1s 特例才允許。' };
     }
-    return { ok: true, special };
+    // 同名詞綴：同一側出現兩次以上時，工具視為同一條（結果最多留一條），
+    // 會讓底層組合被排除、機率被合併顯示，因此要提醒使用者確認。
+    const seen = new Map();
+    [['prefixes', '前綴'], ['suffixes', '後綴']].forEach(([key, text]) => {
+      [a, b].forEach(item => item[key].filter(m => m.enabled).forEach(m => {
+        const name = String(m.name || '').trim();
+        if (!name) return;
+        const id = `${key}|${name.toLowerCase()}`;
+        const hit = seen.get(id);
+        if (hit) hit.count += 1;
+        else seen.set(id, { name, side: text, count: 1 });
+      }));
+    });
+    const duplicates = [...seen.values()].filter(d => d.count > 1);
+    return { ok: true, special, duplicates };
   },
   // 從池中挑出所有合法組合：排除對該基底非原生的詞綴、同名重複、超過一條限定詞
   combinations(aMods, bMods, count, base) {

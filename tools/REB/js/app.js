@@ -2,11 +2,15 @@
   const E = window.RECOMB_ENGINE;
   const RULES = window.RECOMB_RULES;
   const nnnOptions = Object.entries(RULES.nnnLabels);
-  const defaultItem = (label) => ({
-    label,
-    prefixes: [0, 1, 2].map(i => ({ name: `前綴 ${i + 1}`, exclusive: false, nnn: 'none', enabled: i < 1 })),
-    suffixes: [0, 1, 2].map(i => ({ name: `後綴 ${i + 1}`, exclusive: false, nnn: 'none', enabled: i < 1 }))
-  });
+  const defaultItem = label => {
+    // 預設名稱帶上裝備代號（A-前綴 1／B-前綴 1），兩件裝備預設不會同名
+    const tag = String(label).replace('Item ', '');
+    return {
+      label,
+      prefixes: [0, 1, 2].map(i => ({ name: `${tag}-前綴 ${i + 1}`, exclusive: false, nnn: 'none', enabled: i < 1 })),
+      suffixes: [0, 1, 2].map(i => ({ name: `${tag}-後綴 ${i + 1}`, exclusive: false, nnn: 'none', enabled: i < 1 }))
+    };
+  };
   let state = { items: [defaultItem('Item A'), defaultItem('Item B')] };
   const qs = (s, root = document) => root.querySelector(s);
   const qsa = (s, root = document) => [...root.querySelectorAll(s)];
@@ -60,6 +64,7 @@
     qsa('[data-action="name"]').forEach(el => el.addEventListener('input', e => updateSlot(e, 'name')));
     qsa('[data-action="exclusive"]').forEach(el => el.addEventListener('change', e => updateSlot(e, 'exclusive')));
     qsa('[data-action="nnn"]').forEach(el => el.addEventListener('change', e => updateSlot(e, 'nnn')));
+    markDuplicates();
   }
   function renderSlots(item, itemIndex, side, label) {
     return `<div class="slot-section"><div class="slot-label">${label}</div>${item[side].map((mod, slotIndex) => `
@@ -82,6 +87,27 @@
     if (key === 'enabled') renderEditors();
     persistSimulate();
     scheduleCalc();
+    markDuplicates();
+  }
+  // 同名詞綴提醒：同一側出現同名詞綴時，引擎視為同一條（組合被排除、機率合併顯示）
+  function markDuplicates() {
+    const dupList = E.validate(state.items[0], state.items[1]).duplicates || [];
+    const dupes = new Set(dupList.map(d => `${d.side}|${d.name.toLowerCase()}`));
+    qsa('.item-card').forEach((card, itemIndex) => qsa('.slot-row', card).forEach((row, rowIndex) => {
+      const isPrefix = rowIndex < 3;
+      const mod = state.items[itemIndex][isPrefix ? 'prefixes' : 'suffixes'][rowIndex % 3];
+      const dup = !!mod.enabled && dupes.has(`${isPrefix ? '前綴' : '後綴'}|${String(mod.name || '').trim().toLowerCase()}`);
+      row.classList.toggle('dup', dup);
+      const input = row.querySelector('[data-action=name]');
+      if (input) input.title = dup ? '與另一件（或同一件）的詞綴同名：工具會把它們當成同一條詞綴' : '';
+    }));
+    const box = qs('#input-warning');
+    if (!box) return;
+    if (!dupList.length) { box.className = 'validation'; box.textContent = ''; return; }
+    const groups = [...new Set(dupList.map(d => d.side))].join('、');
+    const names = [...new Set(dupList.map(d => d.name))].map(n => `「${n}」`).join('、');
+    box.className = 'validation warn';
+    box.textContent = `${groups}有同名詞綴 ${names}：工具會把它們當成同一條詞綴，同一側最多只留一條，機率會合併、合計也可能低於 100%（重複的那條無法同時佔兩格）。如果它們其實是不同的詞綴，請改成不同名稱；如果本來就是同一條詞綴（或彼此互斥、不可能同時出現），取名相同即可。`;
   }
   function escapeHtml(s) { return String(s).replace(/[&<>'"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[c])); }
   function fmt(n) { return `${(n * 100).toFixed(1).replace('.0', '')}%`; }
