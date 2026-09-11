@@ -124,3 +124,7 @@
 
 /* 規劃列：類型選單加寬，讓最長選項（兩邊都不會出現（NNN））完整顯示 */
 .goal-row{grid-template-columns:22px minmax(0,1fr) 152px}
+
+/* 兩邊都不會出現（NNN）：類型鎖成 NNN，用 NNN 紅色系標示 */
+.select-wrap.nnn-lock .select-face{color:#f0aca2;background:#2a1c1a;border-color:#6b3a34;opacity:1}
+.select-wrap.nnn-lock::after{border-top-color:#f0aca2}

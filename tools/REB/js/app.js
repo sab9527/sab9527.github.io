@@ -41,7 +41,8 @@
       name: typeof raw.name === 'string' ? raw.name : fallback.name,
       enabled: !!raw.enabled,
       kind,
-      nnn: ['none', 'A', 'B', 'both'].includes(raw.nnn) ? raw.nnn : 'none'
+      // 機制掉落限定視為原生 → 存在條件一律歸零
+      nnn: kind === 'mechanic' ? 'none' : (['none', 'A', 'B', 'both'].includes(raw.nnn) ? raw.nnn : 'none')
     };
   };
   const sanitizeItem = (raw, label) => {
@@ -75,61 +76,71 @@
   }
   function renderSlots(item, itemIndex, side, label) {
     return `<div class="slot-section"><div class="slot-label">${label}</div>${item[side].map((mod, slotIndex) => {
-      const locked = mod.kind === 'mechanic';
+      const locked = mod.kind === 'mechanic';           // 機制掉落限定 → 存在條件鎖成原生
+      const kindLocked = mod.nnn === 'both';            // 兩邊都不會出現 → 類型鎖成 NNN
+      const effNnn = locked ? 'none' : mod.nnn;
       const nnnTitle = locked ? '機制掉落限定視為原生，存在條件固定為原生。' : (nnnHints[mod.nnn] || '');
+      const kindTitle = kindLocked ? '這條詞綴兩個基底都不會出現（NNN），沒有類型可言，只佔詞綴池一格。' : (kindHints[mod.kind] || '');
       return `
       <div class="slot-row kind-${mod.kind}" data-kind="${mod.kind}">
         <input type="checkbox" data-action="enabled" data-side="${side}" data-slot="${slotIndex}" ${mod.enabled ? 'checked' : ''} aria-label="啟用 ${label} ${slotIndex + 1}">
         <div class="slot-fields">
           <div class="slot-line name-line">
             <input type="text" data-action="name" data-side="${side}" data-slot="${slotIndex}" value="${escapeHtml(mod.name)}" ${mod.enabled ? '' : 'disabled'} aria-label="${label} ${slotIndex + 1} 名稱">
-            <span class="select-wrap">
-              <select class="kind-select" data-action="kind" data-side="${side}" data-slot="${slotIndex}" title="${kindHints[mod.kind] || ''}" ${mod.enabled ? '' : 'disabled'} aria-label="${label} ${slotIndex + 1} 詞綴類型">${kindOptions.map(([value, text]) => `<option value="${value}" ${mod.kind === value ? 'selected' : ''}>${text}</option>`).join('')}</select>
-              <span class="select-face" aria-hidden="true">${kindLabel(mod.kind)}</span>
+            <span class="select-wrap${kindLocked ? ' locked nnn-lock' : ''}">
+              <select class="kind-select" data-action="kind" data-side="${side}" data-slot="${slotIndex}" title="${kindTitle}" ${!mod.enabled || kindLocked ? 'disabled' : ''} aria-label="${label} ${slotIndex + 1} 詞綴類型">${kindOptions.map(([value, text]) => `<option value="${value}" ${mod.kind === value ? 'selected' : ''}>${text}</option>`).join('')}</select>
+              <span class="select-face" aria-hidden="true">${kindLocked ? 'NNN' : kindLabel(mod.kind)}</span>
             </span>
           </div>
           <div class="slot-line">
             <span class="select-wrap${locked ? ' locked' : ''}">
-              <select class="nnn-select" data-action="nnn" data-side="${side}" data-slot="${slotIndex}" title="${nnnTitle}" ${!mod.enabled || locked ? 'disabled' : ''} aria-label="${label} ${slotIndex + 1} 存在條件">${nnnOptions.map(([value, text]) => `<option value="${value}" ${mod.nnn === value ? 'selected' : ''}>${text}</option>`).join('')}</select>
-              <span class="select-face" aria-hidden="true">${nnnLabel(mod.nnn)}</span>
+              <select class="nnn-select" data-action="nnn" data-side="${side}" data-slot="${slotIndex}" title="${nnnTitle}" ${!mod.enabled || locked ? 'disabled' : ''} aria-label="${label} ${slotIndex + 1} 存在條件">${nnnOptions.map(([value, text]) => `<option value="${value}" ${effNnn === value ? 'selected' : ''}>${text}</option>`).join('')}</select>
+              <span class="select-face" aria-hidden="true">${nnnLabel(effNnn)}</span>
             </span>
           </div>
         </div>
       </div>`;
     }).join('')}</div>`;
   }
+  // 兩個下拉的互相鎖定：機制掉落限定 → 存在條件固定原生；兩邊都不會出現 → 類型顯示 NNN 並鎖住
+  function syncRowLocks(row, mod) {
+    const kindSel = row.querySelector('[data-action=kind]');
+    const nnnSel = row.querySelector('[data-action=nnn]');
+    const mechanic = mod.kind === 'mechanic';
+    const neverAppears = mod.nnn === 'both';
+    if (kindSel) {
+      const wrap = kindSel.closest('.select-wrap');
+      kindSel.disabled = !mod.enabled || neverAppears;
+      kindSel.title = neverAppears ? '這條詞綴兩個基底都不會出現（NNN），沒有類型可言，只佔詞綴池一格。' : (kindHints[mod.kind] || '');
+      wrap.classList.toggle('locked', neverAppears);
+      wrap.classList.toggle('nnn-lock', neverAppears);
+      wrap.querySelector('.select-face').textContent = neverAppears ? 'NNN' : kindLabel(mod.kind);
+    }
+    if (nnnSel) {
+      const wrap = nnnSel.closest('.select-wrap');
+      const effNnn = mechanic ? 'none' : mod.nnn;
+      if (mechanic) mod.nnn = 'none';
+      nnnSel.value = effNnn;
+      nnnSel.disabled = !mod.enabled || mechanic;
+      nnnSel.title = mechanic ? '機制掉落限定視為原生，存在條件固定為原生。' : (nnnHints[mod.nnn] || '');
+      wrap.classList.toggle('locked', mechanic);
+      wrap.querySelector('.select-face').textContent = nnnLabel(effNnn);
+    }
+  }
   function updateSlot(e, key) {
     const card = e.target.closest('.item-card');
     const item = state.items[+card.dataset.item];
     const slot = item[e.target.dataset.side][+e.target.dataset.slot];
     slot[key] = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
-    // 類型改變時同步列的顏色標示；機制掉落限定 = 視為原生，鎖住存在條件
+    // 類型／存在條件改變時，同步顏色標示與兩個下拉的互相鎖定
     if (key === 'kind' || key === 'nnn') {
       const row = e.target.closest('.slot-row');
       if (row && key === 'kind') {
         row.classList.remove('kind-normal', 'kind-mechanic', 'kind-exclusive');
         row.classList.add(`kind-${slot.kind}`);
         row.dataset.kind = slot.kind;
-        const nnnSel = row.querySelector('[data-action=nnn]');
-        const locked = slot.kind === 'mechanic';
-        if (locked) slot.nnn = 'none';
-        if (nnnSel) {
-          nnnSel.value = slot.nnn;
-          nnnSel.disabled = locked || !slot.enabled;
-          nnnSel.title = locked ? '機制掉落限定視為原生，存在條件固定為原生。' : (nnnHints[slot.nnn] || '');
-        }
-        const wrap = nnnSel && nnnSel.closest('.select-wrap');
-        if (wrap) {
-          wrap.classList.toggle('locked', locked);
-          const face = wrap.querySelector('.select-face');
-          if (face) face.textContent = nnnLabel(slot.nnn);
-        }
       }
-      e.target.title = (key === 'kind' ? kindHints : nnnHints)[slot[key]] || '';
-      const wrap = e.target.closest('.select-wrap');
-      const face = wrap && wrap.querySelector('.select-face');
-      const picked = e.target.selectedOptions && e.target.selectedOptions[0];
-      if (face) face.textContent = picked ? picked.textContent : e.target.value;
+      if (row) syncRowLocks(row, slot);
     }
     if (key === 'enabled') renderEditors();
     persistSimulate();
