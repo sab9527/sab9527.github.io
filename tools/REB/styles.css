@@ -13,6 +13,46 @@
 .prob-panel{margin-top:18px}.prob-intro{font-size:12px;color:var(--muted);margin:6px 0 14px}.prob-table{width:100%;border-collapse:collapse;font:12px var(--mono)}.prob-table th,.prob-table td{text-align:right;padding:8px 12px;border-bottom:1px solid var(--line)}.prob-table th:first-child,.prob-table td:first-child{text-align:left;color:var(--muted)}.prob-table tbody tr:first-child td{color:var(--muted)}.prob-table td:last-child{color:var(--accent);font-weight:700}.prob-notes{margin-top:14px;display:grid;gap:7px}.prob-notes p{font-size:12px;color:var(--muted);margin:0}.prob-notes strong{color:var(--ink)}
 @media(max-width:560px){.inline-help{grid-template-columns:1fr}.prob-table{font-size:11px}.prob-table th,.prob-table td{padding:6px 8px}}
 .result-summary .summary-box.wide{grid-column:1 / -1}.rule-note{font-size:12px;color:var(--muted);margin:8px 0 0;line-height:1.65}
+.base-line{display:flex;gap:12px;flex-wrap:wrap;align-items:baseline;font-size:12px;padding:7px 0;border-bottom:1px solid var(--line)}
+.base-line b{font-weight:700;white-space:nowrap}
+.base-line span{font:11px var(--mono);color:var(--muted)}
+/* 兩個基底並排的結果呈現 */
+.base-columns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-bottom:20px}
+.base-col{background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:13px;min-width:0}
+.base-col h4{margin:0 0 12px;font-size:12px;letter-spacing:.02em}
+.base-col.col-a{background:#16241f;border-color:#2f5a4a;border-top:3px solid #65c5a5}
+.base-col.col-a h4{color:#8fdcbf}
+.base-col.col-b{background:#262119;border-color:#5c4a2a;border-top:3px solid #d2a15a}
+.base-col.col-b h4{color:#e6bd7d}
+.side-block+.side-block{margin-top:12px}
+.side-name{display:block;font-size:11px;color:var(--muted);margin-bottom:6px}
+.stack-bar{display:flex;height:10px;border-radius:5px;overflow:hidden;background:#2a332f}
+.stack-bar i{display:block;height:100%}
+.stack-legend{display:flex;flex-wrap:wrap;gap:10px;margin-top:7px;font:10px var(--mono);color:var(--muted)}
+.stack-legend .seg{display:flex;align-items:center;gap:4px}
+.stack-legend .seg b{width:8px;height:8px;border-radius:2px;display:block}
+.combo-mods{display:flex;flex-direction:column;gap:4px;align-items:flex-start}
+.combo-line{display:flex;gap:5px;align-items:center;flex-wrap:wrap}
+.combo-mods i{font-style:normal;color:var(--muted);font-size:10px;padding:0 1px}
+.mod-name{padding:1px 7px;border-radius:4px;background:#2c3631;color:#cbd6ce;font-size:11px;white-space:nowrap}
+.mod-name.excl{background:#4b391f;color:#e8c47f;box-shadow:inset 0 0 0 1px #6d5426}
+.mod-name.nnn{background:#4a2926;color:#f0aca2;box-shadow:inset 0 0 0 1px #6b3a34}
+/* 整體結果分布矩陣 */
+.dist-block{text-align:center;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:16px 18px 20px;margin-bottom:22px}
+.dist-block h3{text-align:center;margin:0 0 14px}
+.dist-matrix{border-collapse:separate;border-spacing:4px;margin:0 auto;font:11px var(--mono)}
+.dist-matrix th{color:var(--muted);font-weight:400;font-size:10px;padding:4px 10px;text-align:center;white-space:nowrap}
+.dist-matrix td{padding:7px 14px;text-align:center;border-radius:6px}
+.dist-matrix td.empty{color:#3d4842}
+.dist-matrix td.best{font-weight:700;box-shadow:0 0 0 1px var(--accent),0 0 12px rgba(101,197,165,.25)}
+/* 次要按鈕 */
+.ghost-button{appearance:none;cursor:pointer;background:transparent;border:1px solid var(--line);color:var(--muted);border-radius:8px;padding:7px 13px;font-size:12px;font-family:inherit;transition:border-color .15s,color .15s,background .15s}
+.ghost-button:hover{border-color:var(--accent);color:var(--accent);background:rgba(101,197,165,.07)}
+.reset-button{display:inline-flex;align-items:center;gap:6px;align-self:flex-start;white-space:nowrap}
+.reset-button:hover{border-color:var(--danger);color:var(--danger);background:rgba(239,139,126,.08)}
+.reset-icon{font-size:13px;line-height:1}
+#toggle-combos{display:block;margin:14px auto 0}
+@media(max-width:640px){.base-columns{grid-template-columns:1fr}}
 
 /* Planner (推薦路線) */
 .plan-layout{display:grid;grid-template-columns:minmax(320px,380px) minmax(0,1fr);gap:18px;align-items:start}

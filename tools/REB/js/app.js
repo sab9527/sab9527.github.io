@@ -10,6 +10,44 @@
   let state = { items: [defaultItem('Item A'), defaultItem('Item B')] };
   const qs = (s, root = document) => root.querySelector(s);
   const qsa = (s, root = document) => [...root.querySelectorAll(s)];
+  // ---------- 本機儲存 / 即時運算 ----------
+  const SIM_KEY = 'recomb.simulate.v1';
+  const PLAN_KEY = 'recomb.plan.v1';
+  let showAllCombos = false;
+  const readStore = (key, fallback) => {
+    try { const raw = localStorage.getItem(key); return raw ? JSON.parse(raw) : fallback; } catch (error) { return fallback; }
+  };
+  const writeStore = (key, value) => {
+    try {
+      if (value === null || value === undefined) localStorage.removeItem(key);
+      else localStorage.setItem(key, JSON.stringify(value));
+    } catch (error) { /* 無痕模式等情形忽略 */ }
+  };
+  const debounce = (fn, wait) => { let timer; return (...args) => { clearTimeout(timer); timer = setTimeout(() => fn(...args), wait); }; };
+  const sanitizeMod = (raw, fallback) => {
+    if (!raw || typeof raw !== 'object') return fallback;
+    return {
+      name: typeof raw.name === 'string' ? raw.name : fallback.name,
+      enabled: !!raw.enabled,
+      exclusive: !!raw.exclusive,
+      nnn: ['none', 'A', 'B', 'both'].includes(raw.nnn) ? raw.nnn : 'none'
+    };
+  };
+  const sanitizeItem = (raw, label) => {
+    const fallback = defaultItem(label);
+    if (!raw || typeof raw !== 'object') return fallback;
+    ['prefixes', 'suffixes'].forEach(side => fallback[side].forEach((mod, i) => {
+      Object.assign(mod, sanitizeMod(raw[side] && raw[side][i], mod));
+    }));
+    return fallback;
+  };
+  const storedSim = readStore(SIM_KEY, null);
+  state = { items: [sanitizeItem(storedSim && storedSim.items && storedSim.items[0], 'Item A'), sanitizeItem(storedSim && storedSim.items && storedSim.items[1], 'Item B')] };
+  const persistSimulate = () => writeStore(SIM_KEY, { items: state.items });
+  const persistPlan = () => writeStore(PLAN_KEY, goal);
+  const anyModEnabled = () => state.items.some(item => [...item.prefixes, ...item.suffixes].some(mod => mod.enabled));
+  const scheduleCalc = debounce(() => { if (anyModEnabled()) calculate(); }, 140);
+  const schedulePlan = debounce(() => { if (goal.prefixes.some(m => m.on) || goal.suffixes.some(m => m.on)) runPlan(); }, 260);
 
   function renderEditors() {
     qs('#items-editor').innerHTML = state.items.map((item, itemIndex) => `
@@ -42,6 +80,8 @@
     const slot = item[e.target.dataset.side][+e.target.dataset.slot];
     slot[key] = key === 'enabled' ? e.target.checked : key === 'exclusive' ? e.target.checked : e.target.value;
     if (key === 'enabled') renderEditors();
+    persistSimulate();
+    scheduleCalc();
   }
   function escapeHtml(s) { return String(s).replace(/[&<>'"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[c])); }
   function fmt(n) { return `${(n * 100).toFixed(1).replace('.0', '')}%`; }
@@ -51,38 +91,137 @@
     if (!result.validation.ok) {
       validation.className = 'validation error';
       validation.textContent = result.validation.message;
-      qs('#result-state').textContent = '輸入有誤';
       qs('#result-content').innerHTML = '';
       return;
     }
     validation.className = 'validation ok';
     validation.textContent = result.special ? '輸入有效：符合 1p1e + 1e1s 特例。' : '輸入有效：可以進行重組。';
-    qs('#result-state').textContent = '已完成計算';
     if (result.special) {
       qs('#result-content').className = 'result-content';
       qs('#result-content').innerHTML = `<div class="result-summary"><div class="summary-box wide"><span>1 前綴 1 後綴</span><strong>≥ 33.3%</strong></div></div><div class="result-block"><h3>1p1e + 1e1s 特例</h3><p class="rule-note">先填的那一側抽中限定詞之後，另一側池中的限定詞會被剔除；因為要留幾條已經先決定，部分結果會被強制導向剩下的那條一般詞綴。實測常見成功率在 50% 以上，但精確值取決於詞綴權重，目前無法給出固定數字。</p></div>`;
       return;
     }
-    const full = (result.bases[0].full + result.bases[1].full) / 2;
-    const outcomeEntries = Object.entries(result.all).sort((a, b) => b[1] - a[1]);
-    const bars = (base) => `<div class="result-block"><h3>${base.base === 'A' ? '若選中 Item A 基底' : '若選中 Item B 基底'}｜前綴池 ${base.prefix.pool}、後綴池 ${base.suffix.pool}</h3>${base.rule === '1p1s' ? '<p class="rule-note">這組是「1 條前綴 + 1 條後綴」的特例：1 前綴 1 後綴、只有前綴、只有後綴各 1/3。</p>' : `<div>${sideBars(base.prefix.odds, '前綴')}</div><div>${sideBars(base.suffix.odds, '後綴')}</div>`}</div>`;
-    const outcomes = outcomeEntries.map(([label, probability]) => `<div class="outcome"><span>${label}</span><strong>${fmt(probability)}</strong></div>`).join('');
-    const concrete = result.bases.flatMap(base => base.outcomes.flatMap(o => o.combos.map(combo => ({ base: base.base, label: combo.map(m => m.name).join(' + '), probability: (o.probability / Math.max(1, o.combos.length)) / 2 }))));
-    const concreteRows = concrete.slice().sort((a, b) => b.probability - a.probability).slice(0, 24).map(row => `<div class="outcome"><span>${row.label}<small class="combo-base">${row.base === 'A' ? 'A 基底' : 'B 基底'}</small></span><strong>約 ${fmt(row.probability)}</strong></div>`).join('');
+    // 整體結果分布：前綴 × 後綴 的對照表（取代原本的條列）
+    const cells = Object.entries(result.all).map(([label, p]) => {
+      const m = label.match(/^(\d+) 前綴 (\d+) 後綴$/);
+      return m ? { p: +m[1], s: +m[2], probability: p } : null;
+    }).filter(Boolean);
+    const pVals = [...new Set(cells.map(c => c.p))].sort((a, b) => b - a);
+    const sVals = [...new Set(cells.map(c => c.s))].sort((a, b) => a - b);
+    const best = cells.reduce((a, b) => (b.probability > (a ? a.probability : -1) ? b : a), null);
+    const cellStyle = probability => {
+      const ratio = best && best.probability ? probability / best.probability : 0;
+      const alpha = (0.05 + 0.32 * ratio).toFixed(3);
+      const shade = (alpha * 0.6).toFixed(3);
+      return ` style="background:linear-gradient(180deg,rgba(101,197,165,${alpha}),rgba(101,197,165,${shade}));color:${ratio > 0.5 ? '#c8f2e2' : '#cfdcd4'}"`;
+    };
+    const distMatrix = (pVals.length && sVals.length) ? `
+      <table class="dist-matrix">
+        <thead><tr><th></th>${sVals.map(s => `<th>${s} 後綴</th>`).join('')}</tr></thead>
+        <tbody>${pVals.map(p => `<tr><th>${p} 前綴</th>${sVals.map(s => {
+          const cell = cells.find(c => c.p === p && c.s === s);
+          if (!cell) return '<td class="empty">—</td>';
+          const isBest = best && cell.p === best.p && cell.s === best.s;
+          return `<td class="${isBest ? 'best' : ''}"${cellStyle(cell.probability)}>${fmt(cell.probability)}</td>`;
+        }).join('')}</tr>`).join('')}</tbody>
+      </table>` : '';
+    // 每個基底各自的占比條
+    const COUNT_COLORS = ['#6b7a72', '#3f7fb8', '#35a58e', '#b8f04f'];
+    const COUNT_TEXT = ['#a9b6ae', '#9fc9ec', '#8fe0c8', '#e2f9b4'];
+    const stackBar = odds => {
+      const segs = odds.map((v, i) => v > 0 ? `<i style="width:${v * 100}%;background:${COUNT_COLORS[i]}"></i>` : '').join('');
+      const legend = odds.map((v, i) => v > 0 ? `<span class="seg" style="color:${COUNT_TEXT[i]}"><b style="background:${COUNT_COLORS[i]}"></b>${i} 條 ${fmt(v)}</span>` : '').join('');
+      return `<div class="stack-bar">${segs}</div><div class="stack-legend">${legend}</div>`;
+    };
+    const baseColumn = base => `
+      <div class="base-col ${base.base === 'A' ? 'col-a' : 'col-b'}">
+        <h4>${base.base === 'A' ? '若選中 Item A 基底' : '若選中 Item B 基底'}</h4>
+        ${base.rule === '1p1s'
+          ? '<p class="rule-note">1 前 1 後 特例：1 前綴 1 後綴／只有前綴／只有後綴各 1/3</p>'
+          : `<div class="side-block"><span class="side-name">前綴（池 ${base.prefix.pool}）</span>${stackBar(base.prefix.odds)}</div><div class="side-block"><span class="side-name">後綴（池 ${base.suffix.pool}）</span>${stackBar(base.suffix.odds)}</div>`}
+      </div>`;
+    // 具體組合：每個基底各自一欄；同名組合在該欄內合併
+    const combosByBase = result.bases.map(base => {
+      const map = new Map();
+      base.outcomes.forEach(o => {
+        const each = (o.probability / Math.max(1, o.combos.length)) / 2;
+        o.combos.forEach(combo => {
+          const key = combo.map(m => m.name).slice().sort().join(' | ');
+          const rec = map.get(key) || { items: combo.map((m, idx) => ({ name: m.name, exclusive: !!m.exclusive, nnn: m.nnn || 'none', side: idx < (o.p || 0) ? 'prefixes' : 'suffixes' })), probability: 0 };
+          rec.probability += each;
+          map.set(key, rec);
+        });
+      });
+      return [...map.values()].sort((a, b) => b.probability - a.probability);
+    });
+    const enabledMods = [...state.items[0].prefixes, ...state.items[0].suffixes, ...state.items[1].prefixes, ...state.items[1].suffixes].filter(m => m.enabled);
+    const specialMods = enabledMods.filter(m => m.exclusive || (m.nnn && m.nnn !== 'none'));
+    const modChip = m => `<span class="mod-name${m.exclusive ? ' excl' : (m.nnn && m.nnn !== 'none') ? ' nnn' : ''}">${escapeHtml(m.name)}</span>`;
+    // 預設只顯示機率 ≥ 10% 的組合；若只有一個達標，往下取到明顯斷層為止
+    const COMBO_FLOOR = 0.1;
+    const COMBO_CAP = 20;
+    const visibleCombos = rows => {
+      if (showAllCombos) return rows.slice(0, 60);
+      const base = rows.filter(r => r.probability >= COMBO_FLOOR);
+      if (base.length >= 2) return base.slice(0, COMBO_CAP);
+      if (!rows.length) return rows;
+      const cutoff = rows[0].probability * 0.3;
+      const extended = rows.filter(r => r.probability >= cutoff);
+      return (extended.length >= 2 ? extended : rows.slice(0, Math.min(2, rows.length))).slice(0, COMBO_CAP);
+    };
+    const listed = combosByBase.map(rows => ({ rows: visibleCombos(rows), total: rows.length }));
+    const comboLines = row => {
+      const chips = side => row.items.filter(i => i.side === side).map(modChip).join('<i>+</i>');
+      const prefixLine = chips('prefixes');
+      const suffixLine = chips('suffixes');
+      return `<span class="combo-mods">${prefixLine ? `<span class="combo-line">${prefixLine}</span>` : ''}${suffixLine ? `<span class="combo-line">${suffixLine}</span>` : ''}</span>`;
+    };
+    const comboColumn = (base, entry) => `
+      <div class="base-col ${base.base === 'A' ? 'col-a' : 'col-b'}">
+        <h4>${base.base === 'A' ? '若選中 Item A 基底' : '若選中 Item B 基底'}</h4>
+        ${entry.rows.length
+          ? `<div class="outcome-list combo-list">${entry.rows.map(row => `<div class="outcome">${comboLines(row)}<strong>約 ${fmt(row.probability)}</strong></div>`).join('')}</div>`
+          : '<p class="result-footnote">這個基底沒有可列出的組合。</p>'}
+      </div>`;
+    const fate = specialMods.map(m => {
+      const parts = [];
+      if (m.nnn === 'both') parts.push('兩個基底都不會被保留');
+      else if (m.nnn === 'A') parts.push('選 Item A 基底時不保留');
+      else if (m.nnn === 'B') parts.push('選 Item B 基底時不保留');
+      if (m.exclusive) parts.push('限定詞（成品最多 1 條）');
+      return `<span>${escapeHtml(m.name)}：${parts.join('、')}</span>`;
+    }).join('');
+    const hiddenCombos = listed.reduce((sum, entry) => sum + (entry.total - entry.rows.length), 0);
+    const comboBlock = specialMods.length
+      ? `<div class="result-block"><h3>具體可能組合</h3><div class="base-columns">${result.bases.map((base, i) => comboColumn(base, listed[i])).join('')}</div>${hiddenCombos > 0 || showAllCombos ? `<button class="ghost-button" id="toggle-combos">${showAllCombos ? '收起機率較少的結果' : `顯示機率較少結果（還有 ${hiddenCombos} 種）`}</button>` : ''}<div class="inline-help"><strong>特殊詞綴的影響</strong>${fate}</div></div>`
+      : `<p class="result-footnote">這組設定沒有用到限定詞或非原生詞綴，可能組合只差在基底或重複實例，因此省略。</p>`;
     qs('#result-content').className = 'result-content';
-    qs('#result-content').innerHTML = `<div class="result-summary"><div class="summary-box"><span>整體 3 前綴 3 後綴</span><strong>${fmt(full)}</strong></div><div class="summary-box"><span>可能結果種類</span><strong>${outcomeEntries.length}</strong></div></div>${result.bases.map(bars).join('')}<div class="result-block"><h3>整體前綴／後綴分布</h3><div class="outcome-list">${outcomes}</div></div><div class="result-block"><h3>具體可能組合（編號詞綴）</h3><div class="outcome-list">${concreteRows || '<p class="result-footnote">目前設定沒有可列出的具體組合。</p>'}</div></div>`;
+    qs('#result-content').innerHTML = `<div class="result-block dist-block"><h3>整體結果分布</h3>${distMatrix}</div><div class="base-columns">${result.bases.map(baseColumn).join('')}</div>${comboBlock}`;
+    persistSimulate();
   }
-  function sideBars(odds, label) { return `<div class="bar-row"><span>${label}</span><div class="bar"><i style="width:${Math.max(...odds) * 100}%"></i></div><span>${odds.map((n, i) => n ? `${i}條 ${fmt(n)}` : '').filter(Boolean).join('／')}</span></div>`; }
   // ---------- 推薦路線（目標驅動規劃器） ----------
   const PLANNER = window.RECOMB_PLANNER;
   const KIND_OPTIONS = Object.entries(RULES.kindLabels || {
     normal: '普通', exclusive: '限定詞', nnnA: '非原生（A）', nnnB: '非原生（B）', nnnBoth: '非原生（雙方）'
   });
-  let goal = {
-    baseMode: 'same',
-    prefixes: [0, 1, 2].map(i => ({ on: false, name: `前綴 ${i + 1}`, kind: 'normal' })),
-    suffixes: [0, 1, 2].map(i => ({ on: false, name: `後綴 ${i + 1}`, kind: 'normal' }))
+  const sanitizeGoal = raw => {
+    const clean = {
+      baseMode: 'same',
+      prefixes: [0, 1, 2].map(i => ({ on: false, name: `前綴 ${i + 1}`, kind: 'normal' })),
+      suffixes: [0, 1, 2].map(i => ({ on: false, name: `後綴 ${i + 1}`, kind: 'normal' }))
+    };
+    if (!raw || typeof raw !== 'object') return clean;
+    if (typeof raw.baseMode === 'string') clean.baseMode = raw.baseMode;
+    ['prefixes', 'suffixes'].forEach(side => clean[side].forEach((mod, i) => {
+      const src = raw[side] && raw[side][i];
+      if (!src || typeof src !== 'object') return;
+      mod.on = !!src.on;
+      if (typeof src.name === 'string') mod.name = src.name;
+      if (KIND_OPTIONS.some(([value]) => value === src.kind)) mod.kind = src.kind;
+    }));
+    return clean;
   };
+  let goal = sanitizeGoal(readStore(PLAN_KEY, null));
 
   function renderGoal() {
     const rows = (side, label) => goal[side].map((mod, i) => `
@@ -96,6 +235,8 @@
     qsa('[data-goal]').forEach(el => el.addEventListener(el.tagName === 'SELECT' || el.type === 'checkbox' ? 'change' : 'input', e => {
       const { goal: prop, side, slot } = e.target.dataset;
       goal[side][+slot][prop] = prop === 'on' ? e.target.checked : e.target.value;
+      persistPlan();
+      schedulePlan();
     }));
     qs('#plan-base').value = goal.baseMode;
   }
@@ -185,25 +326,36 @@
   }
 
   function initNav() {
+    const activate = page => {
+      qsa('.nav-button').forEach(b => b.classList.toggle('active', b.dataset.page === page));
+      qsa('.page').forEach(p => p.classList.toggle('active', p.id === `page-${page}`));
+    };
     qsa('.nav-button').forEach(button => button.addEventListener('click', () => {
       const page = button.dataset.page;
-      qsa('.nav-button').forEach(b => b.classList.toggle('active', b === button));
-      qsa('.page').forEach(p => p.classList.toggle('active', p.id === `page-${page}`));
+      activate(page);
       history.replaceState(null, '', `#${page}`);
       if (page === 'recommend') renderRecommendations();
     }));
+    const initial = (location.hash || '').replace('#', '');
+    activate(['simulate', 'recommend', 'about'].includes(initial) ? initial : 'simulate');
   }
   qs('#calculate-button').addEventListener('click', calculate);
   qs('#reset-button').addEventListener('click', () => {
     state.items = [defaultItem('Item A'), defaultItem('Item B')];
+    showAllCombos = false;
+    writeStore(SIM_KEY, null);
     renderEditors();
+    qs('#validation').className = 'validation';
     qs('#validation').textContent = '';
-    qs('#result-content').className = 'result-content empty-state';
-    qs('#result-content').innerHTML = '<div class="empty-symbol">↗</div><h3>設定詞綴後開始計算</h3>';
-    qs('#result-state').textContent = '等待輸入';
+    const content = qs('#result-content');
+    content.className = 'result-content empty-state';
+    content.innerHTML = '<div class="empty-symbol">↗</div><h3>設定詞綴後開始計算</h3>';
+  });
+  qs('#result-content').addEventListener('click', e => {
+    if (e.target.closest('#toggle-combos')) { showAllCombos = !showAllCombos; calculate(); }
   });
   qs('#plan-button').addEventListener('click', runPlan);
-  qs('#plan-base').addEventListener('change', e => { goal.baseMode = e.target.value; });
+  qs('#plan-base').addEventListener('change', e => { goal.baseMode = e.target.value; persistPlan(); schedulePlan(); });
   qsa('[data-preset]').forEach(btn => btn.addEventListener('click', () => {
     const preset = btn.dataset.preset;
     const set = (side, on, label) => goal[side].forEach((m, i) => {
@@ -216,9 +368,12 @@
     else if (preset === '2p2s') { set('prefixes', [0, 1], '前綴'); set('suffixes', [0, 1], '後綴'); }
     else { set('prefixes', [], '前綴'); set('suffixes', [], '後綴'); }
     renderGoal();
+    persistPlan();
     if (preset !== 'clear') runPlan();
   }));
   initNav();
   renderEditors();
   renderGoal();
+  if (anyModEnabled()) calculate();
+  if (goal.prefixes.some(m => m.on) || goal.suffixes.some(m => m.on)) runPlan();
 })();

@@ -29,7 +29,7 @@
       </div>
       <div class="sim-layout">
         <section class="input-panel panel">
-          <div class="panel-heading"><div><p class="eyebrow">INPUTS</p><h2>兩件裝備</h2><p class="panel-help">前綴與後綴分開計算。啟用詞綴後，可勾選它是不是限定詞，並設定它的非原生對象。</p></div><button class="text-button" id="reset-button">全部重設</button></div>
+          <div class="panel-heading"><div><p class="eyebrow">INPUTS</p><h2>兩件裝備</h2><p class="panel-help">前綴與後綴分開計算。啟用詞綴後，可勾選它是不是限定詞，並設定它的非原生對象。</p></div><button class="ghost-button reset-button" id="reset-button" type="button"><span class="reset-icon" aria-hidden="true">↺</span>全部重設</button></div>
           <div id="items-editor" class="items-editor"></div>
           <div class="inline-help">
             <strong>結果基底</strong><span>結果會從兩件素材中挑一件的基底，各 50%。下方結果區會分別列出「選中 Item A 基底」與「選中 Item B 基底」兩種情況。</span>
@@ -43,7 +43,7 @@
           <button class="primary-button" id="calculate-button">計算重組結果 <span>→</span></button>
         </section>
         <section class="result-panel panel" id="result-panel">
-          <div class="panel-heading"><div><p class="eyebrow">RESULTS</p><h2>結果機率</h2></div><span class="result-state" id="result-state">等待輸入</span></div>
+          <div class="panel-heading"><div><p class="eyebrow">RESULTS</p><h2>結果機率</h2></div></div>
           <div id="result-content" class="result-content empty-state"><div class="empty-symbol">↗</div><h3>設定詞綴後開始計算</h3></div>
         </section>
       </div>
