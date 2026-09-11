@@ -261,10 +261,10 @@
     };
     const listed = combosByBase.map(rows => ({ rows: visibleCombos(rows), total: rows.length }));
     const comboLines = row => {
-      const chips = side => row.items.filter(i => i.side === side).map(modChip).join('<i>+</i>');
-      const prefixLine = chips('prefixes');
-      const suffixLine = chips('suffixes');
-      return `<span class="combo-mods">${prefixLine ? `<span class="combo-line">${prefixLine}</span>` : ''}${suffixLine ? `<span class="combo-line">${suffixLine}</span>` : ''}</span>`;
+      const chip = m => `<span class="combo-mod">${modChip(m)}</span>`;
+      const prefixes = row.items.filter(i => i.side === 'prefixes');
+      const suffixes = row.items.filter(i => i.side === 'suffixes');
+      return `<span class="combo-mods">${prefixes.map(chip).join('')}${prefixes.length && suffixes.length ? '<span class="combo-split" aria-hidden="true"></span>' : ''}${suffixes.map(chip).join('')}</span>`;
     };
     const comboColumn = (base, entry) => `
       <div class="base-col ${base.base === 'A' ? 'col-a' : 'col-b'}">
