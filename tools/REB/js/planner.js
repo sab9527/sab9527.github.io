@@ -7,11 +7,12 @@ window.RECOMB_PLANNER = (() => {
   const MAX_SINGLE = 3;
 
   const KIND = {
-    normal: { exclusive: false, nnn: 'none', text: '普通' },
+    normal: { nnn: 'none', text: '一般' },
+    mechanic: { nnn: 'none', text: '機制掉落限定' },
     exclusive: { exclusive: true, nnn: 'none', text: '限定詞' },
-    nnnA: { exclusive: false, nnn: 'A', text: '非原生（A）' },
-    nnnB: { exclusive: false, nnn: 'B', text: '非原生（B）' },
-    nnnBoth: { exclusive: false, nnn: 'both', text: '非原生（雙方）' }
+    nnnA: { nnn: 'A', text: '只能存在 B 基底' },
+    nnnB: { nnn: 'B', text: '只能存在 A 基底' },
+    nnnBoth: { nnn: 'both', text: '兩邊都不會出現' }
   };
 
   const size = st => st.prefixes.length + st.suffixes.length;
@@ -25,7 +26,7 @@ window.RECOMB_PLANNER = (() => {
   });
 
   function blockedFor(mod, baseMode) {
-    const n = KIND[mod.kind].nnn;
+    const n = (KIND[mod.kind] || KIND.normal).nnn;
     if (baseMode === 'same') return n !== 'none';
     return n === baseMode || n === 'both';
   }
@@ -38,7 +39,7 @@ window.RECOMB_PLANNER = (() => {
     if (ex.length > 1) issues.push(`限定詞最多只能保留一條，目前有 ${ex.length} 條（${ex.map(m => m.name).join('、')}）。`);
     if (target.baseMode === 'same') {
       const bad = all.filter(m => blockedFor(m, 'same'));
-      if (bad.length) issues.push(`兩件素材同基底時，非原生詞綴無法保留：${bad.map(m => m.name).join('、')}。請改用不同基底，或把類型改成「普通」。`);
+      if (bad.length) issues.push(`兩件素材同基底時，非原生詞綴無法保留：${bad.map(m => m.name).join('、')}。請改用不同基底，或把類型改成「一般」。`);
     } else {
       const bad = all.filter(m => blockedFor(m, target.baseMode));
       if (bad.length) issues.push(`目標基底是 Item ${target.baseMode} 的基底時，這些非原生詞綴無法保留：${bad.map(m => m.name).join('、')}。`);

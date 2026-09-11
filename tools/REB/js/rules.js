@@ -11,20 +11,35 @@ window.RECOMB_RULES = {
     5: [0, 0, 0.43, 0.57],
     6: [0, 0, 0.28, 0.72]
   },
-  // 非原生（NNN）標記：none = 原生；A = 選到 A 基底時消失；B = 選到 B 基底時消失；both = 兩個基底都消失
+  // 詞綴在「兩個基底」上的存在條件（下拉選項文字即為白話存在條件）
   nnnLabels: {
-    none: '原生',
-    A: '非原生（A）',
-    B: '非原生（B）',
-    both: '非原生（雙方）'
+    none: '原生（兩邊都可能）',
+    A: '只能存在 B 基底',
+    B: '只能存在 A 基底',
+    both: '兩邊都不會出現（NNN）'
   },
-  // 規劃器使用：詞綴類型顯示名稱
+  nnnHints: {
+    none: '原生：這條詞綴兩個基底都可能出現。',
+    A: '非原生於 A：結果選中 Item A 基底時這條不存在，等於「只能存在 B 基底」；它仍然佔用詞綴池。',
+    B: '非原生於 B：結果選中 Item B 基底時這條不存在，等於「只能存在 A 基底」；它仍然佔用詞綴池。',
+    both: '非原生於雙方：兩個基底都不會出現（例如眾神殿之相），只會佔用詞綴池。'
+  },
+  // 詞綴類型顯示名稱
   kindLabels: {
-    normal: '普通',
+    normal: '一般',
+    mechanic: '機制掉落限定',
     exclusive: '限定詞',
-    nnnA: '非原生（A）',
-    nnnB: '非原生（B）',
-    nnnBoth: '非原生（雙方）'
+    nnnA: '只能存在 B 基底',
+    nnnB: '只能存在 A 基底',
+    nnnBoth: '兩邊都不會出現（NNN）'
+  },
+  kindHints: {
+    normal: '一般詞綴：正常屬於這個基底。',
+    mechanic: '機制掉落限定：取得管道被特定機制限制、但不算限定詞的詞綴。規則上視為原生，存在條件固定為原生，只是加標示。（神廟那一類是「限定掉落詞」，屬於限定詞。）',
+    exclusive: '限定詞：神廟（限定掉落詞）、挖礦、大師、部分精髓等來源的獨佔詞綴。成品最多一條；兩件素材合計通常也只能放一條。合成前建議先查證這條詞綴是否為限定詞。',
+    nnnA: '非原生於 A：只能存在 B 基底。',
+    nnnB: '非原生於 B：只能存在 A 基底。',
+    nnnBoth: '非原生於雙方：兩個基底都不會出現。'
   },
   // 推薦路線資料，之後調整只需要改這裡
   routes: [
@@ -49,9 +64,17 @@ window.RECOMB_ENGINE = {
     for (let i = max + 1; i < raw.length; i++) raw[i] = 0;
     return raw;
   },
-  // 這條詞綴在指定基底上是否非原生
+  // 這條詞綴在指定基底上是否非原生（機制掉落限定一律視為原生）
   isNnn(mod, base) {
+    if (this.isMechanic(mod)) return false;
     return mod.nnn === 'both' || mod.nnn === base;
+  },
+  // 詞綴類型：一般 / 機制掉落限定（視為原生）/ 限定詞
+  isExclusive(mod) {
+    return mod.kind === 'exclusive' || mod.exclusive === true;
+  },
+  isMechanic(mod) {
+    return mod.kind === 'mechanic' || mod.mechanic === true;
   },
   getSide(itemA, itemB, side, base) {
     const mods = [...itemA[side], ...itemB[side]].filter(m => m.enabled);
@@ -60,8 +83,8 @@ window.RECOMB_ENGINE = {
   },
   validate(a, b) {
     const mods = [...a.prefixes, ...a.suffixes, ...b.prefixes, ...b.suffixes].filter(m => m.enabled);
-    const exclusives = mods.filter(m => m.exclusive).length;
-    const exCount = (item, side) => item[side].filter(m => m.enabled && m.exclusive).length;
+    const exclusives = mods.filter(m => this.isExclusive(m)).length;
+    const exCount = (item, side) => item[side].filter(m => m.enabled && this.isExclusive(m)).length;
     const onePerSide = item => item.prefixes.filter(m => m.enabled).length === 1 && item.suffixes.filter(m => m.enabled).length === 1;
     const aEx = exCount(a, 'prefixes') + exCount(a, 'suffixes');
     const bEx = exCount(b, 'prefixes') + exCount(b, 'suffixes');
@@ -92,12 +115,13 @@ window.RECOMB_ENGINE = {
   },
   // 從池中挑出所有合法組合：排除對該基底非原生的詞綴、同名重複、超過一條限定詞
   combinations(aMods, bMods, count, base) {
+    const isExclusive = mod => this.isExclusive(mod);
     const pool = [...aMods, ...bMods].filter(m => m.enabled && !this.isNnn(m, base));
     const out = [];
     function choose(start, picked) {
       if (picked.length === count) {
         if (new Set(picked.map(m => m.name.toLowerCase())).size !== picked.length) return;
-        if (picked.filter(m => m.exclusive).length > 1) return;
+        if (picked.filter(isExclusive).length > 1) return;
         out.push([...picked]);
         return;
       }
