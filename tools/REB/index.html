@@ -32,8 +32,11 @@
           <div class="panel-heading"><div><p class="eyebrow">INPUTS</p><h2>兩件裝備</h2><p class="panel-help">前綴與後綴分開計算。啟用詞綴後，可勾選它是不是限定詞，並設定它的非原生對象。</p></div><button class="text-button" id="reset-button">全部重設</button></div>
           <div id="items-editor" class="items-editor"></div>
           <div class="inline-help">
-            <strong>原生</strong><span>詞綴正常屬於這個基底；結果選中該基底時，這條詞綴可以被抽到。</span>
-            <strong>非原生（NNN）</strong><span>這條詞綴是跟著其中一件的基底來的。若結果選到「另一件」的基底，它就不存在，但仍然會佔用詞綴池，影響這一側會留下幾條。</span>
+            <strong>結果基底</strong><span>結果會從兩件素材中挑一件的基底，各 50%。下方結果區會分別列出「選中 Item A 基底」與「選中 Item B 基底」兩種情況。</span>
+            <strong>原生</strong><span>這條詞綴正常屬於該基底；結果選中該基底時，它可以被抽到。</span>
+            <strong>非原生（A）</strong><span>結果選到 <b>Item A 的基底</b>時，這條詞綴不存在（但仍佔用詞綴池，影響該側留下幾條）。</span>
+            <strong>非原生（B）</strong><span>結果選到 <b>Item B 的基底</b>時，這條詞綴不存在（但仍佔用詞綴池）。</span>
+            <strong>非原生（雙方）</strong><span>兩個基底都不能出現，例如眾神殿之相。它只會佔池，不會成為成品。</span>
             <strong>限定詞（Exclusive）</strong><span>精髓、面紗、尊爵勢力、掘獄等來源的獨佔詞綴。成品最多只會有一條；兩件素材合計通常也只能放一條。</span>
           </div>
           <div id="validation" class="validation" role="status"></div>
@@ -107,6 +110,16 @@
           <p><strong>怎麼讀</strong>：兩件都是 3 前綴 ⇒ 前綴池 6 ⇒ 留 3 條 72%；後綴同樣 72% ⇒ 同時做到 3 前綴 3 後綴 = 72% × 72% ≈ 51.8%。</p>
           <p><strong>池只有 1 條</strong>：該側有 41% 直接全空，所以單詞綴素材不要直接接高階件。</p>
           <p><strong>有非原生詞綴時</strong>：該側可達上限下降，超過上限的機率會併回去。例：池 3、其中 1 條對這個基底非原生 ⇒ 上限 2 條 ⇒ 變成 1 條 38%、2 條 62%。</p>
+        </div>
+      </section>
+      <section class="panel prob-panel"><p class="eyebrow">SPECIAL CASE</p><h2>1p1e + 1e1s 特例</h2>
+        <p class="prob-intro">有一組配置不走上面的機率表，而是走另一套規則。</p>
+        <div class="prob-notes">
+          <p><strong>觸發條件</strong>：兩件素材都只有 1 前綴 1 後綴、各帶 1 條限定詞、兩條限定詞分別落在前綴側與後綴側，而且全部原生（沒有非原生詞綴）。也就是「一般前綴＋限定詞後綴」對上「限定詞前綴＋一般後綴」。</p>
+          <p><strong>結果</strong>：成品一定落在 1 前綴 1 後綴，機率至少 33.3%，實測常見 50% 以上，但精確值取決於詞綴權重、目前沒有固定數字。</p>
+          <p><strong>為什麼</strong>：先填的那一側抽中限定詞之後，另一側池中的限定詞會被剔除；而要留幾條已經先擲定，所以部分結果會被強制導向剩下的那條一般詞綴。</p>
+          <p><strong>什麼時候用</strong>：只有當你不在意「留下哪兩條」、只想拿到一件 1 前 1 後的中間件時才值得考慮。要精準指定詞綴時，用一般的 1 前綴素材＋1 後綴素材路線即可（33.3%，而且留下的一定是你要的那兩條）。</p>
+          <p><strong>注意</strong>：目標本身若含限定詞，這個配置就不可能成立（同一個詞綴側會出現 2 條限定詞，直接無效）；含非原生詞綴也不行。</p>
         </div>
       </section>
     </section>

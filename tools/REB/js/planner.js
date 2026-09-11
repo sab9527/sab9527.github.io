@@ -200,9 +200,29 @@ window.RECOMB_PLANNER = (() => {
     return options.slice(0, limit || MAX_SINGLE);
   }
 
+  // 1p1e + 1e1s 特例：只在目標剛好是「1 前綴 + 1 後綴」時才有意義
+  function specialNote(target) {
+    if (size(target) !== 2 || target.prefixes.length !== 1 || target.suffixes.length !== 1) return null;
+    const all = modsOf(target);
+    const hasExclusive = all.some(m => m.kind === 'exclusive');
+    const hasNnn = all.some(m => KIND[m.kind].nnn !== 'none');
+    const bound = target.baseMode === 'same' ? 1 / 3 : 1 / 6;
+    const requirement = {
+      a: { prefixes: target.prefixes.map(m => m.name), suffixes: ['墊檔限定詞（任意）'] },
+      b: { prefixes: ['墊檔限定詞（任意）'], suffixes: target.suffixes.map(m => m.name) }
+    };
+    if (hasExclusive) {
+      return { applicable: false, bound, requirement, reason: '目標本身含限定詞時不能用：特例要求兩件素材各 1 條限定詞、且分別位在前綴側與後綴側。你的目標已經有一條限定詞，再補上去就會讓同一側出現 2 條限定詞，直接被判無效。' };
+    }
+    if (hasNnn) {
+      return { applicable: false, bound, requirement, reason: '目標含非原生詞綴時不能用：特例要求所有詞綴都是原生（沒有 NNN）。' };
+    }
+    return { applicable: true, bound, requirement, reason: '' };
+  }
+
   function plan(target) {
     const check = feasibility(target);
-    const result = { target, feasibility: check, singleStep: [], routes: [], leaves: [], singleAffix: false, threshold: MIN_STEP_ODDS };
+    const result = { target, feasibility: check, singleStep: [], routes: [], leaves: [], singleAffix: false, threshold: MIN_STEP_ODDS, special: specialNote(target) };
     if (!check.ok) return result;
     if (size(target) <= 1) {
       result.singleAffix = true;
@@ -210,11 +230,16 @@ window.RECOMB_PLANNER = (() => {
       result.leaves = [{ name: m.name, side: target.prefixes.length ? '前綴' : '後綴', kind: m.kind, count: 1 }];
       return result;
     }
+    const best = routesFor(target, MAX_ROUTES);
     result.singleStep = singleStepOptions(target, MAX_SINGLE);
-    result.routes = routesFor(target, MAX_ROUTES);
+    result.routes = best;
     if (result.routes.length) result.leaves = result.routes[0].leaves_;
+    // 只有 1 前 1 後 的目標，才需要提示特例做法；同時給出「一般路線」的機率當對照
+    if (result.special && result.routes.length) {
+      result.special.generalRoute = { probability: result.routes[0].steps[result.routes[0].steps.length - 1].probability, steps: result.routes[0].stepCount };
+    }
     return result;
   }
 
-  return { plan, feasibility, stepProbability, enumerateSplits, stInfo, stKey, size, blockedFor, KIND, MIN_STEP_ODDS, shapeOf };
+  return { plan, feasibility, stepProbability, enumerateSplits, stInfo, stKey, size, blockedFor, KIND, MIN_STEP_ODDS, shapeOf, specialNote };
 })();

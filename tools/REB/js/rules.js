@@ -96,6 +96,16 @@ window.RECOMB_ENGINE = {
   calculate(a, b) {
     const validation = this.validate(a, b);
     if (!validation.ok) return { validation };
+    // 1p1e + 1e1s 特例：結果固定是 1 前 1 後，機率 ≥ 1/3（實測常見 >50%，精確值取決於詞綴權重）
+    // 機制：先填的那一側抽中限定詞後，另一側池中的限定詞會被剔除；總條數已先擲定，部分結果因此被導向剩下的一般詞綴。
+    if (validation.special) {
+      return {
+        validation,
+        special: true,
+        specialOutcome: { label: '1 前綴 1 後綴', lowerBound: 1 / 3, typical: '>50%' },
+        bases: [], all: {}
+      };
+    }
     const bases = ['A', 'B'].map(base => {
       const prefix = this.getSide(a, b, 'prefixes', base);
       const suffix = this.getSide(a, b, 'suffixes', base);

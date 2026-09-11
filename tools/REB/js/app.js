@@ -4,7 +4,6 @@
   const nnnOptions = Object.entries(RULES.nnnLabels);
   const defaultItem = (label) => ({
     label,
-    base: 'ordinary',
     prefixes: [0, 1, 2].map(i => ({ name: `前綴 ${i + 1}`, exclusive: false, nnn: 'none', enabled: i < 1 })),
     suffixes: [0, 1, 2].map(i => ({ name: `後綴 ${i + 1}`, exclusive: false, nnn: 'none', enabled: i < 1 }))
   });
@@ -15,12 +14,10 @@
   function renderEditors() {
     qs('#items-editor').innerHTML = state.items.map((item, itemIndex) => `
       <article class="item-card" data-item="${itemIndex}">
-        <div class="item-card-head"><h3>${item.label}</h3><select class="base-select" data-action="base"><option value="ordinary">普通基底</option><option value="nativeA">A 原生</option><option value="nativeB">B 原生</option><option value="nonNativeBoth">雙方非原生</option></select></div>
+        <div class="item-card-head"><h3>${item.label}</h3><span class="item-base-tag">結果有 50% 選中這件基底</span></div>
         ${renderSlots(item, itemIndex, 'prefixes', '前綴')}
         ${renderSlots(item, itemIndex, 'suffixes', '後綴')}
       </article>`).join('');
-    qsa('.item-card').forEach((card, i) => qs('.base-select', card).value = state.items[i].base);
-    qsa('[data-action="base"]').forEach(el => el.addEventListener('change', e => { state.items[+e.target.closest('.item-card').dataset.item].base = e.target.value; }));
     qsa('[data-action="enabled"]').forEach(el => el.addEventListener('change', e => updateSlot(e, 'enabled')));
     qsa('[data-action="name"]').forEach(el => el.addEventListener('input', e => updateSlot(e, 'name')));
     qsa('[data-action="exclusive"]').forEach(el => el.addEventListener('change', e => updateSlot(e, 'exclusive')));
@@ -106,7 +103,7 @@
   const pctSmart = n => {
     if (!isFinite(n)) return '—';
     const v = n * 100;
-    if (v >= 10) return `${v.toFixed(0)}%`;
+    if (v >= 10) { const r = Math.round(v * 10) / 10; return `${Math.abs(r - Math.round(r)) < 0.05 ? Math.round(r) : r.toFixed(1)}%`; }
     if (v >= 1) return `${v.toFixed(1)}%`;
     if (v >= 0.1) return `${v.toFixed(2)}%`;
     return `${v.toFixed(3)}%`;
@@ -161,6 +158,19 @@
         <div class="leaf-list">${r.leaves.map(l => `<span class="leaf">${l.side}：${escapeHtml(l.name)}${l.count > 1 ? ` ×${l.count}` : ''}<small>${kindText(l.kind)}</small></span>`).join('')}</div>
         <p class="result-footnote">單詞綴素材＝只有這一條詞綴的裝備（用改造石洗出來，或用精髓／面紗等來源取得）。限定詞素材只能從精髓、面紗、尊爵勢力、掘獄等來源取得。</p>
       </div>` : '';
+    const sp = r.special;
+    const specialBlock = sp ? `
+      <div class="result-block"><h3>1p1e + 1e1s 特例${sp.applicable ? '（可以考慮，但只能用在不指定內容的中間件）' : '（不適用）'}</h3>
+        ${sp.applicable ? `
+          <p class="rule-note">觸發條件：兩件素材都只有 1 前綴 1 後綴、各帶 1 條限定詞、而且兩條限定詞分別落在前綴側與後綴側，全部原生（沒有非原生詞綴）。</p>
+          <table class="step-table"><thead><tr><th>素材</th><th>前綴</th><th>後綴</th></tr></thead><tbody>
+            <tr><td>Item A</td><td>${escapeHtml(sp.requirement.a.prefixes.join('、'))}</td><td>${escapeHtml(sp.requirement.a.suffixes.join('、'))}</td></tr>
+            <tr><td>Item B</td><td>${escapeHtml(sp.requirement.b.prefixes.join('、'))}</td><td>${escapeHtml(sp.requirement.b.suffixes.join('、'))}</td></tr>
+          </tbody></table>
+          <p class="rule-note">結果一定落在「1 前綴 1 後綴」，機率 <strong>≥ ${pctSmart(sp.bound)}</strong>（實測常見 50% 以上，精確值取決於詞綴權重，目前無法給出固定數字）。但<strong>「剛好留下你指定的那兩條」的機率未知，而且不會高於這個數字</strong>，因為結果也可能留下墊檔的限定詞。</p>
+          <p class="rule-note">建議：要精準指定詞綴 → 直接走上面的<strong>一般路線</strong>（${sp.generalRoute ? pctSmart(sp.generalRoute.probability) : '—'}，數量鎖定在你要的那兩條）。特例只適合做「不指定內容」的 1 前 1 後 中間件。</p>`
+          : `<p class="rule-note">${escapeHtml(sp.reason)}</p>`}
+      </div>` : '';
     output.innerHTML = `${warn}
       <div class="result-summary">
         <div class="summary-box"><span>建議路線步數</span><strong>${r.routes.length ? r.routes[0].stepCount : 0}</strong></div>
@@ -170,6 +180,7 @@
       ${r.routes.map((route, i) => routeCard(route, i)).join('')}
       ${single}
       ${leaves}
+      ${specialBlock}
       <div class="inline-help"><strong>已略過</strong><span>單步成功率低於 ${pctSmart(PLANNER.MIN_STEP_ODDS)} 的組合不會列入推薦。</span></div>`;
   }
 
