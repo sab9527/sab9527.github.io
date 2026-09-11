@@ -228,3 +228,15 @@ body{background:var(--bg);color:var(--ink)}
   .page.active{animation:none}
   *{transition-duration:.01ms!important}
 }
+
+/* 分享連結：標題列按鈕群與匯入對話框（只用主題 token，三組配色自動跟隨） */
+.heading-actions{display:flex;gap:8px;flex-shrink:0}
+.share-dialog{border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);color:var(--ink);padding:24px;max-width:min(520px,calc(100vw - 48px))}
+.share-dialog::backdrop{background:rgba(0,0,0,.6)}
+.share-dialog h3{font-size:16px;margin:0 0 8px}
+.share-dialog p{font-size:12px;color:var(--muted);margin:0 0 12px}
+.share-dialog textarea{width:100%;box-sizing:border-box;border:1px solid var(--line);border-radius:6px;background:var(--surface-2);color:var(--ink);font:12px var(--mono);padding:10px;resize:vertical}
+.share-dialog .dialog-error:empty{display:none}
+.share-dialog .dialog-error{font-size:12px;color:var(--danger);margin:10px 0 0}
+.share-dialog .dialog-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:16px}
+.share-dialog .primary-button{width:auto;margin-top:0}

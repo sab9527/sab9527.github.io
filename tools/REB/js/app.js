@@ -1,6 +1,7 @@
 (() => {
   const E = window.RECOMB_ENGINE;
   const RULES = window.RECOMB_RULES;
+  const SH = window.RECOMB_SHARE;
   const nnnOptions = Object.entries(RULES.nnnLabels);
   const nnnHints = RULES.nnnHints || {};
   const MOD_KINDS = ['normal', 'mechanic', 'exclusive'];
@@ -69,6 +70,15 @@
   };
   const storedSim = readStore(SIM_KEY, null);
   state = { items: [sanitizeItem(storedSim && storedSim.items && storedSim.items[0], 'Item A'), sanitizeItem(storedSim && storedSim.items && storedSim.items[1], 'Item B')] };
+  // 分享連結優先於本機儲存：#simulate?s=邊碼（讀不到就沿用本機設定，啟動後再提示）
+  let sharedCodeError = false;
+  (() => {
+    const m = (location.hash || '').match(/[?&#]s=([A-Za-z0-9\-_]+)/);
+    if (!m) return;
+    const dec = SH.decode(m[1]);
+    if (!dec) { sharedCodeError = true; return; }
+    state = { items: [sanitizeItem(dec.items[0], 'Item A'), sanitizeItem(dec.items[1], 'Item B')] };
+  })();
   const persistSimulate = () => writeStore(SIM_KEY, { items: state.items });
   const persistPlan = () => writeStore(PLAN_KEY, goal);
   const anyModEnabled = () => state.items.some(item => [...item.prefixes, ...item.suffixes].some(mod => mod.enabled));
@@ -158,6 +168,7 @@
     }
     if (key === 'enabled') renderEditors();
     persistSimulate();
+    clearShareParam();
     scheduleCalc();
     markDuplicates();
   }
@@ -442,13 +453,79 @@
       history.replaceState(null, '', `#${page}`);
       if (page === 'recommend') renderRecommendations();
     }));
-    const initial = (location.hash || '').replace('#', '');
+    const hm = (location.hash || '').match(/^#([A-Za-z-]+)/);
+    const initial = hm ? hm[1] : '';
     activate(['simulate', 'recommend', 'explain'].includes(initial) ? initial : 'simulate');
   }
+  // 使用者一改動，網址上的分享參數就失效（避免舊邊碼誤導），下次按分享會重新產生
+  function clearShareParam() {
+    if (/[?&#]s=/.test(location.hash)) history.replaceState(null, '', '#simulate');
+  }
+  async function copyText(text) {
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(text);
+        return true;
+      }
+    } catch (error) { /* file:// 或無權限時走備用 */ }
+    try {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      const done = document.execCommand('copy');
+      document.body.removeChild(ta);
+      return !!done;
+    } catch (error) {
+      return false;
+    }
+  }
+  qs('#share-button').addEventListener('click', async () => {
+    const code = SH.encode(state.items);
+    const url = SH.pageUrl('simulate', code, location.href);
+    history.replaceState(null, '', `#simulate?s=${code}`);
+    const done = await copyText(url);
+    const box = qs('#validation');
+    box.className = 'validation ok';
+    box.textContent = done
+      ? '分享連結已複製，別人打開就會看到同樣的設定。'
+      : '自動複製失敗，網址列已更新為分享連結，請手動複製。';
+  });
+  const importDialog = qs('#import-dialog');
+  const closeImport = () => {
+    if (importDialog.close) importDialog.close();
+    else importDialog.removeAttribute('open');
+  };
+  qs('#import-button').addEventListener('click', () => {
+    qs('#import-text').value = '';
+    qs('#import-error').textContent = '';
+    if (importDialog.showModal) importDialog.showModal();
+    else importDialog.setAttribute('open', '');
+  });
+  qs('#import-cancel').addEventListener('click', closeImport);
+  qs('#import-confirm').addEventListener('click', () => {
+    const dec = SH.decode(qs('#import-text').value);
+    if (!dec) {
+      qs('#import-error').textContent = '讀不到這個分享，請確認貼的是完整的分享連結或邊碼。';
+      return;
+    }
+    state.items = [sanitizeItem(dec.items[0], 'Item A'), sanitizeItem(dec.items[1], 'Item B')];
+    showAllCombos = false;
+    renderEditors();
+    persistSimulate();
+    calculate();
+    closeImport();
+    // 網址換成這組設定的分享連結，重新整理也不會丟
+    history.replaceState(null, '', `#simulate?s=${SH.encode(state.items)}`);
+  });
   qs('#reset-button').addEventListener('click', () => {
     state.items = [defaultItem('Item A'), defaultItem('Item B')];
     showAllCombos = false;
     writeStore(SIM_KEY, null);
+    clearShareParam();
     renderEditors();
     qs('#validation').className = 'validation';
     qs('#validation').textContent = '';
@@ -481,6 +558,11 @@
   renderEditors();
   renderGoal();
   if (anyModEnabled()) calculate();
+  if (sharedCodeError) {
+    const v = qs('#validation');
+    v.className = 'validation error';
+    v.textContent = '分享連結讀取失敗，已改用本機儲存的設定。請確認連結是完整的。';
+  }
   if (goal.prefixes.some(m => m.on) || goal.suffixes.some(m => m.on)) runPlan();
   // 對外極簡 API（自動化測試與嵌入頁面用）：立刻重算、讀出目前狀態
   window.RECOMB_APP = { recalculate: calculate, getState: () => state };
