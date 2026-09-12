@@ -172,7 +172,7 @@
     if (dupList.length) {
       const groups = [...new Set(dupList.map(d => d.side))].join('、');
       const names = [...new Set(dupList.map(d => d.name))].map(n => `「${n}」`).join('、');
-      notes.push(`${groups}有同名詞綴 ${names}：工具會把它們當成同一條詞綴，同一側最多只存在一條，機率會合併、合計也可能低於 100%（重複的那條無法同時佔兩格）。如果它們其實是不同的詞綴，請改成不同名稱；如果本來就是同一條詞綴（或彼此互斥、不可能同時存在），取名相同即可。`);
+      notes.push(`${groups}有同名詞綴 ${names}：工具會把它們當成同一條詞綴，同一側最多只存在一條，機率會合併、合計也可能低於 100%（成品同一側不會同時出現兩條）。如果它們其實是不同的詞綴，請改成不同名稱；如果本來就是同一條詞綴（或彼此互斥、不可能同時存在），取名相同即可。`);
     }
     const box = qs('#input-warning');
     if (!box) return;
