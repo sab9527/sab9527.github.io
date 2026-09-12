@@ -24,10 +24,9 @@ window.RECOMB_RULES = {
     B: '基底限定：結果選中 Item B 基底時這條不存在，等於「只能存在 A 基底」；它仍然佔用詞綴池。',
     both: '非原生且非限定詞綴：兩個基底都不存在（例如眾神殿之相），只佔用詞綴池一格。'
   },
-  // 詞綴類型顯示名稱：原生 / 機制掉落 / 限定
+  // 詞綴類型顯示名稱：原生 / 限定
   kindLabels: {
     normal: '原生',
-    mechanic: '機制掉落',
     exclusive: '限定',
     nnnA: '只能存在 B 基底',
     nnnB: '只能存在 A 基底',
@@ -35,7 +34,6 @@ window.RECOMB_RULES = {
   },
   kindHints: {
     normal: '原生詞綴：一般通貨在該基底骰得出來。',
-    mechanic: '機制掉落：取得管道受特定機制限制，但規則上視為原生。選它只是為了在模擬重組中方便識別，不改變計算；存在條件固定為原生。（神廟那一類限定掉落詞屬限定，不屬此類。）',
     exclusive: '限定：神廟限定掉落詞、掘獄、部分精髓等來源的限定。成品最多存在一條；兩件素材合計通常也只能放一條。合成前建議先查證。',
     nnnA: '基底限定：只能存在 B 基底。',
     nnnB: '基底限定：只能存在 A 基底。',
@@ -56,17 +54,13 @@ window.RECOMB_ENGINE = {
     for (let i = max + 1; i < raw.length; i++) raw[i] = 0;
     return raw;
   },
-  // 這條詞綴在指定基底上是否非原生（機制掉落一律視為原生）
+  // 這條詞綴在指定基底上是否非原生
   isNnn(mod, base) {
-    if (this.isMechanic(mod)) return false;
     return mod.nnn === 'both' || mod.nnn === base;
   },
-  // 詞綴類型：一般 / 機制掉落（視為原生）/ 限定
+  // 詞綴類型：一般 / 限定
   isExclusive(mod) {
     return mod.kind === 'exclusive' || mod.exclusive === true;
-  },
-  isMechanic(mod) {
-    return mod.kind === 'mechanic' || mod.mechanic === true;
   },
   getSide(itemA, itemB, side, base) {
     const mods = [...itemA[side], ...itemB[side]].filter(m => m.enabled);

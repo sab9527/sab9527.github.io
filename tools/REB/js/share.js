@@ -3,14 +3,15 @@
  * 格式：index.html#simulate?s=<base64url(JSON)>
  * JSON：{v:1, n:[名字表], m:[[item, side, slot, nameIdx, kind?, nnn?]...]}
  *   item: 0 = Item A，1 = Item B；side: 0 = 前綴，1 = 後綴；slot: 0-2
- *   kind: 0 原生（預設，省略）/ 1 機制掉落 / 2 限定
+ *   kind: 0 原生（預設，省略）/ 2 限定（1 是已移除的「機制掉落」，解到時當原生）
  *   nnn: 0 原生（預設，省略）/ 1 只能存在 B / 2 只能存在 A / 3 兩邊都不存在
- * 省長度手段：只編啟用的格子、預設值省略、同名只存一次、機制掉落不編 nnn（視為原生）。
+ * 省長度手段：只編啟用的格子、預設值省略、同名只存一次。
  */
 window.RECOMB_SHARE = (() => {
   const VERSION = 1;
-  const KIND = { normal: 0, mechanic: 1, exclusive: 2 };
-  const KIND_R = ['normal', 'mechanic', 'exclusive'];
+  // 2 保留給限定、1 不再產生：舊邊碼若帶著 1（已移除的機制掉落），一律當原生
+  const KIND = { normal: 0, exclusive: 2 };
+  const KIND_R = { 0: 'normal', 1: 'normal', 2: 'exclusive' };
   const NNN = { none: 0, A: 1, B: 2, both: 3 };
   const NNN_R = ['none', 'A', 'B', 'both'];
   const MAX_MODS = 12;   // 兩件 ×（3 前綴 + 3 後綴）
@@ -54,8 +55,7 @@ window.RECOMB_SHARE = (() => {
           let n = nameIdx.get(name);
           if (n === undefined) { n = names.length; names.push(name); nameIdx.set(name, n); }
           const kind = KIND[mod.kind] || 0;
-          let nnn = NNN[mod.nnn] || 0;
-          if (kind === KIND.mechanic) nnn = 0; // 機制掉落限定視為原生，不編存在條件
+          const nnn = NNN[mod.nnn] || 0;
           const e = [i, side, g, n];
           if (kind !== 0 || nnn !== 0) {
             e.push(kind);
@@ -93,7 +93,7 @@ window.RECOMB_SHARE = (() => {
         if (seen.has(pos)) return null;
         seen.add(pos);
         const kind = KIND_R[k];
-        const nnn = kind === 'mechanic' ? 'none' : NNN_R[o];
+        const nnn = NNN_R[o];
         items[i][side === 0 ? 'prefixes' : 'suffixes'][g] =
           { name: data.n[n], enabled: true, kind, nnn };
       }

@@ -19,19 +19,19 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="重組器指引｜POE Recombinator Guide">
   <meta property="og:description" content="輸入兩件底材的詞綴，看機率分布與具體組合，以及把單條詞綴搬到指定基底的做法。">
-  <!-- 社群預覽（Discord／Twitter 等）與圖示一律用 GitHub 上的同一張 LOGO：
-       絕對網址社群平台才抓得到，瀏覽器與預覽爬蟲也只下載一次。 -->
-  <meta property="og:image"
-    content="https://raw.githubusercontent.com/sab9527/sab9527.github.io/refs/heads/main/tools/Logo/LOGO.png">
-  <meta property="og:image:width" content="837">
-  <meta property="og:image:height" content="912">
+  <!-- 社群預覽（Discord／Twitter 等）用 dev/tools/og-card.html 產生的 1200×630 卡片：
+       爬蟲只吃絕對網址，所以卡片要跟網站一起上傳，網址指向部署後的位置。 -->
+  <meta property="og:image" content="https://sab9527.github.io/tools/REB/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="重組器指引：兩件底材能留下哪幾條詞綴">
+  <meta property="og:url" content="https://sab9527.github.io/tools/REB/">
   <meta property="og:site_name" content="重組器指引">
   <meta property="og:locale" content="zh_TW">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="重組器指引｜POE Recombinator Guide">
   <meta name="twitter:description" content="輸入兩件底材的詞綴，看機率分布與具體組合，以及把單條詞綴搬到指定基底的做法。">
-  <meta name="twitter:image"
-    content="https://raw.githubusercontent.com/sab9527/sab9527.github.io/refs/heads/main/tools/Logo/LOGO.png">
+  <meta name="twitter:image" content="https://sab9527.github.io/tools/REB/og-image.png">
   <meta name="theme-color" content="#0f0f0f">
   <link rel="icon" type="image/png"
     href="https://raw.githubusercontent.com/sab9527/sab9527.github.io/refs/heads/main/tools/Logo/LOGO.png">
@@ -241,7 +241,7 @@
           <tbody>
             <tr>
               <th>勢力詞</th>
-              <td>用 Shaper／Elder 崇高石點上去（最便宜的勢力路徑）。想讓它落在前綴，先把空的後綴槽用假工藝塞滿再點；之後用「前綴無法被變更」加洗白，把其他詞清掉，只留目標詞與影響力詞。勢力詞不是限定。
+              <td>用 Shaper／Elder 崇高石點上去（最便宜的勢力路徑）。
               </td>
               <td>前綴或後綴</td>
             </tr>
@@ -342,11 +342,6 @@
               <td>原生詞（例如生命）在正常情況基底下存在；法術壓抑率在敏捷底（A）存在。</td>
             </tr>
             <tr>
-              <th>機制掉落</th>
-              <td>取得管道受特定機制限制，但規則上視為原生。選它只是為了在模擬重組中方便識別，不改變計算；存在條件固定為原生。</td>
-              <td>特殊管道取得：如神廟冰緩手、以精髓點出、但查證後可與限定共存的詞；「工藝之」「進化的」中經查證非限定者。</td>
-            </tr>
-            <tr>
               <th>限定</th>
               <td>原文 exclusive。成品最多存在一條；兩件輸入合計最多一條（1p1e + 1e1s 例外）；佔池，多條只存在一條。取得管道相同不等於類型相同，須逐條查證：與已知限定重組後不共存即限定。</td>
               <td>裂痕詞如「貪婪鎧甲」、神廟詞、精髓「精髓之」、野獸祝福、高尚勢力詞、掘獄如「地下之」、隱匿「被選召的」「教團之」、強勢工藝如「可三工藝」、人名工藝如「托菈的」。非限定：破裂詞、一般勢力詞。</td>
@@ -383,7 +378,7 @@
         </article>
         <article class="explain-card"><span class="step-number">03</span>
           <h2>什麼是 NNN（非原生且非限定詞綴）？</h2>
-          <p><b>除了原生、機制掉落與限定，其他都算 NNN</b>（Natural Non-Native）。判斷方式只有一句：結果選到某個基底時，這條詞綴<b>還能不能存在</b>。存在不了的那個基底，對這條詞綴來說就是
+          <p><b>除了原生與限定，其他都算 NNN</b>（Natural Non-Native）。判斷方式只有一句：結果選到某個基底時，這條詞綴<b>還能不能存在</b>。存在不了的那個基底，對這條詞綴來說就是
             NNN。</p>
           <table class="nnn-table">
             <thead>
@@ -428,12 +423,11 @@
             <li><b>同一 family（詞綴群組）的詞彼此互斥</b>，例如同一條屬性有多個等級的版本，它們不會同時存在。</li>
             <li>同名詞綴不會存在兩份。</li>
           </ul>
-          <p><b>機制掉落</b>（取得管道受限、但不算限定）視為原生，只加標示、不改變計算，方便在模擬重組中識別。</p>
           <p class="explain-eg">
             <strong>合成前查證</strong>：先查該詞綴是不是限定。取得管道相同不等於類型相同，同一來源的詞綴要逐條查證。查法：拿一件帶已知限定的素材和待測詞綴重組，兩者不會同時存在，待測詞綴就是限定。破裂詞固定只能存在原本那件基底，且無法同時存在兩個破裂詞。
           </p>
-          <div class="legend"><span class="tag normal">原生</span><span class="tag mech">機制掉落</span><span
-              class="tag exclusive">限定</span><span class="tag nnn">NNN</span></div>
+          <div class="legend"><span class="tag normal">原生</span><span class="tag exclusive">限定</span><span
+              class="tag nnn">NNN</span></div>
         </article>
       </div>
       <section class="panel prob-panel">

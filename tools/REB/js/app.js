@@ -4,7 +4,9 @@
   const SH = window.RECOMB_SHARE;
   const nnnOptions = Object.entries(RULES.nnnLabels);
   const nnnHints = RULES.nnnHints || {};
-  const MOD_KINDS = ['normal', 'mechanic', 'exclusive'];
+  const MOD_KINDS = ['normal', 'exclusive'];
+  // 已移除的「機制掉落」：舊存檔／舊分享連結若還帶著，一律回到原生
+  const LEGACY_KINDS = { mechanic: 'normal' };
   const kindOptions = MOD_KINDS.map(k => [k, (RULES.kindLabels || {})[k] || k]);
   const kindHints = RULES.kindHints || {};
   const kindLabel = value => (RULES.kindLabels || {})[value] || value;
@@ -50,13 +52,13 @@
   const debounce = (fn, wait) => { let timer; return (...args) => { clearTimeout(timer); timer = setTimeout(() => fn(...args), wait); }; };
   const sanitizeMod = (raw, fallback) => {
     if (!raw || typeof raw !== 'object') return fallback;
-    const kind = MOD_KINDS.includes(raw.kind) ? raw.kind : (raw.exclusive ? 'exclusive' : (fallback.kind || 'normal'));
+    const rawKind = LEGACY_KINDS[raw.kind] || raw.kind;
+    const kind = MOD_KINDS.includes(rawKind) ? rawKind : (raw.exclusive ? 'exclusive' : (fallback.kind || 'normal'));
     return {
       name: typeof raw.name === 'string' ? raw.name : fallback.name,
       enabled: !!raw.enabled,
       kind,
-      // 機制掉落視為原生 → 存在條件一律歸零
-      nnn: kind === 'mechanic' ? 'none' : (['none', 'A', 'B', 'both'].includes(raw.nnn) ? raw.nnn : 'none')
+      nnn: ['none', 'A', 'B', 'both'].includes(raw.nnn) ? raw.nnn : 'none'
     };
   };
   const sanitizeItem = (raw, label) => {
@@ -97,10 +99,8 @@
   }
   function renderSlots(item, itemIndex, side, label) {
     return `<div class="slot-section"><div class="slot-label">${label}</div>${item[side].map((mod, slotIndex) => {
-      const locked = mod.kind === 'mechanic';           // 機制掉落 → 存在條件鎖成原生
       const kindLocked = mod.nnn === 'both';            // 兩邊都不存在 → 類型鎖成 NNN
-      const effNnn = locked ? 'none' : mod.nnn;
-      const nnnTitle = locked ? '機制掉落視為原生，存在條件固定為原生（僅識別用）。' : (nnnHints[mod.nnn] || '');
+      const nnnTitle = nnnHints[mod.nnn] || '';
       const kindTitle = kindLocked ? '這條詞綴兩個基底都不存在（非原生且非限定詞綴），沒有類型可言，只佔詞綴池一格。' : (kindHints[mod.kind] || '');
       return `
       <div class="slot-row kind-${mod.kind}" data-kind="${mod.kind}">
@@ -114,20 +114,19 @@
             </span>
           </div>
           <div class="slot-line">
-            <span class="select-wrap${locked ? ' locked' : ''}">
-              <select class="nnn-select" data-action="nnn" data-side="${side}" data-slot="${slotIndex}" title="${nnnTitle}" ${!mod.enabled || locked ? 'disabled' : ''} aria-label="${label} ${slotIndex + 1} 存在條件">${nnnOptions.map(([value, text]) => `<option value="${value}" ${effNnn === value ? 'selected' : ''}>${text}</option>`).join('')}</select>
-              <span class="select-face" aria-hidden="true">${nnnLabel(effNnn)}</span>
+            <span class="select-wrap">
+              <select class="nnn-select" data-action="nnn" data-side="${side}" data-slot="${slotIndex}" title="${nnnTitle}" ${!mod.enabled ? 'disabled' : ''} aria-label="${label} ${slotIndex + 1} 存在條件">${nnnOptions.map(([value, text]) => `<option value="${value}" ${mod.nnn === value ? 'selected' : ''}>${text}</option>`).join('')}</select>
+              <span class="select-face" aria-hidden="true">${nnnLabel(mod.nnn)}</span>
             </span>
           </div>
         </div>
       </div>`;
     }).join('')}</div>`;
   }
-  // 兩個下拉的互相鎖定：機制掉落 → 存在條件固定原生；兩邊都不存在 → 類型顯示 NNN 並鎖住
+  // 兩邊都不存在 → 類型顯示 NNN 並鎖住
   function syncRowLocks(row, mod) {
     const kindSel = row.querySelector('[data-action=kind]');
     const nnnSel = row.querySelector('[data-action=nnn]');
-    const mechanic = mod.kind === 'mechanic';
     const neverAppears = mod.nnn === 'both';
     if (kindSel) {
       const wrap = kindSel.closest('.select-wrap');
@@ -138,14 +137,10 @@
       wrap.querySelector('.select-face').textContent = neverAppears ? 'NNN' : kindLabel(mod.kind);
     }
     if (nnnSel) {
-      const wrap = nnnSel.closest('.select-wrap');
-      const effNnn = mechanic ? 'none' : mod.nnn;
-      if (mechanic) mod.nnn = 'none';
-      nnnSel.value = effNnn;
-      nnnSel.disabled = !mod.enabled || mechanic;
-      nnnSel.title = mechanic ? '機制掉落視為原生，存在條件固定為原生（僅識別用）。' : (nnnHints[mod.nnn] || '');
-      wrap.classList.toggle('locked', mechanic);
-      wrap.querySelector('.select-face').textContent = nnnLabel(effNnn);
+      nnnSel.value = mod.nnn;
+      nnnSel.disabled = !mod.enabled;
+      nnnSel.title = nnnHints[mod.nnn] || '';
+      nnnSel.closest('.select-wrap').querySelector('.select-face').textContent = nnnLabel(mod.nnn);
     }
   }
   function updateSlot(e, key) {
@@ -157,7 +152,7 @@
     if (key === 'kind' || key === 'nnn') {
       const row = e.target.closest('.slot-row');
       if (row && key === 'kind') {
-        row.classList.remove('kind-normal', 'kind-mechanic', 'kind-exclusive');
+        row.classList.remove('kind-normal', 'kind-exclusive');
         row.classList.add(`kind-${slot.kind}`);
         row.dataset.kind = slot.kind;
       }
@@ -253,7 +248,7 @@
         const each = (o.probability / Math.max(1, o.combos.length)) / 2;
         o.combos.forEach(combo => {
           const key = combo.map(m => m.name).slice().sort().join(' | ');
-          const rec = map.get(key) || { items: combo.map((m, idx) => ({ name: m.name, exclusive: E.isExclusive(m), mechanic: E.isMechanic(m), nnn: m.nnn || 'none', side: idx < (o.p || 0) ? 'prefixes' : 'suffixes' })), probability: 0 };
+          const rec = map.get(key) || { items: combo.map((m, idx) => ({ name: m.name, exclusive: E.isExclusive(m), nnn: m.nnn || 'none', side: idx < (o.p || 0) ? 'prefixes' : 'suffixes' })), probability: 0 };
           rec.probability += each;
           map.set(key, rec);
         });
@@ -261,12 +256,10 @@
       return [...map.values()].sort((a, b) => b.probability - a.probability);
     });
     const enabledMods = [...state.items[0].prefixes, ...state.items[0].suffixes, ...state.items[1].prefixes, ...state.items[1].suffixes].filter(m => m.enabled);
-    const isSpecial = m => E.isExclusive(m) || (m.nnn && m.nnn !== 'none');
-    // 會改變結果的（限定／非原生）才觸發「具體可能組合」區塊；機制掉落只加標示
-    const resultChangingMods = enabledMods.filter(isSpecial);
-    const specialMods = enabledMods.filter(m => isSpecial(m) || E.isMechanic(m));
+    // 會改變結果的（限定／非原生）才觸發「具體可能組合」區塊
+    const resultChangingMods = enabledMods.filter(m => E.isExclusive(m) || (m.nnn && m.nnn !== 'none'));
     const modChip = m => {
-      const variant = E.isExclusive(m) ? 'excl' : E.isMechanic(m) ? 'mech' : (m.nnn && m.nnn !== 'none') ? 'nnn' : '';
+      const variant = E.isExclusive(m) ? 'excl' : (m.nnn && m.nnn !== 'none') ? 'nnn' : '';
       return `<span class="mod-name ${variant}">${escapeHtml(m.name)}</span>`;
     };
     // 預設只顯示機率 ≥ 10% 的組合；若只有一個達標，往下取到明顯斷層為止
@@ -295,19 +288,18 @@
           ? `<div class="outcome-list combo-list">${entry.rows.map(row => `<div class="outcome">${comboLines(row)}<strong>約 ${fmt(row.probability)}</strong></div>`).join('')}</div>`
           : '<p class="result-footnote">這個基底沒有可列出的組合。</p>'}
       </div>`;
-    const fate = specialMods.map(m => {
+    const fate = resultChangingMods.map(m => {
       const parts = [];
       if (m.nnn === 'both') parts.push('兩個基底都不存在（非原生且非限定詞綴）');
       else if (m.nnn === 'A') parts.push('選 Item A 基底時不存在（等於只能存在 B 基底）');
       else if (m.nnn === 'B') parts.push('選 Item B 基底時不存在（等於只能存在 A 基底）');
       if (E.isExclusive(m)) parts.push('限定（成品最多存在 1 條）');
-      if (E.isMechanic(m)) parts.push('機制掉落（視為原生，僅識別用）');
       return `<span>${escapeHtml(m.name)}：${parts.join('、')}</span>`;
     }).join('');
     const hiddenCombos = listed.reduce((sum, entry) => sum + (entry.total - entry.rows.length), 0);
     const comboBlock = resultChangingMods.length
       ? `<div class="result-block"><h3>具體可能組合</h3><div class="base-columns">${result.bases.map((base, i) => comboColumn(base, listed[i])).join('')}</div>${hiddenCombos > 0 || showAllCombos ? `<button class="ghost-button" id="toggle-combos">${showAllCombos ? '收起機率較少的結果' : `顯示機率較少結果（還有 ${hiddenCombos} 種）`}</button>` : ''}<div class="inline-help stacked"><strong>特殊詞綴的影響</strong><div class="fate-list">${fate}</div></div></div>`
-      : `<p class="result-footnote">這組設定沒有用到限定或非原生且非限定詞綴；機制掉落視為原生、也不影響組合，可能組合只差在基底或重複實例，因此省略。</p>`;
+      : `<p class="result-footnote">這組設定沒有用到限定或非原生且非限定詞綴；可能組合只差在基底或重複實例，因此省略。</p>`;
     qs('#result-content').className = 'result-content';
     qs('#result-content').innerHTML = `<div class="result-block dist-block"><h3>整體結果分布</h3>${distMatrix}</div><div class="base-columns">${result.bases.map(baseColumn).join('')}</div>${comboBlock}`;
     persistSimulate();

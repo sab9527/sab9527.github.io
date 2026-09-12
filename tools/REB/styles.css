@@ -63,11 +63,7 @@
 .slot-flags{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:5px}
 .kind-select,.nnn-select{width:100%;height:24px;padding:2px 4px;font-size:11px;line-height:1.2;border:1px solid var(--line);border-radius:6px;background:var(--surface-2);color:var(--ink);cursor:pointer}
 .slot-row.kind-exclusive{background:rgba(210,161,90,.11)}
-.slot-row.kind-mechanic{background:rgba(101,169,197,.13)}
 .slot-row.kind-exclusive .kind-select{color:#e8c47f}
-.slot-row.kind-mechanic .kind-select{color:#a6d8ea}
-.mod-name.mech{background:#1e3540;color:#a6d8ea;border:1px solid #2f5f73}
-.tag.mech{background:#1e3540;color:#a6d8ea;border-color:#2f5f73}
 .explain-card .explain-eg{margin:16px 0 0;padding:12px;border:1px solid var(--line);border-radius:8px;font-size:12px;color:var(--muted)}
 .explain-eg strong{color:var(--ink);font-weight:600}
 
@@ -82,7 +78,6 @@
 .select-wrap select:disabled{cursor:not-allowed}
 .select-wrap:focus-within .select-face{border-color:var(--accent);outline:1px solid var(--accent)}
 .slot-row.kind-exclusive .select-face{color:#e8c47f}
-.slot-row.kind-mechanic .select-face{color:#a6d8ea}
 .slot-row .select-wrap select:disabled + .select-face{opacity:.55}
 
 /* 詞綴列新版面：名稱 + 類型同排、存在條件整排（文字可完整顯示） */
@@ -270,7 +265,6 @@ body{background:color-mix(in srgb, var(--bg) 84%, transparent)}
 .ghost-button:hover{border-color:var(--accent);color:var(--accent);background:color-mix(in srgb, var(--accent) 8%, transparent)}
 
 .slot-row.kind-exclusive{background:color-mix(in srgb, var(--gold) 12%, transparent)}
-.slot-row.kind-mechanic{background:color-mix(in srgb, #6aa9c5 13%, transparent)}
 .slot-row.dup input[data-action=name]{border-color:var(--gold);background:color-mix(in srgb, var(--gold) 8%, transparent)}
 .validation.warn{margin-top:12px;padding:8px 12px;border:1px solid var(--gold);border-radius:8px;background:color-mix(in srgb, var(--gold) 10%, transparent);color:var(--gold);font-size:12px;line-height:1.6}
 #bg-toggle{white-space:nowrap}
