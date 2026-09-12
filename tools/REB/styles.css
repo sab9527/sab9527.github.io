@@ -97,12 +97,12 @@
 /* 具體可能組合：一個詞一行、前綴與後綴之間加分隔線、整體壓縮 */
 /* 注意：舊規則 .outcome span{gap:8px} 特異性同級，這裡一律用 .combo-list 前綴壓過去 */
 .combo-list{display:grid;gap:4px}
-.combo-list .outcome{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:3px 6px;font-size:11px}
-.combo-list .outcome strong{font:11px var(--mono)}
-.combo-list .outcome .combo-mods{display:flex;flex-direction:column;gap:1px;align-items:flex-start;min-width:0}
-.combo-list .combo-mod{display:block;line-height:1.25;margin:0}
-.combo-list .combo-split{display:block;width:100%;height:1px;background:var(--line);margin:2px 0}
-.combo-list .mod-name{font-size:10.5px;padding:0 5px;line-height:1.25}
+.combo-list .outcome{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:3px 6px;font-size:11px;min-width:0;overflow:hidden}
+.combo-list .outcome strong{font:11px var(--mono);flex:none}
+.combo-list .outcome .combo-mods{display:flex;flex-direction:column;gap:1px;align-items:flex-start;flex:1 1 auto;min-width:0;overflow:hidden}
+.combo-list .combo-mod{display:block;line-height:1.25;margin:0;max-width:100%}
+.combo-list .combo-split{display:block;width:100%;height:2px;border-radius:1px;background:var(--muted);margin:4px 0;opacity:.85}
+.combo-list .mod-name{font-size:10.5px;padding:0 5px;line-height:1.25;white-space:normal;word-break:break-word;overflow-wrap:anywhere;max-width:100%}
 
 /* ===== 配色主題 =====
    依 popular-web-designs 的暗色系設計 token（Linear / Supabase / Claude）調整。

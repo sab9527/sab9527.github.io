@@ -130,13 +130,18 @@ window.RECOMB_ENGINE = {
     return { ok: true, special, duplicates, warnings };
   },
   // 從池中挑出所有合法組合：排除對該基底非原生的詞綴、同名重複、超過一條限定
+  // 空白名稱不算同名：每格是獨立的一條（UI 會顯示 ITEM A 前綴1 這類代號），只有具名且同名才排除
   combinations(aMods, bMods, count, base) {
     const isExclusive = mod => this.isExclusive(mod);
     const pool = [...aMods, ...bMods].filter(m => m.enabled && !this.isNnn(m, base));
     const out = [];
     function choose(start, picked) {
       if (picked.length === count) {
-        if (new Set(picked.map(m => m.name.toLowerCase())).size !== picked.length) return;
+        const keys = picked.map(m => {
+          const n = String(m.name || '').trim().toLowerCase();
+          return n || `__blank@${pool.indexOf(m)}`;
+        });
+        if (new Set(keys).size !== picked.length) return;
         if (picked.filter(isExclusive).length > 1) return;
         out.push([...picked]);
         return;

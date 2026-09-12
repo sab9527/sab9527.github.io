@@ -235,16 +235,31 @@
         <h4>${base.base === 'A' ? '若選中 Item A 基底' : '若選中 Item B 基底'}</h4>
         ${base.rule === '1p1s'
           ? '<p class="rule-note">1 前 1 後 特例：1 前綴 1 後綴／只有前綴／只有後綴各 1/3</p>'
-          : `<div class="side-block"><span class="side-name">前綴（池 ${base.prefix.pool}）</span>${stackBar(base.prefix.odds)}</div><div class="side-block"><span class="side-name">後綴（池 ${base.suffix.pool}）</span>${stackBar(base.suffix.odds)}</div>`}
+          : `<div class="side-block"><span class="side-name">前綴（有效詞池數 ${base.prefix.pool}）</span>${stackBar(base.prefix.odds)}</div><div class="side-block"><span class="side-name">後綴（有效詞池數 ${base.suffix.pool}）</span>${stackBar(base.suffix.odds)}</div>`}
       </div>`;
     // 具體組合：每個基底各自一欄；同名組合在該欄內合併
+    // 名稱 fallback：沒填名稱的格子在計算區顯示代號（ITEM A 前綴1、ITEM B 後綴2…），
+    // 代號取自該格在 state 裡的位置，所以 combo 合併時用顯示名當 key 仍能正確合併同名
+    const originOf = new Map();
+    state.items.forEach((item, itemIndex) => {
+      ['prefixes', 'suffixes'].forEach(side => {
+        (item[side] || []).forEach((mod, slotIndex) => originOf.set(mod, { itemIndex, side, slotIndex }));
+      });
+    });
+    const displayName = mod => {
+      const raw = String((mod && mod.name) || '').trim();
+      if (raw) return raw;
+      const o = originOf.get(mod) || { itemIndex: 0, side: 'prefixes', slotIndex: 0 };
+      const label = String((state.items[o.itemIndex] && state.items[o.itemIndex].label) || (o.itemIndex === 1 ? 'Item B' : 'Item A')).toUpperCase();
+      return `${label} ${o.side === 'prefixes' ? '前綴' : '後綴'}${o.slotIndex + 1}`;
+    };
     const combosByBase = result.bases.map(base => {
       const map = new Map();
       base.outcomes.forEach(o => {
         const each = (o.probability / Math.max(1, o.combos.length)) / 2;
         o.combos.forEach(combo => {
-          const key = combo.map(m => m.name).slice().sort().join(' | ');
-          const rec = map.get(key) || { items: combo.map((m, idx) => ({ name: m.name, exclusive: E.isExclusive(m), nnn: m.nnn || 'none', side: idx < (o.p || 0) ? 'prefixes' : 'suffixes' })), probability: 0 };
+          const key = combo.map(m => displayName(m).toLowerCase()).slice().sort().join(' | ');
+          const rec = map.get(key) || { items: combo.map((m, idx) => ({ name: displayName(m), exclusive: E.isExclusive(m), nnn: m.nnn || 'none', side: idx < (o.p || 0) ? 'prefixes' : 'suffixes' })), probability: 0 };
           rec.probability += each;
           map.set(key, rec);
         });
@@ -290,7 +305,7 @@
       else if (m.nnn === 'A') parts.push('單邊 NNN（只存在 B 基底）');
       else if (m.nnn === 'B') parts.push('單邊 NNN（只存在 A 基底）');
       if (E.isExclusive(m)) parts.push('限定（成品最多存在 1 條）');
-      return `<span>${escapeHtml(m.name)}：${parts.join('、')}</span>`;
+      return `<span>${escapeHtml(displayName(m))}：${parts.join('、')}</span>`;
     }).join('');
     const hiddenCombos = listed.reduce((sum, entry) => sum + (entry.total - entry.rows.length), 0);
     const comboBlock = resultChangingMods.length
@@ -366,7 +381,7 @@
   qs('#import-confirm').addEventListener('click', () => {
     const dec = SH.decode(qs('#import-text').value);
     if (!dec) {
-      qs('#import-error').textContent = '讀不到這個分享，請確認貼的是完整的分享連結或邊碼。';
+      qs('#import-error').textContent = '讀不到這個分享，請確認貼的是完整的分享連結。';
       return;
     }
     state.items = [sanitizeItem(dec.items[0], 'Item A'), sanitizeItem(dec.items[1], 'Item B')];
