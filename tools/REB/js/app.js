@@ -172,7 +172,7 @@
     if (dupList.length) {
       const groups = [...new Set(dupList.map(d => d.side))].join('、');
       const names = [...new Set(dupList.map(d => d.name))].map(n => `「${n}」`).join('、');
-      notes.push(`${groups}有同名詞綴 ${names}：工具會把它們當成同一條詞綴，同一側最多只存在一條，機率會合併、合計也可能低於 100%（成品同一側不會同時出現兩條）。如果它們其實是不同的詞綴，請改成不同名稱；如果本來就是同一條詞綴（或彼此互斥、不可能同時存在），取名相同即可。`);
+      notes.push(`${groups}有同名詞綴 ${names}：工具會把它們當成同一條詞綴，同一側最多只存在一條，機率會合併；無解的結果格會按有解的結果重分，顯示為有解情況下的機率。如果它們其實是不同的詞綴，請改成不同名稱；如果本來就是同一條詞綴（或彼此互斥、不可能同時存在），取名相同即可。`);
     }
     const box = qs('#input-warning');
     if (!box) return;
@@ -236,7 +236,12 @@
         ${base.rule === '1p1s'
           ? '<p class="rule-note">1 前 1 後 特例：1 前綴 1 後綴／只有前綴／只有後綴各 1/3</p>'
           : `<div class="side-block"><span class="side-name">前綴（有效詞池數 ${base.prefix.pool}）</span>${stackBar(base.prefix.odds)}</div><div class="side-block"><span class="side-name">後綴（有效詞池數 ${base.suffix.pool}）</span>${stackBar(base.suffix.odds)}</div>`}
+        ${base.lockout ? lockoutNote(base.lockout) : ''}
+        ${base.renorm ? renormNote(base.renorm) : ''}
       </div>`;
+    const sideLabel = s => s === 'prefixes' ? '前綴' : '後綴';
+    const lockoutNote = l => `<p class="rule-note">${sideLabel(l.keptSide)}必留「${escapeHtml(displayName(l.kept))}」（限定）：${sideLabel(l.droppedSide)}的${l.dropped.map(m => `「${escapeHtml(displayName(m))}」`).join('、')}永遠被捨棄。</p>`;
+    const renormNote = r => `<p class="rule-note">擲到無合法成品的結果格（共約 ${fmt(1 - r.kept)}）已按有解的結果重分，顯示為有解情況下的機率。</p>`;
     // 具體組合：每個基底各自一欄；同名組合在該欄內合併
     // 名稱 fallback：沒填名稱的格子在計算區顯示代號（ITEM A 前綴1、ITEM B 後綴2…），
     // 代號取自該格在 state 裡的位置，所以 combo 合併時用顯示名當 key 仍能正確合併同名

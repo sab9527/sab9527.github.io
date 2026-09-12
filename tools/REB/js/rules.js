@@ -132,13 +132,39 @@ window.RECOMB_ENGINE = {
       if (sideEx('prefixes') > 1 || sideEx('suffixes') > 1) {
         return { ok: false, message: '同一側有兩條以上限定：3.26 起同一側多條限定只算 1 格池，工具還沒建模，請先只留一條限定再算。', warnings };
       }
-      warnings.push('輸入有兩條限定，前綴、後綴各一：成品最多存在一條，同時含兩條的組合會被剔除，具體組合的機率是估計值，合計可能低於 100%。');
+      warnings.push('輸入有兩條限定，前綴、後綴各一：成品最多存在一條，同時含兩條的組合會被剔除，無解的結果格會按有解的結果重分，具體組合的機率是估計值。');
       return { ok: true, special, duplicates, warnings };
     }
     return { ok: true, special, duplicates, warnings };
   },
+  // B1 放寬下的確定性註解（只做註解，不改機率）：跨側雙限定、某一側可用只剩
+  // 1 條限定、且該側留 0 條機率為 0 時，該條必留，另一側可用限定永遠被捨棄。
+  lockoutFor(a, b, prefix, suffix, base) {
+    const sides = { prefixes: prefix, suffixes: suffix };
+    const totalEx = ['prefixes', 'suffixes'].reduce((n, side) =>
+      n + [...a[side], ...b[side]].filter(m => m.enabled && this.isExclusive(m)).length, 0);
+    if (totalEx !== 2) return null;
+    for (const side of ['prefixes', 'suffixes']) {
+      const avail = [...a[side], ...b[side]].filter(m => m.enabled && !this.isNnn(m, base));
+      if (avail.length !== 1 || !this.isExclusive(avail[0]) || sides[side].odds[0] !== 0) continue;
+      const other = side === 'prefixes' ? 'suffixes' : 'prefixes';
+      const dropped = [...a[other], ...b[other]].filter(m => m.enabled && !this.isNnn(m, base) && this.isExclusive(m));
+      if (!dropped.length) continue;
+      return { keptSide: side, kept: avail[0], droppedSide: other, dropped };
+    }
+    return null;
+  },
   // 從池中挑出所有合法組合：排除對該基底非原生的詞綴、同名重複、超過一條限定
   // 空白名稱不算同名：每格是獨立的一條（UI 會顯示 ITEM A 前綴1 這類代號），只有具名且同名才排除
+  // 無合法組合的結果格被丟掉後，把該基底剩餘機率歸一化（逐基底獨立）。
+  // 顯示的是「有解情況下的條件機率」，合計恆為 100%；原始「留幾條」分布不保留。
+  // 回傳 null（無需歸一，保留總和已是 1）或 {kept}（歸一前保留總和）。
+  renormalize(outcomes) {
+    const kept = outcomes.reduce((n, o) => n + o.probability, 0);
+    if (kept >= 1 - 1e-9 || kept <= 1e-12) return null;
+    outcomes.forEach(o => { o.probability /= kept; });
+    return { kept };
+  },
   combinations(aMods, bMods, count, base) {
     const isExclusive = mod => this.isExclusive(mod);
     const pool = [...aMods, ...bMods].filter(m => m.enabled && !this.isNnn(m, base));
@@ -176,6 +202,7 @@ window.RECOMB_ENGINE = {
     const bases = ['A', 'B'].map(base => {
       const prefix = this.getSide(a, b, 'prefixes', base);
       const suffix = this.getSide(a, b, 'suffixes', base);
+      const lockout = this.lockoutFor(a, b, prefix, suffix, base);
       // 特例：整場只有 1 條前綴與 1 條後綴，且都原生 → 1前1後 / 只有前綴 / 只有後綴，各 1/3
       const oneAndOne = prefix.pool === 1 && suffix.pool === 1 && prefix.nnnCount === 0 && suffix.nnnCount === 0;
       const outcomes = [];
@@ -189,7 +216,8 @@ window.RECOMB_ENGINE = {
         if (both.length) outcomes.push({ label: '1 前綴 1 後綴', probability: 1 / 3, p: 1, s: 1, combos: both });
         outcomes.push({ label: '1 前綴 0 後綴', probability: 1 / 3, p: 1, s: 0, combos: pCombos.flatMap(pc => empty.map(sc => [...pc, ...sc])) });
         outcomes.push({ label: '0 前綴 1 後綴', probability: 1 / 3, p: 0, s: 1, combos: empty.flatMap(pc => sCombos.map(sc => [...pc, ...sc])) });
-        return { base, prefix, suffix, outcomes, rule: '1p1s', full: 0 };
+        const renorm1p1s = this.renormalize(outcomes);
+        return { base, prefix, suffix, outcomes, rule: '1p1s', full: 0, lockout, renorm: renorm1p1s };
       }
       prefix.odds.forEach((p, pi) => suffix.odds.forEach((s, si) => {
         if (!p || !s) return;
@@ -202,7 +230,8 @@ window.RECOMB_ENGINE = {
         if (!combos.length) return;
         outcomes.push({ label: `${pi} 前綴 ${si} 後綴`, probability: p * s, p: pi, s: si, combos });
       }));
-      return { base, prefix, suffix, outcomes, rule: 'default', full: outcomes.find(o => o.p === 3 && o.s === 3)?.probability || 0 };
+      const renorm = this.renormalize(outcomes);
+      return { base, prefix, suffix, outcomes, rule: 'default', full: outcomes.find(o => o.p === 3 && o.s === 3)?.probability || 0, lockout, renorm };
     });
     const all = {};
     bases.forEach(base => base.outcomes.forEach(o => { all[o.label] = (all[o.label] || 0) + o.probability / 2; }));
