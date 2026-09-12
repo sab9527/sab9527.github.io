@@ -11,33 +11,44 @@ window.RECOMB_RULES = {
     5: [0, 0, 0.43, 0.57],
     6: [0, 0, 0.28, 0.72]
   },
-  // 詞綴在「兩個基底」上的存在條件（下拉選項文字即為白話存在條件）
-  nnnLabels: {
-    none: '原生（兩邊都可能存在）',
-    A: '只能存在 B 基底',
-    B: '只能存在 A 基底',
-    both: '兩邊都不存在（NNN）'
-  },
-  nnnHints: {
-    none: '原生：這條詞綴兩個基底都可能存在。',
-    A: '基底限定：結果選中 Item A 基底時這條不存在，等於「只能存在 B 基底」；它仍然佔用詞綴池。',
-    B: '基底限定：結果選中 Item B 基底時這條不存在，等於「只能存在 A 基底」；它仍然佔用詞綴池。',
-    both: '非原生且非限定詞綴：兩個基底都不存在（例如眾神殿之相），只佔用詞綴池一格。'
-  },
-  // 詞綴類型顯示名稱：原生 / 限定
-  kindLabels: {
-    normal: '原生',
+  // 詞綴存在屬性：UI 唯一暴露的分類（五選一）。
+  // 原生＝兩邊都可能存在；限定＝兩邊都存在但成品最多一條；
+  // 單邊 NNN＝基底限定（錯邊不存在但仍佔池）；雙邊 NNN＝兩邊都不存在，只佔池。
+  attrLabels: {
+    native: '原生',
     exclusive: '限定',
-    nnnA: '只能存在 B 基底',
-    nnnB: '只能存在 A 基底',
-    nnnBoth: '兩邊都不存在（NNN）'
+    singleA: '單邊 NNN（只存在 A 基底）',
+    singleB: '單邊 NNN（只存在 B 基底）',
+    double: '雙邊 NNN（兩邊都不存在）'
   },
-  kindHints: {
-    normal: '原生詞綴：一般通貨在該基底骰得出來。',
+  attrHints: {
+    native: '原生：這條詞綴兩個基底都可能存在。',
     exclusive: '限定：神廟限定掉落詞、掘獄、部分精髓等來源的限定。成品最多存在一條；兩件素材合計通常也只能放一條。合成前建議先查證。',
-    nnnA: '基底限定：只能存在 B 基底。',
-    nnnB: '基底限定：只能存在 A 基底。',
-    nnnBoth: '非原生且非限定詞綴：兩個基底都不存在。'
+    singleA: '單邊 NNN（基底限定）：選中 Item B 基底時這條不存在；它仍然佔用詞綴池。',
+    singleB: '單邊 NNN（基底限定）：選中 Item A 基底時這條不存在；它仍然佔用詞綴池。',
+    double: '雙邊 NNN：兩個基底都不存在（例如眾神殿之相），只佔用詞綴池一格。'
+  },
+  attrOrder: ['native', 'exclusive', 'singleA', 'singleB', 'double'],
+  // 存在屬性 -> 引擎內部的 {kind, nnn}（注意 nnn 語意是反的：
+  // nnn:'B' 表示在 B 基底上不存在，即「只存在 A 基底」）。
+  attrToLegacy(attr) {
+    switch (attr) {
+      case 'exclusive': return { kind: 'exclusive', nnn: 'none' };
+      case 'singleA': return { kind: 'normal', nnn: 'B' };
+      case 'singleB': return { kind: 'normal', nnn: 'A' };
+      case 'double': return { kind: 'normal', nnn: 'both' };
+      default: return { kind: 'normal', nnn: 'none' };
+    }
+  },
+  // 舊 {kind, nnn}（含舊存檔／舊分享連結） -> 存在屬性。
+  // NNN 優先：限定必然兩邊都存在，有 NNN 標記就不是限定。
+  legacyToAttr(mod) {
+    const nnn = mod && mod.nnn;
+    if (nnn === 'both') return 'double';
+    if (nnn === 'A') return 'singleB';
+    if (nnn === 'B') return 'singleA';
+    if (mod && (mod.kind === 'exclusive' || mod.exclusive === true)) return 'exclusive';
+    return 'native';
   },
 };
 
@@ -58,9 +69,27 @@ window.RECOMB_ENGINE = {
   isNnn(mod, base) {
     return mod.nnn === 'both' || mod.nnn === base;
   },
-  // 詞綴類型：一般 / 限定
-  isExclusive(mod) {
+  // 使用者實際標的類型（不看存在條件）：提醒文案用
+  markedExclusive(mod) {
     return mod.kind === 'exclusive' || mod.exclusive === true;
+  },
+  // 成品層面的限定：雙邊 NNN 的詞綴沒有類型可言，所以它不佔
+  // 「成品最多存在 1 條限定」的名額，只佔該側池一格。
+  // 新 UI 下「限定＋NNN」並存選不出來，只可能來自舊存檔／舊分享連結
+  //（載入時會正規化成雙邊 NNN）；這裡不清掉 kind 是為了引擎層直接面對
+  // 舊物件時仍能給出正確提醒。
+  isExclusive(mod) {
+    return mod.nnn !== 'both' && this.markedExclusive(mod);
+  },
+  // 只是「結果可能比顯示的更差」的提醒（不阻擋計算）：回傳字串陣列，由 UI 顯示
+  warnings(a, b) {
+    const mods = [...a.prefixes, ...a.suffixes, ...b.prefixes, ...b.suffixes].filter(m => m.enabled);
+    return mods.filter(m => this.markedExclusive(m) && m.nnn === 'both').map(m => {
+      const name = String(m.name || '').trim() || '（未命名詞綴）';
+      return `「${name}」同時標了限定與「雙邊 NNN」：工具按「雙邊 NNN」處理，它不佔限定的 1 條名額、只佔該側池一格。`
+        + '如果它其實是限定詞（例如精髓之、神廟詞），遊戲裡限定會互斥：同一側的多條限定只算 1 格池、補池效果會消失，甚至讓另一條限定被剔除，'
+        + '實際結果可能比這裡顯示的更差；要照限定算，請把它的存在屬性改成「限定」。';
+    });
   },
   getSide(itemA, itemB, side, base) {
     const mods = [...itemA[side], ...itemB[side]].filter(m => m.enabled);
@@ -69,6 +98,7 @@ window.RECOMB_ENGINE = {
   },
   validate(a, b) {
     const mods = [...a.prefixes, ...a.suffixes, ...b.prefixes, ...b.suffixes].filter(m => m.enabled);
+    const warnings = this.warnings(a, b);
     const exclusives = mods.filter(m => this.isExclusive(m)).length;
     const exCount = (item, side) => item[side].filter(m => m.enabled && this.isExclusive(m)).length;
     const onePerSide = item => item.prefixes.filter(m => m.enabled).length === 1 && item.suffixes.filter(m => m.enabled).length === 1;
@@ -81,7 +111,7 @@ window.RECOMB_ENGINE = {
       && exCount(a, 'prefixes') + exCount(b, 'prefixes') === 1
       && exCount(a, 'suffixes') + exCount(b, 'suffixes') === 1;
     if (exclusives > 1 && !special) {
-      return { ok: false, message: '一般情況兩件素材合計最多一條限定；兩條只有在 1p1e + 1e1s 特例才允許。' };
+      return { ok: false, message: '一般情況兩件素材合計最多一條限定；兩條只有在 1p1e + 1e1s 特例才允許。', warnings };
     }
     // 同名詞綴：同一側出現兩次以上時，工具視為同一條（結果最多存在一條），
     // 會讓底層組合被排除、機率被合併顯示，因此要提醒使用者確認。
@@ -97,7 +127,7 @@ window.RECOMB_ENGINE = {
       }));
     });
     const duplicates = [...seen.values()].filter(d => d.count > 1);
-    return { ok: true, special, duplicates };
+    return { ok: true, special, duplicates, warnings };
   },
   // 從池中挑出所有合法組合：排除對該基底非原生的詞綴、同名重複、超過一條限定
   combinations(aMods, bMods, count, base) {

@@ -96,7 +96,7 @@
           <div id="items-editor" class="items-editor"></div>
           <div class="defs-open-row">
             <button class="ghost-button" id="defs-button" type="button">名詞定義說明</button>
-            <span class="field-hint">結果基底各 50%。詞綴類型與存在條件的完整定義（含例子）點按鈕查看。</span>
+            <span class="field-hint">結果基底各 50%。每條詞綴的存在屬性（原生／限定／單邊 NNN／雙邊 NNN）點按鈕查看。</span>
           </div>
           <div id="validation" class="validation" role="status"></div>
           <div id="input-warning" class="validation" role="status"></div>
@@ -347,13 +347,13 @@
               <td>裂痕詞如「貪婪鎧甲」、神廟詞、精髓「精髓之」、野獸祝福、高尚勢力詞、掘獄如「地下之」、隱匿「被選召的」「教團之」、強勢工藝如「可三工藝」、人名工藝如「托菈的」。非限定：破裂詞、一般勢力詞。</td>
             </tr>
             <tr>
-              <th>基底限定（只能存在 A / B 基底）</th>
-              <td>基底對了存在、錯了不存在；單邊的非原生且非限定。仍佔池，錯邊永遠抽不到，機率併回上限格。</td>
-              <td>法術壓抑率只能存在閃避底 A（B 為力量底時不存在）；召喚傷害只能存在召喚基底；勢力詞對非該勢力基底不存在；破裂詞固定只能存在原本那件基底，且無法同時存在兩個破裂詞。</td>
+              <th>單邊 NNN（基底限定）</th>
+              <td>只存在某一邊基底；另一邊不存在，但仍佔池，錯邊永遠抽不到，機率併回上限格。</td>
+              <td>法術壓抑率只存在閃避底 A（B 為力量底時不存在）；召喚傷害只能存在召喚基底；勢力詞對非該勢力基底不存在；破裂詞固定只能存在原本那件基底，且無法同時存在兩個破裂詞。</td>
             </tr>
             <tr>
-              <th>NNN（非原生且非限定詞綴）</th>
-              <td>兩個基底都不存在、只佔池一格。NNN = 非原生且非限定；限定雖非一般通貨骰得出來，但因例外可存在，不屬 NNN。</td>
+              <th>雙邊 NNN</th>
+              <td>兩個基底都不存在、只佔池一格。限定雖非一般通貨骰得出來，但因例外可存在，不屬 NNN。</td>
               <td>眾神殿之相；野獸祝福類；部分精髓點出的非原生詞（如護甲詞點在非護甲底上）。</td>
             </tr>
             <tr>
@@ -373,13 +373,11 @@
         <article class="explain-card"><span class="step-number">02</span>
           <h2>什麼是原生？</h2>
           <p>原生是指某條詞綴正常屬於這個基底。判斷方式很直接：這個基底本來骰不骰得出這條詞綴，骰得出來就是原生。如果是勢力詞，對非同勢力的裝備來說就是非原生。</p>
-          <p class="explain-eg"><strong>例</strong>：法術壓抑率放在 A（閃避底），B 是力量底。力量底骰不出法術壓抑率，所以這條在工具裡要設成「<b>只能存在 A 基底</b>」，也就是原生
-            A。</p>
+          <p class="explain-eg"><strong>例</strong>：法術壓抑率放在 A（閃避底），B 是力量底。力量底骰不出法術壓抑率，所以這條在工具裡要設成「<b>單邊 NNN（只存在 A 基底）</b>」。</p>
         </article>
         <article class="explain-card"><span class="step-number">03</span>
-          <h2>什麼是 NNN（非原生且非限定詞綴）？</h2>
-          <p><b>除了原生與限定，其他都算 NNN</b>（Natural Non-Native）。判斷方式只有一句：結果選到某個基底時，這條詞綴<b>還能不能存在</b>。存在不了的那個基底，對這條詞綴來說就是
-            NNN。</p>
+          <h2>什麼是 NNN？</h2>
+          <p>模擬頁每條詞綴的存在屬性只有五種：<b>原生</b>、<b>限定</b>、<b>單邊 NNN（只存在 A／B 基底）</b>、<b>雙邊 NNN</b>。判斷方式只有一句：結果選到某個基底時，這條詞綴<b>還能不能存在</b>。</p>
           <table class="nnn-table">
             <thead>
               <tr>
@@ -390,22 +388,22 @@
             </thead>
             <tbody>
               <tr>
-                <th>原生（兩邊都可能）</th>
+                <th>原生</th>
                 <td class="yes">可以</td>
                 <td class="yes">可以</td>
               </tr>
               <tr>
-                <th>只能存在 A 基底</th>
+                <th>單邊 NNN（只存在 A 基底）</th>
                 <td class="yes">可以</td>
                 <td class="no">不存在</td>
               </tr>
               <tr>
-                <th>只能存在 B 基底</th>
+                <th>單邊 NNN（只存在 B 基底）</th>
                 <td class="no">不存在</td>
                 <td class="yes">可以</td>
               </tr>
               <tr>
-                <th>兩邊都不存在（NNN）</th>
+                <th>雙邊 NNN</th>
                 <td class="no">不存在</td>
                 <td class="no">不存在</td>
               </tr>

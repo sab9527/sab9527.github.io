@@ -2,15 +2,12 @@
   const E = window.RECOMB_ENGINE;
   const RULES = window.RECOMB_RULES;
   const SH = window.RECOMB_SHARE;
-  const nnnOptions = Object.entries(RULES.nnnLabels);
-  const nnnHints = RULES.nnnHints || {};
-  const MOD_KINDS = ['normal', 'exclusive'];
+  const attrOptions = (RULES.attrOrder || Object.keys(RULES.attrLabels || {})).map(a => [a, RULES.attrLabels[a]]);
+  const attrHints = RULES.attrHints || {};
+  const attrLabel = value => (RULES.attrLabels || {})[value] || value;
+  const attrOf = mod => RULES.legacyToAttr(mod);
   // 已移除的「機制掉落」：舊存檔／舊分享連結若還帶著，一律回到原生
   const LEGACY_KINDS = { mechanic: 'normal' };
-  const kindOptions = MOD_KINDS.map(k => [k, (RULES.kindLabels || {})[k] || k]);
-  const kindHints = RULES.kindHints || {};
-  const kindLabel = value => (RULES.kindLabels || {})[value] || value;
-  const nnnLabel = value => (RULES.nnnLabels || {})[value] || value;
   const defaultItem = label => {
     // 預設名稱帶上裝備代號（A-前綴 1／B-前綴 1），兩件裝備預設不會同名
     const tag = String(label).replace('Item ', '');
@@ -50,15 +47,23 @@
     } catch (error) { /* 無痕模式等情形忽略 */ }
   };
   const debounce = (fn, wait) => { let timer; return (...args) => { clearTimeout(timer); timer = setTimeout(() => fn(...args), wait); }; };
+  // 舊資料正規化：{kind, nnn}（含已移除的 mechanic、舊布林 exclusive、
+  // 以及舊 UI 允許的「限定＋NNN」並存）一律收斂成單一存在屬性再存回。
+  // NNN 優先：限定必然兩邊都存在，有 NNN 標記就按 NNN 算。
   const sanitizeMod = (raw, fallback) => {
     if (!raw || typeof raw !== 'object') return fallback;
     const rawKind = LEGACY_KINDS[raw.kind] || raw.kind;
-    const kind = MOD_KINDS.includes(rawKind) ? rawKind : (raw.exclusive ? 'exclusive' : (fallback.kind || 'normal'));
+    const attr = RULES.legacyToAttr({
+      kind: rawKind === 'normal' || rawKind === 'exclusive' ? rawKind : (raw.exclusive ? 'exclusive' : undefined),
+      exclusive: raw.exclusive,
+      nnn: raw.nnn
+    });
+    const leg = RULES.attrToLegacy(attr);
     return {
       name: typeof raw.name === 'string' ? raw.name : fallback.name,
       enabled: !!raw.enabled,
-      kind,
-      nnn: ['none', 'A', 'B', 'both'].includes(raw.nnn) ? raw.nnn : 'none'
+      kind: leg.kind,
+      nnn: leg.nnn
     };
   };
   const sanitizeItem = (raw, label) => {
@@ -93,80 +98,67 @@
       </article>`).join('');
     qsa('[data-action="enabled"]').forEach(el => el.addEventListener('change', e => updateSlot(e, 'enabled')));
     qsa('[data-action="name"]').forEach(el => el.addEventListener('input', e => updateSlot(e, 'name')));
-    qsa('[data-action="kind"]').forEach(el => el.addEventListener('change', e => updateSlot(e, 'kind')));
-    qsa('[data-action="nnn"]').forEach(el => el.addEventListener('change', e => updateSlot(e, 'nnn')));
-    markDuplicates();
+    qsa('[data-action="attr"]').forEach(el => el.addEventListener('change', e => updateSlot(e, 'attr')));
+    renderInputNotes();
   }
   function renderSlots(item, itemIndex, side, label) {
     return `<div class="slot-section"><div class="slot-label">${label}</div>${item[side].map((mod, slotIndex) => {
-      const kindLocked = mod.nnn === 'both';            // 兩邊都不存在 → 類型鎖成 NNN
-      const nnnTitle = nnnHints[mod.nnn] || '';
-      const kindTitle = kindLocked ? '這條詞綴兩個基底都不存在（非原生且非限定詞綴），沒有類型可言，只佔詞綴池一格。' : (kindHints[mod.kind] || '');
+      const attr = attrOf(mod);
+      const attrTitle = attrHints[attr] || '';
       return `
-      <div class="slot-row kind-${mod.kind}" data-kind="${mod.kind}">
+      <div class="slot-row attr-${attr}" data-attr="${attr}">
         <input type="checkbox" data-action="enabled" data-side="${side}" data-slot="${slotIndex}" ${mod.enabled ? 'checked' : ''} aria-label="啟用 ${label} ${slotIndex + 1}">
         <div class="slot-fields">
           <div class="slot-line name-line">
             <input type="text" data-action="name" data-side="${side}" data-slot="${slotIndex}" value="${escapeHtml(mod.name)}" ${mod.enabled ? '' : 'disabled'} aria-label="${label} ${slotIndex + 1} 名稱">
-            <span class="select-wrap${kindLocked ? ' locked nnn-lock' : ''}">
-              <select class="kind-select" data-action="kind" data-side="${side}" data-slot="${slotIndex}" title="${kindTitle}" ${!mod.enabled || kindLocked ? 'disabled' : ''} aria-label="${label} ${slotIndex + 1} 詞綴類型">${kindOptions.map(([value, text]) => `<option value="${value}" ${mod.kind === value ? 'selected' : ''}>${text}</option>`).join('')}</select>
-              <span class="select-face" aria-hidden="true">${kindLocked ? 'NNN' : kindLabel(mod.kind)}</span>
-            </span>
           </div>
           <div class="slot-line">
             <span class="select-wrap">
-              <select class="nnn-select" data-action="nnn" data-side="${side}" data-slot="${slotIndex}" title="${nnnTitle}" ${!mod.enabled ? 'disabled' : ''} aria-label="${label} ${slotIndex + 1} 存在條件">${nnnOptions.map(([value, text]) => `<option value="${value}" ${mod.nnn === value ? 'selected' : ''}>${text}</option>`).join('')}</select>
-              <span class="select-face" aria-hidden="true">${nnnLabel(mod.nnn)}</span>
+              <select class="attr-select" data-action="attr" data-side="${side}" data-slot="${slotIndex}" title="${attrTitle}" ${!mod.enabled ? 'disabled' : ''} aria-label="${label} ${slotIndex + 1} 存在屬性">${attrOptions.map(([value, text]) => `<option value="${value}" ${attr === value ? 'selected' : ''}>${text}</option>`).join('')}</select>
+              <span class="select-face" aria-hidden="true">${attrLabel(attr)}</span>
             </span>
           </div>
         </div>
       </div>`;
     }).join('')}</div>`;
   }
-  // 兩邊都不存在 → 類型顯示 NNN 並鎖住
-  function syncRowLocks(row, mod) {
-    const kindSel = row.querySelector('[data-action=kind]');
-    const nnnSel = row.querySelector('[data-action=nnn]');
-    const neverAppears = mod.nnn === 'both';
-    if (kindSel) {
-      const wrap = kindSel.closest('.select-wrap');
-      kindSel.disabled = !mod.enabled || neverAppears;
-      kindSel.title = neverAppears ? '這條詞綴兩個基底都不存在（非原生且非限定詞綴），沒有類型可言，只佔詞綴池一格。' : (kindHints[mod.kind] || '');
-      wrap.classList.toggle('locked', neverAppears);
-      wrap.classList.toggle('nnn-lock', neverAppears);
-      wrap.querySelector('.select-face').textContent = neverAppears ? 'NNN' : kindLabel(mod.kind);
-    }
-    if (nnnSel) {
-      nnnSel.value = mod.nnn;
-      nnnSel.disabled = !mod.enabled;
-      nnnSel.title = nnnHints[mod.nnn] || '';
-      nnnSel.closest('.select-wrap').querySelector('.select-face').textContent = nnnLabel(mod.nnn);
-    }
-  }
   function updateSlot(e, key) {
     const card = e.target.closest('.item-card');
     const item = state.items[+card.dataset.item];
     const slot = item[e.target.dataset.side][+e.target.dataset.slot];
-    slot[key] = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
-    // 類型／存在條件改變時，同步顏色標示與兩個下拉的互相鎖定
-    if (key === 'kind' || key === 'nnn') {
+    if (key === 'attr') {
+      // 存在屬性是唯一的真實來源：直接寫回引擎的 {kind, nnn}
+      const leg = RULES.attrToLegacy(e.target.value);
+      slot.kind = leg.kind;
+      slot.nnn = leg.nnn;
+    } else {
+      slot[key] = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+    }
+    // 存在屬性改變時，同步顏色標示與下拉外觀文字
+    if (key === 'attr') {
       const row = e.target.closest('.slot-row');
-      if (row && key === 'kind') {
-        row.classList.remove('kind-normal', 'kind-exclusive');
-        row.classList.add(`kind-${slot.kind}`);
-        row.dataset.kind = slot.kind;
+      const attr = attrOf(slot);
+      if (row) {
+        row.classList.remove('attr-native', 'attr-exclusive', 'attr-singleA', 'attr-singleB', 'attr-double');
+        row.classList.add(`attr-${attr}`);
+        row.dataset.attr = attr;
+        const wrap = e.target.closest('.select-wrap');
+        if (wrap) wrap.querySelector('.select-face').textContent = attrLabel(attr);
+        e.target.title = attrHints[attr] || '';
       }
-      if (row) syncRowLocks(row, slot);
     }
     if (key === 'enabled') renderEditors();
     persistSimulate();
     clearShareParam();
     scheduleCalc();
-    markDuplicates();
+    renderInputNotes();
   }
-  // 同名詞綴提醒：同一側出現同名詞綴時，引擎視為同一條（組合被排除、機率合併顯示）
-  function markDuplicates() {
-    const dupList = E.validate(state.items[0], state.items[1]).duplicates || [];
+  // 輸入備註（#input-warning）：只提醒、不阻擋，真正無效的輸入由 #validation 紅字擋下
+  // 1) 引擎提醒：例如某條詞綴同時標了限定與「兩邊都不存在」（遊戲裡結果可能更差）
+  // 2) 同名詞綴：同一側出現同名時，引擎視為同一條（組合被排除、機率合併顯示）
+  function renderInputNotes() {
+    const v = E.validate(state.items[0], state.items[1]);
+    const dupList = v.duplicates || [];
     const dupes = new Set(dupList.map(d => `${d.side}|${d.name.toLowerCase()}`));
     qsa('.item-card').forEach((card, itemIndex) => qsa('.slot-row', card).forEach((row, rowIndex) => {
       const isPrefix = rowIndex < 3;
@@ -176,13 +168,17 @@
       const input = row.querySelector('[data-action=name]');
       if (input) input.title = dup ? '與另一件（或同一件）的詞綴同名：工具會把它們當成同一條詞綴' : '';
     }));
+    const notes = [...(v.warnings || [])];
+    if (dupList.length) {
+      const groups = [...new Set(dupList.map(d => d.side))].join('、');
+      const names = [...new Set(dupList.map(d => d.name))].map(n => `「${n}」`).join('、');
+      notes.push(`${groups}有同名詞綴 ${names}：工具會把它們當成同一條詞綴，同一側最多只存在一條，機率會合併、合計也可能低於 100%（重複的那條無法同時佔兩格）。如果它們其實是不同的詞綴，請改成不同名稱；如果本來就是同一條詞綴（或彼此互斥、不可能同時存在），取名相同即可。`);
+    }
     const box = qs('#input-warning');
     if (!box) return;
-    if (!dupList.length) { box.className = 'validation'; box.textContent = ''; return; }
-    const groups = [...new Set(dupList.map(d => d.side))].join('、');
-    const names = [...new Set(dupList.map(d => d.name))].map(n => `「${n}」`).join('、');
+    if (!notes.length) { box.className = 'validation'; box.textContent = ''; return; }
     box.className = 'validation warn';
-    box.textContent = `${groups}有同名詞綴 ${names}：工具會把它們當成同一條詞綴，同一側最多只存在一條，機率會合併、合計也可能低於 100%（重複的那條無法同時佔兩格）。如果它們其實是不同的詞綴，請改成不同名稱；如果本來就是同一條詞綴（或彼此互斥、不可能同時存在），取名相同即可。`;
+    box.textContent = notes.join(' ');
   }
   function escapeHtml(s) { return String(s).replace(/[&<>'"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[c])); }
   function fmt(n) { return `${(n * 100).toFixed(1).replace('.0', '')}%`; }
@@ -290,9 +286,9 @@
       </div>`;
     const fate = resultChangingMods.map(m => {
       const parts = [];
-      if (m.nnn === 'both') parts.push('兩個基底都不存在（非原生且非限定詞綴）');
-      else if (m.nnn === 'A') parts.push('選 Item A 基底時不存在（等於只能存在 B 基底）');
-      else if (m.nnn === 'B') parts.push('選 Item B 基底時不存在（等於只能存在 A 基底）');
+      if (m.nnn === 'both') parts.push('雙邊 NNN（兩個基底都不存在）');
+      else if (m.nnn === 'A') parts.push('單邊 NNN（只存在 B 基底）');
+      else if (m.nnn === 'B') parts.push('單邊 NNN（只存在 A 基底）');
       if (E.isExclusive(m)) parts.push('限定（成品最多存在 1 條）');
       return `<span>${escapeHtml(m.name)}：${parts.join('、')}</span>`;
     }).join('');

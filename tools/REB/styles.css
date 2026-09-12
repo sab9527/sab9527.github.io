@@ -8,7 +8,7 @@
 @media(max-width:900px){.items-editor{grid-template-columns:1fr}}
 
 /* Prototype v3: exclusive as independent flag + full odds table */
-.slot-row{grid-template-columns:24px minmax(0,1fr)}.slot-fields{display:grid;gap:5px;min-width:0}.slot-fields input[type=text]{width:100%}.slot-flags{display:flex;gap:6px;align-items:center}.flag-exclusive{display:flex;align-items:center;gap:4px;font-size:11px;color:var(--muted);white-space:nowrap;cursor:pointer}.flag-exclusive input{width:13px;height:13px;accent-color:var(--accent);margin:0}.nnn-select{flex:1;min-width:0;border:1px solid var(--line);border-radius:6px;padding:6px;background:var(--surface-2);color:var(--ink);font-size:11px}
+.slot-row{grid-template-columns:24px minmax(0,1fr)}.slot-fields{display:grid;gap:5px;min-width:0}.slot-fields input[type=text]{width:100%}
 .inline-help{grid-template-columns:max-content 1fr;gap:6px 12px;align-items:baseline}.inline-help strong{color:var(--accent);white-space:nowrap}.inline-help span{color:var(--muted);min-width:0}
 .prob-panel{margin-top:18px}.prob-intro{font-size:12px;color:var(--muted);margin:6px 0 14px}.prob-table{width:100%;border-collapse:collapse;font:12px var(--mono)}.prob-table th,.prob-table td{text-align:right;padding:8px 12px;border-bottom:1px solid var(--line)}.prob-table th:first-child,.prob-table td:first-child{text-align:left;color:var(--muted)}.prob-table tbody tr:first-child td{color:var(--muted)}.prob-table td:last-child{color:var(--accent);font-weight:700}.prob-notes{margin-top:14px;display:grid;gap:7px}.prob-notes p{font-size:12px;color:var(--muted);margin:0}.prob-notes strong{color:var(--ink)}
 @media(max-width:560px){.inline-help{grid-template-columns:1fr}.prob-table{font-size:11px}.prob-table th,.prob-table td{padding:6px 8px}}
@@ -60,10 +60,9 @@
 .slot-row{grid-template-columns:20px minmax(0,1fr);gap:6px;padding:4px 5px;border-radius:7px}
 .slot-row .slot-fields{gap:4px}
 .slot-row input[type=text]{padding:3px 6px;font-size:12px}
-.slot-flags{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:5px}
-.kind-select,.nnn-select{width:100%;height:24px;padding:2px 4px;font-size:11px;line-height:1.2;border:1px solid var(--line);border-radius:6px;background:var(--surface-2);color:var(--ink);cursor:pointer}
-.slot-row.kind-exclusive{background:rgba(210,161,90,.11)}
-.slot-row.kind-exclusive .kind-select{color:#e8c47f}
+.attr-select{width:100%;height:24px;padding:2px 4px;font-size:11px;line-height:1.2;border:1px solid var(--line);border-radius:6px;background:var(--surface-2);color:var(--ink);cursor:pointer}
+.slot-row.attr-exclusive{background:rgba(210,161,90,.11)}
+.slot-row.attr-exclusive .attr-select{color:#e8c47f}
 .explain-card .explain-eg{margin:16px 0 0;padding:12px;border:1px solid var(--line);border-radius:8px;font-size:12px;color:var(--muted)}
 .explain-eg strong{color:var(--ink);font-weight:600}
 
@@ -77,24 +76,23 @@
 .select-wrap select{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;font-size:11.5px;border:0;padding:0;background:var(--surface-2)}
 .select-wrap select:disabled{cursor:not-allowed}
 .select-wrap:focus-within .select-face{border-color:var(--accent);outline:1px solid var(--accent)}
-.slot-row.kind-exclusive .select-face{color:#e8c47f}
+.slot-row.attr-exclusive .select-face{color:#e8c47f}
 .slot-row .select-wrap select:disabled + .select-face{opacity:.55}
 
-/* 詞綴列新版面：名稱 + 類型同排、存在條件整排（文字可完整顯示） */
+/* 詞綴列版面：名稱整排、存在屬性（五選一）整排，文字完整顯示不斷行 */
 .slot-fields{display:grid;gap:4px;min-width:0}
 .slot-line{display:block;min-width:0}
-.slot-line.name-line{display:grid;grid-template-columns:minmax(0,1fr) 106px;gap:5px;align-items:center}
+.slot-line.name-line{display:block}
 .slot-line.name-line input[type=text]{min-width:0}
-.slot-flags{display:none}
-.select-wrap.locked .select-face{opacity:.5}
-.select-wrap.locked select{cursor:not-allowed}
 /* 輸入區給寬一點，讓下拉文字不必截斷 */
 .sim-layout{grid-template-columns:minmax(400px,1.12fr) minmax(480px,1fr)}
 @media(max-width:1100px){.sim-layout{grid-template-columns:1fr}}
 
-/* 兩邊都不會出現（NNN）：類型鎖成 NNN，用 NNN 紅色系標示 */
-.select-wrap.nnn-lock .select-face{color:#f0aca2;background:#2a1c1a;border-color:#6b3a34;opacity:1}
-.select-wrap.nnn-lock::after{border-top-color:#f0aca2}
+/* 單邊 NNN：淡紅底標示基底限定；雙邊 NNN：深紅標示（沿用既有 NNN 紅色系） */
+.slot-row.attr-singleA,.slot-row.attr-singleB{background:rgba(240,172,162,.07)}
+.slot-row.attr-double{background:#2a1c1a}
+.slot-row.attr-double .select-face{color:#f0aca2;background:#2a1c1a;border-color:#6b3a34;opacity:1}
+.slot-row.attr-double .select-wrap::after{border-top-color:#f0aca2}
 
 /* 具體可能組合：一個詞一行、前綴與後綴之間加分隔線、整體壓縮 */
 /* 注意：舊規則 .outcome span{gap:8px} 特異性同級，這裡一律用 .combo-list 前綴壓過去 */
@@ -264,7 +262,7 @@ body{background:color-mix(in srgb, var(--bg) 84%, transparent)}
 /* 語意底色改由主色推導，換主題自動跟隨 */
 .ghost-button:hover{border-color:var(--accent);color:var(--accent);background:color-mix(in srgb, var(--accent) 8%, transparent)}
 
-.slot-row.kind-exclusive{background:color-mix(in srgb, var(--gold) 12%, transparent)}
+.slot-row.attr-exclusive{background:color-mix(in srgb, var(--gold) 12%, transparent)}
 .slot-row.dup input[data-action=name]{border-color:var(--gold);background:color-mix(in srgb, var(--gold) 8%, transparent)}
 .validation.warn{margin-top:12px;padding:8px 12px;border:1px solid var(--gold);border-radius:8px;background:color-mix(in srgb, var(--gold) 10%, transparent);color:var(--gold);font-size:12px;line-height:1.6}
 #bg-toggle{white-space:nowrap}
