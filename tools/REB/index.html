@@ -4,25 +4,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7FXC7GWDNT"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-7FXC7GWDNT');
+  </script>
   <title>重組器指引｜POE Recombinator Guide</title>
-  <meta name="description" content="Path of Exile 重組器規則指引：輸入兩件底材的詞綴，看機率分布與具體組合，再排出素材準備路線。">
+  <meta name="description" content="Path of Exile 重組器規則指引：輸入兩件底材的詞綴，看機率分布與具體組合，以及把單條詞綴搬到指定基底的做法。">
   <meta name="author" content="widy">
   <meta property="og:type" content="website">
   <meta property="og:title" content="重組器指引｜POE Recombinator Guide">
-  <meta property="og:description" content="輸入兩件底材的詞綴，看機率分布與具體組合，再排出素材準備路線。">
-  <!-- 上線後改成絕對網址（例：https://<帳號>.github.io/<repo>/og-image.png），社群平台才抓得到 -->
-  <meta property="og:image" content="./og-image.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
+  <meta property="og:description" content="輸入兩件底材的詞綴，看機率分布與具體組合，以及把單條詞綴搬到指定基底的做法。">
+  <!-- 社群預覽（Discord／Twitter 等）與圖示一律用 GitHub 上的同一張 LOGO：
+       絕對網址社群平台才抓得到，瀏覽器與預覽爬蟲也只下載一次。 -->
+  <meta property="og:image"
+    content="https://raw.githubusercontent.com/sab9527/sab9527.github.io/refs/heads/main/tools/Logo/LOGO.png">
+  <meta property="og:image:width" content="837">
+  <meta property="og:image:height" content="912">
   <meta property="og:site_name" content="重組器指引">
   <meta property="og:locale" content="zh_TW">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="重組器指引｜POE Recombinator Guide">
-  <meta name="twitter:description" content="輸入兩件底材的詞綴，看機率分布與具體組合，再排出素材準備路線。">
-  <meta name="twitter:image" content="./og-image.png">
+  <meta name="twitter:description" content="輸入兩件底材的詞綴，看機率分布與具體組合，以及把單條詞綴搬到指定基底的做法。">
+  <meta name="twitter:image"
+    content="https://raw.githubusercontent.com/sab9527/sab9527.github.io/refs/heads/main/tools/Logo/LOGO.png">
   <meta name="theme-color" content="#0f0f0f">
-  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/sab9527/sab9527.github.io/refs/heads/main/tools/Logo/LOGO.png">
-  <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/sab9527/sab9527.github.io/refs/heads/main/tools/Logo/LOGO.png">
+  <link rel="icon" type="image/png"
+    href="https://raw.githubusercontent.com/sab9527/sab9527.github.io/refs/heads/main/tools/Logo/LOGO.png">
+  <link rel="apple-touch-icon"
+    href="https://raw.githubusercontent.com/sab9527/sab9527.github.io/refs/heads/main/tools/Logo/LOGO.png">
   <link rel="stylesheet" href="styles.css">
   <script>
     // 先套用記住的配色，避免載入時閃一下預設色
@@ -32,23 +46,30 @@
 </head>
 
 <body>
+  <canvas id="sacred-bg" aria-hidden="true"></canvas>
   <header class="site-header">
     <div class="header-inner">
       <a class="brand" href="#simulate" aria-label="回到重組模擬">
-        <img class="brand-logo" src="https://raw.githubusercontent.com/sab9527/sab9527.github.io/refs/heads/main/tools/Logo/LOGO.png" alt="" width="46" height="50" decoding="async">
-        <span><strong>重組器指引</strong><small>POE Recombinator Guide</small></span>
+        <img class="brand-logo"
+          src="https://raw.githubusercontent.com/sab9527/sab9527.github.io/refs/heads/main/tools/Logo/LOGO.png" alt=""
+          width="46" height="50" decoding="async">
+        <span><strong>重組器的小工具</strong><small>POE Recombinator Guide</small></span>
       </a>
       <div class="header-right">
         <nav class="main-nav" aria-label="主要導覽">
           <button class="nav-button active" data-page="simulate">模擬重組</button>
-          <button class="nav-button" data-page="recommend">推薦路線</button>
+          <button class="nav-button" data-page="transfer">單條詞轉移</button>
           <button class="nav-button" data-page="explain">機制講解</button>
         </nav>
         <div class="theme-switch" role="group" aria-label="配色主題">
-          <button class="theme-dot" type="button" data-theme="emerald" title="深綠" aria-label="深綠配色" aria-pressed="true"></button>
-          <button class="theme-dot" type="button" data-theme="graphite" title="石墨" aria-label="石墨配色" aria-pressed="false"></button>
-          <button class="theme-dot" type="button" data-theme="ember" title="暖褐" aria-label="暖褐配色" aria-pressed="false"></button>
+          <button class="theme-dot" type="button" data-theme="emerald" title="深綠" aria-label="深綠配色"
+            aria-pressed="true"></button>
+          <button class="theme-dot" type="button" data-theme="graphite" title="石墨" aria-label="石墨配色"
+            aria-pressed="false"></button>
+          <button class="theme-dot" type="button" data-theme="ember" title="暖褐" aria-label="暖褐配色"
+            aria-pressed="false"></button>
         </div>
+        <button class="ghost-button" id="bg-toggle" type="button" aria-pressed="true" title="開關背景特效">關閉背景特效</button>
       </div>
     </div>
   </header>
@@ -66,17 +87,16 @@
             <div>
               <p class="eyebrow">INPUTS</p>
               <h2>兩件裝備</h2>
-            </div><div class="heading-actions"><button class="ghost-button" id="share-button" type="button">複製分享連結</button><button class="ghost-button" id="import-button" type="button">匯入分享</button><button class="ghost-button reset-button" id="reset-button" type="button"><span class="reset-icon"
-                  aria-hidden="true">↺</span>全部重設</button></div>
+            </div>
+            <div class="heading-actions"><button class="ghost-button" id="share-button"
+                type="button">複製分享連結</button><button class="ghost-button" id="import-button"
+                type="button">匯入分享</button><button class="ghost-button reset-button" id="reset-button"
+                type="button"><span class="reset-icon" aria-hidden="true">↺</span>全部重設</button></div>
           </div>
           <div id="items-editor" class="items-editor"></div>
-          <div class="inline-help">
-            <strong>結果基底</strong><span>結果會從兩件素材中挑一件的基底，各 50%。結果區會分別列出「選中 Item A 基底」與「選中 Item B 基底」兩種情況。</span>
-            <strong>詞綴類型</strong><span><b>一般</b>：正常屬於這個基底。<b>機制掉落限定</b>：取得管道被特定機制限制、但不算限定詞的詞綴，規則上<b>視為原生</b>，存在條件固定為原生、只加標示。<b>限定詞</b>：神廟（限定掉落詞）、挖礦、大師、部分精髓等來源的獨佔詞綴，成品通常只允許存在一條。</span>
-            <strong>原生</strong><span>這條詞綴兩個基底都可能出現。如果是勢力詞，那對於非同勢力的裝備來說為非原生。例：法術壓抑率在閃避底（A）、B 是力量底，力量底不會有法術壓抑率 ⇒ 這條要設成「只能存在 A 基底」。</span>
-            <strong>NNN（非原生）</strong><span>不會被合成到任何一件裝備上。它仍然佔一格：留幾條的機率看的是池的總數（含 NNN），而 NNN 永遠抽不到，所以相對增加其他詞的機率。</span>
-            <strong>合成前查證</strong><span>建議在合成之前查詢該詞綴是否為 exclusive（限定詞）：<b>取得管道相同不等於類型相同</b>，同一來源的詞綴要逐條查證。查證方式：準備一件帶已知限定詞的素材與待測詞綴，重組後若兩者不會同時出現，待測詞綴就是限定詞。</span>
-            <strong>同名詞綴</strong><span>兩件上的同名詞綴會被視為<b>同一條</b>，同一側最多只留一條。若它們其實是不同的詞綴，請取不同名稱；若本來就是同一條詞綴、或彼此互斥（同一 family 的詞不可能同時出現），取名相同即可。</span>
+          <div class="defs-open-row">
+            <button class="ghost-button" id="defs-button" type="button">名詞定義說明</button>
+            <span class="field-hint">結果基底各 50%。詞綴類型與存在條件的完整定義（含例子）點按鈕查看。</span>
           </div>
           <div id="validation" class="validation" role="status"></div>
           <div id="input-warning" class="validation" role="status"></div>
@@ -96,56 +116,205 @@
       </div>
     </section>
 
-    <section class="page" id="page-recommend">
+    <section class="page" id="page-transfer">
       <div class="page-intro">
         <div>
-          <h1>輸入想要的成品，排出素材準備路線。</h1>
+          <h1>把一條詞搬到另一個基底。</h1>
+          <p class="lede">目標詞在來源件上只留一條，再配一條「結果基底上不存在」的佔位詞：該側池湊到 2，成品必定至少留一條；一旦選中接收基底，能填的就只剩你要的那條。整體成功率 50%，平均兩次重組成功一次。
+          </p>
         </div>
       </div>
-      <div class="plan-layout">
-        <section class="panel goal-panel">
-          <div class="panel-heading">
-            <div>
-              <p class="eyebrow">TARGET</p>
-              <h2>想要的成品</h2>
-            </div>
-          </div>
-          <label class="goal-field">目標基底
-            <select id="plan-base">
-              <option value="same">兩件素材同基底（推薦）</option>
-              <option value="A">Item A 的基底（兩件素材不同基底）</option>
-              <option value="B">Item B 的基底（兩件素材不同基底）</option>
-            </select>
-          </label>
-          <div class="preset-row">
-            <button class="chip" data-preset="3p3s">3 前 3 後</button>
-            <button class="chip" data-preset="3p2s">3 前 2 後</button>
-            <button class="chip" data-preset="2p2s">2 前 2 後</button>
-            <button class="chip" data-preset="clear">清空</button>
-          </div>
-          <div class="goal-group">
-            <p class="goal-title">想要的前綴</p>
-            <div id="plan-prefixes"></div>
-          </div>
-          <div class="goal-group">
-            <p class="goal-title">想要的後綴</p>
-            <div id="plan-suffixes"></div>
-          </div>
-          <button class="primary-button" id="plan-button">規劃素材路線 <span>→</span></button>
-        </section>
-        <section class="result-panel panel">
-          <div class="panel-heading">
-            <div>
-              <p class="eyebrow">ROUTES</p>
-              <h2>素材準備路線</h2>
-            </div><span class="result-state" id="plan-state">等待目標</span>
-          </div>
-          <div id="plan-output" class="result-content empty-state">
-            <h3>在左邊挑想要的詞綴，這裡就會排出路線</h3>
-            <p>會列出每件素材要準備哪些詞綴、需要幾個單詞綴底材，以及容易失敗的地方。</p>
-          </div>
-        </section>
+
+      <div class="explain-grid">
+        <article class="explain-card"><span class="step-number">01</span>
+          <h2>該側池 2，保證不放空</h2>
+          <p>前綴與後綴分開算池。池 2 條時，成品在該側「留 0 條」的機率是 0（1 條 66.7%、2 條 33.3%），所以那一側至少會存在一條詞綴。</p>
+          <div class="mini-diagram"><b>池 2</b><i>至少留 1 條</i><b>留 0 條</b><i>0%</i></div>
+        </article>
+        <article class="explain-card"><span class="step-number">02</span>
+          <h2>佔位詞佔池但抽不到</h2>
+          <p>佔位詞的唯一工作是補池。它對接收基底是非原生，佔一格卻永遠不會被抽中，於是池裡真正能填的就只剩目標詞。</p>
+          <div class="mini-diagram"><b>佔位詞</b><i>抽不到</i><b>目標詞</b><i>必留</i></div>
+        </article>
+        <article class="explain-card"><span class="step-number">03</span>
+          <h2>剩下的是 50% 基底選擇</h2>
+          <p>結果基底由兩件各 50% 決定。選中接收基底時目標詞 100% 留下；選中來源件時這輪等於白做，換一件接收件再來一次。</p>
+          <div class="mini-diagram"><b>接收基底</b><i>50%</i><b>來源件基底</b><i>50%</i></div>
+        </article>
+        <article class="explain-card"><span class="step-number">04</span>
+          <h2>用不可預測模式</h2>
+          <p>不可預測模式不會失敗，兩件一定產出一件。可預測模式搬不動這類特殊詞（3.29 的隔離成功率只有 8% 上下），失敗連兩件一起吃掉。</p>
+        </article>
       </div>
+
+      <section class="panel prob-panel">
+        <p class="eyebrow">FLOW</p>
+        <h2>一次轉移的四步</h2>
+        <p class="prob-intro">以下用「把一條裂痕的特殊前綴，搬到目標護甲基底」當例子；佔位詞也放在前綴側。</p>
+        <div class="transfer-flow">
+          <div class="transfer-step"><b>STEP 1</b>
+            <p>把目標詞做成來源件該側<strong>唯一</strong>的一條。同側其他詞清掉。</p>
+          </div>
+          <div class="transfer-step"><b>STEP 2</b>
+            <p>在同一件上補一條<strong>對接收基底不存在</strong>的佔位詞，讓該側池變成 2。</p>
+          </div>
+          <div class="transfer-step"><b>STEP 3</b>
+            <p>準備接收件：目標基底、該側 0 條、物品等級足夠（輸出 ilvl 取兩件平均 +2，上限不高於較高的那件）。</p>
+          </div>
+          <div class="transfer-step"><b>STEP 4</b>
+            <p>不可預測模式重組。沒命中就換下一件。</p>
+          </div>
+        </div>
+        <div class="transfer-branch">
+          <div class="transfer-out hit"><b>選中接收基底（50%）</b>
+            <p>佔位詞不存在、目標詞是唯一可選，該側又必須留至少一條 ⇒ 目標詞 <strong>100%</strong> 留下。</p>
+          </div>
+          <div class="transfer-out"><b>選中來源件基底（50%）</b>
+            <p>成品是來源件基底，不是你要的接收基底。這一輪不算成功，重新配一件接收件再來。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel prob-panel">
+        <p class="eyebrow">POOL</p>
+        <h2>池裡發生什麼事</h2>
+        <p class="prob-intro">池的大小只算「該側有幾條詞綴」，佔位詞一樣算一格。真正可選的詞比池小，機率就會往剩下的詞集中。</p>
+        <div class="transfer-pool">
+          <div class="pool-box">
+            <h4>選中來源件基底</h4>
+            <ul>
+              <li><span class="chip-mod">目標詞（限定）</span></li>
+              <li><span class="chip-mod">佔位詞</span></li>
+              <li>兩條都存在 ⇒ 可能只留目標詞、只留佔位詞，或兩條都留。</li>
+            </ul>
+          </div>
+          <div class="pool-box">
+            <h4>選中接收基底</h4>
+            <ul>
+              <li><span class="chip-mod excl">目標詞（限定）</span></li>
+              <li><span class="chip-mod nnn">佔位詞（NNN）</span></li>
+              <li>佔位詞抽不到 ⇒ 可選的只有目標詞，池 2 又保證至少留 1 條 ⇒ 必留目標詞。</li>
+            </ul>
+          </div>
+        </div>
+        <table class="nnn-table">
+          <thead>
+            <tr>
+              <th>該側池大小</th>
+              <th>留 0 條</th>
+              <th>留 1 條</th>
+              <th>留 2 條以上</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>1（只有目標詞）</th>
+              <td class="no">41%</td>
+              <td class="yes">59%</td>
+              <td class="yes">—</td>
+            </tr>
+            <tr>
+              <th>2（目標詞＋佔位詞）</th>
+              <td class="yes">0%</td>
+              <td class="yes">66.7%</td>
+              <td class="yes">33.3%</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="prob-notes">
+          <p><strong>為什麼不能只拿一條詞直接去撞。</strong>池 1 的組合有 41% 機率整側全空；目標詞掉在那一側就直接沒了。這就是為什麼要先花一步把池補到 2。</p>
+        </div>
+      </section>
+
+      <section class="panel prob-panel">
+        <p class="eyebrow">PADDING</p>
+        <h2>佔位詞的三種來源</h2>
+        <p class="prob-intro">判準只有一句：這條詞在接收基底上<b>存不存在</b>。不存在（NNN）才有用，存在就只會跟目標詞搶位置。</p>
+        <table class="prob-table defs-table">
+          <thead>
+            <tr>
+              <th>來源</th>
+              <th>怎麼弄</th>
+              <th>適用側</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>勢力詞</th>
+              <td>用 Shaper／Elder 崇高石點上去（最便宜的勢力路徑）。想讓它落在前綴，先把空的後綴槽用假工藝塞滿再點；之後用「前綴無法被變更」加洗白，把其他詞清掉，只留目標詞與影響力詞。勢力詞不是限定。
+              </td>
+              <td>前綴或後綴</td>
+            </tr>
+            <tr>
+              <th>低階精髓的非原生詞</th>
+              <td>挑一條對兩個基底都不存在的精髓詞。便宜、可控，是現在最常用的做法。務必確認它有<b>階級編號</b>：有階級才是一般詞，沒有階級的是限定。</td>
+              <td>前綴或後綴</td>
+            </tr>
+            <tr>
+              <th>Ducat（3.29 工藝）</th>
+              <td>對任何階段的裝備直接加一條非原生後綴，每一件都能吃。它只補後綴側，所以是「撐後綴池、拉高前綴結果」用的。</td>
+              <td>只有後綴</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="panel prob-panel">
+        <p class="eyebrow">PITFALLS</p>
+        <h2>會讓這一輪白做的地雷</h2>
+        <table class="prob-table defs-table">
+          <thead>
+            <tr>
+              <th>做法</th>
+              <th>會發生什麼事</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>佔位詞只對其中一邊不存在</th>
+              <td>選中另一邊時它變成可選詞，就跟目標詞搶位置，機率不再是 100%。</td>
+            </tr>
+            <tr>
+              <th>同一側放了第二條「在接收基底上存在」的詞</th>
+              <td>它會被抽到，目標詞就不一定留下；詞多時甚至可能出現該側 0 條的異常結果。</td>
+            </tr>
+            <tr>
+              <th>上任何工藝詞</th>
+              <td>會被抽到。</td>
+            </tr>
+            <tr>
+              <th>佔位詞自己也是限定</th>
+              <td>同一側的多條限定只算 1 格池，補池效果消失；還會觸發上一條的限定互斥。</td>
+            </tr>
+            <tr>
+              <th>用可預測模式搬這類詞</th>
+              <td>搬不動。3.29 的可預測隔離成功率只有 8% 上下，而且失敗時兩件一起消失。</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="panel prob-panel">
+        <p class="eyebrow">ALTERNATIVE</p>
+        <h2>另一條路：不補池，直接對撞</h2>
+        <p class="prob-intro">如果接收件很便宜、也懶得弄佔位詞，可以用「一邊只有目標詞、另一邊只有一條別的詞」對撞。</p>
+        <div class="formula">x = 0.5 × 2/3 + 0.5 × 2/3 × x　⇒　x = 0.5</div>
+        <div class="prob-notes">
+          <p>這一組走的是 1 前 0 後 × 0 前 1 後 的特例：三種結果各 33.3%，<b>留住目標詞的機率是 2/3</b>。解出來的轉移機率同樣是 50%，但原文算出<b>平均要試 4次</b>，是佔位詞法（平均
+            2 次）的兩倍。</p>
+          <p><strong>取捨</strong>：接收件便宜就用這條省事；接收件貴（高品質、特定基底）就用佔位詞法，少賭兩次。</p>
+        </div>
+      </section>
+
+      <section class="panel prob-panel">
+        <p class="eyebrow">SOURCES</p>
+        <h2>資料來源與版本</h2>
+        <div class="prob-notes">
+          <p>以 <b>3.29</b> 當下的社群共識與實測為準：池大小分布表沿用 3.25 統計並在 3.26 複驗，3.29 導覽仍以同一份為參考；NNN
+            與限定詞規則以社群計算機（recomb.rngissue.org）現行版本與官方論壇的單條詞轉移討論為準。</p>
+          <p>詞綴權重未公開，所以「留下的是哪一條」在池裡多於一條可選時只能算估計；本頁的 50% 是「平均兩次成功一次」的期望值，不是保證。</p>
+        </div>
+      </section>
     </section>
 
     <section class="page" id="page-explain">
@@ -154,6 +323,52 @@
           <h1>重組器的原理</h1>
         </div>
       </div>
+      <section class="panel prob-panel" id="defs-section" aria-labelledby="defs-title">
+        <p class="eyebrow">DEFINITIONS</p>
+        <h2 id="defs-title">名詞定義</h2>
+        <p class="prob-intro">結果基底從兩件素材中挑一件，各 50%。</p>
+        <table class="prob-table defs-table">
+          <thead>
+            <tr>
+              <th>名詞</th>
+              <th>定義</th>
+              <th>例子</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>原生</th>
+              <td>一般通貨在該基底骰得出來的詞綴；兩個基底都可能存在。</td>
+              <td>原生詞（例如生命）在正常情況基底下存在；法術壓抑率在敏捷底（A）存在。</td>
+            </tr>
+            <tr>
+              <th>機制掉落</th>
+              <td>取得管道受特定機制限制，但規則上視為原生。選它只是為了在模擬重組中方便識別，不改變計算；存在條件固定為原生。</td>
+              <td>特殊管道取得：如神廟冰緩手、以精髓點出、但查證後可與限定共存的詞；「工藝之」「進化的」中經查證非限定者。</td>
+            </tr>
+            <tr>
+              <th>限定</th>
+              <td>原文 exclusive。成品最多存在一條；兩件輸入合計最多一條（1p1e + 1e1s 例外）；佔池，多條只存在一條。取得管道相同不等於類型相同，須逐條查證：與已知限定重組後不共存即限定。</td>
+              <td>裂痕詞如「貪婪鎧甲」、神廟詞、精髓「精髓之」、野獸祝福、高尚勢力詞、掘獄如「地下之」、隱匿「被選召的」「教團之」、強勢工藝如「可三工藝」、人名工藝如「托菈的」。非限定：破裂詞、一般勢力詞。</td>
+            </tr>
+            <tr>
+              <th>基底限定（只能存在 A / B 基底）</th>
+              <td>基底對了存在、錯了不存在；單邊的非原生且非限定。仍佔池，錯邊永遠抽不到，機率併回上限格。</td>
+              <td>法術壓抑率只能存在閃避底 A（B 為力量底時不存在）；召喚傷害只能存在召喚基底；勢力詞對非該勢力基底不存在；破裂詞固定只能存在原本那件基底，且無法同時存在兩個破裂詞。</td>
+            </tr>
+            <tr>
+              <th>NNN（非原生且非限定詞綴）</th>
+              <td>兩個基底都不存在、只佔池一格。NNN = 非原生且非限定；限定雖非一般通貨骰得出來，但因例外可存在，不屬 NNN。</td>
+              <td>眾神殿之相；野獸祝福類；部分精髓點出的非原生詞（如護甲詞點在非護甲底上）。</td>
+            </tr>
+            <tr>
+              <th>同名詞綴</th>
+              <td>兩件上同名視為同一條，同一側最多只存在一條；池數照算兩次，成品不重複。</td>
+              <td>兩件都叫「火焰抗性」即同一條；不同詞綴請取不同名稱；同 family 互斥詞取名相同即可。</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
       <div class="explain-grid">
         <article class="explain-card"><span class="step-number">01</span>
           <h2>先選基底</h2>
@@ -163,36 +378,62 @@
         <article class="explain-card"><span class="step-number">02</span>
           <h2>什麼是原生？</h2>
           <p>原生是指某條詞綴正常屬於這個基底。判斷方式很直接：這個基底本來骰不骰得出這條詞綴，骰得出來就是原生。如果是勢力詞，對非同勢力的裝備來說就是非原生。</p>
-          <p class="explain-eg"><strong>例</strong>：法術壓抑率放在 A（閃避底），B 是力量底。力量底骰不出法術壓抑率，所以這條在工具裡要設成「<b>只能存在 A 基底</b>」，也就是原生 A。</p>
-          <div class="formula">原生：這個基底骰得出來<br>非原生（NNN）：這個基底骰不出來</div>
+          <p class="explain-eg"><strong>例</strong>：法術壓抑率放在 A（閃避底），B 是力量底。力量底骰不出法術壓抑率，所以這條在工具裡要設成「<b>只能存在 A 基底</b>」，也就是原生
+            A。</p>
         </article>
         <article class="explain-card"><span class="step-number">03</span>
-          <h2>什麼是非原生（NNN）？</h2>
-          <p><b>除了原生與機制掉落限定，其他都算 NNN</b>（Natural Non-Native）。判斷方式只有一句：結果選到某個基底時，這條詞綴<b>還能不能存在</b>。存在不了的那個基底，對這條詞綴來說就是 NNN。</p>
+          <h2>什麼是 NNN（非原生且非限定詞綴）？</h2>
+          <p><b>除了原生、機制掉落與限定，其他都算 NNN</b>（Natural Non-Native）。判斷方式只有一句：結果選到某個基底時，這條詞綴<b>還能不能存在</b>。存在不了的那個基底，對這條詞綴來說就是
+            NNN。</p>
           <table class="nnn-table">
-            <thead><tr><th>詞綴在工具裡設成</th><th>選中 A 基底</th><th>選中 B 基底</th></tr></thead>
+            <thead>
+              <tr>
+                <th>詞綴在工具裡設成</th>
+                <th>選中 A 基底</th>
+                <th>選中 B 基底</th>
+              </tr>
+            </thead>
             <tbody>
-              <tr><th>原生（兩邊都可能）</th><td class="yes">可以</td><td class="yes">可以</td></tr>
-              <tr><th>只能存在 A 基底</th><td class="yes">可以</td><td class="no">不存在</td></tr>
-              <tr><th>只能存在 B 基底</th><td class="no">不存在</td><td class="yes">可以</td></tr>
-              <tr><th>兩邊都不會出現（NNN）</th><td class="no">不存在</td><td class="no">不存在</td></tr>
+              <tr>
+                <th>原生（兩邊都可能）</th>
+                <td class="yes">可以</td>
+                <td class="yes">可以</td>
+              </tr>
+              <tr>
+                <th>只能存在 A 基底</th>
+                <td class="yes">可以</td>
+                <td class="no">不存在</td>
+              </tr>
+              <tr>
+                <th>只能存在 B 基底</th>
+                <td class="no">不存在</td>
+                <td class="yes">可以</td>
+              </tr>
+              <tr>
+                <th>兩邊都不存在（NNN）</th>
+                <td class="no">不存在</td>
+                <td class="no">不存在</td>
+              </tr>
             </tbody>
           </table>
-          <p>NNN 詞綴<b>不會被合成到任何一件裝備上</b>。它仍然佔一格：留幾條的機率看的是池的<b>總數（含 NNN）</b>，而 NNN 永遠抽不到，所以相對增加其他詞的機率。<br>例：池 3 條、其中 1 條對這個基底是 NNN ⇒ 上限剩 2 條，機率從「1 條 38%／2 條 52%／3 條 10%」變成「1 條 38%／2 條 62%」（原本 3 條那 10% 被灌進 2 條）。</p>
+          <p>NNN 詞綴<b>不會被合成到任何一件裝備上</b>。它仍然佔一格：留幾條的機率看的是池的<b>總數（含 NNN）</b>，而 NNN 永遠抽不到，所以相對增加其他詞的機率。<br>例：池 3 條、其中 1
+            條對這個基底是 NNN ⇒ 上限剩 2 條，機率從「1 條 38%／2 條 52%／3 條 10%」變成「1 條 38%／2 條 62%」（原本 3 條那 10% 被灌進 2 條）。</p>
         </article>
         <article class="explain-card"><span class="step-number">04</span>
           <h2>排除不能出現的詞綴</h2>
           <p>最後一步是把不可能同時存在的詞綴濾掉。有四種情況：</p>
           <ul class="rule-list">
-            <li>非原生（NNN）不會出現在不相容的基底上。</li>
-            <li><b>限定詞</b>（神廟這一類<b>限定掉落詞</b>、挖礦、大師、部分精髓等來源）成品通常只留一條。</li>
-            <li><b>同一 family（詞綴群組）的詞彼此互斥</b>，例如同一條屬性有多個等級的版本，它們不會同時出現。</li>
-            <li>同名詞綴不會出現兩份。</li>
+            <li>非原生且非限定詞綴（NNN）不存在於不相容的基底上。</li>
+            <li><b>限定</b>（神廟這一類<b>限定掉落詞</b>、掘獄、部分精髓等來源）成品通常只存在一條。</li>
+            <li><b>同一 family（詞綴群組）的詞彼此互斥</b>，例如同一條屬性有多個等級的版本，它們不會同時存在。</li>
+            <li>同名詞綴不會存在兩份。</li>
           </ul>
-          <p><b>機制掉落限定</b>（取得管道受限、但不算限定詞）視為原生，只加標示，不影響結果。</p>
-          <p class="explain-eg"><strong>合成前查證</strong>：先查該詞綴是不是 exclusive（限定詞）。取得管道相同不等於類型相同，同一來源的詞綴要逐條查證。查法：拿一件帶已知限定詞的素材和待測詞綴重組，兩者不會同時出現，待測詞綴就是限定詞。</p>
-          <div class="legend"><span class="tag normal">原生</span><span class="tag mech">機制掉落限定</span><span
-              class="tag exclusive">限定詞</span><span class="tag nnn">非原生 NNN</span></div>
+          <p><b>機制掉落</b>（取得管道受限、但不算限定）視為原生，只加標示、不改變計算，方便在模擬重組中識別。</p>
+          <p class="explain-eg">
+            <strong>合成前查證</strong>：先查該詞綴是不是限定。取得管道相同不等於類型相同，同一來源的詞綴要逐條查證。查法：拿一件帶已知限定的素材和待測詞綴重組，兩者不會同時存在，待測詞綴就是限定。破裂詞固定只能存在原本那件基底，且無法同時存在兩個破裂詞。
+          </p>
+          <div class="legend"><span class="tag normal">原生</span><span class="tag mech">機制掉落</span><span
+              class="tag exclusive">限定</span><span class="tag nnn">NNN</span></div>
         </article>
       </div>
       <section class="panel prob-panel">
@@ -268,12 +509,12 @@
         <p class="prob-intro">這組配置不走上面的機率表，走另一套規則。</p>
         <div class="prob-notes">
           <p><strong>觸發條件</strong>：兩件素材都只有 1 前綴 1 後綴、各帶 1
-            條限定詞、兩條限定詞分別落在前綴側與後綴側，而且全部原生（沒有非原生詞綴）。也就是「一般前綴＋限定詞後綴」對上「限定詞前綴＋一般後綴」。</p>
+            條限定、兩條限定分別落在前綴側與後綴側，而且全部原生（沒有非原生詞綴）。也就是「一般前綴＋限定後綴」對上「限定前綴＋一般後綴」。</p>
           <p><strong>結果</strong>：成品一定落在 1 前綴 1 後綴，機率至少 33.3%，實測常見 50% 以上，但精確值取決於詞綴權重、目前沒有固定數字。</p>
-          <p><strong>為什麼</strong>：先填的那一側抽中限定詞之後，另一側池中的限定詞會被剔除；而要留幾條已經先擲定，所以部分結果會被強制導向剩下的那條一般詞綴。</p>
-          <p><strong>什麼時候用</strong>：只有當你不在意「留下哪兩條」、只想拿到一件 1 前 1 後的中間件時才值得考慮。要精準指定詞綴時，用一般的 1 前綴素材＋1
-            後綴素材路線即可（33.3%，而且留下的一定是你要的那兩條）。</p>
-          <p><strong>注意</strong>：目標本身若含限定詞，這個配置就不可能成立（同一個詞綴側會出現 2 條限定詞，直接無效）；含非原生詞綴也不行。</p>
+          <p><strong>為什麼</strong>：先填的那一側抽中限定之後，另一側池中的限定會被剔除；而要留幾條已經先擲定，所以部分結果會被強制導向剩下的那條一般詞綴。</p>
+          <p><strong>什麼時候用</strong>：只有當你不在意「存在哪兩條」、只想拿到一件 1 前 1 後的中間件時才值得考慮。要精準指定詞綴時，用一般的 1 前綴素材＋1
+            後綴素材路線即可（33.3%，而且一定存在的是你要的那兩條）。</p>
+          <p><strong>注意</strong>：目標本身若含限定，這個配置就不可能成立（同一個詞綴側會出現 2 條限定，直接無效）；含非原生詞綴也不行。</p>
         </div>
       </section>
     </section>
@@ -288,10 +529,18 @@
       <button class="primary-button" id="import-confirm" type="button">匯入</button>
     </div>
   </dialog>
+  <dialog class="share-dialog defs-dialog" id="defs-dialog" aria-labelledby="defs-dialog-title">
+    <h3 id="defs-dialog-title">名詞定義</h3>
+    <p>與講解頁同一張表。關閉後回模擬頁。</p>
+    <div id="defs-dialog-body"></div>
+    <div class="dialog-actions">
+      <button class="ghost-button" id="defs-close" type="button">關閉</button>
+    </div>
+  </dialog>
   <footer class="site-footer"></footer>
   <script src="js/rules.js"></script>
-  <script src="js/planner.js"></script>
   <script src="js/share.js"></script>
+  <script src="js/sacred-bg.js"></script>
   <script src="js/app.js"></script>
 </body>
 

@@ -37,7 +37,6 @@
   applyTheme(document.documentElement.dataset.theme);
   // ---------- 本機儲存 / 即時運算 ----------
   const SIM_KEY = 'recomb.simulate.v1';
-  const PLAN_KEY = 'recomb.plan.v1';
   let showAllCombos = false;
   const readStore = (key, fallback) => {
     try { const raw = localStorage.getItem(key); return raw ? JSON.parse(raw) : fallback; } catch (error) { return fallback; }
@@ -56,7 +55,7 @@
       name: typeof raw.name === 'string' ? raw.name : fallback.name,
       enabled: !!raw.enabled,
       kind,
-      // 機制掉落限定視為原生 → 存在條件一律歸零
+      // 機制掉落視為原生 → 存在條件一律歸零
       nnn: kind === 'mechanic' ? 'none' : (['none', 'A', 'B', 'both'].includes(raw.nnn) ? raw.nnn : 'none')
     };
   };
@@ -80,10 +79,8 @@
     state = { items: [sanitizeItem(dec.items[0], 'Item A'), sanitizeItem(dec.items[1], 'Item B')] };
   })();
   const persistSimulate = () => writeStore(SIM_KEY, { items: state.items });
-  const persistPlan = () => writeStore(PLAN_KEY, goal);
   const anyModEnabled = () => state.items.some(item => [...item.prefixes, ...item.suffixes].some(mod => mod.enabled));
   const scheduleCalc = debounce(() => { if (anyModEnabled()) calculate(); }, 140);
-  const schedulePlan = debounce(() => { if (goal.prefixes.some(m => m.on) || goal.suffixes.some(m => m.on)) runPlan(); }, 260);
 
   function renderEditors() {
     qs('#items-editor').innerHTML = state.items.map((item, itemIndex) => `
@@ -100,11 +97,11 @@
   }
   function renderSlots(item, itemIndex, side, label) {
     return `<div class="slot-section"><div class="slot-label">${label}</div>${item[side].map((mod, slotIndex) => {
-      const locked = mod.kind === 'mechanic';           // 機制掉落限定 → 存在條件鎖成原生
-      const kindLocked = mod.nnn === 'both';            // 兩邊都不會出現 → 類型鎖成 NNN
+      const locked = mod.kind === 'mechanic';           // 機制掉落 → 存在條件鎖成原生
+      const kindLocked = mod.nnn === 'both';            // 兩邊都不存在 → 類型鎖成 NNN
       const effNnn = locked ? 'none' : mod.nnn;
-      const nnnTitle = locked ? '機制掉落限定視為原生，存在條件固定為原生。' : (nnnHints[mod.nnn] || '');
-      const kindTitle = kindLocked ? '這條詞綴兩個基底都不會出現（NNN），沒有類型可言，只佔詞綴池一格。' : (kindHints[mod.kind] || '');
+      const nnnTitle = locked ? '機制掉落視為原生，存在條件固定為原生（僅識別用）。' : (nnnHints[mod.nnn] || '');
+      const kindTitle = kindLocked ? '這條詞綴兩個基底都不存在（非原生且非限定詞綴），沒有類型可言，只佔詞綴池一格。' : (kindHints[mod.kind] || '');
       return `
       <div class="slot-row kind-${mod.kind}" data-kind="${mod.kind}">
         <input type="checkbox" data-action="enabled" data-side="${side}" data-slot="${slotIndex}" ${mod.enabled ? 'checked' : ''} aria-label="啟用 ${label} ${slotIndex + 1}">
@@ -126,7 +123,7 @@
       </div>`;
     }).join('')}</div>`;
   }
-  // 兩個下拉的互相鎖定：機制掉落限定 → 存在條件固定原生；兩邊都不會出現 → 類型顯示 NNN 並鎖住
+  // 兩個下拉的互相鎖定：機制掉落 → 存在條件固定原生；兩邊都不存在 → 類型顯示 NNN 並鎖住
   function syncRowLocks(row, mod) {
     const kindSel = row.querySelector('[data-action=kind]');
     const nnnSel = row.querySelector('[data-action=nnn]');
@@ -135,7 +132,7 @@
     if (kindSel) {
       const wrap = kindSel.closest('.select-wrap');
       kindSel.disabled = !mod.enabled || neverAppears;
-      kindSel.title = neverAppears ? '這條詞綴兩個基底都不會出現（NNN），沒有類型可言，只佔詞綴池一格。' : (kindHints[mod.kind] || '');
+      kindSel.title = neverAppears ? '這條詞綴兩個基底都不存在（非原生且非限定詞綴），沒有類型可言，只佔詞綴池一格。' : (kindHints[mod.kind] || '');
       wrap.classList.toggle('locked', neverAppears);
       wrap.classList.toggle('nnn-lock', neverAppears);
       wrap.querySelector('.select-face').textContent = neverAppears ? 'NNN' : kindLabel(mod.kind);
@@ -146,7 +143,7 @@
       if (mechanic) mod.nnn = 'none';
       nnnSel.value = effNnn;
       nnnSel.disabled = !mod.enabled || mechanic;
-      nnnSel.title = mechanic ? '機制掉落限定視為原生，存在條件固定為原生。' : (nnnHints[mod.nnn] || '');
+      nnnSel.title = mechanic ? '機制掉落視為原生，存在條件固定為原生（僅識別用）。' : (nnnHints[mod.nnn] || '');
       wrap.classList.toggle('locked', mechanic);
       wrap.querySelector('.select-face').textContent = nnnLabel(effNnn);
     }
@@ -190,7 +187,7 @@
     const groups = [...new Set(dupList.map(d => d.side))].join('、');
     const names = [...new Set(dupList.map(d => d.name))].map(n => `「${n}」`).join('、');
     box.className = 'validation warn';
-    box.textContent = `${groups}有同名詞綴 ${names}：工具會把它們當成同一條詞綴，同一側最多只留一條，機率會合併、合計也可能低於 100%（重複的那條無法同時佔兩格）。如果它們其實是不同的詞綴，請改成不同名稱；如果本來就是同一條詞綴（或彼此互斥、不可能同時出現），取名相同即可。`;
+    box.textContent = `${groups}有同名詞綴 ${names}：工具會把它們當成同一條詞綴，同一側最多只存在一條，機率會合併、合計也可能低於 100%（重複的那條無法同時佔兩格）。如果它們其實是不同的詞綴，請改成不同名稱；如果本來就是同一條詞綴（或彼此互斥、不可能同時存在），取名相同即可。`;
   }
   function escapeHtml(s) { return String(s).replace(/[&<>'"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[c])); }
   function fmt(n) { return `${(n * 100).toFixed(1).replace('.0', '')}%`; }
@@ -207,7 +204,7 @@
     validation.textContent = result.special ? '輸入有效：符合 1p1e + 1e1s 特例。' : '輸入有效：可以進行重組。';
     if (result.special) {
       qs('#result-content').className = 'result-content';
-      qs('#result-content').innerHTML = `<div class="result-summary"><div class="summary-box wide"><span>1 前綴 1 後綴</span><strong>≥ 33.3%</strong></div></div><div class="result-block"><h3>1p1e + 1e1s 特例</h3><p class="rule-note">先填的那一側抽中限定詞之後，另一側池中的限定詞會被剔除；因為要留幾條已經先決定，部分結果會被強制導向剩下的那條一般詞綴。實測常見成功率在 50% 以上，但精確值取決於詞綴權重，目前無法給出固定數字。</p></div>`;
+      qs('#result-content').innerHTML = `<div class="result-summary"><div class="summary-box wide"><span>1 前綴 1 後綴</span><strong>≥ 33.3%</strong></div></div><div class="result-block"><h3>1p1e + 1e1s 特例</h3><p class="rule-note">先填的那一側抽中限定之後，另一側池中的限定會被剔除；因為要留幾條已經先決定，部分結果會被強制導向剩下的那條一般詞綴。實測常見成功率在 50% 以上，但精確值取決於詞綴權重，目前無法給出固定數字。</p></div>`;
       return;
     }
     // 整體結果分布：前綴 × 後綴 的對照表（取代原本的條列）
@@ -265,7 +262,7 @@
     });
     const enabledMods = [...state.items[0].prefixes, ...state.items[0].suffixes, ...state.items[1].prefixes, ...state.items[1].suffixes].filter(m => m.enabled);
     const isSpecial = m => E.isExclusive(m) || (m.nnn && m.nnn !== 'none');
-    // 會改變結果的（限定詞／非原生）才觸發「具體可能組合」區塊；機制掉落限定只加標示
+    // 會改變結果的（限定／非原生）才觸發「具體可能組合」區塊；機制掉落只加標示
     const resultChangingMods = enabledMods.filter(isSpecial);
     const specialMods = enabledMods.filter(m => isSpecial(m) || E.isMechanic(m));
     const modChip = m => {
@@ -300,148 +297,21 @@
       </div>`;
     const fate = specialMods.map(m => {
       const parts = [];
-      if (m.nnn === 'both') parts.push('兩個基底都不會被保留');
-      else if (m.nnn === 'A') parts.push('選 Item A 基底時不保留（等於只能存在 B 基底）');
-      else if (m.nnn === 'B') parts.push('選 Item B 基底時不保留（等於只能存在 A 基底）');
-      if (E.isExclusive(m)) parts.push('限定詞（成品最多 1 條）');
-      if (E.isMechanic(m)) parts.push('機制掉落限定（視為原生，不改變結果）');
+      if (m.nnn === 'both') parts.push('兩個基底都不存在（非原生且非限定詞綴）');
+      else if (m.nnn === 'A') parts.push('選 Item A 基底時不存在（等於只能存在 B 基底）');
+      else if (m.nnn === 'B') parts.push('選 Item B 基底時不存在（等於只能存在 A 基底）');
+      if (E.isExclusive(m)) parts.push('限定（成品最多存在 1 條）');
+      if (E.isMechanic(m)) parts.push('機制掉落（視為原生，僅識別用）');
       return `<span>${escapeHtml(m.name)}：${parts.join('、')}</span>`;
     }).join('');
     const hiddenCombos = listed.reduce((sum, entry) => sum + (entry.total - entry.rows.length), 0);
     const comboBlock = resultChangingMods.length
-      ? `<div class="result-block"><h3>具體可能組合</h3><div class="base-columns">${result.bases.map((base, i) => comboColumn(base, listed[i])).join('')}</div>${hiddenCombos > 0 || showAllCombos ? `<button class="ghost-button" id="toggle-combos">${showAllCombos ? '收起機率較少的結果' : `顯示機率較少結果（還有 ${hiddenCombos} 種）`}</button>` : ''}<div class="inline-help"><strong>特殊詞綴的影響</strong>${fate}</div></div>`
-      : `<p class="result-footnote">這組設定沒有用到限定詞或非原生詞綴；機制掉落限定視為原生、也不影響組合，可能組合只差在基底或重複實例，因此省略。</p>`;
+      ? `<div class="result-block"><h3>具體可能組合</h3><div class="base-columns">${result.bases.map((base, i) => comboColumn(base, listed[i])).join('')}</div>${hiddenCombos > 0 || showAllCombos ? `<button class="ghost-button" id="toggle-combos">${showAllCombos ? '收起機率較少的結果' : `顯示機率較少結果（還有 ${hiddenCombos} 種）`}</button>` : ''}<div class="inline-help stacked"><strong>特殊詞綴的影響</strong><div class="fate-list">${fate}</div></div></div>`
+      : `<p class="result-footnote">這組設定沒有用到限定或非原生且非限定詞綴；機制掉落視為原生、也不影響組合，可能組合只差在基底或重複實例，因此省略。</p>`;
     qs('#result-content').className = 'result-content';
     qs('#result-content').innerHTML = `<div class="result-block dist-block"><h3>整體結果分布</h3>${distMatrix}</div><div class="base-columns">${result.bases.map(baseColumn).join('')}</div>${comboBlock}`;
     persistSimulate();
   }
-  // ---------- 推薦路線（目標驅動規劃器） ----------
-  const PLANNER = window.RECOMB_PLANNER;
-  const KIND_OPTIONS = Object.entries(RULES.kindLabels || {
-    normal: '一般', mechanic: '機制掉落限定', exclusive: '限定詞',
-    nnnA: '只能存在 B 基底', nnnB: '只能存在 A 基底', nnnBoth: '兩邊都不會出現'
-  });
-  const sanitizeGoal = raw => {
-    const clean = {
-      baseMode: 'same',
-      prefixes: [0, 1, 2].map(i => ({ on: false, name: `前綴 ${i + 1}`, kind: 'normal' })),
-      suffixes: [0, 1, 2].map(i => ({ on: false, name: `後綴 ${i + 1}`, kind: 'normal' }))
-    };
-    if (!raw || typeof raw !== 'object') return clean;
-    if (typeof raw.baseMode === 'string') clean.baseMode = raw.baseMode;
-    ['prefixes', 'suffixes'].forEach(side => clean[side].forEach((mod, i) => {
-      const src = raw[side] && raw[side][i];
-      if (!src || typeof src !== 'object') return;
-      mod.on = !!src.on;
-      if (typeof src.name === 'string') mod.name = src.name;
-      if (KIND_OPTIONS.some(([value]) => value === src.kind)) mod.kind = src.kind;
-    }));
-    return clean;
-  };
-  let goal = sanitizeGoal(readStore(PLAN_KEY, null));
-
-  function renderGoal() {
-    const rows = (side, label) => goal[side].map((mod, i) => `
-      <div class="goal-row">
-        <input type="checkbox" data-goal="on" data-side="${side}" data-slot="${i}" ${mod.on ? 'checked' : ''} aria-label="要這個${label} ${i + 1}">
-        <input type="text" data-goal="name" data-side="${side}" data-slot="${i}" value="${escapeHtml(mod.name)}" aria-label="${label} ${i + 1} 名稱">
-        <select data-goal="kind" data-side="${side}" data-slot="${i}" aria-label="${label} ${i + 1} 類型">${KIND_OPTIONS.map(([v, t]) => `<option value="${v}" ${mod.kind === v ? 'selected' : ''}>${t}</option>`).join('')}</select>
-      </div>`).join('');
-    qs('#plan-prefixes').innerHTML = rows('prefixes', '前綴');
-    qs('#plan-suffixes').innerHTML = rows('suffixes', '後綴');
-    qsa('[data-goal]').forEach(el => el.addEventListener(el.tagName === 'SELECT' || el.type === 'checkbox' ? 'change' : 'input', e => {
-      const { goal: prop, side, slot } = e.target.dataset;
-      goal[side][+slot][prop] = prop === 'on' ? e.target.checked : e.target.value;
-      persistPlan();
-      schedulePlan();
-    }));
-    qs('#plan-base').value = goal.baseMode;
-  }
-
-  const pctSmart = n => {
-    if (!isFinite(n)) return '—';
-    const v = n * 100;
-    if (v >= 10) { const r = Math.round(v * 10) / 10; return `${Math.abs(r - Math.round(r)) < 0.05 ? Math.round(r) : r.toFixed(1)}%`; }
-    if (v >= 1) return `${v.toFixed(1)}%`;
-    if (v >= 0.1) return `${v.toFixed(2)}%`;
-    return `${v.toFixed(3)}%`;
-  };
-  const num = n => (!isFinite(n) ? '—' : n >= 10 ? Math.round(n).toLocaleString() : n.toFixed(1));
-  const kindText = k => (KIND_OPTIONS.find(([v]) => v === k) || ['', '普通'])[1];
-
-  function runPlan() {
-    const target = {
-      baseMode: goal.baseMode,
-      prefixes: goal.prefixes.filter(m => m.on).map(m => ({ name: m.name, kind: m.kind })),
-      suffixes: goal.suffixes.filter(m => m.on).map(m => ({ name: m.name, kind: m.kind }))
-    };
-    const r = PLANNER.plan(target);
-    const output = qs('#plan-output');
-    output.className = 'result-content';
-    if (!r.feasibility.ok) {
-      qs('#plan-state').textContent = '目標有問題';
-      output.className = 'result-content';
-      output.innerHTML = `<div class="validation error">${r.feasibility.issues.join('<br>')}</div>`;
-      return;
-    }
-    qs('#plan-state').textContent = '已規劃';
-    const warn = r.feasibility.issues.length ? `<div class="validation error">${r.feasibility.issues.join('<br>')}</div>` : '';
-    const hints = r.feasibility.hints.length ? `<div class="inline-help"><strong>準備原則</strong><span>${r.feasibility.hints.join('<br>')}</span></div>` : '';
-    if (r.singleAffix) {
-      output.innerHTML = `${warn}${hints}<div class="route-card best"><div class="route-head"><div><h3>不需要重組</h3><p>目標只有一條詞綴，直接準備這個單詞綴素材即可。</p></div></div><div class="route-meta"><span>${r.leaves.map(l => `${l.side}：${l.name}（${kindText(l.kind)}）`).join('')}</span></div></div>`;
-      return;
-    }
-    const stepTable = route => `<table class="step-table"><thead><tr><th>步驟</th><th>素材 A</th><th>素材 B</th><th>結果</th><th>成功率</th></tr></thead><tbody>${route.steps.map((s, i) => `<tr><td>第 ${i + 1} 步</td><td>${escapeHtml(s.a.text)}<small>${s.a.counts}</small></td><td>${escapeHtml(s.b.text)}<small>${s.b.counts}</small></td><td>${escapeHtml(s.result.text)}<small>${s.result.counts}</small></td><td class="pct">${pctSmart(s.probability)}</td></tr>`).join('')}</tbody></table>`;
-    const routeCard = (route, rank) => `
-      <article class="route-card ${rank === 0 ? 'best' : ''}">
-        <div class="route-head">
-          <div><h3>${rank === 0 ? '建議路線' : `替代路線 ${rank + 1}`}｜${route.stepCount} 步完成</h3><p>最後一步：${escapeHtml(route.finalStep.a.text)} ＋ ${escapeHtml(route.finalStep.b.text)} → ${escapeHtml(route.finalStep.result.text)}</p></div>
-          <strong class="route-rate">${num(route.leaves)}<small>個單詞綴素材</small></strong>
-        </div>
-        <div class="route-meta">
-          <span>預估重組 ${num(route.attempts)} 次</span>
-          <span>一次到底 ${pctSmart(route.probability)}</span>
-          <span>每一步成功率都 ≥ ${pctSmart(PLANNER.MIN_STEP_ODDS)}</span>
-        </div>
-        ${stepTable(route)}
-      </article>`;
-    const single = r.singleStep.length ? `
-      <div class="result-block"><h3>只做最後一步（兩件素材另外準備）</h3>
-        <table class="step-table"><thead><tr><th>成功率</th><th>素材 A</th><th>素材 B</th><th>整條路線預估素材</th></tr></thead>
-        <tbody>${r.singleStep.map(o => `<tr><td class="pct">${pctSmart(o.probability)}</td><td>${escapeHtml(o.a.text)}<small>${o.a.counts}</small></td><td>${escapeHtml(o.b.text)}<small>${o.b.counts}</small></td><td>${num(o.total)} 個</td></tr>`).join('')}</tbody></table>
-        <p class="result-footnote">成功率是「這一步同時留下全部目標詞綴」的機率；但兩件素材本身還要做成上面列的樣子，所以整條路線的實際素材用量看「整條路線預估素材」。</p>
-      </div>` : '';
-    const leaves = r.leaves.length ? `
-      <div class="result-block"><h3>要準備的單詞綴素材（建議路線）</h3>
-        <div class="leaf-list">${r.leaves.map(l => `<span class="leaf">${l.side}：${escapeHtml(l.name)}${l.count > 1 ? ` ×${l.count}` : ''}<small>${kindText(l.kind)}</small></span>`).join('')}</div>
-        <p class="result-footnote">單詞綴素材＝只有這一條詞綴的裝備（用改造石洗出來，或用精髓／面紗等來源取得）。限定詞素材只能從精髓、面紗、尊爵勢力、掘獄等來源取得。</p>
-      </div>` : '';
-    const sp = r.special;
-    const specialBlock = sp ? `
-      <div class="result-block"><h3>1p1e + 1e1s 特例${sp.applicable ? '（可以考慮，但只能用在不指定內容的中間件）' : '（不適用）'}</h3>
-        ${sp.applicable ? `
-          <p class="rule-note">觸發條件：兩件素材都只有 1 前綴 1 後綴、各帶 1 條限定詞、而且兩條限定詞分別落在前綴側與後綴側，全部原生（沒有非原生詞綴）。</p>
-          <table class="step-table"><thead><tr><th>素材</th><th>前綴</th><th>後綴</th></tr></thead><tbody>
-            <tr><td>Item A</td><td>${escapeHtml(sp.requirement.a.prefixes.join('、'))}</td><td>${escapeHtml(sp.requirement.a.suffixes.join('、'))}</td></tr>
-            <tr><td>Item B</td><td>${escapeHtml(sp.requirement.b.prefixes.join('、'))}</td><td>${escapeHtml(sp.requirement.b.suffixes.join('、'))}</td></tr>
-          </tbody></table>
-          <p class="rule-note">結果一定落在「1 前綴 1 後綴」，機率 <strong>≥ ${pctSmart(sp.bound)}</strong>（實測常見 50% 以上，精確值取決於詞綴權重，目前無法給出固定數字）。但<strong>「剛好留下你指定的那兩條」的機率未知，而且不會高於這個數字</strong>，因為結果也可能留下墊檔的限定詞。</p>
-          <p class="rule-note">建議：要精準指定詞綴 → 直接走上面的<strong>一般路線</strong>（${sp.generalRoute ? pctSmart(sp.generalRoute.probability) : '—'}，數量鎖定在你要的那兩條）。特例只適合做「不指定內容」的 1 前 1 後 中間件。</p>`
-          : `<p class="rule-note">${escapeHtml(sp.reason)}</p>`}
-      </div>` : '';
-    output.innerHTML = `${warn}
-      <div class="result-summary">
-        <div class="summary-box"><span>建議路線步數</span><strong>${r.routes.length ? r.routes[0].stepCount : 0}</strong></div>
-        <div class="summary-box"><span>預估單詞綴素材</span><strong>${r.routes.length ? num(r.routes[0].leaves) : '—'}</strong></div>
-      </div>
-      ${hints}
-      ${r.routes.map((route, i) => routeCard(route, i)).join('')}
-      ${single}
-      ${leaves}
-      ${specialBlock}
-      <div class="inline-help"><strong>已略過</strong><span>單步成功率低於 ${pctSmart(PLANNER.MIN_STEP_ODDS)} 的組合不會列入推薦。</span></div>`;
-  }
-
   function initNav() {
     const activate = page => {
       qsa('.nav-button').forEach(b => b.classList.toggle('active', b.dataset.page === page));
@@ -451,11 +321,10 @@
       const page = button.dataset.page;
       activate(page);
       history.replaceState(null, '', `#${page}`);
-      if (page === 'recommend') renderRecommendations();
     }));
     const hm = (location.hash || '').match(/^#([A-Za-z-]+)/);
     const initial = hm ? hm[1] : '';
-    activate(['simulate', 'recommend', 'explain'].includes(initial) ? initial : 'simulate');
+    activate(['simulate', 'transfer', 'explain'].includes(initial) ? initial : 'simulate');
   }
   // 使用者一改動，網址上的分享參數就失效（避免舊邊碼誤導），下次按分享會重新產生
   function clearShareParam() {
@@ -537,33 +406,48 @@
   qs('#result-content').addEventListener('click', e => {
     if (e.target.closest('#toggle-combos')) { showAllCombos = !showAllCombos; calculate(); }
   });
-  qs('#plan-button').addEventListener('click', runPlan);
-  qs('#plan-base').addEventListener('change', e => { goal.baseMode = e.target.value; persistPlan(); schedulePlan(); });
-  qsa('[data-preset]').forEach(btn => btn.addEventListener('click', () => {
-    const preset = btn.dataset.preset;
-    const set = (side, on, label) => goal[side].forEach((m, i) => {
-      m.on = on.includes(i);
-      m.name = `${label} ${i + 1}`;
-      m.kind = 'normal';
-    });
-    if (preset === '3p3s') { set('prefixes', [0, 1, 2], '前綴'); set('suffixes', [0, 1, 2], '後綴'); }
-    else if (preset === '3p2s') { set('prefixes', [0, 1, 2], '前綴'); set('suffixes', [0, 1], '後綴'); }
-    else if (preset === '2p2s') { set('prefixes', [0, 1], '前綴'); set('suffixes', [0, 1], '後綴'); }
-    else { set('prefixes', [], '前綴'); set('suffixes', [], '後綴'); }
-    renderGoal();
-    persistPlan();
-    if (preset !== 'clear') runPlan();
-  }));
+
   initNav();
   renderEditors();
-  renderGoal();
   if (anyModEnabled()) calculate();
   if (sharedCodeError) {
     const v = qs('#validation');
     v.className = 'validation error';
     v.textContent = '分享連結讀取失敗，已改用本機儲存的設定。請確認連結是完整的。';
   }
-  if (goal.prefixes.some(m => m.on) || goal.suffixes.some(m => m.on)) runPlan();
+  // 名詞定義：模擬頁按鈕開啟的浮窗，內容與講解頁 #defs-section 同一張表（clone，單一來源）
+  const defsDialog = qs('#defs-dialog');
+  const closeDefs = () => {
+    if (!defsDialog) return;
+    if (defsDialog.close) defsDialog.close();
+    else defsDialog.removeAttribute('open');
+  };
+  qs('#defs-button').addEventListener('click', () => {
+    const src = qs('#defs-section');
+    const body = qs('#defs-dialog-body');
+    if (src && body) body.innerHTML = src.innerHTML;
+    if (defsDialog.showModal) defsDialog.showModal();
+    else if (defsDialog) defsDialog.setAttribute('open', '');
+  });
+  qs('#defs-close').addEventListener('click', closeDefs);
+  if (defsDialog) defsDialog.addEventListener('click', e => { if (e.target === defsDialog) closeDefs(); });
+  // 背景特效開關（右上）：禁用後停掉 RAF 並隱藏 canvas，選擇記住
+  const bgBtn = qs('#bg-toggle');
+  const syncBgBtn = () => {
+    if (!bgBtn || !window.SACRED_BG) return;
+    const on = !!window.SACRED_BG.enabled;
+    bgBtn.textContent = on ? '關閉背景特效' : '開啟背景特效';
+    bgBtn.setAttribute('aria-pressed', String(on));
+  };
+  if (bgBtn) bgBtn.addEventListener('click', () => {
+    const cfg = window.SACRED_BG || {};
+    cfg.enabled = !cfg.enabled;
+    try { localStorage.setItem('recomb.bg', cfg.enabled ? '1' : '0'); } catch (e) { /* 忽略 */ }
+    if (cfg.enabled && cfg._start) cfg._start();
+    if (!cfg.enabled && cfg._stop) cfg._stop();
+    syncBgBtn();
+  });
+  syncBgBtn();
   // 對外極簡 API（自動化測試與嵌入頁面用）：立刻重算、讀出目前狀態
   window.RECOMB_APP = { recalculate: calculate, getState: () => state };
 })();

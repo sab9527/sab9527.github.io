@@ -3,9 +3,9 @@
  * 格式：index.html#simulate?s=<base64url(JSON)>
  * JSON：{v:1, n:[名字表], m:[[item, side, slot, nameIdx, kind?, nnn?]...]}
  *   item: 0 = Item A，1 = Item B；side: 0 = 前綴，1 = 後綴；slot: 0-2
- *   kind: 0 一般（預設，省略）/ 1 機制掉落限定 / 2 限定詞
- *   nnn: 0 原生（預設，省略）/ 1 只能存在 B / 2 只能存在 A / 3 兩邊都不會出現
- * 省長度手段：只編啟用的格子、預設值省略、同名只存一次、機制掉落限定不編 nnn（視為原生）。
+ *   kind: 0 原生（預設，省略）/ 1 機制掉落 / 2 限定
+ *   nnn: 0 原生（預設，省略）/ 1 只能存在 B / 2 只能存在 A / 3 兩邊都不存在
+ * 省長度手段：只編啟用的格子、預設值省略、同名只存一次、機制掉落不編 nnn（視為原生）。
  */
 window.RECOMB_SHARE = (() => {
   const VERSION = 1;
