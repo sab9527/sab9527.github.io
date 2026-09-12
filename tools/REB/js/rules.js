@@ -110,9 +110,6 @@ window.RECOMB_ENGINE = {
       && aEx === 1 && bEx === 1
       && exCount(a, 'prefixes') + exCount(b, 'prefixes') === 1
       && exCount(a, 'suffixes') + exCount(b, 'suffixes') === 1;
-    if (exclusives > 1 && !special) {
-      return { ok: false, message: '一般情況兩件素材合計最多一條限定；兩條只有在 1p1e + 1e1s 特例才允許。', warnings };
-    }
     // 同名詞綴：同一側出現兩次以上時，工具視為同一條（結果最多存在一條），
     // 會讓底層組合被排除、機率被合併顯示，因此要提醒使用者確認。
     const seen = new Map();
@@ -127,6 +124,17 @@ window.RECOMB_ENGINE = {
       }));
     });
     const duplicates = [...seen.values()].filter(d => d.count > 1);
+    if (exclusives > 1 && !special) {
+      // B1：跨側各 1 條限定放寬為警示照算；同側多條限定維持擋截
+      //（3.26 起同一側多條限定只算 1 格池，工具還沒建模）。
+      // 三條以上限定必有某側超過一條（只有兩側），所以能走到放寬的只有「前綴、後綴各一」。
+      const sideEx = side => [...a[side], ...b[side]].filter(m => m.enabled && this.isExclusive(m)).length;
+      if (sideEx('prefixes') > 1 || sideEx('suffixes') > 1) {
+        return { ok: false, message: '同一側有兩條以上限定：3.26 起同一側多條限定只算 1 格池，工具還沒建模，請先只留一條限定再算。', warnings };
+      }
+      warnings.push('輸入有兩條限定，前綴、後綴各一：成品最多存在一條，同時含兩條的組合會被剔除，具體組合的機率是估計值，合計可能低於 100%。');
+      return { ok: true, special, duplicates, warnings };
+    }
     return { ok: true, special, duplicates, warnings };
   },
   // 從池中挑出所有合法組合：排除對該基底非原生的詞綴、同名重複、超過一條限定
@@ -175,7 +183,10 @@ window.RECOMB_ENGINE = {
         const pCombos = this.combinations(a.prefixes, b.prefixes, 1, base);
         const sCombos = this.combinations(a.suffixes, b.suffixes, 1, base);
         const empty = [[]];
-        outcomes.push({ label: '1 前綴 1 後綴', probability: 1 / 3, p: 1, s: 1, combos: pCombos.flatMap(pc => sCombos.map(sc => [...pc, ...sc])) });
+        // 跨側雙限定時，前後綴各一條限定的 1p1s 組合會被剔除（成品最多存在一條）
+        const both = pCombos.flatMap(pc => sCombos.map(sc => [...pc, ...sc]))
+          .filter(combo => combo.filter(m => this.isExclusive(m)).length <= 1);
+        if (both.length) outcomes.push({ label: '1 前綴 1 後綴', probability: 1 / 3, p: 1, s: 1, combos: both });
         outcomes.push({ label: '1 前綴 0 後綴', probability: 1 / 3, p: 1, s: 0, combos: pCombos.flatMap(pc => empty.map(sc => [...pc, ...sc])) });
         outcomes.push({ label: '0 前綴 1 後綴', probability: 1 / 3, p: 0, s: 1, combos: empty.flatMap(pc => sCombos.map(sc => [...pc, ...sc])) });
         return { base, prefix, suffix, outcomes, rule: '1p1s', full: 0 };
@@ -185,7 +196,11 @@ window.RECOMB_ENGINE = {
         const pCombos = this.combinations(a.prefixes, b.prefixes, pi, base);
         const sCombos = this.combinations(a.suffixes, b.suffixes, si, base);
         if (!pCombos.length || !sCombos.length) return;
-        outcomes.push({ label: `${pi} 前綴 ${si} 後綴`, probability: p * s, p: pi, s: si, combos: pCombos.flatMap(pc => sCombos.map(sc => [...pc, ...sc])) });
+        // 前後綴合併後再剔除「同時含兩條限定」的組合（跨側雙限定時才會發生；單條限定以下是不變操作）
+        const combos = pCombos.flatMap(pc => sCombos.map(sc => [...pc, ...sc]))
+          .filter(combo => combo.filter(m => this.isExclusive(m)).length <= 1);
+        if (!combos.length) return;
+        outcomes.push({ label: `${pi} 前綴 ${si} 後綴`, probability: p * s, p: pi, s: si, combos });
       }));
       return { base, prefix, suffix, outcomes, rule: 'default', full: outcomes.find(o => o.p === 3 && o.s === 3)?.probability || 0 };
     });
