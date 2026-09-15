@@ -165,6 +165,25 @@ window.RECOMB_ENGINE = {
     outcomes.forEach(o => { o.probability /= kept; });
     return { kept };
   },
+  // 總和詞條存在率：在選中該基底的前提下，某條詞最終還在成品上的機率。
+  // outcomes 是該基底重分後的結果（機率合計 1）；同一個結果內各具體組合
+  // 假設等權重（池內權重未公開），所以是估計值，不是確定值。
+  // keyOf(mod) 把詞綴對應到鍵（同名合併；空白代號各自獨立由呼叫方保證）；
+  // allKeys 傳全部啟用鍵（含從未出現的 NNN），沒出現的就是 0。
+  survival(outcomes, keyOf, allKeys = []) {
+    const probs = new Map(allKeys.map(k => [k, 0]));
+    (outcomes || []).forEach(o => {
+      const combos = o.combos || [];
+      if (!combos.length) return;
+      const w = o.probability / combos.length;
+      combos.forEach(c => {
+        new Set(c.map(keyOf)).forEach(k => probs.set(k, (probs.get(k) || 0) + w));
+      });
+    });
+    return [...probs.entries()]
+      .map(([key, probability]) => ({ key, probability }))
+      .sort((a, b) => b.probability - a.probability || (a.key < b.key ? -1 : 1));
+  },
   combinations(aMods, bMods, count, base) {
     const isExclusive = mod => this.isExclusive(mod);
     const pool = [...aMods, ...bMods].filter(m => m.enabled && !this.isNnn(m, base));

@@ -194,8 +194,11 @@
     validation.className = 'validation ok';
     validation.textContent = result.special ? '輸入有效：符合 1p1e + 1e1s 特例。' : '輸入有效：可以進行重組。';
     if (result.special) {
+      // 特例不走機率表：右側直接顯示與講解頁同一份 SPECIAL CASE 說明
+      //（clone #special-case-notes，單一來源），不另外顯示機率。
+      const notes = qs('#special-case-notes');
       qs('#result-content').className = 'result-content';
-      qs('#result-content').innerHTML = `<div class="result-summary"><div class="summary-box wide"><span>1 前綴 1 後綴</span><strong>≥ 33.3%</strong></div></div><div class="result-block"><h3>1p1e + 1e1s 特例</h3><p class="rule-note">先填的那一側抽中限定之後，另一側池中的限定會被剔除；因為要留幾條已經先決定，部分結果會被強制導向剩下的那條一般詞綴。實測常見成功率在 50% 以上，但精確值取決於詞綴權重，目前無法給出固定數字。</p></div>`;
+      qs('#result-content').innerHTML = `<div class="result-block"><h3>1p1e + 1e1s 特例</h3><div class="prob-notes">${notes ? notes.innerHTML : ''}</div></div>`;
       return;
     }
     // 整體結果分布：前綴 × 後綴 的對照表（取代原本的條列）
@@ -316,8 +319,27 @@
     const comboBlock = resultChangingMods.length
       ? `<div class="result-block"><h3>具體可能組合</h3><div class="base-columns">${result.bases.map((base, i) => comboColumn(base, listed[i])).join('')}</div>${hiddenCombos > 0 || showAllCombos ? `<button class="ghost-button" id="toggle-combos">${showAllCombos ? '收起機率較少的結果' : `顯示機率較少結果（還有 ${hiddenCombos} 種）`}</button>` : ''}<div class="inline-help stacked"><strong>特殊詞綴的影響</strong><div class="fate-list">${fate}</div></div></div>`
       : `<p class="result-footnote">這組設定沒有用到限定或非原生且非限定詞綴；可能組合只差在基底或重複實例，因此省略。</p>`;
+    // 總和詞條存在率：選中該基底的前提下，每條詞綴最終還在成品上的機率。
+    // 同一個結果內的具體組合按等權重估算（估計值）；同名視為同一條；對該基底不存在的詞顯示 0%。
+    const keyMeta = new Map();
+    enabledMods.forEach(m => {
+      const k = displayName(m).toLowerCase();
+      if (!keyMeta.has(k)) keyMeta.set(k, m);
+    });
+    const survChip = m => {
+      const variant = E.isExclusive(m) ? 'excl' : (m.nnn && m.nnn !== 'none') ? 'nnn' : '';
+      return `<span class="mod-name ${variant}">${escapeHtml(displayName(m))}</span>`;
+    };
+    const survivalColumn = base => {
+      const rows = E.survival(base.outcomes, m => displayName(m).toLowerCase(), [...keyMeta.keys()]);
+      return `<div class="base-col ${base.base === 'A' ? 'col-a' : 'col-b'}">`
+        + `<h4>${base.base === 'A' ? '若選中 Item A 基底' : '若選中 Item B 基底'}</h4>`
+        + `<div class="outcome-list combo-list survival-list">${rows.map(r => `<div class="outcome"><span class="combo-mods"><span class="combo-mod">${survChip(keyMeta.get(r.key))}</span></span><strong>約 ${fmt(r.probability)}</strong></div>`).join('')}</div>`
+        + `</div>`;
+    };
+    const survivalBlock = `<div class="result-block survival-block"><h3>總和詞條存在率</h3><div class="base-columns survival-columns">${result.bases.map(survivalColumn).join('')}</div><p class="result-footnote">選中該基底時，每條詞綴最終還在成品上的機率。同一個結果內的具體組合按等權重估算，同名視為同一條，對該基底不存在的詞顯示 0%。</p></div>`;
     qs('#result-content').className = 'result-content';
-    qs('#result-content').innerHTML = `<div class="result-block dist-block"><h3>整體結果分布</h3>${distMatrix}</div><div class="base-columns">${result.bases.map(baseColumn).join('')}</div>${comboBlock}`;
+    qs('#result-content').innerHTML = `<div class="result-block dist-block"><h3>整體結果分布</h3>${distMatrix}</div><div class="base-columns">${result.bases.map(baseColumn).join('')}</div>${survivalBlock}${comboBlock}`;
     persistSimulate();
   }
   function initNav() {
