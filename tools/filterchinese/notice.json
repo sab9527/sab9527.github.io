@@ -1,0 +1,11 @@
+{
+  "enabled": true,
+  "updated": "2026-10-28",
+  "title": "歡迎使用翻譯腳本！",
+  "html": "<p style=\"margin-bottom: 15px;\"><strong>如果遇到進入時載入太久可以直接重新整理網頁！</strong></p><p style=\"margin-bottom: 15px;\">目前中文化由 Sab 維護，大力感謝雕像協助</p><p style=\"margin-bottom: 15px;\">相關介紹可以到巴哈文章看。</p><p style=\"margin-bottom: 15px;\">有疑問或 bug 回報可以在巴哈文章或 Discord 找我。</p>",
+  "link": {
+    "text": "巴哈文章連結",
+    "url": "https://forum.gamer.com.tw/C.php?bsn=18966&snA=141099&tnum=1"
+  },
+  "footer": "dc Sab9453"
+}
