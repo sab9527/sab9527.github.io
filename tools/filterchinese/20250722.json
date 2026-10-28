@@ -181,7 +181,7 @@
   ],
   [
     "Campaign Special Rules",
-    "劇情戰役特殊規則"
+    "章節特殊規則"
   ],
   [
     "Misc. Exotic Currencies",
@@ -213,7 +213,7 @@
   ],
   [
     "Campaign & Leveling",
-    "劇情戰役與練等"
+    "章節與練等"
   ],
   [
     "Save & Auto Upload",
@@ -3201,7 +3201,7 @@
   ],
   [
     "Get all strictnesses",
-    "取得所有嚴格度過綠器"
+    "取得所有嚴格度過濾器"
   ],
   [
     "as ZIP",
@@ -5061,7 +5061,7 @@
   ],
   [
     "ARTIFACTS",
-    "ARTIFACTS"
+    "文物"
   ],
   [
     "Very special items that drop from specific locations, such as heist trinkets and voidstones, are referred to as artifacts.",
@@ -17125,11 +17125,11 @@
   ],
   [
     "Tainted Oil",
-    "汙染油瓶"
+    "玷污油瓶"
   ],
   [
     "Tainted Carapaces",
-    "汙染甲殼"
+    "玷污甲殼"
   ],
   [
     "Barthol%2C the Corruptor",
@@ -17145,7 +17145,7 @@
   ],
   [
     "Tainted Pact",
-    "汙穢契約"
+    "玷污契約"
   ],
   [
     "Defiled Proclamation",
@@ -19909,7 +19909,7 @@
   ],
   [
     "Tainted Catalyst",
-    "玷汙催化劑"
+    "玷污催化劑"
   ],
   [
     "Doedre the Defiler",
@@ -42106,5 +42106,1601 @@
   [
     "Craicic Croaker",
     "奎爾珊石首魚"
+  ],
+  [
+    "FilterBlade - PoE1&2 Filter Customizer - Finetuned for NeverSink's Filter",
+    "FilterBlade - PoE1&2 過濾器自訂器 - 為 NeverSink 過濾器精心調校"
+  ],
+  [
+    "Login with PoE",
+    "使用 PoE 登入"
+  ],
+  [
+    "Logout",
+    "登出"
+  ],
+  [
+    "Search (Ctrl + K)",
+    "搜尋（Ctrl + K）"
+  ],
+  [
+    "FilterBlade icon",
+    "FilterBlade 圖示"
+  ],
+  [
+    "Change specific settings and appearance of a filter",
+    "變更過濾器的特定設定與外觀"
+  ],
+  [
+    "Settings",
+    "設定"
+  ],
+  [
+    "Profile",
+    "個人檔案"
+  ],
+  [
+    "Report an issue",
+    "回報問題"
+  ],
+  [
+    "Please consider supporting us by disabling AdBlock.",
+    "請考慮關閉 AdBlock 來支持我們。"
+  ],
+  [
+    "Business mail:",
+    "商務信箱："
+  ],
+  [
+    "Contact",
+    "聯絡我們"
+  ],
+  [
+    "Privacy Policy",
+    "隱私權政策"
+  ],
+  [
+    "Get started!",
+    "開始使用！"
+  ],
+  [
+    "Strictness:",
+    "嚴格度："
+  ],
+  [
+    "Default filter colors:",
+    "預設過濾器顏色："
+  ],
+  [
+    "Softcore",
+    "標準"
+  ],
+  [
+    "User-created",
+    "使用者自建"
+  ],
+  [
+    "Safely fine-tune the entire filter in detail.",
+    "安全地微調整個過濾器的細節。"
+  ],
+  [
+    "Where to start?",
+    "從哪裡開始？"
+  ],
+  [
+    "Useful features",
+    "實用功能"
+  ],
+  [
+    "Workflow",
+    "工作流程"
+  ],
+  [
+    "Our new design!",
+    "我們的新設計！"
+  ],
+  [
+    "Our new design! FilterBlade now supports mobile devices! You can open the navigation using the button at the very top left to access the different pages.",
+    "我們的新設計！FilterBlade 現在支援行動裝置！你可以使用最左上角的按鈕開啟導覽，前往不同頁面。"
+  ],
+  [
+    "Path of Exile 1 and 2 based on NeverSink's filters.",
+    "適用於《流亡黯道 1》與《流亡黯道 2》，基於 NeverSink 的過濾器。"
+  ],
+  [
+    "It turns this",
+    "它會把這個"
+  ],
+  [
+    "By default, most items look the same, no matter how rare or useful or valuable.",
+    "預設情況下，大多數物品看起來都一樣，不論稀有度、用途或價值。"
+  ],
+  [
+    "Into this",
+    "變成這樣"
+  ],
+  [
+    "A filter highlights items based on type and value (based on current inGame economy), and hides bad ones.",
+    "過濾器會依物品類型與價值（依目前遊戲內經濟）凸顯物品，並隱藏較差的物品。"
+  ],
+  [
+    "You can customize them to fit to your character and style!",
+    "你可以自訂它們來符合你的角色與風格！"
+  ],
+  [
+    "They are officially supported tools for Path of Exile!",
+    "它們是《流亡黯道》官方支援的工具！"
+  ],
+  [
+    "build, style以及progress in the game.",
+    "流派、風格以及遊戲進度。"
+  ],
+  [
+    "If you want, you can further fine-tune it using the 自訂 tab.",
+    "如果你想，還可以使用「自訂」分頁進一步微調。"
+  ],
+  [
+    "Not sure where to start?",
+    "不確定從哪裡開始？"
+  ],
+  [
+    "Open the 'Auto-Adjust for Build' and select your inGame character class, then apply and export the filter. That's it! For now... You can come back later to fine-tune when you notice things that you'd like to change!",
+    "開啟「依流派自動調整」，選擇你的遊戲內角色職業，然後套用並匯出過濾器。就這樣！目前先這樣……之後當你注意到想改變的地方時，可以再回來微調！"
+  ],
+  [
+    "Download / Export",
+    "下載 / 匯出"
+  ],
+  [
+    "You're done? Head to the export screen to save the filter to your FilterBlade account and either download a filter-file or upload it directly into your PoE account.",
+    "完成了嗎？前往匯出畫面，將過濾器儲存到你的 FilterBlade 帳號，並下載過濾器檔案或直接上傳到你的 PoE 帳號。"
+  ],
+  [
+    "Resume later",
+    "稍後繼續"
+  ],
+  [
+    "Login with your PoE account to save your filter during export. When you return to FilterBlade, you will see all your saved filters on the 'My Filters' screen to continue editing!",
+    "在匯出時使用你的 PoE 帳號登入以儲存過濾器。當你回到 FilterBlade 時，會在「我的過濾器」畫面看到所有已儲存的過濾器，可以繼續編輯！"
+  ],
+  [
+    "How to update?",
+    "如何更新？"
+  ],
+  [
+    "FilterBlade will ALWAYS give you the newest up-to-date filter. You can customize a filter now and load it again later and automatically get an updated version when you export!",
+    "FilterBlade 永遠會提供最新、即時的過濾器。你現在可以自訂過濾器，之後再載入，並在匯出時自動取得更新版本！"
+  ],
+  [
+    "Edit every part of the filter: Colors, tierlists, sounds in a sorted structure. Every edit done is automatically saved and instantly reflected in all other parts of the website:",
+    "編輯過濾器的每個部分：顏色、階級清單、音效，並以分類結構呈現。每次編輯都會自動儲存，並立即反映到網站的其他所有部分："
+  ],
+  [
+    "Did I break it?",
+    "我把它弄壞了嗎？"
+  ],
+  [
+    "The Customizer is built fail-save and it's hard to 'break' your filter by using it. You will see warnings if you're about to do something dangerous. There is also additional validation when exporting.",
+    "自訂器採用防呆設計，很難因為使用它而「弄壞」你的過濾器。當你即將做出危險操作時會看到警告。匯出時也會有額外驗證。"
+  ],
+  [
+    "Utilities!",
+    "實用工具！"
+  ],
+  [
+    "You can right-click e.g. an item to jump to its rule in the Customizer or a tierlist element to move it! (Long press on mobile)",
+    "你可以右鍵點擊物品，跳到它在自訂器中的規則，或右鍵點擊階級清單元素來移動它！（行動裝置請長按）"
+  ],
+  [
+    "Learn and see",
+    "學習與查看"
+  ],
+  [
+    "物品的總覽 tab shows typical items with their current visuals and explanations of why they are special. Good to get an overview of the current filter and learn about its colors and highlights.",
+    "「物品總覽」分頁會顯示典型物品及其目前外觀，並說明它們為何特殊。很適合用來概覽目前過濾器，並了解其顏色與凸顯方式。"
+  ],
+  [
+    "Test & Simulate",
+    "測試與模擬"
+  ],
+  [
+    "Want to test your filter? Verify your results? Find out why an item inGame is highlighted? Check out our tools on the 模擬測試 screen.",
+    "想測試過濾器？驗證結果？想知道物品在遊戲中為何被凸顯？查看我們在「模擬測試」畫面的工具。"
+  ],
+  [
+    "Do a redesign!",
+    "重新設計！"
+  ],
+  [
+    "Planning a big rework of colors, sizes and sounds? The 'Themes' tab has a lot of tool for large-scale edits like that!",
+    "規劃大幅改造顏色、大小與音效嗎？「主題」分頁有許多可用於這類大規模編輯的工具！"
+  ],
+  [
+    "Need help?",
+    "需要協助？"
+  ],
+  [
+    "Use the search bar at the top, check our FAQ, or ask in our Discord!",
+    "使用上方的搜尋列、查看我們的 FAQ，或在我們的 Discord 提問！"
+  ],
+  [
+    "Current League: 3.29 Allflame",
+    "目前聯盟：3.29 餘燼"
+  ],
+  [
+    "Allflame League",
+    "餘燼聯盟"
+  ],
+  [
+    "Vestigial Uniques",
+    "殘存傳奇"
+  ],
+  [
+    "Rule inactive",
+    "規則未啟用"
+  ],
+  [
+    "Dead Man's Sulphur, Ducats and all kind of precious items can be found on the seafloor!",
+    "亡者硫酸、達克特與各種珍貴物品都可以在海床上找到！"
+  ],
+  [
+    "Consume uniques in the Timeless Conflict (Legion) with Enshrouding Crystals. A random 'vestigial' unique will hatch - empowered by the consumed unique.",
+    "在永恆鬥爭（戰亂）中使用壟罩晶石消耗傳奇物品。隨機的「殘存」傳奇將會孵化——並由被消耗的傳奇強化。"
+  ],
+  [
+    "Any keepers-filter can be used for Phrecia (although Phrecia likely has a different economy). We intend to release a phrecia-economy version soon after launch.",
+    "神像只在「Phrecia」活動中作為輿圖替代方案提供。"
+  ],
+  [
+    "Idols are only available in 'Phrecia' events as an atlas alternative.",
+    "神像只在「Phrecia」活動中作為輿圖替代方案提供。"
+  ],
+  [
+    "Main",
+    "主要"
+  ],
+  [
+    "Exotic Currencies",
+    "特殊通貨"
+  ],
+  [
+    "Current League: Curse of the Allflame",
+    "目前聯盟：餘燼詛咒"
+  ],
+  [
+    "Endgame (level 68+)",
+    "終局（等級 68+）"
+  ],
+  [
+    "Campaign (level 1-67)",
+    "章節（等級 1-67）"
+  ],
+  [
+    "Default",
+    "預設"
+  ],
+  [
+    "Adjusted",
+    "已調整"
+  ],
+  [
+    "S Tier",
+    "S 階"
+  ],
+  [
+    "A Tier",
+    "A 階"
+  ],
+  [
+    "B Tier",
+    "B 階"
+  ],
+  [
+    "C Tier",
+    "C 階"
+  ],
+  [
+    "D Tier",
+    "D 階"
+  ],
+  [
+    "E+ Tier",
+    "E+ 階"
+  ],
+  [
+    "E- Tier",
+    "E- 階"
+  ],
+  [
+    "Expand all rules",
+    "展開所有規則"
+  ],
+  [
+    "Collapse all rules",
+    "收合所有規則"
+  ],
+  [
+    "Show advanced toolbar",
+    "顯示進階工具列"
+  ],
+  [
+    "Add tier",
+    "新增階級"
+  ],
+  [
+    "Reset tiers",
+    "重設階級"
+  ],
+  [
+    "Show prices",
+    "顯示價格"
+  ],
+  [
+    "Show Locks",
+    "顯示鎖定"
+  ],
+  [
+    "Lock all",
+    "全部鎖定"
+  ],
+  [
+    "Configure",
+    "設定"
+  ],
+  [
+    "Compact",
+    "精簡"
+  ],
+  [
+    "changes",
+    "變更"
+  ],
+  [
+    "Economy tiered section",
+    "經濟階級分類"
+  ],
+  [
+    "All or most items in this section are tiered based on the current economy (PoE.Ninja). This section is updated every 4 hours (except on the 'SSF' filter).",
+    "此區塊全部或大部分物品依目前經濟（PoE.Ninja）分階。此區塊每 4 小時更新一次（SSF 過濾器除外）。"
+  ],
+  [
+    "Note that you still need to re-export your filter to receive the update, unless you are using the Auto-Updater. We recommend re-exporting once a week to stay up-to-date.",
+    "請注意，除非使用自動更新器，否則仍需重新匯出過濾器才能收到更新。建議每週重新匯出一次以保持最新。"
+  ],
+  [
+    "Your changes and 'Locks' have priority over these updates. Meaning any item you have put into a different tier will stay there and won't be moved by these updates.",
+    "你的變更與「鎖定」優先於這些更新。也就是說，你放到其他階級的物品會留在那裡，不會被這些更新移動。"
+  ],
+  [
+    "This tierlists is already based on the ingame economy and is tiered using a BETTER/more complex algorithm. This function is designed to help you START creating a custom tiering!",
+    "這份階級清單已依遊戲內經濟分階，並使用更好/更複雜的演算法。此功能旨在協助你開始建立自訂階級！"
+  ],
+  [
+    "Sorts all items into tiers based on their naive inGame market price (use configure button to adjust)",
+    "依物品的遊戲內市場價格（簡易算法）將所有物品排序到階級（使用設定按鈕調整）。"
+  ],
+  [
+    "Locked items will stay in their current tier and will not be moved by filter updates or Auto-Sorting.",
+    "鎖定物品會留在目前階級，不會因過濾器更新或自動排序而移動。"
+  ],
+  [
+    "Locks all items in all tiers. Locked items will stay in their current tier and will not be moved by filter updates or Auto-Sorting. Click again to un-lock all.",
+    "鎖定所有階級中的所有物品。鎖定物品會留在目前階級，不會因過濾器更新或自動排序而移動。再次點擊可解除全部鎖定。"
+  ],
+  [
+    "Include or Exclude items in the UI ONLY (Does not affect inGame filtering, but helps with tiering)",
+    "僅在介面中納入或排除物品（不影響遊戲內過濾，但有助於階級分類）。"
+  ],
+  [
+    "Highlight items based on their current inGame market price (use configure button to adjust)",
+    "依目前遊戲內市場價格凸顯物品（使用設定按鈕調整）。"
+  ],
+  [
+    "This list is already economy-updated if you're using the SC/HC base filter!",
+    "如果你使用 SC/HC 基礎過濾器，這份清單已經依經濟更新！"
+  ],
+  [
+    "Filter items by tags or class",
+    "依標籤或類別過濾物品"
+  ],
+  [
+    "UI-Filter",
+    "介面過濾器"
+  ],
+  [
+    "Naive Price Sort",
+    "簡易價格排序"
+  ],
+  [
+    "MASSIVE WARNING:",
+    "重大警告："
+  ],
+  [
+    "Adjust the sorting and highlighting functions.",
+    "調整排序與凸顯功能。"
+  ],
+  [
+    "Rename rule",
+    "重新命名規則"
+  ],
+  [
+    "• Appearance",
+    "• 外觀"
+  ],
+  [
+    "Edit visuals and sounds",
+    "編輯外觀與音效"
+  ],
+  [
+    "Text",
+    "文字"
+  ],
+  [
+    "Rule disabled.",
+    "規則已停用。"
+  ],
+  [
+    "Click on Show/Hide to enable",
+    "點擊顯示/隱藏以啟用"
+  ],
+  [
+    "Change priority index",
+    "變更優先順序"
+  ],
+  [
+    "Delete rule",
+    "刪除規則"
+  ],
+  [
+    "Move rule up",
+    "上移規則"
+  ],
+  [
+    "Move rule down",
+    "下移規則"
+  ],
+  [
+    "Duplicate rule",
+    "複製規則"
+  ],
+  [
+    "Add Custom Decorator",
+    "新增自訂裝飾"
+  ],
+  [
+    "Add list",
+    "新增清單"
+  ],
+  [
+    "Add",
+    "新增"
+  ],
+  [
+    "Select brush:",
+    "選擇筆刷："
+  ],
+  [
+    "Show affected",
+    "顯示受影響項目"
+  ],
+  [
+    "Show ALL by class",
+    "依類別顯示全部"
+  ],
+  [
+    "Show ALL by rank",
+    "依階級顯示全部"
+  ],
+  [
+    "Show all items of given class",
+    "顯示指定類別的所有物品"
+  ],
+  [
+    "Swap between the normal taglist-GUI and the BaseType-Matrix-Table GUI",
+    "在一般標籤清單介面與基底矩陣表格介面之間切換"
+  ],
+  [
+    "Pick a BaseType to enable!",
+    "選擇要啟用的基底！"
+  ],
+  [
+    "Pick a EnchantmentPassiveNode to enable!",
+    "選擇要啟用的附魔被動天賦！"
+  ],
+  [
+    "Please select a class",
+    "請選擇類別"
+  ],
+  [
+    "Enter BaseType",
+    "輸入基底"
+  ],
+  [
+    "Enter Cluster Enchant",
+    "輸入星團附魔"
+  ],
+  [
+    "Enter file name",
+    "輸入檔案名稱"
+  ],
+  [
+    "Enter Mods",
+    "輸入詞綴"
+  ],
+  [
+    "Accepts any BaseType",
+    "接受任何基底"
+  ],
+  [
+    "An item must",
+    "物品必須"
+  ],
+  [
+    "E.g. >= 2 means the item must have",
+    "例如 >= 2 表示物品必須有"
+  ],
+  [
+    "DPS:",
+    "每秒傷害："
+  ],
+  [
+    "Item icon",
+    "物品圖示"
+  ],
+  [
+    "LockIcon",
+    "鎖定圖示"
+  ],
+  [
+    "Lock",
+    "鎖定"
+  ],
+  [
+    "Lock button",
+    "鎖定按鈕"
+  ],
+  [
+    "Item Progression Editor",
+    "物品進度編輯器"
+  ],
+  [
+    "With zero overlap, only the currently highest BaseType will be shown.",
+    "重疊為零時，只會顯示目前最高階的基底。"
+  ],
+  [
+    "You can specify multiple requirements, each with the total number of sockets as well as the amount of each color.",
+    "你可以指定多項需求，每項包含插槽總數與各顏色數量。"
+  ],
+  [
+    "Filter by the total sockets on an item.",
+    "依物品插槽總數過濾。"
+  ],
+  [
+    "Number of passive skills on a cluster jewel.",
+    "星團珠寶上的被動技能數量。"
+  ],
+  [
+    "High item level (up to level 85) flasks can roll the highest tier mods.",
+    "高物品等級（最高 85）的藥劑可以骰出最高階詞綴。"
+  ],
+  [
+    "No/Low class restriction, list is too long to display.",
+    "無/低類別限制，清單過長無法顯示。"
+  ],
+  [
+    "Some item classes like 'Jewels' are completely covered through the class-based filtering below and don't need representing through the matrix.",
+    "部分物品類別（如「珠寶」）已由下方的類別過濾完整涵蓋，不需要在矩陣中呈現。"
+  ],
+  [
+    "Temporary Beams are only displayed during the short moment when the item drops, as opposed to being shown as long as the item is on the ground.",
+    "暫時光束只在物品掉落的短暫瞬間顯示，而不是物品留在地面時持續顯示。"
+  ],
+  [
+    "When enabled, the item will keep the default sound effect (such as a metallic noise for weapons or a high pitch \"pling\" for orbs). An item can have both the default sound and a filter-alert sound.",
+    "啟用時，物品會保留預設音效（例如武器的金屬聲或通貨的高頻「叮」聲）。物品可以同時有預設音效與過濾器警示音效。"
+  ],
+  [
+    "When disabled (default): items you move/change are treated as locked",
+    "停用時（預設）：你移動/變更的物品會被視為鎖定。"
+  ],
+  [
+    "When enabled: every item in the list is locked. Everything will stay exactly as you see.",
+    "啟用時：清單中的每件物品都會鎖定，所有內容都會保持你看到的樣子。"
+  ],
+  [
+    "If you disable a color, the game will use the default color of that item.",
+    "如果你停用顏色，遊戲會使用該物品的預設顏色。"
+  ],
+  [
+    "'Locks' the whole section. Locked items will not change tier due to filter updates.",
+    "鎖定整個區塊。鎖定物品不會因過濾器更新而改變階級。"
+  ],
+  [
+    "You can use the 'Stacked Tiering Mode' above to automate behaviour for stacked item drops!",
+    "你可以使用上方的「堆疊階級模式」自動處理堆疊物品掉落！"
+  ],
+  [
+    "Predictable Tiers",
+    "可預測階級"
+  ],
+  [
+    "A tier - Jewels",
+    "A 階 - 珠寶"
+  ],
+  [
+    "B+C Tier",
+    "B+C 階"
+  ],
+  [
+    "D Tier - Early league Uniques",
+    "D 階 - 賽季初期傳奇"
+  ],
+  [
+    "D Tier - Low Value",
+    "D 階 - 低價值"
+  ],
+  [
+    "D Tier - Low Value+NonDrops",
+    "D 階 - 低價值+非掉落"
+  ],
+  [
+    "High Variety Tiers",
+    "多樣性階級"
+  ],
+  [
+    "High Variety - Top Multi-Bases",
+    "多樣性 - 頂級多基底"
+  ],
+  [
+    "High Variety - Multi-Bases",
+    "多樣性 - 多基底"
+  ],
+  [
+    "High Variety - Boss-Drops",
+    "多樣性 - Boss 掉落"
+  ],
+  [
+    "Hidden Tier",
+    "隱藏階級"
+  ],
+  [
+    "Uniques Tier 1 (1/1)",
+    "傳奇階級 1（1/1）"
+  ],
+  [
+    "Uniques Tier 2 (1/1)",
+    "傳奇階級 2（1/1）"
+  ],
+  [
+    "Uniques (Remaining) (1/1)",
+    "傳奇（其餘）（1/1）"
+  ],
+  [
+    "Uniques (MultiBase) (1/1)",
+    "傳奇（多基底）（1/1）"
+  ],
+  [
+    "Uniques (MultiBaseHigh) (1/1)",
+    "傳奇（高階多基底）（1/1）"
+  ],
+  [
+    "Uniques (Hideable 2) (1/1)",
+    "傳奇（可隱藏 2）（1/1）"
+  ],
+  [
+    "Uniques (Hideable trash) (1/1)",
+    "傳奇（可隱藏雜物）（1/1）"
+  ],
+  [
+    "Uniques (early league) (1/1)",
+    "傳奇（賽季初期）（1/1）"
+  ],
+  [
+    "Unique Jewels (1/1)",
+    "傳奇珠寶（1/1）"
+  ],
+  [
+    "Boss-Drop Uniques (1/1)",
+    "Boss 掉落傳奇（1/1）"
+  ],
+  [
+    "Tier 1 uniques are always an expensive and lucky find!",
+    "階級 1 的傳奇總是昂貴且幸運的發現！"
+  ],
+  [
+    "Tier 2 uniques are always fairly expensive, but can be even more valuable with some lucky rolls",
+    "階級 2 的傳奇通常相當昂貴，但若骰到好數值可能更有價值。"
+  ],
+  [
+    "The filter can't disintinguish between expensive and cheap unique jewels. All of them are treated the same way!",
+    "過濾器無法區分昂貴與便宜的傳奇珠寶，所有這類物品都以相同方式處理！"
+  ],
+  [
+    "Expensive or interesting at the start of the new league, but lose value VERY fast! This tier stays empty, after the first days of the new league",
+    "賽季初期昂貴或有趣，但價值會非常快速地下跌！此階級在賽季開始幾天後會保持空白。"
+  ],
+  [
+    "These uniques have an expensive version that is ONLY obtained through special means, such as vendor recipes.",
+    "這些傳奇有昂貴版本，只能透過特殊方式取得，例如商人配方。"
+  ],
+  [
+    "These uniques are worth very little. Keep your filter updated, if you want to hide this section! Hiding this section at the start of new leagues and in SSF is a bad idea.",
+    "這些傳奇價值很低。如果你想隱藏此區塊，請保持過濾器更新！在賽季初期與 SSF 中隱藏此區塊不是好主意。"
+  ],
+  [
+    "Multiple uniques share the same base: very valuable uniques AND cheap uniques. The filter can't say which one dropped. Always check these! There's a VERY small chance for these to be VERY expensive",
+    "多個傳奇共用同一基底：有非常有價值的傳奇，也有便宜的傳奇。過濾器無法分辨掉落的是哪一個。務必檢查這些物品！有非常小的機率是極高價值。"
+  ],
+  [
+    "Multiple uniques share the same base: very valuable uniques AND cheap uniques. The filter can't say which one dropped. Always check these! There's a small chance for these to be expensive",
+    "多個傳奇共用同一基底：有非常有價值的傳奇，也有便宜的傳奇。過濾器無法分辨掉落的是哪一個。務必檢查這些物品！有小機率是昂貴的。"
+  ],
+  [
+    "A potentially expensive unique version of this item drops ONLY from bosses! The world drop unique is fairly cheap! You can hide this tier, BUT remember to check the hidden items dropped by bosses!",
+    "這個物品可能有昂貴的傳奇版本，只會由 Boss 掉落！世界掉落的傳奇相當便宜！你可以隱藏此階級，但記得檢查 Boss 掉落的隱藏物品！"
+  ],
+  [
+    "These are highly roll dependent. Keep your filter updated, especially if you want to hide this section!",
+    "這些物品非常依賴骰值。請保持過濾器更新，特別是如果你想隱藏此區塊！"
+  ],
+  [
+    "Currency Reward Recipes",
+    "通貨獎勵配方"
+  ],
+  [
+    "Currency Outcome",
+    "通貨結果"
+  ],
+  [
+    "Gem Outcome",
+    "寶石結果"
+  ],
+  [
+    "Unique Outcome",
+    "傳奇結果"
+  ],
+  [
+    "Six Link Outcome",
+    "六連結果"
+  ],
+  [
+    "Stacked Divination Cards",
+    "堆疊命運卡"
+  ],
+  [
+    "Stacked High Tier Div Cards",
+    "堆疊高階命運卡"
+  ],
+  [
+    "Stacked Low Tier Div Cards",
+    "堆疊低階命運卡"
+  ],
+  [
+    "Maps - Influenced, Nightmare, Unique and Exotics",
+    "地圖 - 勢力、夢魘、傳奇與特殊"
+  ],
+  [
+    "Influenced Maps",
+    "勢力地圖"
+  ],
+  [
+    "Shaper Guardian Maps",
+    "塑界者守護者地圖"
+  ],
+  [
+    "Unique Maps",
+    "傳奇地圖"
+  ],
+  [
+    "Unique Maps Multi",
+    "多重傳奇地圖"
+  ],
+  [
+    "Corrupted Unique Maps",
+    "汙染傳奇地圖"
+  ],
+  [
+    "Delirium Maps",
+    "譫妄地圖"
+  ],
+  [
+    "Delirium High Maps",
+    "高階譫妄地圖"
+  ],
+  [
+    "League Based Maps",
+    "聯盟機制地圖"
+  ],
+  [
+    "Special map items",
+    "特殊地圖物品"
+  ],
+  [
+    "Additional Campaign Rules",
+    "額外章節規則"
+  ],
+  [
+    "Default Item Progression",
+    "預設物品進度"
+  ],
+  [
+    "Apex Tier Bases",
+    "頂級基底"
+  ],
+  [
+    "Wombgift Tiering",
+    "胎贈階級"
+  ],
+  [
+    "Lottery-Tier Chancing Targets",
+    "樂透階級機會石目標"
+  ],
+  [
+    "Meta-Uniques Chancing Bases",
+    "主流傳奇機會石基底"
+  ],
+  [
+    "Currency Basic Tier 1",
+    "通貨基礎階級 1"
+  ],
+  [
+    "Currency Basic Tier 3",
+    "通貨基礎階級 3"
+  ],
+  [
+    "Currency Strategy",
+    "通貨策略"
+  ],
+  [
+    "Fractured items, others",
+    "破裂物品，其他"
+  ],
+  [
+    "Fractured items, tier 1 (1/1)",
+    "破裂物品，階級 1（1/1）"
+  ],
+  [
+    "Fractured items, tier 2 (1/1)",
+    "破裂物品，階級 2（1/1）"
+  ],
+  [
+    "Fractured items, tier 3 (1/1)",
+    "破裂物品，階級 3（1/1）"
+  ],
+  [
+    "Legion Splinters - High Tier (Stacked)",
+    "戰亂裂片 - 高階（堆疊）"
+  ],
+  [
+    "Legion Splinters - Low Tier (Stacked)",
+    "戰亂裂片 - 低階（堆疊）"
+  ],
+  [
+    "Legion Splinters - Single",
+    "戰亂裂片 - 單個"
+  ],
+  [
+    "Top Tier 6 Links",
+    "頂級六連"
+  ],
+  [
+    "4-Links: Early Endgame",
+    "四連：終局初期"
+  ],
+  [
+    "5-Links: Endgame",
+    "五連：終局"
+  ],
+  [
+    "68+ 4 Links",
+    "68+ 四連"
+  ],
+  [
+    "Endgame Tier 4 Rares (1/1)",
+    "終局階級 4 稀有裝備（1/1）"
+  ],
+  [
+    "Endgame Tier 5 Rares (1/1)",
+    "終局階級 5 稀有裝備（1/1）"
+  ],
+  [
+    "Tier 1 rares (1/1)",
+    "階級 1 稀有裝備（1/1）"
+  ],
+  [
+    "Tier 2 rares (1/1)",
+    "階級 2 稀有裝備（1/1）"
+  ],
+  [
+    "Tier 3 rares (1/1)",
+    "階級 3 稀有裝備（1/1）"
+  ],
+  [
+    "'RGB' items",
+    "「紅綠藍」物品"
+  ],
+  [
+    "1 Chromatic orb - reward for selling an item with a Red-Green-Blue socket group. The 3 colors need to be linked in order and other sockets don't matter. Hover over the scroll left for more info.",
+    "1 顆幻色石 - 販售具有紅-綠-藍插槽組的物品獎勵。三種顏色必須依序連線，其他插槽不影響。將滑鼠移到左側捲軸查看詳細資訊。"
+  ],
+  [
+    "It's more efficient to pick up small RGB-items. This recipe is mostly useful during the early stages of a league/character progression. Later on the player usually finds enough natural chromatic orbs to sustain their coloring needs, without needing to do recipes.",
+    "撿拾小型紅綠藍物品更有效率。此配方在聯盟/角色進度初期最有用。後期玩家通常能找到足夠的自然幻色石來滿足染色需求，不需要做配方。"
+  ],
+  [
+    "It's recommended to at least use the threshold of 14. This allows you to get 1 glassblower per 3 mid quality flasks. Note that glassblowers can also be acquired by buying it for 8 whetstones from vendors and drop naturally, so the recipe is not very efficient. That being said, glassblowers are in high demand at the start of the league, not only for quality, but also to apply instilling orb recipes onto the player flasks.",
+    "建議至少使用 14 的門檻。這樣每 3 瓶中等品質藥劑可獲得 1 個玻璃彈珠。請注意，玻璃彈珠也可以向商人用 8 個磨刀石購買，且會自然掉落，因此配方效率不高。話雖如此，賽季初期玻璃彈珠需求很高，不僅用於品質，也用於將灌注石配方應用到玩家藥劑上。"
+  ],
+  [
+    "You can find more quality flasks rules in the 'Endgame -> Flasks' and 'Campaign -> Flasks' sections.",
+    "你可以在「終局 -> 藥劑」與「章節 -> 藥劑」區塊找到更多品質藥劑規則。"
+  ],
+  [
+    "Every BaseType has a \"DropLevel\" that determines the minimum zone level it requires to drop.",
+    "每個基底都有一個「掉落等級」，決定它掉落所需的最低區域等級。"
+  ],
+  [
+    "A BaseType with DropLevel 50 can only drop in zones with level 50 or higher.",
+    "掉落等級 50 的基底只能在等級 50 或更高的區域掉落。"
+  ],
+  [
+    "The \"ItemLevel\" of an item is the same as the level of the zone it dropped in.",
+    "物品的「物品等級」與它掉落所在區域的等級相同。"
+  ],
+  [
+    "If an item drops in a level 70 zone, its ItemLevel will be 70, no matter the BaseType or its DropLevel.",
+    "如果物品在等級 70 的區域掉落，其物品等級就是 70，與基底或其掉落等級無關。"
+  ],
+  [
+    "This section is designed to be foolproof. It will have no effect on 6-links, endgame items, elder/shaper items, uniques etc), abyss belts, fishing rods and other special bases. These sections frequently feature the 'strictness' dropdown menu. This tool defines how many rules are overwritten by your custom rules. I recommend playing around with the loot simulator, while switching back and forth to the customizer to get familiar with this section",
+    "此區塊設計為防呆。它不會影響六連、終局物品、尊師/塑界者物品、傳奇等）、深淵腰帶、釣魚竿與其他特殊基底。這些區塊經常會有「嚴格度」下拉選單。此工具定義你的自訂規則會覆寫多少規則。我建議在戰利品模擬器中來回切換自訂頁，以熟悉此區塊。"
+  ],
+  [
+    "Use this section to add exotic rules and exceptions. This section is NOT foolproof, you can accidentally hide valuable items by misusing it. With great power comes great responsibility.",
+    "使用此區塊新增特殊規則與例外。此區塊不是防呆的，你可能因誤用而意外隱藏有價值的物品。力量越大，責任越大。"
+  ],
+  [
+    "This rule (attempts) to highlight any item dropped in misc. hideout areas, such as the Bestiary or Azurite mine",
+    "此規則（嘗試）凸顯在雜項藏身處區域掉落的任何物品，例如獸獵或碧藍礦坑。"
+  ],
+  [
+    "By default the filter will hide all (unidentified) corrupted/mirrored rares without an implicit. This of course excludes 6-links and all kinds of other exotic items",
+    "預設情況下，過濾器會隱藏所有沒有固定詞綴的（未鑑定）汙染/已複製稀有物品。當然，這不包括六連與各種其他特殊物品。"
+  ],
+  [
+    "Path of Exile rewards speed. It's an efficient strategy to save time by picking up just the minimum amount of scrolls, scraps, augments and other low currency. You can even completely stop picking them up. Sell transmutation orbs and whetstones for a 1:4 wisdom scroll gain and armorer scraps for 1:2 wisdom scrolls. You can also buy a portal gem to save on portal scrolls.",
+    "《流亡黯道》獎勵速度。只撿拾最低限度的卷軸、碎片、增幅石與其他低階通貨，是節省時間的有效策略。你甚至可以完全停止撿拾它們。販售蛻變石與磨刀石可獲得 1:4 的知識卷軸，護甲碎片可獲得 1:2 的知識卷軸。你也可以購買傳送門寶石來節省傳送卷軸。"
+  ],
+  [
+    "Remaining Ducats",
+    "剩餘達克特"
+  ],
+  [
+    "Remaining Ducats that were not caught be the rules above due to additional requirements.",
+    "因額外需求而未被上述規則捕捉到的剩餘達克特。"
+  ],
+  [
+    "Ducats",
+    "達克特"
+  ],
+  [
+    "Ducats S Tier",
+    "達克特 S 階"
+  ],
+  [
+    "Ducats A Tier",
+    "達克特 A 階"
+  ],
+  [
+    "Ducats B Tier",
+    "達克特 B 階"
+  ],
+  [
+    "Ducats C Tier",
+    "達克特 C 階"
+  ],
+  [
+    "Ducats D Tier",
+    "達克特 D 階"
+  ],
+  [
+    "Massive",
+    "大量"
+  ],
+  [
+    "Display hidden items",
+    "顯示隱藏物品"
+  ],
+  [
+    "About these ads",
+    "關於這些廣告"
+  ],
+  [
+    "⚠ Report Ad",
+    "⚠ 回報廣告"
+  ],
+  [
+    "Initializing FilterBlade...",
+    "正在初始化 FilterBlade..."
+  ],
+  [
+    "No, thanks",
+    "不用了，謝謝"
+  ],
+  [
+    "cancel",
+    "取消"
+  ],
+  [
+    "choose",
+    "選擇"
+  ],
+  [
+    "less",
+    "較少"
+  ],
+  [
+    "Clear Color Selection",
+    "清除顏色選擇"
+  ],
+  [
+    "No Color Selected",
+    "未選擇顏色"
+  ],
+  [
+    "Loading page...",
+    "正在載入頁面..."
+  ],
+  [
+    "Theme editing is coming soon to PoE 1!",
+    "PoE 1 的主題編輯即將推出！"
+  ],
+  [
+    "Legacy Global Color&Sound Editors",
+    "舊版全域顏色與音效編輯器"
+  ],
+  [
+    "Global One-Click Edits",
+    "全域一鍵編輯"
+  ],
+  [
+    "Text colors",
+    "文字顏色"
+  ],
+  [
+    "Border colors",
+    "邊框顏色"
+  ],
+  [
+    "Background colors",
+    "背景顏色"
+  ],
+  [
+    "Sounds",
+    "音效"
+  ],
+  [
+    "Remove styles (revert to game default)",
+    "移除樣式（回復遊戲預設）"
+  ],
+  [
+    "Change font sizes",
+    "變更字體大小"
+  ],
+  [
+    "Transparency Modifications",
+    "透明度修改"
+  ],
+  [
+    "Disable game-sound effects",
+    "停用遊戲音效"
+  ],
+  [
+    "Change sound mode",
+    "變更音效模式"
+  ],
+  [
+    "Misc. Functions",
+    "雜項功能"
+  ],
+  [
+    "Remove all sizes.",
+    "移除所有大小。"
+  ],
+  [
+    "Sets all sizes to their default value of 32.",
+    "將所有大小設為預設值 32。"
+  ],
+  [
+    "Remove all BG colors.",
+    "移除所有背景顏色。"
+  ],
+  [
+    "Sets all backgrounds to their default value.",
+    "將所有背景設為預設值。"
+  ],
+  [
+    "Remove all border colors.",
+    "移除所有邊框顏色。"
+  ],
+  [
+    "Sets all border colors to their default value.",
+    "將所有邊框顏色設為預設值。"
+  ],
+  [
+    "Remove all text colors.",
+    "移除所有文字顏色。"
+  ],
+  [
+    "Sets all text colors to their default value.",
+    "將所有文字顏色設為預設值。"
+  ],
+  [
+    "Remove all sounds.",
+    "移除所有音效。"
+  ],
+  [
+    "Note that this does not remove sound EFFECTS.",
+    "請注意，這不會移除音效效果。"
+  ],
+  [
+    "Remove all mapIcons.",
+    "移除所有地圖圖示。"
+  ],
+  [
+    "Remove all beams.",
+    "移除所有光束。"
+  ],
+  [
+    "Maximize size.",
+    "最大化大小。"
+  ],
+  [
+    "Sets the font size of all shown items to the biggest possible size.",
+    "將所有顯示物品的字體大小設為最大可能大小。"
+  ],
+  [
+    "Increase all sizes.",
+    "增加所有大小。"
+  ],
+  [
+    "Increases all font sizes by a given value.",
+    "將所有字體大小增加指定數值。"
+  ],
+  [
+    "Decrease all sizes.",
+    "減少所有大小。"
+  ],
+  [
+    "Decreases all font sizes by a given value.",
+    "將所有字體大小減少指定數值。"
+  ],
+  [
+    "Scale all sizes.",
+    "縮放所有大小。"
+  ],
+  [
+    "Reduced the range of the current font sizes. Changing it from 18-45 to e.g. 30-45, making the items overall bigger while keeping their ratios.",
+    "縮小目前字體大小的範圍。例如從 18-45 改為 30-45，讓物品整體變大，同時保持比例。"
+  ],
+  [
+    "Make all items partially transparent.",
+    "讓所有物品部分透明。"
+  ],
+  [
+    "Sets the minimum opaqueness value for all backgrounds. If set to 75(%) all backgrounds will be at most 75% visible (at least 25% transparent).",
+    "設定所有背景的最低不透明度。若設為 75(%)，所有背景最多只會 75% 可見（至少 25% 透明）。"
+  ],
+  [
+    "Scale minimum and maximum opaqueness (non-transparency) on all items.",
+    "縮放所有物品的最小與最大不透明度。"
+  ],
+  [
+    "Scale all transparencies between 2 ranges. If set to 35-80(%) all backgrounds will be: at least 35% visible; at most 80%",
+    "在兩個範圍之間縮放所有透明度。若設為 35-80(%)，所有背景將為：至少 35% 可見；最多 80%。"
+  ],
+  [
+    "Remove all DisableDropSound.",
+    "移除所有 DisableDropSound。"
+  ],
+  [
+    "This will re-enable the default drop-sound effects of PoE.",
+    "這會重新啟用 PoE 的預設掉落音效。"
+  ],
+  [
+    "Add all DisableDropSound.",
+    "加入所有 DisableDropSound。"
+  ],
+  [
+    "This will completely remove all game-default drop sounds for all items.",
+    "這會完全移除所有物品的遊戲預設掉落音效。"
+  ],
+  [
+    "Activate positional sound mode.",
+    "啟用定位音效模式。"
+  ],
+  [
+    "Enables the positional sound mode for all active normal sounds.",
+    "為所有啟用中的一般音效啟用定位音效模式。"
+  ],
+  [
+    "Disabled positional sound mode.",
+    "停用定位音效模式。"
+  ],
+  [
+    "Disables the positional sound mode for all active normal sounds.",
+    "停用所有啟用中一般音效的定位音效模式。"
+  ],
+  [
+    "Maximize map icons.",
+    "最大化地圖圖示。"
+  ],
+  [
+    "You are not logged in",
+    "你尚未登入"
+  ],
+  [
+    "Duplicate filter",
+    "複製過濾器"
+  ],
+  [
+    "Apply/Remove this module from your currently active filter",
+    "從目前啟用的過濾器套用/移除此外掛模組"
+  ],
+  [
+    "Amount of changes",
+    "變更數量"
+  ],
+  [
+    "Last modified",
+    "最後修改"
+  ],
+  [
+    "Publicity",
+    "公開狀態"
+  ],
+  [
+    "Share via link",
+    "透過連結分享"
+  ],
+  [
+    "Views",
+    "瀏覽次數"
+  ],
+  [
+    "Delete",
+    "刪除"
+  ],
+  [
+    "Name",
+    "名稱"
+  ],
+  [
+    "Sign in with PoE",
+    "使用 PoE 登入"
+  ],
+  [
+    "Continue without saving",
+    "不儲存並繼續"
+  ],
+  [
+    "Filter verified!",
+    "過濾器驗證通過！"
+  ],
+  [
+    "The filter syntax has been validated and common expensive items were checked to be shown.",
+    "過濾器語法已驗證，並已檢查常見的昂貴物品會顯示。"
+  ],
+  [
+    "Warning: Without saving, you will not be able to modify this filter in the future! You cannot import the filter back into FilterBlade.",
+    "警告：若不儲存，你將無法在未來修改此過濾器！你也無法將過濾器匯入回 FilterBlade。"
+  ],
+  [
+    "Auto Upload",
+    "自動上傳"
+  ],
+  [
+    "Upload once",
+    "上傳一次"
+  ],
+  [
+    "Only available if you saved your filter",
+    "僅在已儲存過濾器時可用"
+  ],
+  [
+    "PayPal - The safer, easier way to pay online!",
+    "PayPal - 更安全、更輕鬆的線上付款方式！"
+  ],
+  [
+    "Sync Auto (overwritten by code!)",
+    "自動同步（由程式覆寫！）"
+  ],
+  [
+    "Sync (overwritten by code!)",
+    "同步（由程式覆寫！）"
+  ],
+  [
+    "Download (overwritten by code!)",
+    "下載（由程式覆寫！）"
+  ],
+  [
+    "Support us and get something in return,",
+    "支持我們並獲得回饋，"
+  ],
+  [
+    "Premium Auto-Update feature:",
+    "高級自動更新功能："
+  ],
+  [
+    "NeverSink, Zoey & Haggis:",
+    "NeverSink、Zoey 與 Haggis："
+  ],
+  [
+    "Project Manager, Lead Developer.",
+    "專案經理、首席開發者。"
+  ],
+  [
+    "Developer, Designer, Content Creator.",
+    "開發者、設計師、內容創作者。"
+  ],
+  [
+    "Graphic Designer.",
+    "平面設計師。"
+  ],
+  [
+    "Developer, data analyst, php dev",
+    "開發者、資料分析師、PHP 開發者"
+  ],
+  [
+    "Project Focus: Architecture, Domain Languages, Data Processing",
+    "專案重點：架構、領域語言、資料處理"
+  ],
+  [
+    "Project Focus: Customization, Layout and UI, General Development.",
+    "專案重點：自訂、版面與 UI、一般開發。"
+  ],
+  [
+    "Project Focus: Icons, Backgrounds, Videos.",
+    "專案重點：圖示、背景、影片。"
+  ],
+  [
+    "Project Focus: Loot generation, layout and UI, save/load functions.",
+    "專案重點：戰利品生成、版面與 UI、存讀檔功能。"
+  ],
+  [
+    "Categories",
+    "分類"
+  ],
+  [
+    "General",
+    "一般"
+  ],
+  [
+    "Filter",
+    "過濾器"
+  ],
+  [
+    "Saving",
+    "儲存"
+  ],
+  [
+    "Show appearance-editor by default",
+    "預設顯示外觀編輯器"
+  ],
+  [
+    "Show appearance-editors for each rule directly without having to open them.",
+    "直接為每條規則顯示外觀編輯器，無需開啟規則。"
+  ],
+  [
+    "Tierlist display mode",
+    "階級清單顯示模式"
+  ],
+  [
+    "Display tierlists using the items name (BaseType) or by showing its icon (when available).",
+    "使用物品名稱（基底）顯示階級清單，或顯示其圖示（若有）。"
+  ],
+  [
+    "BaseTypes",
+    "基底"
+  ],
+  [
+    "Icons",
+    "圖示"
+  ],
+  [
+    "Color Picker Palette",
+    "調色盤"
+  ],
+  [
+    "Customize the color palette on the left side of the color pickers here. Pick a color and click \"Add color\" to add it, or select an existing one from the palette and click \"Remove color\" to remove it.",
+    "在此自訂顏色選擇器左側的調色盤。選擇顏色並點擊「新增顏色」來加入，或從調色盤選擇現有顏色並點擊「移除顏色」來移除。"
+  ],
+  [
+    "Add color",
+    "新增顏色"
+  ],
+  [
+    "Remove color",
+    "移除顏色"
+  ],
+  [
+    "Remove all",
+    "全部移除"
+  ],
+  [
+    "Alert sound volume",
+    "警示音音量"
+  ],
+  [
+    "This has no influence on the filter and inGame sounds, but is a way to adjust how loud the FilterBlade website in your browser plays the sounds (in case this is much different from the inGame volume).",
+    "這不會影響過濾器與遊戲內音效，但可調整 FilterBlade 網站在瀏覽器中播放音效的音量（如果與遊戲內音量差異很大）。"
+  ],
+  [
+    "Start-Up filter",
+    "啟動過濾器"
+  ],
+  [
+    "Select a filter that should be loaded automatically when you open FilterBlade.",
+    "選擇開啟 FilterBlade 時應自動載入的過濾器。"
+  ],
+  [
+    "You need to be logged in to select a StartUp filter",
+    "你需要登入才能選擇啟動過濾器"
+  ],
+  [
+    "Export on Quick-Save",
+    "快速儲存時匯出"
+  ],
+  [
+    "Should FilterBlade automatically export the active filter whenever you click on 'Quick Save' while customizing?",
+    "當你在自訂時點擊「快速儲存」，FilterBlade 是否應自動匯出目前啟用的過濾器？"
+  ],
+  [
+    "You need to be logged in to set up an export on quick-save!",
+    "你需要登入才能設定快速儲存時匯出！"
+  ],
+  [
+    "Auto-Save",
+    "自動儲存"
+  ],
+  [
+    "Save every single edit in your browser and offer to load the most recent version when you re-visit the site. You can disable this if you don't see the need for it and are annoyed by the constant popUp. We recommend to keep this turned on - just in case.",
+    "在瀏覽器中儲存每一次編輯，並在你再次造訪網站時提供載入最新版本的選項。如果你覺得不需要，且被不斷出現的彈窗煩擾，可以停用此功能。我們建議保持開啟——以防萬一。"
+  ],
+  [
+    "Always display all Show/Hide/Disable options",
+    "永遠顯示所有顯示/隱藏/停用選項"
+  ],
+  [
+    "Only recommended for advanced users that know what they're doing. This has the potential to seriously damage the filter.",
+    "僅建議了解自己在做什麼的進階使用者使用。這有可能嚴重損壞過濾器。"
+  ],
+  [
+    "Always show all SHD buttons",
+    "永遠顯示所有 SHD 按鈕"
+  ],
+  [
+    "Show detailed rule state",
+    "顯示詳細規則狀態"
+  ],
+  [
+    "Expand the Customizer rule checkbox buttons to indicate a difference between hidden and disabled rules.",
+    "展開自訂器的規則核取方塊按鈕，以區分隱藏與停用的規則。"
+  ],
+  [
+    "Detailed rule state",
+    "詳細規則狀態"
+  ],
+  [
+    "Filter-Direct-Write",
+    "過濾器直接寫入"
+  ],
+  [
+    "Use with: \"CTRL + S\"",
+    "搭配使用：「CTRL + S」"
+  ],
+  [
+    "Overwrites a local filter file (and saves on FilterBlade).",
+    "覆寫本機過濾器檔案（並儲存到 FilterBlade）。"
+  ],
+  [
+    "This 'downloads' filters directly without the hassle of moving the file.",
+    "這會直接「下載」過濾器，無需手動移動檔案。"
+  ],
+  [
+    "Alternative to using the Export-To-PoE tab.",
+    "使用「匯出至 PoE」分頁的替代方案。"
+  ],
+  [
+    "Enable Filter-Direct-Write",
+    "啟用過濾器直接寫入"
+  ],
+  [
+    "Selected file: No file selected",
+    "已選檔案：未選擇檔案"
+  ],
+  [
+    "Awakener",
+    "覺醒者"
+  ],
+  [
+    "Maven",
+    "釋界者"
+  ],
+  [
+    "Hinekora",
+    "悉妮蔻拉"
+  ],
+  [
+    "Valdo",
+    "瓦爾多"
+  ],
+  [
+    "Tainted Armourer",
+    "玷污護甲片"
+  ],
+  [
+    "Tainted Blacksmith",
+    "玷污磨刀石"
+  ],
+  [
+    "Gemcutter",
+    "寶石匠的稜鏡"
+  ],
+  [
+    "Tainted Jeweller",
+    "玷污工匠石"
+  ],
+  [
+    "Glassblower",
+    "玻璃彈珠"
+  ],
+  [
+    "Armourer",
+    "護甲片"
+  ],
+  [
+    "Jeweller",
+    "工匠石"
+  ],
+  [
+    "Special Wombgift Rules",
+    "特殊胎贈規則"
+  ],
+  [
+    "Logbook",
+    "探險日誌"
+  ],
+  [
+    "Mirrored",
+    "已複製"
+  ],
+  [
+    "Expedition",
+    "探險"
+  ],
+  [
+    "Allflame",
+    "餘燼"
+  ],
+  [
+    "Vestigial",
+    "殘存"
+  ],
+  [
+    "Wombgift",
+    "胎贈"
+  ],
+  [
+    "Enshrouding Crystal",
+    "壟罩晶石"
+  ],
+  [
+    "Tainted",
+    "玷污"
+  ],
+  [
+    "Campaign",
+    "章節"
   ]
 ]
