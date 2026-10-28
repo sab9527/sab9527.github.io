@@ -43702,5 +43702,289 @@
   [
     "Campaign",
     "章節"
+  ],
+  [
+    "Rank A",
+    "A 階"
+  ],
+  [
+    "Rank B",
+    "B 階"
+  ],
+  [
+    "Rank C",
+    "C 階"
+  ],
+  [
+    "Rank A - Belts",
+    "A 階 - 腰帶"
+  ],
+  [
+    "Rank B - Belts",
+    "B 階 - 腰帶"
+  ],
+  [
+    "Rank C - Belts",
+    "C 階 - 腰帶"
+  ],
+  [
+    "Rank A - Rings/Amulets",
+    "A 階 - 戒指／護身符"
+  ],
+  [
+    "Rank B - Rings/Amulets",
+    "B 階 - 戒指／護身符"
+  ],
+  [
+    "Rank C - Rings/Amulets",
+    "C 階 - 戒指／護身符"
+  ],
+  [
+    "Hidden starting with Giga Strict",
+    "Giga 嚴格度起隱藏"
+  ],
+  [
+    "Hidden starting with Mega Strict",
+    "Mega 嚴格度起隱藏"
+  ],
+  [
+    "Disabled starting with Mega Strict",
+    "Mega 嚴格度起停用"
+  ],
+  [
+    "Disabled starting with Apex Strict",
+    "Apex 嚴格度起停用"
+  ],
+  [
+    "Manage",
+    "管理"
+  ],
+  [
+    "Drop",
+    "掉落"
+  ],
+  [
+    "Active",
+    "啟用"
+  ],
+  [
+    "Temporary",
+    "暫時"
+  ],
+  [
+    "Info",
+    "資訊"
+  ],
+  [
+    "Huge",
+    "巨大"
+  ],
+  [
+    "Large",
+    "大"
+  ],
+  [
+    "More",
+    "更多"
+  ],
+  [
+    "All",
+    "全部"
+  ],
+  [
+    "Others",
+    "其他"
+  ],
+  [
+    "Either",
+    "任一"
+  ],
+  [
+    "Ranks",
+    "階級"
+  ],
+  [
+    "Sets",
+    "套組"
+  ],
+  [
+    "Atlas",
+    "輿圖"
+  ],
+  [
+    "Atlas Item",
+    "輿圖物品"
+  ],
+  [
+    "Weapons",
+    "武器"
+  ],
+  [
+    "Gear & Jewellery",
+    "裝備與飾品"
+  ],
+  [
+    "Flasks and Tinctures",
+    "藥劑與萃取物"
+  ],
+  [
+    "Silver Coins",
+    "銀幣"
+  ],
+  [
+    "Overquality",
+    "超品質"
+  ],
+  [
+    "Special Properties",
+    "特殊屬性"
+  ],
+  [
+    "Full Scarabs",
+    "完整聖甲蟲"
+  ],
+  [
+    "Other Reliquary Keys",
+    "其他遺鑰"
+  ],
+  [
+    "Exotic Identified Mods",
+    "異域鑑定詞綴"
+  ],
+  [
+    "Exotics: Foulborn Uniques",
+    "異域：穢生傳奇"
+  ],
+  [
+    "Blends of multiple good mods",
+    "多個優質詞綴組合"
+  ],
+  [
+    "Crafting-Zone Dropped Items",
+    "工藝區掉落物品"
+  ],
+  [
+    "Edit rule(s)",
+    "編輯規則"
+  ],
+  [
+    "Map Icon:",
+    "地圖圖示："
+  ],
+  [
+    "Play loot sounds",
+    "播放掉落音效"
+  ],
+  [
+    "Sync regularly icon",
+    "定期同步圖示"
+  ],
+  [
+    "Sync icon",
+    "同步圖示"
+  ],
+  [
+    "Download icon",
+    "下載圖示"
+  ],
+  [
+    "A valuable item without filter",
+    "未過濾時的有價值物品"
+  ],
+  [
+    "A valuable item with filter",
+    "過濾後的有價值物品"
+  ],
+  [
+    "Game & NPCs",
+    "遊戲與 NPC"
+  ],
+  [
+    "Community & Streamers",
+    "社群與實況主"
+  ],
+  [
+    "-- no custom sounds --",
+    "-- 無自訂音效 --"
+  ],
+  [
+    "No Sound",
+    "無音效"
+  ],
+  [
+    "Positional",
+    "定位音效"
+  ],
+  [
+    "Game & Community Sounds",
+    "遊戲與社群音效"
+  ],
+  [
+    "1 - May be valuable",
+    "1 - 可能很有價值"
+  ],
+  [
+    "2 - Currency",
+    "2 - 通貨"
+  ],
+  [
+    "3 - Uniques",
+    "3 - 傳奇"
+  ],
+  [
+    "4 - Maps",
+    "4 - 地圖"
+  ],
+  [
+    "5 - High maps",
+    "5 - 高階地圖"
+  ],
+  [
+    "6 - Very valuable",
+    "6 - 非常有價值"
+  ],
+  [
+    "7 - Chancing",
+    "7 - 機會石"
+  ],
+  [
+    "12 - Leveling",
+    "12 - 練等"
+  ],
+  [
+    "17 - Orb of Alchemy",
+    "17 - 點金石"
+  ],
+  [
+    "18 - Blessed Orb",
+    "18 - 祝福石"
+  ],
+  [
+    "19 - Chaos Orb",
+    "19 - 混沌石"
+  ],
+  [
+    "20 - Orb of Fusing",
+    "20 - 鏈結石"
+  ],
+  [
+    "22 - Regal Orb",
+    "22 - 富豪石"
+  ],
+  [
+    "23 - Vaal Orb",
+    "23 - 瓦爾寶珠"
+  ],
+  [
+    "24 - Divine Orb",
+    "24 - 神聖石"
+  ],
+  [
+    "25 - Exalted Orb",
+    "25 - 崇高石"
+  ],
+  [
+    "26 - Mirror of Kalandra",
+    "26 - 卡蘭德的魔鏡"
   ]
 ]
