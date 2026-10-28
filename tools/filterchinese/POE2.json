@@ -1172,26 +1172,6 @@
     "這邊主要用來篩選捷光環戒指，也可以透過新增基礎類型來篩選其他的追憶傳奇，如無常禮袍、銀河星雲等"
   ],
   [
-    "You can detect other Synthesised uniques in this rule or in Rational Doctrine rule by adding their basetypes:",
-    ""
-  ],
-  [
-    "Garb of the Ephemeral: Savant's Robe",
-    ""
-  ],
-  [
-    "Mask of the Tribulan: Magistrate Crown",
-    ""
-  ],
-  [
-    "Nebulis: Void Sceptre",
-    ""
-  ],
-  [
-    "Offering to the Serpent: Legion Gloves",
-    ""
-  ],
-  [
     "Exotics: Corrupted Uniques",
     "已腐化的傳奇"
   ],
@@ -3882,10 +3862,6 @@
   [
     "Memory Stranded gear identifies with better modtiers and the strands can be consumed to empower crating outcomes!",
     "記憶絲縷裝備具有更好的詞綴等級，並且可以增強工藝結果！"
-  ],
-  [
-    "window['nitroAds'].createAd('NitroPayAdDynamic1', {\n  \"refreshLimit\": 10,\n  \"refreshTime\": 60,\n  \"renderVisibleOnly\": true,\n  \"refreshVisibleOnly\": true,\n  \"sizes\": [\n    [\n      \"728\",\n      \"90\"\n    ]\n  ,\n  \"report\": {\n    \"enabled\": true,\n    \"wording\": \"Report Ad\",\n    \"position\": \"top-right\"\n  }\n});",
-    ""
   ],
   [
     "Notable Drops",
@@ -57186,5 +57162,3057 @@
   [
     "The Master's Reach",
     "主宰之觸"
+  ],
+  [
+    "to PoE",
+    "到 PoE"
+  ],
+  [
+    "Campaign & Exotic Currencies",
+    "章節與特殊通貨"
+  ],
+  [
+    "Endgame (level 65+)",
+    "終局（等級 65+）"
+  ],
+  [
+    "Waystones, Tablets & Content Keys",
+    "換界石、碑牌與內容鑰匙"
+  ],
+  [
+    "Chancing & Salvaging",
+    "機會石製作與分解"
+  ],
+  [
+    "Flasks, Charms, Jewels",
+    "藥劑、護符、珠寶"
+  ],
+  [
+    "Campaign (level 1-64)",
+    "章節（等級 1-64）"
+  ],
+  [
+    "Global Filter Themes",
+    "全域過濾器主題"
+  ],
+  [
+    "FilterBlade now supports mobile devices! You can open the navigation using the button at the very top left to access the different pages.",
+    "FilterBlade 現在支援行動裝置！你可以用左上角的按鈕開啟導覽列，前往各個頁面。"
+  ],
+  [
+    "based on NeverSink's filters.",
+    "，基於 NeverSink 的過濾器。"
+  ],
+  [
+    "It turns",
+    "它會將"
+  ],
+  [
+    "this",
+    "這個"
+  ],
+  [
+    "Into",
+    "變成"
+  ],
+  [
+    "build",
+    "流派"
+  ],
+  [
+    "progress",
+    "進度"
+  ],
+  [
+    "in the game. If you want, you can further fine-tune it using the",
+    "。若想進一步微調，可以使用"
+  ],
+  [
+    "tab.",
+    "分頁。"
+  ],
+  [
+    "Open the",
+    "開啟"
+  ],
+  [
+    "'Auto-Adjust for Build'",
+    "「依流派自動調整」"
+  ],
+  [
+    "and select your inGame character class, then apply and",
+    "，選擇你遊戲中的角色職業，然後套用並"
+  ],
+  [
+    "the filter. That's it!",
+    "過濾器。就這樣！"
+  ],
+  [
+    "For now...",
+    "目前為止…"
+  ],
+  [
+    "You can come back later to fine-tune when you notice things that you'd like to change!",
+    "之後若發現想改的地方，隨時可以回來微調！"
+  ],
+  [
+    "You're done? Head to the",
+    "完成了嗎？前往"
+  ],
+  [
+    "export screen",
+    "匯出頁面"
+  ],
+  [
+    "to save the filter to your FilterBlade account and either download a filter-file or upload it directly into your PoE account.",
+    "將過濾器存到你的 FilterBlade 帳號，並下載過濾器檔案，或直接上傳到你的 PoE 帳號。"
+  ],
+  [
+    "Login with your PoE account to save your filter during",
+    "登入 PoE 帳號即可在"
+  ],
+  [
+    "When you return to FilterBlade, you will see all your saved filters on the",
+    "當你回到 FilterBlade，所有已儲存的過濾器會顯示在"
+  ],
+  [
+    "'My Filters'",
+    "「我的過濾器」"
+  ],
+  [
+    "screen to continue editing!",
+    "頁面，讓你繼續編輯！"
+  ],
+  [
+    "tab shows typical items with their current visuals and explanations of why they are special. Good to get an overview of the current filter and learn about its colors and highlights.",
+    "分頁會顯示典型物品目前的視覺效果，並說明它們為何特別。很適合概覽目前過濾器、了解其顏色與高亮。"
+  ],
+  [
+    "Want to test your filter? Verify your results? Find out why an item inGame is highlighted? Check out our tools on the",
+    "想測試過濾器？驗證結果？想知道遊戲中某個物品為何被高亮？看看我們在"
+  ],
+  [
+    "screen.",
+    "頁面提供的工具。"
+  ],
+  [
+    "Planning a big rework of colors, sizes and sounds? The",
+    "打算大改顏色、大小與音效嗎？"
+  ],
+  [
+    "'Themes'",
+    "「主題」"
+  ],
+  [
+    "tab has a lot of tool for large-scale edits like that!",
+    "分頁有許多工具可做這類大規模編輯！"
+  ],
+  [
+    "Use the search bar at the top, check our",
+    "使用上方搜尋列，查看我們的"
+  ],
+  [
+    ", or ask in our",
+    "，或在我們的"
+  ],
+  [
+    "Currency Tier 1",
+    "通貨 T1"
+  ],
+  [
+    "10 (new)",
+    "10（新）"
+  ],
+  [
+    "11 (new)",
+    "11（新）"
+  ],
+  [
+    "12 (new)",
+    "12（新）"
+  ],
+  [
+    "13 (new)",
+    "13（新）"
+  ],
+  [
+    "14 (new)",
+    "14（新）"
+  ],
+  [
+    "15 (new)",
+    "15（新）"
+  ],
+  [
+    "16 (new)",
+    "16（新）"
+  ],
+  [
+    "21 - Orb of immense power",
+    "21 - 巨大之力寶石"
+  ],
+  [
+    "Currency Tier 2",
+    "通貨 T2"
+  ],
+  [
+    "Currency Tier 3",
+    "通貨 T3"
+  ],
+  [
+    "Currency Tier 4",
+    "通貨 T4"
+  ],
+  [
+    "Currency Tier 5",
+    "通貨 T5"
+  ],
+  [
+    "E Tier",
+    "E 階"
+  ],
+  [
+    "Currency Tier 6",
+    "通貨 T6"
+  ],
+  [
+    "Supplies: Magic & Shards",
+    "補給：魔法與碎片"
+  ],
+  [
+    "Supplies 2: Magic crafting and higher shards",
+    "補給 2：魔法工藝與高階碎片"
+  ],
+  [
+    "Supplies: Scrolls",
+    "補給：卷軸"
+  ],
+  [
+    "Supplies 3: Scrolls and low shards",
+    "補給 3：卷軸與低階碎片"
+  ],
+  [
+    "Lesser Jeweller's",
+    "低階珠寶匠"
+  ],
+  [
+    "Campaign Currencies Jewellers",
+    "章節通貨珠寶匠"
+  ],
+  [
+    "Regal, Artificers, Essences",
+    "富豪、工匠、精髓"
+  ],
+  [
+    "Campaign Currencies 1",
+    "章節通貨 1"
+  ],
+  [
+    "Transmutes+Augments",
+    "蛻變＋增幅"
+  ],
+  [
+    "Campaign Currencies 2",
+    "章節通貨 2"
+  ],
+  [
+    "Wisdom Scrolls (act 1)",
+    "知識卷軸（第一章）"
+  ],
+  [
+    "Campaign Currencies 4",
+    "章節通貨 4"
+  ],
+  [
+    "Wisdom Scrolls (later acts)",
+    "知識卷軸（後續章節）"
+  ],
+  [
+    "Campaign Currencies 3",
+    "章節通貨 3"
+  ],
+  [
+    "Catalysts Tier 1",
+    "催化劑 T1"
+  ],
+  [
+    "Catalysts Tier 2",
+    "催化劑 T2"
+  ],
+  [
+    "Catalysts Tier 3",
+    "催化劑 T3"
+  ],
+  [
+    "Catalysts Tier 4",
+    "催化劑 T4"
+  ],
+  [
+    "Catalysts Tier 5",
+    "催化劑 T5"
+  ],
+  [
+    "Catalysts Tier 6",
+    "催化劑 T6"
+  ],
+  [
+    "Omen Tier 1",
+    "預兆 T1"
+  ],
+  [
+    "Omen Tier 2",
+    "預兆 T2"
+  ],
+  [
+    "Omen Tier 3",
+    "預兆 T3"
+  ],
+  [
+    "Omen Tier 4",
+    "預兆 T4"
+  ],
+  [
+    "Omen Tier 5",
+    "預兆 T5"
+  ],
+  [
+    "Omen Tier 6",
+    "預兆 T6"
+  ],
+  [
+    "Supplies: Lesser Runes",
+    "補給：低階符文"
+  ],
+  [
+    "Gems, Lineage, Tier S",
+    "寶石，血脈，S 階"
+  ],
+  [
+    "Gems, Lineage, Tier A",
+    "寶石，血脈，A 階"
+  ],
+  [
+    "Gems, Lineage, Tier B",
+    "寶石，血脈，B 階"
+  ],
+  [
+    "Gems, Lineage, Tier C",
+    "寶石，血脈，C 階"
+  ],
+  [
+    "ENDGAME: Skill Gems",
+    "終局：技能寶石"
+  ],
+  [
+    "ENDGAME: Spirit Gems",
+    "終局：精魂寶石"
+  ],
+  [
+    "High Level Gems",
+    "高階寶石"
+  ],
+  [
+    "Spirit, Level 20",
+    "精魂，等級 20"
+  ],
+  [
+    "Gems, Spirit, Level 20",
+    "寶石，精魂，等級 20"
+  ],
+  [
+    "Spirit, Level 19",
+    "精魂，等級 19"
+  ],
+  [
+    "Gems, Spirit, Level 19",
+    "寶石，精魂，等級 19"
+  ],
+  [
+    "Progression: Best gems Droppable in Waystone Tier",
+    "進程：當前換界石階級可掉落的最佳寶石"
+  ],
+  [
+    "Spirit Gems, Progression, Level 18",
+    "精魂寶石，進程，等級 18"
+  ],
+  [
+    "Spirit Gems, Progression, Level 17",
+    "精魂寶石，進程，等級 17"
+  ],
+  [
+    "Spirit Gems, Progression, Level 16",
+    "精魂寶石，進程，等級 16"
+  ],
+  [
+    "Spirit Gems, Progression, Level 15",
+    "精魂寶石，進程，等級 15"
+  ],
+  [
+    "Spirit Gems, Progression, Level 14",
+    "精魂寶石，進程，等級 14"
+  ],
+  [
+    "Other Lower Level Spirit Gems",
+    "其他較低等級精魂寶石"
+  ],
+  [
+    "Gems, Spirit, Endgame",
+    "寶石，精魂，終局"
+  ],
+  [
+    "ENDGAME: Support",
+    "終局：輔助"
+  ],
+  [
+    "CAMPAIGN: Gems",
+    "章節：寶石"
+  ],
+  [
+    "Uniques Tier 3",
+    "傳奇 T3"
+  ],
+  [
+    "Uniques EarlyLeague",
+    "傳奇賽季初期"
+  ],
+  [
+    "Uniques Hideable",
+    "可隱藏傳奇"
+  ],
+  [
+    "Uniques MultiSpecial High",
+    "傳奇多重特殊高"
+  ],
+  [
+    "Uniques MultiSpecial",
+    "傳奇多重特殊"
+  ],
+  [
+    "Uniques Tier 3 Boss",
+    "傳奇 T3 首領"
+  ],
+  [
+    "Most of the new currencies, omens and augments have been added to the 'general' tierlists, however with these, we know so little, I've put into their own list. Will be updated once we have data",
+    "大多數新通貨、預兆與增幅已加入「一般」階級清單，但這些我們了解太少，因此另立清單。有資料後會更新。"
+  ],
+  [
+    "Wombgifts, Ward-Gems, Undiscovered Items",
+    "胎贈、守護寶石、未發現物品"
+  ],
+  [
+    "New items, S Tier",
+    "新物品，S 階"
+  ],
+  [
+    "New items, A Tier",
+    "新物品，A 階"
+  ],
+  [
+    "New items, B Tier",
+    "新物品，B 階"
+  ],
+  [
+    "New items, C Tier",
+    "新物品，C 階"
+  ],
+  [
+    "New items, D Tier",
+    "新物品，D 階"
+  ],
+  [
+    "New items, E Tier",
+    "新物品，E 階"
+  ],
+  [
+    "Verisium, massive stack",
+    "維里西姆，巨量堆疊"
+  ],
+  [
+    "Verisium, huge stack",
+    "維里西姆，極大堆疊"
+  ],
+  [
+    "Verisium, large stack",
+    "維里西姆，大量堆疊"
+  ],
+  [
+    "Breach Crafting",
+    "裂痕工藝"
+  ],
+  [
+    "Pseudo crafts 1",
+    "偽工藝 1"
+  ],
+  [
+    "Pseudo crafts 2",
+    "偽工藝 2"
+  ],
+  [
+    "Misc. Rules (safeguards, just in case)",
+    "雜項規則（安全防護，以防萬一）"
+  ],
+  [
+    "These augments likely don't drop, but we have a safety rule just in case.",
+    "這些增幅可能不會掉落，但我們仍準備了安全規則以防萬一。"
+  ],
+  [
+    "Unique-Extracted Augments",
+    "傳奇萃取增幅"
+  ],
+  [
+    "Legacy of",
+    "遺產"
+  ],
+  [
+    "Gold can be hidden and will still be auto-picked up if you walk next to it.",
+    "金幣可以隱藏，只要走近仍會自動拾取。"
+  ],
+  [
+    "Campaign Exclusive Gold Rules",
+    "章節專屬金幣規則"
+  ],
+  [
+    "Campaign Gold Large Stacks Act 1-2",
+    "章節金幣大量堆疊第一章-第二章"
+  ],
+  [
+    "Gold Pile: Large (Early Acts)",
+    "金幣堆：大型（前期章節）"
+  ],
+  [
+    "Campaign Gold Large Stacks Act 3+",
+    "章節金幣大量堆疊第三章+"
+  ],
+  [
+    "Gold Pile: Large (Late Acts)",
+    "金幣堆：大型（後期章節）"
+  ],
+  [
+    "Gold Pile: Medium (Campaign Act 1)",
+    "金幣堆：中型（章節第一章）"
+  ],
+  [
+    "Gold Pile: Medium (Campaign) 1",
+    "金幣堆：中型（章節）1"
+  ],
+  [
+    "Gold Pile: Medium (Campaign Act 2-3)",
+    "金幣堆：中型（章節第二～三章）"
+  ],
+  [
+    "Gold Pile: Medium (Campaign) 2",
+    "金幣堆：中型（章節）2"
+  ],
+  [
+    "Gold Pile: Medium (Campaign Acts 4+)",
+    "金幣堆：中型（章節第四章+）"
+  ],
+  [
+    "Gold Pile: Medium (Campaign)",
+    "金幣堆：中型（章節）"
+  ],
+  [
+    "Gold Pile: Gigantic",
+    "金幣堆：巨大"
+  ],
+  [
+    "Gold Pile: Large",
+    "金幣堆：大型"
+  ],
+  [
+    "Gold Pile: Medium (Endgame)",
+    "金幣堆：中型（終局）"
+  ],
+  [
+    "Gold Pile: Remaining",
+    "金幣堆：剩餘"
+  ],
+  [
+    "Gold Pile: Small",
+    "金幣堆：小型"
+  ],
+  [
+    "Waystone",
+    "換界石"
+  ],
+  [
+    "Waystones, Enchanted 1",
+    "換界石，已附魔 1"
+  ],
+  [
+    "• WaystoneTier:",
+    "• 換界石階級："
+  ],
+  [
+    "Waystones, Enchanted 2",
+    "換界石，已附魔 2"
+  ],
+  [
+    "Waystones, Enchanted 34",
+    "換界石，已附魔 3-4"
+  ],
+  [
+    "Waystones, Corrupted 8 Mods High",
+    "換界石，已腐化 8 詞綴高"
+  ],
+  [
+    "Waystones, Corrupted 8 Mods",
+    "換界石，已腐化 8 詞綴"
+  ],
+  [
+    "Any Corrupted (Normal/Magic)",
+    "任意已腐化（普通／魔法）"
+  ],
+  [
+    "Waystones, Corrupted",
+    "換界石，已腐化"
+  ],
+  [
+    "Any Mirrored (Normal/Magic)",
+    "任意已複製（普通／魔法）"
+  ],
+  [
+    "Waystones, Mirrored",
+    "換界石，已複製"
+  ],
+  [
+    "The following rule will highlight all RARE waystones, however it takes less priority than other rules. It's useful if you want to sell them for gold to vendors.",
+    "以下規則會突顯所有稀有換界石，但優先度低於其他規則。若你想賣給商人換金幣，這條規則很有用。"
+  ],
+  [
+    "Any Remaining Rare",
+    "任意剩餘稀有"
+  ],
+  [
+    "Waystones, Rare",
+    "換界石，稀有"
+  ],
+  [
+    "Waystones Tier 16",
+    "換界石 T16"
+  ],
+  [
+    "Waystones Tier 15",
+    "換界石 T15"
+  ],
+  [
+    "Waystones Tier 14",
+    "換界石 T14"
+  ],
+  [
+    "Waystones Tier 13",
+    "換界石 T13"
+  ],
+  [
+    "Waystones Tier 12",
+    "換界石 T12"
+  ],
+  [
+    "Waystones Tier 11",
+    "換界石 T11"
+  ],
+  [
+    "Waystones Tier 10",
+    "換界石 T10"
+  ],
+  [
+    "Waystones Tier 9",
+    "換界石 T9"
+  ],
+  [
+    "Waystones Tier 8",
+    "換界石 T8"
+  ],
+  [
+    "Waystones Tier 7",
+    "換界石 T7"
+  ],
+  [
+    "Waystones Tier 6",
+    "換界石 T6"
+  ],
+  [
+    "Waystones Tier 5",
+    "換界石 T5"
+  ],
+  [
+    "Waystones Tier 4",
+    "換界石 T4"
+  ],
+  [
+    "Waystones Tier 3",
+    "換界石 T3"
+  ],
+  [
+    "Waystones Tier 2",
+    "換界石 T2"
+  ],
+  [
+    "Waystones Tier 1",
+    "換界石 T1"
+  ],
+  [
+    "Decorators are special rules. They change the APPEARANCE (only) of certain items, without deciding if the item should be hidden or shown. They allow highlighting certain properties on gear.",
+    "裝飾是特殊規則。它們只改變特定物品的「外觀」，不決定物品該隱藏或顯示。可用來突顯裝備的特定屬性。"
+  ],
+  [
+    "If waystone is a tier upgrade...",
+    "若換界石是階級升級…"
+  ],
+  [
+    "These rules add highlighting to waystones that one one tier higher than the one you're currently in - without affecting if the item gets hidden or not.",
+    "這些規則會突顯比你目前所在階級高一階的換界石，但不影響物品是否被隱藏。"
+  ],
+  [
+    "Decorate",
+    "裝飾"
+  ],
+  [
+    "Waystone Upgrade Decorator Tier 16 (1/16)",
+    "換界石升級裝飾 T16(1/16)"
+  ],
+  [
+    "If corrupted+has implicit...",
+    "若已腐化且有固定詞綴…"
+  ],
+  [
+    "Waystones, Decorator, Corrupted Mod",
+    "換界石，裝飾，腐化詞綴"
+  ],
+  [
+    "If Tier15+...",
+    "若階級 15+…"
+  ],
+  [
+    "Waystones, Decorator, Top Tier",
+    "換界石，裝飾，頂階"
+  ],
+  [
+    "If Tier is 12-14...",
+    "若階級為 12-14…"
+  ],
+  [
+    "Waystones, Decorator, High Tier",
+    "換界石，裝飾，高階"
+  ],
+  [
+    "If Tier is 6-11...",
+    "若階級為 6-11…"
+  ],
+  [
+    "Waystones, Decorator, Mid Tier",
+    "換界石，裝飾，中階"
+  ],
+  [
+    "If Tier is 1-5...",
+    "若階級為 1-5…"
+  ],
+  [
+    "Waystones, Decorator, Low Tier",
+    "換界石，裝飾，低階"
+  ],
+  [
+    "If waystone is outleveled 1...",
+    "若換界石超出等級 1…"
+  ],
+  [
+    "Waystones, Decorator, Overleveled 1",
+    "換界石，裝飾，等級過高 1"
+  ],
+  [
+    "If waystone is outleveled 2...",
+    "若換界石超出等級 2…"
+  ],
+  [
+    "Waystones, Decorator, Overleveled 2",
+    "換界石，裝飾，等級過高 2"
+  ],
+  [
+    "Waystones, Decorator, Overleveled 3",
+    "換界石，裝飾，等級過高 3"
+  ],
+  [
+    "If waystone is outleveled 3...",
+    "若換界石超出等級 3…"
+  ],
+  [
+    "Waystones, Decorator, Overleveled 4",
+    "換界石，裝飾，等級過高 4"
+  ],
+  [
+    "Vault Keys, Pinnacle Keys, Logbooks",
+    "寶庫鑰匙、巔峰鑰匙、探險日誌"
+  ],
+  [
+    "Logbooks",
+    "探險日誌"
+  ],
+  [
+    "Currently Vault keys can NOT be completely hidden. You can make them small/transparent instead.",
+    "目前寶庫鑰匙無法完全隱藏，只能改為縮小／透明。"
+  ],
+  [
+    "Pinnacle Boss Keys",
+    "巔峰首領鑰匙"
+  ],
+  [
+    "Boss-Drop Vault Keys",
+    "首領掉落寶庫鑰匙"
+  ],
+  [
+    "Vault Keys Rare",
+    "寶庫鑰匙稀有"
+  ],
+  [
+    "Common Vault Keys",
+    "普通寶庫鑰匙"
+  ],
+  [
+    "Other Vault Keys",
+    "其他寶庫鑰匙"
+  ],
+  [
+    "Vault Keys (Other)",
+    "寶庫鑰匙（其他）"
+  ],
+  [
+    "Chancing bases Tier S",
+    "機會石基底 S 階"
+  ],
+  [
+    "Chancing bases Tier A",
+    "機會石基底 A 階"
+  ],
+  [
+    "Endgame Salvageable Items",
+    "終局可分解物品"
+  ],
+  [
+    "Certain items can be salvaged at an NPC in town in return for crafting currencies.",
+    "某些物品可以在城鎮的 NPC 處分解，換取工藝通貨。"
+  ],
+  [
+    "Salvages into: 2+ Whetstones",
+    "分解可得：2+ 磨刀石"
+  ],
+  [
+    "Salvagable (High Quality, weapons) (1/2)",
+    "可分解（高品質，武器）(1/2)"
+  ],
+  [
+    "Salvages into: 2+ Etchers",
+    "分解可得：2+ 蝕刻匠"
+  ],
+  [
+    "Salvagable (High Quality, caster) (1/2)",
+    "可分解（高品質，施法）(1/2)"
+  ],
+  [
+    "Salvages into: 2+ Armourers",
+    "分解可得：2+ 護甲匠"
+  ],
+  [
+    "Salvagable (High Quality, armour) (1/2)",
+    "可分解（高品質，護甲）(1/2)"
+  ],
+  [
+    "Salvages into: 2+ Glassblowers",
+    "分解可得：2+ 玻璃匠"
+  ],
+  [
+    "Salvagable (High Quality, flasks)",
+    "可分解（高品質，藥劑）"
+  ],
+  [
+    "Salvages into: 1 Whetstone",
+    "分解可得：1 磨刀石"
+  ],
+  [
+    "Salvagable (Quality, weapons) (1/2)",
+    "可分解（品質，武器）(1/2)"
+  ],
+  [
+    "Salvages into: 1 Etcher",
+    "分解可得：1 蝕刻匠"
+  ],
+  [
+    "Salvagable (Quality, caster) (1/2)",
+    "可分解（品質，施法）(1/2)"
+  ],
+  [
+    "Salvages into: 1 Armourer",
+    "分解可得：1 護甲匠"
+  ],
+  [
+    "Salvagable (Quality, armour) (1/2)",
+    "可分解（品質，護甲）(1/2)"
+  ],
+  [
+    "Salvages into: 1 Glassblowers",
+    "分解可得：1 玻璃匠"
+  ],
+  [
+    "Salvagable (Quality, flasks)",
+    "可分解（品質，藥劑）"
+  ],
+  [
+    "Salvaging small items is more efficient:",
+    "分解小型物品更有效率："
+  ],
+  [
+    "Small Item: Artificer Shards",
+    "小型物品：工匠碎片"
+  ],
+  [
+    "Salvagable (Sockets, small 1) (1/4)",
+    "可分解（洞數，小型 1）(1/4)"
+  ],
+  [
+    "Large Item: Artificer Shards",
+    "大型物品：工匠碎片"
+  ],
+  [
+    "Salvagable (Sockets, large 1) (1/2)",
+    "可分解（洞數，大型 1）(1/2)"
+  ],
+  [
+    "Campaign Salvageable Items",
+    "章節可分解物品"
+  ],
+  [
+    "Campaign Salvable (High Quality, weapons)",
+    "章節可分解（高品質，武器）"
+  ],
+  [
+    "Campaign Salvable (High Quality, caster)",
+    "章節可分解（高品質，施法）"
+  ],
+  [
+    "Campaign Salvable (High Quality, armour)",
+    "章節可分解（高品質，護甲）"
+  ],
+  [
+    "Salvages into: 2+ Glassblower",
+    "分解可得：2+ 玻璃匠"
+  ],
+  [
+    "Campaign Salvable (High Quality, flasks)",
+    "章節可分解（高品質，藥劑）"
+  ],
+  [
+    "Campaign Salvable (Quality, weapons)",
+    "章節可分解（品質，武器）"
+  ],
+  [
+    "Campaign Salvable (Quality, caster)",
+    "章節可分解（品質，施法）"
+  ],
+  [
+    "Campaign Salvable (Quality, armour)",
+    "章節可分解（品質，護甲）"
+  ],
+  [
+    "Salvages into: 1 Glassblower",
+    "分解可得：1 玻璃匠"
+  ],
+  [
+    "Campaign Salvable (Quality, flasks)",
+    "章節可分解（品質，藥劑）"
+  ],
+  [
+    "Small Item: Artificer Shards (2x2)",
+    "小型物品：工匠碎片（2x2）"
+  ],
+  [
+    "Campaign Salvable (Sockets, small 1)",
+    "章節可分解（洞數，小型 1）"
+  ],
+  [
+    "Small Item: Artificer Shards (1x4",
+    "小型物品：工匠碎片（1x4"
+  ],
+  [
+    "Campaign Salvable (Sockets, small 2)",
+    "章節可分解（洞數，小型 2）"
+  ],
+  [
+    "Campaign Salvable (Sockets, large 1)",
+    "章節可分解（洞數，大型 1）"
+  ],
+  [
+    "Normal/Magic",
+    "普通／魔法"
+  ],
+  [
+    "Endgame Hide, Crafting, Armour",
+    "終局隱藏，工藝，護甲"
+  ],
+  [
+    "Magic and Rare items may drop with a Tier in the endgame. The highest tier is 5. Higher tier items have significantly better chances of rolling good mods and higher mod tiers!",
+    "終局掉落的魔法與稀有物品可能帶有階級，最高為 5 階。階級越高，擲出好詞綴與高階詞綴的機率明顯更高！"
+  ],
+  [
+    "Endgame Hide, Crafting, Evasion",
+    "終局隱藏，工藝，閃避"
+  ],
+  [
+    "Endgame Hide, Crafting, ES",
+    "終局隱藏，工藝，能量護盾"
+  ],
+  [
+    "Endgame Hide, Crafting, Ar-Ev",
+    "終局隱藏，工藝，護甲＋閃避"
+  ],
+  [
+    "Endgame Hide, Crafting, Ar-ES",
+    "終局隱藏，工藝，護甲＋能量護盾"
+  ],
+  [
+    "Endgame Hide, Crafting, ES-EV",
+    "終局隱藏，工藝，閃避＋能量護盾"
+  ],
+  [
+    "Endgame Hide, Crafting, WeaponTypes",
+    "終局隱藏，工藝，武器類型"
+  ],
+  [
+    "1H Melee:",
+    "單手近戰："
+  ],
+  [
+    "2H Melee:",
+    "雙手近戰："
+  ],
+  [
+    "Caster Weapon:",
+    "施法武器："
+  ],
+  [
+    "Rares",
+    "稀有"
+  ],
+  [
+    "Endgame Hide, Rare, Armour",
+    "終局隱藏，稀有，護甲"
+  ],
+  [
+    "Endgame Hide, Rare, Evasion",
+    "終局隱藏，稀有，閃避"
+  ],
+  [
+    "Endgame Hide, Rare, ES",
+    "終局隱藏，稀有，能量護盾"
+  ],
+  [
+    "Endgame Hide, Rare, Ar-Ev",
+    "終局隱藏，稀有，護甲＋閃避"
+  ],
+  [
+    "Endgame Hide, Rare, Ar-ES",
+    "終局隱藏，稀有，護甲＋能量護盾"
+  ],
+  [
+    "Endgame Hide, Rare, ES-EV",
+    "終局隱藏，稀有，閃避＋能量護盾"
+  ],
+  [
+    "Endgame Hide, Rare, Identified",
+    "終局隱藏，稀有，已鑑定"
+  ],
+  [
+    "Endgame Hide, Rare, Corrupted",
+    "終局隱藏，稀有，已腐化"
+  ],
+  [
+    "Endgame Hide, Rare, WeaponTypes",
+    "終局隱藏，稀有，武器類型"
+  ],
+  [
+    "This section is designed to be foolproof. These sections frequently feature the 'strictness' dropdown menu. This tool defines how many rules are overwritten by your custom rules. I recommend playing around with the loot simulator, while switching back and forth to the customizer to get familiar with this section",
+    "此區塊設計成不會出錯。這些區塊常附有「嚴格度」下拉選單，用來決定你的自訂規則會覆寫多少規則。建議在掠奪模擬器與自訂器之間來回切換，以熟悉這個區塊。"
+  ],
+  [
+    "Decorators: Rare Endgame Items",
+    "裝飾：終局稀有物品"
+  ],
+  [
+    "Decorators: Normal/Magic Items",
+    "裝飾：普通／魔法物品"
+  ],
+  [
+    "Economy Based Crafting Bases",
+    "經濟導向工藝基底"
+  ],
+  [
+    "These bases are used to craft high value items and are quite valuable to crafters. The high level bases (82) require a combination of corrupted/irradiated/+1level areas to be found. The high tier bases commonly sell for 25ex each. This is an experimental section. Expect frequent updates here.",
+    "這些基底用於製作高價值物品，對工藝玩家相當有價值。高等級基底（82）需要在腐化／輻射／+1 等級區域的組合中才能找到。高階基底通常每個可賣 25ex。此區塊為實驗性質，可能頻繁更新。"
+  ],
+  [
+    "LVL82 bases (High Tier)",
+    "82 級基底（高階）"
+  ],
+  [
+    "Eco-Based Lvl82 Crafting (high)",
+    "經濟導向 82 級工藝（高）"
+  ],
+  [
+    "LVL82 bases (Common Tier)",
+    "82 級基底（常見階）"
+  ],
+  [
+    "Eco-Based Lvl82 Crafting (low)",
+    "經濟導向 82 級工藝（低）"
+  ],
+  [
+    "LVL81 bases (High Tier)",
+    "81 級基底（高階）"
+  ],
+  [
+    "Eco-Based Lvl81 Crafting (high)",
+    "經濟導向 81 級工藝（高）"
+  ],
+  [
+    "LVL81 bases (Common Tier)",
+    "81 級基底（常見階）"
+  ],
+  [
+    "Eco-Based Lvl81 Crafting (low)",
+    "經濟導向 81 級工藝（低）"
+  ],
+  [
+    "LVL79 bases",
+    "79 級基底"
+  ],
+  [
+    "Eco-Based Lvl79 Crafting",
+    "經濟導向 79 級工藝"
+  ],
+  [
+    "Rares: Control Visibility",
+    "稀有：可見度控制"
+  ],
+  [
+    "RARES: TIER 2+",
+    "稀有：T2+"
+  ],
+  [
+    "MAGICS: Tier 2+",
+    "魔法：T2+"
+  ],
+  [
+    "Control Tiering:",
+    "階級控制："
+  ],
+  [
+    "5-10% of Damage is taken from Mana before Life",
+    "5-10% 的傷害由魔力先於生命承受"
+  ],
+  [
+    "20-25% increased Energy Shield Recharge Rate",
+    "能量護盾回復率提高 20-25%"
+  ],
+  [
+    "40-50% increased Mana Regeneration Rate",
+    "魔力回復率提高 40-50%"
+  ],
+  [
+    "Chancing Overquality",
+    "機會石超品質"
+  ],
+  [
+    "Chancing 3 Sockets (1/2)",
+    "機會石 3 洞(1/2)"
+  ],
+  [
+    "Oversocketed Tier 1a (1/2)",
+    "超洞數 T1a(1/2)"
+  ],
+  [
+    "Overqualitied a (1/1)",
+    "超品質 a(1/1)"
+  ],
+  [
+    "Oversocketed Tier 2a (1/2)",
+    "超洞數 T2a(1/2)"
+  ],
+  [
+    "Overqualitied b (1/1)",
+    "超品質 b(1/1)"
+  ],
+  [
+    "These rules have lower priority than S and A tier uniques",
+    "這些規則的優先度低於 S 階與 A 階傳奇"
+  ],
+  [
+    "Exceptional Overquality Uniques",
+    "卓越超品質傳奇"
+  ],
+  [
+    "Exceptional Oversocket Uniques 1 (1/2)",
+    "卓越超洞數傳奇 1(1/2)"
+  ],
+  [
+    "ILVL81 Caster Items",
+    "物等 81 施法物品"
+  ],
+  [
+    "ILVL81 Crafting Wands",
+    "物等 81 工藝法杖"
+  ],
+  [
+    "Override: Rare items with Mod Tier (and all rules below)",
+    "覆寫：帶詞綴階級的稀有物品（以及下方所有規則）"
+  ],
+  [
+    "Override: Normal-Rare items, excluding High Tier & Chancing (and all rules below)",
+    "覆寫：普通～稀有物品，排除高階與機會石基底（以及下方所有規則）"
+  ],
+  [
+    "Override: Rare Endgame Items - T1 (75ish+ gear), no tier (and all rules below)",
+    "覆寫：終局稀有物品 - T1（約 75+ 裝備），無階級（以及下方所有規則）"
+  ],
+  [
+    "Override: Rare Endgame Items - T2 (70ish+ gear), no tier (and all rules below)",
+    "覆寫：終局稀有物品 - T2（約 70+ 裝備），無階級（以及下方所有規則）"
+  ],
+  [
+    "Override: Rare Endgame Items - T3 (65ish+ gear), no tier (and all rules below)",
+    "覆寫：終局稀有物品 - T3（約 65+ 裝備），無階級（以及下方所有規則）"
+  ],
+  [
+    "Override: Rare Endgame Items - T4 (55ish+ gear), no tier (and all rules below)",
+    "覆寫：終局稀有物品 - T4（約 55+ 裝備），無階級（以及下方所有規則）"
+  ],
+  [
+    "Override: Rare Endgame Items - T5 (lower), no tier (and all rules below)",
+    "覆寫：終局稀有物品 - T5（較低），無階級（以及下方所有規則）"
+  ],
+  [
+    "If the item is tiny...",
+    "若物品為極小…"
+  ],
+  [
+    "Endgame Rare Decorator, tiny",
+    "終局稀有裝飾，極小"
+  ],
+  [
+    "If the ILVL is 82 or higher...",
+    "若物等為 82 或以上…"
+  ],
+  [
+    "Endgame Rare Decorator, ilvl 82",
+    "終局稀有裝飾，物等 82"
+  ],
+  [
+    "If the item is corrupted...",
+    "若物品已腐化…"
+  ],
+  [
+    "Endgame Rare Decorator, corrupted",
+    "終局稀有裝飾，已腐化"
+  ],
+  [
+    "if the item has a corrupted mod...",
+    "若物品帶有腐化詞綴…"
+  ],
+  [
+    "Endgame Rare Decorator, corrupted implicit",
+    "終局稀有裝飾，腐化固定詞綴"
+  ],
+  [
+    "If item is ILVL 81+ caster item...",
+    "若物品為物等 81+ 施法物品…"
+  ],
+  [
+    "Endgame Rare Decorator, ilvl 81 caster",
+    "終局稀有裝飾，物等 81 施法"
+  ],
+  [
+    "Caster Weapon",
+    "施法武器"
+  ],
+  [
+    "if ilvl is 80...",
+    "若物等為 80…"
+  ],
+  [
+    "Endgame Rare Decorator, Ilvl 80",
+    "終局稀有裝飾，物等 80"
+  ],
+  [
+    "If the item is medium-sized...",
+    "若物品為中型…"
+  ],
+  [
+    "Endgame Rare Decorator, medium 1",
+    "終局稀有裝飾，中型 1"
+  ],
+  [
+    "Endgame Rare Decorator, medium 2",
+    "終局稀有裝飾，中型 2"
+  ],
+  [
+    "If the item is large...",
+    "若物品為大型…"
+  ],
+  [
+    "Endgame Rare Decorator, large",
+    "終局稀有裝飾，大型"
+  ],
+  [
+    "Also Every item...",
+    "另外每個物品…"
+  ],
+  [
+    "Endgame Rare Decorator, basic",
+    "終局稀有裝飾，基本"
+  ],
+  [
+    "Endgame Crafting Decorator, normal 82",
+    "終局工藝裝飾，普通 82"
+  ],
+  [
+    "If item is ring, belt or amulet...",
+    "若物品為戒指、腰帶或項鍊…"
+  ],
+  [
+    "Endgame Crafting Decorator, normal jewelery",
+    "終局工藝裝飾，普通飾品"
+  ],
+  [
+    "Amulets, Rings",
+    "項鍊、戒指"
+  ],
+  [
+    "If the ILVL is 80 or higher...",
+    "若物等為 80 或以上…"
+  ],
+  [
+    "Endgame Crafting Decorator, normal 80",
+    "終局工藝裝飾，普通 80"
+  ],
+  [
+    "If the item has 10%+ quality...",
+    "若物品品質 10%+…"
+  ],
+  [
+    "Endgame Crafting Decorator, Quality 1",
+    "終局工藝裝飾，品質 1"
+  ],
+  [
+    "If the item has 1%+ quality...",
+    "若物品品質 1%+…"
+  ],
+  [
+    "Endgame Crafting Decorator, Quality 2",
+    "終局工藝裝飾，品質 2"
+  ],
+  [
+    "Endgame Crafting Decorator, normal",
+    "終局工藝裝飾，普通"
+  ],
+  [
+    "Rare bases with ideal itemlevel (82). The itemlevel allows these bases to roll the highest tiers of mods, that can't be found on lower levels",
+    "理想物等（82）的稀有基底。此物等能讓這些基底擲出低等級無法出現的最高階詞綴。"
+  ],
+  [
+    "Rank A Rares: LVL82+",
+    "A 階稀有：82 級+"
+  ],
+  [
+    "T1 Rares: BestLevel+ (1/1)",
+    "T1 稀有：最佳等級+(1/1)"
+  ],
+  [
+    "Rank B Rares: LVL82+",
+    "B 階稀有：82 級+"
+  ],
+  [
+    "T2 Rares: BestLevel+ (1/1)",
+    "T2 稀有：最佳等級+(1/1)"
+  ],
+  [
+    "Rank C Rares: LVL82+",
+    "C 階稀有：82 級+"
+  ],
+  [
+    "T3 Rares: BestLevel+ (1/1)",
+    "T3 稀有：最佳等級+(1/1)"
+  ],
+  [
+    "General visibility",
+    "一般可見度"
+  ],
+  [
+    "Rank A Rares",
+    "A 階稀有"
+  ],
+  [
+    "T1 Rares: Others (1/1)",
+    "T1 稀有：其他(1/1)"
+  ],
+  [
+    "Rank B Rares: LVL75+",
+    "B 階稀有：75 級+"
+  ],
+  [
+    "T2 Rares: ILVL75+ (1/1)",
+    "T2 稀有：物等 75+(1/1)"
+  ],
+  [
+    "Rank C Rares: LVL75+",
+    "C 階稀有：75 級+"
+  ],
+  [
+    "T3 Rares: ILVL75+ (1/1)",
+    "T3 稀有：物等 75+(1/1)"
+  ],
+  [
+    "Rank D Rares: LVL75+",
+    "D 階稀有：75 級+"
+  ],
+  [
+    "T4 Rares: ILVL75+ (1/1)",
+    "T4 稀有：物等 75+(1/1)"
+  ],
+  [
+    "Untiered Rares: LVL75+",
+    "無階級稀有：75 級+"
+  ],
+  [
+    "Other Rares: ILVL75+ (1/1)",
+    "其他稀有：物等 75+(1/1)"
+  ],
+  [
+    "New item types become available once you push into higher waystones. Those have better stats than previous versions. The tierlist highlights the most relevant bases in the current waystone. This section defines visibility in lower waystones (under level 75).",
+    "推進到更高階換界石後會出現新的物品類型，其數值優於舊版本。階級清單會突顯當前換界石中最相關的基底。此區塊定義低階換界石（等級 75 以下）的可見度。"
+  ],
+  [
+    "Rank B: LVL65-74 (TOP OF THE LINE)",
+    "B 階：65-74 級（頂級）"
+  ],
+  [
+    "T2 Rares: Others (1/1)",
+    "T2 稀有：其他(1/1)"
+  ],
+  [
+    "Rank C: LVL65-69 (TOP OF THE LINE)",
+    "C 階：65-69 級（頂級）"
+  ],
+  [
+    "T3 Rares: Others (1/1)",
+    "T3 稀有：其他(1/1)"
+  ],
+  [
+    "Rank C: LVL70-74 (VIABLE)",
+    "C 階：70-74 級（可用）"
+  ],
+  [
+    "T3 Rares: ILVL70+ (1/1)",
+    "T3 稀有：物等 70+(1/1)"
+  ],
+  [
+    "Rank D: LVL65-69 (VIABLE)",
+    "D 階：65-69 級（可用）"
+  ],
+  [
+    "T4 Rares: Others (1/1)",
+    "T4 稀有：其他(1/1)"
+  ],
+  [
+    "Rank D: LVL70-74 (POOR)",
+    "D 階：70-74 級（劣質）"
+  ],
+  [
+    "T4 Rares: ILVL70+ (1/1)",
+    "T4 稀有：物等 70+(1/1)"
+  ],
+  [
+    "Untiered: LVL70-74+ (POOR)",
+    "無階級：70-74 級+（劣質）"
+  ],
+  [
+    "Other Rares: ILVL70+ (1/1)",
+    "其他稀有：物等 70+(1/1)"
+  ],
+  [
+    "Untiered: LVL65-69+ (POOR)",
+    "無階級：65-69 級+（劣質）"
+  ],
+  [
+    "Other Rares: Others (1/1)",
+    "其他稀有：其他(1/1)"
+  ],
+  [
+    "Crafting bases with ideal itemlevel (82). The itemlevel allows these bases to roll the highest tiers of mods, that can't be found on lower levels",
+    "理想物等（82）的工藝基底。此物等能讓這些基底擲出低等級無法出現的最高階詞綴。"
+  ],
+  [
+    "Rank A Crafting Bases (LVL82+)",
+    "A 階工藝基底（82 級+）"
+  ],
+  [
+    "Endgame Crafting Tier 1, ideal (1/1)",
+    "終局工藝 T1，理想(1/1)"
+  ],
+  [
+    "Rank B Crafting Bases (LVL82+)",
+    "B 階工藝基底（82 級+）"
+  ],
+  [
+    "Endgame Crafting Tier 2, ideal (1/1)",
+    "終局工藝 T2，理想(1/1)"
+  ],
+  [
+    "Rank C Crafting Bases (LVL82+)",
+    "C 階工藝基底（82 級+）"
+  ],
+  [
+    "Endgame Crafting Tier 3, ideal (1/1)",
+    "終局工藝 T3，理想(1/1)"
+  ],
+  [
+    "The bases below are designed to be shown when in appropriate zone levels. You'll see T3 bases when in low waystones (because these are the best available at that level)",
+    "以下基底設計為在適當區域等級顯示。在低階換界石中會看到 T3 基底（因為那是該等級可取得的最佳選擇）。"
+  ],
+  [
+    "Rank A Bases (any level)",
+    "A 階基底（任意等級）"
+  ],
+  [
+    "Endgame Crafting Tier 1 (1/1)",
+    "終局工藝 T1(1/1)"
+  ],
+  [
+    "Rank B Bases (70-75)",
+    "B 階基底（70-75）"
+  ],
+  [
+    "Endgame Crafting Tier 2, onLevel (1/1)",
+    "終局工藝 T2，等級對應(1/1)"
+  ],
+  [
+    "Rank C Bases (65-70)",
+    "C 階基底（65-70）"
+  ],
+  [
+    "Endgame Crafting Tier 3, onLevel (1/1)",
+    "終局工藝 T3，等級對應(1/1)"
+  ],
+  [
+    "ILVL83 Flasks+Quality",
+    "物等 83 藥劑＋品質"
+  ],
+  [
+    "Endgame Flasks, Quality, Top",
+    "終局藥劑，品質，頂級"
+  ],
+  [
+    "ILVL83 Flasks",
+    "物等 83 藥劑"
+  ],
+  [
+    "Endgame Flasks, Top",
+    "終局藥劑，頂級"
+  ],
+  [
+    "Flasks: Early Endgame",
+    "藥劑：終局初期"
+  ],
+  [
+    "Endgame Flasks, Early, Life",
+    "終局藥劑，初期，生命"
+  ],
+  [
+    "Charms: ILVL 83+, Handpicked Base",
+    "護符：物等 83+，精選基底"
+  ],
+  [
+    "Endgame Charms, High, T1",
+    "終局護符，高階，T1"
+  ],
+  [
+    "+25% to Fire Resistance",
+    "+25% 火焰抗性"
+  ],
+  [
+    "Used when you take Fire damage from a Hit",
+    "當你被擊中受到火焰傷害時使用"
+  ],
+  [
+    "+25% to Cold Resistance",
+    "+25% 冰霜抗性"
+  ],
+  [
+    "Used when you take Cold damage from a Hit",
+    "當你被擊中受到冰霜傷害時使用"
+  ],
+  [
+    "+25% to Lightning Resistance",
+    "+25% 閃電抗性"
+  ],
+  [
+    "Used when you take Lightning damage from a Hit",
+    "當你被擊中受到閃電傷害時使用"
+  ],
+  [
+    "Cannot be Stunned",
+    "無法被暈眩"
+  ],
+  [
+    "Used when you become Stunned",
+    "當你被暈眩時使用"
+  ],
+  [
+    "Your speed is unaffected by Slows",
+    "你的速度不受減速影響"
+  ],
+  [
+    "Used when you are affected by a Slow",
+    "當你受到減速效果時使用"
+  ],
+  [
+    "Grants Immunity to Freeze",
+    "賦予冰凍免疫"
+  ],
+  [
+    "Used when you become Frozen",
+    "當你被冰凍時使用"
+  ],
+  [
+    "Grants Immunity to Bleeding",
+    "賦予流血免疫"
+  ],
+  [
+    "Used when you start Bleeding",
+    "當你開始流血時使用"
+  ],
+  [
+    "Grants Immunity to Poison",
+    "賦予中毒免疫"
+  ],
+  [
+    "Used when you become Poisoned",
+    "當你中毒時使用"
+  ],
+  [
+    "Grants Immunity to Ignite",
+    "賦予點燃免疫"
+  ],
+  [
+    "Used when you become Ignited",
+    "當你被點燃時使用"
+  ],
+  [
+    "Grants Immunity to Shock",
+    "賦予感電免疫"
+  ],
+  [
+    "Used when you become Shocked",
+    "當你被感電時使用"
+  ],
+  [
+    "+18% to Chaos Resistance",
+    "+18% 混沌抗性"
+  ],
+  [
+    "Used when you take Chaos damage from a Hit",
+    "當你被擊中受到混沌傷害時使用"
+  ],
+  [
+    "20% increased Rarity of Items found",
+    "物品稀有度提高 20%"
+  ],
+  [
+    "Used when you kill a Rare or Unique Enemy",
+    "當你擊殺稀有或傳奇敵人時使用"
+  ],
+  [
+    "Charms: ILVL 83+, Random Base",
+    "護符：物等 83+，隨機基底"
+  ],
+  [
+    "Endgame Charms, High",
+    "終局護符，高階"
+  ],
+  [
+    "Charms: Quality 18%+",
+    "護符：品質 18%+"
+  ],
+  [
+    "Endgame Charms, Quality, Top",
+    "終局護符，品質，頂級"
+  ],
+  [
+    "Charms: Any Quality",
+    "護符：任意品質"
+  ],
+  [
+    "Endgame Charms, Quality",
+    "終局護符，品質"
+  ],
+  [
+    "Charms: Early Endgame",
+    "護符：終局初期"
+  ],
+  [
+    "Endgame Charms, Early",
+    "終局護符，初期"
+  ],
+  [
+    "Endgame Charms",
+    "終局護符"
+  ],
+  [
+    "Augment the filter with entirely new rules, such as 'only show AR and AR/EV armors', 'highlight all rare maces' and 'hide all wands'",
+    "用全新規則擴充過濾器，例如「只顯示護甲與護甲／閃避護甲」、「突顯所有稀有錘」、「隱藏所有法杖」"
+  ],
+  [
+    "Override: Leveling - Salvagable bases (and all rules below)",
+    "覆寫：章節 - 可分解基底（以及下方所有規則）"
+  ],
+  [
+    "Override: Leveling - Rares - Armour Pieces (and all rules below)",
+    "覆寫：章節 - 稀有 - 護甲部件（以及下方所有規則）"
+  ],
+  [
+    "Override: Leveling - Remarkable Normal and Magic Gear (and all rules below)",
+    "覆寫：章節 - 值得注意的普通與魔法裝備（以及下方所有規則）"
+  ],
+  [
+    "Select Class",
+    "選擇類別"
+  ],
+  [
+    "Item progressions highlight the best available class (such as only 1h Mace) available on your level. Select up to 3 types below and we'll create the progression in just 1 click.",
+    "物品進程會突顯你等級可用的最佳類別（例如僅單手錘）。在下方最多選 3 種類別，一鍵即可建立進程。"
+  ],
+  [
+    "<Empty placeholder entry>",
+    "（空白佔位項目）"
+  ],
+  [
+    "Rare Decorators",
+    "稀有裝飾"
+  ],
+  [
+    "If the rare is LARGE...",
+    "若稀有物品為大型…"
+  ],
+  [
+    "Campaign Decorator: Large Rares",
+    "章節裝飾：大型稀有"
+  ],
+  [
+    "If the rare is MID-sized...",
+    "若稀有物品為中型…"
+  ],
+  [
+    "Campaign Decorator: Medium Rares 1",
+    "章節裝飾：中型稀有 1"
+  ],
+  [
+    "Campaign Decorator: Medium Rares 2",
+    "章節裝飾：中型稀有 2"
+  ],
+  [
+    "If the rare is Tiny...",
+    "若稀有物品為極小…"
+  ],
+  [
+    "Campaign Decorator: Tiny Rares",
+    "章節裝飾：極小稀有"
+  ],
+  [
+    "Magic Decorators",
+    "魔法裝飾"
+  ],
+  [
+    "If the magic item is large...",
+    "若魔法物品為大型…"
+  ],
+  [
+    "Campaign Decorator: Magic, large",
+    "章節裝飾：魔法，大型"
+  ],
+  [
+    "If the magic item is MID-sized...",
+    "若魔法物品為中型…"
+  ],
+  [
+    "Campaign Decorator: Magic, medium 1",
+    "章節裝飾：魔法，中型 1"
+  ],
+  [
+    "Campaign Decorator: Magic, medium 2",
+    "章節裝飾：魔法，中型 2"
+  ],
+  [
+    "If the magic item is Tiny...",
+    "若魔法物品為極小…"
+  ],
+  [
+    "Campaign Decorator: Magic, tiny",
+    "章節裝飾：魔法，極小"
+  ],
+  [
+    "If the item drops in act 1",
+    "若物品在第一章掉落"
+  ],
+  [
+    "Campaign Decorator: Magic, early",
+    "章節裝飾：魔法，初期"
+  ],
+  [
+    "Magic & Normal Items",
+    "魔法與普通物品"
+  ],
+  [
+    "Specialized Campaign Rules.",
+    "章節專屬規則。"
+  ],
+  [
+    "Campaign Early Boots",
+    "章節初期鞋子"
+  ],
+  [
+    "Expedition has a secret recipe that allows converting 60 unique rings into a valuable unique armor: 'Loreweave'. This keeps rings shown.",
+    "探險有個秘密配方，可將 60 個傳奇戒指轉換成有價值的傳奇護甲：「學識之織」。因此這裡會保持顯示戒指。"
+  ],
+  [
+    "Unique Exception: Sekhema Ring",
+    "傳奇例外：塞克瑪戒指"
+  ],
+  [
+    "twice corrupted uniques",
+    "雙重腐化傳奇"
+  ],
+  [
+    "vaal-origin uniques",
+    "瓦爾起源傳奇"
+  ],
+  [
+    "uniques with a corrupted vaal mod",
+    "帶有腐化瓦爾詞綴的傳奇"
+  ],
+  [
+    "Relics can NOT be fully hidden (game rule/limitation)",
+    "聖物無法完全隱藏（遊戲規則限制）"
+  ],
+  [
+    "Any Sekhema Trial Relic",
+    "任意塞克瑪試煉聖物"
+  ],
+  [
+    "Special & Technical Rules",
+    "特殊與技術規則"
+  ],
+  [
+    "Rules in here rarely need adjustment and are either very exotic items, items that are not supposed to drop or safeguards",
+    "這裡的規則很少需要調整，內容多為特殊物品、不該掉落的物品或安全防護規則"
+  ],
+  [
+    "Special Gem Rules",
+    "特殊寶石規則"
+  ],
+  [
+    "twice corrupted gems: 21/23",
+    "雙重腐化寶石：21/23"
+  ],
+  [
+    "twice corrupted gems",
+    "雙重腐化寶石"
+  ],
+  [
+    "Unhidable Event Outcome items",
+    "無法隱藏的活動結果物品"
+  ],
+  [
+    "Unique Only Bases and Quest Drops",
+    "僅傳奇基底與任務掉落"
+  ],
+  [
+    "Non-Unique Diamonds",
+    "非傳奇鑽石"
+  ],
+  [
+    "Kalandra Bases",
+    "卡蘭德基底"
+  ],
+  [
+    "Quest-Like Items",
+    "類任務物品"
+  ],
+  [
+    "Technical Rules",
+    "技術規則"
+  ],
+  [
+    "ADVANCED: Hide Rules",
+    "進階：隱藏規則"
+  ],
+  [
+    "There's no good reason for most players to ever change these.",
+    "大多數玩家完全沒有理由去改動這些。"
+  ],
+  [
+    "Remaining: campaign and others",
+    "剩餘：章節與其他"
+  ],
+  [
+    "Remaining: endgame normal/magic",
+    "剩餘：終局普通／魔法"
+  ],
+  [
+    "Remaining: rares",
+    "剩餘：稀有"
+  ],
+  [
+    "Leveling Hide Rules, Normal 1",
+    "章節隱藏規則，普通 1"
+  ],
+  [
+    "Leveling Hide Rules, Normal 2",
+    "章節隱藏規則，普通 2"
+  ],
+  [
+    "Leveling Hide Rules, Normal 3",
+    "章節隱藏規則，普通 3"
+  ],
+  [
+    "Leveling Hide Rules, Normal 4",
+    "章節隱藏規則，普通 4"
+  ],
+  [
+    "Leveling Hide Rules, Normal 5",
+    "章節隱藏規則，普通 5"
+  ],
+  [
+    "Leveling Hide Rules, Normal 6",
+    "章節隱藏規則，普通 6"
+  ],
+  [
+    "Leveling Hide Rules, Magic 1",
+    "章節隱藏規則，魔法 1"
+  ],
+  [
+    "Hides items starting with Strict",
+    "隱藏名稱以 Strict 開頭的物品"
+  ],
+  [
+    "Leveling Hide Rules, Magic 2",
+    "章節隱藏規則，魔法 2"
+  ],
+  [
+    "Leveling Hide Rules, Magic 3",
+    "章節隱藏規則，魔法 3"
+  ],
+  [
+    "Leveling Hide Rules, Magic 4",
+    "章節隱藏規則，魔法 4"
+  ],
+  [
+    "Leveling Hide Rules, Magic 5",
+    "章節隱藏規則，魔法 5"
+  ],
+  [
+    "Leveling Hide Rules, Magic 6",
+    "章節隱藏規則，魔法 6"
+  ],
+  [
+    "ADVANCED: Remaining TierList items",
+    "進階：剩餘階級清單物品"
+  ],
+  [
+    "There's no good reason for most players to ever change these. These are designed to catch undesirable subsets of items. For instance: if you set a catalyst rule to only show when the stack is 2+, these rules handle the unmatched cases.",
+    "大多數玩家完全沒有理由去改動這些。這些規則用來攔截不受歡迎的子集合。例如：若你把催化劑規則設為堆疊 2+ 才顯示，這些規則會處理未被匹配的情況。"
+  ],
+  [
+    "Remaining Map Fragments",
+    "剩餘地圖碎片"
+  ],
+  [
+    "Remaining Map Fragments, which are not matched by any of the above rules, probably due to unmet filtering requirements.",
+    "剩餘地圖碎片：未被上述任何規則匹配，可能是未達成過濾條件。"
+  ],
+  [
+    "Remaining Currency",
+    "剩餘通貨"
+  ],
+  [
+    "Remaining Currency, which are not matched by any of the above rules, probably due to unmet filtering requirements.",
+    "剩餘通貨：未被上述任何規則匹配，可能是未達成過濾條件。"
+  ],
+  [
+    "Remaining Emotions",
+    "剩餘情感"
+  ],
+  [
+    "Remaining Emotions, which are not matched by any of the above rules, probably due to unmet filtering requirements.",
+    "剩餘情感：未被上述任何規則匹配，可能是未達成過濾條件。"
+  ],
+  [
+    "Remaining Catalysts",
+    "剩餘催化劑"
+  ],
+  [
+    "Remaining Catalysts, which are not matched by any of the above rules, probably due to unmet filtering requirements.",
+    "剩餘催化劑：未被上述任何規則匹配，可能是未達成過濾條件。"
+  ],
+  [
+    "Remaining Omen",
+    "剩餘預兆"
+  ],
+  [
+    "Remaining Omen, which are not matched by any of the above rules, probably due to unmet filtering requirements.",
+    "剩餘預兆：未被上述任何規則匹配，可能是未達成過濾條件。"
+  ],
+  [
+    "Remaining new items",
+    "剩餘新物品"
+  ],
+  [
+    "Remaining new items, which are not matched by any of the above rules, probably due to unmet filtering requirements.",
+    "剩餘新物品：未被上述任何規則匹配，可能是未達成過濾條件。"
+  ],
+  [
+    "Remaining Essences, which are not matched by any of the above rules, probably due to unmet filtering requirements.",
+    "剩餘精髓：未被上述任何規則匹配，可能是未達成過濾條件。"
+  ],
+  [
+    "Remaining Socketables",
+    "剩餘可鑲嵌物"
+  ],
+  [
+    "Remaining Runes, which are not matched by any of the above rules, probably due to unmet filtering requirements.",
+    "剩餘符文：未被上述任何規則匹配，可能是未達成過濾條件。"
+  ],
+  [
+    "Remaining Waystones",
+    "剩餘換界石"
+  ],
+  [
+    "Remaining Maps, which are not matched by any of the above rules, probably due to unmet filtering requirements.",
+    "剩餘地圖：未被上述任何規則匹配，可能是未達成過濾條件。"
+  ],
+  [
+    "Remaining Gems, which are not matched by any of the above rules, probably due to unmet filtering requirements.",
+    "剩餘寶石：未被上述任何規則匹配，可能是未達成過濾條件。"
+  ],
+  [
+    "Remaining Uncut Gems",
+    "剩餘未切割寶石"
+  ],
+  [
+    "ADVANCED: Safety and Error Rules",
+    "進階：安全與錯誤規則"
+  ],
+  [
+    "If you see any of these items: update your filter (or you messed up big time!). There's no good reason for most players to ever change these.",
+    "如果你看到這些物品：請更新過濾器（或你搞砸了！）。大多數玩家完全沒有理由去改動這些。"
+  ],
+  [
+    "Error Currency",
+    "錯誤通貨"
+  ],
+  [
+    "Error Misc",
+    "錯誤雜項"
+  ],
+  [
+    "Error Emotions",
+    "錯誤情感"
+  ],
+  [
+    "Liquid",
+    "液態"
+  ],
+  [
+    "Error Essences",
+    "錯誤精髓"
+  ],
+  [
+    "Error Omen",
+    "錯誤預兆"
+  ],
+  [
+    "Error Catalysts",
+    "錯誤催化劑"
+  ],
+  [
+    "Error Fragments",
+    "錯誤碎片"
+  ],
+  [
+    "Error Waystones",
+    "錯誤換界石"
+  ],
+  [
+    "Error Uniques",
+    "錯誤傳奇"
+  ],
+  [
+    "Error Socketables",
+    "錯誤可鑲嵌物"
+  ],
+  [
+    "Idol",
+    "魔偶"
+  ],
+  [
+    "Gems, Skill, Level 20",
+    "寶石，技能，等級 20"
+  ],
+  [
+    "Emotions Tier 1",
+    "情感 T1"
+  ],
+  [
+    "Essences Tier 1",
+    "精髓 T1"
+  ],
+  [
+    "Map Fragments Tier 1",
+    "地圖碎片 T1"
+  ],
+  [
+    "Emotions Tier 2",
+    "情感 T2"
+  ],
+  [
+    "Essences Tier 2",
+    "精髓 T2"
+  ],
+  [
+    "Emotions Tier 3",
+    "情感 T3"
+  ],
+  [
+    "Essences Tier 3",
+    "精髓 T3"
+  ],
+  [
+    "Emotions Tier 4",
+    "情感 T4"
+  ],
+  [
+    "Essences Tier 4",
+    "精髓 T4"
+  ],
+  [
+    "Socketable during leveling1",
+    "章節期間可鑲嵌 1"
+  ],
+  [
+    "Emotions Tier 5",
+    "情感 T5"
+  ],
+  [
+    "Essences Tier 5",
+    "精髓 T5"
+  ],
+  [
+    "Emotions Tier 6",
+    "情感 T6"
+  ],
+  [
+    "Essences Tier 6",
+    "精髓 T6"
+  ],
+  [
+    "Socketable during leveling2",
+    "章節期間可鑲嵌 2"
+  ],
+  [
+    "Overqualitied a",
+    "超品質 a"
+  ],
+  [
+    "Oversocketed Tier 1b",
+    "超洞數 T1b"
+  ],
+  [
+    "Oversocketed Tier 1a",
+    "超洞數 T1a"
+  ],
+  [
+    "Oversocketed Tier 2a",
+    "超洞數 T2a"
+  ],
+  [
+    "Oversocketed Tier 2b",
+    "超洞數 T2b"
+  ],
+  [
+    "twice corrupted rare items",
+    "雙重腐化稀有物品"
+  ],
+  [
+    "Gear, Rare, Tier 4, Rank A",
+    "裝備，稀有，T4，A 階"
+  ],
+  [
+    "Jewellery, Rare, Tier 4, Rank A",
+    "飾品，稀有，T4，A 階"
+  ],
+  [
+    "Jewellery, Rare, Tier 3, Rank A",
+    "飾品，稀有，T3，A 階"
+  ],
+  [
+    "Jewellery, Rare, Tier 4, Rank B",
+    "飾品，稀有，T4，B 階"
+  ],
+  [
+    "Jewellery, Rare, Tier 4, Rank C",
+    "飾品，稀有，T4，C 階"
+  ],
+  [
+    "Rare Tiers, Remaining, Tier 5",
+    "稀有階級，剩餘，T5"
+  ],
+  [
+    "Rare Tiers, Remaining, Tier 5 Jewellery",
+    "稀有階級，剩餘，T5 飾品"
+  ],
+  [
+    "Jewellery, Magic, Tier 4, Rank A",
+    "飾品，魔法，T4，A 階"
+  ],
+  [
+    "Campaign Rare, High Tier 4",
+    "章節稀有，高階 4"
+  ],
+  [
+    "Overqualitied b",
+    "超品質 b"
+  ],
+  [
+    "twice corrupted magic items",
+    "雙重腐化魔法物品"
+  ],
+  [
+    "Gear, Rare, Tier 3, Rank A",
+    "裝備，稀有，T3，A 階"
+  ],
+  [
+    "Gear, Rare, Tier 4, Rank B",
+    "裝備，稀有，T4，B 階"
+  ],
+  [
+    "Gear, Rare, Tier 4, Rank C",
+    "裝備，稀有，T4，C 階"
+  ],
+  [
+    "Rare Tiers, Remaining, Tier 4",
+    "稀有階級，剩餘，T4"
+  ],
+  [
+    "Gear, Magic, Tier 4, Rank A",
+    "裝備，魔法，T4，A 階"
+  ],
+  [
+    "Gear, Magic, Tier 3, Rank A",
+    "裝備，魔法，T3，A 階"
+  ],
+  [
+    "Gear, Magic, Tier 4, Rank B",
+    "裝備，魔法，T4，B 階"
+  ],
+  [
+    "Gear, Magic, Tier 4, Rank C",
+    "裝備，魔法，T4，C 階"
+  ],
+  [
+    "Jewellery, Magic, Tier 3, Rank A",
+    "飾品，魔法，T3，A 階"
+  ],
+  [
+    "Jewellery, Magic, Tier 4, Rank B",
+    "飾品，魔法，T4，B 階"
+  ],
+  [
+    "Jewellery, Magic, Tier 3, Rank B",
+    "飾品，魔法，T3，B 階"
+  ],
+  [
+    "Jewellery, Magic, Tier 4, Rank C",
+    "飾品，魔法，T4，C 階"
+  ],
+  [
+    "Magic Tiers, Remaining, Tier 5",
+    "魔法階級，剩餘，T5"
+  ],
+  [
+    "Magic Tiers, Remaining, Tier 5 Jewellery",
+    "魔法階級，剩餘，T5 飾品"
+  ],
+  [
+    "Campaign Rare, High Tier 3",
+    "章節稀有，高階 3"
+  ],
+  [
+    "Recombinator Mods, Boots",
+    "重組器詞綴，鞋子"
+  ],
+  [
+    "Recombinator Mods, Amulets",
+    "重組器詞綴，項鍊"
+  ],
+  [
+    "Recombinator Mods, Caster Weapons",
+    "重組器詞綴，施法武器"
+  ],
+  [
+    "Recombinator Mods, Sceptres",
+    "重組器詞綴，權杖"
+  ],
+  [
+    "Recombinator Mods, Ranged",
+    "重組器詞綴，遠程"
+  ],
+  [
+    "Recombinator Mods, Spears",
+    "重組器詞綴，長矛"
+  ],
+  [
+    "Recombinator Mods, 2-Hand",
+    "重組器詞綴，雙手"
+  ],
+  [
+    "Map Fragments Tier 2",
+    "地圖碎片 T2"
+  ],
+  [
+    "Ultimatum Reward",
+    "通牒獎勵"
+  ],
+  [
+    "Map Fragments Tier 3",
+    "地圖碎片 T3"
+  ],
+  [
+    "Map Fragments Tier 4",
+    "地圖碎片 T4"
+  ],
+  [
+    "Djinn Barya, Top Level",
+    "巨靈之幣，頂級"
+  ],
+  [
+    "Djinn Barya, High Level",
+    "巨靈之幣，高階"
+  ],
+  [
+    "Special Trials",
+    "特殊試煉"
+  ],
+  [
+    "Ultimatum, Top Level",
+    "通牒，頂級"
+  ],
+  [
+    "Ultimatum, High Level",
+    "通牒，高階"
+  ],
+  [
+    "Map Fragments Tier 5",
+    "地圖碎片 T5"
+  ],
+  [
+    "Map Fragments Tier 6",
+    "地圖碎片 T6"
+  ],
+  [
+    "Djinn Barya Leveling 2",
+    "巨靈之幣（章節 2）"
+  ],
+  [
+    "Djinn Barya Leveling 1",
+    "巨靈之幣（章節 1）"
+  ],
+  [
+    "Splinters Tier 1",
+    "裂片 T1"
+  ],
+  [
+    "Splinters Tier 2",
+    "裂片 T2"
+  ],
+  [
+    "Splinters Tier 3",
+    "裂片 T3"
+  ],
+  [
+    "Splinters Tier 4",
+    "裂片 T4"
+  ],
+  [
+    "Splinters Tier 5",
+    "裂片 T5"
+  ],
+  [
+    "Gear, Magic, Tier 2, Rank A",
+    "裝備，魔法，T2，A 階"
+  ],
+  [
+    "Gear, Magic, Tier 3, Rank B",
+    "裝備，魔法，T3，B 階"
+  ],
+  [
+    "Gear, Magic, Tier 2, Rank B",
+    "裝備，魔法，T2，B 階"
+  ],
+  [
+    "Gear, Magic, Tier 3, Rank C",
+    "裝備，魔法，T3，C 階"
+  ],
+  [
+    "Gear, Magic, Tier 2, Rank C",
+    "裝備，魔法，T2，C 階"
+  ],
+  [
+    "Jewellery, Magic, Tier 2, Rank A",
+    "飾品，魔法，T2，A 階"
+  ],
+  [
+    "Jewellery, Magic, Tier 2, Rank B",
+    "飾品，魔法，T2，B 階"
+  ],
+  [
+    "Jewellery, Magic, Tier 3, Rank C",
+    "飾品，魔法，T3，C 階"
+  ],
+  [
+    "Jewellery, Magic, Tier 2, Rank C",
+    "飾品，魔法，T2，C 階"
+  ],
+  [
+    "Magic Tiers, Remaining, Tier 4",
+    "魔法階級，剩餘，T4"
+  ],
+  [
+    "Magic Tiers, Remaining, Tier 4 Jewellery",
+    "魔法階級，剩餘，T4 飾品"
+  ],
+  [
+    "Endgame Jewellery Rank A, ideal",
+    "終局飾品 A 階，理想"
+  ],
+  [
+    "Endgame Jewellery Rank B, ideal",
+    "終局飾品 B 階，理想"
+  ],
+  [
+    "Campaign Magic & Normal, Jewellery",
+    "章節魔法與普通，飾品"
+  ],
+  [
+    "Endgame Jewellery Rank A",
+    "終局飾品 A 階"
+  ],
+  [
+    "Endgame Jewellery Rank B",
+    "終局飾品 B 階"
+  ],
+  [
+    "Gear, Rare, Tier 2, Rank A",
+    "裝備，稀有，T2，A 階"
+  ],
+  [
+    "Gear, Rare, Tier 3, Rank B",
+    "裝備，稀有，T3，B 階"
+  ],
+  [
+    "Gear, Rare, Tier 2, Rank B",
+    "裝備，稀有，T2，B 階"
+  ],
+  [
+    "Gear, Rare, Tier 3, Rank C",
+    "裝備，稀有，T3，C 階"
+  ],
+  [
+    "Gear, Rare, Tier 2, Rank C",
+    "裝備，稀有，T2，C 階"
+  ],
+  [
+    "Jewellery, Rare, Tier 2, Rank C",
+    "飾品，稀有，T2，C 階"
+  ],
+  [
+    "T1 Rares: BestLevel+",
+    "T1 稀有：最佳等級+"
+  ],
+  [
+    "T1 Rares: Others",
+    "T1 稀有：其他"
+  ],
+  [
+    "T2 Rares: BestLevel+",
+    "T2 稀有：最佳等級+"
+  ],
+  [
+    "T2 Rares: Others",
+    "T2 稀有：其他"
+  ],
+  [
+    "T3 Rares: Others",
+    "T3 稀有：其他"
+  ],
+  [
+    "Campaign Rares, Armour",
+    "章節稀有，護甲"
+  ],
+  [
+    "Campaign Rares, Evasion",
+    "章節稀有，閃避"
+  ],
+  [
+    "Campaign Rares, Energy Shield",
+    "章節稀有，能量護盾"
+  ],
+  [
+    "Campaign Rares, Arm-Ev",
+    "章節稀有，護甲＋閃避"
+  ],
+  [
+    "Campaign Rares, Arm-ES",
+    "章節稀有，護甲＋能量護盾"
+  ],
+  [
+    "Campaign Rares, Eva-ES",
+    "章節稀有，閃避＋能量護盾"
+  ],
+  [
+    "Campaign Rares, Wands",
+    "章節稀有，法杖"
+  ],
+  [
+    "Campaign Rares, Foci",
+    "章節稀有，法器"
+  ],
+  [
+    "Campaign Rares, Shields AR",
+    "章節稀有，盾牌護甲"
+  ],
+  [
+    "Campaign Rares, Shields AREV",
+    "章節稀有，盾牌護甲＋閃避"
+  ],
+  [
+    "Campaign Rares, Shields ARES",
+    "章節稀有，盾牌護甲＋能量護盾"
+  ],
+  [
+    "Campaign Rares, Sceptres",
+    "章節稀有，權杖"
+  ],
+  [
+    "Campaign Rares, Staves",
+    "章節稀有，長杖"
+  ],
+  [
+    "Campaign Rares, Bows",
+    "章節稀有，弓"
+  ],
+  [
+    "Campaign Rares, Quiver",
+    "章節稀有，箭袋"
+  ],
+  [
+    "Campaign Rares, Crossbow",
+    "章節稀有，十字弓"
+  ],
+  [
+    "Campaign Rares, Spears",
+    "章節稀有，長矛"
+  ],
+  [
+    "Campaign Rares, Bucklers",
+    "章節稀有，輕盾"
+  ],
+  [
+    "Campaign Rares, 1H Maces",
+    "章節稀有，單手錘"
+  ],
+  [
+    "Campaign Rares, 2H Maces",
+    "章節稀有，雙手錘"
+  ],
+  [
+    "Campaign Rares, Talismans",
+    "章節稀有，魔符"
+  ],
+  [
+    "Campaign Rares, Quarterstaves",
+    "章節稀有，細杖"
+  ],
+  [
+    "Endgame Jewellery Rare Rank A",
+    "終局飾品稀有 A 階"
+  ],
+  [
+    "Endgame Jewellery Rare Rank B",
+    "終局飾品稀有 B 階"
+  ],
+  [
+    "Jewellery Rare Rank A",
+    "飾品稀有 A 階"
+  ],
+  [
+    "Jewellery Rare Rank B",
+    "飾品稀有 B 階"
+  ],
+  [
+    "Campaign Rares, Jewellery",
+    "章節稀有，飾品"
+  ],
+  [
+    "Endgame Jewellery Rare Rank C",
+    "終局飾品稀有 C 階"
+  ],
+  [
+    "Endgame Jewellery Rare Rank D",
+    "終局飾品稀有 D 階"
+  ],
+  [
+    "Jewellery Rare Rank C",
+    "飾品稀有 C 階"
+  ],
+  [
+    "Jewellery Rare Rank D",
+    "飾品稀有 D 階"
+  ],
+  [
+    "Jewellery, Rare, Tier 2, Rank A",
+    "飾品，稀有，T2，A 階"
+  ],
+  [
+    "Jewellery, Rare, Tier 3, Rank B",
+    "飾品，稀有，T3，B 階"
+  ],
+  [
+    "Jewellery, Rare, Tier 2, Rank B",
+    "飾品，稀有，T2，B 階"
+  ],
+  [
+    "Jewellery, Rare, Tier 3, Rank C",
+    "飾品，稀有，T3，C 階"
+  ],
+  [
+    "Rare Tiers, Remaining, Tier 4 Jewellery",
+    "稀有階級，剩餘，T4 飾品"
+  ],
+  [
+    "Endgame Crafting Tier 1, ideal",
+    "終局工藝 T1，理想"
+  ],
+  [
+    "Endgame Crafting Tier 2, ideal",
+    "終局工藝 T2，理想"
+  ],
+  [
+    "Endgame Crafting Tier 3, ideal",
+    "終局工藝 T3，理想"
+  ],
+  [
+    "Endgame Crafting Tier 1",
+    "終局工藝 T1"
+  ],
+  [
+    "Endgame Crafting Tier 2, onLevel",
+    "終局工藝 T2，等級對應"
+  ],
+  [
+    "Endgame Crafting Tier 3, onLevel",
+    "終局工藝 T3，等級對應"
+  ],
+  [
+    "Campaign Magic & Normal, Armour",
+    "章節魔法與普通，護甲"
+  ],
+  [
+    "Campaign Magic & Normal, Evasion",
+    "章節魔法與普通，閃避"
+  ],
+  [
+    "Campaign Magic & Normal, Energy Shield",
+    "章節魔法與普通，能量護盾"
+  ],
+  [
+    "Campaign Magic & Normal, Arm-Eva",
+    "章節魔法與普通，護甲＋閃避"
+  ],
+  [
+    "Campaign Magic & Normal, Arm-ES",
+    "章節魔法與普通，護甲＋能量護盾"
+  ],
+  [
+    "Campaign Magic & Normal, Eva-ES",
+    "章節魔法與普通，閃避＋能量護盾"
+  ],
+  [
+    "Campaign Magic & Normal, Wands",
+    "章節魔法與普通，法杖"
+  ],
+  [
+    "Campaign Magic & Normal, Foci",
+    "章節魔法與普通，法器"
+  ],
+  [
+    "Campaign Magic & Normal, Shields AR",
+    "章節魔法與普通，盾牌護甲"
+  ],
+  [
+    "Campaign Magic & Normal, Shields AREV",
+    "章節魔法與普通，盾牌護甲＋閃避"
+  ],
+  [
+    "Campaign Magic & Normal, Shields ARES",
+    "章節魔法與普通，盾牌護甲＋能量護盾"
+  ],
+  [
+    "Campaign Magic & Normal, Sceptres",
+    "章節魔法與普通，權杖"
+  ],
+  [
+    "Campaign Magic & Normal, Staves",
+    "章節魔法與普通，長杖"
+  ],
+  [
+    "Campaign Magic & Normal, Bows",
+    "章節魔法與普通，弓"
+  ],
+  [
+    "Campaign Magic & Normal, Quiver",
+    "章節魔法與普通，箭袋"
+  ],
+  [
+    "Campaign Magic & Normal, Crossbow",
+    "章節魔法與普通，十字弓"
+  ],
+  [
+    "Campaign Magic & Normal, spears",
+    "章節魔法與普通，長矛"
+  ],
+  [
+    "Campaign Magic & Normal, Bucklers",
+    "章節魔法與普通，輕盾"
+  ],
+  [
+    "Campaign Magic & Normal, 1H Maces",
+    "章節魔法與普通，單手錘"
+  ],
+  [
+    "Campaign Magic & Normal, 2H Maces",
+    "章節魔法與普通，雙手錘"
+  ],
+  [
+    "Campaign Magic & Normal, Talismans",
+    "章節魔法與普通，魔符"
+  ],
+  [
+    "Campaign Magic & Normal, Quarterstaves",
+    "章節魔法與普通，細杖"
+  ],
+  [
+    "Campaign First Areas Normal",
+    "章節初始區域普通"
+  ],
+  [
+    "Campaign Magic, Remaining",
+    "章節魔法，剩餘"
+  ],
+  [
+    "Campaign Magic, Act 2",
+    "章節魔法，第二章"
+  ],
+  [
+    "Campaign Magic, Act 1",
+    "章節魔法，第一章"
+  ],
+  [
+    "T2 Rares: ILVL75+",
+    "T2 稀有：物等 75+"
+  ],
+  [
+    "T3 Rares: BestLevel+",
+    "T3 稀有：最佳等級+"
+  ],
+  [
+    "T3 Rares: ILVL70+",
+    "T3 稀有：物等 70+"
+  ],
+  [
+    "T4 Rares: ILVL70+",
+    "T4 稀有：物等 70+"
+  ],
+  [
+    "T4 Rares: Others",
+    "T4 稀有：其他"
+  ],
+  [
+    "Other Rares: Others",
+    "其他稀有：其他"
+  ],
+  [
+    "Campaign Rares, Remaining",
+    "章節稀有，剩餘"
+  ],
+  [
+    "T3 Rares: ILVL75+",
+    "T3 稀有：物等 75+"
+  ],
+  [
+    "T4 Rares: ILVL75+",
+    "T4 稀有：物等 75+"
+  ],
+  [
+    "Other Rares: ILVL75+",
+    "其他稀有：物等 75+"
+  ],
+  [
+    "Other Rares: ILVL70+",
+    "其他稀有：物等 70+"
+  ],
+  [
+    "Campaign Rares, Act 1",
+    "章節稀有，第一章"
+  ],
+  [
+    "Campaign Rares, Act 2",
+    "章節稀有，第二章"
+  ],
+  [
+    "Chancing 3 Sockets",
+    "機會石 3 洞"
+  ],
+  [
+    "Chancing 2 Sockets",
+    "機會石 2 洞"
+  ],
+  [
+    "Salvagable (High Quality, caster)",
+    "可分解（高品質，施法）"
+  ],
+  [
+    "Salvagable (High Quality, armour)",
+    "可分解（高品質，護甲）"
+  ],
+  [
+    "Salvagable (High Quality, caster, rare)",
+    "可分解（高品質，施法，稀有）"
+  ],
+  [
+    "Salvagable (High Quality, armour, rare)",
+    "可分解（高品質，護甲，稀有）"
+  ],
+  [
+    "Salvagable (High Quality, weapons)",
+    "可分解（高品質，武器）"
+  ],
+  [
+    "Salvagable (Quality, weapons)",
+    "可分解（品質，武器）"
+  ],
+  [
+    "Salvagable (Quality, caster)",
+    "可分解（品質，施法）"
+  ],
+  [
+    "Salvagable (Quality, armour)",
+    "可分解（品質，護甲）"
+  ],
+  [
+    "Salvagable (Sockets, small 1)",
+    "可分解（洞數，小型 1）"
+  ],
+  [
+    "Salvagable (Sockets, small 2)",
+    "可分解（洞數，小型 2）"
+  ],
+  [
+    "Salvagable (Sockets, large 1)",
+    "可分解（洞數，大型 1）"
+  ],
+  [
+    "Salvagable (High Quality, weapons, rare)",
+    "可分解（高品質，武器，稀有）"
+  ],
+  [
+    "Salvagable (Quality, weapons, rare)",
+    "可分解（品質，武器，稀有）"
+  ],
+  [
+    "Salvagable (Quality, caster, rare)",
+    "可分解（品質，施法，稀有）"
+  ],
+  [
+    "Salvagable (Quality, armour, rare)",
+    "可分解（品質，護甲，稀有）"
+  ],
+  [
+    "Salvagable (Sockets, small 1, rare)",
+    "可分解（洞數，小型 1，稀有）"
+  ],
+  [
+    "Salvagable (Sockets, small 2, rare)",
+    "可分解（洞數，小型 2，稀有）"
+  ],
+  [
+    "Salvagable (Sockets, large, rare 1)",
+    "可分解（洞數，大型，稀有 1）"
+  ],
+  [
+    "Waystone Upgrade Decorator Tier 16",
+    "換界石升級裝飾 T16"
+  ],
+  [
+    "Waystone Upgrade Decorator Tier 15",
+    "換界石升級裝飾 T15"
+  ],
+  [
+    "Waystone Upgrade Decorator Tier 14",
+    "換界石升級裝飾 T14"
+  ],
+  [
+    "Waystone Upgrade Decorator Tier 13",
+    "換界石升級裝飾 T13"
+  ],
+  [
+    "Waystone Upgrade Decorator Tier 12",
+    "換界石升級裝飾 T12"
+  ],
+  [
+    "Waystone Upgrade Decorator Tier 11",
+    "換界石升級裝飾 T11"
+  ],
+  [
+    "Waystone Upgrade Decorator Tier 10",
+    "換界石升級裝飾 T10"
+  ],
+  [
+    "Waystone Upgrade Decorator Tier 9",
+    "換界石升級裝飾 T9"
+  ],
+  [
+    "Waystone Upgrade Decorator Tier 8",
+    "換界石升級裝飾 T8"
+  ],
+  [
+    "Waystone Upgrade Decorator Tier 7",
+    "換界石升級裝飾 T7"
+  ],
+  [
+    "Waystone Upgrade Decorator Tier 6",
+    "換界石升級裝飾 T6"
+  ],
+  [
+    "Waystone Upgrade Decorator Tier 5",
+    "換界石升級裝飾 T5"
+  ],
+  [
+    "Waystone Upgrade Decorator Tier 4",
+    "換界石升級裝飾 T4"
+  ],
+  [
+    "Waystone Upgrade Decorator Tier 3",
+    "換界石升級裝飾 T3"
+  ],
+  [
+    "Waystone Upgrade Decorator Tier 2",
+    "換界石升級裝飾 T2"
+  ],
+  [
+    "Waystone Upgrade Decorator Tier 1",
+    "換界石升級裝飾 T1"
+  ],
+  [
+    "Campaign Charms, Best",
+    "章節護符，最佳"
+  ],
+  [
+    "Campaign Charms",
+    "章節護符"
+  ],
+  [
+    "Gems, Skill, Level 19",
+    "寶石，技能，等級 19"
+  ],
+  [
+    "Gems, Progression, Level 18",
+    "寶石，進程，等級 18"
+  ],
+  [
+    "Gems, Progression, Level 17",
+    "寶石，進程，等級 17"
+  ],
+  [
+    "Gems, Progression, Level 16",
+    "寶石，進程，等級 16"
+  ],
+  [
+    "Gems, Progression, Level 15",
+    "寶石，進程，等級 15"
+  ],
+  [
+    "Gems, Progression, Level 14",
+    "寶石，進程，等級 14"
+  ],
+  [
+    "Gems, Spirit, Campaign",
+    "寶石，精魂，章節"
+  ],
+  [
+    "Gems, Skill, Campaign",
+    "寶石，技能，章節"
+  ],
+  [
+    "Gems, Support, Campaign",
+    "寶石，輔助，章節"
+  ],
+  [
+    "Gems, Support, Endgame Early",
+    "寶石，輔助，終局初期"
+  ],
+  [
+    "Cut Gems",
+    "已切割寶石"
+  ],
+  [
+    "Gems, Skill, Endgame",
+    "寶石，技能，終局"
+  ],
+  [
+    "Gems, Support, Endgame",
+    "寶石，輔助，終局"
+  ],
+  [
+    "Exceptional Oversocket Uniques 1",
+    "卓越超洞數傳奇 1"
+  ],
+  [
+    "Exceptional Oversocket Uniques 2",
+    "卓越超洞數傳奇 2"
+  ],
+  [
+    "Endgame Jewellery Rank C, ideal",
+    "終局飾品 C 階，理想"
+  ],
+  [
+    "Endgame Jewellery Rank D, ideal",
+    "終局飾品 D 階，理想"
+  ],
+  [
+    "Endgame Jewellery Rank C",
+    "終局飾品 C 階"
+  ],
+  [
+    "Endgame Jewellery Rank D",
+    "終局飾品 D 階"
+  ],
+  [
+    "Campaign First Areas Magic",
+    "章節初始區域魔法"
   ]
 ]
