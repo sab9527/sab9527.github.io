@@ -100,10 +100,6 @@
     "劫盜、禁忌聖域、日誌"
   ],
   [
-    "Customize",
-    "自訂"
-  ],
-  [
     "Game mode:",
     "遊戲模式："
   ],
@@ -1073,7 +1069,7 @@
   ],
   [
     "Rare items",
-    "稀有裝備"
+    "稀有物品"
   ],
   [
     "Rare Accessories",
@@ -1273,7 +1269,7 @@
   ],
   [
     "Warlord",
-    "總督軍"
+    "督軍"
   ],
   [
     "Rank A - Atlas exclusive armors and jewellery",
@@ -1357,7 +1353,7 @@
   ],
   [
     "Influenced Items",
-    "有勢力的道具"
+    "勢力物品"
   ],
   [
     "League-specific items and mods",
@@ -1566,10 +1562,6 @@
   [
     "Control WHAT items are in what tier:",
     "在這裡調整分級"
-  ],
-  [
-    "Fractured items",
-    "破裂物品"
   ],
   [
     "Some itemclasses like 'Jewels' are completely covered through the class-based filtering below and don't need representing through the matrix.",
@@ -2085,11 +2077,11 @@
   ],
   [
     "Delve Resonators",
-    "礦坑鑄新儀"
+    "掘獄鑄新儀"
   ],
   [
     "Delve Fossils",
-    "礦坑化石"
+    "掘獄化石"
   ],
   [
     "Delirium Orbs",
@@ -2162,10 +2154,6 @@
   [
     "Remaining essences",
     "其他精髓(基本上用不到)"
-  ],
-  [
-    "Highlight Essences by type",
-    "依種類篩選(盛怒是肆虐精髓(翻譯問題))"
   ],
   [
     "Woe",
@@ -2576,10 +2564,6 @@
     "貼上"
   ],
   [
-    "Reset",
-    "重置"
-  ],
-  [
     "Sound",
     "音效"
   ],
@@ -2656,20 +2640,8 @@
     "總覽"
   ],
   [
-    "CUSTOMIZE",
-    "自訂"
-  ],
-  [
-    "SIMULATE",
-    "模擬"
-  ],
-  [
     "STYLE",
     "風格(一次調整大量外觀與音效)"
-  ],
-  [
-    "ADVANCED",
-    "進階功能"
   ],
   [
     "EXPORT TO POE",
@@ -3000,10 +2972,6 @@
     "然後您可以在"
   ],
   [
-    "Overview",
-    "總覽"
-  ],
-  [
     "when creating a new filter.",
     "建立新過濾器時使用這些模組。"
   ],
@@ -3090,10 +3058,6 @@
   [
     "This will ALSO be buggy with filters created on FilterBlade. Please use the",
     "這也可能與在 FilterBlade 上建立的過濾器發生錯誤。請使用"
-  ],
-  [
-    "My Filters",
-    "我的過濾器"
   ],
   [
     "Weapon Classes",
@@ -3745,7 +3709,7 @@
   ],
   [
     "Quality on gems influences each gem in a different way. Consult the wiki for details.",
-    "寶石上的品質會以不同的方式影響每個寶石。"
+    "寶石上的品質會以不同的方式影響每個寶石。詳情請查閱維基百科以了解詳細資訊。"
   ],
   [
     "Quality gems can be sold in bulk to NPCs to get gemcutter prisms",
@@ -3753,7 +3717,7 @@
   ],
   [
     "Note that you can corrupt a skillgem for a chance to receive extra gemlevels. This way you can create level 21 gems. You can also sell a level 20 gem and a gemcutter Prisms to receive a level 1 20% quality gem.",
-    "請注意，您可以汙染技能寶石以獲得額外的寶石等級。這樣您就可以建立 21 級寶石。您也可以出售 20 級的輔助寶石和 1 顆寶石匠的稜鏡以獲得 1 級 20% 品質的寶石。"
+    "請注意，您可以汙染技能寶石以獲得額外的寶石等級。這樣您就可以創造 21 級寶石。您也可以出售 20 級寶石和寶石匠的稜鏡以獲得 1 級 20% 品質的寶石。"
   ],
   [
     "Note: random non-quality skillgems are hidden on higher strictnesses, since they can be purachased from an NPC.",
@@ -3908,14 +3872,6 @@
     "中型黃色星星"
   ],
   [
-    "Quality on gems influences each gem in a different way. Consult the wiki for details.",
-    "寶石上的品質會以不同的方式影響每個寶石。詳情請查閱維基百科以了解詳細資訊。"
-  ],
-  [
-    "Note that you can corrupt a skillgem for a chance to receive extra gemlevels. This way you can create level 21 gems. You can also sell a level 20 gem and a gemcutter Prisms to receive a level 1 20% quality gem.",
-    "請注意，您可以汙染技能寶石以獲得額外的寶石等級。這樣您就可以創造 21 級寶石。您也可以出售 20 級寶石和寶石匠的稜鏡以獲得 1 級 20% 品質的寶石。"
-  ],
-  [
     "18%",
     "18%"
   ],
@@ -3930,14 +3886,6 @@
   [
     "Decorated by",
     "裝飾"
-  ],
-  [
-    "Maps gain more highlight as they gain tiers. High tier (11+) and top tier (16) maps have different sounds. The filter highlights map tier upgrades with an extra color.",
-    "地圖隨著階級的提高而獲得更多的篩選顯示。高等級 (11+) 和頂級 (16) 地圖具有不同的聲音。過濾器會以額外的顏色突出顯示地圖階級升級。"
-  ],
-  [
-    "The filter highlights map drops of a higher tier than the one you're in with extra highlight (disabled on some styles)",
-    "過濾器會以額外的篩選顯示突出顯示比您所在的階級更高的地圖掉落物（在某些樣式中停用）"
   ],
   [
     "Unique Maps T3",
@@ -3958,10 +3906,6 @@
   [
     "Unique maps are treated like any other unique and are highlighted based on price.",
     "傳奇地圖的處理方式與任何其他傳奇物品相同，並根據價格突出顯示。"
-  ],
-  [
-    "Rare Items",
-    "稀有物品"
   ],
   [
     "Rare Colors",
@@ -4212,10 +4156,6 @@
     "值得注意的稀有物品"
   ],
   [
-    "INFLUENCED ITEMS",
-    "勢力物品"
-  ],
-  [
     "Heavy Belt",
     "重革腰帶"
   ],
@@ -4366,10 +4306,6 @@
   [
     "Cluster jewels are delirium exclusive drops, that can expand the skilltree in exclusive ways. Itemlevel matters on them. They come in 3 sizes.",
     "星團珠寶是譫妄聯盟的限定掉落物，可以以獨特的方式擴展技能樹。 物品等級對它們很重要。 它們有 3 種尺寸。"
-  ],
-  [
-    "Vendor recipes",
-    "商人配方"
   ],
   [
     "7-Jeweller's Orbs",
@@ -4700,10 +4636,6 @@
     "追憶物品"
   ],
   [
-    "Special: Synthesis",
-    "特殊：追憶物品"
-  ],
-  [
     "Special: Fractured",
     "特殊：破裂"
   ],
@@ -4733,7 +4665,7 @@
   ],
   [
     "Some items in the game can only be obtained from limited sources. Such bases can be valuable.",
-    "遊戲中的某些物品只能從有限的來源獲得。 這樣的底材可能很有價值。"
+    "遊戲中有些物品只能從限定來源取得，這類底材可能很有價值。"
   ],
   [
     "Identified:",
@@ -4745,27 +4677,15 @@
   ],
   [
     "Some veiled items, like 'Elreon's Veil' tend to be expensive every league. It should be noted that the natural unveil can be very powerful and is stronger than the crafted version of the mod.",
-    "一些隱匿物品，應該注意的是，自然解鎖的詞綴可能非常強大，並且比工藝版本的詞綴更強。"
+    "有些隱匿物品，例如「艾爾隆之幕」，在每個賽季初都相當昂貴。需注意的是，自然解鎖的隱匿詞綴威力強大，比工藝的版本更強。"
   ],
   [
     "Veiled mods can be 'unveiled' by Jun and become permanent mods + you learn to craft that mod. Member-Specific and small veiled items receive extra highlight!",
-    "成員專用和小型隱匿物品會收到額外突出顯示！"
-  ],
-  [
-    "Some items in the game can only be obtained from limited sources. Such bases can be valuable.",
-    "遊戲中有些物品只能從限定來源取得，這類底材可能很有價值。"
+    "隱匿詞綴可透過 Jun 解鎖，變成永久詞綴，同時您也會學到該詞綴的工藝。成員限定和小型隱匿物品會額外篩選顯示！"
   ],
   [
     "Special: Veiled Bases",
     "特殊：隱匿底材"
-  ],
-  [
-    "Some veiled items, like 'Elreon's Veil' tend to be expensive every league. It should be noted that the natural unveil can be very powerful and is stronger than the crafted version of the mod.",
-    "有些迷霧物品，例如「艾爾隆之幕」，在每個賽季初都相當昂貴。需注意的是，自然解鎖的迷霧詞綴威力強大，比工藝的版本更強。"
-  ],
-  [
-    "Veiled mods can be 'unveiled' by Jun and become permanent mods + you learn to craft that mod. Member-Specific and small veiled items receive extra highlight!",
-    "迷霧詞綴可透過 Jun 解鎖，變成永久詞綴，同時您也會學到該詞綴的工藝。成員限定和小型迷霧物品會額外篩選顯示！"
   ],
   [
     "Identified True",
@@ -5012,10 +4932,6 @@
     "+20-30 最大生命"
   ],
   [
-    "Act 1 selected jewellery",
-    "第一章 珠寶"
-  ],
-  [
     "Early Leveling Boots ilvl 12",
     "早期練等鞋子 物品等級 12"
   ],
@@ -5030,10 +4946,6 @@
   [
     "Other Endgame Items",
     "其他終局物品"
-  ],
-  [
-    "Early Leveling Boots ilvl 12",
-    "早期練等靴 物品等級 12"
   ],
   [
     "SIX-LINKS",
@@ -5300,10 +5212,6 @@
     "培育器 T1"
   ],
   [
-    "BLIGHT OILS",
-    "凋落油"
-  ],
-  [
     "Oils are usually found during blight encounters. They can be used to annoint a non-connected node on the tree to your amulet, to enchant your rings and to improve blighted maps.",
     "油通常在凋落遭遇中找到。它們可用於在天賦樹上將非連接的節點塗油到您的護身符上，以附魔您的戒指並改善凋落地圖。"
   ],
@@ -5324,10 +5232,6 @@
     "凋落油 T4"
   ],
   [
-    "INCURSION VIALS",
-    "穿越神廟罈子"
-  ],
-  [
     "Incursion vials are rarely dropped at the end of Alva's Temple of Atzoatl. They can be used to upgrade an incursion-specific unique, when used in a T3 sacrifice room. Some can be very pricy.",
     "先驅者之殿藥劑很少在 Alva 的阿茲瓦特神殿的末端掉落。它們可用於在 T3 犧牲室中使用時升級先驅聯盟特定的傳奇物品。有些可能非常昂貴。"
   ],
@@ -5338,10 +5242,6 @@
   [
     "Incursion Vials T3",
     "穿越神廟罈子 T3"
-  ],
-  [
-    "DELVE FOSSILS",
-    "深淵化石"
   ],
   [
     "Fossils are originally found in the Azurite mine and can be used together with resonators to craft items with certain affinities.",
@@ -5358,10 +5258,6 @@
   [
     "Delve Currency Fossils T4",
     "通貨化石 T4"
-  ],
-  [
-    "DELVE RESONATORS",
-    "共振器"
   ],
   [
     "Resonators are outfitted with fossils for crafting. Mostly found behind crystal walls in the azurite mine (the ones that you destroy with dynamite)",
@@ -5385,7 +5281,7 @@
   ],
   [
     "Minor Idol",
-    "小型魔偶"
+    "次要魔偶"
   ],
   [
     "Unique Idols",
@@ -6349,7 +6245,7 @@
   ],
   [
     "Matryoshka",
-    "俄羅斯娃娃"
+    "套娃"
   ],
   [
     "Versatility",
@@ -6593,7 +6489,7 @@
   ],
   [
     "Portal",
-    "傳送門"
+    "時空之門"
   ],
   [
     "Damage",
@@ -6829,7 +6725,7 @@
   ],
   [
     "Call to the First Ones",
-    "先人召喚"
+    "呼喚初始者"
   ],
   [
     "Innate Blessing",
@@ -6882,10 +6778,6 @@
   [
     "Ancestral Echo",
     "先祖回音"
-  ],
-  [
-    "Ancestral Echo",
-    "先祖回響"
   ],
   [
     "Primal Incubator",
@@ -6998,10 +6890,6 @@
   [
     "Skullhead",
     "光輝之顱"
-  ],
-  [
-    "Radiant Crusade",
-    "光輝遠征"
   ],
   [
     "Calderus",
@@ -7413,7 +7301,7 @@
   ],
   [
     "Blight",
-    "凋落"
+    "萎滅"
   ],
   [
     "Blighted Delirium Orb",
@@ -7437,7 +7325,7 @@
   ],
   [
     "Blight Scarab",
-    "凋落聖甲蟲"
+    "聖甲蟲：凋落"
   ],
   [
     "Blight league",
@@ -7621,7 +7509,7 @@
   ],
   [
     "Split Arrow",
-    "分裂箭矢"
+    "裂化箭矢"
   ],
   [
     "Split Arrow of Splitting",
@@ -7666,10 +7554,6 @@
   [
     "The Original Scripture",
     "初始經文"
-  ],
-  [
-    "Boon of the First Ones",
-    "初始者之祝福"
   ],
   [
     "Boon of the First Ones",
@@ -8193,27 +8077,27 @@
   ],
   [
     "Tattoo of the Ngamahu Warrior",
-    "努葛瑪呼戰士的紋身"
+    "拿瑪乎戰士的紋身"
   ],
   [
     "Tattoo of the Ngamahu Warmonger",
-    "努葛瑪呼戰鬥王的紋身"
+    "拿瑪乎戰鬥王的紋身"
   ],
   [
     "Tattoo of the Ngamahu Woodcarver",
-    "努葛瑪呼木工的紋身"
+    "拿瑪乎木工的紋身"
   ],
   [
     "Tattoo of the Ngamahu Firewalker",
-    "努葛瑪呼火行者的紋身"
+    "拿瑪乎火行者的紋身"
   ],
   [
     "Tattoo of the Ngamahu Shaman",
-    "努葛瑪呼薩滿的紋身"
+    "拿瑪乎薩滿的紋身"
   ],
   [
     "Tattoo of the Ngamahu Makanga",
-    "努葛瑪呼馬坎加的紋身"
+    "拿瑪乎馬坎加的紋身"
   ],
   [
     "Honoured Tattoo of the Pillager",
@@ -8333,7 +8217,7 @@
   ],
   [
     "To Dust",
-    "化為塵土"
+    "塵埃落定"
   ],
   [
     "Fossil",
@@ -8517,15 +8401,15 @@
   ],
   [
     "Kalguuran Scarab of Guarded Riches",
-    "卡爾葛聖甲蟲：守衛財寶"
+    "聖甲蟲：守衛財寶卡爾葛"
   ],
   [
     "Kalguuran Scarab of Refinement",
-    "卡爾葛聖甲蟲：精化"
+    "聖甲蟲：精化卡爾葛"
   ],
   [
     "Kalguuran Scarab",
-    "卡爾葛聖甲蟲：豐收"
+    "聖甲蟲：卡爾葛"
   ],
   [
     "Calxipher",
@@ -8753,7 +8637,7 @@
   ],
   [
     "Betrayal Scarab",
-    "反叛聖甲蟲"
+    "聖甲蟲：反叛"
   ],
   [
     "Betrayal league",
@@ -8805,7 +8689,7 @@
   ],
   [
     "The Traitor",
-    "叛徒"
+    "背叛者"
   ],
   [
     "Ondar%2C the Betrayer",
@@ -9216,10 +9100,6 @@
     "命運傷痕"
   ],
   [
-    "Divination Cards",
-    "命運卡"
-  ],
-  [
     "Fateful Meeting",
     "命運大會"
   ],
@@ -9549,7 +9429,7 @@
   ],
   [
     "Omen of the Soul Devourer",
-    "嗜魂者之預兆"
+    "噬魂者之預兆"
   ],
   [
     "The Retch",
@@ -9753,7 +9633,7 @@
   ],
   [
     "Wildfire",
-    "地獄火群"
+    "燐火"
   ],
   [
     "Pitfighter",
@@ -10016,10 +9896,6 @@
     "堯馬克之權"
   ],
   [
-    "Retribution",
-    "報應"
-  ],
-  [
     "Clayshaper",
     "塑泥者"
   ],
@@ -10134,10 +10010,6 @@
   [
     "Caer Blaidd%2C Wolfpacks Den",
     "塞爾．佈雷德狼穴"
-  ],
-  [
-    "To Dust",
-    "塵埃落定"
   ],
   [
     "A Dusty Memory",
@@ -10933,7 +10805,7 @@
   ],
   [
     "Arcane",
-    "奧術"
+    "秘能"
   ],
   [
     "Auxium",
@@ -11101,7 +10973,7 @@
   ],
   [
     "The Catch",
-    "姜太公釣魚"
+    "垂釣"
   ],
   [
     "Stance",
@@ -11214,10 +11086,6 @@
   [
     "Solstice Vigil",
     "守夜之至"
-  ],
-  [
-    "Sentinel",
-    "守望"
   ],
   [
     "The Long Watch",
@@ -11614,10 +11482,6 @@
   [
     "Shiversting",
     "寒光劍"
-  ],
-  [
-    "Winters Embrace",
-    "寒冬之擁"
   ],
   [
     "Winter Spirit",
@@ -12764,10 +12628,6 @@
     "幽暗地穴"
   ],
   [
-    "Spinner of False Hope",
-    "幽網"
-  ],
-  [
     "Spectre",
     "幽魂"
   ],
@@ -13737,7 +13597,7 @@
   ],
   [
     "Malicious Intent",
-    "惡之意"
+    "不善意圖"
   ],
   [
     "Malignant Madness",
@@ -13885,7 +13745,7 @@
   ],
   [
     "Memory Threads",
-    "意識綢帶"
+    "記憶絲縷"
   ],
   [
     "Sanctuary of Thought",
@@ -14133,7 +13993,7 @@
   ],
   [
     "Legion Scarab",
-    "戰亂聖甲蟲"
+    "聖甲蟲：戰亂"
   ],
   [
     "Legion league",
@@ -14250,10 +14110,6 @@
   [
     "War Games",
     "戰爭遊戲"
-  ],
-  [
-    "Juggernaut",
-    "戰神"
   ],
   [
     "Tukohama%2C Karui God of War",
@@ -14441,7 +14297,7 @@
   ],
   [
     "Split Projectiles Support",
-    "投射物分裂輔助"
+    "投射物裂化輔助"
   ],
   [
     "Projectile Mastery",
@@ -14809,7 +14665,7 @@
   ],
   [
     "Expedition Scarab",
-    "探險聖甲蟲"
+    "聖甲蟲：探險"
   ],
   [
     "Augmenting Power Core",
@@ -14941,7 +14797,7 @@
   ],
   [
     "Domination Scarab",
-    "支配聖甲蟲"
+    "聖甲蟲：支配"
   ],
   [
     "Domination and Nemesis league",
@@ -15021,7 +14877,7 @@
   ],
   [
     "Bloodletter",
-    "放血者"
+    "血書"
   ],
   [
     "Effect",
@@ -15194,10 +15050,6 @@
   [
     "Sawbones",
     "斷骨師"
-  ],
-  [
-    "Kraityn%2C Scarbearer",
-    "斷魂之刃克雷頓"
   ],
   [
     "Spell Echo Support",
@@ -15442,10 +15294,6 @@
   [
     "Chains of Time",
     "時空之鏈"
-  ],
-  [
-    "Portal",
-    "時空之門"
   ],
   [
     "Temporal Rift",
@@ -16029,7 +15877,7 @@
   ],
   [
     "The Brittle Emperor",
-    "枯骨皇帝"
+    "碎裂大帝"
   ],
   [
     "Kurgals Gaze",
@@ -17125,7 +16973,7 @@
   ],
   [
     "Tainted Oil",
-    "玷污油瓶"
+    "汙染油瓶"
   ],
   [
     "Tainted Carapaces",
@@ -17145,7 +16993,7 @@
   ],
   [
     "Tainted Pact",
-    "玷污契約"
+    "汙穢契約"
   ],
   [
     "Defiled Proclamation",
@@ -17158,10 +17006,6 @@
   [
     "have you forgotten ",
     "汝是否遺忘？"
-  ],
-  [
-    "Corrupted",
-    "污染"
   ],
   [
     "Lust for Carnage",
@@ -17377,7 +17221,7 @@
   ],
   [
     "Riptide",
-    "洪濤激流"
+    "激流"
   ],
   [
     "Ormud%2C Fiend of the Flood",
@@ -17741,7 +17585,7 @@
   ],
   [
     "Abyss Scarab",
-    "深淵聖甲蟲"
+    "聖甲蟲：深淵"
   ],
   [
     "Abyss league",
@@ -17769,7 +17613,7 @@
   ],
   [
     "Anarchy Scarab",
-    "混亂聖甲蟲"
+    "聖甲蟲：混亂"
   ],
   [
     "Anarchy and Onslaught league",
@@ -18068,10 +17912,6 @@
     "激戰柱廊"
   ],
   [
-    "Riptide",
-    "激流"
-  ],
-  [
     "Militant Faith",
     "激進的信仰"
   ],
@@ -18137,7 +17977,7 @@
   ],
   [
     "Heart of Flame",
-    "火焰之心"
+    "烈炎之心"
   ],
   [
     "Breath of Flames",
@@ -18588,10 +18428,6 @@
     "無咒"
   ],
   [
-    "Hexproof",
-    "無咒的"
-  ],
-  [
     "Terrible Secret of Space",
     "無垠恐懼之密"
   ],
@@ -18842,10 +18678,6 @@
   [
     "Unbound Ailments Support",
     "無邊異能輔助"
-  ],
-  [
-    "Unstoppable",
-    "無阻的"
   ],
   [
     "Endless Heist",
@@ -19472,10 +19304,6 @@
     "狂戰"
   ],
   [
-    "Berserking",
-    "狂戰之魂"
-  ],
-  [
     "Warmonger",
     "狂戰之魔"
   ],
@@ -19554,10 +19382,6 @@
   [
     "Snipers Mark",
     "狙擊者印記"
-  ],
-  [
-    "Relentless",
-    "狠勁"
   ],
   [
     "Belt of the Deceiver",
@@ -19909,7 +19733,7 @@
   ],
   [
     "Tainted Catalyst",
-    "玷污催化劑"
+    "玷汙催化劑"
   ],
   [
     "Doedre the Defiler",
@@ -20197,7 +20021,7 @@
   ],
   [
     "Vaal Temple Map",
-    "瓦爾密殿"
+    "瓦爾密殿地圖"
   ],
   [
     "Vaal Oligarchs",
@@ -20301,7 +20125,7 @@
   ],
   [
     "Vaal Split Arrow",
-    "瓦爾．分裂箭矢"
+    "瓦爾．裂化箭矢"
   ],
   [
     "Vaal Cleave",
@@ -20629,7 +20453,7 @@
   ],
   [
     "Maps",
-    "異界地圖"
+    "地圖"
   ],
   [
     "The Elder",
@@ -20765,7 +20589,7 @@
   ],
   [
     "Quickstep",
-    "疾步"
+    "迅捷步伐"
   ],
   [
     "Coves Map",
@@ -20901,7 +20725,7 @@
   ],
   [
     "Albino Rhoa Feather",
-    "白化的羽毛"
+    "白化恐喙鳥羽毛"
   ],
   [
     "Gneiss",
@@ -20981,7 +20805,7 @@
   ],
   [
     "Divination Scarab of Pilfering",
-    "盜竊之命運聖甲蟲"
+    "聖甲蟲：盜竊命運"
   ],
   [
     "Rogues Marker",
@@ -21236,10 +21060,6 @@
     "破壞特工"
   ],
   [
-    "Saboteur",
-    "破壞者"
-  ],
-  [
     "Berrots%2C The Breaker",
     "破壞者貝羅特斯"
   ],
@@ -21422,10 +21242,6 @@
   [
     "The Shattered Divinity",
     "碎裂之神力"
-  ],
-  [
-    "The Brittle Emperor",
-    "碎裂大帝"
   ],
   [
     "Shattersword",
@@ -21641,7 +21457,7 @@
   ],
   [
     "Divination Scarab of The Cloister",
-    "神殿廟之命運聖甲蟲"
+    "聖甲蟲：迴廊命運"
   ],
   [
     "Halls",
@@ -21728,10 +21544,6 @@
     "神聖哀悼"
   ],
   [
-    "Light of Divinity",
-    "神聖啟蒙"
-  ],
-  [
     "Holy Conquest",
     "神聖征服"
   ],
@@ -21789,19 +21601,7 @@
   ],
   [
     "Harbinger Map",
-    "神諭之殿．歸徒"
-  ],
-  [
-    "Harbinger Map",
     "神諭之殿．煉獄"
-  ],
-  [
-    "Harbinger Map",
-    "神諭之殿．神臨"
-  ],
-  [
-    "Harbinger Map",
-    "神諭之殿．降師"
   ],
   [
     "Harbinger scroll",
@@ -21890,10 +21690,6 @@
   [
     "Forbidden Rite of Soul Sacrifice",
     "禁忌儀式．靈魂獻祭"
-  ],
-  [
-    "Forbidden Power",
-    "禁忌力量"
   ],
   [
     "Forbidden Contract",
@@ -22018,10 +21814,6 @@
   [
     "Channel Map",
     "秘密通道"
-  ],
-  [
-    "Arcane",
-    "秘能"
   ],
   [
     "Arcane Focus",
@@ -22213,15 +22005,11 @@
   ],
   [
     "Incursion Scarab",
-    "穿越聖甲蟲"
+    "聖甲蟲：穿越"
   ],
   [
     "Incursion league",
     "穿越聯盟"
-  ],
-  [
-    "Pierce",
-    "穿透"
   ],
   [
     "Ice Shot of Penetration",
@@ -22593,7 +22381,7 @@
   ],
   [
     "Essence Scarab",
-    "精髓聖甲蟲"
+    "聖甲蟲：精髓"
   ],
   [
     "Essence league",
@@ -23052,10 +22840,6 @@
     "織石者艾薩斯"
   ],
   [
-    "The Weaver",
-    "織網者"
-  ],
-  [
     "Writhing Invitation",
     "纏繞之邀"
   ],
@@ -23098,10 +22882,6 @@
   [
     "Cage Map",
     "羈破牢籠"
-  ],
-  [
-    "Instruments of Virtue",
-    "美德儀"
   ],
   [
     "Beauty",
@@ -23308,10 +23088,6 @@
     "聖戰軍王．巴倫"
   ],
   [
-    "Sanctuary",
-    "聖所"
-  ],
-  [
     "Sanctuary Map",
     "聖所地圖"
   ],
@@ -23361,15 +23137,15 @@
   ],
   [
     "Ambush Scarab",
-    "聖甲蟲·伏擊"
+    "聖甲蟲：伏擊"
   ],
   [
     "Bestiary Scarab",
-    "聖甲蟲·獸獵"
+    "聖甲蟲：獸獵"
   ],
   [
     "Sulphite Scarab",
-    "聖甲蟲·硫酸"
+    "聖甲蟲：硫酸"
   ],
   [
     "Harbinger Scarab",
@@ -23377,7 +23153,7 @@
   ],
   [
     "Torment Scarab",
-    "聖甲蟲·苦痛"
+    "聖甲蟲：苦痛"
   ],
   [
     "Breach Scarab",
@@ -23385,11 +23161,11 @@
   ],
   [
     "Titanic Scarab",
-    "聖甲蟲．泰坦"
+    "聖甲蟲：泰坦"
   ],
   [
     "Influencing Scarab of Conversion",
-    "聖甲蟲："
+    "聖甲蟲：轉化感染"
   ],
   [
     "Essence Scarab of Ascent",
@@ -23764,10 +23540,6 @@
     "聖賢守護者"
   ],
   [
-    "Oath of the Maji",
-    "聖賢的誓言"
-  ],
-  [
     "Templar",
     "聖騎士"
   ],
@@ -23912,16 +23684,8 @@
     "背叛"
   ],
   [
-    "The Traitor",
-    "背叛者"
-  ],
-  [
     "Repeater",
     "背誦者"
-  ],
-  [
-    "Arcane Cloak",
-    "背飾：奧秘之力披風"
   ],
   [
     "Body Armours",
@@ -23958,10 +23722,6 @@
   [
     "Power Rune",
     "能量符文"
-  ],
-  [
-    "Energy shield",
-    "能量護盾"
   ],
   [
     "Energy Shield Mastery",
@@ -24596,10 +24356,6 @@
     "苦澀綻放"
   ],
   [
-    "Tormented Spirit",
-    "苦痛"
-  ],
-  [
     "Pagan Bishop of Agony",
     "苦痛主教"
   ],
@@ -24725,7 +24481,7 @@
   ],
   [
     "The Basilisk",
-    "草莽巨蜥"
+    "咒怨蛇妖"
   ],
   [
     "Vinespike Cordial",
@@ -24808,10 +24564,6 @@
     "莫薇兒之女艾瑪莉莎"
   ],
   [
-    "Merveil%2C the Returned",
-    "莫薇兒之魄"
-  ],
-  [
     "Essence Worm",
     "菁華蠕蟲"
   ],
@@ -24837,7 +24589,7 @@
   ],
   [
     "Fancy Foil",
-    "華麗陪襯"
+    "華麗細劍"
   ],
   [
     "Fenumus Spinnerets",
@@ -24878,10 +24630,6 @@
   [
     "Rakiatas Dance",
     "萊基亞塔的舞步"
-  ],
-  [
-    "Blight",
-    "萎滅"
   ],
   [
     "Blightblade",
@@ -25736,10 +25484,6 @@
     "裂地之擊"
   ],
   [
-    "Ground Slam",
-    "裂地之擊 (Ground Slam)"
-  ],
-  [
     "Ground Slam of Earthshaking",
     "裂地之擊．地震"
   ],
@@ -25806,10 +25550,6 @@
   [
     "Trypanon",
     "裂顱"
-  ],
-  [
-    "Oak%2C Skullbreaker",
-    "裂顱巨杵歐克"
   ],
   [
     "Calaf%2C Headstaver",
@@ -26192,10 +25932,6 @@
     "記憶絲縷"
   ],
   [
-    "Memory Threads",
-    "記憶綢帶"
-  ],
-  [
     "The Journalist",
     "記者"
   ],
@@ -26401,7 +26137,7 @@
   ],
   [
     "Delirium Scarab",
-    "譫妄聖甲蟲"
+    "聖甲蟲：譫妄"
   ],
   [
     "Delirium Everywhere",
@@ -26485,7 +26221,7 @@
   ],
   [
     "Divination Scarab of Plenty",
-    "豐富之命運聖甲蟲"
+    "聖甲蟲：富饒命運"
   ],
   [
     "Fertile Mind",
@@ -26501,7 +26237,7 @@
   ],
   [
     "Harvest Scarab",
-    "豐收聖甲蟲"
+    "聖甲蟲：豐收"
   ],
   [
     "Stacked Deck",
@@ -27268,10 +27004,6 @@
     "超群身法"
   ],
   [
-    "Shavronne%2C Unbound",
-    "超脫者薛朗"
-  ],
-  [
     "Freed from the Flesh",
     "超脫肉體"
   ],
@@ -27305,7 +27037,7 @@
   ],
   [
     "Beyond Scarab",
-    "超越聖甲蟲"
+    "聖甲蟲：超越"
   ],
   [
     "Overcharged",
@@ -27484,10 +27216,6 @@
     "輿圖戰記"
   ],
   [
-    "Memories",
-    "輿圖記憶"
-  ],
-  [
     "Echoes of the Atlas",
     "輿圖謎音"
   ],
@@ -27522,10 +27250,6 @@
   [
     "Aidan the Frenzied",
     "迅捷之影艾丹"
-  ],
-  [
-    "Quickstep",
-    "迅捷步伐"
   ],
   [
     "Swiftbrand Support",
@@ -27622,10 +27346,6 @@
   [
     "Labyrinth Items",
     "迷宮物品"
-  ],
-  [
-    "Gardens Map",
-    "迷宮花園"
   ],
   [
     "Labyrinth Trinkets",
@@ -27733,23 +27453,23 @@
   ],
   [
     "Ultimatum Scarab of Catalysing",
-    "通牒催化的聖甲蟲"
+    "聖甲蟲：催化通牒"
   ],
   [
     "Ultimatum Scarab of Dueling",
-    "通牒決鬥之聖甲蟲"
+    "聖甲蟲：決鬥通牒"
   ],
   [
     "Ultimatum Scarab",
-    "通牒聖甲蟲"
+    "聖甲蟲：通牒"
   ],
   [
     "Ultimatum Scarab of Bribing",
-    "通牒賄賂之聖甲蟲"
+    "聖甲蟲：賄賂通牒"
   ],
   [
     "Ultimatum Scarab of Inscription",
-    "通牒銘文之聖甲蟲"
+    "聖甲蟲：銘文通牒"
   ],
   [
     "Currency",
@@ -27849,7 +27569,7 @@
   ],
   [
     "Escalation",
-    "進階"
+    "惡化"
   ],
   [
     "Advance Guard",
@@ -28112,10 +27832,6 @@
     "邪靈體"
   ],
   [
-    "Sawbones",
-    "邪骨"
-  ],
-  [
     "Demonic Power",
     "邪魔之力"
   ],
@@ -28360,10 +28076,6 @@
     "野性結晶生靈之力"
   ],
   [
-    "Field Medicine",
-    "野戰醫學"
-  ],
-  [
     "Balefire",
     "野火"
   ],
@@ -28409,7 +28121,7 @@
   ],
   [
     "Gold",
-    "金幣"
+    "黃金"
   ],
   [
     "Goldrim",
@@ -28750,10 +28462,6 @@
   [
     "Mirrored Tablet",
     "鏡像碑牌"
-  ],
-  [
-    "Reflecting Mist",
-    "鏡像迷霧"
   ],
   [
     "Merveil%2C the Reflection",
@@ -29164,10 +28872,6 @@
     "阿茲里聖徽"
   ],
   [
-    "Alira Darktongue",
-    "阿莉亞"
-  ],
-  [
     "Added Cold Damage Support",
     "附加冰冷傷害輔助"
   ],
@@ -29186,10 +28890,6 @@
   [
     "Possessed Carapaces",
     "附身甲殼"
-  ],
-  [
-    "Enchant",
-    "附魔"
   ],
   [
     "Enchanted Incubator",
@@ -29302,10 +29002,6 @@
   [
     "Partying",
     "隊伍"
-  ],
-  [
-    "Partying",
-    "隊友"
   ],
   [
     "Captain Tanner Lightfoot",
@@ -29430,10 +29126,6 @@
   [
     "Two Hand Swords",
     "雙手劍"
-  ],
-  [
-    "Dimachaeri Cassius",
-    "雙手劍士凱席爾斯"
   ],
   [
     "Two Hand Axes",
@@ -31100,10 +30792,6 @@
     "黃玉藥劑"
   ],
   [
-    "Gold",
-    "黃金"
-  ],
-  [
     "Map Device",
     "黃金地球儀"
   ],
@@ -31142,10 +30830,6 @@
   [
     "Haunting Shadows",
     "黑影纏繞"
-  ],
-  [
-    "Black Thumb",
-    "黑拇指"
   ],
   [
     "Black Thumb",
@@ -31288,10 +30972,6 @@
     "黯星"
   ],
   [
-    "Beast of the Pits",
-    "黯核猛獸"
-  ],
-  [
     "Blackflame",
     "黯炎"
   ],
@@ -31302,10 +30982,6 @@
   [
     "The Dark Seer",
     "黯黑賢者"
-  ],
-  [
-    "Doedre%2C Darksoul",
-    "黯黑靈魂德瑞"
   ],
   [
     "Rats Nest",
@@ -32540,10 +32216,6 @@
     "古典刺劍"
   ],
   [
-    "Fancy Foil",
-    "華麗細劍"
-  ],
-  [
     "Apex Rapier",
     "銳鋒細劍"
   ],
@@ -33537,7 +33209,7 @@
   ],
   [
     "Black Maw Talisman",
-    "黑牙魔符"
+    "黯牙魔符"
   ],
   [
     "Bonespire Talisman",
@@ -33645,7 +33317,7 @@
   ],
   [
     "Greatwolf Talisman",
-    "狼王魔符"
+    "巨狼魔符"
   ],
   [
     "Rustic Sash",
@@ -35033,7 +34705,7 @@
   ],
   [
     "Sorcerer Gloves",
-    "術士手套"
+    "術者手套"
   ],
   [
     "Sage Gloves",
@@ -35406,10 +35078,6 @@
   [
     "WIP Support",
     "WIP 支援"
-  ],
-  [
-    "Wildfire",
-    "燐火"
   ],
   [
     "...",
@@ -35917,7 +35585,7 @@
   ],
   [
     "Captured Soul of Tahsin, Warmaker",
-    "奪取之魂：起亂者達斯"
+    "奪取之魂：戰爭製造者塔辛"
   ],
   [
     "Captured Soul of Leif, the Swift-Handed",
@@ -35965,19 +35633,15 @@
   ],
   [
     "Influencing Scarab of the Shaper",
-    "聖甲蟲："
+    "聖甲蟲：塑界感染"
   ],
   [
     "Influencing Scarab of the Elder",
-    "聖甲蟲："
+    "聖甲蟲：尊師感染"
   ],
   [
     "Influencing Scarab of Hordes",
-    "聖甲蟲："
-  ],
-  [
-    "Kalguuran Scarab",
-    "卡爾葛聖甲蟲"
+    "聖甲蟲：群集感染"
   ],
   [
     "Metamorph Brain",
@@ -36716,10 +36380,6 @@
     "神化聖物"
   ],
   [
-    "Minor Idol",
-    "次要魔偶"
-  ],
-  [
     "Kamasan Idol",
     "卡瑪薩魔偶"
   ],
@@ -36993,7 +36653,7 @@
   ],
   [
     "Allflame Ember of Ngamahu",
-    "不滅之火努葛瑪呼餘燼"
+    "不滅之火拿瑪乎餘燼"
   ],
   [
     "Allflame Ember of Kitava",
@@ -37122,10 +36782,6 @@
   [
     "Allflame Ember of The Vaal Legion",
     "不滅之火瓦爾軍隊餘燼"
-  ],
-  [
-    "Blighted Map",
-    "凋落的地圖"
   ],
   [
     "Blight-ravaged Map",
@@ -38240,10 +37896,6 @@
     "贗品．脆弱的繁華"
   ],
   [
-    "Malicious Intent",
-    "不善意圖"
-  ],
-  [
     "Brawn",
     "筋骨強化"
   ],
@@ -38650,10 +38302,6 @@
   [
     "Duskwing",
     "黃昏之翼"
-  ],
-  [
-    "Bloodletter",
-    "血書"
   ],
   [
     "The Rack",
@@ -39820,10 +39468,6 @@
     "挖眼髏骨"
   ],
   [
-    "The Basilisk",
-    "咒怨蛇妖"
-  ],
-  [
     "The Angel of Vengeance",
     "復仇天使"
   ],
@@ -39862,10 +39506,6 @@
   [
     "The Ancient Angler",
     "古代釣手"
-  ],
-  [
-    "Escalation",
-    "惡化"
   ],
   [
     "The Arbiter",
@@ -39977,7 +39617,7 @@
   ],
   [
     "Ixchel's Temptation",
-    "薩雷許的誘惑"
+    "伊克契爾的誘惑"
   ],
   [
     "Replica Hyrri's Ire",
@@ -40417,7 +40057,7 @@
   ],
   [
     "Foulborn Regal Orb",
-    "穢生父豪石"
+    "穢生富豪石"
   ],
   [
     "Foulborn Exalted Orb",
@@ -41573,7 +41213,7 @@
   ],
   [
     "Heroic Tragedy",
-    "英勇悲劇"
+    "英勇的悲劇"
   ],
   [
     "Chart",
@@ -41878,10 +41518,6 @@
   [
     "Forbidden Tattoo of the Scion",
     "貴族的禁忌紋身"
-  ],
-  [
-    "Allflame Ember of K'Tash",
-    "不滅之火克塔什餘燼"
   ],
   [
     "Deceptive Astrolabe",
@@ -43986,5 +43622,1441 @@
   [
     "26 - Mirror of Kalandra",
     "26 - 卡蘭德的魔鏡"
+  ],
+  [
+    "Cursed Ducat",
+    "詛咒達克特"
+  ],
+  [
+    "Ducat of the Grasping Deep",
+    "攫取海淵的達克特"
+  ],
+  [
+    "Ducat of the Foul Kin",
+    "污穢族種的達克特"
+  ],
+  [
+    "Ducat of Tsoatha's Gift",
+    "特索塔之贈的達克特"
+  ],
+  [
+    "Ducat of the Undead Sea",
+    "不死之海的達克特"
+  ],
+  [
+    "Ducat of the Eucarid Isle",
+    "秘境之島的達克特"
+  ],
+  [
+    "Ducat of the Fallen Stars",
+    "殞落群星的達克特"
+  ],
+  [
+    "Ukatoa's Ducat",
+    "烏卡托瓦的達克特"
+  ],
+  [
+    "Hidden Item",
+    "隱藏的物品"
+  ],
+  [
+    "The Draugur's Lantern",
+    "屍鬼提燈"
+  ],
+  [
+    "A Tier:",
+    "A 階："
+  ],
+  [
+    "A-Tier",
+    "A 階"
+  ],
+  [
+    "Act 1",
+    "第一章"
+  ],
+  [
+    "Act 2/3",
+    "第二／三章"
+  ],
+  [
+    "Act 4-6 Fire-Res Gear",
+    "第 4-6 章火抗裝備"
+  ],
+  [
+    "Act 4/5/6",
+    "第 4/5/6 章"
+  ],
+  [
+    "Act 4/5/6 Rings",
+    "第 4/5/6 章戒指"
+  ],
+  [
+    "Additional Endgame Rules",
+    "額外終局規則"
+  ],
+  [
+    "All Blueprints (for your tiering)",
+    "所有藍圖（供你的分階使用）"
+  ],
+  [
+    "All Gear",
+    "所有裝備"
+  ],
+  [
+    "All Gear Classes Plus Flask Jewel Map Heist",
+    "所有裝備類別＋藥劑 珠寶 地圖 劫盜"
+  ],
+  [
+    "Apex Tier Bases ilvl 84",
+    "Apex 階基底 ilvl 84"
+  ],
+  [
+    "B Tier:",
+    "B 階："
+  ],
+  [
+    "Basic Blueprint Rules",
+    "基本藍圖規則"
+  ],
+  [
+    "Basic Contract Rules",
+    "基本契約規則"
+  ],
+  [
+    "Betrayal Scarabs T1",
+    "反叛聖甲蟲 T1"
+  ],
+  [
+    "Betrayal Scarabs T4",
+    "反叛聖甲蟲 T4"
+  ],
+  [
+    "Betrayal Scarabs T5",
+    "反叛聖甲蟲 T5"
+  ],
+  [
+    "Betrayal Scarabs T6",
+    "反叛聖甲蟲 T6"
+  ],
+  [
+    "Blighted Maps High (1/1)",
+    "凋落地圖（高階）(1/1)"
+  ],
+  [
+    "Blighted Maps Low (1/1)",
+    "凋落地圖（低階）(1/1)"
+  ],
+  [
+    "Blueprint: Smuggler",
+    "藍圖：走私者"
+  ],
+  [
+    "C Tier:",
+    "C 階："
+  ],
+  [
+    "C+D Tier",
+    "C+D 階"
+  ],
+  [
+    "C+D Tier (Currency Rewards)",
+    "C+D 階（通貨獎勵）"
+  ],
+  [
+    "Caster And Ranged Weapon:",
+    "法術與遠程武器："
+  ],
+  [
+    "Chancing bases (leather belt HH)",
+    "機會石基底（皮革腰帶 獵首）"
+  ],
+  [
+    "Chancing bases (normal)",
+    "機會石基底（一般）"
+  ],
+  [
+    "Chronicle of Atzoatl (Incursion Temple Map Item)",
+    "阿茲瓦特編年史（穿越神殿地圖物品）"
+  ],
+  [
+    "Cluster Jewels: Custom Any Enchantment Rule",
+    "星團珠寶：自訂任意附魔規則"
+  ],
+  [
+    "Control IF and HOW a tier is shown",
+    "控制階級是否顯示與如何顯示"
+  ],
+  [
+    "Custom Equipment Rules",
+    "自訂裝備規則"
+  ],
+  [
+    "Custom Rules",
+    "自訂規則"
+  ],
+  [
+    "D Tier - Early league Uniques:",
+    "D 階－聯盟初期傳奇："
+  ],
+  [
+    "D Tier - Low Value+NonDrops:",
+    "D 階－低價值＋非掉落："
+  ],
+  [
+    "D Tier - Low Value:",
+    "D 階－低價值："
+  ],
+  [
+    "D Tier:",
+    "D 階："
+  ],
+  [
+    "Disabled starting with Giga Strict",
+    "Giga 嚴格度起停用"
+  ],
+  [
+    "Divination Cards New (1/1)",
+    "命運卡（新）(1/1)"
+  ],
+  [
+    "Divination Cards T4C",
+    "命運卡 T4C"
+  ],
+  [
+    "Divination Cards T5C",
+    "命運卡 T5C"
+  ],
+  [
+    "Dusting Uniques T1",
+    "拆粉傳奇 T1"
+  ],
+  [
+    "Dusting Uniques T2",
+    "拆粉傳奇 T2"
+  ],
+  [
+    "Dusting Uniques T3",
+    "拆粉傳奇 T3"
+  ],
+  [
+    "E Tier (Currency Rewards)",
+    "E 階（通貨獎勵）"
+  ],
+  [
+    "E Tier (Currency Rewards):",
+    "E 階（通貨獎勵）："
+  ],
+  [
+    "E+ Tier:",
+    "E+ 階："
+  ],
+  [
+    "E+F Tier",
+    "E+F 階"
+  ],
+  [
+    "E- Tier:",
+    "E- 階："
+  ],
+  [
+    "Early Endgame Life&Mana Flasks",
+    "終局初期生命與魔力藥劑"
+  ],
+  [
+    "Edit the position of this rule in the filter, controlling it's priority compared to other rules.",
+    "編輯此規則在過濾器中的位置，以控制它與其他規則相比的優先順序。"
+  ],
+  [
+    "Elder Maps:",
+    "尊師地圖："
+  ],
+  [
+    "Enchanted Contracts and Blueprints",
+    "附魔契約與藍圖"
+  ],
+  [
+    "Endgame utility flasks",
+    "終局功能藥劑"
+  ],
+  [
+    "Exceptional Quality Life Flasks",
+    "卓越品質生命藥劑"
+  ],
+  [
+    "Exceptional Quality Utility Flasks",
+    "卓越品質功能藥劑"
+  ],
+  [
+    "Exotic Variations",
+    "特殊變體"
+  ],
+  [
+    "Expensive ILVL84 Wombgifts",
+    "高價 ILVL84 胎贈"
+  ],
+  [
+    "Expensive Leveling Wombgifts",
+    "高價練等胎贈"
+  ],
+  [
+    "Fire-Res Gear",
+    "火抗裝備"
+  ],
+  [
+    "Flask:",
+    "藥劑："
+  ],
+  [
+    "Gear",
+    "裝備"
+  ],
+  [
+    "Gemcutter recipe high quality gems",
+    "寶石匠配方（高品質寶石）"
+  ],
+  [
+    "Gigantic Stack",
+    "超巨量堆疊"
+  ],
+  [
+    "Give specific BaseTypes more highlighting here.",
+    "在此為特定基底增加醒目度。"
+  ],
+  [
+    "Grand Heist Blueprint Tier 1",
+    "劫盜之星藍圖 階級 1"
+  ],
+  [
+    "Grand Heist Blueprint Tier 2 (1/1)",
+    "劫盜之星藍圖 階級 2 (1/1)"
+  ],
+  [
+    "Heist Gear:",
+    "劫盜裝備："
+  ],
+  [
+    "Hidden starting with Apex Strict",
+    "Apex 嚴格度起隱藏"
+  ],
+  [
+    "High ItemLevel",
+    "高物品等級"
+  ],
+  [
+    "High ItemLevel Tinctures",
+    "高物品等級萃取物"
+  ],
+  [
+    "High Level Flasks - iLvl 82",
+    "高階藥劑 - iLvl 82"
+  ],
+  [
+    "High Level Flasks - iLvl 84",
+    "高階藥劑 - iLvl 84"
+  ],
+  [
+    "High Level Flasks - iLvl 85",
+    "高階藥劑 - iLvl 85"
+  ],
+  [
+    "High Level Flasks - Max Quality Corruption",
+    "高階藥劑－最高品質腐化"
+  ],
+  [
+    "High Level Life/Mana Flasks - iLvl 82",
+    "高階生命／魔力藥劑 - iLvl 82"
+  ],
+  [
+    "High Quality & ItemLevel Tinctures",
+    "高品質與物品等級萃取物"
+  ],
+  [
+    "High Quality Chancing",
+    "高品質機會石"
+  ],
+  [
+    "High Quality Flasks",
+    "高品質藥劑"
+  ],
+  [
+    "High Quality leveling flasks",
+    "高品質練等藥劑"
+  ],
+  [
+    "High Quality Life Flasks",
+    "高品質生命藥劑"
+  ],
+  [
+    "High Quality Utility Flasks",
+    "高品質功能藥劑"
+  ],
+  [
+    "High Variety - Boss-Drops:",
+    "多樣性高－首領掉落："
+  ],
+  [
+    "High Variety - Multi-Bases:",
+    "多樣性高－多基底："
+  ],
+  [
+    "High Variety - Top Multi-Bases:",
+    "多樣性高－頂級多基底："
+  ],
+  [
+    "High with Corrupted Implicit",
+    "高階（帶腐化固定詞）"
+  ],
+  [
+    "High with Corrupted Implicit (high tier)",
+    "高階（帶腐化固定詞，高階級）"
+  ],
+  [
+    "Huge Stack",
+    "巨量堆疊"
+  ],
+  [
+    "ILVL 82+",
+    "物品等級 82+"
+  ],
+  [
+    "ILVL 85+",
+    "物品等級 85+"
+  ],
+  [
+    "Increasing the overlap will increase the duration a BaseType will still be shown even if there is a newer one.",
+    "提高重疊值會延長基底在出現更新項目後仍持續顯示的時間。"
+  ],
+  [
+    "Influenced Bases - Crusader",
+    "勢力基底－聖戰軍王"
+  ],
+  [
+    "Influenced Bases - Elder",
+    "勢力基底－尊師"
+  ],
+  [
+    "Influenced Bases - Hunter",
+    "勢力基底－狩獵者"
+  ],
+  [
+    "Influenced Bases - Redeemer",
+    "勢力基底－救贖者"
+  ],
+  [
+    "Influenced Bases - Shaper",
+    "勢力基底－塑界者"
+  ],
+  [
+    "Influenced Bases - Warlord",
+    "勢力基底－總督軍"
+  ],
+  [
+    "Influenced Outcome",
+    "勢力結果"
+  ],
+  [
+    "Iron Flask: 84",
+    "鋼鐵藥劑 : 84"
+  ],
+  [
+    "Itemized Sanctum (high level)",
+    "禁忌聖域物品化（高階）"
+  ],
+  [
+    "Itemized Ultimatum",
+    "通牒物品化"
+  ],
+  [
+    "Large Stack",
+    "大量堆疊"
+  ],
+  [
+    "Leveling-Progression-Full (1/15)",
+    "練等進程－完整 (1/15)"
+  ],
+  [
+    "Lottery-Tier Chancing Targets:",
+    "樂透級機會石目標："
+  ],
+  [
+    "Low Quality leveling flasks",
+    "低品質練等藥劑"
+  ],
+  [
+    "Magic Item Decorators",
+    "魔法物品裝飾"
+  ],
+  [
+    "Magic Items",
+    "魔法物品"
+  ],
+  [
+    "Magic Items: Hide rules",
+    "魔法物品：隱藏規則"
+  ],
+  [
+    "Map appearance (ElderMap)",
+    "地圖外觀（尊師地圖）"
+  ],
+  [
+    "Map appearance T1",
+    "地圖外觀 T1"
+  ],
+  [
+    "Map appearance T10 (1/1)",
+    "地圖外觀 T10 (1/1)"
+  ],
+  [
+    "Map appearance T11 (1/1)",
+    "地圖外觀 T11 (1/1)"
+  ],
+  [
+    "Map appearance T12 (1/1)",
+    "地圖外觀 T12 (1/1)"
+  ],
+  [
+    "Map appearance T13 (1/1)",
+    "地圖外觀 T13 (1/1)"
+  ],
+  [
+    "Map appearance T14 (1/1)",
+    "地圖外觀 T14 (1/1)"
+  ],
+  [
+    "Map appearance T15 (1/1)",
+    "地圖外觀 T15 (1/1)"
+  ],
+  [
+    "Map appearance T16 (1/1)",
+    "地圖外觀 T16 (1/1)"
+  ],
+  [
+    "Map appearance T3",
+    "地圖外觀 T3"
+  ],
+  [
+    "Map appearance T4",
+    "地圖外觀 T4"
+  ],
+  [
+    "Map appearance T5",
+    "地圖外觀 T5"
+  ],
+  [
+    "Map appearance T6",
+    "地圖外觀 T6"
+  ],
+  [
+    "Map appearance T8",
+    "地圖外觀 T8"
+  ],
+  [
+    "Map or Fragment Outcome",
+    "地圖或碎片結果"
+  ],
+  [
+    "Maps with Implicits (high tier)",
+    "帶固定詞的地圖（高階級）"
+  ],
+  [
+    "Max Quality leveling flasks",
+    "最高品質練等藥劑"
+  ],
+  [
+    "Medium Stack",
+    "中量堆疊"
+  ],
+  [
+    "Melee Weapon, Bows, Wands",
+    "近戰武器、弓、法杖"
+  ],
+  [
+    "Meta-Uniques Chancing Bases:",
+    "主流傳奇機會石基底："
+  ],
+  [
+    "Minion Item",
+    "召喚物物品"
+  ],
+  [
+    "Multi-Base Uniques",
+    "多基底傳奇"
+  ],
+  [
+    "Multi-Base Uniques:",
+    "多基底傳奇："
+  ],
+  [
+    "New Influenced Maps",
+    "新勢力地圖"
+  ],
+  [
+    "Niche and NOT recommended recipes",
+    "冷門且不推薦的配方"
+  ],
+  [
+    "Nightmare (T17) Maps",
+    "夢魘（T17）地圖"
+  ],
+  [
+    "Nightmare Maps",
+    "夢魘地圖"
+  ],
+  [
+    "Normal Items during first levels",
+    "前幾等的普通物品"
+  ],
+  [
+    "Normal Map Progression and Visuals",
+    "普通地圖進程與外觀"
+  ],
+  [
+    "NOT Corrupted",
+    "未腐化"
+  ],
+  [
+    "old RGB Chromatic recipe EG large",
+    "舊版 RGB 幻色石配方 EG 大型"
+  ],
+  [
+    "old RGB Chromatic recipe EG medium",
+    "舊版 RGB 幻色石配方 EG 中型"
+  ],
+  [
+    "old RGB Chromatic recipe EG small1x3",
+    "舊版 RGB 幻色石配方 EG 小 1x3"
+  ],
+  [
+    "old RGB Chromatic recipe EG small2x2",
+    "舊版 RGB 幻色石配方 EG 小 2x2"
+  ],
+  [
+    "Originator & Nightmare Maps",
+    "開創者與夢魘地圖"
+  ],
+  [
+    "Originator / Zana Maps (High)",
+    "開創者／札娜地圖（高階）"
+  ],
+  [
+    "Originator / Zana Maps (Low)",
+    "開創者／札娜地圖（低階）"
+  ],
+  [
+    "Other Endgame Utility Flasks",
+    "其他終局功能藥劑"
+  ],
+  [
+    "Other Veiled Gear (1/1)",
+    "其他隱匿裝備 (1/1)"
+  ],
+  [
+    "Over-Quality Corrupted Flasks",
+    "超品質腐化藥劑"
+  ],
+  [
+    "Over-Quality Life&Mana",
+    "超品質生命與魔力"
+  ],
+  [
+    "Over-Quality Utility Flasks",
+    "超品質功能藥劑"
+  ],
+  [
+    "Override: All Rules - Highest priority - DANGER ZONE (and all rules below)",
+    "覆寫：所有規則－最高優先－危險區域（及其下所有規則）"
+  ],
+  [
+    "Override: Crafting Bases - High level basetypes - ILVL86 (and all rules below)",
+    "覆寫：工藝基底－高階基底－ILVL86（及其下所有規則）"
+  ],
+  [
+    "Override: HIDELAYER - all endgame and magic and normal items (and all rules below)",
+    "覆寫：隱藏層－所有終局、魔法與普通物品（及其下所有規則）"
+  ],
+  [
+    "Override: HIDELAYER - Hide all known untiered items (and all rules below)",
+    "覆寫：隱藏層－隱藏所有已知未分階物品（及其下所有規則）"
+  ],
+  [
+    "Override: Identified Mods - Best Veiled mods and combinations of expensive ID mods (and all rules below)",
+    "覆寫：鑑定詞綴－最佳隱匿詞綴與高價鑑定詞綴組合（及其下所有規則）"
+  ],
+  [
+    "Override: Leveling - ALL rules (and all rules below)",
+    "覆寫：練等－所有規則（及其下所有規則）"
+  ],
+  [
+    "Override: Leveling - Gear - All non-unique (and all rules below)",
+    "覆寫：練等－裝備－所有非傳奇（及其下所有規則）"
+  ],
+  [
+    "Override: Leveling - Gear - Low Tier (and all rules below)",
+    "覆寫：練等－裝備－低階（及其下所有規則）"
+  ],
+  [
+    "Override: Leveling - Normal and Magic - Act1, Act2 special gear (and all rules below)",
+    "覆寫：練等－普通與魔法－第一章、第二章特殊裝備（及其下所有規則）"
+  ],
+  [
+    "Override: Leveling - Normal and Magic - First Levels (and all rules below)",
+    "覆寫：練等－普通與魔法－最初幾等（及其下所有規則）"
+  ],
+  [
+    "Override: Rare Endgame Items - Amulets, Rings (and all rules below)",
+    "覆寫：稀有終局物品－護身符、戒指（及其下所有規則）"
+  ],
+  [
+    "Override: Rare Endgame Items - decorators (and all rules below)",
+    "覆寫：稀有終局物品－裝飾（及其下所有規則）"
+  ],
+  [
+    "Override: Rare Endgame Items - Identified Item Handling (and all rules below)",
+    "覆寫：稀有終局物品－鑑定物品處理（及其下所有規則）"
+  ],
+  [
+    "Override: Rare Endgame Items - T1 (and all rules below)",
+    "覆寫：稀有終局物品－T1（及其下所有規則）"
+  ],
+  [
+    "Override: Rare Endgame Items - T2 (and all rules below)",
+    "覆寫：稀有終局物品－T2（及其下所有規則）"
+  ],
+  [
+    "Override: Rare Endgame Items - t3 (and all rules below)",
+    "覆寫：稀有終局物品－T3（及其下所有規則）"
+  ],
+  [
+    "Perfect Level Life&Mana Flasks",
+    "完美等級生命與魔力藥劑"
+  ],
+  [
+    "Rank A - ILVL83+",
+    "A 階 - ILVL83+"
+  ],
+  [
+    "Rank A - ILVL84+",
+    "A 階 - ILVL84+"
+  ],
+  [
+    "Rank A - ILVL85+",
+    "A 階 - ILVL85+"
+  ],
+  [
+    "Rank A - ILVL86+",
+    "A 階 - ILVL86+"
+  ],
+  [
+    "Rank A - Veiled",
+    "A 階 - 隱匿"
+  ],
+  [
+    "Rank A - Veiled (1/1)",
+    "A 階 - 隱匿 (1/1)"
+  ],
+  [
+    "Rank A, High OverQual Weapons",
+    "A 階，高超品質武器"
+  ],
+  [
+    "Rank A, high strands",
+    "A 階，高記憶絲"
+  ],
+  [
+    "Rank A, Mid OverQual Weapons",
+    "A 階，中超品質武器"
+  ],
+  [
+    "Rank B - ILVL83+",
+    "B 階 - ILVL83+"
+  ],
+  [
+    "Rank B - ILVL84+",
+    "B 階 - ILVL84+"
+  ],
+  [
+    "Rank B - ILVL85+",
+    "B 階 - ILVL85+"
+  ],
+  [
+    "Rank B - ILVL86+",
+    "B 階 - ILVL86+"
+  ],
+  [
+    "Rank B - Veiled",
+    "B 階 - 隱匿"
+  ],
+  [
+    "Rank B - Veiled (1/1)",
+    "B 階 - 隱匿 (1/1)"
+  ],
+  [
+    "Rank B, High OverQual Weapons",
+    "B 階，高超品質武器"
+  ],
+  [
+    "Rank B, high strands",
+    "B 階，高記憶絲"
+  ],
+  [
+    "Rank B, Mid OverQual Weapons",
+    "B 階，中超品質武器"
+  ],
+  [
+    "Rank C - ILVL83+",
+    "C 階 - ILVL83+"
+  ],
+  [
+    "Rank C - ILVL84+",
+    "C 階 - ILVL84+"
+  ],
+  [
+    "Rank C - ILVL85+",
+    "C 階 - ILVL85+"
+  ],
+  [
+    "Rank C - ILVL86+",
+    "C 階 - ILVL86+"
+  ],
+  [
+    "Rank C - Veiled",
+    "C 階 - 隱匿"
+  ],
+  [
+    "Rank C - Veiled (1/1)",
+    "C 階 - 隱匿 (1/1)"
+  ],
+  [
+    "Rank C, high strands",
+    "C 階，高記憶絲"
+  ],
+  [
+    "Rank D",
+    "D 階"
+  ],
+  [
+    "Rank D - Veiled",
+    "D 階 - 隱匿"
+  ],
+  [
+    "Rank D - Veiled (1/1)",
+    "D 階 - 隱匿 (1/1)"
+  ],
+  [
+    "Rank D, high strands, High",
+    "D 階，高記憶絲，高"
+  ],
+  [
+    "Rank D/Untiered",
+    "D 階／未分階"
+  ],
+  [
+    "Reduced highlight on Mega Strict",
+    "Mega 嚴格度時降低醒目度"
+  ],
+  [
+    "Reduced highlight on Semi-Strict",
+    "半嚴格時降低醒目度"
+  ],
+  [
+    "Remaining Blueprints",
+    "其餘藍圖"
+  ],
+  [
+    "Remaining Endgame Tinctures",
+    "其餘終局萃取物"
+  ],
+  [
+    "RGB Chromatic recipe EG large",
+    "RGB 幻色石配方 EG 大型"
+  ],
+  [
+    "RGB Chromatic recipe EG medium",
+    "RGB 幻色石配方 EG 中型"
+  ],
+  [
+    "RGB Chromatic recipe EG small2x2",
+    "RGB 幻色石配方 EG 小 2x2"
+  ],
+  [
+    "Rings (norm/magic)",
+    "戒指（普通／魔法）"
+  ],
+  [
+    "Ritual BaseTypes (1/1)",
+    "祭祀基底 (1/1)"
+  ],
+  [
+    "S Tier:",
+    "S 階："
+  ],
+  [
+    "S-Tier",
+    "S 階"
+  ],
+  [
+    "Settlers Gold - Huge Stack",
+    "拓荒者黃金－巨量堆疊"
+  ],
+  [
+    "Settlers Gold - Small Stack",
+    "拓荒者黃金－少量堆疊"
+  ],
+  [
+    "Settlers Gold - Tiny Stack",
+    "拓荒者黃金－微量堆疊"
+  ],
+  [
+    "Small Stack",
+    "少量堆疊"
+  ],
+  [
+    "Some BaseTypes have both: very valuable uniques AND cheap ones. The filter can't say which one dropped. These multi-base uniques get more highlight, but play the low-tier unique sound.",
+    "有些基底同時有極有價值的傳奇與便宜傳奇。過濾器無法分辨掉的是哪一個。這些多基底傳奇會獲得較多醒目度，但播放低階傳奇的音效。"
+  ],
+  [
+    "Special rule to give sudden meta items temporary massive highlights.",
+    "給予突然成為主流的物品暫時性大幅醒目度的特殊規則。"
+  ],
+  [
+    "Stacked Scarabs",
+    "堆疊聖甲蟲"
+  ],
+  [
+    "Supplies 1 (Transmutes)",
+    "補給 1（蛻變石）"
+  ],
+  [
+    "Supplies 2 (Armourers)",
+    "補給 2（護甲石）"
+  ],
+  [
+    "Supplies 3 (Portals)",
+    "補給 3（傳送卷軸）"
+  ],
+  [
+    "Supplies 4 (Wisdoms)",
+    "補給 4（知識卷軸）"
+  ],
+  [
+    "Talisman Exotic",
+    "魔符特殊"
+  ],
+  [
+    "Talisman Tier 1",
+    "魔符 階級 1"
+  ],
+  [
+    "Talisman Tier 2",
+    "魔符 階級 2"
+  ],
+  [
+    "Talisman Tier 3",
+    "魔符 階級 3"
+  ],
+  [
+    "This rule has less priority than S and A tier uniques. A foulborn 'S' tier unique will look like any 'S' tier unique.",
+    "此規則的優先度低於 S 階與 A 階傳奇。穢生的「S」階傳奇會看起來跟一般「S」階傳奇相同。"
+  ],
+  [
+    "This rule usually detects jewels that turn unique through corruption outcomes. Do note that there is a small chance that a non-corruption specific jewel might get corrupted and displayed via this rule. It's not recommended to hide this rule, especially since some of the corruption outcomes (such as a rain of splinters) can be quite valuable",
+    "此規則通常用於偵測因腐化結果而變成傳奇的珠寶。請注意，非腐化專屬珠寶仍有可能被腐化並因此規則顯示。不建議隱藏此規則，因為某些腐化結果（例如裂片之雨）可能相當有價值。"
+  ],
+  [
+    "This section is designed to be foolproof. It will have no effect on 6 links, leveling items, elder/shaper items, uniques, atlas bases (such as Steel Rings), abyss belts, fishing rods and other special bases. These sections frequently feature the 'strictness' dropdown menu. This tool defines how many rules are overwritten by your custom rules. I recommend playing around with the loot simulator, while switching back and forth to the customizer to get familiar with this section",
+    "此區塊設計為防呆。它不會影響六連、練等物品、尊師／塑界者物品、傳奇、輿圖基底（例如鋼鐵戒指）、深淵腰帶、釣魚竿與其他特殊基底。這些區塊經常會有「嚴格度」下拉選單。此工具定義你的自訂規則會覆寫多少規則。建議在戰利品模擬器與自訂頁之間來回切換，以熟悉此區塊。"
+  ],
+  [
+    "Tier X - New, Unknown cards",
+    "X 階－新、未知命運卡"
+  ],
+  [
+    "Tier X - New, Unknown cards:",
+    "X 階－新、未知命運卡："
+  ],
+  [
+    "Tiny Stack",
+    "微量堆疊"
+  ],
+  [
+    "To highlight typical maps of a special type. This is the 'safe' rule and won't override things like T17 maps, unique maps...",
+    "用於醒目顯示特定類型的典型地圖。這是「安全」規則，不會覆寫 T17 地圖、傳奇地圖等。"
+  ],
+  [
+    "Unique Heist Contract",
+    "傳奇劫盜契約"
+  ],
+  [
+    "Unique Heist Contract (1/1)",
+    "傳奇劫盜契約 (1/1)"
+  ],
+  [
+    "Valdo Maps",
+    "瓦爾多地圖"
+  ],
+  [
+    "Very High ItemLevel Tinctures",
+    "極高物品等級萃取物"
+  ],
+  [
+    "Wombgifts A-Tier",
+    "胎贈 A 階"
+  ],
+  [
+    "Wombgifts B-Tier",
+    "胎贈 B 階"
+  ],
+  [
+    "Wombgifts C-Tier",
+    "胎贈 C 階"
+  ],
+  [
+    "Wombgifts S-Tier",
+    "胎贈 S 階"
+  ],
+  [
+    "-> The level when it CAN drop.",
+    "-> 它可以掉落的最低等級。"
+  ],
+  [
+    "-> The level when it DID drop.",
+    "-> 它實際掉落時的等級。"
+  ],
+  [
+    "Accepts any Socket-Grp",
+    "接受任何插槽組"
+  ],
+  [
+    "Acts 4-6 contain a lot of deadly fire damage sources. Ruby rings help a lot. After act 5 you want to keep your resistances as high as possible. Consider throwing an essence or even an alchemy orb on one of these!",
+    "第 4-6 章有許多致命的火焰傷害來源，紅玉戒指很有幫助。第 5 章之後要盡量維持抗性。可以考慮對這些裝備使用精髓，甚至點金石！"
+  ],
+  [
+    "at least 2 of the values from that list.",
+    "該清單中至少 2 個數值。"
+  ],
+  [
+    "Click to iterate through them.",
+    "點擊以逐一切換。"
+  ],
+  [
+    "Clicking again re-opens the UI.",
+    "再次點擊會重新開啟介面。"
+  ],
+  [
+    "Customize currency thresholds and visuals to tailor the filter to your preferences!",
+    "自訂通貨門檻與外觀，讓過濾器符合你的偏好！"
+  ],
+  [
+    "Each list specifies an amount on the left.",
+    "每個清單左側標示數量。"
+  ],
+  [
+    "Enter Socket-Grp",
+    "輸入插槽組"
+  ],
+  [
+    "entries in the filter.",
+    "筆過濾器項目。"
+  ],
+  [
+    "Filter sockets that are linked to each other by color.",
+    "過濾以顏色互相連結的插槽。"
+  ],
+  [
+    "Find out more about the basic functionality of a filter in the FAQ if you have additional questions.",
+    "如有其他問題，請在 FAQ 了解過濾器的基本功能。"
+  ],
+  [
+    "Give specific classes more highlighting here.",
+    "在此為特定類別增加醒目度。"
+  ],
+  [
+    "Hide corrupted mirrored maps",
+    "隱藏已腐化的已複製地圖"
+  ],
+  [
+    "Highlight gear by their type, like Evasion or Evasion-EnergyShield items.",
+    "依類型醒目顯示裝備，例如迴避或迴避－能量護盾物品。"
+  ],
+  [
+    "Note: There's sadly NO way to filter these by reward, health percentage etc.",
+    "注意：很遺憾，無法依獎勵、生命百分比等條件過濾這些物品。"
+  ],
+  [
+    "Pick a Class to enable!",
+    "選擇一個類別以啟用！"
+  ],
+  [
+    "Pick a HasInfluence to enable!",
+    "選擇一個勢力以啟用！"
+  ],
+  [
+    "Quick example: RRBG means an item with at least 4 linked sockets, two of which are Red, one Blue and one Green.",
+    "快速範例：RRBG 代表一件至少有 4 個連結插槽的物品，其中兩個紅色、一個藍色、一個綠色。"
+  ],
+  [
+    "separation by type coming soon!",
+    "依類型分離即將推出！"
+  ],
+  [
+    "Since PoE 3.16, the base value for defences on all gear pieces can roll. Meaning the same base can have varying Armour values. Perfection is used to see how good the roll is on a scale from 1 to 100.",
+    "自 PoE 3.16 起，所有裝備的防禦基礎值都會浮動，也就是同一基底可能有不同的護甲值。Perfect 用於以 1 到 100 的分數查看浮動的好壞。"
+  ],
+  [
+    "The Changeling",
+    "變形靈"
+  ],
+  [
+    "The Genteel",
+    "文雅者"
+  ],
+  [
+    "The order of the letters does not matter.",
+    "字母順序不影響。"
+  ],
+  [
+    "The sockets do NOT need to be linked.",
+    "插槽不需要互相連結。"
+  ],
+  [
+    "< fewer than",
+    "< 少於"
+  ],
+  [
+    "== exactly",
+    "== 恰好"
+  ],
+  [
+    "> more than",
+    "> 多於"
+  ],
+  [
+    "Affects",
+    "影響"
+  ],
+  [
+    "all of these lists:",
+    "以下所有清單："
+  ],
+  [
+    "Armour:",
+    "護甲："
+  ],
+  [
+    "Atk Speed:",
+    "攻擊速度："
+  ],
+  [
+    "Attack Wands",
+    "攻擊法杖"
+  ],
+  [
+    "Betrayer's",
+    "叛徒的"
+  ],
+  [
+    "Block:",
+    "格擋："
+  ],
+  [
+    "Brinehook",
+    "布琳霍克"
+  ],
+  [
+    "Brinerot",
+    "布琳洛特"
+  ],
+  [
+    "Brooch",
+    "胸針"
+  ],
+  [
+    "Cloak",
+    "披風"
+  ],
+  [
+    "Conjurer",
+    "咒者"
+  ],
+  [
+    "Conqueror",
+    "征服者"
+  ],
+  [
+    "Crit:",
+    "暴擊："
+  ],
+  [
+    "Cyaxan",
+    "塞亞珊"
+  ],
+  [
+    "Damage:",
+    "傷害："
+  ],
+  [
+    "Dead Man's Sulphur 1",
+    "亡者硫酸 1"
+  ],
+  [
+    "Dead Man's Sulphur 2",
+    "亡者硫酸 2"
+  ],
+  [
+    "Dead Man's Sulphur 3",
+    "亡者硫酸 3"
+  ],
+  [
+    "Dead Man's Sulphur 4",
+    "亡者硫酸 4"
+  ],
+  [
+    "Dead Man's Sulphur 5",
+    "亡者硫酸 5"
+  ],
+  [
+    "Dead Man's Sulphur 6",
+    "亡者硫酸 6"
+  ],
+  [
+    "Dexterity req:",
+    "敏捷需求："
+  ],
+  [
+    "Duration: 4 seconds",
+    "持續時間：4 秒"
+  ],
+  [
+    "Duration: 5 seconds",
+    "持續時間：5 秒"
+  ],
+  [
+    "Duration: 6 seconds",
+    "持續時間：6 秒"
+  ],
+  [
+    "Duration: 6.5 seconds",
+    "持續時間：6.5 秒"
+  ],
+  [
+    "Duration: 7.5 seconds",
+    "持續時間：7.5 秒"
+  ],
+  [
+    "Duration: 8 seconds",
+    "持續時間：8 秒"
+  ],
+  [
+    "Duration: 8.5 seconds",
+    "持續時間：8.5 秒"
+  ],
+  [
+    "Early mapping life & mana flasks",
+    "初期輿圖生命與魔力藥劑"
+  ],
+  [
+    "Early mapping utility flasks",
+    "初期輿圖功能藥劑"
+  ],
+  [
+    "Energy Shield (max):",
+    "能量護盾（最大）："
+  ],
+  [
+    "Gambler",
+    "賭徒"
+  ],
+  [
+    "Hellion",
+    "地獄犬"
+  ],
+  [
+    "Intelligence req:",
+    "智慧需求："
+  ],
+  [
+    "Jewel:",
+    "珠寶："
+  ],
+  [
+    "Jewellery, Boots, Gloves, Helmets, Quivers, Shields",
+    "飾品、鞋子、手套、頭盔、箭袋、盾牌"
+  ],
+  [
+    "Jewellery:",
+    "飾品："
+  ],
+  [
+    "Katakohi",
+    "卡塔科希"
+  ],
+  [
+    "Kishara",
+    "奇夏拉"
+  ],
+  [
+    "Large (leveling only)",
+    "大量（僅練等）"
+  ],
+  [
+    "Lich",
+    "巫妖"
+  ],
+  [
+    "Mage",
+    "巫師"
+  ],
+  [
+    "Marshall",
+    "元帥"
+  ],
+  [
+    "match",
+    "相符"
+  ],
+  [
+    "Merrick",
+    "莫里克"
+  ],
+  [
+    "Minimum reached",
+    "達到最低值"
+  ],
+  [
+    "Misc Classes",
+    "其他類別"
+  ],
+  [
+    "Misc.:",
+    "其他："
+  ],
+  [
+    "Mutewind",
+    "啞風"
+  ],
+  [
+    "None",
+    "無"
+  ],
+  [
+    "NOT Identified",
+    "未鑑定"
+  ],
+  [
+    "NOT Mirrored",
+    "未複製"
+  ],
+  [
+    "Overquality: 21%+ quality",
+    "超品質：21%+ 品質"
+  ],
+  [
+    "Overquality: 26%+ quality",
+    "超品質：26%+ 品質"
+  ],
+  [
+    "Paladin",
+    "聖騎士"
+  ],
+  [
+    "Redblade",
+    "紅刃"
+  ],
+  [
+    "Rotmother",
+    "腐母"
+  ],
+  [
+    "Saint",
+    "聖者"
+  ],
+  [
+    "Savant",
+    "智者"
+  ],
+  [
+    "Scholar",
+    "學者"
+  ],
+  [
+    "Size: 0 (large)",
+    "尺寸：0（大）"
+  ],
+  [
+    "Size: 1 (medium)",
+    "尺寸：1（中）"
+  ],
+  [
+    "Size: 2 (small)",
+    "尺寸：2（小）"
+  ],
+  [
+    "Sulphur",
+    "硫酸"
+  ],
+  [
+    "Syndicate",
+    "密教"
+  ],
+  [
+    "Telesia",
+    "特雷西亞"
+  ],
+  [
+    "Tierlist",
+    "階級表"
+  ],
+  [
+    "Tool",
+    "工具"
+  ],
+  [
+    "Torturer",
+    "刑求者"
+  ],
+  [
+    "Turncoat's",
+    "變節者的"
+  ],
+  [
+    "Tzamoto",
+    "薩摩特"
+  ],
+  [
+    "Ukatoa",
+    "烏卡托瓦"
+  ],
+  [
+    "Untiered",
+    "未分階"
+  ],
+  [
+    "• Armour Types:",
+    "• 護甲類型："
+  ],
+  [
+    "• Base ES:",
+    "• 基礎能量護盾："
+  ],
+  [
+    "• Class*:",
+    "• 類別*："
+  ],
+  [
+    "• Links:",
+    "• 連結："
+  ],
+  [
+    "• Mods:",
+    "• 詞綴："
+  ],
+  [
+    "• Overlap*:",
+    "• 重疊*："
+  ],
+  [
+    "• Socket-Grp:",
+    "• 插槽組："
   ]
 ]

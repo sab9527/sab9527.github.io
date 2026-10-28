@@ -11717,7 +11717,7 @@
   ],
   [
     "Perfection",
-    "完美無瑕"
+    "完美"
   ],
   [
     "Perfect Restless Knight",
@@ -13285,7 +13285,7 @@
   ],
   [
     "Barrage",
-    "彈幕"
+    "彈幕輔助"
   ],
   [
     "Barrage Support",
@@ -15233,7 +15233,7 @@
   ],
   [
     "Knockback",
-    "擊退輔助"
+    "擊退"
   ],
   [
     "Knockback Support",
@@ -21189,7 +21189,7 @@
   ],
   [
     "Maim",
-    "癱瘓輔助"
+    "癱瘓"
   ],
   [
     "Maim Support",
@@ -22501,7 +22501,7 @@
   ],
   [
     "Impale",
-    "穿刺輔助"
+    "穿刺"
   ],
   [
     "Impale Mastery",
@@ -32957,7 +32957,7 @@
   ],
   [
     "Flanged Mace",
-    "護體之錘"
+    "輪緣之錘"
   ],
   [
     "Ornate Mace",
@@ -34445,7 +34445,7 @@
   ],
   [
     "Golden Plate",
-    "金耀之鎧"
+    "黃金鎧甲"
   ],
   [
     "Crusader Plate",
@@ -34757,7 +34757,7 @@
   ],
   [
     "Ornate Ringmail",
-    "華麗環甲"
+    "華貴環甲"
   ],
   [
     "Chain Hauberk",
@@ -34901,7 +34901,7 @@
   ],
   [
     "Plated Greaves",
-    "堅鐵脛甲"
+    "鎧甲脛甲"
   ],
   [
     "Reinforced Greaves",
@@ -34953,7 +34953,7 @@
   ],
   [
     "Rawhide Boots",
-    "生皮短靴"
+    "生皮長靴"
   ],
   [
     "Goathide Boots",
@@ -35533,7 +35533,7 @@
   ],
   [
     "Medium Life Flask",
-    "生命藥劑（中）"
+    "中型生命藥劑"
   ],
   [
     "Large Life Flask",
@@ -36445,7 +36445,7 @@
   ],
   [
     "Hooded Cloak",
-    "背飾：兜風"
+    "連帽披風"
   ],
   [
     "Whisper-woven Cloak",
@@ -41809,7 +41809,7 @@
   ],
   [
     "Blasphemy",
-    "瀆神"
+    "詛咒光環輔助"
   ],
   [
     "Close Combat I",
@@ -46753,7 +46753,7 @@
   ],
   [
     "Unleash",
-    "釋放輔助"
+    "釋放"
   ],
   [
     "Convention Treasure",
@@ -46797,11 +46797,11 @@
   ],
   [
     "Cast on Melee Kill",
-    "近戰擊殺時施放輔助"
+    "近戰擊殺時施放"
   ],
   [
     "Cast on Death",
-    "死亡時施放輔助"
+    "死亡時施放"
   ],
   [
     "Cast on Critical",
@@ -46809,11 +46809,11 @@
   ],
   [
     "Cast when Stunned",
-    "暈眩時施放輔助"
+    "暈眩時施放"
   ],
   [
     "Cast when Damage Taken",
-    "受傷時施放輔助"
+    "受傷時施放"
   ],
   [
     "Coming Soon",
@@ -46829,7 +46829,7 @@
   ],
   [
     "Cast while Channelling",
-    "引導時施放輔助"
+    "引導時施放"
   ],
   [
     "Cast on Melee Stun",
@@ -46861,7 +46861,7 @@
   ],
   [
     "Spell Totem",
-    "法術圖騰輔助"
+    "法術圖騰"
   ],
   [
     "[DNT-UNUSED] Meta Bow Totem",
@@ -47073,7 +47073,7 @@
   ],
   [
     "Lifetap",
-    "活栓輔助"
+    "活栓"
   ],
   [
     "Atalui's Bloodletting",
@@ -47573,7 +47573,7 @@
   ],
   [
     "Soul Drain",
-    "靈魂吸取"
+    "魂魄吸取"
   ],
   [
     "Rapid Attacks I",
@@ -47721,7 +47721,7 @@
   ],
   [
     "Frost Nexus",
-    "冰霜核心"
+    "冰霜匯聚"
   ],
   [
     "Shock Conduction I",
@@ -47745,7 +47745,7 @@
   ],
   [
     "Spell Echo",
-    "施放迴響輔助"
+    "法術迴響"
   ],
   [
     "Expand",
@@ -47909,7 +47909,7 @@
   ],
   [
     "Impending Doom",
-    "末日厄運輔助"
+    "末日厄運"
   ],
   [
     "Supercritical",
@@ -47949,7 +47949,7 @@
   ],
   [
     "Spell Cascade",
-    "秘能爆發輔助"
+    "秘能爆發"
   ],
   [
     "Soulbreaker",
@@ -47957,7 +47957,7 @@
   ],
   [
     "Cursed Ground",
-    "詛咒地面輔助"
+    "詛咒地面"
   ],
   [
     "Doedre's Undoing",
@@ -48001,15 +48001,15 @@
   ],
   [
     "Primary Calamity Fragment",
-    "第一血禍碎片"
+    "第一災厄碎片"
   ],
   [
     "Secondary Calamity Fragment",
-    "第二血禍碎片"
+    "第二災厄碎片"
   ],
   [
     "Tertiary Calamity Fragment",
-    "第三血禍碎片"
+    "第三災厄碎片"
   ],
   [
     "Cowardly Fate",
@@ -48781,7 +48781,7 @@
   ],
   [
     "Archmage",
-    "魔幻輔助"
+    "大法師"
   ],
   [
     "Magnetic Salvo",
@@ -48817,7 +48817,7 @@
   ],
   [
     "Mirage Archer",
-    "幻影射手輔助"
+    "幻影射手"
   ],
   [
     "Combat Frenzy",
@@ -49529,7 +49529,7 @@
   ],
   [
     "First Blood",
-    "武器特效：浴血鬥士"
+    "浴血鬥士"
   ],
   [
     "Frenzied Riposte",
@@ -49721,7 +49721,7 @@
   ],
   [
     "Trinity",
-    "三體輔助"
+    "三相"
   ],
   [
     "Rotten Satchel Charge",
@@ -50361,7 +50361,7 @@
   ],
   [
     "Briarpatch",
-    "荊棘叢"
+    "薔薇眼罩"
   ],
   [
     "Eternal Rage",
